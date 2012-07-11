@@ -20,9 +20,9 @@
         </ListBox>
         <Label Content="{Binding Name}" Margin="236,12,0,398" HorizontalAlignment="Left" Width="101" />
         <Label Content="{Binding Description}" Margin="236,42,283,369" />
-        <TextBox Text="{Binding NumberedTrait.TraitLabel,UpdateSourceTrigger=PropertyChanged}" Margin="315,388,338,12" />
+        <TextBox Text="{Binding SelectedItem.TraitValue,  ElementName=SelectedTraits, UpdateSourceTrigger=PropertyChanged}" Margin="315,388,338,12" />
         <ListBox x:Name="SingleTraitSelectionBox" SelectionMode="Multiple" ItemsSource="{Binding NumberedTraits}" Margin="236,77,283,50" />
-        <ListBox x:Name="SelectedTraits" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="540,24,12,102" IsHitTestVisible="False" />
+        <ListBox x:Name="SelectedTraits" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="540,24,12,102" />
         <Button Margin="0,367,47,32" Content="SumSingle" Click="SumSingle_Click" HorizontalAlignment="Right" Width="92"></Button>
         <Button Margin="559,367,145,32" Content="SumAll" Click="SumAll_Click"></Button>
         

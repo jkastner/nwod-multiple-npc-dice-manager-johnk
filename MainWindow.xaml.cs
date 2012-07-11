@@ -26,6 +26,7 @@ namespace XMLCharSheets
         {
             InitializeComponent();
             TempPopulateCharacters();
+            
 
 
 
