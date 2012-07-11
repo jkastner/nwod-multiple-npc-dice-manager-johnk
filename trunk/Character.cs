@@ -18,17 +18,9 @@ namespace XMLCharSheets
 
         private String _description;
 
-        public String Description
-        {
-            get { return _description; }
-            set { _description = value; }
-        }
-
-
-        public Character(string name, string description)
+        public Character(string name)
         {
             _name = name;
-            _description = description;
             _numberedTraits = new ObservableCollection<NumberedTrait>();
 
         }
