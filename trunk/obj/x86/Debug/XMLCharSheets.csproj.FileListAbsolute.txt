@@ -1,0 +1,13 @@
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\bin\Debug\XMLCharSheets.exe
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\bin\Debug\XMLCharSheets.pdb
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\MainWindow.baml
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\MainWindow.g.cs
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\App.g.cs
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets_MarkupCompile.cache
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets.g.resources
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets.exe
+c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets.pdb

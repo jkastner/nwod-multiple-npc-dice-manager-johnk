@@ -1,0 +1,30 @@
+﻿<Window x:Class="XMLCharSheets.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="473" Width="818" Loaded="Window_Loaded">
+    <Grid>
+        <Label Content="All Characters" Margin="12,0,622,285"></Label>
+        <ListBox  x:Name="SelectedCharacters" SelectionChanged="SelectedCharacter_SelectionChanged" SelectionMode="Multiple" Margin="12,24,574,165" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name, BindsDirectlyToSource=True}" FontSize="14" Padding="5" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox  x:Name="AllAvailableTraits" SelectionMode="Multiple" Margin="12,275,574,50" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding TraitName}" FontSize="14" Padding="5" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="{Binding Name}" Margin="236,12,0,398" HorizontalAlignment="Left" Width="101" />
+        <Label Content="{Binding Description}" Margin="236,42,283,369" />
+        <TextBox Text="{Binding NumberedTrait.TraitLabel,UpdateSourceTrigger=PropertyChanged}" Margin="315,388,338,12" />
+        <ListBox x:Name="SingleTraitSelectionBox" SelectionMode="Multiple" ItemsSource="{Binding NumberedTraits}" Margin="236,77,283,50" />
+        <ListBox x:Name="SelectedTraits" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="540,24,12,102" IsHitTestVisible="False" />
+        <Button Margin="0,367,47,32" Content="SumSingle" Click="SumSingle_Click" HorizontalAlignment="Right" Width="92"></Button>
+        <Button Margin="559,367,145,32" Content="SumAll" Click="SumAll_Click"></Button>
+        
+    </Grid>
+</Window>
