@@ -1,7 +1,7 @@
 ﻿<Window x:Class="XMLCharSheets.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="473" Width="818" Loaded="Window_Loaded">
+        Title="MainWindow" Height="473" Width="818" Loaded="Window_Loaded" Background="#FFD4D4D4">
     <Grid>
         <Label Content="All Characters" Margin="12,0,622,285"></Label>
         <ListBox  x:Name="SelectedCharacters" SelectionChanged="SelectedCharacter_SelectionChanged" SelectionMode="Multiple" Margin="12,24,574,165" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
@@ -11,20 +11,25 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox  x:Name="AllAvailableTraits" SelectionMode="Multiple" Margin="12,275,574,50" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
+        <ListBox  x:Name="AllAvailableTraits" SelectionMode="Multiple" Margin="12,293,574,32" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding TraitName}" FontSize="14" Padding="5" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="{Binding Name}" Margin="236,12,0,398" HorizontalAlignment="Left" Width="101" />
-        <Label Content="{Binding Description}" Margin="236,42,283,369" />
-        <TextBox Text="{Binding SelectedItem.TraitValue,  ElementName=SelectedTraits, UpdateSourceTrigger=PropertyChanged}" Margin="315,388,338,12" />
-        <ListBox x:Name="SingleTraitSelectionBox" SelectionMode="Multiple" ItemsSource="{Binding NumberedTraits}" Margin="236,77,283,50" />
-        <ListBox x:Name="SelectedTraits" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="540,24,12,102" />
-        <Button Margin="0,367,47,32" Content="SumSingle" Click="SumSingle_Click" HorizontalAlignment="Right" Width="92"></Button>
-        <Button Margin="559,367,145,32" Content="SumAll" Click="SumAll_Click"></Button>
+        <!--  -->
         
+        <Label Content="{Binding Name}" Margin="286,0,0,406" HorizontalAlignment="Left" Width="101" Name="Label_BoundName" />
+        <TextBox Text="{Binding SelectedItem.TraitValue,  ElementName=SelectedTraits, UpdateSourceTrigger=PropertyChanged}" Margin="529,356,130,53" />
+        <ListBox x:Name="SingleTraitSelectionBox" SelectionMode="Multiple" ItemsSource="{Binding NumberedTraits}" Margin="236,34,283,93" />
+        <ListBox x:Name="SelectedTraits" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="529,34,22,102" />
+        <Button Margin="0,387,12,12" Content="SumSingle" Click="SumSingle_Click" HorizontalAlignment="Right" Width="92"></Button>
+        <Button Margin="559,387,145,12" Content="SumAll" Click="SumAll_Click"></Button>
+        <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="236,0,0,0" Name="Label_Name" VerticalAlignment="Top" />
+        <Label Content="All Traits" Height="28" HorizontalAlignment="Left" Margin="12,271,0,0" Name="Label_AllTraits" VerticalAlignment="Top" />
+        <Label Content="Active Traits" Height="28" HorizontalAlignment="Left" Margin="529,0,0,0" Name="Label_ActiveTraits" VerticalAlignment="Top" />
+        <Label Content="Edit Trait Value: " Height="28" HorizontalAlignment="Left" Margin="527,333,0,0" Name="Label_EditTraitValue" VerticalAlignment="Top" />
+        <Label Content="{Binding SelectedItem.TraitLabel, ElementName=SelectedTraits, UpdateSourceTrigger=PropertyChanged}" Height="28" HorizontalAlignment="Left" Margin="613,333,0,0" Name="Label_BoundTraitName" VerticalAlignment="Top" Width="161" />
     </Grid>
 </Window>

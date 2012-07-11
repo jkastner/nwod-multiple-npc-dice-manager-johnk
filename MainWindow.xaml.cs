@@ -34,9 +34,9 @@ namespace XMLCharSheets
 
         private void TempPopulateCharacters()
         {
-            Character Bob = new Character("Bob", "Bob is a jerk.");
-            Character Tim = new Character("Tim", "Is a magician.");
-            Character Zazu = new Character("Zazu", "Gives updates in verse.");
+            Character Bob = new Character("Bob");
+            Character Tim = new Character("Tim");
+            Character Zazu = new Character("Zazu");
 
 
 
