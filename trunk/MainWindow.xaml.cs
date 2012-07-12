@@ -21,6 +21,7 @@ namespace XMLCharSheets
     {
         private Roster _roster = new Roster();
         private Traits _traits = new Traits();
+        public RollDice _rollDice = new RollDice(5);
 
         public MainWindow()
         {
@@ -75,12 +76,14 @@ namespace XMLCharSheets
 
         private void SumSingle_Click(object sender, RoutedEventArgs e)
         {
-            int q = 0;
+            int diceToRoll = 0;
             foreach (NumberedTrait selectedTrait in SingleTraitSelectionBox.SelectedItems)
             {
-                q += selectedTrait.TraitValue;
+                diceToRoll += selectedTrait.TraitValue;
             }
-            MessageBox.Show(q.ToString());
+            _rollDice.NumberOfDice = diceToRoll;
+            _rollDice.Roll();
+            MessageBox.Show(_rollDice.CurrentSuccesses+"\n"+_rollDice.ResultDescription);
         }
 
         private void SumAll_Click(object sender, RoutedEventArgs e)

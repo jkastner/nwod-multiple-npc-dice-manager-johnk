@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
+    <Compile Include="RollDice.cs" />
     <Compile Include="NumberedTrait.cs" />
     <Compile Include="Roster.cs" />
     <Compile Include="Trait.cs" />
