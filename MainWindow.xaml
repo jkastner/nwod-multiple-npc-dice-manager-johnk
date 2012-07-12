@@ -26,7 +26,7 @@
         
         
         <!-- Multiple Mode Mode -->
-        <ListBox x:Name="SelectedTraitsMultiple" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=AllAvailableTraits}" Margin="559,43,-8,93" />
+        <ListBox x:Name="SelectedTraitsMultiple" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=AllAvailableTraits}" Margin="529,34,22,102" />
         <Button x:Name ="SumAllButton" Margin="559,387,145,12" Content="Sum" Click="SumAll_Click"></Button>
         <ListBox  x:Name="AllAvailableTraits" SelectionMode="Multiple" Margin="236,34,283,93" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
