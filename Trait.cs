@@ -27,5 +27,10 @@ namespace XMLCharSheets
                 return false;
             return other.TraitName.Equals(TraitName);
         }
+
+        public override string ToString()
+        {
+            return _traitName;
+        }
     }
 }

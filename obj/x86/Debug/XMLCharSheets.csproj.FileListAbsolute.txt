@@ -11,3 +11,16 @@ c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSh
 c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\GenerateResource.write.1.tlog
 c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets.exe
 c:\users\johnathan\documents\visual studio 2010\Projects\XMLCharSheets\XMLCharSheets\obj\x86\Debug\XMLCharSheets.pdb
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\bin\Debug\XMLCharSheets.exe
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\bin\Debug\XMLCharSheets.pdb
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\MainWindow.baml
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\App.g.cs
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\XMLCharSheets_MarkupCompile.cache
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\XMLCharSheets.g.resources
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\XMLCharSheets.exe
+C:\Users\Kastner\Documents\Visual Studio 2010\Projects\XMLCharSheet\XMLCharSheet\obj\x86\Debug\XMLCharSheets.pdb

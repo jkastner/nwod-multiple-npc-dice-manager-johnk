@@ -103,8 +103,34 @@ namespace XMLCharSheets
 
         private void SelectedCharacter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (SelectedCharacters.SelectedItems.Count > 1)
+            {
+                //More than one character is selected.
+                AllAvailableTraits.Visibility = System.Windows.Visibility.Visible;
+                SingleTraitSelectionBox.Visibility = System.Windows.Visibility.Hidden;
+                SumAllButton.Visibility = System.Windows.Visibility.Visible;
+                SumSingleButton.Visibility = System.Windows.Visibility.Hidden;
+                Label_EditTraitValue.Visibility = System.Windows.Visibility.Hidden;
+                UpdateTraitValueBox.Visibility = System.Windows.Visibility.Hidden;
+                SelectedTraitsMultiple.Visibility = System.Windows.Visibility.Visible;
+                SelectedTraitsSingle.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else
+            {
+                //One or zero characters are selected.
+                AllAvailableTraits.Visibility = System.Windows.Visibility.Hidden;
+                SingleTraitSelectionBox.Visibility = System.Windows.Visibility.Visible;
+                SumAllButton.Visibility = System.Windows.Visibility.Hidden;
+                SumSingleButton.Visibility = System.Windows.Visibility.Visible;
+                Label_EditTraitValue.Visibility = System.Windows.Visibility.Visible;
+                UpdateTraitValueBox.Visibility = System.Windows.Visibility.Visible;
+                SelectedTraitsMultiple.Visibility = System.Windows.Visibility.Hidden;
+                SelectedTraitsSingle.Visibility = System.Windows.Visibility.Visible;
+            }
+            
         }
+
+
 
     }
 }
