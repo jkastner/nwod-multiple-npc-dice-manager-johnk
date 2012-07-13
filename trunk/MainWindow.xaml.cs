@@ -91,13 +91,24 @@ namespace XMLCharSheets
             String result = "";
             foreach (Character curChar in SelectedCharacters.SelectedItems)
             {
-                int q = 0;
+                String curResult = "";
+                int diceToRoll = 0;
                 foreach (Trait selectedTrait in AllAvailableTraits.SelectedItems)
                 {
                     NumberedTrait foundTrait = curChar.FindTrait(selectedTrait.TraitName);
-                    q += foundTrait.TraitValue;
+                    if (foundTrait == null)
+                    {
+                        curResult = curChar.Name + " did not have " + foundTrait.TraitLabel;
+                        break;
+                    }
+                    else
+                    {
+                        diceToRoll += foundTrait.TraitValue;
+                    }
                 }
-                result = result+"\n"+curChar.Name + " - " + q;
+                _rollDice.NumberOfDice = diceToRoll;
+                _rollDice.Roll();
+                result = result + "\n" + curChar.Name + ": " + _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
             }
             MessageBox.Show(result);
         }
