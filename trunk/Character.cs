@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Xml;
+using System.Windows;
 
 namespace XMLCharSheets
 {
@@ -37,5 +39,30 @@ namespace XMLCharSheets
         {
             return (NumberedTrait) NumberedTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
         }
+
+        public Character(String fileName)
+        {
+            try
+            {
+
+            XmlTextReader reader = new XmlTextReader(fileName);
+            while (reader.Read())
+            {
+                if (reader.Name.ToLower().Trim().Equals("trait"))
+                {
+                    String label = reader.GetAttribute("label");
+                    int value = Convert.ToInt32(reader.GetAttribute("value"));
+                }
+            }
+            catch (Exception)
+            {
+                {
+                    MessageBox.Show("Error opening " + fileName);
+                }
+                throw;
+            }
+
+        }
+
     }
 }
