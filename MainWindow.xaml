@@ -20,7 +20,7 @@
         <Label Content="{Binding Name}" Margin="286,0,0,406" HorizontalAlignment="Left" Width="101" Name="Label_BoundName" />
         <TextBox x:Name="UpdateTraitValueBox" Text="{Binding SelectedItem.TraitValue,  ElementName=SelectedTraitsSingle, UpdateSourceTrigger=PropertyChanged}" Margin="529,356,130,53" />
         <ListBox x:Name="SingleTraitSelectionBox" SelectionMode="Multiple" ItemsSource="{Binding NumberedTraits}" Margin="236,34,283,93" SelectionChanged="SingleTraitSelectionBox_SelectionChanged" />
-        <ListBox x:Name="SelectedTraitsSingle" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="529,34,22,102" />
+        <ListBox x:Name="SelectedTraitsSingle" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="529,34,22,102" SelectionChanged="SelectedTraitsSingle_SelectionChanged" />
         <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="236,0,0,0" Name="Label_Name" VerticalAlignment="Top" />
         <Label Content="All Traits" Height="28" HorizontalAlignment="Left" Margin="12,271,0,0" Name="Label_AllTraits" VerticalAlignment="Top" />
         

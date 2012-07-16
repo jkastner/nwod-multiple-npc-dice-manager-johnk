@@ -169,5 +169,20 @@ namespace XMLCharSheets
 
 
 
+        private void SelectedTraitsSingle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(SelectedTraitsSingle.SelectedItems.Count==0)
+            {
+                Label_EditTraitValue.Content = "Select an active trait";
+            }
+            else
+            {
+
+                Label_EditTraitValue.Content = "Edit " + SelectedTraitsSingle.SelectedItem.ToString();
+            }
+        }
+
+
+
     }
 }
