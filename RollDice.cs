@@ -47,23 +47,31 @@ namespace XMLCharSheets
 
 
 
-        int _maxSides = 11;
+        
         internal void Roll()
         {
+            int maxSides = 11;
+            int minSuccess = 8;
+            int minAgain = 10;
+            int uberFail = 0;
             CurrentSuccesses = 0;
             _resultDescription = "";
+            int numInPool = NumberOfDice;
             if(NumberOfDice==0)
             {
-                int chanceRoll = _theRandomGenerator.Next(1, _maxSides);
-                if(chanceRoll == 10)
-                {
-                    _resultDescription = 
-
-                }
+                numInPool = 1;
+                minSuccess = 10;
+                uberFail = 1;
             }
-            for (int i = 0; i < NumberOfDice; i++)
+            RollPool(numInPool, maxSides, minSuccess, minAgain, uberFail);
+            
+        }
+
+        private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail)
+        {
+            for (int i = 0; i < numInPool; i++)
             {
-                int result = _theRandomGenerator.Next(1, _maxSides);
+                int result = _theRandomGenerator.Next(1, maxSides);
                 if (String.IsNullOrEmpty(_resultDescription))
                 {
                     _resultDescription = result.ToString();
@@ -72,25 +80,27 @@ namespace XMLCharSheets
                 {
                     _resultDescription = _resultDescription + ", " + result.ToString();
                 }
-                if (CheckSuccess(result))
+                if (result > minSuccess)
                 {
                     CurrentSuccesses++;
                 }
-                while (result == _maxSides-1)
+                while (result == minAgain)
                 {
-                    result = _theRandomGenerator.Next(1, _maxSides);
-                    _resultDescription = _resultDescription+"->"+result.ToString();
-                    if (CheckSuccess(result))
+                    result = _theRandomGenerator.Next(1, maxSides);
+                    _resultDescription = _resultDescription + "->" + result.ToString();
+                    if (result > minSuccess)
                     {
                         CurrentSuccesses++;
                     }
                 }
+                if(result == uberFail)
+                {
+                    _resultDescription = "Dramatic failure.";
+                    return;
+                }
             }
         }
 
-        private bool CheckSuccess(int theResult)
-        {
-            return theResult > 7;
-        }
+
     }
 }
