@@ -20,10 +20,10 @@ namespace XMLCharSheets
 
         private String _description;
 
-        public Character(string name)
+        public Character(string name, ObservableCollection<NumberedTrait> curTraits)
         {
             _name = name;
-            _numberedTraits = new ObservableCollection<NumberedTrait>();
+            _numberedTraits = curTraits;
 
         }
 
@@ -34,35 +34,45 @@ namespace XMLCharSheets
             get { return _numberedTraits; }
             set { _numberedTraits = value; }
         }
-        
+
         public NumberedTrait FindTrait(String targetName)
         {
             return (NumberedTrait) NumberedTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
         }
-
-        public Character(String fileName)
+        
+        public static Character MakeChar(String fileName, Traits allTraits)
         {
+            Character curChar = null;
             try
             {
-
-            XmlTextReader reader = new XmlTextReader(fileName);
-            while (reader.Read())
-            {
-                if (reader.Name.ToLower().Trim().Equals("trait"))
+                XmlTextReader reader = new XmlTextReader(fileName);
+                ObservableCollection<NumberedTrait> curCharNumberedTraits = new ObservableCollection<NumberedTrait>();
+                while (reader.Read())
                 {
-                    String label = reader.GetAttribute("label");
-                    int value = Convert.ToInt32(reader.GetAttribute("value"));
+
+                    if (reader.Name.ToLower().Trim().Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
+                    {
+                        reader.Read();
+                        curChar = new Character(reader.Value, curCharNumberedTraits);
+                    }
+                    if (reader.Name.ToLower().Trim().Equals("trait"))
+                    {
+                        String label = reader.GetAttribute("label");
+                        int value = Convert.ToInt32(reader.GetAttribute("value"));
+                        Trait baseTrait = new Trait(label);
+                        NumberedTrait curnNumberedTrait = new NumberedTrait(value, baseTrait);
+                        allTraits.AddIfNew(label);
+                        curCharNumberedTraits.Add(curnNumberedTrait);
+                    }
                 }
+
             }
             catch (Exception)
             {
-                {
-                    MessageBox.Show("Error opening " + fileName);
-                }
+                MessageBox.Show("Error opening " + fileName);
                 throw;
             }
-
+            return curChar;
         }
-
     }
 }
