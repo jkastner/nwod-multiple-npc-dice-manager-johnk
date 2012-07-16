@@ -80,7 +80,7 @@ namespace XMLCharSheets
                 {
                     _resultDescription = _resultDescription + ", " + result.ToString();
                 }
-                if (result > minSuccess)
+                if (result >= minSuccess)
                 {
                     CurrentSuccesses++;
                 }
@@ -88,7 +88,7 @@ namespace XMLCharSheets
                 {
                     result = _theRandomGenerator.Next(1, maxSides);
                     _resultDescription = _resultDescription + "->" + result.ToString();
-                    if (result > minSuccess)
+                    if (result >= minSuccess)
                     {
                         CurrentSuccesses++;
                     }
