@@ -8,6 +8,8 @@ namespace XMLCharSheets
 {
     public class Traits : ObservableCollection<Trait>
     {
+ 
+        
         public Trait AddIfNew(String traitName)
         {
             Trait newTrait = new Trait(traitName);

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace XMLCharSheets
 {
@@ -26,45 +27,30 @@ namespace XMLCharSheets
         public MainWindow()
         {
             InitializeComponent();
-            TempPopulateCharacters();
-            
-
-
-
+            PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
         }
 
-        private void TempPopulateCharacters()
+        private void PopulateCharacters(String sourceDir)
         {
-            Character Bob = new Character("Bob");
-            Character Tim = new Character("Tim");
-            Character Zazu = new Character("Zazu");
+            // Process the list of files found in the directory. 
+            string[] fileEntries = Directory.GetFiles(sourceDir);
+            foreach (string fileName in fileEntries)
+            {
+                _roster.Add(Character.MakeChar(fileName, _traits));
+            }
 
 
-
-            NumberedTrait b1 = new NumberedTrait(100, _traits.AddIfNew("IQ"));
-            NumberedTrait b2 = new NumberedTrait(2, _traits.AddIfNew("Age"));
-
-            NumberedTrait t1 = new NumberedTrait(120, _traits.AddIfNew("IQ"));
-            NumberedTrait t2 = new NumberedTrait(74, _traits.AddIfNew("Age"));
-
-            NumberedTrait z1 = new NumberedTrait(70, _traits.AddIfNew("IQ"));
-            NumberedTrait z2 = new NumberedTrait(44, _traits.AddIfNew("Age"));
-
-
-
-            Bob.NumberedTraits.Add(b1);
-            Bob.NumberedTraits.Add(b2);
-            Tim.NumberedTraits.Add(t1);
-            Tim.NumberedTraits.Add(t2);
-            Zazu.NumberedTraits.Add(z1);
-            Zazu.NumberedTraits.Add(z2);
-
-            _roster.Add(Bob);
-            _roster.Add(Tim);
-            _roster.Add(Zazu);
-
-
+            // Recurse into subdirectories of this directory.
+            string[] subdirEntries = Directory.GetDirectories(sourceDir);
+            foreach (string subdir in subdirEntries)
+            {
+                PopulateCharacters(subdir);
+            }
         }
+
+
+
+
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -77,13 +63,20 @@ namespace XMLCharSheets
         private void SumSingle_Click(object sender, RoutedEventArgs e)
         {
             int diceToRoll = 0;
+            String result = "";
             foreach (NumberedTrait selectedTrait in SingleTraitSelectionBox.SelectedItems)
             {
                 diceToRoll += selectedTrait.TraitValue;
             }
+            diceToRoll += GetModifier();
             _rollDice.NumberOfDice = diceToRoll;
+            
             _rollDice.Roll();
-            MessageBox.Show(_rollDice.CurrentSuccesses+"\n"+_rollDice.ResultDescription);
+
+            Character curChar = (Character) SelectedCharacters.SelectedItem;
+            result = result + "\n" + curChar.Name + " (Pool " + _rollDice.NumberOfDice + "):  " +
+                     _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
+            MessageBox.Show(result);
         }
 
         private void SumAll_Click(object sender, RoutedEventArgs e)
@@ -91,14 +84,15 @@ namespace XMLCharSheets
             String result = "";
             foreach (Character curChar in SelectedCharacters.SelectedItems)
             {
-                String curResult = "";
                 int diceToRoll = 0;
+                bool errorFindingTrait = false;
                 foreach (Trait selectedTrait in AllAvailableTraits.SelectedItems)
                 {
                     NumberedTrait foundTrait = curChar.FindTrait(selectedTrait.TraitName);
                     if (foundTrait == null)
                     {
-                        curResult = curChar.Name + " did not have " + foundTrait.TraitLabel;
+                        result = result+ "\n" +curChar.Name + " did not have " + selectedTrait.TraitName;
+                        errorFindingTrait = true;
                         break;
                     }
                     else
@@ -106,11 +100,31 @@ namespace XMLCharSheets
                         diceToRoll += foundTrait.TraitValue;
                     }
                 }
-                _rollDice.NumberOfDice = diceToRoll;
-                _rollDice.Roll();
-                result = result + "\n" + curChar.Name + ": " + _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
+                if (!errorFindingTrait)
+                {
+                    int modifier = GetModifier();
+                    diceToRoll += modifier;
+                    _rollDice.NumberOfDice = diceToRoll;
+                    _rollDice.Roll();
+                    result = result + "\n" + curChar.Name + " (Pool " + _rollDice.NumberOfDice + "):  " +
+                             _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
+                }
             }
             MessageBox.Show(result);
+        }
+
+        private int GetModifier()
+        {
+            String boxContents = ModifierTextBox.Text;
+            try
+            {
+                return Int32.Parse(boxContents);
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
         }
 
 
@@ -142,6 +156,15 @@ namespace XMLCharSheets
                 SelectedTraitsSingle.Visibility = System.Windows.Visibility.Visible;
             }
             
+        }
+
+
+        private void SingleTraitSelectionBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SingleTraitSelectionBox.SelectedItems.Count == 1)
+            {
+                this.SelectedTraitsSingle.SelectedIndex = 0;
+            }
         }
 
 

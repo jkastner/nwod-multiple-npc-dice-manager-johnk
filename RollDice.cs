@@ -13,7 +13,13 @@ namespace XMLCharSheets
         public int NumberOfDice
         {
             get { return _numberOfDice; }
-            set { _numberOfDice = value; }
+            set
+            {
+                if (value < 0)
+                    _numberOfDice = 0;    
+                else
+                    _numberOfDice = value;
+            }
         }
 
         private int _currentSuccesses;
@@ -46,6 +52,15 @@ namespace XMLCharSheets
         {
             CurrentSuccesses = 0;
             _resultDescription = "";
+            if(NumberOfDice==0)
+            {
+                int chanceRoll = _theRandomGenerator.Next(1, _maxSides);
+                if(chanceRoll == 10)
+                {
+                    _resultDescription = 
+
+                }
+            }
             for (int i = 0; i < NumberOfDice; i++)
             {
                 int result = _theRandomGenerator.Next(1, _maxSides);
