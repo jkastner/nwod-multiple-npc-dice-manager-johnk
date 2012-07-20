@@ -20,7 +20,8 @@ namespace XMLCharSheets
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Roster _roster = new Roster();
+        private Roster _fullRoster = new Roster();
+        private Roster _activeRoster = new Roster();
         private Traits _traits = new Traits();
         public RollDice _rollDice = new RollDice(5);
 
@@ -36,7 +37,7 @@ namespace XMLCharSheets
             string[] fileEntries = Directory.GetFiles(sourceDir);
             foreach (string fileName in fileEntries)
             {
-                _roster.Add(Character.MakeChar(fileName, _traits));
+                _fullRoster.Add(Character.MakeChar(fileName, _traits));
             }
 
 
@@ -55,8 +56,9 @@ namespace XMLCharSheets
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = _roster;
+            DataContext = _fullRoster;
             AllAvailableTraits.DataContext = _traits;
+            //ActiveCharactersListBox.DataContext = _activeRoster;
 
         }
 
@@ -73,7 +75,7 @@ namespace XMLCharSheets
             
             _rollDice.Roll();
 
-            Character curChar = (Character) SelectedCharacters.SelectedItem;
+            Character curChar = (Character)AllCharacters_Listbox.SelectedItem;
             result = result + "\n" + curChar.Name + " (Pool " + _rollDice.NumberOfDice + "):  " +
                      _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
             MessageBox.Show(result);
@@ -82,7 +84,7 @@ namespace XMLCharSheets
         private void SumAll_Click(object sender, RoutedEventArgs e)
         {
             String result = "";
-            foreach (Character curChar in SelectedCharacters.SelectedItems)
+            foreach (Character curChar in AllCharacters_Listbox.SelectedItems)
             {
                 int diceToRoll = 0;
                 bool errorFindingTrait = false;
@@ -131,7 +133,7 @@ namespace XMLCharSheets
 
         private void SelectedCharacter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (SelectedCharacters.SelectedItems.Count > 1)
+            if (AllCharacters_Listbox.SelectedItems.Count > 1)
             {
                 //More than one character is selected.
                 AllAvailableTraits.Visibility = System.Windows.Visibility.Visible;
@@ -164,6 +166,24 @@ namespace XMLCharSheets
             if (SingleTraitSelectionBox.SelectedItems.Count == 1)
             {
                 this.SelectedTraitsSingle.SelectedIndex = 0;
+            }
+        }
+
+        private void AddToActiveCharactersButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var cur in AllCharacters_Listbox.SelectedItems)
+            {
+                //_activeRoster.Add(new Character(cur));
+                //MessageBox.Show(cur.GetType().ToString());
+            }
+        }
+
+        private void RemoveFromActiveCharactersButton_Click(object sender, RoutedEventArgs e)
+        {
+            var SelectedCharacters = ActiveCharactersListBox.SelectedItems;
+            for (int curIndex = SelectedCharacters.Count - 1; curIndex >= 0; curIndex--)
+            {
+                ActiveCharactersListBox.Items.Remove(SelectedCharacters[curIndex]);
             }
         }
 
