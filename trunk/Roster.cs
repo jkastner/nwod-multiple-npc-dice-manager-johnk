@@ -10,7 +10,11 @@ namespace XMLCharSheets
 {
     public class Roster : ObservableCollection <Character>
     {
-        
 
+
+        internal new void Add(Character character)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
