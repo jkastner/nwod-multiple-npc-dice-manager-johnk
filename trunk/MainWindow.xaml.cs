@@ -56,9 +56,9 @@ namespace XMLCharSheets
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = _fullRoster;
+            AllCharacters_Listbox.DataContext = _fullRoster;
             AllAvailableTraits.DataContext = _traits;
-            //ActiveCharactersListBox.DataContext = _activeRoster;
+            this.DataContext = _activeRoster;
 
         }
 
@@ -131,9 +131,9 @@ namespace XMLCharSheets
 
 
 
-        private void SelectedCharacter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ActiveCharactersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AllCharacters_Listbox.SelectedItems.Count > 1)
+            if (ActiveCharactersListBox.SelectedItems.Count > 1)
             {
                 //More than one character is selected.
                 AllAvailableTraits.Visibility = System.Windows.Visibility.Visible;
@@ -171,19 +171,18 @@ namespace XMLCharSheets
 
         private void AddToActiveCharactersButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var cur in AllCharacters_Listbox.SelectedItems)
+            foreach (Character cur in AllCharacters_Listbox.SelectedItems)
             {
-                //_activeRoster.Add(new Character(cur));
-                //MessageBox.Show(cur.GetType().ToString());
+                Character copyCharacter = Character.CopyChar(cur, _traits);
+                _activeRoster.Add(copyCharacter);
             }
         }
 
         private void RemoveFromActiveCharactersButton_Click(object sender, RoutedEventArgs e)
         {
-            var SelectedCharacters = ActiveCharactersListBox.SelectedItems;
-            for (int curIndex = SelectedCharacters.Count - 1; curIndex >= 0; curIndex--)
+            for (int index = ActiveCharactersListBox.SelectedItems.Count - 1; index >= 0; index--)
             {
-                ActiveCharactersListBox.Items.Remove(SelectedCharacters[curIndex]);
+                _activeRoster.Remove(ActiveCharactersListBox.SelectedItems[index] as Character);
             }
         }
 
