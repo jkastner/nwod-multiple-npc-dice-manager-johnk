@@ -12,9 +12,5 @@ namespace XMLCharSheets
     {
 
 
-        internal new void Add(Character character)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

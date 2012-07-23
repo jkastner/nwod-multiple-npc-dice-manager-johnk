@@ -74,5 +74,15 @@ namespace XMLCharSheets
             }
             return curChar;
         }
+
+        internal static Character CopyChar(Character cloneSource, Traits allTraits)
+        {
+            ObservableCollection<NumberedTrait> copiedTraits = new ObservableCollection<NumberedTrait>();
+            foreach (NumberedTrait traitToCopy in cloneSource.NumberedTraits)
+            {
+                copiedTraits.Add(new NumberedTrait(traitToCopy.TraitValue, new Trait(traitToCopy.TraitLabel)));
+            }
+            return new Character(cloneSource.Name, copiedTraits);
+        }
     }
 }
