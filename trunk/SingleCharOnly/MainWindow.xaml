@@ -4,7 +4,7 @@
         Title="MainWindow" Height="473" Width="818" Loaded="Window_Loaded" Background="#FFD4D4D4">
     <Grid>
         <Label Content="All Characters" Margin="12,0,622,285"></Label>
-        <ListBox  x:Name="SelectedCharacters" SelectionChanged="SelectedCharacter_SelectionChanged" SelectionMode="Multiple" Margin="12,24,0,165" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="210">
+        <ListBox  x:Name="SelectedCharacters" SelectionChanged="SelectedCharacter_SelectionChanged" SelectionMode="Multiple" Margin="12,24,0,39" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="210">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name, BindsDirectlyToSource=True}" FontSize="14" Padding="5" />
@@ -13,19 +13,17 @@
         </ListBox>
         
 
-        <Label Content="Active Traits" Height="28" HorizontalAlignment="Left" Margin="529,0,0,0" Name="Label_ActiveTraits" VerticalAlignment="Top" />
+        <Label Content="Active Traits" Height="28" HorizontalAlignment="Left" Margin="527,0,0,0" Name="Label_ActiveTraits" VerticalAlignment="Top" />
         
         <!-- SingleMode -->
         <Button x:Name ="SumSingleButton" Margin="0,387,145,12" Content="Roll" Click="SumSingle_Click" HorizontalAlignment="Right" Width="92"></Button>
-        <Label Content="{Binding MyNames}" Margin="0,0,409,406" HorizontalAlignment="Right" Width="101" Name="Label_BoundName" />
         <TextBox x:Name="UpdateTraitValueBox" Text="{Binding SelectedItem.TraitValue,  ElementName=SelectedTraitsSingle, UpdateSourceTrigger=PropertyChanged}" Margin="529,356,130,53" />
         <ListBox x:Name="SingleTraitSelectionBox" SelectionMode="Multiple" ItemsSource="{Binding NumberedTraits}" Margin="236,34,283,93" SelectionChanged="SingleTraitSelectionBox_SelectionChanged" />
         <ListBox x:Name="SelectedTraitsSingle" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=SingleTraitSelectionBox}" Margin="529,34,22,102" SelectionChanged="SelectedTraitsSingle_SelectionChanged" />
-        <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="236,0,0,0" Name="Label_Name" VerticalAlignment="Top" />
         <!-- Multiple Mode Mode -->
-        <ListBox x:Name="SelectedTraitsMultiple" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=AllAvailableTraits}" Margin="529,34,22,102" />
-        <Button x:Name ="SumAllButton" Margin="559,387,145,12" Content="Roll all" Click="SumAll_Click"></Button>
-        <ListBox  x:Name="AllAvailableTraits" SelectionMode="Multiple" Margin="236,34,283,93" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" >
+        <ListBox x:Name="SelectedTraitsMultiple" SelectionMode="Single" ItemsSource="{Binding SelectedItems , ElementName=AllAvailableTraits}" Margin="529,24,22,102" />
+        <Button x:Name ="SumAllButton" MaxHeight="10" MaxWidth="10" Height="10" Width="10" Content="Roll all" Click="SumAll_Click"></Button>
+        <ListBox  x:Name="AllAvailableTraits" SelectionMode="Multiple" Margin="236,24,283,39" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding TraitName}" FontSize="14" Padding="5" />
@@ -36,5 +34,6 @@
         <Label Content="{Binding SelectedItem.TraitLabel, ElementName=SelectedTraits, UpdateSourceTrigger=PropertyChanged}" Height="28" HorizontalAlignment="Left" Margin="613,333,0,0" Name="Label_BoundTraitName" VerticalAlignment="Top" Width="161" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="664,399,0,0" Name="ModifierTextBox" VerticalAlignment="Top" Width="120" />
         <Label Content="Modifier" Height="28" HorizontalAlignment="Left" Margin="672,367,0,0" Name="ModifierLabel" VerticalAlignment="Top" />
+        <Label Content="Available Traits" Height="27" HorizontalAlignment="Left" Margin="236,0,0,0" Name="AvailableTraits_Label" VerticalAlignment="Top" Width="98" />
     </Grid>
 </Window>
