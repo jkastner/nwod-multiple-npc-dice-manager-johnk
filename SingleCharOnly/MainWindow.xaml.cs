@@ -57,8 +57,6 @@ namespace XMLCharSheets
         {
             DataContext = _roster;
             AllAvailableTraits.DataContext = _traits;
-            Label_BoundName.DataContext = this;
-
         }
 
         private void SumSingle_Click(object sender, RoutedEventArgs e)
@@ -183,16 +181,6 @@ namespace XMLCharSheets
             }
         }
 
-        public String MyNames
-        {
-            get
-            {
-                foreach (Character curChar in SelectedCharacters.SelectedItems)
-                {
-                    yield return curChar.Name;
-                }
-            }
-        }
         
     }
 
