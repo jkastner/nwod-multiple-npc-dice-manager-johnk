@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -50,7 +51,7 @@ namespace XMLCharSheets
             get { return _selectedFullCharacter; }
             set
             {
-                _selectedFullCharacter = value;
+                SetActiveCharacter(value, null);
                 OnPropertyChanged("SelectedFullCharacter");
             }
         }
@@ -61,13 +62,32 @@ namespace XMLCharSheets
             get { return _selectedActiveCharacter; }
             set
             {
-                _selectedActiveCharacter = value;
-                OnPropertyChanged("SelectedActiveCharacter");
+                SetActiveCharacter(null, value);
             }
         }
 
+        private CharacterSheet _selectedCharacter;
+        public CharacterSheet SelectedCharacter
+        {
+            get { return _selectedCharacter; }
+        }
 
-        
+        private void SetActiveCharacter(CharacterSheet fullChar, CharacterSheet activeChar)
+        {
+            if (activeChar != null)
+            {
+                _selectedCharacter = activeChar;
+            }
+            if (fullChar != null)
+            {
+                _selectedCharacter = fullChar;
+            }
+            _selectedActiveCharacter = activeChar;
+            _selectedFullCharacter = fullChar;
+            OnPropertyChanged("SelectedFullCharacter");
+            OnPropertyChanged("SelectedActiveCharacter");
+            OnPropertyChanged("SelectedCharacter");
+        }
         
         
         
@@ -90,6 +110,18 @@ namespace XMLCharSheets
         }
 
 
+        private int _rollModifier;
+        public int RollModifier
+        {
+            get { return _rollModifier; }
+            set 
+            { 
+                _rollModifier = value;
+                OnPropertyChanged("RollModifier");
+            }
+        }
+
+
 
 
         public CharacterSheet MakeChar(String fileName)
@@ -98,14 +130,14 @@ namespace XMLCharSheets
             try
             {
                 XmlTextReader reader = new XmlTextReader(fileName);
-                ObservableCollection<NumberedTrait> curCharNumberedTraits = new ObservableCollection<NumberedTrait>();
+                List<NumberedTrait> curCharNumberedTraits = new List<NumberedTrait>();
                 while (reader.Read())
                 {
 
                     if (reader.Name.ToLower().Trim().Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
                     {
                         reader.Read();
-                        curChar = new CharacterSheet(reader.Value, curCharNumberedTraits);
+                        curChar = new NWoDCharacter(reader.Value, curCharNumberedTraits);
                     }
                     if (reader.Name.ToLower().Trim().Equals("trait"))
                     {
@@ -137,5 +169,117 @@ namespace XMLCharSheets
             }
         }
         #endregion
+
+        internal IEnumerable<string> RollCharacters(IList characters, IList selectedTraits)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                bool canRoll = true;
+                List<String> missingTraits = new List<String>();
+                List<NumberedTrait> charTraits = new List<NumberedTrait>();
+                foreach (var curTraitItem in selectedTraits)
+                {
+                    String curTrait = curTraitItem.ToString();
+                    bool hasTrait = curChar.HasTrait(curTrait);
+                    if (!hasTrait)
+                    {
+                        missingTraits.Add(curTrait);
+                    }
+                    else
+                    {
+                        charTraits.Add(curChar.FindTrait(curTrait));
+                    }
+                    canRoll &= hasTrait;
+                }
+                if (canRoll)
+                {
+                    int totalDice = 0;
+                    foreach (NumberedTrait curTrait in charTraits)
+                    {
+                        totalDice += curTrait.TraitValue;
+                    }
+                    totalDice += RollModifier;
+                    String result = curChar.Roll(totalDice);
+                    yield return curChar.Name + result;
+                }
+                else
+                {
+                    StringBuilder result = new StringBuilder();
+                    result.Append(curChar.Name + " was missing traits:");
+                    for (int curIndex = 0; curIndex < missingTraits.Count();curIndex++ )
+                    {
+                        if (curIndex == missingTraits.Count() - 1)
+                        {
+                            result.Append(" " + missingTraits[curIndex]);
+                        }
+                        else
+                        {
+                            result.Append(", " + missingTraits[curIndex]);
+                        }
+                    }
+                    yield return result.ToString();
+                }
+            }
+        }
+
+        internal void DoBashing(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.DoBashing();
+            }
+        }
+
+        internal void DoLethal(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.DoLethal();
+            }
+        }
+
+        internal void DoAggrivated(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.DoAggrivated();
+            }
+        }
+
+        internal void ResetHealth(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.ResetHealth();
+            }
+        }
+
+        internal void RollInitiative()
+        {
+            foreach (var curChar in ActiveRoster)
+            {
+                curChar.RollInitiative();
+            }
+            var q = ActiveRoster.OrderByDescending(x=> x.CurInitiative).ToList();
+            ActiveRoster.Clear();
+            foreach (var curChar in q)
+            {
+                ActiveRoster.Add(curChar);
+            }
+        }
+
+        internal void RemoveActiveCharacters(IList characters)
+        {
+            for(int curIndex = characters.Count-1;curIndex>=0;curIndex--)
+            {
+                CharacterSheet curChar = characters[curIndex] as CharacterSheet;
+                ActiveRoster.Remove(curChar);
+            }
+        }
     }
 }

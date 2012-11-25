@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class RollDice
+    public class NWoDRollDice
     {
         static Random _theRandomGenerator = new Random();
         private int _numberOfDice;
@@ -15,10 +15,7 @@ namespace XMLCharSheets
             get { return _numberOfDice; }
             set
             {
-                if (value < 0)
-                    _numberOfDice = 0;    
-                else
-                    _numberOfDice = value;
+                _numberOfDice = value;
             }
         }
 
@@ -38,7 +35,7 @@ namespace XMLCharSheets
 
 
 
-        public RollDice(int diceNum)
+        public NWoDRollDice(int diceNum)
         {
             _numberOfDice = diceNum;
         }
@@ -57,11 +54,11 @@ namespace XMLCharSheets
             CurrentSuccesses = 0;
             _resultDescription = "";
             int numInPool = NumberOfDice;
-            if(NumberOfDice==0)
+            if(NumberOfDice<=0)
             {
                 numInPool = 1;
                 minSuccess = 10;
-                uberFail = 1;
+                uberFail = (NumberOfDice*-1)+1;
             }
             RollPool(numInPool, maxSides, minSuccess, minAgain, uberFail);
             
@@ -69,6 +66,11 @@ namespace XMLCharSheets
 
         private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail)
         {
+            if (uberFail >= maxSides)
+            {
+                _resultDescription = "Automatic dramatic failure.";
+                return;
+            }
             for (int i = 0; i < numInPool; i++)
             {
                 int result = _theRandomGenerator.Next(1, maxSides);
@@ -93,9 +95,9 @@ namespace XMLCharSheets
                         CurrentSuccesses++;
                     }
                 }
-                if(result == uberFail)
+                if (CurrentSuccesses == 0 && result <= uberFail)
                 {
-                    _resultDescription = "Dramatic failure.";
+                    _resultDescription = "Dramatic failure -- "+_resultDescription;
                     return;
                 }
             }

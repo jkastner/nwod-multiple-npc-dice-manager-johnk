@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace XMLCharSheets
 {
@@ -67,11 +68,94 @@ namespace XMLCharSheets
             }
         }
 
+        private void Roll_Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<String> results = _viewModel.RollCharacters(ActiveCharacters_ListBox.SelectedItems, CurrentTraits_ListBox.SelectedItems).ToList();
+            foreach(String curResult in results)
+            {
+                MessageBox.Show(curResult);
+            }
+        }
+
+        private void Do_Bashing_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.DoBashing(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void Do_Lethal_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.DoLethal(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void Do_Aggrivated_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.DoAggrivated(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void Reset_Health_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ResetHealth(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void Initiative_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.RollInitiative();
+        }
+
+        private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.RemoveActiveCharacters(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void TextBox_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Modifier_TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            {
+                e.Handled = true;
+            }
+        }
+
+        private static bool IsTextNumeric(string text)
+        {
+            text = text.Trim();
+            Regex regex = new Regex("[^0-9-]"); //regex that matches disallowed text
+            bool isGood = !regex.IsMatch(text);
+            return isGood;
+        }
 
 
+        private void Modifier_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            bool isGood = IsTextNumeric(e.Text);
+            e.Handled = !isGood;
+            
+        }
 
-
-
-
+        // Use the DataObject.Pasting Handler 
+        private void Modifier_TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextNumeric(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
+        }
     }
 }
+
+
+
+
+
