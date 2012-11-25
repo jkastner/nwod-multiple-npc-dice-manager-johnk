@@ -56,11 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
+    <Compile Include="GetCharacterName.xaml.cs">
+      <DependentUpon>GetCharacterName.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RollDice.cs" />
     <Compile Include="NumberedTrait.cs" />
-    <Compile Include="Roster.cs" />
-    <Compile Include="Trait.cs" />
-    <Compile Include="Traits.cs" />
+    <Compile Include="RosterViewModel.cs" />
+    <Page Include="GetCharacterName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

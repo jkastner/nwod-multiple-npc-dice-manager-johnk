@@ -1,12 +1,12 @@
 <person>
-	<name>VBasic</name>
+	<name>Basic Vampire</name>
 	<traits>
-	<trait label='Att' value='6'/>
-	<trait label='Spt' value='4'/>
-	<trait label='Res' value='3'/>
-	<trait label='Cmp' value='3'/>
-	<trait label='Heah' value='7'/>
-	<trait label='ClnDis' value='6'/>
+	<trait label='Attack' value='6'/>
+	<trait label='Spot' value='4'/>
+	<trait label='Resolve' value='3'/>
+	<trait label='Composure' value='3'/>
+	<trait label='Health' value='7'/>
+	<trait label='Clan Discipline' value='6'/>
 	</traits>
 </person>
 
