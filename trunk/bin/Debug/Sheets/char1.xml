@@ -1,11 +1,11 @@
 <person>
-	<name>Average</name>
+	<name>Average Mortal</name>
 	<traits>
-	<trait label='Att' value='6'/>
-	<trait label='Spt' value='4'/>
-	<trait label='Res' value='4'/>
-	<trait label='Cmp' value='4'/>
-	<trait label='Heah' value='4'/>
+	<trait label='Attack' value='6'/>
+	<trait label='Spot' value='4'/>
+	<trait label='Resolve' value='4'/>
+	<trait label='Composure' value='4'/>
+	<trait label='Health' value='4'/>
 	</traits>
 </person>
 

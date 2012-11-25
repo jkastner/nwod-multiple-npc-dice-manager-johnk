@@ -20,171 +20,57 @@ namespace XMLCharSheets
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Roster _fullRoster = new Roster();
-        private Roster _activeRoster = new Roster();
-        private Traits _traits = new Traits();
-        public RollDice _rollDice = new RollDice(5);
+        private RosterViewModel _viewModel = new RosterViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
-            PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
-        }
-
-        private void PopulateCharacters(String sourceDir)
-        {
-            // Process the list of files found in the directory. 
-            string[] fileEntries = Directory.GetFiles(sourceDir);
-            foreach (string fileName in fileEntries)
-            {
-                _fullRoster.Add(Character.MakeChar(fileName, _traits));
-            }
-
-
-            // Recurse into subdirectories of this directory.
-            string[] subdirEntries = Directory.GetDirectories(sourceDir);
-            foreach (string subdir in subdirEntries)
-            {
-                PopulateCharacters(subdir);
-            }
-        }
-
-
-
-
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            AllCharacters_Listbox.DataContext = _fullRoster;
-            AllAvailableTraits.DataContext = _traits;
-            this.DataContext = _activeRoster;
-
-        }
-
-        private void SumSingle_Click(object sender, RoutedEventArgs e)
-        {
-            int diceToRoll = 0;
-            String result = "";
-            foreach (NumberedTrait selectedTrait in SingleTraitSelectionBox.SelectedItems)
-            {
-                diceToRoll += selectedTrait.TraitValue;
-            }
-            diceToRoll += GetModifier();
-            _rollDice.NumberOfDice = diceToRoll;
-            
-            _rollDice.Roll();
-
-            Character curChar = (Character)AllCharacters_Listbox.SelectedItem;
-            result = result + "\n" + curChar.Name + " (Pool " + _rollDice.NumberOfDice + "):  " +
-                     _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
-            MessageBox.Show(result);
-        }
-
-        private void SumAll_Click(object sender, RoutedEventArgs e)
-        {
-            String result = "";
-            foreach (Character curChar in AllCharacters_Listbox.SelectedItems)
-            {
-                int diceToRoll = 0;
-                bool errorFindingTrait = false;
-                foreach (Trait selectedTrait in AllAvailableTraits.SelectedItems)
-                {
-                    NumberedTrait foundTrait = curChar.FindTrait(selectedTrait.TraitName);
-                    if (foundTrait == null)
-                    {
-                        result = result+ "\n" +curChar.Name + " did not have " + selectedTrait.TraitName;
-                        errorFindingTrait = true;
-                        break;
-                    }
-                    else
-                    {
-                        diceToRoll += foundTrait.TraitValue;
-                    }
-                }
-                if (!errorFindingTrait)
-                {
-                    int modifier = GetModifier();
-                    diceToRoll += modifier;
-                    _rollDice.NumberOfDice = diceToRoll;
-                    _rollDice.Roll();
-                    result = result + "\n" + curChar.Name + " (Pool " + _rollDice.NumberOfDice + "):  " +
-                             _rollDice.CurrentSuccesses + "\n" + _rollDice.ResultDescription;
-                }
-            }
-            MessageBox.Show(result);
-        }
-
-        private int GetModifier()
-        {
-            String boxContents = ModifierTextBox.Text;
-            try
-            {
-                return Int32.Parse(boxContents);
-            }
-            catch (Exception)
-            {
-
-                return 0;
-            }
-        }
-
-
-
-        private void ActiveCharactersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ActiveCharactersListBox.SelectedItems.Count > 1)
-            {
-                //More than one character is selected.
-                AllAvailableTraits.Visibility = System.Windows.Visibility.Visible;
-                SingleTraitSelectionBox.Visibility = System.Windows.Visibility.Hidden;
-                SumAllButton.Visibility = System.Windows.Visibility.Visible;
-                SumSingleButton.Visibility = System.Windows.Visibility.Hidden;
-                Label_EditTraitValue.Visibility = System.Windows.Visibility.Hidden;
-                UpdateTraitValueBox.Visibility = System.Windows.Visibility.Hidden;
-                SelectedTraitsMultiple.Visibility = System.Windows.Visibility.Visible;
-                SelectedTraitsSingle.Visibility = System.Windows.Visibility.Hidden;
-            }
-            else
-            {
-                //One or zero characters are selected.
-                AllAvailableTraits.Visibility = System.Windows.Visibility.Hidden;
-                SingleTraitSelectionBox.Visibility = System.Windows.Visibility.Visible;
-                SumAllButton.Visibility = System.Windows.Visibility.Hidden;
-                SumSingleButton.Visibility = System.Windows.Visibility.Visible;
-                Label_EditTraitValue.Visibility = System.Windows.Visibility.Visible;
-                UpdateTraitValueBox.Visibility = System.Windows.Visibility.Visible;
-                SelectedTraitsMultiple.Visibility = System.Windows.Visibility.Hidden;
-                SelectedTraitsSingle.Visibility = System.Windows.Visibility.Visible;
-            }
+            _viewModel.PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
+            this.DataContext = _viewModel;
             
         }
 
 
-        private void SingleTraitSelectionBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AddCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (SingleTraitSelectionBox.SelectedItems.Count == 1)
+            if (_viewModel.SelectedFullCharacter == null)
+                return;
+            GetCharacterName gcn = new GetCharacterName(_viewModel.SelectedFullCharacter.Name, _viewModel.ActiveRoster);
+            gcn.ShowDialog();
+            if (!gcn.WasCancel)
             {
-                this.SelectedTraitsSingle.SelectedIndex = 0;
+                CharacterSheet newInstance = CharacterSheet.Copy(_viewModel.SelectedFullCharacter, gcn.ProvidedName);
+                _viewModel.ActiveRoster.Add(newInstance);
             }
         }
 
-        private void AddToActiveCharactersButton_Click(object sender, RoutedEventArgs e)
+        private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (Character cur in AllCharacters_Listbox.SelectedItems)
+            _viewModel.CurrentTraits.Clear();
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
             {
-                Character copyCharacter = Character.CopyChar(cur, _traits);
-                _activeRoster.Add(copyCharacter);
+                return;
+            }
+            List<String> curTraits = new List<String>();
+            foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
+            {
+                CharacterSheet curChar = cur as CharacterSheet;
+                foreach (var curTrait in curChar.NumberedTraits)
+                {
+                    curTraits.Add(curTrait.TraitLabel);
+                }
+            }
+            curTraits = curTraits.Distinct().ToList();
+            foreach (var cur in curTraits)
+            {
+                _viewModel.CurrentTraits.Add(cur);
             }
         }
 
-        private void RemoveFromActiveCharactersButton_Click(object sender, RoutedEventArgs e)
-        {
-            for (int index = ActiveCharactersListBox.SelectedItems.Count - 1; index >= 0; index--)
-            {
-                _activeRoster.Remove(ActiveCharactersListBox.SelectedItems[index] as Character);
-            }
-        }
+
+
+
+
 
 
     }

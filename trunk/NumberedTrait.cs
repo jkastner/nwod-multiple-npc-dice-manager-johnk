@@ -16,17 +16,17 @@ namespace XMLCharSheets
         }
 
 
-        private Trait _associatedTrait;
-
+        private String _traitLabel;
         public String TraitLabel
         {
-            get { return _associatedTrait.TraitName; }
+            set { _traitLabel = value; }
+            get { return _traitLabel; }
         }
 
-        public NumberedTrait(int traitValue, Trait theTrait)
+        public NumberedTrait(int traitValue, String traitLabel)
         {
             _traitValue = traitValue;
-            _associatedTrait = theTrait;
+            TraitLabel = traitLabel;
         }
 
         public override string ToString()

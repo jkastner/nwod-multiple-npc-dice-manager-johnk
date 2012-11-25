@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace XMLCharSheets
 {
-    public class Character
+    public class CharacterSheet
     {
         private String _name;
 
@@ -20,69 +20,46 @@ namespace XMLCharSheets
 
         private String _description;
 
-        public Character(string name, ObservableCollection<NumberedTrait> curTraits)
+        public CharacterSheet(string name, ObservableCollection<NumberedTrait> curTraits)
         {
             _name = name;
             _numberedTraits = curTraits;
-
         }
 
-        private ObservableCollection<NumberedTrait> _numberedTraits;
+        public CharacterSheet()
+        {
+        }
+
+        private ObservableCollection<NumberedTrait> _numberedTraits = new ObservableCollection<NumberedTrait>();
 
         public ObservableCollection<NumberedTrait> NumberedTraits
         {
             get { return _numberedTraits; }
             set { _numberedTraits = value; }
         }
-
+        
         public NumberedTrait FindTrait(String targetName)
         {
             return (NumberedTrait) NumberedTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
         }
-        
-        public static Character MakeChar(String fileName, Traits allTraits)
+
+
+        public override string ToString()
         {
-            Character curChar = null;
-            try
-            {
-                XmlTextReader reader = new XmlTextReader(fileName);
-                ObservableCollection<NumberedTrait> curCharNumberedTraits = new ObservableCollection<NumberedTrait>();
-                while (reader.Read())
-                {
-
-                    if (reader.Name.ToLower().Trim().Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
-                    {
-                        reader.Read();
-                        curChar = new Character(reader.Value, curCharNumberedTraits);
-                    }
-                    if (reader.Name.ToLower().Trim().Equals("trait"))
-                    {
-                        String label = reader.GetAttribute("label");
-                        int value = Convert.ToInt32(reader.GetAttribute("value"));
-                        Trait baseTrait = new Trait(label);
-                        NumberedTrait curnNumberedTrait = new NumberedTrait(value, baseTrait);
-                        allTraits.AddIfNew(label);
-                        curCharNumberedTraits.Add(curnNumberedTrait);
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error opening " + fileName);
-                throw;
-            }
-            return curChar;
+            return Name;
         }
 
-        internal static Character CopyChar(Character cloneSource, Traits allTraits)
+
+        internal static CharacterSheet Copy(CharacterSheet character, string newName)
         {
-            ObservableCollection<NumberedTrait> copiedTraits = new ObservableCollection<NumberedTrait>();
-            foreach (NumberedTrait traitToCopy in cloneSource.NumberedTraits)
+            CharacterSheet copy = new CharacterSheet();
+            copy.Name = newName;
+            foreach(NumberedTrait curTrait in character.NumberedTraits)
             {
-                copiedTraits.Add(new NumberedTrait(traitToCopy.TraitValue, new Trait(traitToCopy.TraitLabel)));
+                NumberedTrait newTrait = new NumberedTrait(curTrait.TraitValue, curTrait.TraitLabel);
+                copy.NumberedTraits.Add(newTrait);
             }
-            return new Character(cloneSource.Name, copiedTraits);
+            return copy;
         }
     }
 }
