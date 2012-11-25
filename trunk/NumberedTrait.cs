@@ -7,13 +7,7 @@ namespace XMLCharSheets
 {
     public class NumberedTrait
     {
-        private int _traitValue;
 
-        public int TraitValue
-        {
-            get { return _traitValue; }
-            set { _traitValue = value; }
-        }
 
 
         private String _traitLabel;
@@ -21,6 +15,14 @@ namespace XMLCharSheets
         {
             set { _traitLabel = value; }
             get { return _traitLabel; }
+        }
+
+        private int _traitValue;
+
+        public int TraitValue
+        {
+            get { return _traitValue; }
+            set { _traitValue = value; }
         }
 
         public NumberedTrait(int traitValue, String traitLabel)

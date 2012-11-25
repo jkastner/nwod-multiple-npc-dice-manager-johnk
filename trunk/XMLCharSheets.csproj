@@ -55,11 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Character.cs" />
+    <Compile Include="CharacterSheet.cs" />
     <Compile Include="GetCharacterName.xaml.cs">
       <DependentUpon>GetCharacterName.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RollDice.cs" />
+    <Compile Include="HealthBox.cs" />
+    <Compile Include="NWoDCharacter.cs" />
+    <Compile Include="NWoDRollDice.cs" />
     <Compile Include="NumberedTrait.cs" />
     <Compile Include="RosterViewModel.cs" />
     <Page Include="GetCharacterName.xaml">
