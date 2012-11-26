@@ -24,7 +24,6 @@ namespace XMLCharSheets
             }
         }
 
-
         private ObservableCollection<CharacterSheet> _activeRoster = new ObservableCollection<CharacterSheet>();
         public ObservableCollection<CharacterSheet> ActiveRoster
         {
@@ -44,6 +43,17 @@ namespace XMLCharSheets
                 _currentTraits = value;
             }
         }
+
+        private ObservableCollection<String> _damageTypes = new ObservableCollection<String>();
+        public ObservableCollection<String> DamageTypes
+        {
+            get { return _damageTypes; }
+            set
+            {
+                _damageTypes = value;
+            }
+        }
+
 
         private CharacterSheet _selectedFullCharacter;
         public CharacterSheet SelectedFullCharacter
@@ -97,7 +107,7 @@ namespace XMLCharSheets
             string[] fileEntries = Directory.GetFiles(sourceDir);
             foreach (string fileName in fileEntries)
             {
-                FullRoster.Add(MakeChar(fileName));
+                FullRoster.Add(ReadCharacterFromFile(fileName));
             }
 
 
@@ -124,27 +134,37 @@ namespace XMLCharSheets
 
 
 
-        public CharacterSheet MakeChar(String fileName)
+        public CharacterSheet ReadCharacterFromFile(String fileName)
         {
             CharacterSheet curChar = null;
             try
             {
                 XmlTextReader reader = new XmlTextReader(fileName);
-                List<NumberedTrait> curCharNumberedTraits = new List<NumberedTrait>();
+                List<Trait> curTraits = new List<Trait>();
                 while (reader.Read())
                 {
 
                     if (reader.Name.ToLower().Trim().Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
                     {
                         reader.Read();
-                        curChar = new NWoDCharacter(reader.Value, curCharNumberedTraits);
+                        curChar = new NWoDCharacter(reader.Value, curTraits);
                     }
                     if (reader.Name.ToLower().Trim().Equals("trait"))
                     {
                         String label = reader.GetAttribute("label");
                         int value = Convert.ToInt32(reader.GetAttribute("value"));
-                        NumberedTrait curNumberedTrait = new NumberedTrait(value, label);
-                        curCharNumberedTraits.Add(curNumberedTrait);
+                        String targetDefense = reader.GetAttribute("TargetDefense");
+                        String damageType = reader.GetAttribute("DamageType");
+                        if (targetDefense != null)
+                        {
+                            AttackTrait curAttack = new AttackTrait(value, label, targetDefense, damageType);
+                            curTraits.Add(curAttack);
+                        }
+                        else
+                        {
+                            NumberedTrait curNumberedTrait = new NumberedTrait(value, label);
+                            curTraits.Add(curNumberedTrait);
+                        }
                     }
                 }
 
@@ -170,58 +190,82 @@ namespace XMLCharSheets
         }
         #endregion
 
-        internal IEnumerable<string> RollCharacters(IList characters, IList selectedTraits)
+        internal void RollCharacters(IList characters, IList selectedTraits)
         {
+            RollResults = lineBreak;
+            List<String> involvedTraits = new List<String>();
+            foreach (var curTraitItem in selectedTraits)
+            {
+                String curTrait = curTraitItem.ToString();
+                involvedTraits.Add(curTrait);
+            }
             foreach (var curItem in characters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
-                bool canRoll = true;
-                List<String> missingTraits = new List<String>();
-                List<NumberedTrait> charTraits = new List<NumberedTrait>();
-                foreach (var curTraitItem in selectedTraits)
+                if(CanRoll(curChar, involvedTraits))
+                    RollCharacter(curChar, involvedTraits);
+            }
+            
+        }
+
+        private bool CanRoll(CharacterSheet involvedCharacter, List<string> involvedTraits)
+        {
+            bool canRoll = true;
+            List<String> missingTraits = new List<String>();
+            List<Trait> charTraits = new List<Trait>();
+            foreach (var curTrait in involvedTraits)
+            {
+                bool hasTrait = involvedCharacter.HasTrait(curTrait);
+                if (!hasTrait)
                 {
-                    String curTrait = curTraitItem.ToString();
-                    bool hasTrait = curChar.HasTrait(curTrait);
-                    if (!hasTrait)
-                    {
-                        missingTraits.Add(curTrait);
-                    }
-                    else
-                    {
-                        charTraits.Add(curChar.FindTrait(curTrait));
-                    }
-                    canRoll &= hasTrait;
-                }
-                if (canRoll)
-                {
-                    int totalDice = 0;
-                    foreach (NumberedTrait curTrait in charTraits)
-                    {
-                        totalDice += curTrait.TraitValue;
-                    }
-                    totalDice += RollModifier;
-                    String result = curChar.Roll(totalDice);
-                    yield return curChar.Name + result;
+                    missingTraits.Add(curTrait);
                 }
                 else
                 {
-                    StringBuilder result = new StringBuilder();
-                    result.Append(curChar.Name + " was missing traits:");
-                    for (int curIndex = 0; curIndex < missingTraits.Count();curIndex++ )
-                    {
-                        if (curIndex == missingTraits.Count() - 1)
-                        {
-                            result.Append(" " + missingTraits[curIndex]);
-                        }
-                        else
-                        {
-                            result.Append(", " + missingTraits[curIndex]);
-                        }
-                    }
-                    yield return result.ToString();
+                    charTraits.Add(involvedCharacter.FindTrait(curTrait));
                 }
+                canRoll &= hasTrait;
             }
+            if (!canRoll)
+            {
+                StringBuilder result = new StringBuilder();
+                result.Append(involvedCharacter.Name + " was missing traits:");
+                for (int curIndex = 0; curIndex < missingTraits.Count(); curIndex++)
+                {
+                    if (curIndex == missingTraits.Count() - 1)
+                    {
+                        result.Append(" " + missingTraits[curIndex]);
+                    }
+                    else
+                    {
+                        result.Append(", " + missingTraits[curIndex]);
+                    }
+                }
+                RollResults = "\n" + result.ToString();
+
+            }
+            return canRoll;
         }
+
+        private void RollCharacter(CharacterSheet involvedCharacter, List<string> involvedTraits)
+        {
+            RollResults = involvedCharacter.Name + " rolled {";
+            int totalDice = 0;
+            List<Trait> charTraits = new List<Trait>();
+            foreach(var cur in involvedTraits)
+            {
+                charTraits.Add(involvedCharacter.FindTrait(cur));
+            }
+            foreach (Trait curTrait in charTraits)
+            {
+                totalDice += curTrait.TraitValue;
+                RollResults = "{" + curTrait.TraitLabel + "}" + " ";
+            }
+            totalDice += RollModifier;
+            String result = involvedCharacter.Roll(totalDice);
+            RollResults = "}\n" + result;
+        }
+    
 
         internal void DoBashing(IList characters)
         {
@@ -279,6 +323,57 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = characters[curIndex] as CharacterSheet;
                 ActiveRoster.Remove(curChar);
+            }
+        }
+
+
+        internal void SetTargets(IList attackers, CharacterSheet target, String attackType, string damageType)
+        {
+            foreach (var curItem in attackers)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.SetTarget(target, attackType, damageType);
+            }
+        }
+
+        private String _rollResults;
+
+        public String RollResults
+        {
+            get { return _rollResults; }
+            set {
+                _rollResults = _rollResults + value;
+                OnPropertyChanged("RollResults");
+            }
+        }
+
+        String lineBreak = "\n-----------\n";
+        internal void RollAttackTarget(IList attackers)
+        {
+            RollResults = lineBreak;
+            foreach (var curItem in attackers)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                List<String> attackName = new List<String>();
+                if (curChar.Target == null)
+                {
+                    RollResults = curChar.Name + " has no target.\n";
+                    continue;
+                }
+                attackName.Add(curChar.ChosenAttack);
+                if (CanRoll(curChar, attackName))
+                {
+                    curChar.AttackTarget();
+                    RollResults = curChar.Name + " rolled attack {" + curChar.ChosenAttack + "}: " + curChar.RollResults + "\n";
+                }
+            }
+        }
+
+        internal void NewRound()
+        {
+            foreach (CharacterSheet curCharacter in ActiveRoster)
+            {
+                curCharacter.NewRound();
             }
         }
     }

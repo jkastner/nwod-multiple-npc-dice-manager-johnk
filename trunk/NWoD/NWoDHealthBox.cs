@@ -5,15 +5,15 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    class HealthBox
+    public class HealthBox
     {
-        public enum HealthBoxType
+        public enum DamageType
         {
             Empty, Bashing, Lethal, Aggrivated, Grievous
         }
-        private HealthBoxType _box;
+        private DamageType _box;
 
-        public HealthBoxType Box
+        public DamageType Box
         {
             get { return _box; }
             set { _box = value; }
@@ -22,7 +22,7 @@ namespace XMLCharSheets
 
         public HealthBox()
         {
-            this.Box = HealthBoxType.Empty;
+            this.Box = DamageType.Empty;
         }
 
         public override string ToString()
@@ -35,18 +35,18 @@ namespace XMLCharSheets
         {
             switch (Box)
             {
-                case HealthBoxType.Empty:
+                case DamageType.Empty:
                     return "_";
-                case HealthBoxType.Bashing:
+                case DamageType.Bashing:
                     return "\\";
-                case HealthBoxType.Lethal:
+                case DamageType.Lethal:
                     return "X";
-                case HealthBoxType.Aggrivated:
+                case DamageType.Aggrivated:
                     return "*";
-                case HealthBoxType.Grievous:
+                case DamageType.Grievous:
+                default:
                     return "█";
             }
-            return "?";
         }
     }
 }

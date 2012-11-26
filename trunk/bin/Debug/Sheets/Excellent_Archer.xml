@@ -1,0 +1,15 @@
+<person>
+	<name>Excellent Archer</name>
+	<traits>
+	<trait label='Archery' value='10' IsAttack='true' TargetDefense='Ranged Defense' DamageType='Lethal'/>
+	<trait label='Initiative' value='8'/>
+	<trait label='Ranged Defense' value='0'/>
+	<trait label='Melee Defense' value='4'/>
+	<trait label='Notice' value='7'/>
+	<trait label='Resolve' value='3'/>
+	<trait label='Composure' value='3'/>
+	<trait label='Health' value='8'/>
+	</traits>
+</person>
+
+

@@ -1,75 +1,110 @@
 ﻿<Window x:Class="XMLCharSheets.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="473" Width="818"  Background="#FFD4D4D4">
+        Title="MainWindow" Height="Auto" Width="818"  Background="#FFD4D4D4">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    
     <Grid Margin="0,0,2,1">
-        <ListBox Name="AllCharacters_ListBox"
-                 SelectedItem="{Binding Path=SelectedFullCharacter, Mode=TwoWay}"
-                 ItemsSource="{Binding Path=FullRoster, UpdateSourceTrigger=PropertyChanged}"
-                 Margin="10,10,492,150"
-                 SelectionMode="Single"
-                 >
-            
-            
-        </ListBox>
-        <ListBox 
-            Name="ActiveCharacters_ListBox"
-            SelectedItem="{Binding Path=SelectedActiveCharacter, Mode=TwoWay}"     
-            ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}" 
-            SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
-                 Margin="447,10,129,150"
-            SelectionMode="Extended"
-                 ></ListBox>
-        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" MinHeight="80" >
-            <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" 
-                      ItemsSource="{Binding Path=SelectedCharacter.NumberedTraits, UpdateSourceTrigger=PropertyChanged}"
-                      >
-            </DataGrid>
-            <ListBox 
-                Name="CurrentTraits_ListBox"
-                MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" Margin="10,0,0,0" 
-                     
-                     ItemsSource="{Binding Path=CurrentTraits, UpdateSourceTrigger=PropertyChanged}" 
-                     SelectionMode="Extended"
+        <StackPanel>
+            <DockPanel>
+                <ListBox Name="AllCharacters_ListBox"
+                     SelectedItem="{Binding Path=SelectedFullCharacter, Mode=TwoWay}"
+                     ItemsSource="{Binding Path=FullRoster, UpdateSourceTrigger=PropertyChanged}"
+                     Height="Auto"
+                     SelectionMode="Single"
                      >
+                </ListBox>
+                <ListBox 
+                    Name="ActiveCharacters_ListBox"
+                    SelectedItem="{Binding Path=SelectedActiveCharacter, Mode=TwoWay}"     
+                    ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}" 
+                    SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
+                    Height="Auto"
+                    SelectionMode="Extended">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <TextBlock Text="{Binding Path=Name}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+                                <TextBlock Margin="8,0,0,0" Text="{Binding Path=CurInitiative}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Center" />
+                                <TextBlock Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                           HorizontalAlignment="Center" />
+                            </DockPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+            
+                </ListBox>
+            </DockPanel>
+            <DockPanel>
+
+                <Button HorizontalAlignment="Left"
+                        Name="AddCharacter_Button"
+                        Content="Add" ToolTip="Add character to active roster." 
+                            Width="75" Click="AddCharacter_Button_Click"/>
+                <Button HorizontalAlignment="Left"
+                        Name="RemoveCharacter_Button"
+                        Content="Remove" ToolTip="Remove character from active roster." 
+                            Width="75" Click="RemoveCharacter_Button_Click"/>
                 
-            </ListBox>
+            </DockPanel>
+            <DockPanel Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinHeight="80" >
+                <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" 
+                          ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
+                          >
+                </DataGrid>
+                <ListBox 
+                    Name="CurrentTraits_ListBox"
+                    MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" Margin="10,0,0,0" 
+                     
+                         ItemsSource="{Binding Path=CurrentTraits, UpdateSourceTrigger=PropertyChanged}" 
+                         SelectionMode="Extended"
+                         >
+                
+                </ListBox>
                 <TextBox
                     IsReadOnly="True"
-                    MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
+                    MinHeight="50" MinWidth="50" Height="Auto"
                     Text="{Binding Path=SelectedActiveCharacter.Status, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap"
                     >
                 </TextBox>
 
-            <StackPanel HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0">
-                <Button Name="Do_Bashing_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Bashing" Click="Do_Bashing_Button_Click"></Button>
-                <Button Name="Do_Lethal_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Lethal" Click="Do_Lethal_Button_Click"></Button>
-                <Button Name="Do_Aggrivated_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Aggrivated" Click="Do_Aggrivated_Button_Click"></Button>
-                <Button Name="Reset_Health_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Reset" Click="Reset_Health_Button_Click"></Button>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0">
-                <TextBox Name="Modifier_TextBox" Width="75" Text="{Binding Path=RollModifier, Mode=TwoWay}"
-                         PreviewTextInput="Modifier_TextBox_PreviewTextInput"
-                         DataObject.Pasting="Modifier_TextBox_Pasting" >
+                <StackPanel HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0">
+                    <Button Name="Do_Bashing_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Bashing" Click="Do_Bashing_Button_Click"></Button>
+                    <Button Name="Do_Lethal_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Lethal" Click="Do_Lethal_Button_Click"></Button>
+                    <Button Name="Do_Aggrivated_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Aggrivated" Click="Do_Aggrivated_Button_Click"></Button>
+                    <Button Name="Reset_Health_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Left" Content="Reset" Click="Reset_Health_Button_Click"></Button>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0">
+                    <TextBox 
+                        Margin="0,0,0,10" 
+                        Name="Modifier_TextBox" Width="75" Text="{Binding Path=RollModifier, Mode=TwoWay}"
+                             PreviewTextInput="Modifier_TextBox_PreviewTextInput"
+                             DataObject.Pasting="Modifier_TextBox_Pasting" >
 
-                </TextBox>
-                <Button Name="Roll_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Right" Content="Roll" Click="Roll_Button_Click"></Button>
-                <Button Name="Initiative_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Right" Content="Initiative" Click="Initiative_Button_Click"></Button>
-            </StackPanel>
+                    </TextBox>
+                    <Button Name="Initiative_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Right" Content="Initiative" Click="Initiative_Button_Click"></Button>
+                    <Button Name="SelectTarget_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Right" Content="Target" Click="SelectTarget_Button_Click"></Button>
+                    <Button Name="Roll_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Right" Content="Roll" Click="Roll_Button_Click"></Button>
+                    <Button Name="Attack_Target_Button" Width="Auto" Height="20" MinWidth="50" Margin="0,0,0,10" HorizontalAlignment="Right" Content="Attack Target" Click="Attack_Target_Button_Click"></Button>
 
-        </DockPanel>
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
-
-            <Button 
-                Name="RemoveCharacter_Button"
-                Content="Remove" ToolTip="Remove character from active roster." 
-                    Width="75" Click="RemoveCharacter_Button_Click"/>
-            <Button 
-                Name="AddCharacter_Button"
-                Content="Add" ToolTip="Add character to active roster." 
-                    Width="75" Click="AddCharacter_Button_Click"/>
+                </StackPanel>
+                <StackPanel 
+                    HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0" Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Button></Button>
+                </StackPanel>
+            </DockPanel>
+            <TextBox
+                Name="Results_TextBox"
+                IsReadOnly="True"
+                VerticalScrollBarVisibility="Auto"
+                MinHeight="50" MinWidth="50" Width="Auto" Height="150"
+                Margin="0,10,0,0"
+                Text="{Binding Path=RollResults, UpdateSourceTrigger=PropertyChanged}" 
+                TextChanged="Results_TextBox_TextChanged"
+                >
+            </TextBox>
         </StackPanel>
-        
-
     </Grid>
 </Window>

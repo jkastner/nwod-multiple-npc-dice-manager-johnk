@@ -28,6 +28,9 @@ namespace XMLCharSheets
             InitializeComponent();
             _viewModel.PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
             this.DataContext = _viewModel;
+            _viewModel.DamageTypes.Add("Bashing");
+            _viewModel.DamageTypes.Add("Lethal");
+            _viewModel.DamageTypes.Add("Aggrivated");
             
         }
 
@@ -35,7 +38,10 @@ namespace XMLCharSheets
         private void AddCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
             if (_viewModel.SelectedFullCharacter == null)
+            {
+                MessageBox.Show("Please select the character to spawn an instance of.");
                 return;
+            }
             GetCharacterName gcn = new GetCharacterName(_viewModel.SelectedFullCharacter.Name, _viewModel.ActiveRoster);
             gcn.ShowDialog();
             if (!gcn.WasCancel)
@@ -56,7 +62,7 @@ namespace XMLCharSheets
             foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
             {
                 CharacterSheet curChar = cur as CharacterSheet;
-                foreach (var curTrait in curChar.NumberedTraits)
+                foreach (var curTrait in curChar.Traits)
                 {
                     curTraits.Add(curTrait.TraitLabel);
                 }
@@ -70,54 +76,62 @@ namespace XMLCharSheets
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
         {
-            List<String> results = _viewModel.RollCharacters(ActiveCharacters_ListBox.SelectedItems, CurrentTraits_ListBox.SelectedItems).ToList();
-            foreach(String curResult in results)
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0 || CurrentTraits_ListBox.SelectedItems.Count == 0)
             {
-                MessageBox.Show(curResult);
+                MessageBox.Show("Please select an active character and at least one trait.");
             }
+            _viewModel.RollCharacters(ActiveCharacters_ListBox.SelectedItems, CurrentTraits_ListBox.SelectedItems);
         }
 
         private void Do_Bashing_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select an active character.");
+            }
             _viewModel.DoBashing(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Do_Lethal_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select an active character.");
+            }
             _viewModel.DoLethal(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Do_Aggrivated_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select an active character.");
+            }
             _viewModel.DoAggrivated(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Reset_Health_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select an active character.");
+            }
             _viewModel.ResetHealth(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Initiative_Button_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.RollInitiative();
+            _viewModel.NewRound();
         }
 
         private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RemoveActiveCharacters(ActiveCharacters_ListBox.SelectedItems);
-        }
-
-        private void TextBox_KeyDown_1(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void Modifier_TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
             {
-                e.Handled = true;
+                MessageBox.Show("Please select an active character.");
             }
+            _viewModel.RemoveActiveCharacters(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private static bool IsTextNumeric(string text)
@@ -151,6 +165,39 @@ namespace XMLCharSheets
             {
                 e.CancelCommand();
             }
+        }
+
+        private void SelectTarget_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel.SelectedActiveCharacter == null)
+                return;
+            if (ActiveCharacters_ListBox.SelectedItems.Count == _viewModel.ActiveRoster.Count())
+            {
+                MessageBox.Show("Please select an active character. Some characters must remain unselcted to provide targets.");
+                return;
+            }
+            SelectTarget st = new SelectTarget(ActiveCharacters_ListBox.SelectedItems, _viewModel.ActiveRoster, _viewModel.DamageTypes);
+            st.ShowDialog();
+            if (!st.WasCancel&&st.SelectedTarget != null)
+            {
+                _viewModel.SetTargets(ActiveCharacters_ListBox.SelectedItems, st.SelectedTarget, st.ChosenAttack, st.WoundType);
+            }
+        }
+
+        private void Attack_Target_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel.SelectedActiveCharacter == null)
+            {
+                MessageBox.Show("Please select an active character.");
+                return;
+            }
+            _viewModel.RollAttackTarget(ActiveCharacters_ListBox.SelectedItems);
+
+        }
+
+        private void Results_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Results_TextBox.ScrollToEnd();
         }
     }
 }
