@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Xml;
 using System.Windows;
 using System.ComponentModel;
+using System.Windows.Media;
 
 namespace XMLCharSheets
 {
@@ -41,6 +42,9 @@ namespace XMLCharSheets
             set { _curInitiative = value; }
         }
 
+
+
+
         public abstract void RollInitiative();
         
 
@@ -54,10 +58,10 @@ namespace XMLCharSheets
 
         private String _description;
 
-        public CharacterSheet(string name, List<NumberedTrait> curTraits)
+        public CharacterSheet(string name, List<Trait> curTraits)
         {
             Name = name;
-            _numberedTraits = curTraits;
+            _traits = curTraits;
             PopulateCombatTraits();
             
         }
@@ -66,38 +70,44 @@ namespace XMLCharSheets
 
 
 
-        private List<NumberedTrait> _numberedTraits = new List<NumberedTrait>();
-        public List<NumberedTrait> NumberedTraits
+        private List<Trait> _traits = new List<Trait>();
+        public List<Trait> Traits
         {
-            get { return _numberedTraits; }
-            set { _numberedTraits = value; }
+            get { return _traits; }
+            set { _traits = value; }
         }
-        
-        public NumberedTrait FindTrait(String targetName)
+
+        public Trait FindTrait(String targetName)
         {
-            return (NumberedTrait) NumberedTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
+            return (Trait)Traits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
         }
         public bool HasTrait(String targetName)
         {
-            return NumberedTraits.Where(x => x.TraitLabel.Equals(targetName)).Count()>0;
+            return Traits.Where(x => x.TraitLabel.Equals(targetName)).Count()>0;
         }
 
         public override string ToString()
         {
-            if(CurInitiative == -1)
-                return Name;
-            return Name + " - {" + CurInitiative+"}";
+            return Name;
         }
-
+        public abstract SolidColorBrush StatusColor
+        {
+            get;
+        }
+        public abstract String RollResults
+        {
+            get;
+        }
 
         internal static CharacterSheet Copy(CharacterSheet character, string newName)
         {
-            
-            List<NumberedTrait> copyTraits = new List<NumberedTrait>();
-            foreach(NumberedTrait curTrait in character.NumberedTraits)
+
+            List<Trait> copyTraits = new List<Trait>();
+
+            foreach(Trait curTrait in character.Traits)
             {
-                NumberedTrait newTrait = new NumberedTrait(curTrait.TraitValue, curTrait.TraitLabel);
-                copyTraits.Add(newTrait);
+                Trait copiedTrait = curTrait.CopyTrait();
+                copyTraits.Add(copiedTrait);
             }
             if (character is NWoDCharacter)
             {
@@ -128,5 +138,44 @@ namespace XMLCharSheets
 
         internal abstract void ResetHealth();
 
+        private CharacterSheet _target;
+        public CharacterSheet Target
+        {
+            get { return _target; }
+            set {
+                
+                _target = value;
+                OnPropertyChanged("Target");
+            }
+        }
+
+        private String _damageType;
+        public String DamageType
+        {
+            get { return _damageType; }
+            set { _damageType = value; }
+        }
+        private String _chosenAttack;
+
+        public String ChosenAttack
+        {
+            get { return _chosenAttack; }
+            set { _chosenAttack = value; }
+        }
+        
+        internal void SetTarget(CharacterSheet target, String attackType, string damageType)
+        {
+            Target = target;
+            DamageType = damageType;
+            ChosenAttack = attackType;
+        }
+
+
+
+        internal abstract void AttackTarget();
+
+
+
+        internal abstract void NewRound();
     }
 }

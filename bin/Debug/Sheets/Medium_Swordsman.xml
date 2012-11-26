@@ -1,0 +1,15 @@
+<person>
+	<name>Medium Swordsman</name>
+	<traits>
+	<trait label='Weaponry' value='7' TargetDefense='Melee Defense' DamageType='Lethal'/>
+	<trait label='Initiative' value='6'/>
+	<trait label='Ranged Defense' value='0'/>
+	<trait label='Melee Defense' value='3'/>
+	<trait label='Notice' value='5'/>
+	<trait label='Resolve' value='3'/>
+	<trait label='Composure' value='3'/>
+	<trait label='Health' value='8'/>
+	</traits>
+</person>
+
+

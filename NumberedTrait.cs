@@ -5,35 +5,17 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class NumberedTrait
+    public class NumberedTrait : Trait
     {
-
-
-
-        private String _traitLabel;
-        public String TraitLabel
+        public NumberedTrait(int traitValue, String traitLabel) :
+            base(traitValue, traitLabel)
         {
-            set { _traitLabel = value; }
-            get { return _traitLabel; }
         }
 
-        private int _traitValue;
-
-        public int TraitValue
+        public override Trait CopyTrait()
         {
-            get { return _traitValue; }
-            set { _traitValue = value; }
-        }
-
-        public NumberedTrait(int traitValue, String traitLabel)
-        {
-            _traitValue = traitValue;
-            TraitLabel = traitLabel;
-        }
-
-        public override string ToString()
-        {
-            return TraitLabel + " -- " + TraitValue;
+            return new NumberedTrait(TraitValue, TraitLabel);
         }
     }
+
 }
