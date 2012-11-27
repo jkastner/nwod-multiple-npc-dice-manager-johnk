@@ -116,18 +116,22 @@ namespace XMLCharSheets
             }
         }
 
-        private string BuildHealthString()
+        protected string BuildHealthString()
         {
             StringBuilder sb = new StringBuilder();
+            int count = 0;
             foreach (HealthBox curBox in HealthTrack)
             {
+                count++;
                 sb.Append(curBox.ToBoxString()+" ");
+                if (count % 5 == 0)
+                    sb.Append("   ");
             }
             return sb.ToString().Trim();
         }
         
 
-        private void InitializeHealthBoxes(int p)
+        protected void InitializeHealthBoxes(int p)
         {
             if (p < 3)
                 p = 3;
@@ -187,10 +191,14 @@ namespace XMLCharSheets
         {
             if (HealthTrack.Last().Box == HealthBox.DamageType.Grievous)
                 return;
-            for(int curIndex = 0;curIndex< HealthTrack.Count();curIndex++)
+            while(newDamage.Box < HealthTrack.Last().Box)
+            {
+                newDamage.Box++;
+            }
+            for (int curIndex = 0; curIndex < HealthTrack.Count(); curIndex++)
             {
                 HealthBox curBox = HealthTrack[curIndex];
-                if (curBox.Box < newDamage.Box)
+                if (curBox.Box <= newDamage.Box)
                 {
                     HealthTrack.Insert(curIndex, newDamage);
                     break;
@@ -200,6 +208,7 @@ namespace XMLCharSheets
             {
                 HealthTrack.Remove(HealthTrack.Last());
                 ChangeHealthProperties();
+                return;
             }
             else
             {
@@ -208,7 +217,8 @@ namespace XMLCharSheets
                 var lastBox = HealthTrack.Last();
                 HealthBox spilloverDamage = new HealthBox();
                 spilloverDamage.Box = lastBox.Box + 1;
-                HealthTrack.Last().Box = HealthBox.DamageType.Empty;
+                secondToLastBox.Box = HealthBox.DamageType.Empty;
+                HealthTrack.Remove(lastBox);
                 AddDamageBox(spilloverDamage);
             }
         }

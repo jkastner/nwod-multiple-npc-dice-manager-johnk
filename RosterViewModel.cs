@@ -133,23 +133,47 @@ namespace XMLCharSheets
 
 
 
-
+        private enum PersonType
+        {
+            Person, Vampire
+        }
         public CharacterSheet ReadCharacterFromFile(String fileName)
         {
             CharacterSheet curChar = null;
             try
             {
+                PersonType curType = PersonType.Person;
                 XmlTextReader reader = new XmlTextReader(fileName);
                 List<Trait> curTraits = new List<Trait>();
                 while (reader.Read())
                 {
-
-                    if (reader.Name.ToLower().Trim().Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
+                    String curReader = reader.Name.ToLower().Trim();
+                    if (curReader.Equals("CharacterType"))
                     {
                         reader.Read();
-                        curChar = new NWoDCharacter(reader.Value, curTraits);
+                        switch(reader.Value.ToLower().Trim())
+                        {
+                            case "Vampire":
+                                curType = PersonType.Vampire;
+                                break;
+                            case "Human":
+                            default:
+                                curType = PersonType.Person;
+                                break;
+
+                        }
                     }
-                    if (reader.Name.ToLower().Trim().Equals("trait"))
+
+                    if (curReader.Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
+                    {
+                        reader.Read();
+                        if(curType == PersonType.Vampire)
+                            curChar = new NWoDVampire(reader.Value, curTraits);
+                        else
+                            curChar = new NWoDCharacter(reader.Value, curTraits);
+
+                    }
+                    if (curReader.Equals("trait"))
                     {
                         String label = reader.GetAttribute("label");
                         int value = Convert.ToInt32(reader.GetAttribute("value"));

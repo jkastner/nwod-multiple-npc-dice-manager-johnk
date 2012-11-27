@@ -1,4 +1,5 @@
-<person>
+<CharacterSheet>
+	<CharacterType></CharacterType>
 	<name>Excellent Archer</name>
 	<traits>
 	<trait label='Archery' value='10' IsAttack='true' TargetDefense='Ranged Defense' DamageType='Lethal'/>
@@ -10,6 +11,6 @@
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='8'/>
 	</traits>
-</person>
+</CharacterSheet>
 
 
