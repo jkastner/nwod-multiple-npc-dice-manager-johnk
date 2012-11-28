@@ -148,15 +148,15 @@ namespace XMLCharSheets
                 while (reader.Read())
                 {
                     String curReader = reader.Name.ToLower().Trim();
-                    if (curReader.Equals("CharacterType"))
+                    if (curReader.Equals("charactertype") && reader.NodeType.Equals(XmlNodeType.Element))
                     {
                         reader.Read();
                         switch(reader.Value.ToLower().Trim())
                         {
-                            case "Vampire":
+                            case "vampire":
                                 curType = PersonType.Vampire;
                                 break;
-                            case "Human":
+                            case "human":
                             default:
                                 curType = PersonType.Person;
                                 break;
@@ -398,6 +398,15 @@ namespace XMLCharSheets
             foreach (CharacterSheet curCharacter in ActiveRoster)
             {
                 curCharacter.NewRound();
+            }
+        }
+
+        internal void RecalculateCombatStats(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.PopulateCombatTraits();
             }
         }
     }

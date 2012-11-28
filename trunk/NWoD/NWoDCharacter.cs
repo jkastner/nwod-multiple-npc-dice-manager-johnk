@@ -21,11 +21,37 @@ namespace XMLCharSheets
 
         public bool IsVampire
         {
-            get { return _isVampire = false; }
-            set { _isVampire = value; }
+            get { return _isVampire; }
+            set 
+            {
+                _isVampire = value;
+                OnPropertyChanged("IsVampire");
+            }
+        }
+
+        internal override CharacterSheet Copy(string newName)
+        {
+            List<Trait> copyTraits = new List<Trait>();
+
+            foreach (Trait curTrait in this.Traits)
+            {
+                Trait copiedTrait = curTrait.CopyTrait();
+                copyTraits.Add(copiedTrait);
+            }
+            CharacterSheet copy = new NWoDCharacter(newName, copyTraits);
+            return copy;
+        }
+
+
+
+        private int _armor;
+
+        public int Armor
+        {
+            get { return _armor; }
+            set { _armor = value; }
         }
         
-
 
 
         public NWoDCharacter(string characterName, List<Trait> traits)
@@ -77,22 +103,25 @@ namespace XMLCharSheets
                 return 0;
             }
         }
-        
-        protected override void PopulateCombatTraits()
+
+        public override void PopulateCombatTraits()
         {
             foreach (Trait curTrait in Traits)
             {
                 switch (curTrait.TraitLabel)
                 {
-                    case "Health":
+                    case NWoDConstants.HealthStatName:
                         InitializeHealthBoxes(curTrait.TraitValue);
                         break;
-                    case "Initiative":
+                    case NWoDConstants.InitiativeStatName:
                         Initiative = curTrait.TraitValue;
                         break;
-                    case "Melee Defense":
+                    case NWoDConstants.MeleeDefenseStatName:
                         NormalMeleeDefense = curTrait.TraitValue;
                         CurrentMeleeDefense = curTrait.TraitValue;
+                        break;
+                    case NWoDConstants.ArmorStatName:
+                        Armor = curTrait.TraitValue;
                         break;
                 }
             }
@@ -104,9 +133,10 @@ namespace XMLCharSheets
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append("Status:\n");
+                sb.AppendLine("Status:");
                 sb.Append("Health: ");
-                sb.Append(BuildHealthString());
+                sb.AppendLine(BuildHealthString());
+                sb.AppendLine("Melee Def: " + CurrentMeleeDefense);
                 return sb.ToString();
             }
             set
@@ -133,6 +163,7 @@ namespace XMLCharSheets
 
         protected void InitializeHealthBoxes(int p)
         {
+            HealthTrack.Clear();
             if (p < 3)
                 p = 3;
             for (int curIndex = 0; curIndex < p; curIndex++)
@@ -240,7 +271,7 @@ namespace XMLCharSheets
             var nwodTarget = Target as NWoDCharacter;
             int targetDefense = 0;
             var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
-            if (ChosenAttackTrait.DefenseTarget.Contains("Melee"))
+            if (ChosenAttackTrait.DefenseTarget.Contains("Melee Defense"))
             {
                 targetDefense = nwodTarget.CurrentMeleeDefense;
             }
@@ -250,12 +281,10 @@ namespace XMLCharSheets
             }
             var attackPool = ChosenAttackTrait.TraitValue;
             attackPool -= targetDefense;
+            attackPool -= nwodTarget.Armor;
             int attackSuccesses = 0;
-            if (attackPool > 0)
-            {
-                Roll(attackPool);
-                attackSuccesses = curPool.CurrentSuccesses;
-            }
+            Roll(attackPool);
+            attackSuccesses = curPool.CurrentSuccesses;
             for (int curDamage = 0; curDamage < attackSuccesses; curDamage++)
             {
                 switch (DamageType)

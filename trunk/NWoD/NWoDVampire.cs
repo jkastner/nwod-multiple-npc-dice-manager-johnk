@@ -36,14 +36,28 @@ namespace XMLCharSheets
             }
         }
 
-        protected override void PopulateCombatTraits()
+        internal override CharacterSheet Copy(String newName)
+        {
+            List<Trait> copyTraits = new List<Trait>();
+
+            foreach (Trait curTrait in this.Traits)
+            {
+                Trait copiedTrait = curTrait.CopyTrait();
+                copyTraits.Add(copiedTrait);
+            }
+            CharacterSheet copy = new NWoDVampire(newName, copyTraits);
+            return copy;
+        }
+
+
+        public override void PopulateCombatTraits()
         {
             base.PopulateCombatTraits();
             foreach (Trait curTrait in Traits)
             {
                 switch (curTrait.TraitLabel)
                 {
-                    case "Vitae":
+                    case NWoDConstants.VitaeStatName:
                         InitializeHealthBoxes(curTrait.TraitValue);
                         break;
                 }

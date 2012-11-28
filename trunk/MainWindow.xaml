@@ -51,6 +51,7 @@
             <DockPanel Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinHeight="80" >
                 <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" 
                           ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
+                          CurrentCellChanged="DataChanged_DataGrid"
                           >
                 </DataGrid>
                 <ListBox 
@@ -127,6 +128,23 @@
                             </Path.RenderTransform>
                         </Path>
                     </Button>
+                    <Button Name="Make_Status_Button" Width="Auto" Height="Auto" 
+                            Margin="0,0,0,10" HorizontalAlignment="Left" Click="Make_Status_Button_Click"
+                            ToolTip="Add a status effect to the character."
+                            >
+
+                        <Path Data="F1M1548.36,536.949L1573.21,524.905 1586.59,542.918 1580.36,545.181 1597.29,560.611 1592.21,563.012 1612.36,588.908 1578.08,568.84 1584.43,566.166 1563.68,553.616 1570.75,549.775 1548.36,536.949z" 
+                              Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Button>
                     <Button Name="Reset_Health_Button" Width="Auto" Height="Auto" Margin="0,0,0,10" HorizontalAlignment="Left" Click="Reset_Health_Button_Click"
                             ToolTip="Reset the health of the selected characters."
                             >
@@ -175,17 +193,34 @@
                     <Button Name="Attack_Target_Button" Width="Auto" Height="Auto" Margin="0,0,0,10" HorizontalAlignment="Right" Click="Attack_Target_Button_Click"
                             ToolTip="Attack the target of the selected characters."
                             >
-                        <Path Data="F1M1002.57,38.5305L1017.07,24.8717C1017.07,24.8717 1017.25,24.6946 1017.43,24.8821 1017.43,24.8821 1035.99,7.44586 1038.19,5.37424 1040.39,3.30399 1042.52,1.61774 1044.86,1.01227 1044.86,1.01227 1044.67,4.30533 1040.47,10.1021 1036.27,15.8991 1028.35,25.4068 1023.13,30.3235L1020.68,27.7272C1020.68,27.7272 1019.4,28.9381 1019.21,29.1087 1019.03,29.278 1018.39,29.2076 1017.41,29.2037 1016.44,29.1999 1016.13,30.2649 1015.22,31.662 1014.3,33.0592 1009.66,37.718 1008.19,38.4237 1006.72,39.1295 1006.91,40.2103 1006.7,40.6035 1006.49,40.9966 1006.04,41.8078 1005.1,41.6295 1004.15,41.4524 1003.06,41.4185 1002.46,40.5266 1001.86,39.6347 1002.46,38.6777 1002.57,38.5305z" 
-                              Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+
+                        <Path Data="F1M557.484,621.692C557.958,621.273 558.426,620.832 558.891,620.367 559.023,620.237 559.15,620.104 559.278,619.972 564.476,614.622 566.954,608.651 564.82,606.354L564.737,606.372C564.695,606.32,564.654,606.265,564.547,606.149L564.523,606.174C564.374,606.153 563.999,606.099 563.469,606.015 563.489,606.079 563.497,606.151 563.512,606.218 560.926,605.872 555.287,605 552.541,603.666 552.188,603.494 551.822,603.284 551.45,603.04 552.163,602.332 552.566,601.932 552.566,601.932 553.23,601.268 553.342,600.304 552.817,599.781L548.419,595.381C547.893,594.856,546.929,594.968,546.266,595.633L545.067,597.169C544.372,596.39,543.942,595.869,543.942,595.869L534.467,605.345C534.467,605.345,535.562,606.247,536.955,607.562L534.827,610.289 502.191,641.638C501.528,642.302 501.416,643.265 501.939,643.789 501.939,643.789 502.945,645.224 504.366,646.431 505.788,647.638 506.879,648.14 507.825,648.496 508.771,648.851 509.689,649.207 510.4,648.497 510.4,648.497 514.099,641.256 518.336,636.484 520.868,633.633 532.594,621.853 541.624,612.832 541.872,613.211 542.09,613.583 542.265,613.942 543.612,616.721 544.49,622.468 544.827,625.01 544.734,624.989 544.636,624.976 544.547,624.95 544.631,625.474 544.684,625.843 544.705,625.992L544.715,626.065 544.723,626.073C544.84,626.185 544.971,626.281 545.106,626.369 547.225,628.135 552.357,626.187 557.356,621.807 557.398,621.771 557.441,621.731 557.484,621.692z"
+                              Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                        </Path>
                     </Button>
 
                 </StackPanel>
                 <StackPanel 
                     HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0" 
                     Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Button Width="50" Height="20" Foreground="Red" Background="Blue"
+                    <Button Name="Blood_Buff_Button" Width="Auto" Height="Auto" Margin="0,0,0,10" HorizontalAlignment="Left" Click="Blood_Buff_Button_Click"
                             Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}"
-                            ></Button>
+                            ToolTip="Spend a point of vitae to augment attack stats by two."
+                            >
+
+                        <Path Data="M19.833,0L32.501,0 32.501,19.833999 52.334,19.833999 52.334,32.500999 32.501,32.500999 32.501,52.333 19.833,52.333 19.833,32.500999 0,32.500999 0,19.833999 19.833,19.833999z" 
+                              Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                        </Path>
+                    </Button>
+                    <Button Name="Blood_Heal_Button" Width="Auto" Height="Auto" Margin="0,0,0,10" HorizontalAlignment="Left" Click="Blood_Heal_Button_Click"
+                            Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            ToolTip="Spend a point of vitae to heal."
+                            >
+
+                        <Path Data="F1M988.592,97.5669L982.444,97.5669 982.444,91.744C982.444,85.5748 977.281,80.5721 971.111,80.5721 964.941,80.5721 959.777,85.5748 959.777,91.744L959.777,97.5669 951.962,97.5669C947.713,97.5669,945.111,100.866,945.111,105.114L945.111,139.546C945.111,143.795,947.713,146.9,951.962,146.9L988.592,146.9C992.84,146.9,997.111,143.795,997.111,139.546L997.111,105.114C997.111,100.866,992.84,97.5669,988.592,97.5669z M970.801,84.9569C973.497,84.9569 975.683,87.145 975.683,89.8417 975.683,92.5396 973.497,94.7257 970.801,94.7257 968.103,94.7257 965.915,92.5396 965.915,89.8417 965.915,87.145 968.103,84.9569 970.801,84.9569z M981.797,135.395C981.797,135.395 978.623,141.744 971.296,141.622 971.296,141.622 964.947,142.355 960.796,136.86 960.796,136.86 954.202,130.39 963.848,115.37 963.848,115.37 968.916,106.031 970.809,101.085 970.809,101.085 976.502,113.265 978.257,115.981 978.257,115.981 985.887,128.558 981.797,135.395z" 
+                              Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                        </Path>
+                    </Button>
                 </StackPanel>
             </DockPanel>
             <TextBox
