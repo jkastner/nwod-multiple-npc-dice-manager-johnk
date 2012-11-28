@@ -46,7 +46,7 @@ namespace XMLCharSheets
             gcn.ShowDialog();
             if (!gcn.WasCancel)
             {
-                CharacterSheet newInstance = CharacterSheet.Copy(_viewModel.SelectedFullCharacter, gcn.ProvidedName);
+                CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(gcn.ProvidedName);
                 _viewModel.ActiveRoster.Add(newInstance);
             }
         }
@@ -85,37 +85,29 @@ namespace XMLCharSheets
 
         private void Do_Bashing_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an active character.");
-            }
+            if (!CheckValidActive())
+                return;
             _viewModel.DoBashing(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Do_Lethal_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an active character.");
-            }
+            if (!CheckValidActive())
+                return;
             _viewModel.DoLethal(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Do_Aggrivated_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an active character.");
-            }
+            if (!CheckValidActive())
+                return;
             _viewModel.DoAggrivated(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Reset_Health_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an active character.");
-            }
+            if (!CheckValidActive())
+                return;
             _viewModel.ResetHealth(ActiveCharacters_ListBox.SelectedItems);
         }
 
@@ -127,10 +119,8 @@ namespace XMLCharSheets
 
         private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an active character.");
-            }
+            if (!CheckValidActive())
+                return;
             _viewModel.RemoveActiveCharacters(ActiveCharacters_ListBox.SelectedItems);
         }
 
@@ -169,7 +159,7 @@ namespace XMLCharSheets
 
         private void SelectTarget_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (_viewModel.SelectedActiveCharacter == null)
+            if (!CheckValidActive())
                 return;
             if (ActiveCharacters_ListBox.SelectedItems.Count == _viewModel.ActiveRoster.Count())
             {
@@ -186,18 +176,45 @@ namespace XMLCharSheets
 
         private void Attack_Target_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckValidActive())
+                return;
+            _viewModel.RollAttackTarget(ActiveCharacters_ListBox.SelectedItems);
+
+        }
+
+        private bool CheckValidActive()
+        {
             if (_viewModel.SelectedActiveCharacter == null)
             {
                 MessageBox.Show("Please select an active character.");
-                return;
+                return false;
             }
-            _viewModel.RollAttackTarget(ActiveCharacters_ListBox.SelectedItems);
-
+            return true;
         }
 
         private void Results_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Results_TextBox.ScrollToEnd();
+        }
+
+        private void DataChanged_DataGrid(object sender, EventArgs e)
+        {
+            _viewModel.RecalculateCombatStats(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void Make_Status_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Not yet.");
+        }
+
+        private void Blood_Heal_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Blood_Buff_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -43,7 +43,7 @@ namespace XMLCharSheets
         }
 
 
-
+        public abstract void PopulateCombatTraits();
 
         public abstract void RollInitiative();
         
@@ -57,7 +57,7 @@ namespace XMLCharSheets
 
 
         private String _description;
-
+        //TODO - change combat traits when individual traits are changed.
         public CharacterSheet(string name, List<Trait> curTraits)
         {
             Name = name;
@@ -66,15 +66,14 @@ namespace XMLCharSheets
             
         }
 
-        protected abstract void PopulateCombatTraits();
-
-
-
         private List<Trait> _traits = new List<Trait>();
         public List<Trait> Traits
         {
             get { return _traits; }
-            set { _traits = value; }
+            set 
+            { 
+                _traits = value; 
+            }
         }
 
         public Trait FindTrait(String targetName)
@@ -99,24 +98,8 @@ namespace XMLCharSheets
             get;
         }
 
-        internal static CharacterSheet Copy(CharacterSheet character, string newName)
-        {
-
-            List<Trait> copyTraits = new List<Trait>();
-
-            foreach(Trait curTrait in character.Traits)
-            {
-                Trait copiedTrait = curTrait.CopyTrait();
-                copyTraits.Add(copiedTrait);
-            }
-            if (character is NWoDCharacter)
-            {
-                CharacterSheet copy = new NWoDCharacter(newName, copyTraits);
-                return copy;
-            }
-            return null;
-        }
-
+        internal abstract CharacterSheet Copy(string newName);
+        
         internal abstract string Roll(int totalDice);
 
         internal abstract void DoBashing();

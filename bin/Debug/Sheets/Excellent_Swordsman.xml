@@ -3,9 +3,11 @@
 	<name>Excellent Swordsman</name>
 	<traits>
 	<trait label='Weaponry' value='10' TargetDefense='Melee Defense' DamageType='Lethal'/>
+	<trait label='Brawl' value='6' IsAttack='true' TargetDefense='Melee Defense' DamageType='Bashing'/>
 	<trait label='Initiative' value='7'/>
 	<trait label='Ranged Defense' value='0'/>
-	<trait label='Melee Defense' value='3'/>
+	<trait label='Melee Defense' value='2'/>
+	<trait label='Armor' value='3'/>
 	<trait label='Notice' value='6'/>
 	<trait label='Resolve' value='3'/>
 	<trait label='Composure' value='3'/>

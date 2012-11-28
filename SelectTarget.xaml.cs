@@ -28,6 +28,12 @@ namespace XMLCharSheets
             foreach (var curChar in allCharacters)
             {
                 targetCharacters.Add(curChar);
+            }
+            
+            foreach (var curItem in selectedCharacters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                targetCharacters.Remove(curChar);
                 foreach (var curtrait in curChar.Traits)
                 {
                     var attackTrait = curtrait as AttackTrait;
@@ -39,12 +45,6 @@ namespace XMLCharSheets
                         }
                     }
                 }
-            }
-            
-            foreach (var curItem in selectedCharacters)
-            {
-                CharacterSheet curChar = curItem as CharacterSheet;
-                targetCharacters.Remove(curChar);
             }
             InitializeComponent();
             TargetCharacters_ListBox.ItemsSource = targetCharacters;
