@@ -36,6 +36,22 @@ namespace XMLCharSheets
             }
         }
 
+        private int _bloodAttackBonus = 0;
+        public int BloodAttackBonus
+        {
+            get { return _bloodAttackBonus; }
+            set { _bloodAttackBonus = value; }
+        }
+
+        private int _bloodThisRound;
+        public int BloodThisRound
+        {
+            get { return _bloodThisRound; }
+            set { _bloodThisRound = value; }
+        }
+        
+        
+
         internal override CharacterSheet Copy(String newName)
         {
             List<Trait> copyTraits = new List<Trait>();
@@ -58,7 +74,8 @@ namespace XMLCharSheets
                 switch (curTrait.TraitLabel)
                 {
                     case NWoDConstants.VitaeStatName:
-                        InitializeHealthBoxes(curTrait.TraitValue);
+                        MaxVitae = curTrait.TraitValue;
+                        CurrentVitae = curTrait.TraitValue;
                         break;
                 }
             }
@@ -74,16 +91,81 @@ namespace XMLCharSheets
             get
             {
                 String normal = base.Status;
-                normal = normal + "\nVitae:" + CurrentVitae+"/"+MaxVitae;
-                StringBuilder sb = new StringBuilder();
-                sb.Append("Status:\n");
-                sb.Append("Health: ");
-                sb.Append(BuildHealthString());
-                return sb.ToString();
+                normal = normal + "\nVitae: " + CurrentVitae+"/"+MaxVitae;
+                normal = normal + "\nVitae this turn: "+BloodThisRound;
+                normal = normal + "\nBlood buff: " + BloodAttackBonus;
+                return normal;
             }
             set
             {
             }
+        }
+
+        internal override void AttackTarget(int modifier)
+        {
+            var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
+            ChosenAttackTrait.TraitValue += BloodAttackBonus;
+            base.AttackTarget(modifier);
+            ChosenAttackTrait.TraitValue -= BloodAttackBonus;
+
+        }
+
+        internal override void NewRound()
+        {
+            base.NewRound();
+            BloodAttackBonus = 0;
+            BloodThisRound = 0;
+        }
+
+
+        internal void BloodBuff()
+        {
+            BloodThisRound++;
+            BloodAttackBonus += 2;
+            CurrentVitae--;
+            OnPropertyChanged("Status");
+        }
+
+        public bool HasHealableWounds()
+        {
+            bool hasBashing = HealthTrack.Where(x => x.Box == HealthBox.DamageType.Bashing).Any();
+            bool hasLethal = HealthTrack.Where(x => x.Box == HealthBox.DamageType.Lethal).Any();
+            return hasBashing || hasLethal;
+        }
+
+        internal void BloodHeal()
+        {
+            BloodThisRound++;
+            CurrentVitae--;
+            int totalBashing = HealthTrack.Where(x => x.Box == HealthBox.DamageType.Bashing).Count();
+            if (totalBashing >= 2)
+            {
+                RemoveDamage(HealthBox.DamageType.Bashing);
+                RemoveDamage(HealthBox.DamageType.Bashing);
+            }
+            else
+            {
+                RemoveDamage(HealthBox.DamageType.Lethal);
+            }
+            OnPropertyChanged("Status");
+        }
+
+        private void RemoveDamage(HealthBox.DamageType damageType)
+        {
+            HealthBox matchingBox = HealthTrack.Where(x => x.Box == damageType).FirstOrDefault();
+            if (matchingBox != null)
+            {
+                HealthTrack.Remove(matchingBox);
+                HealthTrack.Add(new HealthBox());
+            }
+        }
+
+
+
+        internal void ResetVitae()
+        {
+            CurrentVitae = MaxVitae;
+            OnPropertyChanged("Status");
         }
     }
 }

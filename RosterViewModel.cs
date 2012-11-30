@@ -286,7 +286,7 @@ namespace XMLCharSheets
                 RollResults = "{" + curTrait.TraitLabel + "}" + " ";
             }
             totalDice += RollModifier;
-            String result = involvedCharacter.Roll(totalDice);
+            String result = involvedCharacter.RollBasePool(totalDice);
             RollResults = "}\n" + result;
         }
     
@@ -350,16 +350,6 @@ namespace XMLCharSheets
             }
         }
 
-
-        internal void SetTargets(IList attackers, CharacterSheet target, String attackType, string damageType)
-        {
-            foreach (var curItem in attackers)
-            {
-                CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.SetTarget(target, attackType, damageType);
-            }
-        }
-
         private String _rollResults;
 
         public String RollResults
@@ -387,8 +377,8 @@ namespace XMLCharSheets
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {
-                    curChar.AttackTarget();
-                    RollResults = curChar.Name + " rolled attack {" + curChar.ChosenAttack + "}: " + curChar.RollResults + "\n";
+                    curChar.AttackTarget(RollModifier);
+                    RollResults = curChar.Name + " rolled attack {" + curChar.ChosenAttackString + "}: " + curChar.RollResults + "\n";
                 }
             }
         }
@@ -407,6 +397,85 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
                 curChar.PopulateCombatTraits();
+            }
+        }
+
+        internal void BloodHeal(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                var curVampire = curItem as NWoDVampire;
+                if (curVampire == null)
+                {
+                    var regularChar = curItem as CharacterSheet;
+                    RollResults = regularChar.Name + " is not a vampire.";
+                }
+                else
+                {
+                    if (curVampire.CurrentVitae > 0)
+                    {
+                        if (curVampire.HasHealableWounds())
+                            curVampire.BloodHeal();
+                        else
+                        {
+                            RollResults = curVampire.Name + " did not have wounds that could be healed.";
+                        }
+                    }
+                    else
+                        RollResults = curVampire.Name + " did not have enough Vitae.";
+                }
+            }
+        }
+
+        internal void BloodBuff(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                var curVampire = curItem as NWoDVampire;
+                if (curVampire == null)
+                {
+                    CharacterSheet regularChar = curItem as CharacterSheet;
+                    RollResults = regularChar.Name + " is not a vampire.";
+                }
+                else
+                {
+                    if (curVampire.CurrentVitae > 0)
+                        curVampire.BloodBuff();
+                    else
+                        RollResults = curVampire.Name + " did not have enough Vitae.";
+                }
+            }
+        }
+
+
+        internal void SetTargets(IList attackers, IList otherTraits, CharacterSheet target, string attackType, string damageType)
+        {
+            List <String> otherAttackTraits = new List<string>();
+            foreach(var cur in otherTraits)
+            {
+                otherAttackTraits.Add(cur.ToString());
+            }
+            foreach (var curItem in attackers)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.SetTarget(target, otherAttackTraits, attackType, damageType);
+            }
+        }
+
+        internal void RefillVitae(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                var curVampire = curItem as NWoDVampire;
+                if (curVampire == null)
+                {
+                    CharacterSheet regularChar = curItem as CharacterSheet;
+                    RollResults = regularChar.Name + " is not a vampire.";
+                }
+                else
+                {
+                    curVampire.ResetVitae();
+                }
             }
         }
     }

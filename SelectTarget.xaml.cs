@@ -22,7 +22,9 @@ namespace XMLCharSheets
     {
         ObservableCollection<CharacterSheet> targetCharacters = new ObservableCollection<CharacterSheet>();
         ObservableCollection<String> attackTraits = new ObservableCollection<String>();
-        public SelectTarget(IList selectedCharacters, ObservableCollection<CharacterSheet> allCharacters, ObservableCollection<string> damageTypes)
+        ObservableCollection<String> otherTraits = new ObservableCollection<String>();
+        public SelectTarget(IList selectedCharacters, ObservableCollection<CharacterSheet> allCharacters, 
+            ObservableCollection<string> damageTypes)
         {
             _allCharacters = allCharacters;
             foreach (var curChar in allCharacters)
@@ -34,9 +36,9 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
                 targetCharacters.Remove(curChar);
-                foreach (var curtrait in curChar.Traits)
+                foreach (var curTrait in curChar.Traits)
                 {
-                    var attackTrait = curtrait as AttackTrait;
+                    var attackTrait = curTrait as AttackTrait;
                     if (attackTrait != null)
                     {
                         if (!attackTraits.Contains(attackTrait.TraitLabel))
@@ -44,14 +46,22 @@ namespace XMLCharSheets
                             attackTraits.Add(attackTrait.TraitLabel);
                         }
                     }
+                    else
+                    {
+                        otherTraits.Add(curTrait.TraitLabel);
+                    }
                 }
             }
             InitializeComponent();
+            
+            
             TargetCharacters_ListBox.ItemsSource = targetCharacters;
             Shared_Attacks_ListBox.ItemsSource = attackTraits;
+            Other_Traits_ListBox.ItemsSource = otherTraits;
             DamageTypes_ListBox.ItemsSource = damageTypes;
             TargetCharacters_ListBox.SelectedIndex = 0;
             Shared_Attacks_ListBox.SelectedIndex = 0;
+            
         }
 
         bool _wasCancel;

@@ -100,8 +100,6 @@ namespace XMLCharSheets
 
         internal abstract CharacterSheet Copy(string newName);
         
-        internal abstract string Roll(int totalDice);
-
         internal abstract void DoBashing();
         internal abstract void DoLethal();
         internal abstract void DoAggrivated();
@@ -155,10 +153,56 @@ namespace XMLCharSheets
 
 
 
-        internal abstract void AttackTarget();
+
+        internal virtual void NewRound()
+        {
+            OnPropertyChanged("Status");
+        }
 
 
 
-        internal abstract void NewRound();
+
+        internal void SetTarget(CharacterSheet target, List <String> otherTraits, string attackType, string damageType)
+        {
+            Target = target;
+            OtherAttackTraits = otherTraits;
+            DamageType = damageType;
+            ChosenAttack = attackType;
+        }
+
+
+        private List<string> _otherAttackTraits;
+        /// <summary>
+        /// Other non-attack specific traits that can add to an attack.
+        /// </summary>
+        public List<string> OtherAttackTraits
+        {
+            get
+            {
+                return _otherAttackTraits;
+            }
+            set
+            {
+                _otherAttackTraits = value;
+            }
+        }
+
+        public string ChosenAttackString
+        {
+            get 
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(ChosenAttack);
+                for (int curIndex = 0; curIndex < OtherAttackTraits.Count(); curIndex++)
+                {
+                    sb.Append(", " + OtherAttackTraits[curIndex]);
+                }
+                return sb.ToString();
+            }
+        }
+
+        internal abstract void AttackTarget(int RollModifier);
+
+        internal abstract string RollBasePool(int totalDice);
     }
 }
