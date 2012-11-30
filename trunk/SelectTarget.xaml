@@ -1,7 +1,7 @@
 ﻿<Window x:Class="XMLCharSheets.SelectTarget"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Select Target" MinHeight="295" Height="Auto" Width="246" 
+        Title="Select Target" MinHeight="295" Height="Auto" SizeToContent="Height" Width="246" 
         WindowStyle="ToolWindow" ResizeMode="NoResize"
         KeyDown="GetName_KeyDown"
         
@@ -18,7 +18,12 @@
             SelectionChanged="Shared_Attacks_ListBox_SelectionChanged"
             Margin="0,0,0,10" MinHeight="50" Name="Shared_Attacks_ListBox" HorizontalAlignment="Stretch" SelectionMode="Single">
         </ListBox>
-        <Label Content="Damage Type"></Label>
+            <Label Content="Other Skills"></Label>
+            <ListBox 
+                Margin="0,0,0,10" MinHeight="50" Name="Other_Traits_ListBox" HorizontalAlignment="Stretch" SelectionMode="Extended">
+            </ListBox>
+
+            <Label Content="Damage Type"></Label>
         <ListBox 
         Margin="0,0,0,10" MinHeight="50" Name="DamageTypes_ListBox" HorizontalAlignment="Stretch" SelectionMode="Single">
         </ListBox>

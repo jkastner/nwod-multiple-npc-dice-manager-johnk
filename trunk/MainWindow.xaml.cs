@@ -170,7 +170,8 @@ namespace XMLCharSheets
             st.ShowDialog();
             if (!st.WasCancel&&st.SelectedTarget != null)
             {
-                _viewModel.SetTargets(ActiveCharacters_ListBox.SelectedItems, st.SelectedTarget, st.ChosenAttack, st.WoundType);
+                _viewModel.SetTargets(ActiveCharacters_ListBox.SelectedItems, 
+                    st.Other_Traits_ListBox.SelectedItems, st.SelectedTarget, st.ChosenAttack, st.WoundType);
             }
         }
 
@@ -209,12 +210,17 @@ namespace XMLCharSheets
 
         private void Blood_Heal_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.BloodHeal(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Blood_Buff_Button_Click(object sender, RoutedEventArgs e)
         {
+            _viewModel.BloodBuff(ActiveCharacters_ListBox.SelectedItems);
+        }
 
+        private void Refill_Vitae_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.RefillVitae(ActiveCharacters_ListBox.SelectedItems);
         }
     }
 }

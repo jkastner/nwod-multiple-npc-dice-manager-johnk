@@ -171,10 +171,14 @@ namespace XMLCharSheets
                 HealthTrack.Add(new HealthBox());
             }
         }
-
-        internal override string Roll(int totalDice)
+        internal override string RollBasePool(int totalDice)
         {
             totalDice += WoundPenalties;
+            return Roll(totalDice);
+        }
+
+        internal string Roll(int totalDice)
+        {
             curPool = new NWoDRollDice(totalDice);
             curPool.Roll();
             String result = " {" + curPool.NumberOfDice + "}: " + curPool.CurrentSuccesses + " successes.\nResults: " + curPool.ResultDescription;
@@ -266,7 +270,7 @@ namespace XMLCharSheets
             get { return _rollResults; }
         }
 
-        internal override void AttackTarget()
+        internal override void AttackTarget(int modifier)
         {
             var nwodTarget = Target as NWoDCharacter;
             int targetDefense = 0;
@@ -280,8 +284,14 @@ namespace XMLCharSheets
                 targetDefense = Target.FindTrait(ChosenAttackTrait.DefenseTarget).TraitValue;
             }
             var attackPool = ChosenAttackTrait.TraitValue;
+            foreach (String additionalAttackTrait in OtherAttackTraits)
+            {
+                attackPool += FindTrait(additionalAttackTrait).TraitValue;
+            }
             attackPool -= targetDefense;
             attackPool -= nwodTarget.Armor;
+            attackPool += modifier;
+            attackPool += WoundPenalties;
             int attackSuccesses = 0;
             Roll(attackPool);
             attackSuccesses = curPool.CurrentSuccesses;
@@ -328,8 +338,10 @@ namespace XMLCharSheets
 
         internal override void NewRound()
         {
+            base.NewRound();
             CurrentMeleeDefense = NormalMeleeDefense;
         }
+
 
 
     }
