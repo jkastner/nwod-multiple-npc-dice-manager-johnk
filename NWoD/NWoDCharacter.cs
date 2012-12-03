@@ -133,16 +133,11 @@ namespace XMLCharSheets
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Status:");
+                sb.Append(base.Status);
                 sb.Append("Health: ");
                 sb.AppendLine(BuildHealthString());
                 sb.AppendLine("Melee Def: " + CurrentMeleeDefense);
                 return sb.ToString();
-            }
-            set
-            {
-                //Do Nothing
-
             }
         }
 
@@ -212,15 +207,9 @@ namespace XMLCharSheets
             {
                 curBox.Box = HealthBox.DamageType.Empty;
             }
-            ChangeHealthProperties();
-            
+            NotifyStatusChange();
         }
 
-        private void ChangeHealthProperties()
-        {
-            OnPropertyChanged("Status");
-            OnPropertyChanged("StatusColor");
-        }
 
         private void AddDamageBox(HealthBox newDamage)
         {
@@ -242,7 +231,7 @@ namespace XMLCharSheets
             if (HealthTrack.Last().Box == HealthBox.DamageType.Empty)
             {
                 HealthTrack.Remove(HealthTrack.Last());
-                ChangeHealthProperties();
+                NotifyStatusChange();
                 return;
             }
             else

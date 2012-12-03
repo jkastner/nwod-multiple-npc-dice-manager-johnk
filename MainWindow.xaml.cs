@@ -205,7 +205,14 @@ namespace XMLCharSheets
 
         private void Make_Status_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not yet.");
+            if (CheckValidActive())
+            {
+                StatusEffectWindow se = new StatusEffectWindow();
+                se.ShowDialog();
+                int duration = Int32.Parse(se.StatusDuration.Text);
+                String description = se.StatusDescription.Text;
+                _viewModel.AssignStatus(ActiveCharacters_ListBox.SelectedItems, duration, description);
+            }
         }
 
         private void Blood_Heal_Button_Click(object sender, RoutedEventArgs e)

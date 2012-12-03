@@ -96,9 +96,6 @@ namespace XMLCharSheets
                 normal = normal + "\nBlood buff: " + BloodAttackBonus;
                 return normal;
             }
-            set
-            {
-            }
         }
 
         internal override void AttackTarget(int modifier)
@@ -123,7 +120,7 @@ namespace XMLCharSheets
             BloodThisRound++;
             BloodAttackBonus += 2;
             CurrentVitae--;
-            OnPropertyChanged("Status");
+            NotifyStatusChange();
         }
 
         public bool HasHealableWounds()
@@ -147,7 +144,7 @@ namespace XMLCharSheets
             {
                 RemoveDamage(HealthBox.DamageType.Lethal);
             }
-            OnPropertyChanged("Status");
+            NotifyStatusChange();
         }
 
         private void RemoveDamage(HealthBox.DamageType damageType)
@@ -165,7 +162,7 @@ namespace XMLCharSheets
         internal void ResetVitae()
         {
             CurrentVitae = MaxVitae;
-            OnPropertyChanged("Status");
+            NotifyStatusChange();
         }
     }
 }

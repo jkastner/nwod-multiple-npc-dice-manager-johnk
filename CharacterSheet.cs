@@ -46,13 +46,22 @@ namespace XMLCharSheets
         public abstract void PopulateCombatTraits();
 
         public abstract void RollInitiative();
-        
 
-        public abstract String Status
+
+        public virtual String Status
         {
-            get;
-            set;
+            get
+            {
+                String status = "Status:\n";
+                foreach (StatusEffect cur in StatusEffects)
+                {
+                    status = status + cur.Description +" {"+cur.DurationRemaining+"}\n";
+                }
+                return status;
+            }
         }
+
+
 
 
 
@@ -156,7 +165,16 @@ namespace XMLCharSheets
 
         internal virtual void NewRound()
         {
-            OnPropertyChanged("Status");
+            for(int curIndex = StatusEffects.Count-1;curIndex>=0;curIndex--)
+            {
+                StatusEffect cur = StatusEffects[curIndex];
+                cur.DurationRemaining--;
+                if (cur.DurationRemaining <= 0)
+                {
+                    StatusEffects.Remove(cur);
+                }
+            }
+            NotifyStatusChange();
         }
 
 
@@ -204,5 +222,51 @@ namespace XMLCharSheets
         internal abstract void AttackTarget(int RollModifier);
 
         internal abstract string RollBasePool(int totalDice);
+
+        private List<StatusEffect> _statusEffects = new List<StatusEffect>();
+
+        public List<StatusEffect> StatusEffects
+        {
+            get { return _statusEffects; }
+            set 
+            {
+                _statusEffects = value;
+                NotifyStatusChange();
+            }
+        }
+
+        public void NotifyStatusChange()
+        {
+            OnPropertyChanged("Status");
+            OnPropertyChanged("StatusesLine");
+            OnPropertyChanged("StatusEffects");
+            OnPropertyChanged("StatusColor");
+        }
+
+        private String _statusesLine;
+        public String StatusesLine
+        {
+            get 
+            {
+                
+                String statusLine = "";
+                foreach (StatusEffect cur in StatusEffects)
+                {
+                    statusLine = statusLine + " " + cur.Description;
+                }
+                _statusesLine = statusLine.Trim();
+                return _statusesLine;
+            }
+            set { _statusesLine = value; }
+        }
+        
+        
+
+
+        internal void AssignStatus(string description, int duration)
+        {
+            StatusEffects.Add(new StatusEffect(description, duration));
+            NotifyStatusChange();
+        }
     }
 }
