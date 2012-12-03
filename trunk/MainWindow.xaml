@@ -27,6 +27,7 @@
                         <DataTemplate>
                             <DockPanel>
                                 <TextBlock Text="{Binding Path=Name}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+                                <TextBlock Margin="8,0,0,0" Text="{Binding Path=StatusesLine}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
                                 <TextBlock Margin="8,0,0,0" Text="{Binding Path=CurInitiative}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Center" />
                                 <TextBlock Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                            HorizontalAlignment="Center" />
@@ -66,7 +67,7 @@
                 <TextBox
                     IsReadOnly="True"
                     MinHeight="50" MinWidth="50" Height="Auto"
-                    Text="{Binding Path=SelectedActiveCharacter.Status, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Path=SelectedActiveCharacter.Status, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
                     TextWrapping="Wrap"
                     >
                 </TextBox>
@@ -167,7 +168,8 @@
                         Margin="0,0,0,10" 
                         Name="Modifier_TextBox" Width="75" Text="{Binding Path=RollModifier, Mode=TwoWay}"
                              PreviewTextInput="Modifier_TextBox_PreviewTextInput"
-                             DataObject.Pasting="Modifier_TextBox_Pasting" >
+                             DataObject.Pasting="Modifier_TextBox_Pasting" 
+                        >
 
                     </TextBox>
                     <Button Name="Initiative_Button" Width="Auto" Height="Auto" Margin="0,0,0,10" HorizontalAlignment="Right" Click="Initiative_Button_Click"

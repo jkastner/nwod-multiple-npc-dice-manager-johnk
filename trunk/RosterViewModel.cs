@@ -324,6 +324,9 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
                 curChar.ResetHealth();
+                curChar.StatusEffects.Clear();
+                curChar.NotifyStatusChange();
+
             }
         }
 
@@ -476,6 +479,15 @@ namespace XMLCharSheets
                 {
                     curVampire.ResetVitae();
                 }
+            }
+        }
+
+        internal void AssignStatus(IList characters, int duration, string description)
+        {
+            foreach (var curItem in characters)
+            {
+                var curCharacer = curItem as CharacterSheet;
+                curCharacer.AssignStatus(description, duration);
             }
         }
     }

@@ -70,6 +70,10 @@
     <Compile Include="SelectTarget.xaml.cs">
       <DependentUpon>SelectTarget.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatusEffect.cs" />
+    <Compile Include="StatusEffectWindow.xaml.cs">
+      <DependentUpon>StatusEffectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Trait.cs" />
     <Page Include="GetCharacterName.xaml">
       <SubType>Designer</SubType>
@@ -88,6 +92,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SelectTarget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusEffectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
