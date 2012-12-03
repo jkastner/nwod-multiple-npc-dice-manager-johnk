@@ -64,8 +64,8 @@
     <Compile Include="NWoD\NWoDHealthBox.cs" />
     <Compile Include="NWoD\NWoDCharacter.cs" />
     <Compile Include="NWoD\NWoDRollDice.cs" />
-    <Compile Include="NumberedTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
+    <Compile Include="ReadCharacter.cs" />
     <Compile Include="RosterViewModel.cs" />
     <Compile Include="SelectTarget.xaml.cs">
       <DependentUpon>SelectTarget.xaml</DependentUpon>

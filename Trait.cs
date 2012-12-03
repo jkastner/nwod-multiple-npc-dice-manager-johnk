@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public abstract class Trait
+    public class Trait
     {
         private String _traitLabel;
         public String TraitLabel
@@ -33,6 +33,9 @@ namespace XMLCharSheets
             return TraitLabel + " -- " + TraitValue;
         }
 
-        public abstract Trait CopyTrait();
+        public virtual Trait CopyTrait()
+        {
+            return new Trait(TraitValue, TraitLabel);
+        }    
     }
 }

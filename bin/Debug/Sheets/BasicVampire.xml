@@ -1,4 +1,5 @@
 <CharacterSheet>
+	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Vampire</CharacterType>
 	<name>Neonate Vampire</name>
 	<traits>
