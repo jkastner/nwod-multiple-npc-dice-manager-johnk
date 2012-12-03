@@ -133,72 +133,11 @@ namespace XMLCharSheets
 
 
 
-        private enum PersonType
-        {
-            Person, Vampire
-        }
+
         public CharacterSheet ReadCharacterFromFile(String fileName)
         {
-            CharacterSheet curChar = null;
-            try
-            {
-                PersonType curType = PersonType.Person;
-                XmlTextReader reader = new XmlTextReader(fileName);
-                List<Trait> curTraits = new List<Trait>();
-                while (reader.Read())
-                {
-                    String curReader = reader.Name.ToLower().Trim();
-                    if (curReader.Equals("charactertype") && reader.NodeType.Equals(XmlNodeType.Element))
-                    {
-                        reader.Read();
-                        switch(reader.Value.ToLower().Trim())
-                        {
-                            case "vampire":
-                                curType = PersonType.Vampire;
-                                break;
-                            case "human":
-                            default:
-                                curType = PersonType.Person;
-                                break;
-
-                        }
-                    }
-
-                    if (curReader.Equals("name") && reader.NodeType.Equals(XmlNodeType.Element))
-                    {
-                        reader.Read();
-                        if(curType == PersonType.Vampire)
-                            curChar = new NWoDVampire(reader.Value, curTraits);
-                        else
-                            curChar = new NWoDCharacter(reader.Value, curTraits);
-
-                    }
-                    if (curReader.Equals("trait"))
-                    {
-                        String label = reader.GetAttribute("label");
-                        int value = Convert.ToInt32(reader.GetAttribute("value"));
-                        String targetDefense = reader.GetAttribute("TargetDefense");
-                        String damageType = reader.GetAttribute("DamageType");
-                        if (targetDefense != null)
-                        {
-                            AttackTrait curAttack = new AttackTrait(value, label, targetDefense, damageType);
-                            curTraits.Add(curAttack);
-                        }
-                        else
-                        {
-                            NumberedTrait curNumberedTrait = new NumberedTrait(value, label);
-                            curTraits.Add(curNumberedTrait);
-                        }
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error opening " + fileName);
-                throw;
-            }
-            return curChar;
+            ReadCharacter rc = new ReadCharacter();
+            return rc.Read(fileName);
         }
 
         #region INotifyPropertyChanged Members

@@ -1,4 +1,5 @@
 <CharacterSheet>
+	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Human</CharacterType>
 	<name>Average Swordsman</name>
 	<traits>
