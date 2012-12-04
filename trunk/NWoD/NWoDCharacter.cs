@@ -72,10 +72,10 @@ namespace XMLCharSheets
                     case HealthBox.DamageType.Aggrivated:
                         return new SolidColorBrush(Colors.Red);
                     case HealthBox.DamageType.Grievous:
-                        return new SolidColorBrush(Colors.DarkGray);
+                        return new SolidColorBrush(Colors.LightGray);
                     case HealthBox.DamageType.Empty:
                     default:
-                        return new SolidColorBrush(Colors.Black);
+                        return new SolidColorBrush(Colors.White);
 
                 }
             }
@@ -181,11 +181,26 @@ namespace XMLCharSheets
             return result;
         }
 
+        private bool _isIncapacitated = false;
+        public override bool IsIncapacitated
+        {
+            get 
+            {
+                return _isIncapacitated;
+            }
+            set
+            {
+                _isIncapacitated = value;
+            }
+        }
+
+
         internal override void DoBashing()
         {
             HealthBox newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Bashing;
             AddDamageBox(newDamage);
+
 
         }
         internal override void DoLethal()
@@ -231,7 +246,13 @@ namespace XMLCharSheets
             if (HealthTrack.Last().Box == HealthBox.DamageType.Empty)
             {
                 HealthTrack.Remove(HealthTrack.Last());
+                if (!IsIncapacitated && HealthTrack.Last().Box > HealthBox.DamageType.Bashing)
+                {
+                    StatusEffects.Add(new StatusEffect("Incapacitated", 500));
+                    IsIncapacitated = true;
+                }
                 NotifyStatusChange();
+
                 return;
             }
             else
@@ -245,6 +266,29 @@ namespace XMLCharSheets
                 HealthTrack.Remove(lastBox);
                 AddDamageBox(spilloverDamage);
             }
+
+        }
+
+        protected virtual void CheckToStayConscious()
+        {
+            if (!(HealthTrack.Last().Box == HealthBox.DamageType.Bashing))
+            {
+                return;
+            }
+            var stamina = FindTrait("Stamina");
+            int staminaCheckNum = HealthTrack.Count()-5;
+            if (stamina != null)
+            {
+                staminaCheckNum = stamina.TraitValue;
+            }
+            NWoDRollDice staminaCheck = new NWoDRollDice(staminaCheckNum);
+            staminaCheck.Roll();
+            if (staminaCheck.CurrentSuccesses == 0)
+            {
+                StatusEffects.Add(new StatusEffect("Incapacitated", 500));
+                IsIncapacitated = true;
+            }
+
         }
 
 
@@ -325,10 +369,21 @@ namespace XMLCharSheets
             }
         }
 
-        internal override void NewRound()
+        internal override string NewRound()
         {
             base.NewRound();
             CurrentMeleeDefense = NormalMeleeDefense;
+            bool wasOut = IsIncapacitated;
+            if (!IsIncapacitated)
+            {
+                CheckToStayConscious();
+                if (wasOut && IsIncapacitated)
+                {
+                    return Name + " failed stamina roll to stay awake.";
+                }
+            }
+            return String.Empty;
+
         }
 
 

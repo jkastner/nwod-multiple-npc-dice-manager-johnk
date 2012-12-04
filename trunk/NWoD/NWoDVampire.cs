@@ -107,11 +107,12 @@ namespace XMLCharSheets
 
         }
 
-        internal override void NewRound()
+        internal override string NewRound()
         {
             base.NewRound();
             BloodAttackBonus = 0;
             BloodThisRound = 0;
+            return String.Empty;
         }
 
 
@@ -157,6 +158,10 @@ namespace XMLCharSheets
             }
         }
 
+        protected override void CheckToStayConscious()
+        {
+            return;
+        }
 
 
         internal void ResetVitae()

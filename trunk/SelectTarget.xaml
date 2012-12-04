@@ -11,8 +11,18 @@
         <StackPanel>
         <Label Content="Target"></Label>
         <ListBox 
-            Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox" HorizontalAlignment="Stretch" SelectionMode="Single">
-        </ListBox>
+            Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" SelectionMode="Single">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock Text="{Binding Path=Name}" FontSize="16" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+                            <TextBlock Margin="16,0,0,0" Text="{Binding Path=StatusesLine}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+                            <TextBlock Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                           HorizontalAlignment="Center" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         <Label Content="Attack Type"></Label>
         <ListBox 
             SelectionChanged="Shared_Attacks_ListBox_SelectionChanged"
