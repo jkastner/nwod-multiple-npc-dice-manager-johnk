@@ -163,7 +163,7 @@ namespace XMLCharSheets
 
 
 
-        internal virtual void NewRound()
+        internal virtual String NewRound()
         {
             for(int curIndex = StatusEffects.Count-1;curIndex>=0;curIndex--)
             {
@@ -175,6 +175,7 @@ namespace XMLCharSheets
                 }
             }
             NotifyStatusChange();
+            return String.Empty;
         }
 
 
@@ -268,5 +269,7 @@ namespace XMLCharSheets
             StatusEffects.Add(new StatusEffect(description, duration));
             NotifyStatusChange();
         }
+
+        public abstract bool IsIncapacitated { get; set; }
     }
 }

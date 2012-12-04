@@ -53,25 +53,7 @@ namespace XMLCharSheets
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _viewModel.CurrentTraits.Clear();
-            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            List<String> curTraits = new List<String>();
-            foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
-            {
-                CharacterSheet curChar = cur as CharacterSheet;
-                foreach (var curTrait in curChar.Traits)
-                {
-                    curTraits.Add(curTrait.TraitLabel);
-                }
-            }
-            curTraits = curTraits.Distinct().ToList();
-            foreach (var cur in curTraits)
-            {
-                _viewModel.CurrentTraits.Add(cur);
-            }
+            SetupTraits(ActiveCharacters_ListBox);
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
@@ -209,9 +191,12 @@ namespace XMLCharSheets
             {
                 StatusEffectWindow se = new StatusEffectWindow();
                 se.ShowDialog();
-                int duration = Int32.Parse(se.StatusDuration.Text);
-                String description = se.StatusDescription.Text;
-                _viewModel.AssignStatus(ActiveCharacters_ListBox.SelectedItems, duration, description);
+                if (!se.WasCancel&&!String.IsNullOrWhiteSpace(se.StatusDescription.Text))
+                {
+                    int duration = Int32.Parse(se.StatusDuration.Text);
+                    String description = se.StatusDescription.Text;
+                    _viewModel.AssignStatus(ActiveCharacters_ListBox.SelectedItems, duration, description);
+                }
             }
         }
 
@@ -228,6 +213,39 @@ namespace XMLCharSheets
         private void Refill_Vitae_Button_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.RefillVitae(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void CleanDeceasedCharacters_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.MarkCharactersAsDeceased();
+        }
+
+        private void DeceasedCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SetupTraits(DeceasedCharacters);
+        }
+
+        private void SetupTraits(ListBox characterListbox)
+        {
+            _viewModel.CurrentTraits.Clear();
+            if (characterListbox.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            List<String> curTraits = new List<String>();
+            foreach (var cur in characterListbox.SelectedItems)
+            {
+                CharacterSheet curChar = cur as CharacterSheet;
+                foreach (var curTrait in curChar.Traits)
+                {
+                    curTraits.Add(curTrait.TraitLabel);
+                }
+            }
+            curTraits = curTraits.Distinct().ToList();
+            foreach (var cur in curTraits)
+            {
+                _viewModel.CurrentTraits.Add(cur);
+            }
         }
     }
 }

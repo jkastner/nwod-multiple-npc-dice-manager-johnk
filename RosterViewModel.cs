@@ -34,6 +34,17 @@ namespace XMLCharSheets
             }
         }
 
+        private ObservableCollection<CharacterSheet> _deceasedRoster = new ObservableCollection<CharacterSheet>();
+        public ObservableCollection<CharacterSheet> DeceasedRoster
+        {
+            get { return _deceasedRoster; }
+            set
+            {
+                _deceasedRoster = value;
+            }
+        }
+
+
         private ObservableCollection<String> _currentTraits = new ObservableCollection<String>();
         public ObservableCollection<String> CurrentTraits
         {
@@ -61,7 +72,7 @@ namespace XMLCharSheets
             get { return _selectedFullCharacter; }
             set
             {
-                SetActiveCharacter(value, null);
+                SetActiveCharacter(value, null, null);
                 OnPropertyChanged("SelectedFullCharacter");
             }
         }
@@ -72,7 +83,17 @@ namespace XMLCharSheets
             get { return _selectedActiveCharacter; }
             set
             {
-                SetActiveCharacter(null, value);
+                SetActiveCharacter(null, value, null);
+            }
+        }
+
+        private CharacterSheet _selectedDeceasedCharacter;
+        public CharacterSheet SelectedDeceasedCharacter
+        {
+            get { return _selectedDeceasedCharacter; }
+            set
+            {
+                SetActiveCharacter(null, null, value);
             }
         }
 
@@ -82,7 +103,7 @@ namespace XMLCharSheets
             get { return _selectedCharacter; }
         }
 
-        private void SetActiveCharacter(CharacterSheet fullChar, CharacterSheet activeChar)
+        private void SetActiveCharacter(CharacterSheet fullChar, CharacterSheet activeChar, CharacterSheet deceasedCharacter)
         {
             if (activeChar != null)
             {
@@ -92,10 +113,16 @@ namespace XMLCharSheets
             {
                 _selectedCharacter = fullChar;
             }
+            if (deceasedCharacter != null)
+            {
+                _selectedCharacter = deceasedCharacter;
+            }
             _selectedActiveCharacter = activeChar;
             _selectedFullCharacter = fullChar;
+            _selectedDeceasedCharacter = deceasedCharacter;
             OnPropertyChanged("SelectedFullCharacter");
             OnPropertyChanged("SelectedActiveCharacter");
+            OnPropertyChanged("SelectedDeceasedCharacter");
             OnPropertyChanged("SelectedCharacter");
         }
         
@@ -155,7 +182,7 @@ namespace XMLCharSheets
 
         internal void RollCharacters(IList characters, IList selectedTraits)
         {
-            RollResults = lineBreak;
+            ResultText = lineBreak;
             List<String> involvedTraits = new List<String>();
             foreach (var curTraitItem in selectedTraits)
             {
@@ -204,7 +231,7 @@ namespace XMLCharSheets
                         result.Append(", " + missingTraits[curIndex]);
                     }
                 }
-                RollResults = "\n" + result.ToString();
+                ResultText = "\n" + result.ToString();
 
             }
             return canRoll;
@@ -212,7 +239,7 @@ namespace XMLCharSheets
 
         private void RollCharacter(CharacterSheet involvedCharacter, List<string> involvedTraits)
         {
-            RollResults = involvedCharacter.Name + " rolled {";
+            ResultText = involvedCharacter.Name + " rolled {";
             int totalDice = 0;
             List<Trait> charTraits = new List<Trait>();
             foreach(var cur in involvedTraits)
@@ -222,11 +249,11 @@ namespace XMLCharSheets
             foreach (Trait curTrait in charTraits)
             {
                 totalDice += curTrait.TraitValue;
-                RollResults = "{" + curTrait.TraitLabel + "}" + " ";
+                ResultText = "{" + curTrait.TraitLabel + "}" + " ";
             }
             totalDice += RollModifier;
             String result = involvedCharacter.RollBasePool(totalDice);
-            RollResults = "}\n" + result;
+            ResultText = "}\n" + result;
         }
     
 
@@ -293,34 +320,33 @@ namespace XMLCharSheets
         }
 
         private String _rollResults;
-
-        public String RollResults
+        public String ResultText
         {
             get { return _rollResults; }
             set {
                 _rollResults = _rollResults + value;
-                OnPropertyChanged("RollResults");
+                OnPropertyChanged("ResultText");
             }
         }
 
         String lineBreak = "\n-----------\n";
         internal void RollAttackTarget(IList attackers)
         {
-            RollResults = lineBreak;
+            ResultText = lineBreak;
             foreach (var curItem in attackers)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
                 List<String> attackName = new List<String>();
                 if (curChar.Target == null)
                 {
-                    RollResults = curChar.Name + " has no target.\n";
+                    ResultText = curChar.Name + " has no target.\n";
                     continue;
                 }
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {
                     curChar.AttackTarget(RollModifier);
-                    RollResults = curChar.Name + " rolled attack {" + curChar.ChosenAttackString + "} on "+curChar.Target.Name+": " + curChar.RollResults + "\n";
+                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackString + "} on "+curChar.Target.Name+": " + curChar.RollResults + "\n";
                 }
             }
         }
@@ -329,7 +355,11 @@ namespace XMLCharSheets
         {
             foreach (CharacterSheet curCharacter in ActiveRoster)
             {
-                curCharacter.NewRound();
+                String info = curCharacter.NewRound();
+                if (!String.IsNullOrWhiteSpace(info))
+                {
+                    ResultText = info;
+                }
             }
         }
 
@@ -350,7 +380,7 @@ namespace XMLCharSheets
                 if (curVampire == null)
                 {
                     var regularChar = curItem as CharacterSheet;
-                    RollResults = regularChar.Name + " is not a vampire.";
+                    ResultText = regularChar.Name + " is not a vampire.";
                 }
                 else
                 {
@@ -360,11 +390,11 @@ namespace XMLCharSheets
                             curVampire.BloodHeal();
                         else
                         {
-                            RollResults = curVampire.Name + " did not have wounds that could be healed.";
+                            ResultText = curVampire.Name + " did not have wounds that could be healed.";
                         }
                     }
                     else
-                        RollResults = curVampire.Name + " did not have enough Vitae.";
+                        ResultText = curVampire.Name + " did not have enough Vitae.";
                 }
             }
         }
@@ -377,14 +407,14 @@ namespace XMLCharSheets
                 if (curVampire == null)
                 {
                     CharacterSheet regularChar = curItem as CharacterSheet;
-                    RollResults = regularChar.Name + " is not a vampire.";
+                    ResultText = regularChar.Name + " is not a vampire.";
                 }
                 else
                 {
                     if (curVampire.CurrentVitae > 0)
                         curVampire.BloodBuff();
                     else
-                        RollResults = curVampire.Name + " did not have enough Vitae.";
+                        ResultText = curVampire.Name + " did not have enough Vitae.";
                 }
             }
         }
@@ -412,7 +442,7 @@ namespace XMLCharSheets
                 if (curVampire == null)
                 {
                     CharacterSheet regularChar = curItem as CharacterSheet;
-                    RollResults = regularChar.Name + " is not a vampire.";
+                    ResultText = regularChar.Name + " is not a vampire.";
                 }
                 else
                 {
@@ -427,6 +457,26 @@ namespace XMLCharSheets
             {
                 var curCharacer = curItem as CharacterSheet;
                 curCharacer.AssignStatus(description, duration);
+            }
+        }
+
+        internal void MarkCharactersAsDeceased()
+        {
+            for (int curIndex = ActiveRoster.Count()-1; curIndex >= 0; curIndex--)
+            {
+                if (ActiveRoster[curIndex].IsIncapacitated)
+                {
+                    DeceasedRoster.Add(ActiveRoster[curIndex]);
+                    ActiveRoster.Remove(ActiveRoster[curIndex]);
+                }
+            }
+            for (int curIndex = DeceasedRoster.Count() - 1; curIndex >= 0; curIndex--)
+            {
+                if (!DeceasedRoster[curIndex].IsIncapacitated)
+                {
+                    ActiveRoster.Add(DeceasedRoster[curIndex]);            
+                    DeceasedRoster.Remove(DeceasedRoster[curIndex]);
+                }
             }
         }
     }
