@@ -222,6 +222,7 @@ namespace XMLCharSheets
             {
                 curBox.Box = HealthBox.DamageType.Empty;
             }
+            IsIncapacitated = false;
             NotifyStatusChange();
         }
 
