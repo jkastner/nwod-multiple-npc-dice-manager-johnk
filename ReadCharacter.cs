@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
+using XMLCharSheets.NWoD;
 
 namespace XMLCharSheets
 {
@@ -128,12 +129,12 @@ namespace XMLCharSheets
                         break;
 
                 }
-                PopulateTraits(curQuery.Traits, traits);
+                PopulateNWoDTraits(curQuery.Traits, traits);
             }
             return newChar;
         }
 
-        private void PopulateTraits(IEnumerable<XElement> traitsElements, List<Trait> traits)
+        private void PopulateNWoDTraits(IEnumerable<XElement> traitsElements, List<Trait> traits)
         
         {
             var query = from item in traitsElements.Elements("trait")
@@ -141,18 +142,39 @@ namespace XMLCharSheets
                             {
                                 Label = (String) item.Attribute("label"),
                                 Value = Int32.Parse((String) item.Attribute("value")),
+                                ExplodesOn = (String)item.Attribute("ExplodesOn"),
+                                SubtractsOn = (String)item.Attribute("SubtractsOn"),
+                                AutomaticSuccesses = (String)item.Attribute("AutomaticSuccesses"),
                                 TargetDefense = (String) item.Attribute("TargetDefense"),
                                 DamageType = (String) item.Attribute("DamageType"),
+
                             };
+            
+
             foreach (var curQuery in query)
             {
+                int autoSuccesses = ExtractDefaultInt(curQuery.AutomaticSuccesses, 0);
+                int subtractsOn = ExtractDefaultInt(curQuery.SubtractsOn, 0);
+                int explodesOn = ExtractDefaultInt(curQuery.ExplodesOn, 10);
                 if(curQuery.TargetDefense==null)
-                    traits.Add(new Trait(curQuery.Value, curQuery.Label));
+                    traits.Add(new NWoDTrait(curQuery.Value, curQuery.Label, explodesOn, subtractsOn, autoSuccesses));
                 else
                 {
-                    traits.Add(new AttackTrait(curQuery.Value, curQuery.Label, curQuery.TargetDefense, curQuery.DamageType));
+                    traits.Add(new NWoDAttackTrait(curQuery.Value, curQuery.Label, curQuery.TargetDefense, curQuery.DamageType,
+                        explodesOn, subtractsOn, autoSuccesses));
                 }
             }
+        }
+
+        private int ExtractDefaultInt(String curValue, int defaultValue)
+        {
+            int result = -1;
+            if(Int32.TryParse(curValue, out result))
+            {
+                return result;
+            }
+            return defaultValue;
+
         }
 
     }

@@ -60,10 +60,13 @@
     <Compile Include="GetCharacterName.xaml.cs">
       <DependentUpon>GetCharacterName.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NWoD\NWoDAttackTrait.cs" />
     <Compile Include="NWoD\NWoDConstants.cs" />
     <Compile Include="NWoD\NWoDHealthBox.cs" />
     <Compile Include="NWoD\NWoDCharacter.cs" />
+    <Compile Include="NWoD\NWoDTrait.cs" />
     <Compile Include="NWoD\NWoDRollDice.cs" />
+    <Compile Include="NWoD\INWoDTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
     <Compile Include="ReadCharacter.cs" />
     <Compile Include="RosterViewModel.cs" />
