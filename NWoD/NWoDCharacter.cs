@@ -9,7 +9,8 @@ namespace XMLCharSheets
     class NWoDCharacter : CharacterSheet
     {
 
-        NWoDRollDice curPool = new NWoDRollDice(5);
+        //private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
+        private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait(5, "DefaultPool", 10, 0, 0));
         private List<HealthBox> _healthTrack = new List<HealthBox>();
         public List<HealthBox> HealthTrack
         {
@@ -166,15 +167,10 @@ namespace XMLCharSheets
                 HealthTrack.Add(new HealthBox());
             }
         }
-        internal override string RollBasePool(int totalDice)
-        {
-            totalDice += WoundPenalties;
-            return Roll(totalDice);
-        }
 
-        internal string Roll(int totalDice)
+        internal string Roll(NWoDTrait traitToRoll)
         {
-            curPool = new NWoDRollDice(totalDice);
+            curPool = new NWoDDicePool(traitToRoll);
             curPool.Roll();
             String result = " {" + curPool.NumberOfDice + "}: " + curPool.CurrentSuccesses + " successes.\nResults: " + curPool.ResultDescription;
             _rollResults = result;
@@ -282,7 +278,7 @@ namespace XMLCharSheets
             {
                 staminaCheckNum = stamina.TraitValue;
             }
-            NWoDRollDice staminaCheck = new NWoDRollDice(staminaCheckNum);
+            NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait(staminaCheckNum, "Stamina Check", 10, 0, 0));
             staminaCheck.Roll();
             if (staminaCheck.CurrentSuccesses == 0)
             {
@@ -317,17 +313,17 @@ namespace XMLCharSheets
             {
                 targetDefense = Target.FindTrait(ChosenAttackTrait.DefenseTarget).TraitValue;
             }
-            var attackPool = ChosenAttackTrait.TraitValue;
+            var attackPool = (ChosenAttackTrait as NWoDAttackTrait).CopyTrait();
             foreach (String additionalAttackTrait in OtherAttackTraits)
             {
-                attackPool += FindTrait(additionalAttackTrait).TraitValue;
+                attackPool.TraitValue += FindTrait(additionalAttackTrait).TraitValue;
             }
-            attackPool -= targetDefense;
-            attackPool -= nwodTarget.Armor;
-            attackPool += modifier;
-            attackPool += WoundPenalties;
+            attackPool.TraitValue -= targetDefense;
+            attackPool.TraitValue -= nwodTarget.Armor;
+            attackPool.TraitValue += modifier;
+            attackPool.TraitValue += WoundPenalties;
             int attackSuccesses = 0;
-            Roll(attackPool);
+            RollBasePool(new List<Trait>(){attackPool}, modifier);
             attackSuccesses = curPool.CurrentSuccesses;
             for (int curDamage = 0; curDamage < attackSuccesses; curDamage++)
             {
@@ -347,6 +343,27 @@ namespace XMLCharSheets
             }
             nwodTarget.WasAttacked(ChosenAttackTrait.DefenseTarget);
         }
+
+        internal override string RollBasePool(List<Trait> dicePools, int modifier)
+        {
+            String curResults = "";
+
+            NWoDTrait basepool = dicePools.First().CopyTrait() as NWoDTrait;
+            foreach(var trait in dicePools)
+             {
+                 NWoDTrait nextTrait = trait as NWoDTrait;
+                 /*Johnathan K. 12-06-2012
+                  * Presumed to take the 'non default' modifier. */
+                 basepool.AddAndChangeFromDefaults(nextTrait);
+            }
+            basepool.TraitValue -= modifier;
+            NWoDDicePool curPool = new NWoDDicePool(basepool);
+            curPool.Roll();
+            curResults = curResults + curPool.ResultDescription;
+            return curResults;
+
+        }
+
         private int _normalMeleeDefense;
         public int NormalMeleeDefense
         {

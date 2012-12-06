@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class AttackTrait : Trait
+    public abstract class AttackTrait : Trait
     {
         private String _defenseTarget;
         public String DefenseTarget
@@ -29,9 +29,5 @@ namespace XMLCharSheets
             this.DamageType = damageType;
         }
 
-        public override Trait CopyTrait()
-        {
-            return new AttackTrait(TraitValue, TraitLabel, DefenseTarget, DamageType);
-        }
     }
 }

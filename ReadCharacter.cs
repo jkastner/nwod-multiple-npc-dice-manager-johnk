@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
-using XMLCharSheets.NWoD;
 
 namespace XMLCharSheets
 {
