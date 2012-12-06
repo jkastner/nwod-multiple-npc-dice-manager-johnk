@@ -239,21 +239,15 @@ namespace XMLCharSheets
 
         private void RollCharacter(CharacterSheet involvedCharacter, List<string> involvedTraits)
         {
-            ResultText = involvedCharacter.Name + " rolled {";
+            ResultText = involvedCharacter.Name + " rolled: ";
             int totalDice = 0;
             List<Trait> charTraits = new List<Trait>();
             foreach(var cur in involvedTraits)
             {
                 charTraits.Add(involvedCharacter.FindTrait(cur));
             }
-            foreach (Trait curTrait in charTraits)
-            {
-                totalDice += curTrait.TraitValue;
-                ResultText = "{" + curTrait.TraitLabel + "}" + " ";
-            }
-            totalDice += RollModifier;
-            String result = involvedCharacter.RollBasePool(totalDice);
-            ResultText = "}\n" + result;
+            String result = involvedCharacter.RollBasePool(charTraits, RollModifier);
+            ResultText = "\n" + result;
         }
     
 

@@ -65,7 +65,7 @@
     <Compile Include="NWoD\NWoDHealthBox.cs" />
     <Compile Include="NWoD\NWoDCharacter.cs" />
     <Compile Include="NWoD\NWoDTrait.cs" />
-    <Compile Include="NWoD\NWoDRollDice.cs" />
+    <Compile Include="NWoD\NWoDDicePool.cs" />
     <Compile Include="NWoD\INWoDTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
     <Compile Include="ReadCharacter.cs" />

@@ -222,7 +222,7 @@ namespace XMLCharSheets
 
         internal abstract void AttackTarget(int RollModifier);
 
-        internal abstract string RollBasePool(int totalDice);
+        internal abstract string RollBasePool(List <Trait> dicePools, int modifier);
 
         private List<StatusEffect> _statusEffects = new List<StatusEffect>();
 
