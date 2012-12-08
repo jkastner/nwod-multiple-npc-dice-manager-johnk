@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class NWoDRollDice
+    public class NWoDDicePool
     {
         static Random _theRandomGenerator = new Random();
         private int _numberOfDice;
@@ -27,29 +27,31 @@ namespace XMLCharSheets
         }
 
         private String _resultDescription;
+        private int p;
         public String ResultDescription
         {
             get { return _resultDescription; }
             set { _resultDescription = value; }
         }
 
+        public int ExplodesOn { get; set; }
+        public int SubtractsOn { get; set; }
+        public int AutomaticExtaSuccessesOnSuccess { get; set; } 
 
 
-        public NWoDRollDice(int diceNum)
+        public NWoDDicePool(NWoDTrait curTrait)
         {
-            _numberOfDice = diceNum;
+            NumberOfDice = curTrait.TraitValue;
+            ExplodesOn = curTrait.ExplodesOn;
+            SubtractsOn = curTrait.SubtractsOn;
+
         }
 
-
-
-
-
-        
         internal void Roll()
         {
             int maxSides = 11;
             int minSuccess = 8;
-            int minAgain = 10;
+            int minAgain = ExplodesOn;
             int uberFail = 0;
             CurrentSuccesses = 0;
             _resultDescription = "";
@@ -60,11 +62,11 @@ namespace XMLCharSheets
                 minSuccess = 10;
                 uberFail = (NumberOfDice*-1)+1;
             }
-            RollPool(numInPool, maxSides, minSuccess, minAgain, uberFail);
+            RollPool(numInPool, maxSides, minSuccess, minAgain, uberFail, SubtractsOn);
             
         }
 
-        private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail)
+        private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
         {
             if (uberFail >= maxSides)
             {
@@ -94,6 +96,12 @@ namespace XMLCharSheets
                     {
                         CurrentSuccesses++;
                     }
+                }
+                if(result<= subtractsOn)
+                {
+                    CurrentSuccesses--;
+                    if (CurrentSuccesses < 0)
+                        CurrentSuccesses = 0;
                 }
                 if (CurrentSuccesses == 0 && result <= uberFail)
                 {
