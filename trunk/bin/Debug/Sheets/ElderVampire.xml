@@ -1,0 +1,22 @@
+<CharacterSheet>
+	<Ruleset>NWoD</Ruleset>
+	<CharacterType>Vampire</CharacterType>
+	<name>Elder Melee Vampire</name>
+	<traits>
+	<trait label='Fists and Vigor' value='12' TargetDefense='Melee Defense' DamageType='Bashing'/>
+	<trait label='Claws and Vigor' value='13' TargetDefense='Melee Defense' DamageType='Aggrivated'/>
+	<trait label='Weaponry and Vigor' value='14' TargetDefense='Melee Defense' DamageType='Lethal'/>
+	<trait label='Initiative' value='8'/>
+	<trait label='Ranged Defense' value='0'/>
+	<trait label='Melee Defense' value='4'/>
+	<trait label='Vitae' value='15'/>
+	<trait label='Blood Potency' value='5'/>
+	<trait label='Notice' value='4'/>
+	<trait label='Resolve' value='4'/>
+	<trait label='Composure' value='4'/>
+	<trait label='Health' value='9'/>
+	<trait label='Clan Discipline Pool' value='11'/>
+	</traits>
+</CharacterSheet>
+
+
