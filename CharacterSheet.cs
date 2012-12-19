@@ -105,6 +105,7 @@ namespace XMLCharSheets
         public abstract String RollResults
         {
             get;
+            set;
         }
 
         internal abstract CharacterSheet Copy(string newName);
@@ -222,7 +223,7 @@ namespace XMLCharSheets
 
         internal abstract void AttackTarget(int RollModifier);
 
-        internal abstract string RollBasePool(List <Trait> dicePools, int modifier);
+        internal abstract DicePool RollBasePool(List <Trait> dicePools, int modifier);
 
         private List<StatusEffect> _statusEffects = new List<StatusEffect>();
 

@@ -246,7 +246,7 @@ namespace XMLCharSheets
             {
                 charTraits.Add(involvedCharacter.FindTrait(cur));
             }
-            String result = involvedCharacter.RollBasePool(charTraits, RollModifier);
+            String result = involvedCharacter.RollBasePool(charTraits, RollModifier).ResultDescription;
             ResultText = "\n" + result;
         }
     

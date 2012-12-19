@@ -20,7 +20,7 @@ namespace XMLCharSheets
         public int SubtractsOn { get; set; }
         public int AutomaticSuccesses { get; set; }
 
-        internal void AddAndChangeFromDefaults(NWoDTrait nextTrait)
+        void INWoDTrait.AddAndChangeFromDefaults(INWoDTrait nextTrait)
         {
             TraitValue += nextTrait.TraitValue;
             if (nextTrait.ExplodesOn != 10)
@@ -31,5 +31,9 @@ namespace XMLCharSheets
                 this.ExplodesOn = nextTrait.SubtractsOn;
 
         }
+        public override Trait CopyTrait()
+        {
+            return new NWoDTrait(TraitValue, TraitLabel, ExplodesOn, SubtractsOn, AutomaticSuccesses);
+        }  
     }
 }

@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="AttackTrait.cs" />
     <Compile Include="CharacterSheet.cs" />
+    <Compile Include="DicePool.cs" />
     <Compile Include="GetCharacterName.xaml.cs">
       <DependentUpon>GetCharacterName.xaml</DependentUpon>
     </Compile>
