@@ -7,12 +7,19 @@ namespace XMLCharSheets
 {
     public interface INWoDTrait
     {
-        new int ExplodesOn
+        int TraitValue
+        {
+            get;
+            set;
+        }
+
+        int ExplodesOn
         { get; set; }
-        new int SubtractsOn
+        int SubtractsOn
         { get; set; }
-        new int AutomaticSuccesses
+        int AutomaticSuccesses
         { get; set; }
+        void AddAndChangeFromDefaults(INWoDTrait nextTrait);
   
     }
 }

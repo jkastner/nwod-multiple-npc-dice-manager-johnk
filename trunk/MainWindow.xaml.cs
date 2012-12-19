@@ -62,6 +62,7 @@ namespace XMLCharSheets
             if (ActiveList().Count == 0 || CurrentTraits_ListBox.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Please select an active character and at least one trait.");
+                return;
             }
             _viewModel.RollCharacters(ActiveList(), CurrentTraits_ListBox.SelectedItems);
         }

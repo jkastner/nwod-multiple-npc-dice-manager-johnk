@@ -148,8 +148,8 @@ namespace XMLCharSheets
                                 DamageType = (String) item.Attribute("DamageType"),
 
                             };
-            
 
+            var listit = query.ToList();
             foreach (var curQuery in query)
             {
                 int autoSuccesses = ExtractDefaultInt(curQuery.AutomaticSuccesses, 0);

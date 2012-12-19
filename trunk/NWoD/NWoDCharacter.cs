@@ -172,9 +172,8 @@ namespace XMLCharSheets
         {
             curPool = new NWoDDicePool(traitToRoll);
             curPool.Roll();
-            String result = " {" + curPool.NumberOfDice + "}: " + curPool.CurrentSuccesses + " successes.\nResults: " + curPool.ResultDescription;
-            _rollResults = result;
-            return result;
+            _rollResults = curPool.ResultDescription;
+            return curPool.ResultDescription;
         }
 
         private bool _isIncapacitated = false;
@@ -298,6 +297,7 @@ namespace XMLCharSheets
         public override string RollResults
         {
             get { return _rollResults; }
+            set { _rollResults = value; }
         }
 
         internal override void AttackTarget(int modifier)
@@ -323,8 +323,8 @@ namespace XMLCharSheets
             attackPool.TraitValue += modifier;
             attackPool.TraitValue += WoundPenalties;
             int attackSuccesses = 0;
-            RollBasePool(new List<Trait>(){attackPool}, modifier);
-            attackSuccesses = curPool.CurrentSuccesses;
+            var results = RollBasePool(new List<Trait>(){attackPool}, modifier) as NWoDDicePool;
+            attackSuccesses = results.CurrentSuccesses;
             for (int curDamage = 0; curDamage < attackSuccesses; curDamage++)
             {
                 switch (DamageType)
@@ -342,16 +342,19 @@ namespace XMLCharSheets
                 }
             }
             nwodTarget.WasAttacked(ChosenAttackTrait.DefenseTarget);
+            RollResults = results.ResultDescription;
         }
 
-        internal override string RollBasePool(List<Trait> dicePools, int modifier)
+        internal override DicePool RollBasePool(List<Trait> dicePools, int modifier)
         {
             String curResults = "";
 
-            NWoDTrait basepool = dicePools.First().CopyTrait() as NWoDTrait;
-            foreach(var trait in dicePools)
-             {
-                 NWoDTrait nextTrait = trait as NWoDTrait;
+            var firstPool = dicePools.First().CopyTrait();
+            var basepool = firstPool as INWoDTrait;
+
+            for(int curIndex = 1;curIndex<dicePools.Count;curIndex++)
+            {
+                var nextTrait = dicePools[curIndex] as INWoDTrait;
                  /*Johnathan K. 12-06-2012
                   * Presumed to take the 'non default' modifier. */
                  basepool.AddAndChangeFromDefaults(nextTrait);
@@ -359,8 +362,7 @@ namespace XMLCharSheets
             basepool.TraitValue -= modifier;
             NWoDDicePool curPool = new NWoDDicePool(basepool);
             curPool.Roll();
-            curResults = curResults + curPool.ResultDescription;
-            return curResults;
+            return curPool;
 
         }
 

@@ -5,11 +5,9 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class NWoDDicePool
+    public class NWoDDicePool : DicePool
     {
-        static Random _theRandomGenerator = new Random();
         private int _numberOfDice;
-
         public int NumberOfDice
         {
             get { return _numberOfDice; }
@@ -26,28 +24,26 @@ namespace XMLCharSheets
             set { _currentSuccesses = value; }
         }
 
+
+        public int ExplodesOn { get; set; }
+        public int SubtractsOn { get; set; }
+        public int AutomaticExtaSuccessesOnSuccess { get; set; }
         private String _resultDescription;
-        private int p;
-        public String ResultDescription
+        public override String ResultDescription
         {
             get { return _resultDescription; }
             set { _resultDescription = value; }
         }
 
-        public int ExplodesOn { get; set; }
-        public int SubtractsOn { get; set; }
-        public int AutomaticExtaSuccessesOnSuccess { get; set; } 
-
-
-        public NWoDDicePool(NWoDTrait curTrait)
+        public NWoDDicePool(INWoDTrait curTrait)
         {
             NumberOfDice = curTrait.TraitValue;
             ExplodesOn = curTrait.ExplodesOn;
             SubtractsOn = curTrait.SubtractsOn;
-
+            AutomaticExtaSuccessesOnSuccess = curTrait.AutomaticSuccesses;
         }
 
-        internal void Roll()
+        internal override void Roll()
         {
             int maxSides = 11;
             int minSuccess = 8;
@@ -88,7 +84,7 @@ namespace XMLCharSheets
                 {
                     CurrentSuccesses++;
                 }
-                while (result == minAgain)
+                while (result >= minAgain)
                 {
                     result = _theRandomGenerator.Next(1, maxSides);
                     _resultDescription = _resultDescription + "->" + result.ToString();
@@ -109,6 +105,16 @@ namespace XMLCharSheets
                     return;
                 }
             }
+            if (CurrentSuccesses > 0)
+            {
+                CurrentSuccesses += AutomaticExtaSuccessesOnSuccess;
+            }
+            String successString = "Successes: " + _currentSuccesses;
+            if(AutomaticExtaSuccessesOnSuccess > 0 && CurrentSuccesses > 0)
+            {
+                successString = successString + " {" + AutomaticExtaSuccessesOnSuccess + "} automatic";
+            }
+            _resultDescription = successString + "\n" + _resultDescription; 
         }
 
 

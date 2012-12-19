@@ -1,0 +1,19 @@
+<CharacterSheet>
+	<Ruleset>NWoD</Ruleset>
+	<CharacterType>Human</CharacterType>
+	<name>Excellent Cop</name>
+	<traits>
+	<trait label='Firearms' value='7' IsAttack='true' TargetDefense='Ranged Defense' DamageType='Lethal' AutomaticSuccesses='3'/>
+	<trait label='Brawl' value='5' IsAttack='true' TargetDefense='Melee Defense' DamageType='Bashing'/>
+	<trait label='Initiative' value='7'/>
+	<trait label='Ranged Defense' value='0'/>
+	<trait label='Melee Defense' value='2'/>
+	<trait label='Armor' value='2'/>
+	<trait label='Notice' value='4'/>
+	<trait label='Resolve' value='3'/>
+	<trait label='Composure' value='2'/>
+	<trait label='Health' value='9'/>
+	</traits>
+</CharacterSheet>
+
+

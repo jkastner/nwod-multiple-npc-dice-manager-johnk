@@ -13,7 +13,7 @@ namespace XMLCharSheets
         {
             ExplodesOn = explodesOn;
             SubtractsOn = subtractsOn;
-            autoSuccesses = AutomaticSuccesses;
+            AutomaticSuccesses = autoSuccesses;
         }
 
         public int ExplodesOn { get; set; }
@@ -24,6 +24,18 @@ namespace XMLCharSheets
         {
             NWoDAttackTrait copy = new NWoDAttackTrait(TraitValue, TraitLabel, DefenseTarget, DamageType, ExplodesOn, SubtractsOn, AutomaticSuccesses);
             return copy;
+        }
+        
+        void INWoDTrait.AddAndChangeFromDefaults(INWoDTrait nextTrait)
+        {
+            TraitValue += nextTrait.TraitValue;
+            if (nextTrait.ExplodesOn != 10)
+                this.ExplodesOn = nextTrait.ExplodesOn;
+            if (nextTrait.AutomaticSuccesses != 0)
+                this.ExplodesOn = nextTrait.AutomaticSuccesses;
+            if (nextTrait.SubtractsOn != 0)
+                this.ExplodesOn = nextTrait.SubtractsOn;
+
         }
     }
 }
