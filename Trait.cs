@@ -30,9 +30,14 @@ namespace XMLCharSheets
 
         public override string ToString()
         {
-            return TraitLabel + " -- " + TraitValue;
+            return TraitDescription;
         }
 
         public abstract Trait CopyTrait();
+        public abstract String TraitDescription
+        {
+            get;
+        }
+
     }
 }

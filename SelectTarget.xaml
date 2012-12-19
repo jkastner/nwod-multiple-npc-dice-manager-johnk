@@ -11,7 +11,7 @@
         <StackPanel>
         <Label Content="Target"></Label>
         <ListBox 
-            Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" SelectionMode="Single">
+            Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" MaxHeight="250" SelectionMode="Single">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Background="Black">

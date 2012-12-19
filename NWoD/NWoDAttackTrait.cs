@@ -18,6 +18,7 @@ namespace XMLCharSheets
 
         public int ExplodesOn { get; set; }
         public int SubtractsOn { get; set; }
+        public int SucceedsOn { get; set; }
         public int AutomaticSuccesses { get; set; }
 
         public override Trait CopyTrait()
@@ -36,6 +37,14 @@ namespace XMLCharSheets
             if (nextTrait.SubtractsOn != 0)
                 this.ExplodesOn = nextTrait.SubtractsOn;
 
+        }
+
+        public override string TraitDescription
+        {
+            get
+            {
+                return TraitLabel + ": " + TraitValue + " (S: " + SucceedsOn + " Exp: " + ExplodesOn + " Sub: " + SubtractsOn + " Auto: " + AutomaticSuccesses + ")";
+            }
         }
     }
 }

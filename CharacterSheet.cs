@@ -221,6 +221,11 @@ namespace XMLCharSheets
             }
         }
 
+        public abstract String ChosenAttackValue
+        {
+            get;
+        }
+
         internal abstract void AttackTarget(int RollModifier);
 
         internal abstract DicePool RollBasePool(List <Trait> dicePools, int modifier);

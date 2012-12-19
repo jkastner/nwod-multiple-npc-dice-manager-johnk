@@ -10,7 +10,7 @@ namespace XMLCharSheets
     {
 
         //private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
-        private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait(5, "DefaultPool", 10, 0, 0));
+        private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait(5, "DefaultPool", 10, 0, 0, 8));
         private List<HealthBox> _healthTrack = new List<HealthBox>();
         public List<HealthBox> HealthTrack
         {
@@ -277,7 +277,7 @@ namespace XMLCharSheets
             {
                 staminaCheckNum = stamina.TraitValue;
             }
-            NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait(staminaCheckNum, "Stamina Check", 10, 0, 0));
+            NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait(staminaCheckNum, "Stamina Check", 10, 0, 0, 8));
             staminaCheck.Roll();
             if (staminaCheck.CurrentSuccesses == 0)
             {
@@ -287,6 +287,20 @@ namespace XMLCharSheets
 
         }
 
+        public override string ChosenAttackValue
+        {
+            get 
+            {
+                StringBuilder sb = new StringBuilder();
+                int fullValue = FindTrait(ChosenAttack).TraitValue;
+                sb.Append(ChosenAttack);
+                for (int curIndex = 0; curIndex < OtherAttackTraits.Count(); curIndex++)
+                {
+                    fullValue += FindTrait(OtherAttackTraits[curIndex]).TraitValue;
+                }
+                return fullValue.ToString();
+            }
+        }
 
         public override void RollInitiative()
         {

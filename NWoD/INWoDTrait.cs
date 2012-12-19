@@ -12,7 +12,8 @@ namespace XMLCharSheets
             get;
             set;
         }
-
+        int SucceedsOn
+        { get; set; }
         int ExplodesOn
         { get; set; }
         int SubtractsOn

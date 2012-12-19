@@ -146,6 +146,7 @@ namespace XMLCharSheets
                                 AutomaticSuccesses = (String)item.Attribute("AutomaticSuccesses"),
                                 TargetDefense = (String) item.Attribute("TargetDefense"),
                                 DamageType = (String) item.Attribute("DamageType"),
+                                SucceedsOn = (String)item.Attribute("SucceedsOn"),
 
                             };
 
@@ -155,8 +156,9 @@ namespace XMLCharSheets
                 int autoSuccesses = ExtractDefaultInt(curQuery.AutomaticSuccesses, 0);
                 int subtractsOn = ExtractDefaultInt(curQuery.SubtractsOn, 0);
                 int explodesOn = ExtractDefaultInt(curQuery.ExplodesOn, 10);
+                int succeedOn = ExtractDefaultInt(curQuery.SucceedsOn, 8);
                 if(curQuery.TargetDefense==null)
-                    traits.Add(new NWoDTrait(curQuery.Value, curQuery.Label, explodesOn, subtractsOn, autoSuccesses));
+                    traits.Add(new NWoDTrait(curQuery.Value, curQuery.Label, explodesOn, subtractsOn, autoSuccesses, succeedOn));
                 else
                 {
                     traits.Add(new NWoDAttackTrait(curQuery.Value, curQuery.Label, curQuery.TargetDefense, curQuery.DamageType,
