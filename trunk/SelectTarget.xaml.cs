@@ -31,7 +31,7 @@ namespace XMLCharSheets
             {
                 targetCharacters.Add(curChar);
             }
-            
+
             foreach (var curItem in selectedCharacters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
@@ -46,10 +46,7 @@ namespace XMLCharSheets
                             attackTraits.Add(attackTrait.TraitLabel);
                         }
                     }
-                    else
-                    {
-                        otherTraits.Add(curTrait.TraitLabel);
-                    }
+                    otherTraits.Add(curTrait.TraitLabel);
                 }
             }
             InitializeComponent();

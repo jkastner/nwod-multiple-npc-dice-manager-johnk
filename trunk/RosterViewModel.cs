@@ -340,7 +340,7 @@ namespace XMLCharSheets
                 if (CanRoll(curChar, attackName))
                 {
                     curChar.AttackTarget(RollModifier);
-                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackString + "} on "+curChar.Target.Name+": " + curChar.RollResults + "\n";
+                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " + curChar.ChosenAttackString + "} on " + curChar.Target.Name + ": " + curChar.RollResults + "\n";
                 }
             }
         }

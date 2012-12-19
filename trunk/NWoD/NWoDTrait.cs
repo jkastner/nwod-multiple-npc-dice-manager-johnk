@@ -8,17 +8,20 @@ namespace XMLCharSheets
     public class NWoDTrait : Trait, INWoDTrait
     {
         public NWoDTrait(int traitValue, string traitLabel, 
-            int explodesOn, int subtractsOn, int autoSuccesses)
+            int explodesOn, int subtractsOn, int autoSuccesses, int succeedsOn)
             : base(traitValue, traitLabel)
         {
             ExplodesOn = explodesOn;
             SubtractsOn = subtractsOn;
             AutomaticSuccesses = autoSuccesses;
+            SucceedsOn = succeedsOn;
         }
 
         public int ExplodesOn { get; set; }
         public int SubtractsOn { get; set; }
+        public int SucceedsOn { get; set; }
         public int AutomaticSuccesses { get; set; }
+        
 
         void INWoDTrait.AddAndChangeFromDefaults(INWoDTrait nextTrait)
         {
@@ -33,7 +36,15 @@ namespace XMLCharSheets
         }
         public override Trait CopyTrait()
         {
-            return new NWoDTrait(TraitValue, TraitLabel, ExplodesOn, SubtractsOn, AutomaticSuccesses);
-        }  
+            return new NWoDTrait(TraitValue, TraitLabel, ExplodesOn, SubtractsOn, AutomaticSuccesses, SucceedsOn);
+        }
+
+        public override string TraitDescription
+        {
+            get
+            {
+                return TraitLabel+": "+TraitValue+" (S: "+SucceedsOn+" Exp: "+ExplodesOn+" Sub: "+SubtractsOn+" Auto: "+AutomaticSuccesses+")";
+            }
+        }
     }
 }
