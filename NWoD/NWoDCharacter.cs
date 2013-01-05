@@ -218,9 +218,12 @@ namespace XMLCharSheets
                 curBox.Box = HealthBox.DamageType.Empty;
             }
             IsIncapacitated = false;
+            _checkedAgainstUnconsciousness = false;
             NotifyStatusChange();
         }
 
+
+        private bool _checkedAgainstUnconsciousness = false;
 
         private void AddDamageBox(HealthBox newDamage)
         {
@@ -246,6 +249,11 @@ namespace XMLCharSheets
                 {
                     StatusEffects.Add(new StatusEffect("Incapacitated", 500));
                     IsIncapacitated = true;
+                }
+                if (!IsIncapacitated && HealthTrack.Last().Box == HealthBox.DamageType.Bashing && !_checkedAgainstUnconsciousness)
+                {
+                    CheckToStayConscious();
+                    _checkedAgainstUnconsciousness = true;
                 }
                 NotifyStatusChange();
 
@@ -407,15 +415,6 @@ namespace XMLCharSheets
         {
             base.NewRound();
             CurrentMeleeDefense = NormalMeleeDefense;
-            bool wasOut = IsIncapacitated;
-            if (!IsIncapacitated)
-            {
-                CheckToStayConscious();
-                if (wasOut && IsIncapacitated)
-                {
-                    return Name + " failed stamina roll to stay awake.";
-                }
-            }
             return String.Empty;
 
         }
