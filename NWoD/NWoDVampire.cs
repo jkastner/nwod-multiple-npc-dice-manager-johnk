@@ -103,6 +103,7 @@ namespace XMLCharSheets
             var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
             ChosenAttackTrait.TraitValue += BloodAttackBonus;
             base.AttackTarget(modifier);
+            FinalAttackPool += BloodAttackBonus;
             ChosenAttackTrait.TraitValue -= BloodAttackBonus;
 
         }

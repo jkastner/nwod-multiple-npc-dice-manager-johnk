@@ -327,6 +327,7 @@ namespace XMLCharSheets
         internal void RollAttackTarget(IList attackers)
         {
             ResultText = lineBreak;
+            
             foreach (var curItem in attackers)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
@@ -340,7 +341,10 @@ namespace XMLCharSheets
                 if (CanRoll(curChar, attackName))
                 {
                     curChar.AttackTarget(RollModifier);
-                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " + curChar.ChosenAttackString + "} on " + curChar.Target.Name + ": " + curChar.RollResults + "\n";
+                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " 
+                        + curChar.ChosenAttackString + "} on " + curChar.Target.Name + 
+                        "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
+                    
                 }
             }
         }
