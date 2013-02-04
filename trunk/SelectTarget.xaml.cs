@@ -46,7 +46,11 @@ namespace XMLCharSheets
                             attackTraits.Add(attackTrait.TraitLabel);
                         }
                     }
-                    otherTraits.Add(curTrait.TraitLabel);
+                    else
+                    {
+                        if (!otherTraits.Contains(curTrait.TraitLabel))
+                            otherTraits.Add(curTrait.TraitLabel);
+                    }
                 }
             }
             InitializeComponent();

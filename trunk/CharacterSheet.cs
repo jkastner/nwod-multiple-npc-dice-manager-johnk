@@ -277,5 +277,7 @@ namespace XMLCharSheets
         }
 
         public abstract bool IsIncapacitated { get; set; }
+
+        public int FinalAttackPool { get; set; }
     }
 }

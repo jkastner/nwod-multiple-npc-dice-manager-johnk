@@ -344,8 +344,9 @@ namespace XMLCharSheets
             attackPool.TraitValue -= nwodTarget.Armor;
             attackPool.TraitValue += modifier;
             attackPool.TraitValue += WoundPenalties;
+            FinalAttackPool = attackPool.TraitValue;
             int attackSuccesses = 0;
-            var results = RollBasePool(new List<Trait>(){attackPool}, modifier) as NWoDDicePool;
+            var results = RollBasePool(new List<Trait>(){attackPool}, 0) as NWoDDicePool;
             attackSuccesses = results.CurrentSuccesses;
             for (int curDamage = 0; curDamage < attackSuccesses; curDamage++)
             {
@@ -367,6 +368,9 @@ namespace XMLCharSheets
             RollResults = results.ResultDescription;
         }
 
+        /// <summary>
+        /// Modifier is a flat value and must be negative to remove dice.
+        /// </summary>
         internal override DicePool RollBasePool(List<Trait> dicePools, int modifier)
         {
             String curResults = "";
@@ -381,7 +385,7 @@ namespace XMLCharSheets
                   * Presumed to take the 'non default' modifier. */
                  basepool.AddAndChangeFromDefaults(nextTrait);
             }
-            basepool.TraitValue -= modifier;
+            basepool.TraitValue += modifier;
             NWoDDicePool curPool = new NWoDDicePool(basepool);
             curPool.Roll();
             return curPool;
