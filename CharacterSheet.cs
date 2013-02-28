@@ -279,5 +279,18 @@ namespace XMLCharSheets
         public abstract bool IsIncapacitated { get; set; }
 
         public int FinalAttackPool { get; set; }
+
+        private bool _displayCharacter;
+
+        public bool DisplayCharacter
+        {
+            get { return _displayCharacter; }
+            set 
+            { 
+                _displayCharacter = value;
+                OnPropertyChanged("DisplayCharacter");
+            }
+        }
+        
     }
 }

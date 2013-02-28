@@ -77,3 +77,5 @@ E:\Google Drive\NerdStuff\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.Properties
 E:\Google Drive\NerdStuff\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
 E:\Google Drive\NerdStuff\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.exe
 E:\Google Drive\NerdStuff\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.pdb
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\CombatDisplayWindow.baml
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\CombatDisplayWindow.g.cs
