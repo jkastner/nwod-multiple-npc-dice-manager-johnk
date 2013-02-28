@@ -32,7 +32,8 @@ namespace XMLCharSheets
             _viewModel.DamageTypes.Add("Bashing");
             _viewModel.DamageTypes.Add("Lethal");
             _viewModel.DamageTypes.Add("Aggrivated");
-            
+            CombatDisplayWindow _combatWindow = new CombatDisplayWindow(_viewModel);
+            _combatWindow.Show();
         }
 
 
