@@ -66,7 +66,14 @@
                         Name="CleanDeceasedCharacters_Button"
                         Content="Clean" ToolTip="Remove inactive characters from the roster." 
                             Width="75" Click="CleanDeceasedCharacters_Button_Click"/>
-                
+
+                <Button 
+                    Margin="5,5,0,0"
+                    HorizontalAlignment="Left"
+                        Name="AddVisual_Button"
+                        Content="Visual" ToolTip="Add visual to selected characters.." 
+                            Width="75" Click="AddVisual_Button_Click"/>
+
             </DockPanel>
             <DockPanel Margin="0,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinHeight="80" >
                 <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" 

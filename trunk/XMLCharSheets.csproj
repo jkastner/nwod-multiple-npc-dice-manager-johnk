@@ -77,10 +77,14 @@
     <Compile Include="NWoD\NWoDDicePool.cs" />
     <Compile Include="NWoD\INWoDTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
+    <Compile Include="PictureSelectionViewModel.cs" />
     <Compile Include="ReadCharacter.cs" />
     <Compile Include="RosterViewModel.cs" />
     <Compile Include="SelectTarget.xaml.cs">
       <DependentUpon>SelectTarget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectVisualWindow.xaml.cs">
+      <DependentUpon>SelectVisualWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatusEffect.cs" />
     <Compile Include="StatusEffectWindow.xaml.cs">
@@ -108,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectTarget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectVisualWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

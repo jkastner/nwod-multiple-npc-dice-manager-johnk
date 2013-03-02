@@ -29,3 +29,4 @@ C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\GameBoard\G
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.csproj.GenerateResource.Cache
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.dll
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.pdb
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.csprojResolveAssemblyReference.cache

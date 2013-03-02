@@ -23,12 +23,15 @@ namespace XMLCharSheets
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RosterViewModel _viewModel = new RosterViewModel();
-
-        GameBoardVisual gb = new GameBoardVisual();
+        private RosterViewModel _viewModel;
+        GameBoardVisual _gameBoardVisual;
+        VisualsViewmodel _visualsViewmodel = new VisualsViewmodel();
+        PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         public MainWindow()
         {
+            _viewModel = new RosterViewModel(_visualsViewmodel);
             InitializeComponent();
+            _gameBoardVisual = new GameBoardVisual(_visualsViewmodel);
             _viewModel.PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
             this.DataContext = _viewModel;
             _viewModel.DamageTypes.Add("Bashing");
@@ -36,8 +39,8 @@ namespace XMLCharSheets
             _viewModel.DamageTypes.Add("Aggrivated");
             CombatDisplayWindow _combatWindow = new CombatDisplayWindow(_viewModel);
             _combatWindow.Show();
-            
-            gb.Show();
+
+            _gameBoardVisual.Show();
         }
 
 
@@ -53,7 +56,6 @@ namespace XMLCharSheets
             if (!gcn.WasCancel)
             {
                 CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(gcn.ProvidedName);
-                newInstance.Visual = gb.AddToMap(@"PiecePictures\Knight.png");
                 _viewModel.ActiveRoster.Add(newInstance);
             }
         }
@@ -266,6 +268,22 @@ namespace XMLCharSheets
             }
             return ActiveCharacters_ListBox.SelectedItems;
 
+        }
+
+        private void AddVisual_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectVisualWindow _visualWindow = new SelectVisualWindow(_pictureSelectionViewModel);
+            _visualWindow.ShowDialog();
+            var pictureInfo = _visualWindow.SearchedDisplayItems_ListBox.SelectedItem as PictureFileInfo;
+
+
+
+
+            Color pieceColor = _visualWindow.ChosenColor;
+            if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor!=null)
+            {
+                _viewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo, pieceColor);
+            }
         }
     }
 }

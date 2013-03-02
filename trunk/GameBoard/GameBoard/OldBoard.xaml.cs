@@ -50,7 +50,7 @@ namespace GameBoard
 //    public partial class GameBoardVisual : Window
 //    {
 //        private Dictionary<ModelVisual3D, Point3D> _modelCenters = new Dictionary<ModelVisual3D, Point3D>();
-//        Material _frontMaterial, _backMaterial;
+//        Material frontMaterial, backMaterial;
 //        public GameBoardVisual()
 //        {
 //            InitializeComponent();
@@ -64,19 +64,19 @@ namespace GameBoard
 
             
 
-//            ImageBrush berriesBrush = new ImageBrush();
+//            ImageBrush boardFrontBrush = new ImageBrush();
 //            String boardImage = 
 //@"C:\Users\Kastner\Documents\Visual Studio 2012\Projects\GameBoardVisual\GameBoardVisual\bin\Debug\MapFront.jpg";
 //            String boardBackground =
 //@"C:\Users\Kastner\Documents\Visual Studio 2012\Projects\GameBoardVisual\GameBoardVisual\bin\Debug\SquarePaper.jpg";
-//            _frontMaterial = MakeImageMaterial(boardImage);
-//            _backMaterial  = MakeImageMaterial(boardBackground);
+//            frontMaterial = MakeImageMaterial(boardImage);
+//            backMaterial  = MakeImageMaterial(boardBackground);
 
-//            Viewport.Children.Add(MeshToVisual3D(mb, _frontMaterial, _backMaterial, false));
+//            _viewport.Children.Add(MeshToVisual3D(mb, frontMaterial, backMaterial, false));
 
 //            MeshBuilder sphere = new MeshBuilder();
 //            sphere.AddSphere(new Point3D(0, 0, 5), 2);
-//            //Viewport.Children.Add(MeshToVisual3D(sphere, Materials.Red, Materials.Red, true));
+//            //_viewport.Children.Add(MeshToVisual3D(sphere, Materials.Red, Materials.Red, true));
 //            String girlModel
 
 //                = @"C:\Users\Kastner\Documents\Visual Studio 2012\Projects\GameBoardVisual\GameBoardVisual\bin\Debug\archer.obj";
@@ -86,15 +86,15 @@ namespace GameBoard
 //                , new Point3D(0, 0, 0)));
 //            //myTransforms.Children.Add(new ScaleTransform3D(8, 8, 8));
 
-//            ModelVisual3D theGirl = ObjFile(girlModel, Materials.DarkGray, Materials.DarkGray, true);
+//            ModelVisual3D theGirl = MakeModelVisual3DFromObjectFile(girlModel, Materials.DarkGray, Materials.DarkGray, true);
 //            theGirl.Transform = myTransforms;
 //            //AddDirectionalManipulators(theGirl);
-//            Viewport.Children.Add(theGirl);
+//            _viewport.Children.Add(theGirl);
             
             
 //            _modelCenters.Add(theGirl, new Point3D(0, 0, 0));
 //            String dragonLocation = @"C:\Users\Kastner\Documents\Visual Studio 2012\Projects\GameBoardVisual\GameBoardVisual\bin\Debug\dragon.obj";
-//            ModelVisual3D dragonDone = ObjFile(dragonLocation, Materials.Red, Materials.Black, false);
+//            ModelVisual3D dragonDone = MakeModelVisual3DFromObjectFile(dragonLocation, Materials.Red, Materials.Black, false);
 //            _modelCenters.Add(dragonDone, new Point3D(550, 50, 0));
 //            Transform3DGroup dragonTransform = new Transform3DGroup();
 //            dragonTransform.Children.Add(new ScaleTransform3D(20,20,20));
@@ -103,16 +103,16 @@ namespace GameBoard
 //            dragonTransform.Children.Add(new TranslateTransform3D(550,50,130));
 
 //            dragonDone.Transform = dragonTransform;
-//            Viewport.Children.Add(dragonDone);
+//            _viewport.Children.Add(dragonDone);
             
             
-//            Viewport.Background = new SolidColorBrush(Colors.Gray);
-//            Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0,0,1)));
-//            Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, 0, -1)));
-//            Viewport.Camera.Position = new Point3D(10, 520, 1000);
+//            _viewport.Background = new SolidColorBrush(Colors.Gray);
+//            _viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0,0,1)));
+//            _viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, 0, -1)));
+//            _viewport.Camera.Position = new Point3D(10, 520, 1000);
 //        }
 
-//        private ModelVisual3D ObjFile(string modelPath, Material frontMaterial, Material backMaterial, bool useManipulator)
+//        private ModelVisual3D MakeModelVisual3DFromObjectFile(string modelPath, Material frontMaterial, Material backMaterial, bool useManipulator)
 //        {
 //            Model3DGroup group = HelixToolkit.Wpf.ModelImporter.Load(modelPath);
 //            ModelVisual3D myModelVisual3D = new ModelVisual3D();
@@ -198,7 +198,7 @@ namespace GameBoard
 //                Axis=new Vector3D(0,1,0),
 //            };
 //            around.Bind(myModelVisual3D);
-//            Viewport.Children.Add(around);
+//            _viewport.Children.Add(around);
 //        }
 
 //        private void AddTranslator(ModelVisual3D myModelVisual3D, Vector3D vector3D, Color color)
@@ -211,7 +211,7 @@ namespace GameBoard
 //                Color = color,
 //            };
 //            forward.Bind(myModelVisual3D);
-//            Viewport.Children.Add(forward);
+//            _viewport.Children.Add(forward);
 //        }
 
 
@@ -236,8 +236,8 @@ namespace GameBoard
 //        private void ClickUp(object sender, MouseButtonEventArgs e)
 //        {
 
-//            Point ptMouse = e.GetPosition(Viewport);
-//            var result = VisualTreeHelper.HitTest(Viewport, ptMouse) as RayMeshGeometry3DHitTestResult;
+//            Point ptMouse = e.GetPosition(_viewport);
+//            var result = VisualTreeHelper.HitTest(_viewport, ptMouse) as RayMeshGeometry3DHitTestResult;
             
 //            // We're only interested in 3D hits.
 //            RayMeshGeometry3DHitTestResult result3d =

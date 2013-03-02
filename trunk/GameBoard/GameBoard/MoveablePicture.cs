@@ -50,11 +50,24 @@ namespace GameBoard
 		    get { return _length;}
 		    set { _length = value;}
 	    }
-        private HelixViewport3D _viewport;
-        public MoveablePicture(String pictureFile, double width, double length, HelixViewport3D viewport)
+
+        private String _name;
+
+        public String Name
         {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+
+
+        public Color PieceColor { get; set; }
+        
+        public MoveablePicture(String pictureFile, double width, double length, String imageName, Color pieceColor)
+        {
+            PieceColor = pieceColor;
+            Name = imageName;
             _charImage = ImageToRectangle(pictureFile, width, length);
-            _viewport = viewport;
         }
 
         private RectangleVisual3D ImageToRectangle(String imageFile, double width, double length)
@@ -79,7 +92,7 @@ namespace GameBoard
             //    Material = frontMaterial,
             //    TopFace=false,
             //    BottomFace=false,
-            //    BackMaterial = _backMaterial,
+            //    BackMaterial = backMaterial,
             //    Length=length,
             //    Width=width,
             //    Height=height,
@@ -90,7 +103,7 @@ namespace GameBoard
                 Height = 2.5,
                 BaseRadius = length/3,
                 TopRadius = length/3,
-                Material = Materials.DarkGray,
+                Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
                 Origin = new Point3D(5, 8, 0),
             };
             return charPic;
@@ -128,40 +141,26 @@ namespace GameBoard
             //BaseCone.Origin = ;
         }
 
-        public void SetActive(bool isActive)
+
+
+        internal void StopActiveAnimation()
         {
-            if (isActive)
+            if (activeAnimation != null)
             {
-                _baseCone.Material = Materials.Gold;
-            }
-            else
-            {
-                _baseCone.Material = Materials.Gray;
+                BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.TopRadiusProperty, null);
+                BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.BaseRadiusProperty, null);
             }
         }
 
-        TubeVisual3D tube = new TubeVisual3D();
-        public void DrawAttack(MoveablePicture target)
+        DoubleAnimation activeAnimation = null;
+        internal void StartActiveAnimation()
         {
-            DoubleAnimation moveAnimationPic = new DoubleAnimation(1, .1, new Duration(new TimeSpan(0, 0, 0, 3)));
-            AnimationClock clock1 = moveAnimationPic.CreateClock();
-            Point3DCollection thePath = new Point3DCollection(new List<Point3D>() { CharImage.Origin, target.CharImage.Origin });
-            tube = new TubeVisual3D()
-                {
-                    Path = thePath,
-                    Material = Materials.Red,
-                    Diameter = 1,
-
-                };
-            tube.ApplyAnimationClock(TubeVisual3D.DiameterProperty, clock1);
-            _viewport.Children.Add(tube);
-            clock1.Completed += removeTube;
-
-        }
-
-        private void removeTube(object sender, EventArgs e)
-        {
-            _viewport.Children.Remove(tube);
+            activeAnimation = new DoubleAnimation(BaseCone.TopRadius, BaseCone.TopRadius * 1.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
+            activeAnimation.AutoReverse = true;
+            activeAnimation.RepeatBehavior = RepeatBehavior.Forever;
+            AnimationClock _activeClock = activeAnimation.CreateClock();
+            BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.TopRadiusProperty, _activeClock);
+            BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.BaseRadiusProperty, _activeClock);
         }
     }
 }

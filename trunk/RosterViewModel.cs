@@ -3,16 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Xml;
+using GameBoard;
 
 namespace XMLCharSheets
 {
     public class RosterViewModel : INotifyPropertyChanged
     {
+        VisualsViewmodel _visualsViewModel;
+        public RosterViewModel(VisualsViewmodel visualsViewModel)
+        {
+            _visualsViewModel = visualsViewModel;
+            _visualsViewModel.PieceSelected += OnVisualPieceSelected;
+        }
+
+        private void OnVisualPieceSelected(object sender, EventArgs e)
+        {
+            var pieceEvent = e as PieceSelectedEventArgs;
+            if (pieceEvent != null)
+            {
+                if (pieceEvent.SelectedPiece != null)
+                {
+                    var matchingChar = ActiveRoster.Where(x => x.Visual != null &&
+                        x.Visual.Equals(pieceEvent.SelectedPiece)).FirstOrDefault();
+                    if (matchingChar != null)
+                    {
+                        SelectedActiveCharacter = matchingChar;
+                    }
+                }
+            }
+        }
+
+        
         private ObservableCollection<CharacterSheet> _fullRoster = new ObservableCollection<CharacterSheet>();
 
         public ObservableCollection<CharacterSheet> FullRoster
@@ -348,8 +375,7 @@ namespace XMLCharSheets
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
-                    curChar.Visual.DrawAttack(curChar.Target.Visual);
-
+                    _visualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual);
                 }
             }
         }
@@ -487,15 +513,34 @@ namespace XMLCharSheets
         {
             foreach (var cur in _activeRoster)
             {
-                if (cur.Visual != null)
+                var curCharacter = cur as CharacterSheet;
+                if (curCharacter.Visual != null)
                 {
-                    cur.Visual.SetActive(false);
+                    _visualsViewModel.SetActive(false, curCharacter.Visual, curCharacter.PieceColor);
                 }
             }
             foreach (var curItem in characters)
             {
-                var curCharacer = curItem as CharacterSheet;
-                curCharacer.Visual.SetActive(true);
+                var curCharacter = curItem as CharacterSheet;
+                if (curCharacter.Visual != null)
+                {
+                    _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor);
+                }
+            }
+        }
+
+        internal void AddVisualToCharacters(IList characters, PictureFileInfo pictureInfo, System.Windows.Media.Color pieceColor)
+        {
+            foreach (var curItem in characters)
+            {
+                var curCharacter = curItem as CharacterSheet;
+                if (curCharacter.Visual != null)
+                {
+                    _visualsViewModel.RemovePiece(curCharacter.Visual);
+                }
+                var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor, pictureInfo.PictureName);
+                curCharacter.Visual = createdVisual;
+                curCharacter.PieceColor = pieceColor;
             }
         }
     }

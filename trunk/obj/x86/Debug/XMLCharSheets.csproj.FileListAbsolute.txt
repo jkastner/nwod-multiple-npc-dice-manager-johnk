@@ -83,3 +83,5 @@ C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\X
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\GameBoard.dll
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\HelixToolkit.Wpf.dll
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\GameBoard.pdb
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.baml
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.g.cs
