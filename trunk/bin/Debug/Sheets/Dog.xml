@@ -1,0 +1,17 @@
+<CharacterSheet>
+	<Ruleset>NWoD</Ruleset>
+	<CharacterType>Human</CharacterType>
+	<name>Dog</name>
+	<traits>
+	<trait label='Teeth' value='9' IsAttack='true' TargetDefense='Melee Defense' DamageType='Lethal'/>
+	<trait label='Initiative' value='6'/>
+	<trait label='Ranged Defense' value='0'/>
+	<trait label='Melee Defense' value='5'/>
+	<trait label='Notice' value='7'/>
+	<trait label='Resolve' value='4'/>
+	<trait label='Composure' value='3'/>
+	<trait label='Health' value='8'/>
+	</traits>
+</CharacterSheet>
+
+
