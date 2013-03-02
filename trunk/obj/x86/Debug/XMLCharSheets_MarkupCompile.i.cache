@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\
 XMLCharSheets
 none
 false
 DEBUG;TRACE
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\App.xaml
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\App.xaml
 6-1119320478
 
-30-18381815
-151520968843
+30310117280
+151442513099
 GetCharacterName.xaml;MainWindow.xaml;CombatDisplayWindow.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;StatusEffectWindow.xaml;
 
 False
