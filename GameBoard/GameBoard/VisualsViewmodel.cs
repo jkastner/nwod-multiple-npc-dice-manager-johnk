@@ -21,23 +21,22 @@ namespace GameBoard
         {
             SetBoardBackground(@"MapPictures\BattleMap.jpg", 300, 300);
         }
-        
-        
+
+
         public MeshBuilder InitializeBoardBoundaries(double height, double width)
         {
             List<Point3D> board = new List<Point3D>();
-            board.Add(new Point3D(-height, 0, 0));
+            board.Add(new Point3D(-width / 2, -height / 2, 0));
 
-            board.Add(new Point3D(0, -width, 0));
+            board.Add(new Point3D(width / 2, -height / 2, 0));
 
-            board.Add(new Point3D(height, 0, 0));
-            board.Add(new Point3D(0, width, 0));
+            board.Add(new Point3D(width/2, height/2, 0));
+            board.Add(new Point3D(-width/2, height / 2, 0));
 
 
             var mb = new MeshBuilder();
 
             mb.AddQuad(board[0], board[1], board[2], board[3]);
-
             return mb;
 
         }
@@ -190,10 +189,10 @@ namespace GameBoard
             }
             else
             {
+                moveablePicture.Speed = curSpeed;
                 moveablePicture.StartActive();
                 if (drawSingleSelectionDetails)
                 {
-                    moveablePicture.Speed = curSpeed;
                     moveablePicture.RemakeInfoText(statuses);
                     AddIfNew(moveablePicture.MovementCircle);
                     AddIfNew(moveablePicture.DoubleMovementCircle);
@@ -248,9 +247,11 @@ namespace GameBoard
             if(_theMap!=null)
                 RemoveIfPresent(_theMap);
             ImageBrush boardFrontBrush = new ImageBrush();
+            BoardHeight = boardHeight;
+            BoardWidth = boardWidth;
             Material frontMaterial = MaterialMaker.MakeImageMaterial(newImage);
             Material backMaterial = MaterialMaker.PaperbackMaterial();
-            var mb = InitializeBoardBoundaries(boardHeight, boardWidth);
+            var mb = InitializeBoardBoundaries(boardWidth, boardHeight);
             _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
             AddIfNew(_theMap);
         }
