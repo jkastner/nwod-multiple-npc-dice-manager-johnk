@@ -83,9 +83,10 @@ namespace GameBoard
 
 
         Color defaultColor = Colors.Gray;
-        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name = "")
+        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height)
         {
-            MoveablePicture charImage = new MoveablePicture(charImageFile, 10, 10, name, pieceColor);
+            double heightFeet = height / 12;
+            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet / 1.618, heightFeet, name, pieceColor, speed);
             _visualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             Viewport.Children.Add(charImage.CharImage);
             Viewport.Children.Add(charImage.BaseCone);
@@ -185,11 +186,19 @@ namespace GameBoard
         {
             if (!isActive)
             {
-                moveablePicture.StopActiveAnimation();
+                moveablePicture.StopActive();
+                if (_viewport.Children.Contains(moveablePicture.MovementCone))
+                {
+                    _viewport.Children.Remove(moveablePicture.MovementCone);
+                }
             }
             else
             {
-                moveablePicture.StartActiveAnimation();
+                moveablePicture.StartActive();
+                if (!_viewport.Children.Contains(moveablePicture.MovementCone))
+                {
+                    _viewport.Children.Add(moveablePicture.MovementCone);
+                }
             }
         }
 

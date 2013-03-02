@@ -13,7 +13,7 @@
 	<trait label='Composure' value='2'/>
 	<trait label='Health' value='7'/>
 	<trait label='Speed' value='30'/>
-	<trait label='Height' value='66'/>
+	<trait label='Height' value='180'/>
 	<trait label='Width' value='3'/>
 	</traits>
 </CharacterSheet>

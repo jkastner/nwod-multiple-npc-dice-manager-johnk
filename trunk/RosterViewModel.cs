@@ -538,7 +538,8 @@ namespace XMLCharSheets
                 {
                     _visualsViewModel.RemovePiece(curCharacter.Visual);
                 }
-                var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor, pictureInfo.PictureName);
+                var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor, 
+                    pictureInfo.PictureName, curCharacter.SpeedTrait.TraitValue, curCharacter.HeightTrait.TraitValue);
                 curCharacter.Visual = createdVisual;
                 curCharacter.PieceColor = pieceColor;
             }

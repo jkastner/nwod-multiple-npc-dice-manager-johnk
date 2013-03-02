@@ -34,7 +34,8 @@ namespace GameBoard
             get { return _baseCone; }
             set { _baseCone = value; }
         }
-        
+
+        public TruncatedConeVisual3D MovementCone { get; set; }
 
         private double _pictureOffset;
 
@@ -59,14 +60,15 @@ namespace GameBoard
             set { _name = value; }
         }
 
-
+        public double Speed { get; set; }
 
         public Color PieceColor { get; set; }
         
-        public MoveablePicture(String pictureFile, double width, double length, String imageName, Color pieceColor)
+        public MoveablePicture(String pictureFile, double width, double length, String imageName, Color pieceColor, double speed)
         {
             PieceColor = pieceColor;
             Name = imageName;
+            Speed = speed;
             _charImage = ImageToRectangle(pictureFile, width, length);
         }
 
@@ -106,6 +108,14 @@ namespace GameBoard
                 Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
                 Origin = new Point3D(5, 8, 0),
             };
+            MovementCone = new TruncatedConeVisual3D()
+            {
+                Height = .5,
+                BaseRadius = Speed,
+                TopRadius = Speed,
+                Material = new SpecularMaterial(new SolidColorBrush(Colors.LightBlue), .1),
+                Origin = new Point3D(5, 8, 0),
+            };
             return charPic;
 
         }
@@ -137,14 +147,18 @@ namespace GameBoard
             AnimationClock clock2 = moveAnimationCone.CreateClock();
             CharImage.ApplyAnimationClock(RectangleVisual3D.OriginProperty, clock1);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.OriginProperty, clock2);
+            if(!_isActive)
+                MovementCone.Origin = new Point3D(point3D.X, point3D.Y, 0);
             //CharImage.Origin = point3D;
             //BaseCone.Origin = ;
         }
 
 
 
-        internal void StopActiveAnimation()
+        internal void StopActive()
         {
+            _isActive = false;
+            MovementCone.Origin = new Point3D(CharImage.Origin.X, CharImage.Origin.Y, 0);
             if (activeAnimation != null)
             {
                 BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.TopRadiusProperty, null);
@@ -153,8 +167,10 @@ namespace GameBoard
         }
 
         DoubleAnimation activeAnimation = null;
-        internal void StartActiveAnimation()
+        bool _isActive = false;
+        internal void StartActive()
         {
+            _isActive = true;
             activeAnimation = new DoubleAnimation(BaseCone.TopRadius, BaseCone.TopRadius * 1.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
             activeAnimation.AutoReverse = true;
             activeAnimation.RepeatBehavior = RepeatBehavior.Forever;
