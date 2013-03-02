@@ -13,10 +13,8 @@
 	<trait label='Resolve' value='3'/>
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='9'/>
+	<trait label='Height' value='180'/>
 	<trait label='Speed' value='30'/>
-	<trait label='Height' value='66'/>
-	<trait label='Speed' value='30'/>
-	<Height>5.8'</Height>
 	</traits>
 </CharacterSheet>
 

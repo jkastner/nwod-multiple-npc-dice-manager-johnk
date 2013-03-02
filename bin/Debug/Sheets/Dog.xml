@@ -11,6 +11,8 @@
 	<trait label='Resolve' value='4'/>
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='8'/>
+	<trait label='Height' value='140'/>
+	<trait label='Speed' value='30'/>
 	</traits>
 </CharacterSheet>
 

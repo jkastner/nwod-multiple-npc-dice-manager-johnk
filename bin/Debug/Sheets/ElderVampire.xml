@@ -17,8 +17,7 @@
 	<trait label='Health' value='9'/>
 	<trait label='Clan Discipline Pool' value='11'/>
 	<trait label='Speed' value='30'/>
-	<trait label='Height' value='66'/>
-	<trait label='Width' value='3'/>
+	<trait label='Height' value='180'/>
 	</traits>
 </CharacterSheet>
 
