@@ -45,7 +45,7 @@
         </ListBox>
         <ListBox 
             Name="SelectedColor_ListBox"
-            MaxHeight="150" ItemsSource="{Binding Source={StaticResource colorPropertiesOdp}}"
+            MaxHeight="250" ItemsSource="{Binding Source={StaticResource colorPropertiesOdp}}"
 		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 		ScrollViewer.VerticalScrollBarVisibility="Auto" >
             <ListBox.ItemsPanel>

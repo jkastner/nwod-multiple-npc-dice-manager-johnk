@@ -272,13 +272,13 @@ namespace XMLCharSheets
 
         private void AddVisual_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select at least one active character.");
+            }
             SelectVisualWindow _visualWindow = new SelectVisualWindow(_pictureSelectionViewModel);
             _visualWindow.ShowDialog();
             var pictureInfo = _visualWindow.SearchedDisplayItems_ListBox.SelectedItem as PictureFileInfo;
-
-
-
-
             Color pieceColor = _visualWindow.ChosenColor;
             if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor!=null)
             {

@@ -516,7 +516,7 @@ namespace XMLCharSheets
                 var curCharacter = cur as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetActive(false, curCharacter.Visual, curCharacter.PieceColor);
+                    _visualsViewModel.SetActive(false, curCharacter.Visual, curCharacter.PieceColor, false);
                 }
             }
             foreach (var curItem in characters)
@@ -524,7 +524,10 @@ namespace XMLCharSheets
                 var curCharacter = curItem as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor);
+                    if(characters.Count==1)
+                        _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor, true);
+                    else
+                        _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor, false);
                 }
             }
         }
