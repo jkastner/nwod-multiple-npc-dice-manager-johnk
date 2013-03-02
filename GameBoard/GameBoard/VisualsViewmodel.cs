@@ -187,17 +187,17 @@ namespace GameBoard
             if (!isActive)
             {
                 moveablePicture.StopActive();
-                if (_viewport.Children.Contains(moveablePicture.MovementCone))
+                if (_viewport.Children.Contains(moveablePicture.MovementCircle))
                 {
-                    _viewport.Children.Remove(moveablePicture.MovementCone);
+                    _viewport.Children.Remove(moveablePicture.MovementCircle);
                 }
             }
             else
             {
                 moveablePicture.StartActive();
-                if (!_viewport.Children.Contains(moveablePicture.MovementCone))
+                if (!_viewport.Children.Contains(moveablePicture.MovementCircle))
                 {
-                    _viewport.Children.Add(moveablePicture.MovementCone);
+                    _viewport.Children.Add(moveablePicture.MovementCircle);
                 }
             }
         }
