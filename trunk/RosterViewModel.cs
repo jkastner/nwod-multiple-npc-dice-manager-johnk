@@ -346,6 +346,11 @@ namespace XMLCharSheets
                         "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
                     
                 }
+                if (curChar.Visual != null&&curChar.Target.Visual!=null)
+                {
+                    curChar.Visual.DrawAttack(curChar.Target.Visual);
+
+                }
             }
         }
 
@@ -475,6 +480,22 @@ namespace XMLCharSheets
                     ActiveRoster.Add(DeceasedRoster[curIndex]);            
                     DeceasedRoster.Remove(DeceasedRoster[curIndex]);
                 }
+            }
+        }
+
+        internal void SetVisualActive(IList characters)
+        {
+            foreach (var cur in _activeRoster)
+            {
+                if (cur.Visual != null)
+                {
+                    cur.Visual.SetActive(false);
+                }
+            }
+            foreach (var curItem in characters)
+            {
+                var curCharacer = curItem as CharacterSheet;
+                curCharacer.Visual.SetActive(true);
             }
         }
     }
