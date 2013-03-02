@@ -182,7 +182,7 @@ namespace GameBoard
             SelectedPiece = VisualToMoveablePicturesDictionary[lastHit];
         }
 
-        public void SetActive(bool isActive, MoveablePicture moveablePicture, Color pieceColor)
+        public void SetActive(bool isActive, MoveablePicture moveablePicture, Color pieceColor, bool drawMovementCircle)
         {
             if (!isActive)
             {
@@ -193,8 +193,11 @@ namespace GameBoard
             else
             {
                 moveablePicture.StartActive();
-                AddIfNew(moveablePicture.MovementCircle);
-                AddIfNew(moveablePicture.DoubleMovementCircle);
+                if (drawMovementCircle)
+                {
+                    AddIfNew(moveablePicture.MovementCircle);
+                    AddIfNew(moveablePicture.DoubleMovementCircle);
+                }
             }
         }
 

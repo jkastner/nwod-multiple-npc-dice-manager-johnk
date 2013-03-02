@@ -81,7 +81,10 @@ namespace XMLCharSheets
         private void TrimList_TextBox_KeyUp(object sender, KeyEventArgs e)
         {
             _pictureSelectionViewModel.AdjustList(TrimList_TextBox.Text.Trim().ToLower());
-
+            if (SearchedDisplayItems_ListBox.Items.Count == 1)
+            {
+                SearchedDisplayItems_ListBox.SelectedIndex = 0;
+            }
         }
     }
 }

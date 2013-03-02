@@ -76,7 +76,7 @@ namespace GameBoard
         private RectangleVisual3D ImageToRectangle(String imageFile, double width, double length)
         {
             Material frontMaterial = MaterialMaker.MakeImageMaterial(imageFile);
-            _pictureOffset = length / 2 + 5;
+            _pictureOffset = length / 2 + 1;
             _length = length;
             RectangleVisual3D charPic = new RectangleVisual3D()
             {
@@ -85,7 +85,7 @@ namespace GameBoard
                 Length = _length,
                 Width = width,
                 Origin = new Point3D(5, 8, _pictureOffset),
-                Normal = new Vector3D(1, 0, 1),
+                Normal = new Vector3D(0.00001, 0.00001, 1),
                 LengthDirection = new Vector3D(0, 0, -1),
             };
             //charPic.Transform = new RotateTransform3D(new RotateTransform3D(
