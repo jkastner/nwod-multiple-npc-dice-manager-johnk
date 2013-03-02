@@ -79,6 +79,10 @@ namespace GameBoard
                 if (rayMeshResult != null)
                 {
                     GeometryModel3D hitgeo = rayMeshResult.ModelHit as GeometryModel3D;
+                    if (rayMeshResult.VisualHit is TruncatedConeVisual3D)
+                    {
+                        return HitTestResultBehavior.Continue;
+                    }
                     if (rayMeshResult.VisualHit is RectangleVisual3D)
                     {
                         if (lastHit == null)

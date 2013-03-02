@@ -65,6 +65,14 @@ namespace GameBoard
             set { _theMap = value; }
         }
 
+        private RectangleVisual3D _lastHit = null;
+        public RectangleVisual3D LastHit
+        {
+            get { return _lastHit; }
+            set { _lastHit = value; }
+        }
+
+
         private Dictionary<Visual3D, MoveablePicture>  _visualToMoveablePicturesDictionary = new Dictionary<Visual3D,MoveablePicture>();
         public Dictionary<Visual3D, MoveablePicture> VisualToMoveablePicturesDictionary
         {
