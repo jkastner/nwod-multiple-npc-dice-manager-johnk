@@ -36,6 +36,7 @@ namespace GameBoard
         }
 
         public TubeVisual3D MovementCircle { get; set; }
+        public TubeVisual3D DoubleMovementCircle { get; set; }
 
         private double _pictureOffset;
 
@@ -84,7 +85,7 @@ namespace GameBoard
                 Length = _length,
                 Width = width,
                 Origin = new Point3D(5, 8, _pictureOffset),
-                Normal = new Vector3D(1, 1, 0),
+                Normal = new Vector3D(1, 0, 1),
                 LengthDirection = new Vector3D(0, 0, -1),
             };
             //charPic.Transform = new RotateTransform3D(new RotateTransform3D(
@@ -111,7 +112,13 @@ namespace GameBoard
             MovementCircle = new TubeVisual3D()
             {
                 Diameter = .5,
-                Material = new SpecularMaterial(new SolidColorBrush(Colors.LightBlue), .1),
+                Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
+                ThetaDiv = 15,
+            };
+            DoubleMovementCircle = new TubeVisual3D()
+            {
+                Diameter = .5,
+                Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
                 ThetaDiv = 15,
             };
             return charPic;
@@ -172,18 +179,19 @@ namespace GameBoard
             AnimationClock _activeClock = activeAnimation.CreateClock();
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.TopRadiusProperty, _activeClock);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.BaseRadiusProperty, _activeClock);
-            Point3DCollection circlePoints = CirclePoints();
+            Point3DCollection circlePoints = CirclePoints(Speed);
+            Point3DCollection doubleCirclePoints = CirclePoints(Speed*2);
             MovementCircle.Path = circlePoints;
+            DoubleMovementCircle.Path = doubleCirclePoints;
         }
 
-        private Point3DCollection CirclePoints()
+        private Point3DCollection CirclePoints(double radius)
         {
             List<Point3D> circlePoints = new List<Point3D>();
             //int pointsCount = 360;
             //double slice = 2 * Math.PI / pointsCount;
             Point3D center = CharImage.Origin;
-            double radius = Speed;
-            for (int angleIndex = 0; angleIndex < 360; angleIndex++)
+            for (int angleIndex = 0; angleIndex < 361; angleIndex++)
             {
                 //double angle = slice * i;
                 //int newX = (int)(center.X + radius * Math.Cos(angle));
@@ -204,11 +212,7 @@ namespace GameBoard
 
             return new Point3D(x, y, 10);
         }
-        private double DegreeToRadian(double angle)
-        {
-            return Math.PI * angle / 180.0;
-        }
-            
+           
 
     }
 }

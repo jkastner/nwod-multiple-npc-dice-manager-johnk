@@ -187,21 +187,31 @@ namespace GameBoard
             if (!isActive)
             {
                 moveablePicture.StopActive();
-                if (_viewport.Children.Contains(moveablePicture.MovementCircle))
-                {
-                    _viewport.Children.Remove(moveablePicture.MovementCircle);
-                }
+                RemoveIfPresent(moveablePicture.MovementCircle);
+                RemoveIfPresent(moveablePicture.DoubleMovementCircle);
             }
             else
             {
                 moveablePicture.StartActive();
-                if (!_viewport.Children.Contains(moveablePicture.MovementCircle))
-                {
-                    _viewport.Children.Add(moveablePicture.MovementCircle);
-                }
+                AddIfNew(moveablePicture.MovementCircle);
+                AddIfNew(moveablePicture.DoubleMovementCircle);
             }
         }
 
+        private void RemoveIfPresent(MeshElement3D Visual3D)
+        {
+            if (_viewport.Children.Contains(Visual3D))
+            {
+                _viewport.Children.Remove(Visual3D);
+            }
+        }
+        private void AddIfNew(MeshElement3D Visual3D)
+        {
+            if (!_viewport.Children.Contains(Visual3D))
+            {
+                _viewport.Children.Add(Visual3D);
+            }
+        }
 
         public void RemovePiece(MoveablePicture moveablePicture)
         {
