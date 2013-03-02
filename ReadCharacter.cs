@@ -113,6 +113,8 @@ namespace XMLCharSheets
                         {
                             Name = (String)item.Element("name"),
                             CharacterType = (String)item.Element("CharacterType"),
+                            Speed = (String)item.Element("Speed"),
+                            Height = (String)item.Element("Height"),
                             Traits = item.Descendants("traits"),
                         };
             foreach (var curQuery in query)

@@ -4,7 +4,6 @@
         Title="MainWindow" Height="350" Width="525"
         xmlns:h="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
         MouseDown="ViewportMouseDown"
-        KeyDown="ViewportKeyDown"
         >
     <Grid>
         <h:HelixViewport3D ShowViewCube="False" Name="Viewport">
