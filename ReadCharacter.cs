@@ -147,7 +147,6 @@ namespace XMLCharSheets
                                 TargetDefense = (String) item.Attribute("TargetDefense"),
                                 DamageType = (String) item.Attribute("DamageType"),
                                 SucceedsOn = (String)item.Attribute("SucceedsOn"),
-
                             };
 
             var listit = query.ToList();

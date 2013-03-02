@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Collections;
+using GameBoard;
 
 namespace XMLCharSheets
 {
@@ -24,6 +25,7 @@ namespace XMLCharSheets
     {
         private RosterViewModel _viewModel = new RosterViewModel();
 
+        GameBoardVisual gb = new GameBoardVisual();
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +36,8 @@ namespace XMLCharSheets
             _viewModel.DamageTypes.Add("Aggrivated");
             CombatDisplayWindow _combatWindow = new CombatDisplayWindow(_viewModel);
             _combatWindow.Show();
+            
+            gb.Show();
         }
 
 
@@ -49,6 +53,7 @@ namespace XMLCharSheets
             if (!gcn.WasCancel)
             {
                 CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(gcn.ProvidedName);
+                newInstance.Visual = gb.AddToMap(@"PiecePictures\Knight.png");
                 _viewModel.ActiveRoster.Add(newInstance);
             }
         }
@@ -56,6 +61,7 @@ namespace XMLCharSheets
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetupTraits(ActiveCharacters_ListBox);
+            _viewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)

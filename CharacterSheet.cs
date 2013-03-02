@@ -7,6 +7,7 @@ using System.Xml;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Media;
+using GameBoard;
 
 namespace XMLCharSheets
 {
@@ -291,6 +292,8 @@ namespace XMLCharSheets
                 OnPropertyChanged("DisplayCharacter");
             }
         }
-        
+
+
+        public MoveablePicture Visual { get; set; }
     }
 }

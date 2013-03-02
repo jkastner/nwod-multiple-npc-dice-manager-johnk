@@ -79,3 +79,7 @@ E:\Google Drive\NerdStuff\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.exe
 E:\Google Drive\NerdStuff\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.pdb
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\CombatDisplayWindow.baml
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\CombatDisplayWindow.g.cs
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\XMLCharSheets.exe.config
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\GameBoard.dll
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\HelixToolkit.Wpf.dll
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\GameBoard.pdb
