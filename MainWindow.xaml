@@ -71,9 +71,21 @@
                     Margin="5,5,0,0"
                     HorizontalAlignment="Left"
                         Name="AddVisual_Button"
-                        Content="Visual" ToolTip="Add visual to selected characters.." 
+                        Content="Add Visual" ToolTip="Add visual to selected characters.." 
                             Width="75" Click="AddVisual_Button_Click"/>
-
+                <Button 
+                    Margin="5,5,0,0"
+                    HorizontalAlignment="Left"
+                        Name="RemoveVisual_Button"
+                        Content="Remove Visual" ToolTip="Remove visual from selected characters.." 
+                            Width="95" Click="RemoveVisual_Button_Click"/>
+                <Button 
+                    Margin="5,5,0,0"
+                    HorizontalAlignment="Left"
+                        Name="ChangeBackgroundImage_Button"
+                        Content="Background" ToolTip="Change Background Image..." 
+                        Width="95" Click="ChangeBackground_Button_Click"/>               
+                
             </DockPanel>
             <DockPanel Margin="0,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinHeight="80" >
                 <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" 

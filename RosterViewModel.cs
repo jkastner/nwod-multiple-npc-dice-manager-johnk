@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Media.Media3D;
 using System.Xml;
 using GameBoard;
 
@@ -313,6 +314,10 @@ namespace XMLCharSheets
                 curChar.ResetHealth();
                 curChar.StatusEffects.Clear();
                 curChar.NotifyStatusChange();
+                if (curChar.Visual != null)
+                {
+                    curChar.Visual.RemakeInfoText(MakeStatusList(curChar.StatusEffects));
+                }
 
             }
         }
@@ -337,6 +342,7 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = characters[curIndex] as CharacterSheet;
                 ActiveRoster.Remove(curChar);
+                _visualsViewModel.RemovePiece(curChar.Visual);
             }
         }
 
@@ -484,8 +490,12 @@ namespace XMLCharSheets
         {
             foreach (var curItem in characters)
             {
-                var curCharacer = curItem as CharacterSheet;
-                curCharacer.AssignStatus(description, duration);
+                var curCharacter = curItem as CharacterSheet;
+                curCharacter.AssignStatus(description, duration);
+                if (curCharacter.Visual != null)
+                {
+                    curCharacter.Visual.RemakeInfoText(MakeStatusList(curCharacter.StatusEffects));
+                }
             }
         }
 
@@ -509,25 +519,22 @@ namespace XMLCharSheets
             }
         }
 
-        internal void SetVisualActive(IList characters)
+        internal void SetVisualActive(IList selectedCharacters)
         {
             foreach (var cur in _activeRoster)
             {
                 var curCharacter = cur as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetActive(false, curCharacter.Visual, curCharacter.PieceColor, false);
+                    _visualsViewModel.SetActive(false, curCharacter.Visual, curCharacter.PieceColor, false, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
                 }
             }
-            foreach (var curItem in characters)
+            foreach (var curItem in selectedCharacters)
             {
                 var curCharacter = curItem as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    if(characters.Count==1)
-                        _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor, true);
-                    else
-                        _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor, false);
+                    _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor, selectedCharacters.Count == 1, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
                 }
             }
         }
@@ -537,14 +544,41 @@ namespace XMLCharSheets
             foreach (var curItem in characters)
             {
                 var curCharacter = curItem as CharacterSheet;
+                Point3D baseOrigin = new Point3D(0, 0, 0);
+                if (curCharacter.Visual != null)
+                {
+                    baseOrigin = curCharacter.Visual.Location;
+                    _visualsViewModel.RemovePiece(curCharacter.Visual);
+                }
+                //public MoveablePicture 
+                //AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height, Point3D location, String additionalInfo)
+                var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor,
+                    curCharacter.Name, curCharacter.HeightTrait.TraitValue, baseOrigin, MakeStatusList(curCharacter.StatusEffects));
+                curCharacter.Visual = createdVisual;
+                curCharacter.PieceColor = pieceColor;
+            }
+        }
+
+        private List<StatusEffectDisplay> MakeStatusList(List<StatusEffect> list)
+        {
+            List<StatusEffectDisplay> description = new List<StatusEffectDisplay>();
+            foreach (var cur in list)
+            {
+                description.Add(cur.CreateStatusEffectDisplay());
+            }
+            return description;
+        }
+
+        internal void RemoveVisuals(IList characters)
+        {
+            foreach (var curItem in characters)
+            {
+                var curCharacter = curItem as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
                     _visualsViewModel.RemovePiece(curCharacter.Visual);
+                    curCharacter.Visual = null;
                 }
-                var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor, 
-                    pictureInfo.PictureName, curCharacter.SpeedTrait.TraitValue, curCharacter.HeightTrait.TraitValue);
-                curCharacter.Visual = createdVisual;
-                curCharacter.PieceColor = pieceColor;
             }
         }
     }

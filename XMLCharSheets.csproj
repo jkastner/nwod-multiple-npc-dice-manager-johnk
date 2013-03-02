@@ -86,6 +86,9 @@
     <Compile Include="SelectVisualWindow.xaml.cs">
       <DependentUpon>SelectVisualWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SetBoardDimensions.xaml.cs">
+      <DependentUpon>SetBoardDimensions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatusEffect.cs" />
     <Compile Include="StatusEffectWindow.xaml.cs">
       <DependentUpon>StatusEffectWindow.xaml</DependentUpon>
@@ -116,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectVisualWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetBoardDimensions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

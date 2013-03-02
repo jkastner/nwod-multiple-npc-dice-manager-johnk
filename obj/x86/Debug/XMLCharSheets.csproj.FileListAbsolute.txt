@@ -111,3 +111,5 @@ C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets_MarkupCo
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.g.resources
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.baml
+C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.g.cs

@@ -315,6 +315,7 @@ namespace XMLCharSheets
             get { return _pieceColor; }
             set { _pieceColor = value; }
         }
+
         
     }
 }

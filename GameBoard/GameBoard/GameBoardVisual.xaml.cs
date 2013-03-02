@@ -33,7 +33,6 @@ namespace GameBoard
             _viewModel = ViewModel;
             _viewModel.Viewport = Viewport;
             _viewModel.Initialize();
-            Viewport.Children.Add(_viewModel.TheMap);
 
             //_visuals.Add(knight.CharImage, knight);
             //_viewport.Children.Add(knight.CharImage);
@@ -78,10 +77,18 @@ namespace GameBoard
                 if (rayMeshResult != null)
                 {
                     GeometryModel3D hitgeo = rayMeshResult.ModelHit as GeometryModel3D;
-                    if (rayMeshResult.VisualHit is TruncatedConeVisual3D || rayMeshResult.VisualHit is TubeVisual3D)
+                    foreach (var curVisual in _viewModel.VisualToMoveablePicturesDictionary)
                     {
-                        return HitTestResultBehavior.Continue;
+                        var curMoveable = curVisual.Value;
+                        foreach (var curAssociatedVisual in curMoveable.AssociatedVisuals.Where(x=>!x.Equals(curMoveable.CharImage)))
+                        {
+                            if (rayMeshResult.VisualHit.Equals(curAssociatedVisual))
+                            {
+                                return HitTestResultBehavior.Continue;
+                            }
+                        }
                     }
+                    
                     if (rayMeshResult.VisualHit is RectangleVisual3D)
                     {
                         _viewModel.LastHit = rayMeshResult.VisualHit as RectangleVisual3D;

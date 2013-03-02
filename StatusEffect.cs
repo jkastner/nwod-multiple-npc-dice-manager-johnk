@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameBoard;
 
 namespace XMLCharSheets
 {
@@ -27,6 +28,18 @@ namespace XMLCharSheets
             set { _durationRemaining = value; }
         }
 
+        /// <summary>
+        /// Used to pass the info without a circular dependency.
+        /// </summary>
+        /// <returns></returns>
+        public StatusEffectDisplay CreateStatusEffectDisplay()
+        {
+            return new StatusEffectDisplay()
+            {
+                Description = Description,
+                TurnsRemaining = DurationRemaining.ToString(),
+            };
+        }
 
     }
 }

@@ -38,6 +38,19 @@ namespace GameBoard
         public TubeVisual3D MovementCircle { get; set; }
         public TubeVisual3D DoubleMovementCircle { get; set; }
 
+        public String AdditionalDisplayText { get; set; }
+
+        public BillboardTextVisual3D InfoText
+        { get; set; }
+
+        private List<Visual3D> _associatedVisuals = new List<Visual3D>();
+        public List<Visual3D> AssociatedVisuals
+        {
+            get { return _associatedVisuals; }
+            set { _associatedVisuals = value; }
+        }
+        
+
         private double _pictureOffset;
 
         public double PictureOffset
@@ -64,19 +77,56 @@ namespace GameBoard
         public double Speed { get; set; }
 
         public Color PieceColor { get; set; }
-        
-        public MoveablePicture(String pictureFile, double width, double length, String imageName, Color pieceColor, double speed)
+
+        public double PictureLength { get; set; }
+
+        public Point3D Location
+        {
+            get { return CharImage.Origin; }
+            set { MoveTo(value); }
+        }
+
+
+        public MoveablePicture(String pictureFile, double width, double length, String imageName, Color pieceColor, Point3D location, List<StatusEffectDisplay> statuses)
         {
             PieceColor = pieceColor;
             Name = imageName;
-            Speed = speed;
-            _charImage = ImageToRectangle(pictureFile, width, length);
+            _charImage = ImageToRectangle(pictureFile, width, length, location);
+            AssociatedVisuals.Add(BaseCone);
+            AssociatedVisuals.Add(MovementCircle);
+            AssociatedVisuals.Add(DoubleMovementCircle);
+            AssociatedVisuals.Add(CharImage);
+            PictureLength = length;
+            RemakeInfoText(statuses);
+            AssociatedVisuals.Add(InfoText);
         }
 
-        private RectangleVisual3D ImageToRectangle(String imageFile, double width, double length)
+        public void RemakeInfoText(List<StatusEffectDisplay> statuses)
+        {
+            if (InfoText == null)
+            {
+                InfoText = new BillboardTextVisual3D()
+                {
+                    Position = new Point3D(
+                        CharImage.Origin.X, CharImage.Origin.Y,
+                        CharImage.Origin.Z + PictureOffset + PictureLength + 3),
+                    FontSize = 18,
+                    Background= new SolidColorBrush(Colors.Wheat),
+                };
+            }
+
+            InfoText.Text = Name;
+            foreach (var cur in statuses)
+            {
+                InfoText.Text = InfoText.Text + "\n   " + cur.Description + " -- R:" + cur.TurnsRemaining;
+            }
+        }
+
+
+        private RectangleVisual3D ImageToRectangle(String imageFile, double width, double length, Point3D location)
         {
             Material frontMaterial = MaterialMaker.MakeImageMaterial(imageFile);
-            _pictureOffset = length / 2 + 1;
+            PictureOffset = 3.5;
             _length = length;
             RectangleVisual3D charPic = new RectangleVisual3D()
             {
@@ -84,7 +134,7 @@ namespace GameBoard
                 BackMaterial = MaterialMaker.PaperbackMaterial(),
                 Length = _length,
                 Width = width,
-                Origin = new Point3D(5, 8, _pictureOffset),
+                Origin = new Point3D(location.X, location.Y, PictureOffset),
                 Normal = new Vector3D(0.00001, 0.00001, 1),
                 LengthDirection = new Vector3D(0, 0, -1),
             };
@@ -103,11 +153,11 @@ namespace GameBoard
             //};
             BaseCone = new TruncatedConeVisual3D()
             {
-                Height = 2.5,
+                Height = PictureOffset-1,
                 BaseRadius = length/3,
                 TopRadius = length/3,
                 Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
-                Origin = new Point3D(5, 8, 0),
+                Origin = new Point3D(location.X, location.Y, 0),
             };
             MovementCircle = new TubeVisual3D()
             {
@@ -148,10 +198,13 @@ namespace GameBoard
         {
             Point3DAnimation moveAnimationPic = new Point3DAnimation(CharImage.Origin, point3D, new Duration(new TimeSpan(0,0,0,1)));
             Point3DAnimation moveAnimationCone = new Point3DAnimation(BaseCone.Origin, new Point3D(point3D.X, point3D.Y, 0), new Duration(new TimeSpan(0, 0, 0, 1)));
+            Point3DAnimation textAnimation = new Point3DAnimation(InfoText.Position, new Point3D(point3D.X, point3D.Y, InfoText.Position.Z), new Duration(new TimeSpan(0, 0, 0, 1)));
             AnimationClock clock1 = moveAnimationPic.CreateClock();
             AnimationClock clock2 = moveAnimationCone.CreateClock();
+            AnimationClock clock3 = textAnimation.CreateClock();
             CharImage.ApplyAnimationClock(RectangleVisual3D.OriginProperty, clock1);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.OriginProperty, clock2);
+            InfoText.ApplyAnimationClock(BillboardTextVisual3D.PositionProperty, clock3);
             //CharImage.Origin = point3D;
             //BaseCone.Origin = ;
         }
