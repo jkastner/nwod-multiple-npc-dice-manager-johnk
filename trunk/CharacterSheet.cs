@@ -43,11 +43,24 @@ namespace XMLCharSheets
             set { _curInitiative = value; }
         }
 
-
         public abstract void PopulateCombatTraits();
 
         public abstract void RollInitiative();
 
+        public Trait HeightTrait
+        {
+            get
+            {
+                return Traits.Where(x => x.TraitLabel.Equals("Height")).FirstOrDefault();
+            }
+        }
+        public Trait SpeedTrait
+        {
+            get
+            {
+                return Traits.Where(x => x.TraitLabel.Equals("Speed")).FirstOrDefault();
+            }
+        }
 
         public virtual String Status
         {

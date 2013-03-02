@@ -85,3 +85,29 @@ C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\H
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\bin\Debug\GameBoard.pdb
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.baml
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\XMLCharSheets.exe.config
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.exe
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.pdb
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\XMLCharSheets.exe
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\XMLCharSheets.pdb
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\GameBoard.dll
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\HelixToolkit.Wpf.dll
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\GameBoard.pdb
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.csprojResolveAssemblyReference.cache
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\GetCharacterName.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\MainWindow.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\CombatDisplayWindow.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectTarget.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectVisualWindow.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\StatusEffectWindow.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\GetCharacterName.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\MainWindow.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\CombatDisplayWindow.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectTarget.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectVisualWindow.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\StatusEffectWindow.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\App.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets_MarkupCompile.cache
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.g.resources
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache

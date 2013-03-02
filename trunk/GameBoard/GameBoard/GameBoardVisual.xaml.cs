@@ -67,7 +67,6 @@ namespace GameBoard
             VisualTreeHelper.HitTest(Viewport, null, HTResult, pointparams);
         }
 
-        RectangleVisual3D lastHit = null;
         public HitTestResultBehavior HTResult(System.Windows.Media.HitTestResult rawresult)
         {
             //MessageBox.Show(rawresult.ToString());
@@ -85,20 +84,17 @@ namespace GameBoard
                     }
                     if (rayMeshResult.VisualHit is RectangleVisual3D)
                     {
-                        if (lastHit == null)
-                        {
-                            lastHit = rayMeshResult.VisualHit as RectangleVisual3D;
-                            _viewModel.SelectCharacterFromVisual(lastHit);
-                        }
+                        _viewModel.LastHit = rayMeshResult.VisualHit as RectangleVisual3D;
+                        _viewModel.SelectCharacterFromVisual(_viewModel.LastHit);
                     }
-                    else if (lastHit != null)
+                    else if (_viewModel.LastHit != null)
                     {
                         var movedHit = rayMeshResult.PointHit;
-                        _viewModel.VisualToMoveablePicturesDictionary[lastHit].MoveTo(
-                            new Point3D(movedHit.X, movedHit.Y, movedHit.Z + _viewModel.VisualToMoveablePicturesDictionary[lastHit].PictureOffset));
-                        lastHit = null;
+                        _viewModel.VisualToMoveablePicturesDictionary[_viewModel.LastHit].MoveTo(
+                            new Point3D(movedHit.X, movedHit.Y, movedHit.Z + _viewModel.VisualToMoveablePicturesDictionary[_viewModel.LastHit].PictureOffset));
+                        _viewModel.LastHit = null;
                     }
-                    else if (lastHit == null)
+                    else if (_viewModel.LastHit == null)
                     {
 
                         //_viewport.Children.Add(new SphereVisual3D()
@@ -114,14 +110,6 @@ namespace GameBoard
             return HitTestResultBehavior.Stop;
         }
 
-        private void ViewportKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Delete && lastHit != null)
-            {
-                Viewport.Children.Remove(lastHit);
-                lastHit = null;
-            }
-        }
 
     }
 }
