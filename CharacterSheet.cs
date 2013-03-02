@@ -295,5 +295,13 @@ namespace XMLCharSheets
 
 
         public MoveablePicture Visual { get; set; }
+
+        private Color _pieceColor = Colors.Gray;
+        public Color PieceColor
+        {
+            get { return _pieceColor; }
+            set { _pieceColor = value; }
+        }
+        
     }
 }
