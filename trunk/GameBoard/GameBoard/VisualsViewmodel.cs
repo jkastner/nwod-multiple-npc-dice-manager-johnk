@@ -19,25 +19,19 @@ namespace GameBoard
 
         public void Initialize()
         {
-            ImageBrush boardFrontBrush = new ImageBrush();
-            String boardImage = @"MapPictures\BattleMap.jpg";
-
-            Material frontMaterial = MaterialMaker.MakeImageMaterial(boardImage);
-            Material backMaterial = MaterialMaker.PaperbackMaterial();
-            var mb = InitializeBoardBoundaries(300);
-            _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
+            SetBoardBackground(@"MapPictures\BattleMap.jpg", 300, 300);
         }
         
         
-        public MeshBuilder InitializeBoardBoundaries(double scale)
+        public MeshBuilder InitializeBoardBoundaries(double height, double width)
         {
             List<Point3D> board = new List<Point3D>();
-            board.Add(new Point3D(-scale, 0, 0));
+            board.Add(new Point3D(-height, 0, 0));
 
-            board.Add(new Point3D(0, -scale, 0));
+            board.Add(new Point3D(0, -width, 0));
 
-            board.Add(new Point3D(scale, 0, 0));
-            board.Add(new Point3D(0, scale, 0));
+            board.Add(new Point3D(height, 0, 0));
+            board.Add(new Point3D(0, width, 0));
 
 
             var mb = new MeshBuilder();
@@ -58,6 +52,8 @@ namespace GameBoard
         
 
         private Visual3D _theMap;
+        public double BoardHeight { get; set; }
+        public double BoardWidth { get; set; }
 
         public Visual3D TheMap
         {
@@ -83,10 +79,10 @@ namespace GameBoard
 
 
         Color defaultColor = Colors.Gray;
-        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height)
+        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects)
         {
             double heightFeet = height / 12;
-            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet / 1.618, heightFeet, name, pieceColor, speed);
+            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet / 1.618, heightFeet, name, pieceColor, location, statusEffects);
             _visualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             Viewport.Children.Add(charImage.CharImage);
             Viewport.Children.Add(charImage.BaseCone);
@@ -99,22 +95,23 @@ namespace GameBoard
             DoubleAnimation moveAnimationPic = new DoubleAnimation(1, .1, new Duration(new TimeSpan(0, 0, 0, 3)));
             AnimationClock clock1 = moveAnimationPic.CreateClock();
             Point3DCollection thePath = new Point3DCollection(new List<Point3D>() { attacker.CharImage.Origin, target.CharImage.Origin });
-            TubeVisual3D tube = new TubeVisual3D()
+            ArrowVisual3D tube = new ArrowVisual3D()
             {
-                Path = thePath,
+                Origin = attacker.CharImage.Origin,
+                Point2 = target.CharImage.Origin,
                 Material = Materials.Red,
                 Diameter = 1,
 
             };
-            tube.ApplyAnimationClock(TubeVisual3D.DiameterProperty, clock1);
+            tube.ApplyAnimationClock(ArrowVisual3D.DiameterProperty, clock1);
             Viewport.Children.Add(tube);
-            clock1.Completed += removeTube;
+            clock1.Completed += removeVisualTick;
             _attackLines.Add(clock1, tube);
         }
 
-        private void removeTube(object sender, EventArgs e)
+        private void removeVisualTick(object sender, EventArgs e)
         {
-            Viewport.Children.Remove(_attackLines[sender as AnimationClock]);
+            RemoveIfPresent(_attackLines[sender as AnimationClock]);
         }
 
 
@@ -182,21 +179,26 @@ namespace GameBoard
             SelectedPiece = VisualToMoveablePicturesDictionary[lastHit];
         }
 
-        public void SetActive(bool isActive, MoveablePicture moveablePicture, Color pieceColor, bool drawMovementCircle)
+        public void SetActive(bool isActive, MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
         {
             if (!isActive)
             {
                 moveablePicture.StopActive();
                 RemoveIfPresent(moveablePicture.MovementCircle);
                 RemoveIfPresent(moveablePicture.DoubleMovementCircle);
+                RemoveIfPresent(moveablePicture.InfoText);
             }
             else
             {
                 moveablePicture.StartActive();
-                if (drawMovementCircle)
+                if (drawSingleSelectionDetails)
                 {
+                    moveablePicture.Speed = curSpeed;
+                    moveablePicture.RemakeInfoText(statuses);
                     AddIfNew(moveablePicture.MovementCircle);
                     AddIfNew(moveablePicture.DoubleMovementCircle);
+                    AddIfNew(moveablePicture.InfoText);
+
                 }
             }
         }
@@ -208,6 +210,14 @@ namespace GameBoard
                 _viewport.Children.Remove(Visual3D);
             }
         }
+        private void RemoveIfPresent(Visual3D targetVisual)
+        {
+            if (_viewport.Children.Contains(targetVisual))
+            {
+                _viewport.Children.Remove(targetVisual);
+            }
+        }
+
         private void AddIfNew(MeshElement3D Visual3D)
         {
             if (!_viewport.Children.Contains(Visual3D))
@@ -215,15 +225,37 @@ namespace GameBoard
                 _viewport.Children.Add(Visual3D);
             }
         }
+        private void AddIfNew(Visual3D newVisual)
+        {
+            if (!_viewport.Children.Contains(newVisual))
+            {
+                _viewport.Children.Add(newVisual);
+            }
+        }
 
         public void RemovePiece(MoveablePicture moveablePicture)
         {
-            _viewport.Children.Remove(moveablePicture.CharImage);
-            _viewport.Children.Remove(moveablePicture.BaseCone);
+            foreach (var cur in moveablePicture.AssociatedVisuals)
+            {
+                RemoveIfPresent(cur);
+            }
             _visualToMoveablePicturesDictionary.Remove(moveablePicture.CharImage);
-            moveablePicture.CharImage = null;
-            moveablePicture.BaseCone = null;
             moveablePicture = null;
         }
+
+        public void SetBoardBackground(string newImage, double boardHeight, double boardWidth)
+        {
+            if(_theMap!=null)
+                RemoveIfPresent(_theMap);
+            ImageBrush boardFrontBrush = new ImageBrush();
+            Material frontMaterial = MaterialMaker.MakeImageMaterial(newImage);
+            Material backMaterial = MaterialMaker.PaperbackMaterial();
+            var mb = InitializeBoardBoundaries(boardHeight, boardWidth);
+            _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
+            AddIfNew(_theMap);
+        }
+
+
+
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\App.xaml
-6-1119320478
+7-913053376
 
-261088077391
+27-1457237354
 151442513099
-GetCharacterName.xaml;MainWindow.xaml;CombatDisplayWindow.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;StatusEffectWindow.xaml;
+GetCharacterName.xaml;MainWindow.xaml;CombatDisplayWindow.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
 False
 

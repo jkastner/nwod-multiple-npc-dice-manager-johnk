@@ -15,6 +15,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Collections;
 using GameBoard;
+using Microsoft.Win32;
 
 namespace XMLCharSheets
 {
@@ -275,6 +276,7 @@ namespace XMLCharSheets
             if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Please select at least one active character.");
+                return;
             }
             SelectVisualWindow _visualWindow = new SelectVisualWindow(_pictureSelectionViewModel);
             _visualWindow.ShowDialog();
@@ -283,6 +285,34 @@ namespace XMLCharSheets
             if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor!=null)
             {
                 _viewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo, pieceColor);
+            }
+        }
+
+        private void RemoveVisual_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select at least one active character.");
+                return;
+            }
+            _viewModel.RemoveVisuals(ActiveCharacters_ListBox.SelectedItems);
+        }
+
+        private void ChangeBackground_Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.InitialDirectory = Directory.GetCurrentDirectory() + @"\MapPictures\";
+            o.Multiselect = false;
+            o.ShowDialog();
+            if (!String.IsNullOrWhiteSpace(o.FileName))
+            {
+                SetBoardDimensions sbd = new SetBoardDimensions();
+                sbd.ShowDialog();
+                if (!sbd.WasCancel && sbd.HasBoardHeight && sbd.HasBoardWidth)
+                {
+                    _visualsViewmodel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth);
+
+                }
             }
         }
     }
