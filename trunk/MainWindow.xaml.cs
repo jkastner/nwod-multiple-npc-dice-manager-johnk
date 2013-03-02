@@ -306,7 +306,7 @@ namespace XMLCharSheets
             o.ShowDialog();
             if (!String.IsNullOrWhiteSpace(o.FileName))
             {
-                SetBoardDimensions sbd = new SetBoardDimensions();
+                SetBoardDimensions sbd = new SetBoardDimensions(_visualsViewmodel.BoardHeight, _visualsViewmodel.BoardWidth);
                 sbd.ShowDialog();
                 if (!sbd.WasCancel && sbd.HasBoardHeight && sbd.HasBoardWidth)
                 {

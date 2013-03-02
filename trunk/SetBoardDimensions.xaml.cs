@@ -19,9 +19,12 @@ namespace XMLCharSheets
     /// </summary>
     public partial class SetBoardDimensions : Window
     {
-        public SetBoardDimensions()
+
+        public SetBoardDimensions(double height, double width)
         {
             InitializeComponent();
+            BoardHeight_TextBox.Text = height.ToString();
+            BoardWidth_TextBox.Text = width.ToString();
         }
 
         public bool HasBoardHeight
