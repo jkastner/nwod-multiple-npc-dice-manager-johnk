@@ -166,7 +166,7 @@ namespace XMLCharSheets
                 MessageBox.Show("Please select an active character. Some characters must remain unselcted to provide targets.");
                 return;
             }
-            SelectTarget st = new SelectTarget(ActiveList(), _viewModel.ActiveRoster, _viewModel.DamageTypes);
+            SelectTarget st = new SelectTarget(ActiveList(), _viewModel.ActiveRoster, _viewModel.DamageTypes, _visualsViewmodel);
             st.ShowDialog();
             if (!st.WasCancel&&st.SelectedTarget != null)
             {

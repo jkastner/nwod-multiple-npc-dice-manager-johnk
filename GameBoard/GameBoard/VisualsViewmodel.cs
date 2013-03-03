@@ -89,16 +89,16 @@ namespace GameBoard
         }
 
         Dictionary<AnimationClock, MeshElement3D> _attackLines = new Dictionary<AnimationClock, MeshElement3D>();
-        public void DrawAttack(MoveablePicture attacker, MoveablePicture target)
+        public void DrawAttack(MoveablePicture attacker, MoveablePicture target, Color materialColor, Duration showDuration)
         {
-            DoubleAnimation moveAnimationPic = new DoubleAnimation(1, .1, new Duration(new TimeSpan(0, 0, 0, 3)));
+            DoubleAnimation moveAnimationPic = new DoubleAnimation(1, .1, showDuration);
             AnimationClock clock1 = moveAnimationPic.CreateClock();
             Point3DCollection thePath = new Point3DCollection(new List<Point3D>() { attacker.CharImage.Origin, target.CharImage.Origin });
             ArrowVisual3D tube = new ArrowVisual3D()
             {
                 Origin = attacker.CharImage.Origin,
                 Point2 = target.CharImage.Origin,
-                Material = Materials.Red,
+                Material = new DiffuseMaterial(new SolidColorBrush(materialColor)),
                 Diameter = 1,
 
             };

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GameBoard;
 
 namespace XMLCharSheets
 {
@@ -23,9 +24,12 @@ namespace XMLCharSheets
         ObservableCollection<CharacterSheet> targetCharacters = new ObservableCollection<CharacterSheet>();
         ObservableCollection<String> attackTraits = new ObservableCollection<String>();
         ObservableCollection<String> otherTraits = new ObservableCollection<String>();
+        List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
+        VisualsViewmodel _visualsViewModel;
         public SelectTarget(IList selectedCharacters, ObservableCollection<CharacterSheet> allCharacters, 
-            ObservableCollection<string> damageTypes)
+            ObservableCollection<string> damageTypes, VisualsViewmodel visualsViewModel)
         {
+            _visualsViewModel = visualsViewModel;
             _allCharacters = allCharacters;
             foreach (var curChar in allCharacters)
             {
@@ -35,6 +39,7 @@ namespace XMLCharSheets
             foreach (var curItem in selectedCharacters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
+                _selectedCharacters.Add(curChar);
                 targetCharacters.Remove(curChar);
                 foreach (var curTrait in curChar.Traits)
                 {
@@ -148,6 +153,19 @@ namespace XMLCharSheets
                 }
             }
             return null;
+        }
+
+        private void PotentialTargetChanged_TargetCharacters_ListBox(object sender, SelectionChangedEventArgs e)
+        {
+            if(SelectedTarget.Visual==null)
+                return;
+            foreach (var cur in _selectedCharacters)
+            {
+                if (cur.Visual != null)
+                {
+                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Visual.PieceColor, new Duration(new TimeSpan(0,0,0,3)));
+                }
+            }
         }
 
     }

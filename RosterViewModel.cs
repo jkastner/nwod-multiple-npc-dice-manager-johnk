@@ -384,7 +384,7 @@ namespace XMLCharSheets
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
-                    _visualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual);
+                    _visualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.PieceColor, new Duration(new TimeSpan(0,0,0,5)));
                 }
             }
         }
