@@ -11,7 +11,9 @@
         <StackPanel>
         <Label Content="Target"></Label>
         <ListBox 
-            Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" MaxHeight="250" SelectionMode="Single">
+            Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" MaxHeight="250" SelectionMode="Single"
+            SelectionChanged="PotentialTargetChanged_TargetCharacters_ListBox"
+        >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Background="Black">
@@ -23,6 +25,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <TextBlock MinHeight="50" Text="{Binding SelectedTarget.Name}">
+                
+            </TextBlock>
         <Label Content="Attack Type"></Label>
         <ListBox 
             SelectionChanged="Shared_Attacks_ListBox_SelectionChanged"
