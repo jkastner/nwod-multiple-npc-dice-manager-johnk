@@ -99,7 +99,6 @@ namespace GameBoard
                         var movedHit = rayMeshResult.PointHit;
                         _viewModel.VisualToMoveablePicturesDictionary[_viewModel.LastHit].MoveTo(
                             new Point3D(movedHit.X, movedHit.Y, movedHit.Z + _viewModel.VisualToMoveablePicturesDictionary[_viewModel.LastHit].PictureOffset));
-                        _viewModel.LastHit = null;
                     }
                     else if (_viewModel.LastHit == null)
                     {

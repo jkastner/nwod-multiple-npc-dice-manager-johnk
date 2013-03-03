@@ -342,7 +342,10 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = characters[curIndex] as CharacterSheet;
                 ActiveRoster.Remove(curChar);
-                _visualsViewModel.RemovePiece(curChar.Visual);
+                if (curChar.Visual != null)
+                {
+                    _visualsViewModel.RemovePiece(curChar.Visual);
+                }
             }
         }
 

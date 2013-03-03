@@ -38,9 +38,6 @@ namespace XMLCharSheets
             _viewModel.DamageTypes.Add("Bashing");
             _viewModel.DamageTypes.Add("Lethal");
             _viewModel.DamageTypes.Add("Aggrivated");
-            CombatDisplayWindow _combatWindow = new CombatDisplayWindow(_viewModel);
-            _combatWindow.Show();
-
             _gameBoardVisual.Show();
         }
 
@@ -49,16 +46,25 @@ namespace XMLCharSheets
         {
             if (_viewModel.SelectedFullCharacter == null)
             {
-                MessageBox.Show("Please select the character to spawn an instance of.");
+                CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
                 return;
             }
-            GetCharacterName gcn = new GetCharacterName(_viewModel.SelectedFullCharacter.Name, _viewModel.ActiveRoster);
-            gcn.ShowDialog();
-            if (!gcn.WasCancel)
+            String newName = NewCharacterName_TextBox.Text.Trim();
+            if(String.IsNullOrWhiteSpace(newName))
             {
-                CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(gcn.ProvidedName);
-                _viewModel.ActiveRoster.Add(newInstance);
+                CreateCharacterError_Label.Content = "Please enter a name.";
+                return;
             }
+            CreateCharacterError_Label.Content = "";
+            int count = 1;
+            String originalName = newName;
+            while (_viewModel.ActiveRoster.Any(x => x.Name.Equals(newName)))
+            {
+                newName =  originalName + "_"+count;
+                count ++;
+            }
+            CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(newName);
+            _viewModel.ActiveRoster.Add(newInstance);
         }
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -313,6 +319,24 @@ namespace XMLCharSheets
                     _visualsViewmodel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth);
 
                 }
+            }
+        }
+
+        private void AllCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AllCharacters_ListBox.SelectedItem == null)
+            {
+                return;
+            }
+            String givenName = NewCharacterName_TextBox.Text.Trim();
+            bool matchOrEmpty = String.IsNullOrWhiteSpace(givenName);
+            if (!matchOrEmpty)
+            {
+                matchOrEmpty = _viewModel.FullRoster.Any(x => x.Name.Equals(givenName));
+            }
+            if (matchOrEmpty)
+            {
+                NewCharacterName_TextBox.Text = (AllCharacters_ListBox.SelectedItem as CharacterSheet).Name;
             }
         }
     }

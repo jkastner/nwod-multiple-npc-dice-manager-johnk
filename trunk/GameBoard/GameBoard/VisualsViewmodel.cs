@@ -82,7 +82,7 @@ namespace GameBoard
         {
             double heightFeet = height / 12;
             MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet / 1.618, heightFeet, name, pieceColor, location, statusEffects);
-            _visualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
+            VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             Viewport.Children.Add(charImage.CharImage);
             Viewport.Children.Add(charImage.BaseCone);
             return charImage;
@@ -191,6 +191,7 @@ namespace GameBoard
             {
                 moveablePicture.Speed = curSpeed;
                 moveablePicture.StartActive();
+                LastHit = moveablePicture.CharImage;
                 if (drawSingleSelectionDetails)
                 {
                     moveablePicture.RemakeInfoText(statuses);

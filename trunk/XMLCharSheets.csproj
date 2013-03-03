@@ -63,12 +63,6 @@
     <Compile Include="AttackTrait.cs" />
     <Compile Include="CharacterSheet.cs" />
     <Compile Include="DicePool.cs" />
-    <Compile Include="GetCharacterName.xaml.cs">
-      <DependentUpon>GetCharacterName.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CombatDisplayWindow.xaml.cs">
-      <DependentUpon>CombatDisplayWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NWoD\NWoDAttackTrait.cs" />
     <Compile Include="NWoD\NWoDConstants.cs" />
     <Compile Include="NWoD\NWoDHealthBox.cs" />
@@ -94,10 +88,6 @@
       <DependentUpon>StatusEffectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Trait.cs" />
-    <Page Include="GetCharacterName.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,10 +100,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="CombatDisplayWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SelectTarget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
