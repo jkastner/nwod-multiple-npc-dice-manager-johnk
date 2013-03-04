@@ -125,7 +125,8 @@ namespace GameBoard
 
         private RectangleVisual3D ImageToRectangle(String imageFile, double width, double length, Point3D location)
         {
-            Material frontMaterial = MaterialMaker.MakeImageMaterial(imageFile);
+            ImageBrush frontBrush =  MaterialMaker.MakeImageMaterial(imageFile);
+            Material frontMaterial = new DiffuseMaterial(frontBrush);
             PictureOffset = 3.5;
             _length = length;
             RectangleVisual3D charPic = new RectangleVisual3D()

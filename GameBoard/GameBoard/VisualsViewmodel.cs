@@ -19,7 +19,7 @@ namespace GameBoard
 
         public void Initialize()
         {
-            SetBoardBackground(@"MapPictures\BattleMap.jpg", 300, 300);
+            SetBoardBackground(@"MapPictures\BattleMap.jpg", 0, 0, true);
         }
 
 
@@ -243,16 +243,37 @@ namespace GameBoard
             moveablePicture = null;
         }
 
-        public void SetBoardBackground(string newImage, double boardHeight, double boardWidth)
+        public void SetBoardBackground(string newImage, double definedBoardHeight, double definedBoardWidth, bool maintainRatio)
         {
             if(_theMap!=null)
                 RemoveIfPresent(_theMap);
             ImageBrush boardFrontBrush = new ImageBrush();
-            BoardHeight = boardHeight;
-            BoardWidth = boardWidth;
-            Material frontMaterial = MaterialMaker.MakeImageMaterial(newImage);
+            ImageBrush frontBrush = MaterialMaker.MakeImageMaterial(newImage);
+            Material frontMaterial = new DiffuseMaterial(frontBrush);
+            if (maintainRatio)
+            {
+                if (definedBoardHeight <= 0)
+                {
+                    BoardHeight = frontBrush.ImageSource.Height;
+                    BoardWidth = frontBrush.ImageSource.Width;
+                }
+                else
+                {
+                    BoardHeight = definedBoardHeight;
+                    double normalHeight = frontBrush.ImageSource.Height;
+                    double normalWidth = frontBrush.ImageSource.Width;
+                    double ratio = normalHeight / normalWidth;
+                    BoardWidth = (definedBoardHeight / ratio);
+                }
+            }
+            else
+            {
+                BoardHeight = definedBoardHeight;
+                BoardWidth = definedBoardWidth;
+
+            }
             Material backMaterial = MaterialMaker.PaperbackMaterial();
-            var mb = InitializeBoardBoundaries(boardWidth, boardHeight);
+            var mb = InitializeBoardBoundaries(BoardHeight, BoardWidth);
             _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
             AddIfNew(_theMap);
         }

@@ -13,6 +13,7 @@
         <ListBox 
             Margin="0,0,0,5" MinHeight="50" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" MaxHeight="250" SelectionMode="Single"
             SelectionChanged="PotentialTargetChanged_TargetCharacters_ListBox"
+            MouseDoubleClick="DrawAttackLine_TargetCharacters_ListBox"
         >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -25,7 +26,11 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBlock MinHeight="50" Text="{Binding SelectedTarget.Name}">
+            <DockPanel>
+                <Label>Status for</Label>
+                <Label Content="{Binding SelectedTarget.Name}"></Label>
+            </DockPanel>
+            <TextBlock Margin="5,0,0,0" MinHeight="50" Text="{Binding SelectedTarget.Status}">
                 
             </TextBlock>
         <Label Content="Attack Type"></Label>

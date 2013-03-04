@@ -316,7 +316,7 @@ namespace XMLCharSheets
                 sbd.ShowDialog();
                 if (!sbd.WasCancel && sbd.HasBoardHeight && sbd.HasBoardWidth)
                 {
-                    _visualsViewmodel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth);
+                    _visualsViewmodel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth, sbd.MaintainRatio);
 
                 }
             }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace XMLCharSheets
     /// <summary>
     /// Interaction logic for SelectTarget.xaml
     /// </summary>
-    public partial class SelectTarget : Window
+    public partial class SelectTarget : Window, INotifyPropertyChanged
     {
         ObservableCollection<CharacterSheet> targetCharacters = new ObservableCollection<CharacterSheet>();
         ObservableCollection<String> attackTraits = new ObservableCollection<String>();
@@ -58,6 +59,7 @@ namespace XMLCharSheets
                     }
                 }
             }
+            DataContext = this;
             InitializeComponent();
             
             
@@ -83,10 +85,17 @@ namespace XMLCharSheets
             get { return Shared_Attacks_ListBox.SelectedItem as String; }
         }
 
+        private CharacterSheet _selectedTarget;
         public CharacterSheet SelectedTarget
         {
-            get { return TargetCharacters_ListBox.SelectedItem as CharacterSheet; }
+            get { return _selectedTarget; }
+            set 
+            { 
+                _selectedTarget = value;
+                OnPropertyChanged("SelectedTarget");
+            }
         }
+        
 
         public String WoundType
         {
@@ -157,16 +166,38 @@ namespace XMLCharSheets
 
         private void PotentialTargetChanged_TargetCharacters_ListBox(object sender, SelectionChangedEventArgs e)
         {
-            if(SelectedTarget.Visual==null)
+            SelectedTarget = TargetCharacters_ListBox.SelectedItem as CharacterSheet;
+            DrawAttackLine();
+        }
+
+        private void DrawAttackLine()
+        {
+            if (SelectedTarget.Visual == null)
                 return;
             foreach (var cur in _selectedCharacters)
             {
                 if (cur.Visual != null)
                 {
-                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Visual.PieceColor, new Duration(new TimeSpan(0,0,0,3)));
+                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Visual.PieceColor, new Duration(new TimeSpan(0, 0, 0, 1)));
                 }
             }
         }
+        #region INotifyPropertyChanged Members
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
+
+        private void DrawAttackLine_TargetCharacters_ListBox(object sender, MouseButtonEventArgs e)
+        {
+            DrawAttackLine();
+        }
     }
 }
