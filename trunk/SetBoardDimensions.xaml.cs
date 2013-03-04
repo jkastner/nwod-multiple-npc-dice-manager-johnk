@@ -43,6 +43,12 @@ namespace XMLCharSheets
             }
         }
 
+        public bool MaintainRatio
+        {
+            get { return (bool)Maintain_Ratio_CheckBox.IsChecked; }
+        }
+        
+
         public bool HasBoardWidth
         {
             get

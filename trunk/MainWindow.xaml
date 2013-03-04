@@ -94,13 +94,13 @@
                         SelectionMode="Extended">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel>
+                                <UniformGrid Columns="4">
                                     <TextBlock Text="{Binding Path=Name}" FontSize="16" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
                                     <TextBlock Margin="16,0,0,0" Text="{Binding Path=StatusesLine}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
                                     <TextBlock Margin="8,0,0,0" Text="{Binding Path=CurInitiative}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Center" />
                                     <TextBlock Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                                HorizontalAlignment="Center" />
-                                </DockPanel>
+                                </UniformGrid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
             

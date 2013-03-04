@@ -13,22 +13,19 @@ namespace GameBoard
     {
 
         static String boardBackground = @"MapPictures\SquarePaper.jpg";
-        public static Material MakeImageMaterial(String imageLocation)
+        public static ImageBrush MakeImageMaterial(String imageLocation)
         {
             ImageBrush imageBrush = new ImageBrush();
-
-
             imageBrush.ImageSource =
                 new BitmapImage(
                     new Uri(imageLocation, UriKind.Relative)
                 );
-            Material image = new DiffuseMaterial(imageBrush);
-            return image;
+            return imageBrush;
         }
 
         public static Material PaperbackMaterial()
         {
-            return MakeImageMaterial(boardBackground);
+            return new DiffuseMaterial(MakeImageMaterial(boardBackground));
         }
     }
 }
