@@ -81,7 +81,7 @@ namespace GameBoard
         public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects)
         {
             double heightFeet = height / 12;
-            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet / 1.618, heightFeet, name, pieceColor, location, statusEffects);
+            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet, name, pieceColor, location, statusEffects);
             VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             Viewport.Children.Add(charImage.CharImage);
             Viewport.Children.Add(charImage.BaseCone);

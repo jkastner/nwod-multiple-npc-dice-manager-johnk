@@ -58,16 +58,7 @@ namespace GameBoard
             get { return _pictureOffset; }
             set { _pictureOffset = value; }
         }
-
-        private double _length;
-	    public double Length
-	    {
-		    get { return _length;}
-		    set { _length = value;}
-	    }
-
         private String _name;
-
         public String Name
         {
             get { return _name; }
@@ -78,7 +69,7 @@ namespace GameBoard
 
         public Color PieceColor { get; set; }
 
-        public double PictureLength { get; set; }
+        public double LongestPictureSide { get; set; }
 
         public Point3D Location
         {
@@ -87,16 +78,16 @@ namespace GameBoard
         }
 
 
-        public MoveablePicture(String pictureFile, double width, double length, String imageName, Color pieceColor, Point3D location, List<StatusEffectDisplay> statuses)
+        public MoveablePicture(String pictureFile, double longestEdge, String imageName, Color pieceColor, Point3D location, List<StatusEffectDisplay> statuses)
         {
             PieceColor = pieceColor;
             Name = imageName;
-            _charImage = ImageToRectangle(pictureFile, width, length, location);
+            _charImage = ImageToRectangle(pictureFile, longestEdge, location);
             AssociatedVisuals.Add(BaseCone);
             AssociatedVisuals.Add(MovementCircle);
             AssociatedVisuals.Add(DoubleMovementCircle);
             AssociatedVisuals.Add(CharImage);
-            PictureLength = length;
+            LongestPictureSide = longestEdge;
             RemakeInfoText(statuses);
             AssociatedVisuals.Add(InfoText);
         }
@@ -109,7 +100,7 @@ namespace GameBoard
                 {
                     Position = new Point3D(
                         CharImage.Origin.X, CharImage.Origin.Y,
-                        CharImage.Origin.Z + PictureOffset + PictureLength + 3),
+                        CharImage.Origin.Z + PictureOffset + LongestPictureSide + 3),
                     FontSize = 18,
                     Background= new SolidColorBrush(Colors.Wheat),
                 };
@@ -123,40 +114,45 @@ namespace GameBoard
         }
 
 
-        private RectangleVisual3D ImageToRectangle(String imageFile, double width, double length, Point3D location)
+        private RectangleVisual3D ImageToRectangle(String imageFile,  double longestEdge, Point3D location)
         {
             ImageBrush frontBrush =  MaterialMaker.MakeImageMaterial(imageFile);
             Material frontMaterial = new DiffuseMaterial(frontBrush);
             PictureOffset = 3.5;
-            _length = length;
+            double length, width, baseConeRadius;
+            double origWidth= frontBrush.ImageSource.Width;
+            double origLength = frontBrush.ImageSource.Height;
+            //The base cone should be larger than the smallest side.
+            if (origWidth > origLength)
+            {
+                width = longestEdge;
+                length = longestEdge / (origWidth / origLength);
+                baseConeRadius = length / 1.3; 
+            }
+            else
+            {
+                width = (origWidth / origLength) * longestEdge;
+                length = longestEdge;
+                baseConeRadius = width / 1.3;
+            }
+
             RectangleVisual3D charPic = new RectangleVisual3D()
             {
                 Material = frontMaterial,
                 BackMaterial = MaterialMaker.PaperbackMaterial(),
-                Length = _length,
+                Length = length,
                 Width = width,
                 Origin = new Point3D(location.X, location.Y, PictureOffset),
                 Normal = new Vector3D(0.00001, 0.00001, 1),
-                LengthDirection = new Vector3D(0, 0, -1),
+                LengthDirection = new Vector3D(0, .5, -.5),
             };
-            //charPic.Transform = new RotateTransform3D(new RotateTransform3D(
-
-            //RectangleVisual3D charPic = new RectangleVisual3D()
-            //{
-            //    Material = frontMaterial,
-            //    TopFace=false,
-            //    BottomFace=false,
-            //    BackMaterial = backMaterial,
-            //    Length=length,
-            //    Width=width,
-            //    Height=height,
-            //    Center = new Point3D(0, 0, height/2+5),
-            //};
+            
+            
             BaseCone = new TruncatedConeVisual3D()
             {
                 Height = PictureOffset-1,
-                BaseRadius = length/3,
-                TopRadius = length/3,
+                BaseRadius = longestEdge/3,
+                TopRadius = longestEdge/3,
                 Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
                 Origin = new Point3D(location.X, location.Y, 0),
             };
@@ -184,8 +180,8 @@ namespace GameBoard
             RotateManipulator around = new RotateManipulator()
             {
                 Length = _pictureOffset,
-                Diameter = _length*c,
-                InnerDiameter = _length * .4 * c,
+                Diameter = LongestPictureSide*c,
+                InnerDiameter = LongestPictureSide * .4 * c,
                 Color = color,
                 Axis = new Vector3D(0, 0, 1),
                 Position = location,
