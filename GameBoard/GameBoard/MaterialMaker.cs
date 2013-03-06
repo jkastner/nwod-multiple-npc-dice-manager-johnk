@@ -19,7 +19,12 @@ namespace GameBoard
             imageBrush.ImageSource =
                 new BitmapImage(
                     new Uri(imageLocation, UriKind.Relative)
-                );
+
+                )
+                {
+                    
+                };
+                        
             return imageBrush;
         }
 

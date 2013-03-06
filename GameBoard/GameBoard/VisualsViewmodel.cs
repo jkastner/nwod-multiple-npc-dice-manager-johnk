@@ -37,6 +37,7 @@ namespace GameBoard
             var mb = new MeshBuilder();
 
             mb.AddQuad(board[0], board[1], board[2], board[3]);
+            //mb.AddQuad(board[2], board[0], board[1], board[3]);
             return mb;
 
         }
@@ -274,6 +275,11 @@ namespace GameBoard
             }
             Material backMaterial = MaterialMaker.PaperbackMaterial();
             var mb = InitializeBoardBoundaries(BoardHeight, BoardWidth);
+            var backward = mb.TextureCoordinates.Reverse().ToList();
+            for (int curIndex = 0; curIndex < mb.TextureCoordinates.Count; curIndex++)
+            {
+                mb.TextureCoordinates[curIndex] = backward[curIndex];
+            }
             _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
             AddIfNew(_theMap);
         }
