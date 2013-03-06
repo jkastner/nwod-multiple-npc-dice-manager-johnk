@@ -144,7 +144,7 @@ namespace GameBoard
                 Width = width,
                 Origin = new Point3D(location.X, location.Y, PictureOffset),
                 Normal = new Vector3D(0.00001, 0.00001, 1),
-                LengthDirection = new Vector3D(0, .5, -.5),
+                LengthDirection = new Vector3D(0, -.5, .5),
             };
             
             

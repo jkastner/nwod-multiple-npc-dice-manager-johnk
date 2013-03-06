@@ -48,8 +48,8 @@ namespace GameBoard
             Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(1, 0, 0)));
 
             Viewport.Background = new SolidColorBrush(Colors.SkyBlue);
-            
-            Viewport.Camera.Position = new Point3D(1, 52, 100);
+            Viewport.Camera.Position = new Point3D(1, 52, 5);
+            Viewport.Camera.LookDirection = new Vector3D(.01, .01, -1);
         }
 
 
