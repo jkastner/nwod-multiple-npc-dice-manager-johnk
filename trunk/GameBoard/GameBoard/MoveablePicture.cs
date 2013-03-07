@@ -223,7 +223,7 @@ namespace GameBoard
         internal void StartActive()
         {
             _isActive = true;
-            activeAnimation = new DoubleAnimation(BaseCone.TopRadius, BaseCone.TopRadius * 1.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
+            activeAnimation = new DoubleAnimation(BaseCone.TopRadius, BaseCone.TopRadius * 2.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
             activeAnimation.AutoReverse = true;
             activeAnimation.RepeatBehavior = RepeatBehavior.Forever;
             AnimationClock _activeClock = activeAnimation.CreateClock();

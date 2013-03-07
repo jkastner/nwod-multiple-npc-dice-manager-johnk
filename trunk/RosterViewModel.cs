@@ -259,7 +259,7 @@ namespace XMLCharSheets
                         result.Append(", " + missingTraits[curIndex]);
                     }
                 }
-                ResultText = "\n" + result.ToString();
+                ResultText = "\n" + result.ToString()+"\n";
 
             }
             return canRoll;
@@ -363,7 +363,7 @@ namespace XMLCharSheets
         internal void RollAttackTarget(IList attackers)
         {
             ResultText = lineBreak;
-            
+            List<Damage> damage = new List<Damage>();
             foreach (var curItem in attackers)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
@@ -376,18 +376,44 @@ namespace XMLCharSheets
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {
-                    curChar.AttackTarget(RollModifier);
+                    damage.AddRange(curChar.AttackTarget(RollModifier));
                     ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " 
                         + curChar.ChosenAttackString + "} on " + curChar.Target.Name + 
                         "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
-                    
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
                     _visualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.PieceColor, new Duration(new TimeSpan(0,0,0,5)));
                 }
             }
+
+            SummarizeDamage(damage);
         }
+
+        private void SummarizeDamage(List<Damage> damage)
+        {
+            ResultText = "\n\nDamage summary:";
+            if(damage.Count==0)
+            {
+                ResultText = "\tNo damage from any attackers.";
+                return;
+            }
+            
+            Dictionary<String, int> damageResultsTotal = new Dictionary<string, int>();
+            foreach (var cur in damage)
+            {
+                if (!damageResultsTotal.ContainsKey(cur.DamageDescriptor))
+                {
+                    damageResultsTotal.Add(cur.DamageDescriptor, 0);
+                }
+                damageResultsTotal[cur.DamageDescriptor] += cur.DamageValue;
+            }
+            foreach (var curDamage in damageResultsTotal)
+            {
+                ResultText = "\n\t"+curDamage.Key + ": " + curDamage.Value;
+            }
+        }
+
 
         internal void NewRound()
         {

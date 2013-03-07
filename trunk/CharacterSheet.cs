@@ -240,7 +240,7 @@ namespace XMLCharSheets
             get;
         }
 
-        internal abstract void AttackTarget(int RollModifier);
+        internal abstract List<Damage> AttackTarget(int RollModifier);
 
         internal abstract DicePool RollBasePool(List <Trait> dicePools, int modifier);
 
