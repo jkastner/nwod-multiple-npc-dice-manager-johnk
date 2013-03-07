@@ -98,14 +98,14 @@ namespace XMLCharSheets
             }
         }
 
-        internal override void AttackTarget(int modifier)
+        internal override List<Damage> AttackTarget(int modifier)
         {
             var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
             ChosenAttackTrait.TraitValue += BloodAttackBonus;
-            base.AttackTarget(modifier);
+            List<Damage> results = base.AttackTarget(modifier);
             FinalAttackPool += BloodAttackBonus;
             ChosenAttackTrait.TraitValue -= BloodAttackBonus;
-
+            return results;
         }
 
         internal override string NewRound()

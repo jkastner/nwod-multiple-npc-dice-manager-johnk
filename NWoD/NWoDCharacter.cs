@@ -322,8 +322,9 @@ namespace XMLCharSheets
             set { _rollResults = value; }
         }
 
-        internal override void AttackTarget(int modifier)
+        internal override List<Damage> AttackTarget(int modifier)
         {
+            List<Damage> damage = new List<Damage>();
             var nwodTarget = Target as NWoDCharacter;
             int targetDefense = 0;
             var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
@@ -353,19 +354,23 @@ namespace XMLCharSheets
                 switch (DamageType)
                 {
                     case "Bashing":
+                        damage.Add(new NWoDDamage(DamageType, 1));
                         Target.DoBashing();
                         break;
                     case "Aggrivated":
+                        damage.Add(new NWoDDamage(DamageType, 1));
                         Target.DoAggrivated();
                         break;
                     default:
                     case "Lethal":
+                        damage.Add(new NWoDDamage(DamageType, 1));
                         Target.DoLethal();
                         break;
                 }
             }
             nwodTarget.WasAttacked(ChosenAttackTrait.DefenseTarget);
             RollResults = results.ResultDescription;
+            return damage;
         }
 
         /// <summary>

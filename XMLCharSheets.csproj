@@ -63,8 +63,10 @@
     <Compile Include="AttackTrait.cs" />
     <Compile Include="CharacterSheet.cs" />
     <Compile Include="DicePool.cs" />
+    <Compile Include="Damage.cs" />
     <Compile Include="NWoD\NWoDAttackTrait.cs" />
     <Compile Include="NWoD\NWoDConstants.cs" />
+    <Compile Include="NWoD\NWoDDamage.cs" />
     <Compile Include="NWoD\NWoDHealthBox.cs" />
     <Compile Include="NWoD\NWoDCharacter.cs" />
     <Compile Include="NWoD\NWoDTrait.cs" />
