@@ -332,6 +332,7 @@
                             Name="CurrentTraits_ListBox"
                             Margin="5,5,5,5"
                             MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
+                            MaxHeight="200"
                                     ItemsSource="{Binding Path=CurrentTraits, UpdateSourceTrigger=PropertyChanged}" 
                                     SelectionMode="Extended"
                                     >
@@ -350,7 +351,9 @@
                         Name="Results_TextBox"
                         IsReadOnly="True"
                         VerticalScrollBarVisibility="Auto"
-                        MinHeight="50" MinWidth="50" Width="Auto" Height="150"
+                        MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
+                        MaxHeight="450"
+                        VerticalAlignment="Top"
                         Margin="5,5,5,5"
                         Text="{Binding Path=ResultText, UpdateSourceTrigger=PropertyChanged}" 
                         TextChanged="Results_TextBox_TextChanged"

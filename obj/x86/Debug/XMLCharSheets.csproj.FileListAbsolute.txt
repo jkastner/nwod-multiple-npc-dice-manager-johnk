@@ -90,15 +90,11 @@ C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\GameBoard.dll
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\HelixToolkit.Wpf.dll
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\bin\Debug\GameBoard.pdb
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.csprojResolveAssemblyReference.cache
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\GetCharacterName.baml
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\MainWindow.baml
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\CombatDisplayWindow.baml
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectTarget.baml
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectVisualWindow.baml
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\StatusEffectWindow.baml
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\GetCharacterName.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\MainWindow.g.cs
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\CombatDisplayWindow.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectTarget.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SelectVisualWindow.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\StatusEffectWindow.g.cs
@@ -109,3 +105,5 @@ C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.Properti
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.baml
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.g.cs
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SetBoardDimensions.baml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SetBoardDimensions.g.cs
