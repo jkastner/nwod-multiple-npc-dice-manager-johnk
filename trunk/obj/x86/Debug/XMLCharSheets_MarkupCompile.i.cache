@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\
 XMLCharSheets
 none
 false
 DEBUG;TRACE
-C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\App.xaml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\App.xaml
 51618845987
 
-31-1730840336
-151442513099
+31-2059339431
+151520968843
 MainWindow.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
 False

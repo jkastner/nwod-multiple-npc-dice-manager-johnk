@@ -1,0 +1,20 @@
+<CharacterSheet>
+	<Ruleset>NWoD</Ruleset>
+	<CharacterType>Human</CharacterType>
+	<name>Dragon</name>
+	<traits>
+	<trait label='Claws' value='15' IsAttack='true' TargetDefense='Melee Defense' DamageType='Lethal'/>
+	<trait label='Initiative' value='7'/>
+	<trait label='Ranged Defense' value='0'/>
+	<trait label='Melee Defense' value='2'/>
+	<trait label='Armor' value='4'/>
+	<trait label='Notice' value='6'/>
+	<trait label='Resolve' value='4'/>
+	<trait label='Composure' value='4'/>
+	<trait label='Health' value='15'/>
+	<trait label='Speed' value='60'/>
+	<trait label='Height' value='540'/>
+	</traits>
+</CharacterSheet>
+
+
