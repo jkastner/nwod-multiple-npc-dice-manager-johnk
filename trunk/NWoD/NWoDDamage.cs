@@ -12,5 +12,12 @@ namespace XMLCharSheets
             base(descriptor, value)
         {
         }
+
+        public override bool CanBeSummed()
+        {
+            return false;
+        }
+
+
     }
 }
