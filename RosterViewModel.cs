@@ -363,7 +363,7 @@ namespace XMLCharSheets
         internal void RollAttackTarget(IList attackers)
         {
             ResultText = lineBreak;
-            List<Damage> damage = new List<Damage>();
+            Dictionary<CharacterSheet, List<Damage>> targetToDamage = new Dictionary<CharacterSheet, List<Damage>>();
             foreach (var curItem in attackers)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
@@ -376,7 +376,12 @@ namespace XMLCharSheets
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {
-                    damage.AddRange(curChar.AttackTarget(RollModifier));
+                    var damageResult = curChar.AttackTarget(RollModifier);
+                    if (!targetToDamage.ContainsKey(curChar.Target))
+                    {
+                        targetToDamage.Add(curChar.Target, new List<Damage>());
+                    }
+                    targetToDamage[curChar.Target].AddRange(damageResult);
                     ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " 
                         + curChar.ChosenAttackString + "} on " + curChar.Target.Name + 
                         "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
@@ -387,30 +392,43 @@ namespace XMLCharSheets
                 }
             }
 
-            SummarizeDamage(damage);
+            SummarizeDamage(targetToDamage);
         }
 
-        private void SummarizeDamage(List<Damage> damage)
+        
+        private void SummarizeDamage(Dictionary<CharacterSheet, List<Damage>> targetToDamage)
         {
             ResultText = "\n\nDamage summary:";
-            if(damage.Count==0)
+            foreach (var curTargetPair in targetToDamage)
             {
-                ResultText = "\tNo damage from any attackers.";
-                return;
-            }
-            
-            Dictionary<String, int> damageResultsTotal = new Dictionary<string, int>();
-            foreach (var cur in damage)
-            {
-                if (!damageResultsTotal.ContainsKey(cur.DamageDescriptor))
+                Dictionary<String, int> damageResultsTotal = new Dictionary<string, int>();
+                int summedDamage = 0;
+                foreach (var cur in curTargetPair.Value)
                 {
-                    damageResultsTotal.Add(cur.DamageDescriptor, 0);
+                    if (!damageResultsTotal.ContainsKey(cur.DamageDescriptor))
+                    {
+                        damageResultsTotal.Add(cur.DamageDescriptor, 0);
+                    }
+                    damageResultsTotal[cur.DamageDescriptor] += cur.DamageValue;
+                    if (cur.CanBeSummed())
+                    {
+                        summedDamage += cur.DamageValue;
+                    }
                 }
-                damageResultsTotal[cur.DamageDescriptor] += cur.DamageValue;
-            }
-            foreach (var curDamage in damageResultsTotal)
-            {
-                ResultText = "\n\t"+curDamage.Key + ": " + curDamage.Value;
+                ResultText = "\n\t" + curTargetPair.Key.Name + " took ";
+                if (summedDamage > 0)
+                {
+                    ResultText = summedDamage + " total (";
+                }
+                foreach (var curDamage in damageResultsTotal)
+                {
+                    ResultText = curDamage.Key + " " + curDamage.Value + " ";
+                }
+                if (summedDamage > 0)
+                {
+                    ResultText = ")";
+                }
+                
             }
         }
 

@@ -31,6 +31,10 @@ namespace XMLCharSheets
             DamageValue = value;
 
         }
-        
+
+        //Some damage types, like Bashing or Aggrivated in New World of Darkness, can't be summed.
+        //In D&D, it's useful to know the final sum regardless of type.
+        public abstract bool CanBeSummed();
+
     }
 }
