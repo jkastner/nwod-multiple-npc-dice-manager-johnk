@@ -53,7 +53,7 @@ namespace GameBoard
         }
 
 
-        
+        bool multiSelect = false;
         public void ViewportMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs args)
         {
             Point mouseposition = args.GetPosition(Viewport);
@@ -61,7 +61,14 @@ namespace GameBoard
             Vector3D testdirection = new Vector3D(mouseposition.X, mouseposition.Y, 10);
             PointHitTestParameters pointparams = new PointHitTestParameters(mouseposition);
             RayHitTestParameters rayparams = new RayHitTestParameters(testpoint3D, testdirection);
-
+            if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
+            {
+                multiSelect = true;
+            }
+            else
+            {
+                multiSelect = false;
+            }
             //test for a result in the Viewport3D
             VisualTreeHelper.HitTest(Viewport, null, HTResult, pointparams);
         }
@@ -91,24 +98,15 @@ namespace GameBoard
                     
                     if (rayMeshResult.VisualHit is RectangleVisual3D)
                     {
-                        _viewModel.LastHit = rayMeshResult.VisualHit as RectangleVisual3D;
-                        _viewModel.SelectCharacterFromVisual(_viewModel.LastHit);
+                        if (!multiSelect)
+                            _viewModel.ClearSelectedCharacters();
+                        _viewModel.SelectCharacterFromVisual(rayMeshResult.VisualHit as RectangleVisual3D);
+                        
                     }
-                    else if (_viewModel.LastHit != null)
+                    else
                     {
                         var movedHit = rayMeshResult.PointHit;
-                        _viewModel.VisualToMoveablePicturesDictionary[_viewModel.LastHit].MoveTo(
-                            new Point3D(movedHit.X, movedHit.Y, movedHit.Z + _viewModel.VisualToMoveablePicturesDictionary[_viewModel.LastHit].PictureOffset));
-                    }
-                    else if (_viewModel.LastHit == null)
-                    {
-
-                        //_viewport.Children.Add(new SphereVisual3D()
-                        //{
-                        //    Material = Materials.Rainbow,
-                        //    Center = new Point3D(rayMeshResult.PointHit.X, rayMeshResult.PointHit.Y, rayMeshResult.PointHit.Z),
-                        //    Radius = 1,
-                        //});
+                        _viewModel.MoveSelectedPiecesTo(movedHit);
                     }
                 }
             }

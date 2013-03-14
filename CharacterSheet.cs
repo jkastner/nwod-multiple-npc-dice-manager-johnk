@@ -141,6 +141,30 @@ namespace XMLCharSheets
         }
         #endregion
 
+
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get 
+            {
+                if (Visual != null)
+                {
+                    return Visual.IsSelected;
+                }
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+                if (Visual != null)
+                {
+                    Visual.IsSelected = value;
+                }
+                OnPropertyChanged("IsSelected");
+            }
+        }
+
         internal abstract void ResetHealth();
 
         private CharacterSheet _target;

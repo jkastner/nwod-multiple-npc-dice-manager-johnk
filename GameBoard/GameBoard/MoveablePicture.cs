@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using HelixToolkit.Wpf;
 
 namespace GameBoard
 {
-    public class MoveablePicture
+    public class MoveablePicture : INotifyPropertyChanged
     {
         private RectangleVisual3D _charImage;
         public RectangleVisual3D CharImage
@@ -75,6 +76,21 @@ namespace GameBoard
         {
             get { return CharImage.Origin; }
             set { MoveTo(value); }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set 
+            {
+                _isSelected = value;
+                if (_isSelected)
+                    StartActive();
+                else
+                    StopActive();
+                OnPropertyChanged("IsSelected");
+            }
         }
 
 
@@ -210,7 +226,6 @@ namespace GameBoard
 
         internal void StopActive()
         {
-            _isActive = false;
             if (activeAnimation != null)
             {
                 BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.TopRadiusProperty, null);
@@ -219,10 +234,8 @@ namespace GameBoard
         }
 
         DoubleAnimation activeAnimation = null;
-        bool _isActive = false;
         internal void StartActive()
         {
-            _isActive = true;
             activeAnimation = new DoubleAnimation(BaseCone.TopRadius, BaseCone.TopRadius * 2.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
             activeAnimation.AutoReverse = true;
             activeAnimation.RepeatBehavior = RepeatBehavior.Forever;
@@ -262,7 +275,19 @@ namespace GameBoard
 
             return new Point3D(x, y, 10);
         }
-           
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
 
     }
 }

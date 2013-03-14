@@ -39,6 +39,27 @@ namespace XMLCharSheets
             _viewModel.DamageTypes.Add("Lethal");
             _viewModel.DamageTypes.Add("Aggrivated");
             _gameBoardVisual.Show();
+            _visualsViewmodel.PieceSelected += VisualPieceSelected;
+            _visualsViewmodel.ClearSelectedPieces += ClearSelectedPieces;
+        }
+
+        private void ClearSelectedPieces(object sender, EventArgs e)
+        {
+            ActiveCharacters_ListBox.SelectedItems.Clear();
+        }
+
+        private void VisualPieceSelected(object sender, EventArgs e)
+        {
+            var pieceEvent = e as PieceSelectedEventArgs;
+            if (pieceEvent != null)
+            {
+                var matchingChar = _viewModel.ActiveRoster.Where(x => x.Visual != null &&
+                            x.Visual.Equals(pieceEvent.SelectedPiece)).FirstOrDefault();
+                if (matchingChar != null)
+                {
+                    ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
+                }
+            }
         }
 
 

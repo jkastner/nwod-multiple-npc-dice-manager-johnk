@@ -107,3 +107,27 @@ C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Deb
 C:\Users\Kastner\Documents\Visual Studio 2012\Projects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SetBoardDimensions.baml
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\SetBoardDimensions.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\XMLCharSheets.exe.config
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\XMLCharSheets.exe
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\XMLCharSheets.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\GameBoard.dll
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\HelixToolkit.Wpf.dll
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\GameBoard.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.csprojResolveAssemblyReference.cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\MainWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectTarget.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\StatusEffectWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\MainWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectTarget.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\StatusEffectWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\App.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets_MarkupCompile.cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.g.resources
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.exe
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.pdb

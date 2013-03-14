@@ -55,6 +55,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClearSelectedPiecesEventArgs.cs" />
     <Compile Include="PieceSelectedEventArgs.cs" />
     <Compile Include="StatusEffectDisplay.cs" />
     <Compile Include="VisualsViewmodel.cs" />

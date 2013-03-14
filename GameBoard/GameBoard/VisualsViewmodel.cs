@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,13 +62,6 @@ namespace GameBoard
             set { _theMap = value; }
         }
 
-        private RectangleVisual3D _lastHit = null;
-        public RectangleVisual3D LastHit
-        {
-            get { return _lastHit; }
-            set { _lastHit = value; }
-        }
-
 
         private Dictionary<Visual3D, MoveablePicture>  _visualToMoveablePicturesDictionary = new Dictionary<Visual3D,MoveablePicture>();
         public Dictionary<Visual3D, MoveablePicture> VisualToMoveablePicturesDictionary
@@ -75,7 +69,13 @@ namespace GameBoard
             get { return _visualToMoveablePicturesDictionary; }
             set { _visualToMoveablePicturesDictionary = value; }
         }
-        
+        private ObservableCollection<MoveablePicture> _selectedPieces = new ObservableCollection<MoveablePicture>();
+        public ObservableCollection<MoveablePicture> SelectedPieces
+        {
+            get { return _selectedPieces; }
+            set { _selectedPieces = value; }
+        }
+
 
 
         Color defaultColor = Colors.Gray;
@@ -150,18 +150,6 @@ namespace GameBoard
             return myModelVisual3D;
         }
 
-        private MoveablePicture _selectedPiece;
-
-        public MoveablePicture SelectedPiece
-        {
-            get { return _selectedPiece; }
-            set 
-            { 
-                _selectedPiece = value;
-                OnPieceSelected(new PieceSelectedEventArgs(_selectedPiece));
-            }
-        }
-        
         public event EventHandler PieceSelected;
         protected virtual void OnPieceSelected(PieceSelectedEventArgs e)
         {
@@ -172,18 +160,29 @@ namespace GameBoard
             }
         }
 
-        
+
+        public event EventHandler ClearSelectedPieces;
+        protected virtual void OnClearSelectedPieces(ClearSelectedPiecesEventArgs e)
+        {
+            EventHandler handler = ClearSelectedPieces;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         
         public void SelectCharacterFromVisual(RectangleVisual3D lastHit)
         {
-            SelectedPiece = VisualToMoveablePicturesDictionary[lastHit];
+            VisualToMoveablePicturesDictionary[lastHit].IsSelected = true;
+            OnPieceSelected(new PieceSelectedEventArgs(VisualToMoveablePicturesDictionary[lastHit]));
         }
 
         public void SetActive(bool isActive, MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
         {
             if (!isActive)
             {
-                moveablePicture.StopActive();
+                moveablePicture.IsSelected = false;
                 RemoveIfPresent(moveablePicture.MovementCircle);
                 RemoveIfPresent(moveablePicture.DoubleMovementCircle);
                 RemoveIfPresent(moveablePicture.InfoText);
@@ -191,8 +190,7 @@ namespace GameBoard
             else
             {
                 moveablePicture.Speed = curSpeed;
-                moveablePicture.StartActive();
-                LastHit = moveablePicture.CharImage;
+                moveablePicture.IsSelected = true;
                 if (drawSingleSelectionDetails)
                 {
                     moveablePicture.RemakeInfoText(statuses);
@@ -285,6 +283,24 @@ namespace GameBoard
         }
 
 
+
+
+        internal void MoveSelectedPiecesTo(Point3D point3D)
+        {
+            foreach (var cur in VisualToMoveablePicturesDictionary.Where(x=>x.Value.IsSelected))
+            {
+                cur.Value.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + cur.Value.PictureOffset));
+            }
+        }
+
+        internal void ClearSelectedCharacters()
+        {
+            foreach (var cur in VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected))
+            {
+                cur.Value.IsSelected = false;
+            }
+            OnClearSelectedPieces(new ClearSelectedPiecesEventArgs());
+        }
 
     }
 }
