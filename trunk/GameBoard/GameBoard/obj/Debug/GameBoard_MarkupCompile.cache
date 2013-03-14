@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\JohnLaptop\Desktop\NWoDDiceManager\GameBoard\GameBoard\obj\Debug\
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\
 GameBoard
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 3364574395
 
-11205936744
-131855181593
+121242826438
+13-406866689
 App.xaml;GameBoardVisual.xaml;OldBoard.xaml;
 
 False

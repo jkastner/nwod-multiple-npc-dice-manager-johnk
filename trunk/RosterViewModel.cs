@@ -40,7 +40,8 @@ namespace XMLCharSheets
             }
         }
 
-        
+
+
         private ObservableCollection<CharacterSheet> _fullRoster = new ObservableCollection<CharacterSheet>();
 
         public ObservableCollection<CharacterSheet> FullRoster
