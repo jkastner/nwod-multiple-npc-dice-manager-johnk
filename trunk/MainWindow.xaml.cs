@@ -46,6 +46,7 @@ namespace XMLCharSheets
         private void ClearSelectedPieces(object sender, EventArgs e)
         {
             ActiveCharacters_ListBox.SelectedItems.Clear();
+            ActiveCharacters_CreationPage_ListBox.SelectedItems.Clear();
         }
 
         private void VisualPieceSelected(object sender, EventArgs e)
@@ -58,6 +59,7 @@ namespace XMLCharSheets
                 if (matchingChar != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
+                    ActiveCharacters_CreationPage_ListBox.SelectedItems.Add(matchingChar);
                 }
             }
         }
@@ -91,6 +93,10 @@ namespace XMLCharSheets
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetupTraits(ActiveCharacters_ListBox);
+            if (ActiveCharacters_ListBox.SelectedItems.Count > 0)
+                _viewModel.SelectedActiveCharacter = ActiveCharacters_ListBox.SelectedItems[ActiveCharacters_ListBox.SelectedItems.Count - 1] as CharacterSheet;
+            else
+                _viewModel.SelectedActiveCharacter = null;
             _viewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
         }
 
@@ -345,7 +351,7 @@ namespace XMLCharSheets
 
         private void AllCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AllCharacters_ListBox.SelectedItem == null)
+            if (_viewModel.SelectedFullCharacter == null)
             {
                 return;
             }
@@ -357,7 +363,7 @@ namespace XMLCharSheets
             }
             if (matchOrEmpty)
             {
-                NewCharacterName_TextBox.Text = (AllCharacters_ListBox.SelectedItem as CharacterSheet).Name;
+                NewCharacterName_TextBox.Text = (_viewModel.SelectedFullCharacter as CharacterSheet).Name;
             }
         }
     }
