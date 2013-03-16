@@ -54,18 +54,8 @@ namespace GameBoard
 
 
         bool multiSelect = false;
-        bool wasRight = false;
         public void ViewportMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs args)
         {
-            MouseButton clickedButton = args.ChangedButton;
-            if (clickedButton == MouseButton.Right)
-            {
-                wasRight = true;
-            }
-            else
-            {
-                wasRight = false;
-            }
             Point mouseposition = args.GetPosition(Viewport);
             Point3D testpoint3D = new Point3D(mouseposition.X, mouseposition.Y, 0);
             Vector3D testdirection = new Vector3D(mouseposition.X, mouseposition.Y, 10);
@@ -107,17 +97,13 @@ namespace GameBoard
                         }
                     }
 
-                    if (!wasRight && rayMeshResult.VisualHit is RectangleVisual3D)
+                    if (!doubleClick && rayMeshResult.VisualHit is RectangleVisual3D)
                     {
                         if (!multiSelect)
                             _viewModel.ClearSelectedCharacters();
                         _viewModel.SelectCharacterFromVisual(rayMeshResult.VisualHit as RectangleVisual3D);
                     }
-                    else if (!wasRight)
-                    {
-                        _viewModel.ClearSelectedCharacters();
-                    }
-                    else
+                    else if(doubleClick)
                     {
                         if (_viewModel.VisualToMoveablePicturesDictionary.Any(x=>x.Value.IsSelected))
                         {
@@ -129,6 +115,14 @@ namespace GameBoard
             }
 
             return HitTestResultBehavior.Stop;
+        }
+        
+        bool doubleClick = false;
+        private void Viewport_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            doubleClick = true;
+            ViewportMouseDown(sender, e);
+            doubleClick = false;
         }
 
 
