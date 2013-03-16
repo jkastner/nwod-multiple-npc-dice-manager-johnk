@@ -69,14 +69,6 @@ namespace GameBoard
             get { return _visualToMoveablePicturesDictionary; }
             set { _visualToMoveablePicturesDictionary = value; }
         }
-        private ObservableCollection<MoveablePicture> _selectedPieces = new ObservableCollection<MoveablePicture>();
-        public ObservableCollection<MoveablePicture> SelectedPieces
-        {
-            get { return _selectedPieces; }
-            set { _selectedPieces = value; }
-        }
-
-
 
         Color defaultColor = Colors.Gray;
         public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects)

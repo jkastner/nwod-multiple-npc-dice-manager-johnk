@@ -44,9 +44,9 @@
                     <StackPanel>
                     <Label>Active Characters</Label>
                             <ListBox 
+                                Name="ActiveCharacters_CreationPage_ListBox"
                             MaxHeight="250"
                             MinHeight="250"
-                            SelectedItem="{Binding Path=SelectedActiveCharacter, Mode=TwoWay}"
                             ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}" 
                             SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
                             Height="Auto"

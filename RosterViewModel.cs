@@ -102,7 +102,6 @@ namespace XMLCharSheets
             set
             {
                 SetActiveCharacter(value, null, null);
-                OnPropertyChanged("SelectedFullCharacter");
             }
         }
 

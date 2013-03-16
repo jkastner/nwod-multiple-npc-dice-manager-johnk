@@ -54,13 +54,24 @@ namespace GameBoard
 
 
         bool multiSelect = false;
+        bool wasRight = false;
         public void ViewportMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs args)
         {
+            MouseButton clickedButton = args.ChangedButton;
+            if (clickedButton == MouseButton.Right)
+            {
+                wasRight = true;
+            }
+            else
+            {
+                wasRight = false;
+            }
             Point mouseposition = args.GetPosition(Viewport);
             Point3D testpoint3D = new Point3D(mouseposition.X, mouseposition.Y, 0);
             Vector3D testdirection = new Vector3D(mouseposition.X, mouseposition.Y, 10);
             PointHitTestParameters pointparams = new PointHitTestParameters(mouseposition);
             RayHitTestParameters rayparams = new RayHitTestParameters(testpoint3D, testdirection);
+
             if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
             {
                 multiSelect = true;
@@ -95,18 +106,24 @@ namespace GameBoard
                             }
                         }
                     }
-                    
-                    if (rayMeshResult.VisualHit is RectangleVisual3D)
+
+                    if (!wasRight && rayMeshResult.VisualHit is RectangleVisual3D)
                     {
                         if (!multiSelect)
                             _viewModel.ClearSelectedCharacters();
                         _viewModel.SelectCharacterFromVisual(rayMeshResult.VisualHit as RectangleVisual3D);
-                        
+                    }
+                    else if (!wasRight)
+                    {
+                        _viewModel.ClearSelectedCharacters();
                     }
                     else
                     {
-                        var movedHit = rayMeshResult.PointHit;
-                        _viewModel.MoveSelectedPiecesTo(movedHit);
+                        if (_viewModel.VisualToMoveablePicturesDictionary.Any(x=>x.Value.IsSelected))
+                        {
+                            var movedHit = rayMeshResult.PointHit;
+                            _viewModel.MoveSelectedPiecesTo(movedHit);
+                        }
                     }
                 }
             }
