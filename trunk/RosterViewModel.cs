@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml;
 using GameBoard;
@@ -21,6 +22,20 @@ namespace XMLCharSheets
         {
             _visualsViewModel = visualsViewModel;
             _visualsViewModel.PieceSelected += OnVisualPieceSelected;
+            MakeTeams();
+        }
+
+        private void MakeTeams()
+        {
+ 	        Teams.Add(new Team("Team 1", Colors.Red));
+            Teams.Add(new Team("Team 2", Colors.Blue));
+            Teams.Add(new Team("Team 3", Colors.White));
+            Teams.Add(new Team("Team 4", Colors.Black));
+         
+            Teams.Add(new Team("Team 5", Colors.Green));
+            Teams.Add(new Team("Team 6", Colors.Yellow));
+            Teams.Add(new Team("Team 7", Colors.Teal));
+            Teams.Add(new Team("Team 8", Colors.Purple));
         }
 
         private void OnVisualPieceSelected(object sender, EventArgs e)
@@ -71,6 +86,13 @@ namespace XMLCharSheets
             {
                 _deceasedRoster = value;
             }
+        }
+
+        private ObservableCollection<Team> _teams = new ObservableCollection<Team>();
+        public ObservableCollection<Team> Teams
+        {
+            get { return _teams; }
+            set { _teams = value; }
         }
 
 
