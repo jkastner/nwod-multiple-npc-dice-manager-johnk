@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -22,12 +23,13 @@ namespace XMLCharSheets
     {
 
         private PictureSelectionViewModel _pictureSelectionViewModel;
-        public SelectVisualWindow(PictureSelectionViewModel pictureSelectionViewModel)
+        public SelectVisualWindow(PictureSelectionViewModel pictureSelectionViewModel, ObservableCollection<Team> teams)
         {
             this._pictureSelectionViewModel = pictureSelectionViewModel;
             InitializeComponent();
             DataContext = pictureSelectionViewModel;
             _pictureSelectionViewModel.ResetActiveList();
+            TeamSelection_ListBox.ItemsSource = teams;
         }
 
 
@@ -46,11 +48,7 @@ namespace XMLCharSheets
 
         private void OK()
         {
-            if (SelectedColor_ListBox.SelectedItem != null)
-            {
-                PropertyInfo q = SelectedColor_ListBox.SelectedItem as PropertyInfo;
-                ChosenColor = (Color) q.GetValue(this, null);
-            }
+            ChosenColor = (TeamSelection_ListBox.SelectedItem as Team).TeamColor;
             this.Close();
         }
 

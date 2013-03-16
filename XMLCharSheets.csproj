@@ -89,6 +89,7 @@
     <Compile Include="StatusEffectWindow.xaml.cs">
       <DependentUpon>StatusEffectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Team.cs" />
     <Compile Include="Trait.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

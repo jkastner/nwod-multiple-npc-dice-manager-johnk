@@ -311,7 +311,7 @@ namespace XMLCharSheets
                 MessageBox.Show("Please select at least one active character.");
                 return;
             }
-            SelectVisualWindow _visualWindow = new SelectVisualWindow(_pictureSelectionViewModel);
+            SelectVisualWindow _visualWindow = new SelectVisualWindow(_pictureSelectionViewModel, _viewModel.Teams);
             _visualWindow.ShowDialog();
             var pictureInfo = _visualWindow.SearchedDisplayItems_ListBox.SelectedItem as PictureFileInfo;
             Color pieceColor = _visualWindow.ChosenColor;
