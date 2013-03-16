@@ -30,6 +30,7 @@ namespace XMLCharSheets
             DataContext = pictureSelectionViewModel;
             _pictureSelectionViewModel.ResetActiveList();
             TeamSelection_ListBox.ItemsSource = teams;
+            TeamSelection_ListBox.SelectedIndex = 0;
         }
 
 
@@ -82,6 +83,14 @@ namespace XMLCharSheets
             if (SearchedDisplayItems_ListBox.Items.Count == 1)
             {
                 SearchedDisplayItems_ListBox.SelectedIndex = 0;
+            }
+        }
+
+        public Team ChosenTeam 
+        {
+            get
+            {
+                return (TeamSelection_ListBox.SelectedItem as Team);
             }
         }
     }

@@ -608,11 +608,19 @@ namespace XMLCharSheets
             }
         }
 
-        internal void AddVisualToCharacters(IList characters, PictureFileInfo pictureInfo, System.Windows.Media.Color pieceColor)
+        internal void AddVisualToCharacters(IList characters, PictureFileInfo pictureInfo, System.Windows.Media.Color pieceColor, Team chosenTeam)
         {
             foreach (var curItem in characters)
             {
                 var curCharacter = curItem as CharacterSheet;
+                if (curCharacter.Team != null)
+                {
+                    curCharacter.Team.TeamMembers.Remove(curCharacter);
+                    curCharacter.Team = null;
+                }
+                curCharacter.Team = chosenTeam;
+                chosenTeam.TeamMembers.Add(curCharacter);
+
                 Point3D baseOrigin = new Point3D(0, 0, 0);
                 if (curCharacter.Visual != null)
                 {
