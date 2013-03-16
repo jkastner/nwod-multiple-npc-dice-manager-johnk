@@ -315,9 +315,10 @@ namespace XMLCharSheets
             _visualWindow.ShowDialog();
             var pictureInfo = _visualWindow.SearchedDisplayItems_ListBox.SelectedItem as PictureFileInfo;
             Color pieceColor = _visualWindow.ChosenColor;
+            Team chosenTeam = _visualWindow.ChosenTeam;
             if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor!=null)
             {
-                _viewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo, pieceColor);
+                _viewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo, pieceColor, chosenTeam);
             }
         }
 

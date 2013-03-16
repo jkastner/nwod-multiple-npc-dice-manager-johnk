@@ -340,6 +340,8 @@ namespace XMLCharSheets
             set { _pieceColor = value; }
         }
 
-        
+
+
+        public Team Team { get; set; }
     }
 }
