@@ -12,11 +12,13 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using GameBoard;
 
 namespace XMLCharSheets
 {
+
     /// <summary>
     /// Interaction logic for SelectTarget.xaml
     /// </summary>
@@ -30,18 +32,26 @@ namespace XMLCharSheets
         public SelectTarget(IList selectedCharacters, ObservableCollection<CharacterSheet> allCharacters, 
             ObservableCollection<string> damageTypes, VisualsViewmodel visualsViewModel)
         {
+
+            List<CharacterSheet> allTargets = new List<CharacterSheet>();
             _visualsViewModel = visualsViewModel;
             _allCharacters = allCharacters;
             foreach (var curChar in allCharacters)
             {
-                targetCharacters.Add(curChar);
+                allTargets.Add(curChar);
             }
-
+            //1. Remove all attackers from list of targets.
+            List<Team> attackingTeams = new List<Team>();
             foreach (var curItem in selectedCharacters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
+                if (!attackingTeams.Contains(curChar.Team))
+                {
+                    attackingTeams.Add(curChar.Team);
+                }
                 _selectedCharacters.Add(curChar);
-                targetCharacters.Remove(curChar);
+                allTargets.Remove(curChar);
+                //2. Build list of possible attack traits.
                 foreach (var curTrait in curChar.Traits)
                 {
                     var attackTrait = curTrait as AttackTrait;
@@ -59,8 +69,27 @@ namespace XMLCharSheets
                     }
                 }
             }
+            //3. Put targets that share a team with at least on attacker in a separate list.
+            IEnumerable<CharacterSheet> teammateTargets;
+            teammateTargets = from element in allTargets where attackingTeams.Contains(element.Team) select element;
+            //teammateTargets.Select(targetCharacters.Where(x => attackingTeams.Contains(x.Team)));
+            var nonTeammateTargets = allTargets.Except(teammateTargets);
+            //4. Sort the remaining targets by distance to a common 'origin' of the group.
+            Point3D commonOrigin = AveragePoints(selectedCharacters);
+            nonTeammateTargets = nonTeammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
+            teammateTargets = teammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
+            foreach (var cur in nonTeammateTargets)
+            {
+                targetCharacters.Add(cur);
+            }
+            foreach (var cur in teammateTargets)
+            {
+                targetCharacters.Add(cur);
+            }
             DataContext = this;
             InitializeComponent();
+            
+            
             
             
             TargetCharacters_ListBox.ItemsSource = targetCharacters;
@@ -71,6 +100,25 @@ namespace XMLCharSheets
             Shared_Attacks_ListBox.SelectedIndex = 0;
             
         }
+
+        private Point3D AveragePoints(IList selectedCharacters)
+        {
+            Point3D commonOrigin = new Point3D();
+            foreach (var cur in selectedCharacters)
+            {
+                CharacterSheet curSheet = cur as CharacterSheet;
+                if (curSheet.Visual == null)
+                    continue;
+                commonOrigin.X += curSheet.Visual.Location.X;
+                commonOrigin.Y += curSheet.Visual.Location.Y;
+                commonOrigin.Z += curSheet.Visual.Location.Z;
+            }
+            commonOrigin.X /= selectedCharacters.Count;
+            commonOrigin.Y /= selectedCharacters.Count;
+            commonOrigin.Z /= selectedCharacters.Count;
+            return commonOrigin;
+        }
+
 
         bool _wasCancel;
         private ObservableCollection<CharacterSheet> _allCharacters;

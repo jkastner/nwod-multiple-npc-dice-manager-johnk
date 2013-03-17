@@ -8,6 +8,7 @@ using System.Windows;
 using System.ComponentModel;
 using System.Windows.Media;
 using GameBoard;
+using System.Windows.Media.Media3D;
 
 namespace XMLCharSheets
 {
@@ -344,7 +345,16 @@ namespace XMLCharSheets
             }
         }
 
-
+        public double DistanceTo(Point3D target)
+        {
+            if (Visual == null)
+            {
+                return double.MaxValue;
+            }
+            var vis = Visual.Location;
+            double radicand = Math.Pow(vis.X - target.X, 2) + Math.Pow(vis.Y - target.Y, 2) + Math.Pow(vis.Z - target.Z, 2);
+            return Math.Sqrt(radicand);
+        }
 
         public Team Team { get; set; }
     }

@@ -92,6 +92,7 @@
                     <ListBox 
                         Name="ActiveCharacters_ListBox"
                         MaxHeight="250"
+                        MinHeight="40"
                         Background="LightGray"
                         ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}" 
                         SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
