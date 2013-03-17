@@ -128,7 +128,7 @@
                                         Visibility="{Binding Path=HasAttacked, Converter={StaticResource BooleanToVisibilityConverter}}"
                                            Source="images/HasAttackedImage.jpg">
                                     </Image>
-                                    <TextBlock Grid.Column="5" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                    <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="5" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                                HorizontalAlignment="Center" />
                                 </Grid>
                             </DataTemplate>

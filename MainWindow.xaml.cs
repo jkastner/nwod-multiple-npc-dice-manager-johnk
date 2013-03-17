@@ -386,6 +386,20 @@ namespace XMLCharSheets
                 }
             }
         }
+
+        private void Target_ActiveCharacters_ListBox_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
+                {
+                    var selectedCharacter = cur as CharacterSheet;
+
+                    if(selectedCharacter.Visual!=null&&selectedCharacter.Target.Visual!=null)
+                        _visualsViewmodel.DrawAttack(selectedCharacter.Visual, selectedCharacter.Target.Visual, selectedCharacter.PieceColor, new Duration(new TimeSpan(0,0,0,0,800)));
+                }
+            }
+        }
     }
 }
 
