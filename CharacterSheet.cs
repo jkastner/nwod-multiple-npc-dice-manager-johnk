@@ -333,11 +333,15 @@ namespace XMLCharSheets
 
         public MoveablePicture Visual { get; set; }
 
-        private Color _pieceColor = Colors.Gray;
+        private Color _pieceColor;
         public Color PieceColor
         {
             get { return _pieceColor; }
-            set { _pieceColor = value; }
+            set
+            {
+                _pieceColor = value;
+                OnPropertyChanged("PieceColor");
+            }
         }
 
 

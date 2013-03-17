@@ -25,12 +25,18 @@
             >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel Background="Black">
+                        <DockPanel Background="LightGray">
                             <TextBlock Text="{Binding Path=Name}" FontSize="16" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+                            <Rectangle Height="10" Width="20">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{Binding PieceColor}" />
+                                </Rectangle.Fill>
+                            </Rectangle>
                             <TextBlock Margin="16,0,0,0" Text="{Binding Path=StatusesLine}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
                             <TextBlock Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                             HorizontalAlignment="Center" />
-                        </DockPanel>
+                        
+                    </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
