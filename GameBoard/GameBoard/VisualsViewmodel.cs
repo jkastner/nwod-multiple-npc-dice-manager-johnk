@@ -183,13 +183,12 @@ namespace GameBoard
             {
                 moveablePicture.Speed = curSpeed;
                 moveablePicture.IsSelected = true;
+                AddIfNew(moveablePicture.InfoText);
                 if (drawSingleSelectionDetails)
                 {
                     moveablePicture.RemakeInfoText(statuses);
                     AddIfNew(moveablePicture.MovementCircle);
                     AddIfNew(moveablePicture.DoubleMovementCircle);
-                    AddIfNew(moveablePicture.InfoText);
-
                 }
             }
         }
@@ -279,9 +278,26 @@ namespace GameBoard
 
         internal void MoveSelectedPiecesTo(Point3D point3D)
         {
-            foreach (var cur in VisualToMoveablePicturesDictionary.Where(x=>x.Value.IsSelected))
+            var selectedCharacters = VisualToMoveablePicturesDictionary.Where(x=>x.Value.IsSelected);
+            if (selectedCharacters.Count() == 1)
             {
-                cur.Value.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + cur.Value.PictureOffset));
+                var fc = selectedCharacters.First().Value;
+                fc.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + fc.PictureOffset));
+            }
+            else
+             {
+                //Move the height of the picture away from the targeted location.
+                var middleSelection = Helper3DCalcs.FindMidpoint(selectedCharacters.Select(x=>x.Value.Location));
+                foreach (var cur in selectedCharacters)
+                {
+                    var curP = cur.Value.Location;
+                    var vectorToOldMidpoint = middleSelection - curP;
+                    vectorToOldMidpoint.Normalize();
+                    double distance = Helper3DCalcs.DistanceBetween(curP, middleSelection);
+                    vectorToOldMidpoint = vectorToOldMidpoint * distance;
+                    var np = new Point3D(vectorToOldMidpoint.X + point3D.X, vectorToOldMidpoint.Y + point3D.Y, vectorToOldMidpoint.Z + point3D.Z);
+                    cur.Value.MoveTo(new Point3D(np.X, np.Y, np.Z + cur.Value.PictureOffset));
+                }
             }
         }
 

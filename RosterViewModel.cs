@@ -395,6 +395,7 @@ namespace XMLCharSheets
                     ResultText = curChar.Name + " has no target.\n";
                     continue;
                 }
+                curChar.HasAttacked = true;
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {

@@ -110,6 +110,8 @@
                                         <ColumnDefinition Width="250"></ColumnDefinition>
                                         <!--Team Color-->
                                         <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <!--Has Attacked-->
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
                                         <!--Target-->
                                         <ColumnDefinition Width="200"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
@@ -121,7 +123,11 @@
                                             <SolidColorBrush Color="{Binding PieceColor}" />
                                         </Rectangle.Fill>
                                     </Rectangle>
-                                    <TextBlock Grid.Column="4" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                    <Image Grid.Column="4"
+                                        Visibility="{Binding Path=HasAttacked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                           Source="images/HasAttackedImage.jpg">
+                                    </Image>
+                                    <TextBlock Grid.Column="5" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                                HorizontalAlignment="Center" />
                                 </Grid>
                             </DataTemplate>
