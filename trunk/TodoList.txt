@@ -3,4 +3,4 @@
 	3. Indicator for already attacked.
 	4. Display team color in summary.
 5. Select target from map.
-6. Multi-move doesn't cluster.
+	6. Multi-move doesn't cluster.

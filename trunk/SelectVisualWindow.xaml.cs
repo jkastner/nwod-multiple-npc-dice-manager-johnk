@@ -23,7 +23,7 @@ namespace XMLCharSheets
     {
 
         private PictureSelectionViewModel _pictureSelectionViewModel;
-        public SelectVisualWindow(PictureSelectionViewModel pictureSelectionViewModel, ObservableCollection<Team> teams)
+        public SelectVisualWindow(String baseName, PictureSelectionViewModel pictureSelectionViewModel, ObservableCollection<Team> teams)
         {
             this._pictureSelectionViewModel = pictureSelectionViewModel;
             InitializeComponent();
@@ -31,6 +31,11 @@ namespace XMLCharSheets
             _pictureSelectionViewModel.ResetActiveList();
             TeamSelection_ListBox.ItemsSource = teams;
             TeamSelection_ListBox.SelectedIndex = 0;
+            if(pictureSelectionViewModel.AllLoadedPictures.Any(x=>x.PictureName.ToLower().Contains(baseName.ToLower())))
+            {
+                TrimList_TextBox.Text = baseName;
+                RunSearch();
+            }
         }
 
 
@@ -78,6 +83,11 @@ namespace XMLCharSheets
         }
 
         private void TrimList_TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            RunSearch();
+        }
+
+        private void RunSearch()
         {
             _pictureSelectionViewModel.AdjustList(TrimList_TextBox.Text.Trim().ToLower());
             if (SearchedDisplayItems_ListBox.Items.Count == 1)
