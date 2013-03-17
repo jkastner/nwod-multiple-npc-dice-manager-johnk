@@ -45,6 +45,7 @@
                     <Label>Active Characters</Label>
                             <ListBox 
                                 Name="ActiveCharacters_CreationPage_ListBox"
+                                Background="LightGray"
                             MaxHeight="250"
                             MinHeight="250"
                             ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}" 
@@ -55,7 +56,12 @@
                             <DataTemplate>
                                 <DockPanel>
                                     <TextBlock Text="{Binding Path=Name}" FontSize="16" HorizontalAlignment="Left" />
-                                </DockPanel>
+                                        <Rectangle Height="10" Width="20">
+                                            <Rectangle.Fill>
+                                                <SolidColorBrush Color="{Binding PieceColor}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </DockPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -86,20 +92,37 @@
                     <ListBox 
                         Name="ActiveCharacters_ListBox"
                         MaxHeight="250"
-                        Background="Black"
+                        Background="LightGray"
                         ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}" 
                         SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
                         Height="Auto"
                         SelectionMode="Extended">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <UniformGrid Columns="4">
-                                    <TextBlock Text="{Binding Path=Name}" FontSize="16" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
-                                    <TextBlock Margin="16,0,0,0" Text="{Binding Path=StatusesLine}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
-                                    <TextBlock Margin="8,0,0,0" Text="{Binding Path=CurInitiative}" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Center" />
-                                    <TextBlock Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <!--Name-->
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <!--Initiative-->
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <!--Status-->
+                                        <ColumnDefinition Width="250"></ColumnDefinition>
+                                        <!--Team Color-->
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <!--Target-->
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Path=Name}" FontSize="16" Foreground="{Binding Path=StatusColor}" MinWidth="100" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="1" Margin="8,0,0,0" Text="{Binding Path=CurInitiative}" Width="20" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Center" />
+                                    <TextBlock Grid.Column="2" Margin="16,0,0,0" Text="{Binding Path=StatusesLine}" ToolTip="{Binding Path=StatusesLine}" MinWidth="50" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+                                    <Rectangle Grid.Column="3" Height="10" Width="20">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{Binding PieceColor}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <TextBlock Grid.Column="4" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                                HorizontalAlignment="Center" />
-                                </UniformGrid>
+                                </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                         <ListBox.ItemContainerStyle>

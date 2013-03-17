@@ -73,10 +73,10 @@ namespace XMLCharSheets
                     case HealthBox.DamageType.Aggrivated:
                         return new SolidColorBrush(Colors.Red);
                     case HealthBox.DamageType.Grievous:
-                        return new SolidColorBrush(Colors.LightGray);
+                        return new SolidColorBrush(Colors.Brown);
                     case HealthBox.DamageType.Empty:
                     default:
-                        return new SolidColorBrush(Colors.White);
+                        return new SolidColorBrush(Colors.Black);
 
                 }
             }

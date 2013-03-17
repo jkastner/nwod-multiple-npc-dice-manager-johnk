@@ -43,7 +43,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Name="TeamSelection_ListBox" Background="LightGray">
+        <ListBox Name="TeamSelection_ListBox" Background="LightGray" MaxHeight="200">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -51,12 +51,16 @@
                             <TextBlock Text="{Binding TeamName}" MinWidth="150"/>
                             <Rectangle Fill="{Binding TeamBrush}" Height="10" Width="20" />
                         </DockPanel>
-                        <ListBox ItemsSource="{Binding TeamMembers}">
+                        <ListBox ItemsSource="{Binding TeamMembers}" MaxHeight="100" IsHitTestVisible="False">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Margin="5,5,5,5">
                                         <TextBlock Text="{Binding Name}" MinWidth="150"/>
-                                        <Rectangle Fill="{Binding PieceColor}" Height="10" Width="20" />
+                                        <Rectangle Height="10" Width="20" >
+                                            <Rectangle.Fill>
+                                                <SolidColorBrush Color="{Binding PieceColor}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
                                     </DockPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
