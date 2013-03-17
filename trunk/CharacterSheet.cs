@@ -214,6 +214,7 @@ namespace XMLCharSheets
                     StatusEffects.Remove(cur);
                 }
             }
+            HasAttacked = false;
             NotifyStatusChange();
             return String.Empty;
         }
@@ -351,11 +352,20 @@ namespace XMLCharSheets
             {
                 return double.MaxValue;
             }
-            var vis = Visual.Location;
-            double radicand = Math.Pow(vis.X - target.X, 2) + Math.Pow(vis.Y - target.Y, 2) + Math.Pow(vis.Z - target.Z, 2);
-            return Math.Sqrt(radicand);
+            return Helper3DCalcs.DistanceBetween(Visual.Location, target); 
         }
 
         public Team Team { get; set; }
+
+        private bool _hasAttacked = false;
+        public bool HasAttacked
+        {
+            get { return _hasAttacked; }
+            set 
+            {
+                _hasAttacked = value;
+                OnPropertyChanged("HasAttacked");
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 	1. Select target based on nearest not in team.
 2. Indicator for already moved.
-3. Indicator for already attacked.
+	3. Indicator for already attacked.
 	4. Display team color in summary.
 5. Select target from map.
 6. Multi-move doesn't cluster.

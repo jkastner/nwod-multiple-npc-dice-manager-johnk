@@ -29,10 +29,15 @@ namespace XMLCharSheets
         ObservableCollection<String> otherTraits = new ObservableCollection<String>();
         List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
         VisualsViewmodel _visualsViewModel;
-        public SelectTarget(IList selectedCharacters, ObservableCollection<CharacterSheet> allCharacters, 
+        public SelectTarget(IList selectedObjects, ObservableCollection<CharacterSheet> allCharacters, 
             ObservableCollection<string> damageTypes, VisualsViewmodel visualsViewModel)
         {
 
+            List<CharacterSheet> selectedCharacters = new List<CharacterSheet>();
+            foreach (var cur in selectedObjects)
+            {
+                selectedCharacters.Add(cur as CharacterSheet);
+            }
             List<CharacterSheet> allTargets = new List<CharacterSheet>();
             _visualsViewModel = visualsViewModel;
             _allCharacters = allCharacters;
@@ -42,9 +47,8 @@ namespace XMLCharSheets
             }
             //1. Remove all attackers from list of targets.
             List<Team> attackingTeams = new List<Team>();
-            foreach (var curItem in selectedCharacters)
+            foreach (var curChar in selectedCharacters)
             {
-                CharacterSheet curChar = curItem as CharacterSheet;
                 if (!attackingTeams.Contains(curChar.Team))
                 {
                     attackingTeams.Add(curChar.Team);
@@ -75,7 +79,7 @@ namespace XMLCharSheets
             //teammateTargets.Select(targetCharacters.Where(x => attackingTeams.Contains(x.Team)));
             var nonTeammateTargets = allTargets.Except(teammateTargets);
             //4. Sort the remaining targets by distance to a common 'origin' of the group.
-            Point3D commonOrigin = AveragePoints(selectedCharacters);
+            Point3D commonOrigin = Helper3DCalcs.FindMidpoint(selectedCharacters.Where(x=>x.Visual!=null).Select(x=>x.Visual.Location));
             nonTeammateTargets = nonTeammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
             teammateTargets = teammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
             foreach (var cur in nonTeammateTargets)
@@ -99,24 +103,6 @@ namespace XMLCharSheets
             TargetCharacters_ListBox.SelectedIndex = 0;
             Shared_Attacks_ListBox.SelectedIndex = 0;
             
-        }
-
-        private Point3D AveragePoints(IList selectedCharacters)
-        {
-            Point3D commonOrigin = new Point3D();
-            foreach (var cur in selectedCharacters)
-            {
-                CharacterSheet curSheet = cur as CharacterSheet;
-                if (curSheet.Visual == null)
-                    continue;
-                commonOrigin.X += curSheet.Visual.Location.X;
-                commonOrigin.Y += curSheet.Visual.Location.Y;
-                commonOrigin.Z += curSheet.Visual.Location.Z;
-            }
-            commonOrigin.X /= selectedCharacters.Count;
-            commonOrigin.Y /= selectedCharacters.Count;
-            commonOrigin.Z /= selectedCharacters.Count;
-            return commonOrigin;
         }
 
 
