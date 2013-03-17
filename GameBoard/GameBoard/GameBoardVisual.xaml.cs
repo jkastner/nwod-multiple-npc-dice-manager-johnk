@@ -85,11 +85,27 @@ namespace GameBoard
                 if (rayMeshResult != null)
                 {
                     GeometryModel3D hitgeo = rayMeshResult.ModelHit as GeometryModel3D;
+                    if (rayMeshResult.VisualHit.Equals(_viewModel.GroupDoubleMovementCircle) ||
+                        rayMeshResult.VisualHit.Equals(_viewModel.GroupSingleMovementCircle))
+                    {
+                        return HitTestResultBehavior.Continue;
+                    }
                     foreach (var curVisual in _viewModel.VisualToMoveablePicturesDictionary)
                     {
                         var curMoveable = curVisual.Value;
-                        foreach (var curAssociatedVisual in curMoveable.AssociatedVisuals.Where(x=>!x.Equals(curMoveable.CharImage)))
+                        IEnumerable<Visual3D> targets;
+                        //If they double-click to move, don't allow movement based on its own image to cause the image to float.
+                        if (doubleClick)
                         {
+                            targets = curMoveable.AssociatedVisuals;
+                        }
+                        else
+                        {
+                            targets = curMoveable.AssociatedVisuals.Where(x=>!x.Equals(curMoveable.CharImage));
+                        }
+                        foreach (var curAssociatedVisual in targets)
+                        {
+                            
                             if (rayMeshResult.VisualHit.Equals(curAssociatedVisual))
                             {
                                 return HitTestResultBehavior.Continue;

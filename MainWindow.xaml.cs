@@ -311,7 +311,8 @@ namespace XMLCharSheets
                 MessageBox.Show("Please select at least one active character.");
                 return;
             }
-            SelectVisualWindow _visualWindow = new SelectVisualWindow(_pictureSelectionViewModel, _viewModel.Teams);
+            String possibleName = (ActiveCharacters_ListBox.SelectedItems[0] as CharacterSheet).Name;
+            SelectVisualWindow _visualWindow = new SelectVisualWindow(possibleName, _pictureSelectionViewModel, _viewModel.Teams);
             _visualWindow.ShowDialog();
             var pictureInfo = _visualWindow.SearchedDisplayItems_ListBox.SelectedItem as PictureFileInfo;
             Color pieceColor = _visualWindow.ChosenColor;
@@ -365,6 +366,24 @@ namespace XMLCharSheets
             if (matchOrEmpty)
             {
                 NewCharacterName_TextBox.Text = (_viewModel.SelectedFullCharacter as CharacterSheet).Name;
+            }
+        }
+
+        private void TeamColor_ActiveCharacters_ListBox_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                //ActiveCharacters_ListBox.SelectedItems.Clear();
+                var team = (ActiveCharacters_ListBox.SelectedItem as CharacterSheet).Team;
+                if(team!=null)
+                {
+                    ActiveCharacters_ListBox.SelectedItems.Clear();
+                    foreach (var cur in team.TeamMembers)
+                    {
+                        ActiveCharacters_ListBox.SelectedItems.Add(cur);
+                    }
+                    e.Handled = true;
+                }
             }
         }
     }

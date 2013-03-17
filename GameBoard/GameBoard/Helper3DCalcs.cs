@@ -38,5 +38,32 @@ namespace GameBoard
             commonOrigin.Z /= count;
             return commonOrigin;
         }
+
+
+        public static List<Point3D> CirclePoints(double radius, Point3D origin)
+        {
+            List<Point3D> circlePoints = new List<Point3D>();
+            //int pointsCount = 360;
+            //double slice = 2 * Math.PI / pointsCount;
+            for (int angleIndex = 0; angleIndex < 361; angleIndex++)
+            {
+                //double angle = slice * i;
+                //int newX = (int)(center.X + radius * Math.Cos(angle));
+                //int newY = (int)(center.Y + radius * Math.Sin(angle));
+                Point3D p = PointOnCircle(radius, angleIndex, origin);
+                circlePoints.Add(p);
+            }
+            return circlePoints;
+        }
+        //Burgled from:
+        //http://stackoverflow.com/questions/839899/how-do-i-calculate-a-point-on-a-circles-circumference
+        private static Point3D PointOnCircle(double radius, double angleInDegrees, Point3D origin)
+        {
+            // Convert from degrees to radians via multiplication by PI/180        
+            double x = (double)(radius * Math.Cos(angleInDegrees * Math.PI / 180F)) + origin.X;
+            double y = (double)(radius * Math.Sin(angleInDegrees * Math.PI / 180F)) + origin.Y;
+
+            return new Point3D(x, y, 10);
+        }
     }
 }

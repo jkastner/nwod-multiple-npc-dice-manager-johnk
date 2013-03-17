@@ -364,6 +364,18 @@ namespace XMLCharSheets
             {
                 CharacterSheet curChar = characters[curIndex] as CharacterSheet;
                 ActiveRoster.Remove(curChar);
+                foreach (var cur in Teams)
+                {
+                    if (cur.TeamMembers.Contains(curChar))
+                        cur.TeamMembers.Remove(curChar);
+                }
+                foreach (var cur in ActiveRoster)
+                {
+                    if (cur.Target == curChar)
+                    {
+                        cur.Target = null;
+                    }
+                }
                 if (curChar.Visual != null)
                 {
                     _visualsViewModel.RemovePiece(curChar.Visual);
@@ -589,24 +601,39 @@ namespace XMLCharSheets
             }
         }
 
-        internal void SetVisualActive(IList selectedCharacters)
+        internal void SetVisualActive(IList selectedObjects)
         {
+            List<CharacterSheet> selectedCharacters = GetListOfCharacters(selectedObjects);
             foreach (var cur in _activeRoster)
             {
                 var curCharacter = cur as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetActive(false, curCharacter.Visual, curCharacter.PieceColor, false, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
+                    _visualsViewModel.SetInactive(curCharacter.Visual, curCharacter.PieceColor, false, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
                 }
             }
-            foreach (var curItem in selectedCharacters)
+            foreach (var curCharacter in selectedCharacters)
             {
-                var curCharacter = curItem as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetActive(true, curCharacter.Visual, curCharacter.PieceColor, selectedCharacters.Count == 1, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
+                    _visualsViewModel.SetActive(curCharacter.Visual, curCharacter.PieceColor, selectedCharacters.Count == 1, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
                 }
             }
+            if (selectedCharacters.Count() > 1)
+            {
+                double minSpeed = selectedCharacters.Min(x => x.SpeedTrait.TraitValue);
+                _visualsViewModel.DrawGroupMovementCircle(minSpeed, selectedCharacters.Where(x => x.Visual != null).Select(y => y.Visual.Location));
+            }
+        }
+
+        private List<CharacterSheet> GetListOfCharacters(IList selectedObjects)
+        {
+            List<CharacterSheet> values = new List<CharacterSheet>();
+            foreach (var cur in selectedObjects)
+            {
+                values.Add(cur as CharacterSheet);
+            }
+            return values;
         }
 
         internal void AddVisualToCharacters(IList characters, PictureFileInfo pictureInfo, System.Windows.Media.Color pieceColor, Team chosenTeam)

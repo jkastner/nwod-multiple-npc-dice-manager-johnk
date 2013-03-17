@@ -77,7 +77,7 @@ namespace GameBoard
             get { return CharImage.Origin; }
             set { MoveTo(value); }
         }
-
+        public double BaseConeRadius { get; set; }
         private bool _isSelected;
         public bool IsSelected
         {
@@ -162,13 +162,13 @@ namespace GameBoard
                 Normal = new Vector3D(0.00001, 0.00001, 1),
                 LengthDirection = new Vector3D(0, -.5, .5),
             };
-            
-            
+
+            BaseConeRadius = longestEdge / 3;
             BaseCone = new TruncatedConeVisual3D()
             {
                 Height = PictureOffset-1,
-                BaseRadius = longestEdge/3,
-                TopRadius = longestEdge/3,
+                BaseRadius = BaseConeRadius,
+                TopRadius = BaseConeRadius,
                 Material = new DiffuseMaterial(new SolidColorBrush(PieceColor)),
                 Origin = new Point3D(location.X, location.Y, 0),
             };
@@ -236,45 +236,19 @@ namespace GameBoard
         DoubleAnimation activeAnimation = null;
         internal void StartActive()
         {
-            activeAnimation = new DoubleAnimation(BaseCone.TopRadius, BaseCone.TopRadius * 2.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
+            activeAnimation = new DoubleAnimation(BaseConeRadius, BaseConeRadius * 2.5, new Duration(new TimeSpan(0, 0, 0, 0, 800)));
             activeAnimation.AutoReverse = true;
             activeAnimation.RepeatBehavior = RepeatBehavior.Forever;
             AnimationClock _activeClock = activeAnimation.CreateClock();
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.TopRadiusProperty, _activeClock);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.BaseRadiusProperty, _activeClock);
-            Point3DCollection circlePoints = CirclePoints(Speed);
-            Point3DCollection doubleCirclePoints = CirclePoints(Speed*2);
+            Point3DCollection circlePoints = new Point3DCollection(Helper3DCalcs.CirclePoints(Speed, CharImage.Origin));
+            Point3DCollection doubleCirclePoints = new Point3DCollection(Helper3DCalcs.CirclePoints(Speed * 2, CharImage.Origin));
             MovementCircle.Path = circlePoints;
             DoubleMovementCircle.Path = doubleCirclePoints;
         }
 
-        private Point3DCollection CirclePoints(double radius)
-        {
-            List<Point3D> circlePoints = new List<Point3D>();
-            //int pointsCount = 360;
-            //double slice = 2 * Math.PI / pointsCount;
-            Point3D center = CharImage.Origin;
-            for (int angleIndex = 0; angleIndex < 361; angleIndex++)
-            {
-                //double angle = slice * i;
-                //int newX = (int)(center.X + radius * Math.Cos(angle));
-                //int newY = (int)(center.Y + radius * Math.Sin(angle));
-                Point3D p = PointOnCircle(radius, angleIndex, center);
-                circlePoints.Add(p);
-            }
-            Point3DCollection points = new Point3DCollection(circlePoints);
-            return points;
-        }
-        //Burgled from:
-        //http://stackoverflow.com/questions/839899/how-do-i-calculate-a-point-on-a-circles-circumference
-        public static Point3D PointOnCircle(double radius, double angleInDegrees, Point3D origin)
-        {
-            // Convert from degrees to radians via multiplication by PI/180        
-            double x = (double)(radius * Math.Cos(angleInDegrees * Math.PI / 180F)) + origin.X;
-            double y = (double)(radius * Math.Sin(angleInDegrees * Math.PI / 180F)) + origin.Y;
-
-            return new Point3D(x, y, 10);
-        }
+        
 
         #region INotifyPropertyChanged Members
 

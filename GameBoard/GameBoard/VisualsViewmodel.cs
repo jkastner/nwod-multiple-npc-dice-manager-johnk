@@ -16,6 +16,18 @@ namespace GameBoard
     {
         public VisualsViewmodel()
         {
+            _groupSingleMovementCircle = new TubeVisual3D()
+            {
+                Diameter = .5,
+                Material = new DiffuseMaterial(new SolidColorBrush(Colors.DarkBlue)),
+                ThetaDiv = 15,
+            };
+            _groupDoubleMovementCircle = new TubeVisual3D()
+            {
+                Diameter = .5,
+                Material = new DiffuseMaterial(new SolidColorBrush(Colors.DarkBlue)),
+                ThetaDiv = 15,
+            };
         }
 
         public void Initialize()
@@ -170,31 +182,35 @@ namespace GameBoard
             OnPieceSelected(new PieceSelectedEventArgs(VisualToMoveablePicturesDictionary[lastHit]));
         }
 
-        public void SetActive(bool isActive, MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
+
+        public void SetActive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
         {
-            if (!isActive)
+            moveablePicture.Speed = curSpeed;
+            moveablePicture.IsSelected = true;
+            moveablePicture.RemakeInfoText(statuses);
+            AddIfNew(moveablePicture.InfoText);
+            if (drawSingleSelectionDetails)
             {
-                moveablePicture.IsSelected = false;
-                RemoveIfPresent(moveablePicture.MovementCircle);
-                RemoveIfPresent(moveablePicture.DoubleMovementCircle);
-                RemoveIfPresent(moveablePicture.InfoText);
-            }
-            else
-            {
-                moveablePicture.Speed = curSpeed;
-                moveablePicture.IsSelected = true;
-                AddIfNew(moveablePicture.InfoText);
-                if (drawSingleSelectionDetails)
-                {
-                    moveablePicture.RemakeInfoText(statuses);
-                    AddIfNew(moveablePicture.MovementCircle);
-                    AddIfNew(moveablePicture.DoubleMovementCircle);
-                }
+                AddIfNew(moveablePicture.MovementCircle);
+                AddIfNew(moveablePicture.DoubleMovementCircle);
             }
         }
+        
+        public void SetInactive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
+        {
+            RemoveIfPresent(_groupSingleMovementCircle);
+            RemoveIfPresent(_groupDoubleMovementCircle);
+            moveablePicture.IsSelected = false;
+            RemoveIfPresent(moveablePicture.MovementCircle);
+            RemoveIfPresent(moveablePicture.DoubleMovementCircle);
+            RemoveIfPresent(moveablePicture.InfoText);
+        }
+
 
         private void RemoveIfPresent(MeshElement3D Visual3D)
         {
+            if (Visual3D == null)
+                return;
             if (_viewport.Children.Contains(Visual3D))
             {
                 _viewport.Children.Remove(Visual3D);
@@ -286,12 +302,12 @@ namespace GameBoard
             }
             else
              {
-                //Move the height of the picture away from the targeted location.
+                //Move in formation to new location with respect to common centerpoint.
                 var middleSelection = Helper3DCalcs.FindMidpoint(selectedCharacters.Select(x=>x.Value.Location));
                 foreach (var cur in selectedCharacters)
                 {
                     var curP = cur.Value.Location;
-                    var vectorToOldMidpoint = middleSelection - curP;
+                    var vectorToOldMidpoint = curP - middleSelection;
                     vectorToOldMidpoint.Normalize();
                     double distance = Helper3DCalcs.DistanceBetween(curP, middleSelection);
                     vectorToOldMidpoint = vectorToOldMidpoint * distance;
@@ -310,5 +326,31 @@ namespace GameBoard
             OnClearSelectedPieces(new ClearSelectedPiecesEventArgs());
         }
 
+        private TubeVisual3D _groupSingleMovementCircle;
+        public TubeVisual3D GroupSingleMovementCircle
+        {
+            get { return _groupSingleMovementCircle; }
+            set { _groupSingleMovementCircle = value; }
+        }
+        
+        private TubeVisual3D _groupDoubleMovementCircle;
+        public TubeVisual3D GroupDoubleMovementCircle
+        {
+            get { return _groupDoubleMovementCircle; }
+            set { _groupDoubleMovementCircle = value; }
+        }
+        
+        public void DrawGroupMovementCircle(double minSpeed, IEnumerable<Point3D> enumerable)
+        {
+            if (enumerable.Count() == 0)
+                return;
+            Point3D midPoint = Helper3DCalcs.FindMidpoint(enumerable);
+            var sMove = Helper3DCalcs.CirclePoints(minSpeed, midPoint);
+            var dMove = Helper3DCalcs.CirclePoints(minSpeed*2, midPoint);
+            _groupSingleMovementCircle.Path = new Point3DCollection(sMove);
+            _groupDoubleMovementCircle.Path = new Point3DCollection(dMove);
+            AddIfNew(_groupSingleMovementCircle);
+            AddIfNew(_groupDoubleMovementCircle);
+        }
     }
 }
