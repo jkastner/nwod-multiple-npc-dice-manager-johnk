@@ -609,7 +609,7 @@ namespace XMLCharSheets
                 var curCharacter = cur as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetInactive(curCharacter.Visual, curCharacter.PieceColor, false, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
+                    _visualsViewModel.SetInactive(curCharacter.Visual);
                 }
             }
             foreach (var curCharacter in selectedCharacters)
@@ -619,10 +619,9 @@ namespace XMLCharSheets
                     _visualsViewModel.SetActive(curCharacter.Visual, curCharacter.PieceColor, selectedCharacters.Count == 1, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
                 }
             }
-            if (selectedCharacters.Count() > 1)
+            if (selectedCharacters.Count(x => x.Visual!=null) > 1)
             {
-                double minSpeed = selectedCharacters.Min(x => x.SpeedTrait.TraitValue);
-                _visualsViewModel.DrawGroupMovementCircle(minSpeed, selectedCharacters.Where(x => x.Visual != null).Select(y => y.Visual.Location));
+                _visualsViewModel.DrawGroupMovementCircle();
             }
         }
 
@@ -658,7 +657,7 @@ namespace XMLCharSheets
                 //public MoveablePicture 
                 //AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height, Point3D location, String additionalInfo)
                 var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor,
-                    curCharacter.Name, curCharacter.HeightTrait.TraitValue, baseOrigin, MakeStatusList(curCharacter.StatusEffects));
+                    curCharacter.Name, curCharacter.HeightTrait.TraitValue, baseOrigin, MakeStatusList(curCharacter.StatusEffects), curCharacter.SpeedTrait.TraitValue);
                 curCharacter.Visual = createdVisual;
                 curCharacter.PieceColor = pieceColor;
             }

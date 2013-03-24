@@ -84,55 +84,114 @@ namespace GameBoard
                 RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
                 if (rayMeshResult != null)
                 {
-                    GeometryModel3D hitgeo = rayMeshResult.ModelHit as GeometryModel3D;
-                    if (rayMeshResult.VisualHit.Equals(_viewModel.GroupDoubleMovementCircle) ||
-                        rayMeshResult.VisualHit.Equals(_viewModel.GroupSingleMovementCircle))
+                    return HandleHit(rayMeshResult);
+                }
+            }
+            return HitTestResultBehavior.Stop;
+        }
+
+        private HitTestResultBehavior HandleHit(RayMeshGeometry3DHitTestResult rayMeshResult)
+        {
+            GeometryModel3D hitgeo = rayMeshResult.ModelHit as GeometryModel3D;
+            if (rayMeshResult.VisualHit.Equals(_viewModel.GroupDoubleMovementCircle) ||
+                rayMeshResult.VisualHit.Equals(_viewModel.GroupSingleMovementCircle))
+            {
+                return HitTestResultBehavior.Continue;
+            }
+            foreach (var curVisual in _viewModel.VisualToMoveablePicturesDictionary)
+            {
+                var curMoveable = curVisual.Value;
+                IEnumerable<Visual3D> targets;
+                //If they double-click to move, don't allow movement based on its own image to cause the image to float.
+                if (doubleClick)
+                {
+                    targets = curMoveable.AssociatedVisuals;
+                }
+                else
+                {
+                    targets = curMoveable.AssociatedVisuals.Where(x => !x.Equals(curMoveable.CharImage));
+                }
+                foreach (var curAssociatedVisual in targets)
+                {
+
+                    if (rayMeshResult.VisualHit.Equals(curAssociatedVisual))
                     {
                         return HitTestResultBehavior.Continue;
                     }
-                    foreach (var curVisual in _viewModel.VisualToMoveablePicturesDictionary)
-                    {
-                        var curMoveable = curVisual.Value;
-                        IEnumerable<Visual3D> targets;
-                        //If they double-click to move, don't allow movement based on its own image to cause the image to float.
-                        if (doubleClick)
-                        {
-                            targets = curMoveable.AssociatedVisuals;
-                        }
-                        else
-                        {
-                            targets = curMoveable.AssociatedVisuals.Where(x=>!x.Equals(curMoveable.CharImage));
-                        }
-                        foreach (var curAssociatedVisual in targets)
-                        {
-                            
-                            if (rayMeshResult.VisualHit.Equals(curAssociatedVisual))
-                            {
-                                return HitTestResultBehavior.Continue;
-                            }
-                        }
-                    }
+                }
+            }
+            HandleValidHit(rayMeshResult);
+            return HitTestResultBehavior.Stop;
+        }
 
-                    if (!doubleClick && rayMeshResult.VisualHit is RectangleVisual3D)
+        private void HandleValidHit(RayMeshGeometry3DHitTestResult rayMeshResult)
+        {
+            if (_viewModel.ShapeSelection == GameBoard.VisualsViewmodel.ShapeMode.None)
+            {
+                if (!doubleClick && rayMeshResult.VisualHit is RectangleVisual3D)
+                {
+                    if (!multiSelect)
+                        _viewModel.ClearSelectedCharacters();
+                    _viewModel.ToggleSelectCharacterFromVisual(rayMeshResult.VisualHit as RectangleVisual3D);
+                }
+                else if (doubleClick)
+                {
+                    if (_viewModel.VisualToMoveablePicturesDictionary.Any(x => x.Value.IsSelected))
                     {
-                        if (!multiSelect)
-                            _viewModel.ClearSelectedCharacters();
-                        _viewModel.SelectCharacterFromVisual(rayMeshResult.VisualHit as RectangleVisual3D);
-                    }
-                    else if(doubleClick)
-                    {
-                        if (_viewModel.VisualToMoveablePicturesDictionary.Any(x=>x.Value.IsSelected))
-                        {
-                            var movedHit = rayMeshResult.PointHit;
-                            _viewModel.MoveSelectedPiecesTo(movedHit);
-                        }
+                        var movedHit = rayMeshResult.PointHit;
+                        _viewModel.MoveSelectedPiecesTo(movedHit);
                     }
                 }
             }
-
-            return HitTestResultBehavior.Stop;
+            else
+            {
+                DrawShape(rayMeshResult.PointHit);
+            }
         }
-        
+
+        //Used because Point3D is non-nullable.
+        List<Point3D> startPoint = new List<Point3D>();
+        private void DrawShape(Point3D point3D)
+        {
+            switch (_viewModel.ShapeSelection)
+            {
+                case GameBoard.VisualsViewmodel.ShapeMode.Sphere:
+                        {
+                            _viewModel.DrawSphere(point3D);
+                            break;
+                        }
+                case GameBoard.VisualsViewmodel.ShapeMode.Cone:
+                    {
+                        if (startPoint.Count == 0)
+                        {
+                            startPoint.Add(point3D);
+                        }
+                        else
+                        {
+                            _viewModel.DrawCone(startPoint.First(), point3D);
+                            startPoint.Clear();
+                        }
+                        break;
+                    }
+                case GameBoard.VisualsViewmodel.ShapeMode.Line:
+                    {
+                        if (startPoint.Count == 0)
+                        {
+                            startPoint.Add(point3D);
+                        }
+                        else
+                        {
+                            _viewModel.DrawLine(startPoint.First(), point3D);
+                            startPoint.Clear();
+                        }
+                        break;
+                    }
+                default:
+                    throw new Exception("Unknown shape");
+                    break;
+            }
+        }
+
         bool doubleClick = false;
         private void Viewport_DoubleClick(object sender, MouseButtonEventArgs e)
         {

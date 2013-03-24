@@ -326,7 +326,6 @@
                             Name="CleanDeceasedCharacters_Button"
                             Content="Clean" ToolTip="Remove inactive characters from the roster." 
                                 Width="75" Click="CleanDeceasedCharacters_Button_Click"/>
-
                     <Button 
                         Margin="5,5,0,0"
                         HorizontalAlignment="Left"
@@ -344,9 +343,82 @@
                         HorizontalAlignment="Left"
                             Name="ChangeBackgroundImage_Button"
                             Content="Background" ToolTip="Change Background Image..." 
-                            Width="95" Click="ChangeBackground_Button_Click"/>               
-                
+                            Width="95" Click="ChangeBackground_Button_Click"/>
+
                 </DockPanel>
+                <DockPanel Margin="5,5,5,5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <CheckBox Name="SelectUnderShape_CheckBox" VerticalAlignment="Center" >
+                        Shape Select
+                    </CheckBox>
+                    <TextBox 
+                            Margin="5,5,5,5" 
+                            DataContext="{Binding VisualsViewModel}"    
+                            Name="ShapeLength_TextBox" Width="35" Height="20" Text="{Binding Path=ShapeLength, Mode=TwoWay}"
+                                 PreviewTextInput="Modifier_TextBox_PreviewTextInput"
+                                 DataObject.Pasting="Modifier_TextBox_Pasting" 
+                            >
+                    </TextBox>
+                    <RadioButton  Name="SelectionMode_Button" GroupName="ShapeType" Style="{StaticResource {x:Type ToggleButton}}" 
+                                  Width="38" Height="38" Checked="SelectionMode_Button_Checked" 
+                                  >
+                        <Path Data="M8.0289998,24.707999L12.476999,24.707999 12.476999,26.19 8.0289998,26.19z M0,23.845L1.4821367,23.845 1.4821367,24.708337 3.5839996,24.708337 3.5839996,26.190001 0,26.190001z M0,14.953L1.4819994,14.953 1.4819994,19.398 0,19.398z M20.627999,14.81L22.108999,14.81 22.108999,19.255 20.627999,19.255z M12.267999,14.603L27.366399,23.455908 22.3774,25.131392 27.780999,31.894525 25.1508,34.159999 19.8122,27.229071 16.2238,31.584525z M0,6.0599995L1.4819994,6.0599995 1.4819994,10.506 0,10.506z M20.627999,5.9169998L22.108999,5.9169998 22.108999,10.363 20.627999,10.363z M17.652,0L22.109,0 22.109,1.4714975 21.367517,1.4819994 17.652,1.4819994z M8.7599998,0L13.206,0 13.206,1.4819994 8.7599998,1.4819994z M0,0L4.3129997,0 4.3129997,1.4821482 1.4818506,1.4821482 1.4818506,1.6149998 0,1.6149998z" Stretch="Uniform" Fill="#FF1C18FF" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </RadioButton>
+                    <RadioButton  Name="DrawSphere_Button" GroupName="ShapeType" Style="{StaticResource {x:Type ToggleButton}}" 
+                                  Height="38" Width="38" Checked="DrawSphere_Button_Checked"
+                                  >
+                        <Path Data="M64,32C64,49.673112 49.673112,64 32,64 14.326888,64 0,49.673112 0,32 0,14.326888 14.326888,0 32,0 49.673112,0 64,14.326888 64,32z" Stretch="Uniform" Fill="#FF1C18FF" 
+                                Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </RadioButton>
+                    <RadioButton  Name="DrawCone_Button" GroupName="ShapeType" Style="{StaticResource {x:Type ToggleButton}}" 
+                                  Height="38" Width="38" Checked="DrawCone_Button_Checked"
+                                  >
+                        <Path Data="F1M1464.78,374.21C1466.31,374.21,1466.94,375.538,1466.17,376.861L1435.89,429.439C1435.12,430.759,1433.87,430.823,1433.11,429.5L1402.82,376.827C1402.06,375.507,1402.69,374.21,1404.21,374.21L1464.78,374.21z" Fill="#FF1C18FF" 
+                              Stretch="Uniform"  Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </RadioButton>
+                    <RadioButton  Name="DrawLine_Button" GroupName="ShapeType" Style="{StaticResource {x:Type ToggleButton}}" 
+                                  Width="38" Height="38" Checked="DrawLine_Button_Checked" 
+                                  >
+                        <Path Data="M0,0L53.333,0 53.333,8.888 0,8.888z" Fill="#FF1C18FF" 
+                              Stretch="Uniform" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </RadioButton>
+
+                </DockPanel>    
                 <DockPanel>
                     <StackPanel>
                         <StackPanel>

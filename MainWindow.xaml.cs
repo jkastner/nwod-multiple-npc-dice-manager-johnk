@@ -26,7 +26,7 @@ namespace XMLCharSheets
     {
         private RosterViewModel _viewModel;
         GameBoardVisual _gameBoardVisual;
-        VisualsViewmodel _visualsViewmodel = new VisualsViewmodel();
+        public VisualsViewmodel _visualsViewmodel = new VisualsViewmodel();
         PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         public MainWindow()
         {
@@ -41,6 +41,7 @@ namespace XMLCharSheets
             _gameBoardVisual.Show();
             _visualsViewmodel.PieceSelected += VisualPieceSelected;
             _visualsViewmodel.ClearSelectedPieces += ClearSelectedPieces;
+            ShapeLength_TextBox.Text = "20";
         }
 
         private void ClearSelectedPieces(object sender, EventArgs e)
@@ -400,6 +401,31 @@ namespace XMLCharSheets
                 }
             }
         }
+
+
+        private void SelectionMode_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.SetShapeMode(GameBoard.VisualsViewmodel.ShapeMode.None);
+        }
+
+        private void DrawLine_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
+            _visualsViewmodel.SetShapeMode(GameBoard.VisualsViewmodel.ShapeMode.Line);
+        }
+
+        private void DrawCone_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
+            _visualsViewmodel.SetShapeMode(GameBoard.VisualsViewmodel.ShapeMode.Cone);
+        }
+
+        private void DrawSphere_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
+            _visualsViewmodel.SetShapeMode(GameBoard.VisualsViewmodel.ShapeMode.Sphere);
+        }
+
     }
 }
 

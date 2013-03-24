@@ -83,17 +83,17 @@ namespace GameBoard
         }
 
         Color defaultColor = Colors.Gray;
-        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects)
+        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects, double speed)
         {
             double heightFeet = height / 12;
-            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet, name, pieceColor, location, statusEffects);
+            MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet, name, pieceColor, location, statusEffects, speed);
             VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             Viewport.Children.Add(charImage.CharImage);
             Viewport.Children.Add(charImage.BaseCone);
             return charImage;
         }
 
-        Dictionary<AnimationClock, MeshElement3D> _attackLines = new Dictionary<AnimationClock, MeshElement3D>();
+        Dictionary<AnimationClock, MeshElement3D> _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
         public void DrawAttack(MoveablePicture attacker, MoveablePicture target, Color materialColor, Duration showDuration)
         {
             DoubleAnimation moveAnimationPic = new DoubleAnimation(1, .1, showDuration);
@@ -110,12 +110,12 @@ namespace GameBoard
             tube.ApplyAnimationClock(ArrowVisual3D.DiameterProperty, clock1);
             Viewport.Children.Add(tube);
             clock1.Completed += removeVisualTick;
-            _attackLines.Add(clock1, tube);
+            _temporaryVisuals.Add(clock1, tube);
         }
 
         private void removeVisualTick(object sender, EventArgs e)
         {
-            RemoveIfPresent(_attackLines[sender as AnimationClock]);
+            RemoveIfPresent(_temporaryVisuals[sender as AnimationClock]);
         }
 
 
@@ -176,10 +176,24 @@ namespace GameBoard
         }
 
         
-        public void SelectCharacterFromVisual(RectangleVisual3D lastHit)
+        public void ToggleSelectCharacterFromVisual(RectangleVisual3D lastHit)
         {
-            VisualToMoveablePicturesDictionary[lastHit].IsSelected = true;
-            OnPieceSelected(new PieceSelectedEventArgs(VisualToMoveablePicturesDictionary[lastHit]));
+            if (VisualToMoveablePicturesDictionary[lastHit].IsSelected)
+            {
+                List<MoveablePicture> previousSelections = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected).Select(z => z.Value).ToList();
+                ClearSelectedCharacters();
+                previousSelections.Remove(VisualToMoveablePicturesDictionary[lastHit]);
+                foreach (var cur in previousSelections)
+                {
+                    cur.IsSelected = true;
+                    OnPieceSelected(new PieceSelectedEventArgs(cur));
+                }
+            }
+            else
+            {
+                VisualToMoveablePicturesDictionary[lastHit].IsSelected = true;
+                OnPieceSelected(new PieceSelectedEventArgs(VisualToMoveablePicturesDictionary[lastHit]));
+            }
         }
 
 
@@ -196,7 +210,7 @@ namespace GameBoard
             }
         }
         
-        public void SetInactive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
+        public void SetInactive(MoveablePicture moveablePicture)
         {
             RemoveIfPresent(_groupSingleMovementCircle);
             RemoveIfPresent(_groupDoubleMovementCircle);
@@ -340,17 +354,149 @@ namespace GameBoard
             set { _groupDoubleMovementCircle = value; }
         }
         
-        public void DrawGroupMovementCircle(double minSpeed, IEnumerable<Point3D> enumerable)
+        public void DrawGroupMovementCircle()
         {
-            if (enumerable.Count() == 0)
-                return;
-            Point3D midPoint = Helper3DCalcs.FindMidpoint(enumerable);
+            List<Point3D> selectedPictures = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected).Select(z => z.Value.Location).ToList();
+            double minSpeed = VisualToMoveablePicturesDictionary.Min(x => x.Value.Speed);
+            Point3D midPoint = Helper3DCalcs.FindMidpoint(selectedPictures);
             var sMove = Helper3DCalcs.CirclePoints(minSpeed, midPoint);
             var dMove = Helper3DCalcs.CirclePoints(minSpeed*2, midPoint);
             _groupSingleMovementCircle.Path = new Point3DCollection(sMove);
             _groupDoubleMovementCircle.Path = new Point3DCollection(dMove);
             AddIfNew(_groupSingleMovementCircle);
             AddIfNew(_groupDoubleMovementCircle);
+        }
+
+        private double _shapeSize = 20;
+        public double ShapeSize
+        {
+            get { return _shapeSize; }
+            set { _shapeSize = value; }
+        }
+
+        private bool _selectInsideShape = true;
+
+        public bool SelectInsideShape
+        {
+            get { return _selectInsideShape; }
+            set { _selectInsideShape = value; }
+        }
+        
+        public enum ShapeMode
+        {
+            None,Sphere,Cone,Line
+        }
+        private ShapeMode _shapeSelection;
+        public ShapeMode ShapeSelection
+        {
+            get { return _shapeSelection; }
+            set { _shapeSelection = value; }
+        }
+        
+        public void SetShapeMode(ShapeMode newMode)
+        {
+            ShapeSelection = newMode;
+        }
+
+        internal void DrawSphere(Point3D point3D)
+        {
+            var shape = new SphereVisual3D()
+            {
+                Center = point3D,
+                Radius = ShapeSize,
+                Material = new DiffuseMaterial(new SolidColorBrush(SelectedTeamColor())),
+            };
+            DoubleAnimation sizeChange = new DoubleAnimation(ShapeSize, ShapeSize, new Duration(new TimeSpan(0, 0, 0, 3)));
+            AnimationClock animationClock =  sizeChange.CreateClock();
+            animationClock.Completed += removeVisualTick;
+            shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
+            _viewport.Children.Add(shape);
+            _temporaryVisuals.Add(animationClock, shape);
+            if(SelectInsideShape)
+                SelectFromInsideShape(point3D, point3D);
+        }
+
+        private void SelectFromInsideShape(Point3D point3D, Point3D otherPoint)
+        {
+            List<MoveablePicture> selectedByShape = new List<MoveablePicture>();
+            ClearSelectedCharacters();
+            foreach (var cur in VisualToMoveablePicturesDictionary)
+            {
+                switch (ShapeSelection)
+                {
+                    case ShapeMode.Sphere:
+                        double dist = Helper3DCalcs.DistanceBetween(cur.Value.Location, point3D);
+                        if (dist <= ShapeSize)
+                        {
+                            selectedByShape.Add(cur.Value);
+                        }
+                        break;
+                    case ShapeMode.Cone:
+                        break;
+                    case ShapeMode.Line:
+                        break;
+                }
+                
+            }
+            bool multiSelect = VisualToMoveablePicturesDictionary.Count(x => x.Value.IsSelected) > 1;            
+            foreach (var cur in selectedByShape)
+            {
+                //public void SetActive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
+                SetActive(cur, cur.PieceColor, !multiSelect, cur.Speed, cur.StatusEffects);
+                OnPieceSelected(new PieceSelectedEventArgs(cur));
+            }
+            
+            if (multiSelect)
+            {
+                DrawGroupMovementCircle();
+            }
+            
+        }
+
+        internal void DrawCone(Point3D point1, Point3D point2)
+        {
+            Vector3D dir = point2 - point1;
+            var shape = new TruncatedConeVisual3D()
+            {
+                Material = new DiffuseMaterial(new SolidColorBrush(SelectedTeamColor())),
+                BaseRadius = 2,
+                Height = ShapeSize,
+                TopRadius=ShapeSize,
+                Origin=point1,
+                Normal=dir,
+            };
+            DoubleAnimation sizeChange = new DoubleAnimation(ShapeSize, ShapeSize, new Duration(new TimeSpan(0, 0, 0, 3)));
+            AnimationClock animationClock = sizeChange.CreateClock();
+            animationClock.Completed += removeVisualTick;
+            shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
+            _viewport.Children.Add(shape);
+            _temporaryVisuals.Add(animationClock, shape);
+        }
+
+        internal void DrawLine(Point3D point1, Point3D point3D)
+        {
+            var secondPoint = Helper3DCalcs.MovePointTowards(point1, point3D, ShapeSize);
+            var pathinfo = new Point3DCollection(new List<Point3D>() { point1, secondPoint });
+            var shape = new TubeVisual3D()
+            {
+                Material = new DiffuseMaterial(new SolidColorBrush(SelectedTeamColor())),
+                Path = pathinfo,
+                Diameter=5,
+            };
+            DoubleAnimation sizeChange = new DoubleAnimation(ShapeSize, ShapeSize, new Duration(new TimeSpan(0, 0, 0, 3)));
+            AnimationClock animationClock = sizeChange.CreateClock();
+            animationClock.Completed += removeVisualTick;
+            shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
+            _viewport.Children.Add(shape);
+            _temporaryVisuals.Add(animationClock, shape);
+        }
+
+        public Color SelectedTeamColor()
+        {
+            var selectedCharacter = VisualToMoveablePicturesDictionary.FirstOrDefault(cur=>cur.Value.IsSelected);
+            if(selectedCharacter.Value!=null)
+                return selectedCharacter.Value.PieceColor;
+            return Colors.Red;
         }
     }
 }
