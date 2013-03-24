@@ -93,11 +93,20 @@ namespace GameBoard
             }
         }
 
+        private List<StatusEffectDisplay> _statusEffects = new List<StatusEffectDisplay>();
+        public List<StatusEffectDisplay> StatusEffects
+        {
+            get { return _statusEffects; }
+            set { _statusEffects = value; }
+        }
+        
 
-        public MoveablePicture(String pictureFile, double longestEdge, String imageName, Color pieceColor, Point3D location, List<StatusEffectDisplay> statuses)
+
+        public MoveablePicture(String pictureFile, double longestEdge, String imageName, Color pieceColor, Point3D location, List<StatusEffectDisplay> statuses, double speed)
         {
             PieceColor = pieceColor;
             Name = imageName;
+            Speed = speed;
             _charImage = ImageToRectangle(pictureFile, longestEdge, location);
             AssociatedVisuals.Add(BaseCone);
             AssociatedVisuals.Add(MovementCircle);
@@ -106,6 +115,8 @@ namespace GameBoard
             LongestPictureSide = longestEdge;
             RemakeInfoText(statuses);
             AssociatedVisuals.Add(InfoText);
+            StatusEffects = statuses;
+
         }
 
         public void RemakeInfoText(List<StatusEffectDisplay> statuses)
