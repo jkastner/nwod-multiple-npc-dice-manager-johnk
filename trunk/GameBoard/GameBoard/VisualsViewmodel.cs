@@ -416,7 +416,7 @@ namespace GameBoard
                 SelectFromInsideShape(point3D, point3D);
         }
 
-        private void SelectFromInsideShape(Point3D point3D, Point3D otherPoint)
+        private void SelectFromInsideShape(Point3D point1, Point3D point2)
         {
             List<MoveablePicture> selectedByShape = new List<MoveablePicture>();
             ClearSelectedCharacters();
@@ -425,15 +425,23 @@ namespace GameBoard
                 switch (ShapeSelection)
                 {
                     case ShapeMode.Sphere:
-                        double dist = Helper3DCalcs.DistanceBetween(cur.Value.Location, point3D);
+                        double dist = Helper3DCalcs.DistanceBetween(cur.Value.Location, point1);
                         if (dist <= ShapeSize)
                         {
                             selectedByShape.Add(cur.Value);
                         }
                         break;
                     case ShapeMode.Cone:
+                        //from http://stackoverflow.com/questions/12826117/how-can-i-detect-if-a-point-is-inside-of-a-cone-or-not-in-3d-space
+                        
                         break;
                     case ShapeMode.Line:
+                        Vector3D testpt = cur.Value.Location.ToVector3D();
+                        Vector3D pt1 = point1.ToVector3D();
+                        Vector3D pt2 = point2.ToVector3D();
+                        double lengthsq = Math.Pow(Helper3DCalcs.DistanceBetween(point1, point2), 2);
+                        if (Helper3DCalcs.PointIsInsideCylinder(testpt, pt1, pt2, LineDiameter, lengthsq))
+                            selectedByShape.Add(cur.Value);
                         break;
                 }
                 
@@ -452,6 +460,7 @@ namespace GameBoard
             }
             
         }
+        
 
         internal void DrawCone(Point3D point1, Point3D point2)
         {
@@ -471,17 +480,20 @@ namespace GameBoard
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
+            if(SelectInsideShape)
+                SelectFromInsideShape(point1, point2);
         }
 
-        internal void DrawLine(Point3D point1, Point3D point3D)
+        const int LineDiameter = 5;
+        internal void DrawLine(Point3D point1, Point3D point2)
         {
-            var secondPoint = Helper3DCalcs.MovePointTowards(point1, point3D, ShapeSize);
+            var secondPoint = Helper3DCalcs.MovePointTowards(point1, point2, ShapeSize);
             var pathinfo = new Point3DCollection(new List<Point3D>() { point1, secondPoint });
             var shape = new TubeVisual3D()
             {
                 Material = new DiffuseMaterial(new SolidColorBrush(SelectedTeamColor())),
                 Path = pathinfo,
-                Diameter=5,
+                Diameter = LineDiameter,
             };
             DoubleAnimation sizeChange = new DoubleAnimation(ShapeSize, ShapeSize, new Duration(new TimeSpan(0, 0, 0, 3)));
             AnimationClock animationClock = sizeChange.CreateClock();
@@ -489,6 +501,8 @@ namespace GameBoard
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
+            if (SelectInsideShape)
+                SelectFromInsideShape(point1, point2);
         }
 
         public Color SelectedTeamColor()
