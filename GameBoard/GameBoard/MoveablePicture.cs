@@ -229,7 +229,7 @@ namespace GameBoard
             CharImage.ApplyAnimationClock(RectangleVisual3D.OriginProperty, clock1);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.OriginProperty, clock2);
             InfoText.ApplyAnimationClock(BillboardTextVisual3D.PositionProperty, clock3);
-            //CharImage.Origin = point3D;
+            //CharImage.Origin = point1;
             //BaseCone.Origin = ;
         }
 

@@ -65,5 +65,70 @@ namespace GameBoard
 
             return new Point3D(x, y, 10);
         }
+
+        //Taken entirely from:
+        //http://www.flipcode.com/archives/Fast_Point-In-Cylinder_Test.shtml
+        public static bool PointIsInsideCylinder(Vector3D testpt, Vector3D pt1, Vector3D pt2, double lineDiameter, double lengthsq)
+        {
+            double lineRadius = lineDiameter;
+            double radius_sq = Math.Pow(lineRadius, 2);
+	                        
+            double dx, dy, dz;	// vector d  from line segment point 1 to point 2
+	        double pdx, pdy, pdz;	// vector pd from point 1 to test point
+            double dot, dsq;
+
+	        dx = pt2.X - pt1.X;	// translate so pt1 is origin.  Make vector from
+	        dy = pt2.Y - pt1.Y;     // pt1 to pt2.  Need for this is easily eliminated
+	        dz = pt2.Z - pt1.Z;
+
+	        pdx = testpt.X - pt1.X;		// vector from pt1 to test point.
+	        pdy = testpt.Y - pt1.Y;
+	        pdz = testpt.Z - pt1.Z;
+
+	        // Dot the d and pd vectors to see if point lies behind the 
+	        // cylinder cap at pt1.x, pt1.y, pt1.z
+
+	        dot = pdx * dx + pdy * dy + pdz * dz;
+
+	        // If dot is less than zero the point is behind the pt1 cap.
+	        // If greater than the cylinder axis line segment length squared
+	        // then the point is outside the other end cap at pt2.
+
+	        if( dot < 0.0f || dot > lengthsq )
+	        {
+		        //return( -1.0f );
+                return false;
+	        }
+	        else 
+	        {
+		        // Point lies within the parallel caps, so find
+		        // distance squared from point to line, using the fact that sin^2 + cos^2 = 1
+		        // the dot = cos() * |d||pd|, and cross*cross = sin^2 * |d|^2 * |pd|^2
+		        // Carefull: '*' means mult for scalars and dotproduct for vectors
+		        // In short, where dist is pt distance to cyl axis: 
+		        // dist = sin( pd to d ) * |pd|
+		        // distsq = dsq = (1 - cos^2( pd to d)) * |pd|^2
+		        // dsq = ( 1 - (pd * d)^2 / (|pd|^2 * |d|^2) ) * |pd|^2
+		        // dsq = pd * pd - dot * dot / lengthsq
+		        //  where lengthsq is d*d or |d|^2 that is passed into this function 
+
+		        // distance squared to the cylinder axis:
+
+		        dsq = (pdx*pdx + pdy*pdy + pdz*pdz) - dot*dot/lengthsq;
+
+		        if( dsq > radius_sq )
+		        {
+			        //return( -1.0f );
+                    return false;
+		        }
+		        else
+		        {
+                    return true;
+                    //return( dsq );		// return distance squared to axis
+		        }
+	        }
+
+        }
+
     }
 }
