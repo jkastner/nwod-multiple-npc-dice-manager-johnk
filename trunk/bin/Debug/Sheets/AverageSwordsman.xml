@@ -8,6 +8,7 @@
 	<trait label='Initiative' value='4'/>
 	<trait label='Ranged Defense' value='0'/>
 	<trait label='Melee Defense' value='2'/>
+	<trait label='Armor' value='0'/>
 	<trait label='Notice' value='4'/>
 	<trait label='Resolve' value='2'/>
 	<trait label='Composure' value='2'/>

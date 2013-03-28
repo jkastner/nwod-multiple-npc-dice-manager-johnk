@@ -9,6 +9,7 @@
 	<trait label='Ranged Defense' value='0'/>
 	<trait label='Melee Defense' value='4'/>
 	<trait label='Notice' value='7'/>
+	<trait label='Armor' value='0'/>
 	<trait label='Resolve' value='3'/>
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='8'/>
