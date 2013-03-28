@@ -8,6 +8,7 @@
 	<trait label='Initiative' value='5'/>
 	<trait label='Ranged Defense' value='0'/>
 	<trait label='Melee Defense' value='3'/>
+	<trait label='Armor' value='0'/>
 	<trait label='Vitae' value='12'/>
 	<trait label='Blood Potency' value='3'/>
 	<trait label='Notice' value='4'/>
