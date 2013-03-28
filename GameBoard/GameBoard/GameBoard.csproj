@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ClearSelectedPiecesEventArgs.cs" />
     <Compile Include="Helper3DCalcs.cs" />
+    <Compile Include="PieceMovedEventsArg.cs" />
     <Compile Include="PieceSelectedEventArgs.cs" />
     <Compile Include="StatusEffectDisplay.cs" />
     <Compile Include="VisualsViewmodel.cs" />

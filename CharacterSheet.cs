@@ -20,7 +20,11 @@ namespace XMLCharSheets
         public String Name
         {
             get { return _name; }
-            set { _name = value; }
+            set 
+            { 
+                _name = value;
+                OnPropertyChanged("Name");
+            }
         }
         private int _initiativeModifier;
 
@@ -215,6 +219,7 @@ namespace XMLCharSheets
                 }
             }
             HasAttacked = false;
+            HasMoved = false;
             NotifyStatusChange();
             return String.Empty;
         }
@@ -365,6 +370,17 @@ namespace XMLCharSheets
             {
                 _hasAttacked = value;
                 OnPropertyChanged("HasAttacked");
+            }
+        }
+
+        private bool _hasMoved = false;
+        public bool HasMoved
+        {
+            get { return _hasMoved; }
+            set
+            {
+                _hasMoved = value;
+                OnPropertyChanged("HasMoved");
             }
         }
     }

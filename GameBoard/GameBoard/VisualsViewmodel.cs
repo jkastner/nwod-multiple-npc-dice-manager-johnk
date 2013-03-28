@@ -183,6 +183,15 @@ namespace GameBoard
             }
         }
 
+        public event EventHandler PieceMoved;
+        protected virtual void OnPieceMoved(PieceMovedEventsArg e)
+        {
+            EventHandler handler = PieceMoved;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
         
         public void ToggleSelectCharacterFromVisual(RectangleVisual3D lastHit)
         {
@@ -316,22 +325,22 @@ namespace GameBoard
 
         internal void MoveSelectedPiecesTo(Point3D point3D)
         {
-            var selectedCharacters = VisualToMoveablePicturesDictionary.Where(x=>x.Value.IsSelected);
+            var selectedCharacters = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected);
             if (selectedCharacters.Count() == 1)
             {
                 var fc = selectedCharacters.First().Value;
                 fc.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + fc.PictureOffset));
             }
             else
-             {
+            {
                 //Move in formation to new location with respect to common centerpoint.
-                var middleSelection = Helper3DCalcs.FindMidpoint(selectedCharacters.Select(x=>x.Value.Location));
+                var middleSelection = Helper3DCalcs.FindMidpoint(selectedCharacters.Select(x => x.Value.Location));
                 foreach (var cur in selectedCharacters)
                 {
                     var curP = cur.Value.Location;
                     var vectorToOldMidpoint = curP - middleSelection;
                     vectorToOldMidpoint.Normalize();
-                    if(double.IsNaN(vectorToOldMidpoint.X) || double.IsNaN(vectorToOldMidpoint.Y )||double.IsNaN(vectorToOldMidpoint.Z))
+                    if (double.IsNaN(vectorToOldMidpoint.X) || double.IsNaN(vectorToOldMidpoint.Y) || double.IsNaN(vectorToOldMidpoint.Z))
                     {
                         cur.Value.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + cur.Value.PictureOffset));
                         continue;
@@ -341,6 +350,10 @@ namespace GameBoard
                     var np = new Point3D(vectorToOldMidpoint.X + point3D.X, vectorToOldMidpoint.Y + point3D.Y, vectorToOldMidpoint.Z + point3D.Z);
                     cur.Value.MoveTo(new Point3D(np.X, np.Y, np.Z + cur.Value.PictureOffset));
                 }
+            }
+            foreach (var cur in selectedCharacters)
+            {
+                OnPieceMoved(new PieceMovedEventsArg(cur.Value));
             }
         }
 
