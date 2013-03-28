@@ -127,7 +127,50 @@ namespace GameBoard
                     //return( dsq );		// return distance squared to axis
 		        }
 	        }
+        }
 
+        /*
+         * http://stackoverflow.com/questions/10768142/verify-if-point-is-inside-a-cone-in-3d-space*
+         * @param x coordinates of point to be tested 
+         * @param t coordinates of apex point of cone
+         * @param b coordinates of center of basement circle
+         * @param aperture in radians
+         */
+        public static Boolean IsPointInCone(Point3D testPoint, Point3D coneApex, Point3D coneBaseCenter,
+                                            double aperture)
+        {
+            // This is for our convenience
+            double halfAperture = aperture / 2;
+
+            // Vector pointing to X point from apex
+            Vector3D apexToXVect = coneApex - testPoint;
+
+            // Vector pointing from apex to circle-center point.
+            Vector3D axisVect = coneApex - coneBaseCenter;
+
+            // X is lying in cone only if it's lying in 
+            // infinite version of its cone -- that is, 
+            // not limited by "round basement".
+            // We'll use dotProd() to 
+            // determine angle between apexToXVect and axis.
+            bool isInInfiniteCone = Vector3D.DotProduct(apexToXVect, axisVect)
+                                       / (apexToXVect.Length / axisVect.Length)
+                                       >
+                // We can safely compare cos() of angles 
+                // between vectors instead of bare angles.
+                                       Math.Cos(halfAperture);
+
+
+            if (!isInInfiniteCone) return false;
+
+            // X is contained in cone only if projection of apexToXVect to axis
+            // is shorter than axis. 
+            // We'll use dotProd() to figure projection length.
+            bool isUnderRoundCap = Vector3D.DotProduct(apexToXVect, axisVect)
+                                      / axisVect.Length
+                                      <
+                                      axisVect.Length;
+            return isUnderRoundCap;
         }
 
     }

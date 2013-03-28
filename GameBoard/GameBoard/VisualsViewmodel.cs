@@ -323,6 +323,11 @@ namespace GameBoard
                     var curP = cur.Value.Location;
                     var vectorToOldMidpoint = curP - middleSelection;
                     vectorToOldMidpoint.Normalize();
+                    if(double.IsNaN(vectorToOldMidpoint.X) || double.IsNaN(vectorToOldMidpoint.Y )||double.IsNaN(vectorToOldMidpoint.Z))
+                    {
+                        cur.Value.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + cur.Value.PictureOffset));
+                        continue;
+                    }
                     double distance = Helper3DCalcs.DistanceBetween(curP, middleSelection);
                     vectorToOldMidpoint = vectorToOldMidpoint * distance;
                     var np = new Point3D(vectorToOldMidpoint.X + point3D.X, vectorToOldMidpoint.Y + point3D.Y, vectorToOldMidpoint.Z + point3D.Z);
@@ -432,8 +437,21 @@ namespace GameBoard
                         }
                         break;
                     case ShapeMode.Cone:
-                        //from http://stackoverflow.com/questions/12826117/how-can-i-detect-if-a-point-is-inside-of-a-cone-or-not-in-3d-space
-                        
+                        //public static Boolean IsPointInCone(Point3D testPoint, Point3D coneApex, Point3D coneBaseCenter,
+                        //            double aperture)
+                        //
+                        //     aperture angle
+                        //       | \
+                        //    H  |  \
+                        //       |___\
+                        //         R
+                        var coneBaseCenter = Helper3DCalcs.MovePointTowards(point1, point2, ShapeSize);
+                        var coneHeight = Helper3DCalcs.DistanceBetween(point1, coneBaseCenter);
+                        var angle = Math.Atan(1);
+                        if (Helper3DCalcs.IsPointInCone(cur.Value.Location, point1, coneBaseCenter, angle * 2))
+                        {
+                            selectedByShape.Add(cur.Value);
+                        }
                         break;
                     case ShapeMode.Line:
                         Vector3D testpt = cur.Value.Location.ToVector3D();
@@ -441,7 +459,9 @@ namespace GameBoard
                         Vector3D pt2 = point2.ToVector3D();
                         double lengthsq = Math.Pow(Helper3DCalcs.DistanceBetween(point1, point2), 2);
                         if (Helper3DCalcs.PointIsInsideCylinder(testpt, pt1, pt2, LineDiameter, lengthsq))
+                        {
                             selectedByShape.Add(cur.Value);
+                        }
                         break;
                 }
                 
@@ -470,7 +490,7 @@ namespace GameBoard
                 Material = new DiffuseMaterial(new SolidColorBrush(SelectedTeamColor())),
                 BaseRadius = 2,
                 Height = ShapeSize,
-                TopRadius=ShapeSize,
+                TopRadius = ShapeSize,
                 Origin=point1,
                 Normal=dir,
             };
