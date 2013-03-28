@@ -379,10 +379,18 @@ namespace XMLCharSheets
                 if(team!=null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Clear();
+                    List<MoveablePicture> visuals = new List<MoveablePicture>();
                     foreach (var cur in team.TeamMembers)
                     {
+                        var sheet = cur as CharacterSheet;
+                        if (sheet.Visual != null)
+                        {
+                            visuals.Add(sheet.Visual);
+                        }
                         ActiveCharacters_ListBox.SelectedItems.Add(cur);
                     }
+                    if(visuals.Count>0)
+                        _visualsViewmodel.ZoomTo(visuals);
                     e.Handled = true;
                 }
             }
@@ -424,6 +432,21 @@ namespace XMLCharSheets
         {
             _visualsViewmodel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
             _visualsViewmodel.SetShapeMode(GameBoard.VisualsViewmodel.ShapeMode.Sphere);
+        }
+
+        private void ZoomToVisual_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                //_visualsViewmodel.ZoomTo(
+                foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
+                {
+                    var selectedCharacter = cur as CharacterSheet;
+
+                    if (selectedCharacter.Visual != null)
+                        _visualsViewmodel.ZoomTo(selectedCharacter.Visual.Location);
+                }
+            }
         }
 
     }

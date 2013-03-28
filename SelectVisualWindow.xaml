@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="SelectVisualWindow" Height="Auto" Width="300"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        
+        Loaded="WindowLoaded"
         >
 
     <Window.Resources>
@@ -25,7 +25,6 @@
         <TextBox Name="TrimList_TextBox" KeyUp="TrimList_TextBox_KeyUp"/>
         <ListBox x:Name="SearchedDisplayItems_ListBox" 
                  SelectionMode="Single"
-                 ItemsSource="{Binding ActiveLoadedPictures, UpdateSourceTrigger=PropertyChanged}"
                  SelectedItem="{Binding SelectedPictureInfo}"
                  MaxHeight="250"
                  ScrollViewer.VerticalScrollBarVisibility="Visible"

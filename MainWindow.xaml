@@ -116,7 +116,7 @@
                                         <!--Target-->
                                         <ColumnDefinition Width="200"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding Path=Name}" FontSize="16" Foreground="{Binding Path=StatusColor}" MinWidth="100" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="0" Text="{Binding Path=Name}" MouseDown="ZoomToVisual_Click" FontSize="16" Foreground="{Binding Path=StatusColor}" MinWidth="100" HorizontalAlignment="Left" />
                                     <TextBlock Grid.Column="1" Margin="8,0,0,0" Text="{Binding Path=CurInitiative}" Width="20" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Center" />
                                     <TextBlock Grid.Column="2" Margin="16,0,0,0" Text="{Binding Path=StatusesLine}" ToolTip="{Binding Path=StatusesLine}" MinWidth="50" Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
                                     <Rectangle MouseDown="TeamColor_ActiveCharacters_ListBox_Click" Grid.Column="3" Height="10" Width="20">
