@@ -86,6 +86,14 @@ namespace GameBoard
         public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects, double speed)
         {
             double heightFeet = height / 12;
+            while (_visualToMoveablePicturesDictionary.Values.Any(
+                existingImage =>
+                    existingImage.Location.X == location.X &&
+                    existingImage.Location.Y == location.Y &&
+                    existingImage.Location.Z == location.Z+existingImage.PictureOffset))
+            {
+                location = new Point3D(location.X + heightFeet, location.Y, location.Z);
+            }
             MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet, name, pieceColor, location, statusEffects, speed);
             VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             Viewport.Children.Add(charImage.CharImage);
@@ -531,6 +539,17 @@ namespace GameBoard
             if(selectedCharacter.Value!=null)
                 return selectedCharacter.Value.PieceColor;
             return Colors.Red;
+        }
+
+        public void ZoomTo(Point3D targetPoint)
+        {
+            _viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
+        }
+
+        public void ZoomTo(List<MoveablePicture> visuals)
+        {
+            var midpoint = Helper3DCalcs.FindMidpoint(visuals.Select(x=>x.Location));
+            ZoomTo(midpoint);
         }
     }
 }
