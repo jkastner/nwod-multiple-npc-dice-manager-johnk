@@ -22,7 +22,25 @@ namespace XMLCharSheets
         {
             _visualsViewModel = visualsViewModel;
             _visualsViewModel.PieceSelected += OnVisualPieceSelected;
+            _visualsViewModel.PieceMoved += OnVisualPieceMoved;
             MakeTeams();
+        }
+
+        private void OnVisualPieceMoved(object sender, EventArgs e)
+        {
+            var pieceEvent = e as PieceMovedEventsArg;
+            if (pieceEvent != null)
+            {
+                if (pieceEvent.Mover != null)
+                {
+                    var matchingChar = ActiveRoster.Where(x => x.Visual != null &&
+                        x.Visual.Equals(pieceEvent.Mover)).FirstOrDefault();
+                    if (matchingChar != null)
+                    {
+                        matchingChar.HasMoved = true;
+                    }
+                }
+            }
         }
 
         private void MakeTeams()

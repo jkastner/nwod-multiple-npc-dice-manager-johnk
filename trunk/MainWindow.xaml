@@ -13,12 +13,15 @@
                 <StackPanel>
                     <Label Name="CreateCharacterError_Label"></Label>
                     <DockPanel>
-                        <TextBox Name="NewCharacterName_TextBox" Width="125"></TextBox>
-                    <Button HorizontalAlignment="Left"
+                        <StackPanel>
+                            <Label>Single Character</Label>
+                            <TextBox HorizontalAlignment="Left" Name="NewCharacterName_TextBox" Width="125"></TextBox>
+                        </StackPanel>
+                        <Button HorizontalAlignment="Left"
                                     Margin="5,5,5,5"
                                     Name="AddCharacter_Button"
                                     Content="Add" ToolTip="Add character to active roster." 
-                                        Width="75" Click="AddCharacter_Button_Click"/>
+                                       Height="30" Width="75" Click="AddCharacter_Button_Click"/>
                     </DockPanel>
                 </StackPanel>
                 <DockPanel>
@@ -78,7 +81,7 @@
         </TabItem>
         <TabItem Name="CurrentCharacterControlTab" Header="Current Character">
             <StackPanel>
-                <Label FontSize="24" Content="{Binding Path=SelectedCharacter.Name}"></Label>
+                <TextBox FontSize="24" Text="{Binding Path=SelectedCharacter.Name, Mode=TwoWay}"></TextBox>
                 <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto" 
                                   Margin="5,5,5,5"
                                   ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
@@ -113,6 +116,8 @@
                                         <ColumnDefinition Width="30"></ColumnDefinition>
                                         <!--Has Attacked-->
                                         <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <!--Has Moved-->
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
                                         <!--Target-->
                                         <ColumnDefinition Width="200"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
@@ -128,7 +133,11 @@
                                         Visibility="{Binding Path=HasAttacked, Converter={StaticResource BooleanToVisibilityConverter}}"
                                            Source="images/HasAttackedImage.jpg">
                                     </Image>
-                                    <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="5" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                    <Image Grid.Column="5"
+                                        Visibility="{Binding Path=HasMoved, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                           Source="images/HasMovedImage.jpg">
+                                    </Image>
+                                    <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="6" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                                HorizontalAlignment="Center" />
                                 </Grid>
                             </DataTemplate>
