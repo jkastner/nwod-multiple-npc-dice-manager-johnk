@@ -287,6 +287,13 @@ namespace XMLCharSheets
             }
             NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait(staminaCheckNum, "Stamina Check", 10, 0, 0, 8));
             staminaCheck.Roll();
+            String succeeded = "failed";
+            if (staminaCheck.CurrentSuccesses > 0)
+            {
+                succeeded = "succeeded";
+            }
+            AdditionalReportText = Name +" "+succeeded+" rolled to stay conscious - "+ staminaCheck.ResultDescription;
+
             if (staminaCheck.CurrentSuccesses == 0)
             {
                 StatusEffects.Add(new StatusEffect("Incapacitated", 500));

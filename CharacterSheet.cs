@@ -80,7 +80,12 @@ namespace XMLCharSheets
             }
         }
 
-
+        private String _additionalReportText;
+        public virtual String AdditionalReportText
+        {
+            get { return _additionalReportText; }
+            set { _additionalReportText = value; }
+        }
 
 
 
