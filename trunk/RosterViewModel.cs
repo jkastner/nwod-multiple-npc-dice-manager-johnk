@@ -438,6 +438,16 @@ namespace XMLCharSheets
                     ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " 
                         + curChar.ChosenAttackString + "} on " + curChar.Target.Name + 
                         "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
+                    if (!String.IsNullOrWhiteSpace(curChar.AdditionalReportText))
+                    {
+                        ResultText = curChar.AdditionalReportText;
+                        curChar.AdditionalReportText = "";
+                    }
+                    if (!String.IsNullOrWhiteSpace(curChar.Target.AdditionalReportText))
+                    {
+                        ResultText = curChar.Target.AdditionalReportText;
+                        curChar.Target.AdditionalReportText = "";
+                    }
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
@@ -605,6 +615,10 @@ namespace XMLCharSheets
             {
                 if (ActiveRoster[curIndex].IsIncapacitated)
                 {
+                    if (ActiveRoster[curIndex].Visual != null)
+                    {
+                        _visualsViewModel.RemovePiece(ActiveRoster[curIndex].Visual);
+                    }
                     DeceasedRoster.Add(ActiveRoster[curIndex]);
                     ActiveRoster.Remove(ActiveRoster[curIndex]);
                 }
@@ -702,6 +716,15 @@ namespace XMLCharSheets
                     curCharacter.Visual = null;
                 }
             }
+        }
+
+        internal void MoveDeceasedToActive()
+        {
+            foreach (var cur in DeceasedRoster)
+            {
+                ActiveRoster.Add(cur);
+            }
+            DeceasedRoster.Clear();
         }
     }
 }

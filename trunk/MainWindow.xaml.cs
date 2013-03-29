@@ -449,6 +449,11 @@ namespace XMLCharSheets
             }
         }
 
+        private void RestoreDeceased_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.MoveDeceasedToActive();
+        }
+
     }
 }
 

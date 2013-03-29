@@ -137,7 +137,9 @@
                                         Visibility="{Binding Path=HasMoved, Converter={StaticResource BooleanToVisibilityConverter}}"
                                            Source="images/HasMovedImage.jpg">
                                     </Image>
-                                    <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="6" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
+                                    <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="6" MinWidth="100" Margin="8,0,0,0" Foreground="{Binding Path=Target.StatusColor}"  
+                                               ToolTip="{Binding Path=Target.Status}"
+                                               Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}" 
                                                HorizontalAlignment="Center" />
                                 </Grid>
                             </DataTemplate>
@@ -479,17 +481,20 @@
             </StackPanel>
         </TabItem>
         <TabItem Header="Deceased">
-            <ListBox Name="DeceasedCharacters"
-                            Margin="8,0,0,0"
-                                 MinWidth="70"
-                                 MinHeight="150"
-                            SelectedItem="{Binding Path=SelectedDeceasedCharacter, Mode=TwoWay}"
-                            ItemsSource="{Binding Path=DeceasedRoster, UpdateSourceTrigger=PropertyChanged}" 
-                            SelectionChanged="DeceasedCharacters_ListBox_SelectionChanged"
-                            Height="Auto"
-                            SelectionMode="Extended"
-                                 >
-            </ListBox>
+            <StackPanel>
+                <ListBox Name="DeceasedCharacters"
+                                Margin="8,0,0,0"
+                                     MinWidth="70"
+                                     MinHeight="150"
+                                SelectedItem="{Binding Path=SelectedDeceasedCharacter, Mode=TwoWay}"
+                                ItemsSource="{Binding Path=DeceasedRoster, UpdateSourceTrigger=PropertyChanged}" 
+                                SelectionChanged="DeceasedCharacters_ListBox_SelectionChanged"
+                                Height="Auto"
+                                SelectionMode="Extended"
+                                     >
+                </ListBox>
+                <Button  Margin="8,8,8,8" HorizontalAlignment="Left" Width="80" Click="RestoreDeceased_Button_Click">Restore</Button>
+            </StackPanel>
         </TabItem>
     </TabControl>
 </Window>
