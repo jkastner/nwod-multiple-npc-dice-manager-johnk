@@ -14,17 +14,8 @@ namespace XMLCharSheets
             get { return _traitLabel; }
         }
 
-        private int _traitValue;
-
-        public int TraitValue
+        public Trait(String traitLabel)
         {
-            get { return _traitValue; }
-            set { _traitValue = value; }
-        }
-
-        public Trait(int traitValue, String traitLabel)
-        {
-            _traitValue = traitValue;
             TraitLabel = traitLabel;
         }
 

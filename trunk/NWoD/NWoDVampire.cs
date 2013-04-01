@@ -69,7 +69,7 @@ namespace XMLCharSheets
         public override void PopulateCombatTraits()
         {
             base.PopulateCombatTraits();
-            foreach (Trait curTrait in Traits)
+            foreach (NumericTrait curTrait in NumericTraits)
             {
                 switch (curTrait.TraitLabel)
                 {
@@ -100,7 +100,7 @@ namespace XMLCharSheets
 
         internal override List<Damage> AttackTarget(int modifier)
         {
-            var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
+            var ChosenAttackTrait = FindNumericTrait(ChosenAttack) as AttackTrait;
             ChosenAttackTrait.TraitValue += BloodAttackBonus;
             List<Damage> results = base.AttackTarget(modifier);
             FinalAttackPool += BloodAttackBonus;

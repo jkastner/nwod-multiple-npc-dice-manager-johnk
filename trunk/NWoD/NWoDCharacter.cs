@@ -10,7 +10,7 @@ namespace XMLCharSheets
     {
 
         //private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
-        private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait(5, "DefaultPool", 10, 0, 0, 8));
+        private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait("DefaultPool", 5, 10, 0, 0, 8));
         private List<HealthBox> _healthTrack = new List<HealthBox>();
         public List<HealthBox> HealthTrack
         {
@@ -107,7 +107,7 @@ namespace XMLCharSheets
 
         public override void PopulateCombatTraits()
         {
-            foreach (Trait curTrait in Traits)
+            foreach (NumericTrait curTrait in NumericTraits)
             {
                 switch (curTrait.TraitLabel)
                 {
@@ -279,13 +279,13 @@ namespace XMLCharSheets
             {
                 return;
             }
-            var stamina = FindTrait("Stamina");
+            var stamina = FindNumericTrait("Stamina");
             int staminaCheckNum = HealthTrack.Count()-5;
             if (stamina != null)
             {
                 staminaCheckNum = stamina.TraitValue;
             }
-            NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait(staminaCheckNum, "Stamina Check", 10, 0, 0, 8));
+            NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait("Stamina Check", staminaCheckNum, 10, 0, 0, 8));
             staminaCheck.Roll();
             String succeeded = "failed";
             if (staminaCheck.CurrentSuccesses > 0)
@@ -307,11 +307,11 @@ namespace XMLCharSheets
             get 
             {
                 StringBuilder sb = new StringBuilder();
-                int fullValue = FindTrait(ChosenAttack).TraitValue;
+                int fullValue = FindNumericTrait(ChosenAttack).TraitValue;
                 sb.Append(ChosenAttack);
                 for (int curIndex = 0; curIndex < OtherAttackTraits.Count(); curIndex++)
                 {
-                    fullValue += FindTrait(OtherAttackTraits[curIndex]).TraitValue;
+                    fullValue += FindNumericTrait(OtherAttackTraits[curIndex]).TraitValue;
                 }
                 return fullValue.ToString();
             }
@@ -334,19 +334,19 @@ namespace XMLCharSheets
             List<Damage> damage = new List<Damage>();
             var nwodTarget = Target as NWoDCharacter;
             int targetDefense = 0;
-            var ChosenAttackTrait = FindTrait(ChosenAttack) as AttackTrait;
+            var ChosenAttackTrait = FindNumericTrait(ChosenAttack) as AttackTrait;
             if (ChosenAttackTrait.DefenseTarget.Contains("Melee Defense"))
             {
                 targetDefense = nwodTarget.CurrentMeleeDefense;
             }
             else
             {
-                targetDefense = Target.FindTrait(ChosenAttackTrait.DefenseTarget).TraitValue;
+                targetDefense = Target.FindNumericTrait(ChosenAttackTrait.DefenseTarget).TraitValue;
             }
-            var attackPool = (ChosenAttackTrait as NWoDAttackTrait).CopyTrait();
+            var attackPool = (ChosenAttackTrait as NWoDAttackTrait).CopyTrait() as NumericTrait;
             foreach (String additionalAttackTrait in OtherAttackTraits)
             {
-                attackPool.TraitValue += FindTrait(additionalAttackTrait).TraitValue;
+                attackPool.TraitValue += FindNumericTrait(additionalAttackTrait).TraitValue;
             }
             attackPool.TraitValue -= targetDefense;
             attackPool.TraitValue -= nwodTarget.Armor;
