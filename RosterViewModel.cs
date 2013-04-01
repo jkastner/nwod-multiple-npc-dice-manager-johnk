@@ -232,6 +232,8 @@ namespace XMLCharSheets
         public CharacterSheet ReadCharacterFromFile(String fileName)
         {
             ReadCharacter rc = new ReadCharacter();
+            rc.RegisterReader("NWoD", new NWoDCharacterReader());
+            rc.RegisterReader("Pathfinder", new PathfinderCharacterReader());
             return rc.Read(fileName);
         }
 
@@ -280,7 +282,7 @@ namespace XMLCharSheets
                 }
                 else
                 {
-                    charTraits.Add(involvedCharacter.FindTrait(curTrait));
+                    charTraits.Add(involvedCharacter.FindNumericTrait(curTrait));
                 }
                 canRoll &= hasTrait;
             }
@@ -312,7 +314,7 @@ namespace XMLCharSheets
             List<Trait> charTraits = new List<Trait>();
             foreach(var cur in involvedTraits)
             {
-                charTraits.Add(involvedCharacter.FindTrait(cur));
+                charTraits.Add(involvedCharacter.FindNumericTrait(cur));
             }
             String result = involvedCharacter.RollBasePool(charTraits, RollModifier).ResultDescription;
             ResultText = "\n" + result;

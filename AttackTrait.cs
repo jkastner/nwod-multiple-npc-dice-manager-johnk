@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public abstract class AttackTrait : Trait
+    public abstract class AttackTrait : NumericTrait
     {
         private String _defenseTarget;
         public String DefenseTarget
@@ -20,10 +20,10 @@ namespace XMLCharSheets
             get { return _damageType; }
             set { _damageType = value; }
         }
-        
-        
-        public AttackTrait(int value, string label, String defenseTarget, String damageType):
-            base(value, label)
+
+
+        public AttackTrait(string label, int value, String defenseTarget, String damageType) :
+            base(label, value)
         {
             this.DefenseTarget = defenseTarget;
             this.DamageType = damageType;

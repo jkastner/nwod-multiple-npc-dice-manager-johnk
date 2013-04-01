@@ -48,22 +48,18 @@ namespace XMLCharSheets
             set { _curInitiative = value; }
         }
 
-        public abstract void PopulateCombatTraits();
-
-        public abstract void RollInitiative();
-
-        public Trait HeightTrait
+        public NumericTrait HeightTrait
         {
             get
             {
-                return Traits.Where(x => x.TraitLabel.Equals("Height")).FirstOrDefault();
+                return NumericTraits.Where(x => x.TraitLabel.Equals("Height")).FirstOrDefault();
             }
         }
-        public Trait SpeedTrait
+        public NumericTrait SpeedTrait
         {
             get
             {
-                return Traits.Where(x => x.TraitLabel.Equals("Speed")).FirstOrDefault();
+                return NumericTraits.Where(x => x.TraitLabel.Equals("Speed")).FirstOrDefault();
             }
         }
 
@@ -109,9 +105,19 @@ namespace XMLCharSheets
             }
         }
 
-        public Trait FindTrait(String targetName)
+        private List<NumericTrait> _numericTraits = new List<NumericTrait>();
+        public List<NumericTrait> NumericTraits
         {
-            return (Trait)Traits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
+            get
+            {
+                return Traits.Where(x => x is NumericTrait).Select(z => z as NumericTrait).ToList();
+            }
+        }
+
+
+        public NumericTrait FindNumericTrait(String targetName)
+        {
+            return NumericTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
         }
         public bool HasTrait(String targetName)
         {
@@ -122,21 +128,6 @@ namespace XMLCharSheets
         {
             return Name;
         }
-        public abstract SolidColorBrush StatusColor
-        {
-            get;
-        }
-        public abstract String RollResults
-        {
-            get;
-            set;
-        }
-
-        internal abstract CharacterSheet Copy(string newName);
-        
-        internal abstract void DoBashing();
-        internal abstract void DoLethal();
-        internal abstract void DoAggrivated();
 
         #region INotifyPropertyChanged Members
 
@@ -175,8 +166,6 @@ namespace XMLCharSheets
             }
         }
 
-        internal abstract void ResetHealth();
-
         private CharacterSheet _target;
         public CharacterSheet Target
         {
@@ -208,8 +197,6 @@ namespace XMLCharSheets
             DamageType = damageType;
             ChosenAttack = attackType;
         }
-
-
 
 
         internal virtual String NewRound()
@@ -271,15 +258,6 @@ namespace XMLCharSheets
             }
         }
 
-        public abstract String ChosenAttackValue
-        {
-            get;
-        }
-
-        internal abstract List<Damage> AttackTarget(int RollModifier);
-
-        internal abstract DicePool RollBasePool(List <Trait> dicePools, int modifier);
-
         private List<StatusEffect> _statusEffects = new List<StatusEffect>();
 
         public List<StatusEffect> StatusEffects
@@ -326,7 +304,7 @@ namespace XMLCharSheets
             NotifyStatusChange();
         }
 
-        public abstract bool IsIncapacitated { get; set; }
+        
 
         public int FinalAttackPool { get; set; }
 
@@ -388,5 +366,42 @@ namespace XMLCharSheets
                 OnPropertyChanged("HasMoved");
             }
         }
+
+        #region Abstracts
+        public abstract void PopulateCombatTraits();
+
+        public abstract void RollInitiative();
+
+
+        public abstract SolidColorBrush StatusColor
+        {
+            get;
+        }
+        public abstract String RollResults
+        {
+            get;
+            set;
+        }
+
+        internal abstract CharacterSheet Copy(string newName);
+
+        internal abstract void DoBashing();
+        internal abstract void DoLethal();
+        internal abstract void DoAggrivated();
+
+        internal abstract void ResetHealth();
+
+        public abstract String ChosenAttackValue
+        {
+            get;
+        }
+
+        internal abstract List<Damage> AttackTarget(int RollModifier);
+
+        internal abstract DicePool RollBasePool(List<Trait> dicePools, int modifier);
+
+        public abstract bool IsIncapacitated { get; set; }
+        #endregion
+
     }
 }

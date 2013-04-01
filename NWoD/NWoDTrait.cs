@@ -5,11 +5,11 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class NWoDTrait : Trait, INWoDTrait
+    public class NWoDTrait: NumericTrait, INWoDTrait
     {
-        public NWoDTrait(int traitValue, string traitLabel, 
+        public NWoDTrait(string traitLabel, int traitValue, 
             int explodesOn, int subtractsOn, int autoSuccesses, int succeedsOn)
-            : base(traitValue, traitLabel)
+            : base(traitLabel, traitValue)
         {
             ExplodesOn = explodesOn;
             SubtractsOn = subtractsOn;
@@ -36,14 +36,14 @@ namespace XMLCharSheets
         }
         public override Trait CopyTrait()
         {
-            return new NWoDTrait(TraitValue, TraitLabel, ExplodesOn, SubtractsOn, AutomaticSuccesses, SucceedsOn);
+            return new NWoDTrait(TraitLabel, TraitValue, ExplodesOn, SubtractsOn, AutomaticSuccesses, SucceedsOn);
         }
 
         public override string TraitDescription
         {
             get
             {
-                return TraitLabel+": "+TraitValue+" (S: "+SucceedsOn+" Exp: "+ExplodesOn+" Sub: "+SubtractsOn+" Auto: "+AutomaticSuccesses+")";
+                return TraitLabel + ": " + TraitValue + " (S: " + SucceedsOn + " Exp: " + ExplodesOn + " Sub: " + SubtractsOn + " Auto: " + AutomaticSuccesses + ")";
             }
         }
     }

@@ -64,7 +64,9 @@
     <Compile Include="CharacterSheet.cs" />
     <Compile Include="DicePool.cs" />
     <Compile Include="Damage.cs" />
+    <Compile Include="IReadCharacters.cs" />
     <Compile Include="NWoD\NWoDAttackTrait.cs" />
+    <Compile Include="NWoD\NWoDCharacterReader.cs" />
     <Compile Include="NWoD\NWoDConstants.cs" />
     <Compile Include="NWoD\NWoDDamage.cs" />
     <Compile Include="NWoD\NWoDHealthBox.cs" />
@@ -73,6 +75,13 @@
     <Compile Include="NWoD\NWoDDicePool.cs" />
     <Compile Include="NWoD\INWoDTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
+    <Compile Include="Pathfinder\IPathfinderTrait.cs" />
+    <Compile Include="Pathfinder\PathfinderAttackTrait.cs" />
+    <Compile Include="Pathfinder\PathfinderCharacter.cs" />
+    <Compile Include="Pathfinder\PathfinderCharacterReader.cs" />
+    <Compile Include="Pathfinder\PathfinderDamage.cs" />
+    <Compile Include="Pathfinder\PathfinderDicePool.cs" />
+    <Compile Include="Pathfinder\PathfinderTrait.cs" />
     <Compile Include="PictureSelectionViewModel.cs" />
     <Compile Include="ReadCharacter.cs" />
     <Compile Include="RosterViewModel.cs" />
@@ -91,6 +100,8 @@
     </Compile>
     <Compile Include="Team.cs" />
     <Compile Include="Trait.cs" />
+    <Compile Include="NumericTrait.cs" />
+    <Compile Include="StringTrait.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

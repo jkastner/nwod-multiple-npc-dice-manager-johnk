@@ -9,7 +9,7 @@ namespace XMLCharSheets
     {
         public NWoDAttackTrait(int value, string label, string defenseTarget, string damageType,
             int explodesOn, int subtractsOn, int autoSuccesses)
-            : base(value, label, defenseTarget, damageType)
+            : base(label, value, defenseTarget, damageType)
         {
             ExplodesOn = explodesOn;
             SubtractsOn = subtractsOn;
@@ -20,7 +20,7 @@ namespace XMLCharSheets
         public int SubtractsOn { get; set; }
         public int SucceedsOn { get; set; }
         public int AutomaticSuccesses { get; set; }
-
+        
         public override Trait CopyTrait()
         {
             NWoDAttackTrait copy = new NWoDAttackTrait(TraitValue, TraitLabel, DefenseTarget, DamageType, ExplodesOn, SubtractsOn, AutomaticSuccesses);

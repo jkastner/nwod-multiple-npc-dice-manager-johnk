@@ -56,7 +56,7 @@ namespace XMLCharSheets
                 _selectedCharacters.Add(curChar);
                 allTargets.Remove(curChar);
                 //2. Build list of possible attack traits.
-                foreach (var curTrait in curChar.Traits)
+                foreach (var curTrait in curChar.NumericTraits)
                 {
                     var attackTrait = curTrait as AttackTrait;
                     if (attackTrait != null)
@@ -187,7 +187,7 @@ namespace XMLCharSheets
         {
             foreach (CharacterSheet curChar in _allCharacters)
             {
-                foreach (Trait curTrait in curChar.Traits)
+                foreach (Trait curTrait in curChar.NumericTraits)
                 {
                     if (curTrait.TraitLabel.Equals(attackName))
                     {
