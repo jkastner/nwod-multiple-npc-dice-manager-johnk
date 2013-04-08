@@ -81,6 +81,7 @@
     <Compile Include="Pathfinder\PathfinderCharacterReader.cs" />
     <Compile Include="Pathfinder\PathfinderDamage.cs" />
     <Compile Include="Pathfinder\PathfinderDicePool.cs" />
+    <Compile Include="Pathfinder\PathfinderNumericTrait.cs" />
     <Compile Include="Pathfinder\PathfinderTrait.cs" />
     <Compile Include="PictureSelectionViewModel.cs" />
     <Compile Include="ReadCharacter.cs" />

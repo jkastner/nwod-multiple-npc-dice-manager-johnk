@@ -14,14 +14,37 @@ namespace XMLCharSheets
         {
         }
 
+        private int _hitPoints;
+        public int HitPoints
+        {
+            get { return _hitPoints; }
+            set { _hitPoints = value; }
+        }
+        private int _maxHitPoints;
+        public int MaxHitPoints
+        {
+            get { return _maxHitPoints; }
+            set { _maxHitPoints = value; }
+        }
+
         public override void PopulateCombatTraits()
         {
-
+            HitPoints = NumericTraits.Where(x => x.TraitLabel.Equals("HP")).FirstOrDefault().TraitValue;
+            MaxHitPoints = HitPoints;
         }
 
         public override void RollInitiative()
         {
-
+            var matchingNumeric = Traits.Where(x => (x as PathfinderNumericTrait) != null && x.TraitLabel.Equals("Initiative")).FirstOrDefault() as PathfinderNumericTrait;
+            if (matchingNumeric == null)
+                CurInitiative = -1;
+            else
+            {
+                PathfinderDicePool rollIni = new PathfinderDicePool(1, 20, matchingNumeric.TraitValue);
+                rollIni.Roll();
+                CurInitiative = rollIni.TotalValue;
+            }
+            
         }
 
 
@@ -32,27 +55,58 @@ namespace XMLCharSheets
                 return new SolidColorBrush(Colors.Blue);
             }
         }
+        private string _rollResults = "";
         public override String RollResults
         {
-            get;
-            set;
+            get
+            {
+                return _rollResults;
+            }
+            set
+            {
+                _rollResults = value;
+            }
         }
 
         internal override CharacterSheet Copy(string newName)
         {
-            return null;
+            List<Trait> allTraits = new List<Trait>();
+            foreach(var cur in this.Traits)
+            {
+                allTraits.Add(cur.CopyTrait());
+            }
+            PathfinderCharacter copyChar = new PathfinderCharacter(this.Name, allTraits);
+            return copyChar;
         }
 
-        internal override void DoBashing()
+        internal override String DoDamage(int count, String descriptor)
         {
+            var stringTraits = (from trait in Traits
+                                where trait as StringTrait != null
+                                select trait as StringTrait);
 
-        }
-        internal override void DoLethal()
-        {
 
-        }
-        internal override void DoAggrivated()
-        {
+            var immuneTrait = stringTraits.Where(x => x.TraitLabel.Equals("Immunity") && x.TraitContents.Equals(descriptor)).FirstOrDefault();
+            if (immuneTrait != null)
+            {
+                return Name+" was immune to "+descriptor;
+            }
+            var resistTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Resist") && x.TraitDescription.Equals(descriptor)).FirstOrDefault();
+            if(resistTrait!=null)
+            {
+                count -= resistTrait.TraitValue;
+            }
+            var damageReductionTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance"));
+            {
+                //TODO - I hate SRD damage reduction rules.
+
+            }
+            if (count < 0)
+            {
+                return Name + " resisted all damage"; ;
+            }
+            _hitPoints -= count;
+            return "";
 
         }
 
@@ -71,7 +125,50 @@ namespace XMLCharSheets
 
         internal override List<Damage> AttackTarget(int RollModifier)
         {
-            return null;
+            List<Damage> damage = new List<Damage>();
+            var pathfinderTarget = Target as PathfinderCharacter;
+            int targetDefense = 0;
+            var ChosenAttackTrait = FindNumericTrait(ChosenAttack) as AttackTrait;
+            var defenseTrait = pathfinderTarget.FindNumericTrait(ChosenAttackTrait.DefenseTarget);
+            if (defenseTrait != null)
+            {
+                targetDefense = defenseTrait.TraitValue;
+            }
+            List<PathfinderAttackTrait> allAttacks = new List<PathfinderAttackTrait>(){ChosenAttackTrait as PathfinderAttackTrait};
+            foreach(var cur in OtherAttackTraits)
+            {
+                var matchingAttack = FindNumericTrait(cur);
+                if(matchingAttack != null)
+                {
+                    var matchingPathfinderAttack = matchingAttack as PathfinderAttackTrait;
+                    if(matchingPathfinderAttack!=null)
+                    {
+                        allAttacks.Add(matchingPathfinderAttack);
+                    }
+                }
+            }
+            foreach(var attack in allAttacks)
+            {
+                foreach(var curBase in attack.ToHitBonusList)
+                {
+                    var curBonus = curBase + RollModifier;
+                    PathfinderDicePool curAttack = new PathfinderDicePool(1, 20, curBonus);
+                    curAttack.Roll();
+                    RollResults = RollResults + "Rolled "+curAttack.TotalValue+" VS "+attack.DefenseTarget+" of "+targetDefense;
+                    if (curAttack.TotalValue==20||curAttack.TotalValue >= targetDefense)
+                    {
+                        RollResults = RollResults + "\tDamage: ";
+                        for(int curIndex = 0;curIndex<attack.DamageDice.Count;curIndex++)
+                        {
+                            var curDamage = attack.DamageDice[curIndex];
+                            curDamage.Roll();
+                            RollResults = RollResults + " " + curDamage.TotalValue + " " + attack.DamageDescriptors[curIndex];
+                            Target.DoDamage(curDamage.TotalValue, attack.DamageDescriptors[curIndex]);
+                        }
+                    }
+                }
+            }
+            return damage;
         }
 
         internal override DicePool RollBasePool(List<Trait> dicePools, int modifier)

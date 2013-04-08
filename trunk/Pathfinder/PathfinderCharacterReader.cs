@@ -25,6 +25,7 @@ namespace XMLCharSheets
             foreach (var curQuery in query)
             {
                 List<Trait> traits = new List<Trait>();
+                PopulatePathfinderTraits(curQuery.Traits, traits);
                 switch (curQuery.CharacterType)
                 {
                     default:
@@ -32,7 +33,6 @@ namespace XMLCharSheets
                         break;
 
                 }
-                PopulatePathfinderTraits(curQuery.Traits, traits);
             }
             return newChar;
         }
@@ -45,25 +45,40 @@ namespace XMLCharSheets
                         {
                             Label = (String)item.Attribute("label"),
                             Value = (String)item.Attribute("value"),
-                            OvercomeBy = (String)item.Attribute("OvercomeBy"),
                             Descriptor = (String)item.Attribute("Descriptor"),
                             AttackBonus = (String)item.Attribute("AttackBonus"),
                             Damage = (String)item.Attribute("Damage"),
-                            DamageType = (String)item.Attribute("DamageType"),
                             Triggers = (String)item.Attribute("Triggers"),
                             TriggerEffect = (String)item.Attribute("TriggerEffect"),
                             TargetDefense = (String)item.Attribute("TargetDefense"),
+                            CritRange = (String)item.Attribute("CritRange"),
+                            CritMultiplier = (String)item.Attribute("CritMultiplier"),
                         };
 
             var listit = query.ToList();
             foreach (var curQuery in query)
             {
                 if (curQuery.AttackBonus == null)
-                    traits.Add(new PathfinderTrait(curQuery.Label, curQuery.Value, curQuery.OvercomeBy, curQuery.Descriptor));
+                {
+                    if (curQuery.Value != null)
+                    {
+                        traits.Add(new PathfinderNumericTrait(curQuery.Label, int.Parse(curQuery.Value), curQuery.Descriptor));
+                    }
+                    else
+                    {
+                        traits.Add(new PathfinderStringTrait(curQuery.Label, curQuery.Descriptor));
+                    }
+                }
                 else
                 {
                     //public PathfinderAttackTrait(int traitValue, String traitLabel, String defenseTarget, String damageType) :
-                    traits.Add(new PathfinderAttackTrait(5, curQuery.Label, curQuery.Descriptor, curQuery.AttackBonus, curQuery.Damage, curQuery.DamageType, curQuery.Triggers, curQuery.TriggerEffect, curQuery.TargetDefense));
+                    //Attack bonus looks like this:
+                    //AttackBonus='35/30/25/20' 
+                    String firstBonus = curQuery.AttackBonus.Split('/').First();
+                    int firstBonusNumeric = int.Parse(firstBonus);
+                    String bonus = curQuery.AttackBonus;
+                    traits.Add(new PathfinderAttackTrait(curQuery.Label, firstBonusNumeric, curQuery.Descriptor, curQuery.AttackBonus, curQuery.Damage,
+                        curQuery.Triggers, curQuery.TriggerEffect, curQuery.TargetDefense, curQuery.CritRange, curQuery.CritMultiplier));
                 }
             }
         }

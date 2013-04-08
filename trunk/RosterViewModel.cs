@@ -326,7 +326,7 @@ namespace XMLCharSheets
             foreach (var curItem in characters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.DoBashing();
+                curChar.DoDamage(1, "Bashing");
             }
         }
 
@@ -335,7 +335,7 @@ namespace XMLCharSheets
             foreach (var curItem in characters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.DoLethal();
+                curChar.DoDamage(1, "Lethal");
             }
         }
 
@@ -344,7 +344,7 @@ namespace XMLCharSheets
             foreach (var curItem in characters)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.DoAggrivated();
+                curChar.DoDamage(1, "Aggrivated");
             }
         }
 

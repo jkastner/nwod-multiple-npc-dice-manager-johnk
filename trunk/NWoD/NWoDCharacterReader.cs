@@ -25,6 +25,7 @@ namespace XMLCharSheets
             foreach (var curQuery in query)
             {
                 List<Trait> traits = new List<Trait>();
+                PopulateNWoDTraits(curQuery.Traits, traits);
                 switch (curQuery.CharacterType)
                 {
                     case "Vampire":
@@ -35,7 +36,6 @@ namespace XMLCharSheets
                         break;
 
                 }
-                PopulateNWoDTraits(curQuery.Traits, traits);
             }
             return newChar;
         }
