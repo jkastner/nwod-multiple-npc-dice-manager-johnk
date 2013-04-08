@@ -385,9 +385,7 @@ namespace XMLCharSheets
 
         internal abstract CharacterSheet Copy(string newName);
 
-        internal abstract void DoBashing();
-        internal abstract void DoLethal();
-        internal abstract void DoAggrivated();
+        internal abstract String DoDamage(int value, String descriptor);
 
         internal abstract void ResetHealth();
 

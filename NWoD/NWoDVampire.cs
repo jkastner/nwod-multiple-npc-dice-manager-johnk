@@ -82,7 +82,7 @@ namespace XMLCharSheets
             if (MaxVitae == 0)
             {
                 MaxVitae = 10;
-                CurrentVitae = 10;
+                //CurrentVitae = 10;
             }
         }
 

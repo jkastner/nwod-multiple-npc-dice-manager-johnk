@@ -189,8 +189,26 @@ namespace XMLCharSheets
             }
         }
 
+        internal override String DoDamage(int damage, String descriptor)
+        {
+            switch (descriptor)
+            {
+                case "Bashing":
+                    DoBashing();
+                    break;
+                case "Lethal":
+                    DoLethal();
+                    break;
+                case "Aggrivated":
+                    DoAggrivated();
+                    break;
+            }
+            return "";
 
-        internal override void DoBashing()
+        }
+
+
+        internal void DoBashing()
         {
             HealthBox newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Bashing;
@@ -198,17 +216,20 @@ namespace XMLCharSheets
 
 
         }
-        internal override void DoLethal()
+        
+        internal String DoLethal()
         {
             HealthBox newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Lethal;
             AddDamageBox(newDamage);
+            return "";
         }
-        internal override void DoAggrivated()
+        internal String DoAggrivated()
         {
             HealthBox newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Aggrivated;
             AddDamageBox(newDamage);
+            return "";
         }
 
         internal override void ResetHealth()
@@ -362,16 +383,16 @@ namespace XMLCharSheets
                 {
                     case "Bashing":
                         damage.Add(new NWoDDamage(DamageType, 1));
-                        Target.DoBashing();
+                        Target.DoDamage(1, "Bashing");
                         break;
                     case "Aggrivated":
                         damage.Add(new NWoDDamage(DamageType, 1));
-                        Target.DoAggrivated();
+                        Target.DoDamage(1, "Aggrivated");
                         break;
                     default:
                     case "Lethal":
                         damage.Add(new NWoDDamage(DamageType, 1));
-                        Target.DoLethal();
+                        Target.DoDamage(1, "Lethal");
                         break;
                 }
             }
