@@ -60,6 +60,20 @@ namespace XMLCharSheets
         }
 
 
+        public override object BaseTraitContents
+        {
+            get
+            {
+                string attacksCsv = string.Join("/", ToHitBonusList.ToArray());
+                return attacksCsv;
+            }
+            set
+            {
+                //Todo - change attack bonuses?
+            }
+        }
+
+
         public PathfinderAttackTrait(string label, int attackValue, string descriptors, string attackbonuses,
             string damage, string triggers, string triggeredeffects, string targetDefense, string critRange, string critMultiplier)
             //public AttackTrait(string label, int value, String defenseTarget, String damageType) :

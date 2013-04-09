@@ -30,5 +30,11 @@ namespace XMLCharSheets
             get;
         }
 
+        public abstract object BaseTraitContents
+        {
+            get;
+            set;
+        }
+
     }
 }

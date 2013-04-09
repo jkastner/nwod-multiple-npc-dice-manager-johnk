@@ -23,5 +23,24 @@ namespace XMLCharSheets
             _traitValue = traitValue;
             TraitLabel = traitLabel;
         }
+
+        public override object BaseTraitContents
+        {
+            get
+            {
+                return TraitValue;
+            }
+            set
+            {
+                if (value == null)
+                    return;
+                int newval = TraitValue;
+                if (int.TryParse(value.ToString(), out newval))
+                {
+                    TraitValue = newval;
+                }
+
+            }
+        }
     }
 }

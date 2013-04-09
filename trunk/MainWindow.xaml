@@ -77,6 +77,15 @@
                               CurrentCellChanged="DataChanged_DataGrid"
                               >
                 </DataGrid>
+                <ListBox>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </TabItem>
         <TabItem Name="CurrentCharacterControlTab" Header="Current Character">

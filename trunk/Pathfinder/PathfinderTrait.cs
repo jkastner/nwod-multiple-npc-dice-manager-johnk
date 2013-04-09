@@ -8,8 +8,6 @@ namespace XMLCharSheets
 {
     public class PathfinderStringTrait: StringTrait, IPathfinderTrait
     {
-
-
         public PathfinderStringTrait(String traitlabel, String contents):
             base(traitlabel, contents)
         {
@@ -27,5 +25,18 @@ namespace XMLCharSheets
                 return TraitLabel+" - "+TraitContents;
             }
         }
+        public override object BaseTraitContents
+        {
+            get
+            {
+                return TraitContents;
+            }
+            set
+            {
+                TraitContents = value.ToString();
+            }
+        }
+
+
     }
 }

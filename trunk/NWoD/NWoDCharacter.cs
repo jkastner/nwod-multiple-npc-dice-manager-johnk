@@ -415,7 +415,7 @@ namespace XMLCharSheets
             {
                 var nextTrait = dicePools[curIndex] as INWoDTrait;
                  /*Johnathan K. 12-06-2012
-                  * Presumed to take the 'non default' modifier. */
+                  * Presumed to take the 'non default' Modifier. */
                  basepool.AddAndChangeFromDefaults(nextTrait);
             }
             basepool.TraitValue += modifier;
