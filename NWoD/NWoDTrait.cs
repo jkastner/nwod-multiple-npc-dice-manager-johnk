@@ -46,5 +46,17 @@ namespace XMLCharSheets
                 return TraitLabel + ": " + TraitValue + " (S: " + SucceedsOn + " Exp: " + ExplodesOn + " Sub: " + SubtractsOn + " Auto: " + AutomaticSuccesses + ")";
             }
         }
+
+        public override object BaseTraitContents
+        {
+            get
+            {
+                return TraitDescription;
+            }
+            set
+            {
+                //Todo - change attack bonuses?
+            }
+        }
     }
 }

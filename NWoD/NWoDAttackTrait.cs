@@ -38,6 +38,8 @@ namespace XMLCharSheets
                 this.ExplodesOn = nextTrait.SubtractsOn;
 
         }
+        
+
 
         public override string TraitDescription
         {

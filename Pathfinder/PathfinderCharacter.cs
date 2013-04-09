@@ -52,9 +52,26 @@ namespace XMLCharSheets
         {
             get
             {
-                return new SolidColorBrush(Colors.Blue);
+                if(HitPoints>0)
+                    return new SolidColorBrush(Colors.Black);
+                if((HitPoints<=0)&&(HitPoints>=-10))
+                    return new SolidColorBrush(Colors.Orange);
+                else
+                    return new SolidColorBrush(Colors.Red);
             }
         }
+
+        public override string Status
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(base.Status);
+                sb.Append("HP: "+_hitPoints+"/"+MaxHitPoints);
+                return sb.ToString();
+            }
+        }
+
         private string _rollResults = "";
         public override String RollResults
         {
@@ -81,38 +98,47 @@ namespace XMLCharSheets
 
         internal override String DoDamage(int count, String descriptor)
         {
+            _hitPoints -= count;
+            if (_hitPoints < 0)
+            {
+                IsIncapacitated = true; 
+            }
+            NotifyStatusChange();
+            return "";
+        }
+
+        internal Damage AdjustDamageByResistances(Damage receivedDamage)
+        {
+            String descriptor = receivedDamage.DamageDescriptor;
             var stringTraits = (from trait in Traits
                                 where trait as StringTrait != null
                                 select trait as StringTrait);
-
-
             var immuneTrait = stringTraits.Where(x => x.TraitLabel.Equals("Immunity") && x.TraitContents.Equals(descriptor)).FirstOrDefault();
             if (immuneTrait != null)
             {
-                return Name+" was immune to "+descriptor;
+                return new PathfinderDamage(receivedDamage.DamageDescriptor, 0);
             }
             var resistTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Resist") && x.TraitDescription.Equals(descriptor)).FirstOrDefault();
-            if(resistTrait!=null)
+            if (resistTrait != null)
             {
-                count -= resistTrait.TraitValue;
+                int count = receivedDamage.DamageValue - resistTrait.TraitValue;
+                if (count < 0)
+                    count = 0;
+                return new PathfinderDamage(receivedDamage.DamageDescriptor, count);
             }
             var damageReductionTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance"));
             {
                 //TODO - I hate SRD damage reduction rules.
 
             }
-            if (count < 0)
-            {
-                return Name + " resisted all damage"; ;
-            }
-            _hitPoints -= count;
-            return "";
-
+            return receivedDamage;
         }
+
 
         internal override void ResetHealth()
         {
-
+            _hitPoints = MaxHitPoints;
+            IsIncapacitated = false;
         }
 
         public override String ChosenAttackValue
@@ -125,6 +151,7 @@ namespace XMLCharSheets
 
         internal override List<Damage> AttackTarget(int RollModifier)
         {
+            _rollResults = "";
             List<Damage> damage = new List<Damage>();
             var pathfinderTarget = Target as PathfinderCharacter;
             int targetDefense = 0;
@@ -152,20 +179,56 @@ namespace XMLCharSheets
                 foreach(var curBase in attack.ToHitBonusList)
                 {
                     var curBonus = curBase + RollModifier;
-                    PathfinderDicePool curAttack = new PathfinderDicePool(1, 20, curBonus);
+                    PathfinderDicePool curAttack = new PathfinderDicePool(1, 20, 0);
                     curAttack.Roll();
-                    RollResults = RollResults + "Rolled "+curAttack.TotalValue+" VS "+attack.DefenseTarget+" of "+targetDefense;
-                    if (curAttack.TotalValue==20||curAttack.TotalValue >= targetDefense)
+                    int hitValue = curAttack.TotalValue + curBonus;
+                    RollResults = RollResults + "Rolled "+curAttack.TotalValue+"+"+curBonus+"="+hitValue
+                        +" VS "+attack.DefenseTarget+" of "+targetDefense;
+                    if (curAttack.TotalValue!=1&&(curAttack.TotalValue==20||curAttack.TotalValue+curBonus >= targetDefense))
                     {
                         RollResults = RollResults + "\tDamage: ";
                         for(int curIndex = 0;curIndex<attack.DamageDice.Count;curIndex++)
                         {
-                            var curDamage = attack.DamageDice[curIndex];
+                            int damageMultiplier = 1;
+                            if (curIndex == 0)
+                            {
+                                if (curAttack.TotalValue >= attack.LowestValueToCrit)
+                                {
+                                    curAttack.Roll();
+                                    hitValue = curAttack.TotalValue + curBonus;
+                                    RollResults = RollResults + "Crit confirm " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
+                                        + " VS " + attack.DefenseTarget + " of " + targetDefense;
+                                    if (curAttack.TotalValue!=1 && (curAttack.TotalValue==20|| hitValue >= targetDefense))
+                                    {
+                                        RollResults = RollResults + "--Crit confirmed--";
+                                        damageMultiplier = attack.CritMultipier;
+                                    }
+                                    else
+                                    {
+                                        RollResults = RollResults + "--Crit fails--";
+                                    }
+                                }
+                            }
+                            var curDamage = attack.DamageDice[curIndex].CopyPool();
+                            curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
+                            curDamage.Modifier = curDamage.Modifier * damageMultiplier;
                             curDamage.Roll();
                             RollResults = RollResults + " " + curDamage.TotalValue + " " + attack.DamageDescriptors[curIndex];
-                            Target.DoDamage(curDamage.TotalValue, attack.DamageDescriptors[curIndex]);
+                            var doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(attack.DamageDescriptors[curIndex],
+                                curDamage.TotalValue));
+                            if (doneDamage.DamageValue <= 0)
+                            {
+                                _rollResults = _rollResults + "\t" + Target.Name + " resisted all damage.";
+                            }
+                            else
+                            {
+                                Target.DoDamage(curDamage.TotalValue, attack.DamageDescriptors[curIndex]);
+                                damage.Add(doneDamage);
+                                _rollResults = _rollResults + "\t" + Target.Name + " has "+pathfinderTarget.HitPoints+"/"+pathfinderTarget.MaxHitPoints+" HP.";
+                            }
                         }
                     }
+                    _rollResults = _rollResults + "\n";
                 }
             }
             return damage;
@@ -173,9 +236,19 @@ namespace XMLCharSheets
 
         internal override DicePool RollBasePool(List<Trait> dicePools, int modifier)
         {
-            return null;
+            var rollabletraits = (from trait in dicePools
+                                where trait as PathfinderNumericTrait != null
+                                select trait as PathfinderNumericTrait);
+            foreach(var cur in rollabletraits)
+            {
+                modifier += cur.TraitValue;
+            }
+            var pool = new PathfinderDicePool(1, 20, modifier);
+            pool.Roll();
+            return pool;
         }
 
-        public override bool IsIncapacitated { get; set; }
+        public override bool IsIncapacitated 
+        { get; set; }
     }
 }
