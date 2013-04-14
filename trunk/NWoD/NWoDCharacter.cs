@@ -176,19 +176,6 @@ namespace XMLCharSheets
             return curPool.ResultDescription;
         }
 
-        private bool _isIncapacitated = false;
-        public override bool IsIncapacitated
-        {
-            get 
-            {
-                return _isIncapacitated;
-            }
-            set
-            {
-                _isIncapacitated = value;
-            }
-        }
-
         internal override String DoDamage(int damage, String descriptor)
         {
             switch (descriptor)
@@ -238,9 +225,8 @@ namespace XMLCharSheets
             {
                 curBox.Box = HealthBox.DamageType.Empty;
             }
-            IsIncapacitated = false;
+            SetIncapacitated(false);
             _checkedAgainstUnconsciousness = false;
-            NotifyStatusChange();
         }
 
 
@@ -268,8 +254,7 @@ namespace XMLCharSheets
                 HealthTrack.Remove(HealthTrack.Last());
                 if (!IsIncapacitated && HealthTrack.Last().Box > HealthBox.DamageType.Bashing)
                 {
-                    StatusEffects.Add(new StatusEffect("Incapacitated", 500));
-                    IsIncapacitated = true;
+                    SetIncapacitated(true);
                 }
                 if (!IsIncapacitated && HealthTrack.Last().Box == HealthBox.DamageType.Bashing && !_checkedAgainstUnconsciousness)
                 {
@@ -317,8 +302,7 @@ namespace XMLCharSheets
 
             if (staminaCheck.CurrentSuccesses == 0)
             {
-                StatusEffects.Add(new StatusEffect("Incapacitated", 500));
-                IsIncapacitated = true;
+                SetIncapacitated(true);
             }
 
         }

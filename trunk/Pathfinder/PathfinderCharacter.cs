@@ -54,7 +54,9 @@ namespace XMLCharSheets
             {
                 if(HitPoints>0)
                     return new SolidColorBrush(Colors.Black);
-                if((HitPoints<=0)&&(HitPoints>=-10))
+                if (HitPoints == 0)
+                    return new SolidColorBrush(Colors.Yellow);
+                if((HitPoints<0)&&(HitPoints>=-10))
                     return new SolidColorBrush(Colors.Orange);
                 else
                     return new SolidColorBrush(Colors.Red);
@@ -92,7 +94,7 @@ namespace XMLCharSheets
             {
                 allTraits.Add(cur.CopyTrait());
             }
-            PathfinderCharacter copyChar = new PathfinderCharacter(this.Name, allTraits);
+            PathfinderCharacter copyChar = new PathfinderCharacter(newName, allTraits);
             return copyChar;
         }
 
@@ -101,7 +103,7 @@ namespace XMLCharSheets
             _hitPoints -= count;
             if (_hitPoints < 0)
             {
-                IsIncapacitated = true; 
+                SetIncapacitated(true);
             }
             NotifyStatusChange();
             return "";
@@ -138,7 +140,7 @@ namespace XMLCharSheets
         internal override void ResetHealth()
         {
             _hitPoints = MaxHitPoints;
-            IsIncapacitated = false;
+            SetIncapacitated(false);
         }
 
         public override String ChosenAttackValue
@@ -248,7 +250,5 @@ namespace XMLCharSheets
             return pool;
         }
 
-        public override bool IsIncapacitated 
-        { get; set; }
     }
 }
