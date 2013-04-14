@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml;
@@ -18,12 +19,20 @@ namespace XMLCharSheets
     public class RosterViewModel : INotifyPropertyChanged
     {
         VisualsViewmodel _visualsViewModel;
+        CharacterReader _characterReader = new CharacterReader();
         public RosterViewModel(VisualsViewmodel visualsViewModel)
         {
+            RegisterReaders();
             _visualsViewModel = visualsViewModel;
             _visualsViewModel.PieceSelected += OnVisualPieceSelected;
             _visualsViewModel.PieceMoved += OnVisualPieceMoved;
             MakeTeams();
+        }
+
+        private void RegisterReaders()
+        {
+            _characterReader.RegisterReader("NWoD", new NWoDCharacterReader());
+            _characterReader.RegisterReader("Pathfinder", new PathfinderCharacterReader());
         }
 
         private void OnVisualPieceMoved(object sender, EventArgs e)
@@ -231,10 +240,7 @@ namespace XMLCharSheets
 
         public CharacterSheet ReadCharacterFromFile(String fileName)
         {
-            ReadCharacter rc = new ReadCharacter();
-            rc.RegisterReader("NWoD", new NWoDCharacterReader());
-            rc.RegisterReader("Pathfinder", new PathfinderCharacterReader());
-            return rc.Read(fileName);
+            return _characterReader.Read(fileName);
         }
 
         #region INotifyPropertyChanged Members
@@ -727,6 +733,23 @@ namespace XMLCharSheets
                 ActiveRoster.Add(cur);
             }
             DeceasedRoster.Clear();
+        }
+
+        internal void SetMode(string rulesetName)
+        {
+            for(int curIndex=FullRoster.Count-1;curIndex>=0;curIndex--)
+            {
+                var curChar = FullRoster[curIndex];
+                if (!curChar.Ruleset.Equals(rulesetName))
+                {
+                    FullRoster.Remove(curChar);
+                }
+            }
+        }
+
+        internal UIElement ControlFor(string rulesetName)
+        {
+            return _characterReader.FindControl(rulesetName);
         }
     }
 }

@@ -68,6 +68,9 @@
     <Compile Include="NWoD\NWoDAttackTrait.cs" />
     <Compile Include="NWoD\NWoDCharacterReader.cs" />
     <Compile Include="NWoD\NWoDConstants.cs" />
+    <Compile Include="NWoD\NWoDControl.xaml.cs">
+      <DependentUpon>NWoDControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NWoD\NWoDDamage.cs" />
     <Compile Include="NWoD\NWoDHealthBox.cs" />
     <Compile Include="NWoD\NWoDCharacter.cs" />
@@ -84,7 +87,7 @@
     <Compile Include="Pathfinder\PathfinderNumericTrait.cs" />
     <Compile Include="Pathfinder\PathfinderTrait.cs" />
     <Compile Include="PictureSelectionViewModel.cs" />
-    <Compile Include="ReadCharacter.cs" />
+    <Compile Include="CharacterReader.cs" />
     <Compile Include="RosterViewModel.cs" />
     <Compile Include="SelectTarget.xaml.cs">
       <DependentUpon>SelectTarget.xaml</DependentUpon>
@@ -115,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NWoD\NWoDControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SelectTarget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

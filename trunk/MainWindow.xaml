@@ -1,6 +1,7 @@
 ﻿<Window x:Class="XMLCharSheets.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:XMLCharSheets"
         Title="Combat Manager Window" Height="Auto" SizeToContent="Height" Width="1018"  Background="#FFD4D4D4"
         >
     <Window.Resources>
@@ -10,6 +11,10 @@
     <TabControl>
         <TabItem Name="CreationTab" Header="Create">
             <StackPanel>
+                <UserControl Name="CustomCombatControl">
+                    
+                </UserControl>
+                
                 <StackPanel>
                     <Label Name="CreateCharacterError_Label"></Label>
                     <DockPanel>
@@ -200,10 +205,45 @@
                         </Path>
                     </Button>
                 </DockPanel>
-                
-                
+
                 <!--Damage box region-->
                 <DockPanel HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0">
+                    <Button Name="Make_Status_Button" Width="Auto" Height="Auto" 
+                                Margin="5,5,5,5" HorizontalAlignment="Left" Click="Make_Status_Button_Click"
+                                ToolTip="Add a status effect to the character."
+                                >
+
+                        <Path Data="F1M1548.36,536.949L1573.21,524.905 1586.59,542.918 1580.36,545.181 1597.29,560.611 1592.21,563.012 1612.36,588.908 1578.08,568.84 1584.43,566.166 1563.68,553.616 1570.75,549.775 1548.36,536.949z" 
+                                  Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Button>
+                    <Button Name="Reset_Health_Button" Width="Auto" Height="Auto" Margin="5,5,5,5" HorizontalAlignment="Left" Click="Reset_Health_Button_Click"
+                                ToolTip="Reset the health of the selected characters."
+                                >
+                        <Path Data="M7.4166234,16.197001L13.497334,16.345396 13.322834,23.436422 20.413999,23.61352 20.262901,29.691471 13.171835,29.516974 12.997336,36.608002 6.9166257,36.456905 7.0910952,29.363379 0,29.191483 0.1484375,23.11223 7.2421548,23.284727z M11.898108,2.8243951E-06C12.047457,-8.1059967E-05 12.194343,0.0017042016 12.338866,0.0052749978 16.963824,0.1159917 19.130506,2.1726163 21.594083,5.2591434 24.20856,2.2982254 26.475539,0.35292793 31.099097,0.46883325 31.674691,0.48317698 32.289287,0.52742664 32.948079,0.60817621 36.937644,1.0977344 41.474006,4.8737665 41.866,11.910204L41.807403,14.247387C41.119907,20.953037 35.841254,29.115776 20.75809,39.146999 19.094106,37.917812 17.565419,36.723721 16.144833,35.553227L16.221631,32.535049 19.617501,32.615749C20.039397,32.958145 20.455993,33.295445 20.893489,33.639141 31.127797,26.420496 36.658946,19.803345 37.346439,13.946589L37.395942,11.990903C37.070445,7.3073483 34.244972,5.2682934 32.403785,5.043015 31.898589,4.9831453 31.420797,4.9466458 30.989799,4.9349261 28.333522,4.8711462 27.202031,5.6523905 24.945552,8.2174912L21.423486,12.209702 18.101915,8.0456229C15.974234,5.3789525 14.883144,4.5378385 12.229568,4.4727092 11.792072,4.4622693 11.318076,4.475339 10.808981,4.5085388 8.9587071,4.6458679 6.0368631,6.5430041 5.4821784,11.204409L5.4483378,13.269493 5.0915616,17.82156 1.846801,17.74086C1.3207757,16.161371,1.0395283,14.662783,0.96399985,13.238295L1.0239084,10.901112C1.7556518,3.8965435 6.4756691,0.345116 10.484783,0.053491898 10.979854,0.017329086 11.450062,0.0002546377 11.898108,2.8243951E-06z" 
+                                  Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+
+                    </Button>
+                    <StackPanel Name="CustomCombatPanel">
+                        
+                    </StackPanel>
                     <Button Name="Do_Bashing_Button" Width="Auto" Height="Auto" Margin="5,5,5,5" HorizontalAlignment="Left" Click="Do_Bashing_Button_Click"
                                 ToolTip="Do bashing damage to the selected characters."
                                 >
@@ -260,39 +300,7 @@
                             </Path.RenderTransform>
                         </Path>
                     </Button>
-                    <Button Name="Make_Status_Button" Width="Auto" Height="Auto" 
-                                Margin="5,5,5,5" HorizontalAlignment="Left" Click="Make_Status_Button_Click"
-                                ToolTip="Add a status effect to the character."
-                                >
 
-                        <Path Data="F1M1548.36,536.949L1573.21,524.905 1586.59,542.918 1580.36,545.181 1597.29,560.611 1592.21,563.012 1612.36,588.908 1578.08,568.84 1584.43,566.166 1563.68,553.616 1570.75,549.775 1548.36,536.949z" 
-                                  Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
-                            <Path.RenderTransform>
-                                <TransformGroup>
-                                    <TransformGroup.Children>
-                                        <RotateTransform Angle="0" />
-                                        <ScaleTransform ScaleX="1" ScaleY="1" />
-                                    </TransformGroup.Children>
-                                </TransformGroup>
-                            </Path.RenderTransform>
-                        </Path>
-                    </Button>
-                    <Button Name="Reset_Health_Button" Width="Auto" Height="Auto" Margin="5,5,5,5" HorizontalAlignment="Left" Click="Reset_Health_Button_Click"
-                                ToolTip="Reset the health of the selected characters."
-                                >
-                        <Path Data="M7.4166234,16.197001L13.497334,16.345396 13.322834,23.436422 20.413999,23.61352 20.262901,29.691471 13.171835,29.516974 12.997336,36.608002 6.9166257,36.456905 7.0910952,29.363379 0,29.191483 0.1484375,23.11223 7.2421548,23.284727z M11.898108,2.8243951E-06C12.047457,-8.1059967E-05 12.194343,0.0017042016 12.338866,0.0052749978 16.963824,0.1159917 19.130506,2.1726163 21.594083,5.2591434 24.20856,2.2982254 26.475539,0.35292793 31.099097,0.46883325 31.674691,0.48317698 32.289287,0.52742664 32.948079,0.60817621 36.937644,1.0977344 41.474006,4.8737665 41.866,11.910204L41.807403,14.247387C41.119907,20.953037 35.841254,29.115776 20.75809,39.146999 19.094106,37.917812 17.565419,36.723721 16.144833,35.553227L16.221631,32.535049 19.617501,32.615749C20.039397,32.958145 20.455993,33.295445 20.893489,33.639141 31.127797,26.420496 36.658946,19.803345 37.346439,13.946589L37.395942,11.990903C37.070445,7.3073483 34.244972,5.2682934 32.403785,5.043015 31.898589,4.9831453 31.420797,4.9466458 30.989799,4.9349261 28.333522,4.8711462 27.202031,5.6523905 24.945552,8.2174912L21.423486,12.209702 18.101915,8.0456229C15.974234,5.3789525 14.883144,4.5378385 12.229568,4.4727092 11.792072,4.4622693 11.318076,4.475339 10.808981,4.5085388 8.9587071,4.6458679 6.0368631,6.5430041 5.4821784,11.204409L5.4483378,13.269493 5.0915616,17.82156 1.846801,17.74086C1.3207757,16.161371,1.0395283,14.662783,0.96399985,13.238295L1.0239084,10.901112C1.7556518,3.8965435 6.4756691,0.345116 10.484783,0.053491898 10.979854,0.017329086 11.450062,0.0002546377 11.898108,2.8243951E-06z" 
-                                  Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
-                            <Path.RenderTransform>
-                                <TransformGroup>
-                                    <TransformGroup.Children>
-                                        <RotateTransform Angle="0" />
-                                        <ScaleTransform ScaleX="1" ScaleY="1" />
-                                    </TransformGroup.Children>
-                                </TransformGroup>
-                            </Path.RenderTransform>
-                        </Path>
-
-                    </Button>
 
                     <!--Vampire specific buttons-->
                     <DockPanel
