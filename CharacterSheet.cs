@@ -421,6 +421,9 @@ namespace XMLCharSheets
         internal abstract DicePool RollBasePool(List<Trait> dicePools, int modifier);
 
         public bool IsIncapacitated { get; private set; }
+
+
+        public String Ruleset { get; set; }
         #endregion
 
     }

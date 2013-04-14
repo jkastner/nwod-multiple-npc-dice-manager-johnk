@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Xml.Linq;
 
 namespace XMLCharSheets
@@ -38,6 +40,14 @@ namespace XMLCharSheets
                 }
             }
             return newChar;
+        }
+
+        public UserControl CustomControlItem()
+        {
+            Type type = this.GetType();
+            Assembly assembly = type.Assembly;
+            UserControl mathUC = (UserControl)assembly.CreateInstance(string.Format("{0}.NWoDControl", type.Namespace));
+            return mathUC;
         }
 
         private void PopulateNWoDTraits(IEnumerable<XElement> traitsElements, List<Trait> traits)

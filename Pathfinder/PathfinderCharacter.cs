@@ -47,19 +47,17 @@ namespace XMLCharSheets
             
         }
 
-
         public override SolidColorBrush StatusColor
         {
             get
             {
-                if(HitPoints>0)
-                    return new SolidColorBrush(Colors.Black);
                 if (HitPoints == 0)
                     return new SolidColorBrush(Colors.Yellow);
-                if((HitPoints<0)&&(HitPoints>=-10))
+                if((HitPoints<0)&&(HitPoints>-10))
                     return new SolidColorBrush(Colors.Orange);
-                else
+                if (HitPoints <= -10)
                     return new SolidColorBrush(Colors.Red);
+                return new SolidColorBrush(Colors.Black);
             }
         }
 

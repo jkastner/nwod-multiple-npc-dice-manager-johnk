@@ -66,6 +66,7 @@ namespace XMLCharSheets
         }
 
 
+        private bool ruleSetChosen = false;
         private void AddCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
             if (_viewModel.SelectedFullCharacter == null)
@@ -88,7 +89,14 @@ namespace XMLCharSheets
                 count ++;
             }
             CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(newName);
+            newInstance.Ruleset = _viewModel.SelectedFullCharacter.Ruleset;
             _viewModel.ActiveRoster.Add(newInstance);
+            if (!ruleSetChosen)
+            {
+                _viewModel.SetMode(newInstance.Ruleset);
+                CustomCombatPanel.Children.Add(_viewModel.ControlFor(newInstance.Ruleset));
+                ruleSetChosen = true;
+            }
         }
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

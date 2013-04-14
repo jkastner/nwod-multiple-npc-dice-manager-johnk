@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace XMLCharSheets
 {
-    class ReadCharacter
+    class CharacterReader
     {
 
         internal CharacterSheet Read(string fileName)
@@ -27,7 +27,15 @@ namespace XMLCharSheets
                 {
                     if (_readers.ContainsKey(curQuery.Ruleset))
                     {
-                        newChar = _readers[curQuery.Ruleset].ReadCharacter(newChar, curChar);
+                        try
+                        {
+                            newChar = _readers[curQuery.Ruleset].ReadCharacter(newChar, curChar);
+                        }
+                        catch(Exception e)
+                        {
+                            MessageBox.Show("Failed to read " + fileName);
+                        }
+                        newChar.Ruleset = curQuery.Ruleset;
                     }
                     else
                     {
@@ -49,5 +57,13 @@ namespace XMLCharSheets
 
 
 
+        internal UIElement FindControl(string rulesetName)
+        {
+            if (_readers.ContainsKey(rulesetName))
+            {
+                return _readers[rulesetName].CustomControlItem();
+            }
+            return null;
+        }
     }
 }
