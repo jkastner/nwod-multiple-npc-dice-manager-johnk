@@ -320,6 +320,28 @@ namespace XMLCharSheets
             }
         }
 
+        protected void SetIncapacitated(bool isDead)
+        {
+            var incapEffect = StatusEffects.Where(x => x.Description.Equals("Incapacitated")).FirstOrDefault();
+            
+            if (isDead)
+            {
+                if (incapEffect == null)
+                {
+                    StatusEffects.Add(new StatusEffect("Incapacitated", 500));
+                }
+            }
+            else
+            {
+                if (incapEffect != null)
+                {
+                    StatusEffects.Remove(incapEffect);
+                }
+            }
+            IsIncapacitated = isDead;
+            NotifyStatusChange();
+        }
+
 
         public MoveablePicture Visual { get; set; }
 
@@ -398,7 +420,7 @@ namespace XMLCharSheets
 
         internal abstract DicePool RollBasePool(List<Trait> dicePools, int modifier);
 
-        public abstract bool IsIncapacitated { get; set; }
+        public bool IsIncapacitated { get; private set; }
         #endregion
 
     }
