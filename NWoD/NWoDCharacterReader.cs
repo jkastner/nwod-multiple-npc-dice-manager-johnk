@@ -46,8 +46,9 @@ namespace XMLCharSheets
         {
             Type type = this.GetType();
             Assembly assembly = type.Assembly;
-            UserControl mathUC = (UserControl)assembly.CreateInstance(string.Format("{0}.NWoDControl", type.Namespace));
-            return mathUC;
+            UserControl customControl = (UserControl)assembly.CreateInstance(string.Format("{0}.NWoDControl", type.Namespace));
+            var temp = customControl as NWoDControl;
+            return customControl;
         }
 
         private void PopulateNWoDTraits(IEnumerable<XElement> traitsElements, List<Trait> traits)

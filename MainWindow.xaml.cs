@@ -31,6 +31,7 @@ namespace XMLCharSheets
         public MainWindow()
         {
             _viewModel = new RosterViewModel(_visualsViewmodel);
+            ViewModelService.RosterViewModel = _viewModel;
             InitializeComponent();
             _gameBoardVisual = new GameBoardVisual(_visualsViewmodel);
             _viewModel.PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
@@ -119,27 +120,6 @@ namespace XMLCharSheets
             _viewModel.RollCharacters(ActiveList(), CurrentTraits_ListBox.SelectedItems);
         }
 
-        private void Do_Bashing_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckValidActive())
-                return;
-            _viewModel.DoBashing(ActiveList());
-        }
-
-        private void Do_Lethal_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckValidActive())
-                return;
-            _viewModel.DoLethal(ActiveList());
-        }
-
-        private void Do_Aggrivated_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckValidActive())
-                return;
-            _viewModel.DoAggrivated(ActiveList());
-        }
-
         private void Reset_Health_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckValidActive())
@@ -151,13 +131,6 @@ namespace XMLCharSheets
         {
             _viewModel.RollInitiative();
             _viewModel.NewRound();
-        }
-
-        private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckValidActive())
-                return;
-            _viewModel.RemoveActiveCharacters(ActiveList());
         }
 
         private static bool IsTextNumeric(string text)
@@ -219,7 +192,7 @@ namespace XMLCharSheets
 
         }
 
-        private bool CheckValidActive()
+        internal bool CheckValidActive()
         {
             if (_viewModel.SelectedActiveCharacter == null && _viewModel.SelectedDeceasedCharacter==null)
             {
@@ -254,20 +227,7 @@ namespace XMLCharSheets
             }
         }
 
-        private void Blood_Heal_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.BloodHeal(ActiveList());
-        }
 
-        private void Blood_Buff_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.BloodBuff(ActiveList());
-        }
-
-        private void Refill_Vitae_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.RefillVitae(ActiveList());
-        }
 
         private void CleanDeceasedCharacters_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -301,9 +261,15 @@ namespace XMLCharSheets
                 _viewModel.CurrentTraits.Add(cur);
             }
         }
+        
+        private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckValidActive())
+                return;
+            _viewModel.RemoveActiveCharacters(ActiveList());
+        }
 
-
-        private IList ActiveList()
+        internal IList ActiveList()
         {
             if (ActiveCharacters_ListBox.SelectedItems.Count == 0)
             {
