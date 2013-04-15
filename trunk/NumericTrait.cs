@@ -42,5 +42,10 @@ namespace XMLCharSheets
 
             }
         }
+
+        internal virtual void ApplyModifier(int modifier)
+        {
+            TraitValue += modifier;
+        }
     }
 }

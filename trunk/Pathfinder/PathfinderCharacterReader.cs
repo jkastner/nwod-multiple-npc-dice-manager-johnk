@@ -44,8 +44,8 @@ namespace XMLCharSheets
         {
             Type type = this.GetType();
             Assembly assembly = type.Assembly;
-            UserControl mathUC = (UserControl)assembly.CreateInstance(string.Format("{0}.NWoDControl", type.Namespace));
-            return mathUC;
+            UserControl customControl = (UserControl)assembly.CreateInstance(string.Format("{0}.PathfinderControl", type.Namespace));
+            return customControl;
         }
 
 

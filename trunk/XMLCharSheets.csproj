@@ -78,6 +78,10 @@
     <Compile Include="NWoD\NWoDDicePool.cs" />
     <Compile Include="NWoD\INWoDTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
+    <Compile Include="Pathfinder\PathfinderControl.xaml.cs">
+      <DependentUpon>PathfinderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModelService.cs" />
     <Compile Include="Pathfinder\IPathfinderTrait.cs" />
     <Compile Include="Pathfinder\PathfinderAttackTrait.cs" />
     <Compile Include="Pathfinder\PathfinderCharacter.cs" />
@@ -119,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NWoD\NWoDControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pathfinder\PathfinderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,17 +173,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\IncreaseBloodIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\BloodBuff.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\BloodHeal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="GameBoard\GameBoard\GameBoard.csproj">
       <Project>{9708895f-1a9e-4951-818c-a706c166df20}</Project>
       <Name>GameBoard</Name>
@@ -186,6 +183,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\HasMovedImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NWoD\images\bloodbuff.png" />
+    <Resource Include="NWoD\images\bloodheal.jpg" />
+    <Resource Include="NWoD\images\increasebloodicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

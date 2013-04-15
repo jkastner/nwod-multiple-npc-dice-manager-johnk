@@ -103,7 +103,10 @@ namespace XMLCharSheets
             {
                 SetIncapacitated(true);
             }
-            NotifyStatusChange();
+            else
+            {
+                SetIncapacitated(false);
+            }
             return "";
         }
 

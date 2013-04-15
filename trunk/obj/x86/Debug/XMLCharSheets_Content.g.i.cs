@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/hasmovedimage.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("nwod/bloodbuff.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("nwod/bloodheal.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("nwod/increasebloodicon.png")]
 
 

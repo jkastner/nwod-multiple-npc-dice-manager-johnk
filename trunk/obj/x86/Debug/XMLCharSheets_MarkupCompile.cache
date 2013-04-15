@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
-6-90811380
+7-1710412458
 
-41-222513260
+43338015799
 15-851957738
-MainWindow.xaml;NWoD\NWoDControl.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
+MainWindow.xaml;NWoD\NWoDControl.xaml;Pathfinder\PathfinderControl.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
 False
 

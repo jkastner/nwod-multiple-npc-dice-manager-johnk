@@ -336,6 +336,16 @@ namespace XMLCharSheets
             }
         }
 
+
+        internal void DoDamage(IList characters, int value, String damageType)
+        {
+            foreach (var curItem in characters)
+            {
+                CharacterSheet curChar = curItem as CharacterSheet;
+                curChar.DoDamage(value, damageType);
+            }
+        }
+
         internal void DoLethal(IList characters)
         {
             foreach (var curItem in characters)

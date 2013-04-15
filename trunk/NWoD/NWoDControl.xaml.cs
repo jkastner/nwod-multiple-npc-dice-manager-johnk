@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,64 @@ namespace XMLCharSheets
     /// </summary>
     public partial class NWoDControl : UserControl
     {
+
+
+        RosterViewModel _viewModel;
         public NWoDControl()
         {
             InitializeComponent();
+            _viewModel = ViewModelService.RosterViewModel;
+            DataContext = _viewModel;
+        }
+
+        protected IList ActiveList()
+        {
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            return parentWindow.ActiveList();
+        }
+
+
+        private void Do_Bashing_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckValidActive())
+                return;
+            _viewModel.DoBashing(ActiveList());
+        }
+
+        private void Do_Lethal_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckValidActive())
+                return;
+            _viewModel.DoLethal(ActiveList());
+        }
+
+        private void Do_Aggrivated_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckValidActive())
+                return;
+            _viewModel.DoAggrivated(ActiveList());
+        }
+
+        private bool CheckValidActive()
+        {
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            return parentWindow.CheckValidActive();
+        }
+
+
+        private void Blood_Heal_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.BloodHeal(ActiveList());
+        }
+
+        private void Blood_Buff_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.BloodBuff(ActiveList());
+        }
+
+        private void Refill_Vitae_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.RefillVitae(ActiveList());
         }
     }
 }
