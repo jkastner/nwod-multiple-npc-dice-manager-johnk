@@ -299,7 +299,7 @@ namespace XMLCharSheets
                 succeeded = "succeeded";
             }
             OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name +" "+succeeded+" rolled to stay conscious - "
-                + staminaCheck.ResultDescription+"\n"));
+                + staminaCheck.ResultDescription));
 
             if (staminaCheck.CurrentSuccesses == 0)
             {
