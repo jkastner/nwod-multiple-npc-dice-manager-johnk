@@ -76,14 +76,15 @@ namespace XMLCharSheets
             }
         }
 
-        private String _additionalReportText;
-        public virtual String AdditionalReportText
+        public event EventHandler ReportTextFromCharacter;
+        protected virtual void OnReportTextFromCharacterEvent(ReportTextFromCharacterEvent e)
         {
-            get { return _additionalReportText; }
-            set { _additionalReportText = value; }
+            EventHandler handler = ReportTextFromCharacter;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
-
-
 
         private String _description;
         //TODO - change combat traits when individual traits are changed.

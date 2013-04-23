@@ -110,6 +110,26 @@ namespace XMLCharSheets
             return "";
         }
 
+        internal override string NewRound()
+        {
+            if (HasTrait("Regeneration"))
+            {
+                if (HitPoints < MaxHitPoints)
+                {
+                    int regenValueMax = MaxHitPoints - HitPoints;
+                    int regenValue = FindNumericTrait("Regeneration").TraitValue;
+                    if (regenValueMax < regenValue)
+                    {
+                        regenValue = regenValueMax;
+                    }
+                    HitPoints += regenValue;
+                    OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name + " regenerated " + regenValue + " damage -- " + HitPoints + "/" + MaxHitPoints+"\n"));
+                }
+            }
+            base.NewRound();
+            return String.Empty;
+        }
+
         internal Damage AdjustDamageByResistances(Damage receivedDamage)
         {
             String descriptor = receivedDamage.DamageDescriptor;
@@ -232,6 +252,14 @@ namespace XMLCharSheets
                         }
                     }
                     _rollResults = _rollResults + "\n";
+                    if (SingleAttackOnly)
+                    {
+                        break;
+                    }
+                }
+                if (SingleAttackOnly)
+                {
+                    break;
                 }
             }
             return damage;
@@ -251,5 +279,8 @@ namespace XMLCharSheets
             return pool;
         }
 
+
+
+        public bool SingleAttackOnly { get; set; }
     }
 }

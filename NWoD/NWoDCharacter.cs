@@ -298,7 +298,8 @@ namespace XMLCharSheets
             {
                 succeeded = "succeeded";
             }
-            AdditionalReportText = Name +" "+succeeded+" rolled to stay conscious - "+ staminaCheck.ResultDescription;
+            OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name +" "+succeeded+" rolled to stay conscious - "
+                + staminaCheck.ResultDescription+"\n"));
 
             if (staminaCheck.CurrentSuccesses == 0)
             {

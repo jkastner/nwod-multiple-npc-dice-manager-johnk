@@ -399,6 +399,7 @@ namespace XMLCharSheets
             for(int curIndex = characters.Count-1;curIndex>=0;curIndex--)
             {
                 CharacterSheet curChar = characters[curIndex] as CharacterSheet;
+                curChar.ReportTextFromCharacter -= CharacterTextChanged;
                 ActiveRoster.Remove(curChar);
                 foreach (var cur in Teams)
                 {
@@ -456,16 +457,6 @@ namespace XMLCharSheets
                     ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " 
                         + curChar.ChosenAttackString + "} on " + curChar.Target.Name + 
                         "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
-                    if (!String.IsNullOrWhiteSpace(curChar.AdditionalReportText))
-                    {
-                        ResultText = curChar.AdditionalReportText;
-                        curChar.AdditionalReportText = "";
-                    }
-                    if (!String.IsNullOrWhiteSpace(curChar.Target.AdditionalReportText))
-                    {
-                        ResultText = curChar.Target.AdditionalReportText;
-                        curChar.Target.AdditionalReportText = "";
-                    }
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
@@ -760,6 +751,42 @@ namespace XMLCharSheets
         internal UIElement ControlFor(string rulesetName)
         {
             return _characterReader.FindControl(rulesetName);
+        }
+
+        internal void RegisterNewCharacter(CharacterSheet newInstance)
+        {
+            ActiveRoster.Add(newInstance);
+            newInstance.ReportTextFromCharacter += CharacterTextChanged;
+        }
+
+        private void CharacterTextChanged(object sender, EventArgs e)
+        {
+            var textevent = e as ReportTextFromCharacterEvent;
+            if (textevent != null)
+            {
+                ResultText = textevent.ReportedText;
+            }
+        }
+
+        internal void PathfinderSingleAttack(IList attackers)
+        {
+            foreach (var cur in attackers)
+            {
+                PathfinderCharacter curChar = cur as PathfinderCharacter;
+                if (curChar != null)
+                {
+                    curChar.SingleAttackOnly = true;
+                }
+            }
+            RollAttackTarget(attackers);
+            foreach (var cur in attackers)
+            {
+                PathfinderCharacter curChar = cur as PathfinderCharacter;
+                if (curChar != null)
+                {
+                    curChar.SingleAttackOnly = false;
+                }
+            }
         }
     }
 }

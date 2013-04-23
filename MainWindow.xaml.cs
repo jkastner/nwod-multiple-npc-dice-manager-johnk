@@ -91,7 +91,7 @@ namespace XMLCharSheets
             }
             CharacterSheet newInstance = _viewModel.SelectedFullCharacter.Copy(newName);
             newInstance.Ruleset = _viewModel.SelectedFullCharacter.Ruleset;
-            _viewModel.ActiveRoster.Add(newInstance);
+            _viewModel.RegisterNewCharacter(newInstance);
             if (!ruleSetChosen)
             {
                 _viewModel.SetMode(newInstance.Ruleset);

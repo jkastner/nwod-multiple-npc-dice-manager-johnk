@@ -69,5 +69,10 @@ namespace XMLCharSheets
                 DamageSlider.Value = newVal;
             }
         }
+
+        private void Pathfinder_SingleAttack_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.PathfinderSingleAttack(ActiveList());
+        }
     }
 }
