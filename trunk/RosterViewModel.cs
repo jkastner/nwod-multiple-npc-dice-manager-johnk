@@ -628,8 +628,14 @@ namespace XMLCharSheets
                     {
                         _visualsViewModel.RemovePiece(ActiveRoster[curIndex].Visual);
                     }
+                    foreach (var cur in ActiveRoster.Where(x => x.Target == ActiveRoster[curIndex]))
+                    {
+                        cur.Target = null;
+                    }
                     DeceasedRoster.Add(ActiveRoster[curIndex]);
                     ActiveRoster.Remove(ActiveRoster[curIndex]);
+                    
+
                 }
             }
             for (int curIndex = DeceasedRoster.Count() - 1; curIndex >= 0; curIndex--)
@@ -640,6 +646,7 @@ namespace XMLCharSheets
                     DeceasedRoster.Remove(DeceasedRoster[curIndex]);
                 }
             }
+            
         }
 
         internal void SetVisualActive(IList selectedObjects)
@@ -764,7 +771,7 @@ namespace XMLCharSheets
             var textevent = e as ReportTextFromCharacterEvent;
             if (textevent != null)
             {
-                ResultText = textevent.ReportedText;
+                ResultText = "\n"+textevent.ReportedText;
             }
         }
 

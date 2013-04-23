@@ -123,7 +123,7 @@ namespace XMLCharSheets
                         regenValue = regenValueMax;
                     }
                     HitPoints += regenValue;
-                    OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name + " regenerated " + regenValue + " damage -- " + HitPoints + "/" + MaxHitPoints+"\n"));
+                    OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name + " regenerated " + regenValue + " damage -- " + HitPoints + "/" + MaxHitPoints));
                 }
             }
             base.NewRound();
