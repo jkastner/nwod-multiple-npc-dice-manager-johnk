@@ -8,7 +8,7 @@
 	<trait label='Touch' value='8'/>
 	<trait label='Flat-footed' value='21'/>
 	<trait label='HP' value='85'/>
-	<trait label='Fort' value='11'/>
+	<trait label='Fortitude' value='11'/>
 	<trait label='Reflex' value='2'/>
 	<trait label='Will' value='3'/>
 	<trait label='Speed' value='40'/>

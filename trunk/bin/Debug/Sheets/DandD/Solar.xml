@@ -9,7 +9,7 @@
 	<trait label='Flat-footed' value='42'/>
 	<trait label='HP' value='363'/>
 	<trait label='Regeneration' value='15'/>
-	<trait label='Fort' value='25'/>
+	<trait label='Fortitude' value='25'/>
 	<trait label='Reflex' value='14'/>
 	<trait label='Will' value='23'/>
 	<trait label='Damage Resistance' Descriptor='Epic and Evil' value='15' />
@@ -23,7 +23,7 @@
 	<trait label='Height' value='140'/>
 	<trait label='+5 Dancing Greatsword' IsAttack='True' CritRange='19-20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='35/30/25/20'  Damage='3d6+18,1d10' Descriptor='Slashing,Holy' />
 	<trait label='Slam'  IsAttack='True' AttackBonus='30' CritRange='20' TargetDefense='Armor Class' Damage='2d8+13' Descriptor='Bashing'/>
-	<trait label='+5 Composite Longbow' IsAttack='True' TargetDefense='Armor Class' AttackBonus='31/26/21/16' CritRange='20' Damage='2d6+14' Descriptor='Piercing' Triggers='Arrow of Slaying' TriggerEffect='Fort=DC 20 vs Death' />
+	<trait label='+5 Composite Longbow' IsAttack='True' TargetDefense='Armor Class' AttackBonus='31/26/21/16' CritRange='20' Damage='2d6+14' Descriptor='Piercing' Triggers='Arrow of Slaying' TriggerEffect='Fortitude=DC 20 vs Death' />
 	<trait label='Height' value='140'/>
 	
 	</traits>
