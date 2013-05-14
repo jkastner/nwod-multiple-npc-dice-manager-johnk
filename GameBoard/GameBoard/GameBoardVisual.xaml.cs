@@ -94,7 +94,8 @@ namespace GameBoard
         {
             GeometryModel3D hitgeo = rayMeshResult.ModelHit as GeometryModel3D;
             if (rayMeshResult.VisualHit.Equals(_viewModel.GroupDoubleMovementCircle) ||
-                rayMeshResult.VisualHit.Equals(_viewModel.GroupSingleMovementCircle))
+                rayMeshResult.VisualHit.Equals(_viewModel.GroupSingleMovementCircle) ||
+                rayMeshResult.VisualHit.Equals(_viewModel.VisualGrid))
             {
                 return HitTestResultBehavior.Continue;
             }

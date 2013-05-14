@@ -564,5 +564,39 @@ namespace GameBoard
             var midpoint = Helper3DCalcs.FindMidpoint(visuals.Select(x=>x.Location));
             ZoomTo(midpoint);
         }
+
+        GridLinesVisual3D _visualGrid = null;
+        public GridLinesVisual3D VisualGrid
+        {
+            get
+            {
+                return _visualGrid;
+            }
+            set
+            {
+                _visualGrid = value;
+            }
+        }
+        public void DrawGrid(int squareSizes)
+        {
+            _visualGrid = new GridLinesVisual3D()
+            {
+                Length=BoardWidth,
+                Width=BoardHeight,
+                Thickness=.3,
+                Center=new Point3D(0,0,1),
+                Material=Materials.Black,
+            };
+            _viewport.Children.Add(_visualGrid);
+        }
+
+        public void RemoveGrid()
+        {
+            if (_visualGrid != null)
+            {
+                _viewport.Children.Remove(_visualGrid);
+                _visualGrid = null;
+            }
+        }
     }
 }

@@ -428,6 +428,16 @@ namespace XMLCharSheets
             _viewModel.MoveDeceasedToActive();
         }
 
+        private void GridIsChecked_ToggleButton(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.DrawGrid(5);
+        }
+
+        private void GridIsUnchecked_ToggleButton(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.RemoveGrid();
+        }
+
     }
 }
 
