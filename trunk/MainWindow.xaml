@@ -349,6 +349,9 @@
                             </Path.RenderTransform>
                         </Path>
                     </RadioButton>
+                    <ToggleButton Checked="GridIsChecked_ToggleButton" Unchecked="GridIsUnchecked_ToggleButton">
+                        Grid
+                    </ToggleButton>
 
                 </DockPanel>    
                 <DockPanel>
