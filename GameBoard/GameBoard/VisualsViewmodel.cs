@@ -583,6 +583,7 @@ namespace GameBoard
             {
                 Length=BoardWidth,
                 Width=BoardHeight,
+                MinorDistance=squareSizes,
                 Thickness=.3,
                 Center=new Point3D(0,0,1),
                 Material=Materials.Black,
