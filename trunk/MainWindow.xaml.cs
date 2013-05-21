@@ -408,6 +408,16 @@ namespace XMLCharSheets
             _visualsViewmodel.SetShapeMode(GameBoard.VisualsViewmodel.ShapeMode.Sphere);
         }
 
+        private void TapeMeasure_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.TapeMeasurerActive = true;
+        }
+
+        private void TapeMeasure_Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _visualsViewmodel.TapeMeasurerActive = false;
+        }
+
         private void ZoomToVisual_Click(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
@@ -437,6 +447,10 @@ namespace XMLCharSheets
         {
             _visualsViewmodel.RemoveGrid();
         }
+
+
+
+
 
     }
 }

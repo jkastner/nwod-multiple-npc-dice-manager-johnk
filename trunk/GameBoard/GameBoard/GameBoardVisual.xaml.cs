@@ -99,6 +99,12 @@ namespace GameBoard
             {
                 return HitTestResultBehavior.Continue;
             }
+            if (_viewModel.TapeMeasurerActive)
+            {
+                _viewModel.HandleTapeMeasurerHit(rayMeshResult);
+                return HitTestResultBehavior.Stop;
+
+            }
             foreach (var curVisual in _viewModel.VisualToMoveablePicturesDictionary)
             {
                 var curMoveable = curVisual.Value;
@@ -124,6 +130,8 @@ namespace GameBoard
             HandleValidHit(rayMeshResult);
             return HitTestResultBehavior.Stop;
         }
+
+
 
         private void HandleValidHit(RayMeshGeometry3DHitTestResult rayMeshResult)
         {

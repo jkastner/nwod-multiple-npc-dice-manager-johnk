@@ -43,8 +43,8 @@ namespace GameBoard
 
             board.Add(new Point3D(width / 2, -height / 2, 0));
 
-            board.Add(new Point3D(width/2, height/2, 0));
-            board.Add(new Point3D(-width/2, height / 2, 0));
+            board.Add(new Point3D(width / 2, height / 2, 0));
+            board.Add(new Point3D(-width / 2, height / 2, 0));
 
 
             var mb = new MeshBuilder();
@@ -62,7 +62,7 @@ namespace GameBoard
             get { return _viewport; }
             set { _viewport = value; }
         }
-        
+
 
         private Visual3D _theMap;
         public double BoardHeight { get; set; }
@@ -75,7 +75,7 @@ namespace GameBoard
         }
 
 
-        private Dictionary<Visual3D, MoveablePicture>  _visualToMoveablePicturesDictionary = new Dictionary<Visual3D,MoveablePicture>();
+        private Dictionary<Visual3D, MoveablePicture> _visualToMoveablePicturesDictionary = new Dictionary<Visual3D, MoveablePicture>();
         public Dictionary<Visual3D, MoveablePicture> VisualToMoveablePicturesDictionary
         {
             get { return _visualToMoveablePicturesDictionary; }
@@ -83,14 +83,14 @@ namespace GameBoard
         }
 
         Color defaultColor = Colors.Gray;
-        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List <StatusEffectDisplay> statusEffects, double speed)
+        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List<StatusEffectDisplay> statusEffects, double speed)
         {
             double heightFeet = height / 12;
             while (_visualToMoveablePicturesDictionary.Values.Any(
                 existingImage =>
                     existingImage.Location.X == location.X &&
                     existingImage.Location.Y == location.Y &&
-                    existingImage.Location.Z == location.Z+existingImage.PictureOffset))
+                    existingImage.Location.Z == location.Z + existingImage.PictureOffset))
             {
                 location = new Point3D(location.X + heightFeet, location.Y, location.Z);
             }
@@ -192,7 +192,7 @@ namespace GameBoard
                 handler(this, e);
             }
         }
-        
+
         public void ToggleSelectCharacterFromVisual(RectangleVisual3D lastHit)
         {
             if (VisualToMoveablePicturesDictionary[lastHit].IsSelected)
@@ -226,7 +226,7 @@ namespace GameBoard
                 AddIfNew(moveablePicture.DoubleMovementCircle);
             }
         }
-        
+
         public void SetInactive(MoveablePicture moveablePicture)
         {
             RemoveIfPresent(_groupSingleMovementCircle);
@@ -282,7 +282,7 @@ namespace GameBoard
 
         public void SetBoardBackground(string newImage, double definedBoardHeight, double definedBoardWidth, bool maintainRatio)
         {
-            if(_theMap!=null)
+            if (_theMap != null)
                 RemoveIfPresent(_theMap);
             ImageBrush boardFrontBrush = new ImageBrush();
             ImageBrush frontBrush = MaterialMaker.MakeImageMaterial(newImage);
@@ -372,21 +372,21 @@ namespace GameBoard
             get { return _groupSingleMovementCircle; }
             set { _groupSingleMovementCircle = value; }
         }
-        
+
         private TubeVisual3D _groupDoubleMovementCircle;
         public TubeVisual3D GroupDoubleMovementCircle
         {
             get { return _groupDoubleMovementCircle; }
             set { _groupDoubleMovementCircle = value; }
         }
-        
+
         public void DrawGroupMovementCircle()
         {
             List<Point3D> selectedPictures = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected).Select(z => z.Value.Location).ToList();
             double minSpeed = VisualToMoveablePicturesDictionary.Min(x => x.Value.Speed);
             Point3D midPoint = Helper3DCalcs.FindMidpoint(selectedPictures);
             var sMove = Helper3DCalcs.CirclePoints(minSpeed, midPoint);
-            var dMove = Helper3DCalcs.CirclePoints(minSpeed*2, midPoint);
+            var dMove = Helper3DCalcs.CirclePoints(minSpeed * 2, midPoint);
             _groupSingleMovementCircle.Path = new Point3DCollection(sMove);
             _groupDoubleMovementCircle.Path = new Point3DCollection(dMove);
             AddIfNew(_groupSingleMovementCircle);
@@ -407,10 +407,10 @@ namespace GameBoard
             get { return _selectInsideShape; }
             set { _selectInsideShape = value; }
         }
-        
+
         public enum ShapeMode
         {
-            None,Sphere,Cone,Line
+            None, Sphere, Cone, Line
         }
         private ShapeMode _shapeSelection;
         public ShapeMode ShapeSelection
@@ -418,7 +418,7 @@ namespace GameBoard
             get { return _shapeSelection; }
             set { _shapeSelection = value; }
         }
-        
+
         public void SetShapeMode(ShapeMode newMode)
         {
             ShapeSelection = newMode;
@@ -433,12 +433,12 @@ namespace GameBoard
                 Material = new DiffuseMaterial(new SolidColorBrush(SelectedTeamColor())),
             };
             DoubleAnimation sizeChange = new DoubleAnimation(ShapeSize, ShapeSize, new Duration(new TimeSpan(0, 0, 0, 3)));
-            AnimationClock animationClock =  sizeChange.CreateClock();
+            AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
-            if(SelectInsideShape)
+            if (SelectInsideShape)
                 SelectFromInsideShape(point3D, point3D);
         }
 
@@ -485,23 +485,23 @@ namespace GameBoard
                         }
                         break;
                 }
-                
+
             }
-            bool multiSelect = VisualToMoveablePicturesDictionary.Count(x => x.Value.IsSelected) > 1;            
+            bool multiSelect = VisualToMoveablePicturesDictionary.Count(x => x.Value.IsSelected) > 1;
             foreach (var cur in selectedByShape)
             {
                 //public void SetActive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
                 SetActive(cur, cur.PieceColor, !multiSelect, cur.Speed, cur.StatusEffects);
                 OnPieceSelected(new PieceSelectedEventArgs(cur));
             }
-            
+
             if (multiSelect)
             {
                 DrawGroupMovementCircle();
             }
-            
+
         }
-        
+
 
         internal void DrawCone(Point3D point1, Point3D point2)
         {
@@ -512,8 +512,8 @@ namespace GameBoard
                 BaseRadius = 2,
                 Height = ShapeSize,
                 TopRadius = ShapeSize,
-                Origin=point1,
-                Normal=dir,
+                Origin = point1,
+                Normal = dir,
             };
             DoubleAnimation sizeChange = new DoubleAnimation(ShapeSize, ShapeSize, new Duration(new TimeSpan(0, 0, 0, 3)));
             AnimationClock animationClock = sizeChange.CreateClock();
@@ -521,7 +521,7 @@ namespace GameBoard
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
-            if(SelectInsideShape)
+            if (SelectInsideShape)
                 SelectFromInsideShape(point1, point2);
         }
 
@@ -548,8 +548,8 @@ namespace GameBoard
 
         public Color SelectedTeamColor()
         {
-            var selectedCharacter = VisualToMoveablePicturesDictionary.FirstOrDefault(cur=>cur.Value.IsSelected);
-            if(selectedCharacter.Value!=null)
+            var selectedCharacter = VisualToMoveablePicturesDictionary.FirstOrDefault(cur => cur.Value.IsSelected);
+            if (selectedCharacter.Value != null)
                 return selectedCharacter.Value.PieceColor;
             return Colors.Red;
         }
@@ -561,7 +561,7 @@ namespace GameBoard
 
         public void ZoomTo(List<MoveablePicture> visuals)
         {
-            var midpoint = Helper3DCalcs.FindMidpoint(visuals.Select(x=>x.Location));
+            var midpoint = Helper3DCalcs.FindMidpoint(visuals.Select(x => x.Location));
             ZoomTo(midpoint);
         }
 
@@ -581,12 +581,11 @@ namespace GameBoard
         {
             _visualGrid = new GridLinesVisual3D()
             {
-                Length=BoardWidth,
-                Width=BoardHeight,
-                MinorDistance=squareSizes,
-                Thickness=.3,
-                Center=new Point3D(0,0,1),
-                Material=Materials.Black,
+                Length = BoardWidth,
+                Width = BoardHeight,
+                Thickness = .3,
+                Center = new Point3D(0, 0, 1),
+                Material = Materials.Black,
             };
             _viewport.Children.Add(_visualGrid);
         }
@@ -598,6 +597,93 @@ namespace GameBoard
                 _viewport.Children.Remove(_visualGrid);
                 _visualGrid = null;
             }
+        }
+
+
+        private bool _tapeMeasurerActive = false;
+
+        public bool TapeMeasurerActive
+        {
+            get { return _tapeMeasurerActive; }
+            set
+            {
+                _tapeMeasurerActive = value;
+                if (!value)
+                {
+                    CleanupTapeMeasurerVisuals();
+                }
+            }
+        }
+
+
+        private SphereVisual3D _startPoint;
+        private SphereVisual3D _endPoint;
+        private BillboardTextVisual3D _textVisual;
+        private TubeVisual3D _distanceIndicator;
+        internal void HandleTapeMeasurerHit(RayMeshGeometry3DHitTestResult rayMeshResult)
+        {
+
+            if (_startPoint != null && _endPoint != null)
+            {
+                CleanupTapeMeasurerVisuals();
+
+            }
+            if (_startPoint == null)
+            {
+                _startPoint = new SphereVisual3D()
+                {
+                    Center = rayMeshResult.PointHit,
+                    Material = Materials.Black,
+                    Radius = 2,
+                };
+                _viewport.Children.Add(_startPoint);
+            }
+            else if (_endPoint == null)
+            {
+                _endPoint = new SphereVisual3D()
+                {
+                    Center = rayMeshResult.PointHit,
+                    Material = Materials.Black,
+                    Radius = 2,
+                };
+                _viewport.Children.Add(_endPoint);
+                double distance = (_startPoint.Center - _endPoint.Center).Length;
+                distance = Math.Round(distance, 0);
+                var textPos = _endPoint.Center;
+                textPos.Z += 30;
+                _textVisual = new BillboardTextVisual3D()
+                {
+                    Text = distance + " units.",
+                    Position = textPos,
+                    Foreground= new SolidColorBrush(Colors.White),
+                    Background = new SolidColorBrush(Colors.Black),
+                    FontSize = 28,
+                };
+                _distanceIndicator = new TubeVisual3D()
+                {
+                    Path = new Point3DCollection(new List<Point3D>() { _startPoint.Center, _endPoint.Center }),
+                    Material = Materials.LightGray,
+                };
+                _viewport.Children.Add(_textVisual);
+                _viewport.Children.Add(_distanceIndicator);
+            }
+        }
+
+        private void CleanupTapeMeasurerVisuals()
+        {
+            if (_startPoint != null)
+                _viewport.Children.Remove(_startPoint);
+            if (_endPoint != null)
+                _viewport.Children.Remove(_endPoint);
+            if (_textVisual != null)
+                _viewport.Children.Remove(_textVisual);
+            if (_distanceIndicator != null)
+                _viewport.Children.Remove(_distanceIndicator);
+
+            _startPoint = null;
+            _endPoint = null;
+            _textVisual = null;
+            _distanceIndicator = null;
         }
     }
 }
