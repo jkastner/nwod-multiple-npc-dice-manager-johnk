@@ -409,7 +409,7 @@
                         IsReadOnly="True"
                         VerticalScrollBarVisibility="Auto"
                         MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
-                        MaxHeight="300"
+                        MaxHeight="250"
                         VerticalAlignment="Top"
                         Margin="5,5,5,5"
                         Text="{Binding Path=ResultText, UpdateSourceTrigger=PropertyChanged}" 

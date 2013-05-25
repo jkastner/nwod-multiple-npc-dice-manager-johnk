@@ -141,3 +141,4 @@ C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\Pathfinder\PathfinderC
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\NWoD\NWoDControl.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\Pathfinder\PathfinderControl.g.cs
 C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\XMLCharSheets_MarkupCompile.lref
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\App.baml
