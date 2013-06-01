@@ -1,6 +1,6 @@
 <CharacterSheet>
 	<Ruleset>Pathfinder</Ruleset>
-	<name>Goblin</name>
+	<name>Hobgoblin</name>
 	<CharacterType>Small Humanoid</CharacterType>
 	<traits>
 	<trait label='Initiative' value='2'/>
