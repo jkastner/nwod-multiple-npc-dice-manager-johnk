@@ -76,16 +76,6 @@ namespace XMLCharSheets
             }
         }
 
-        public event EventHandler ReportTextFromCharacter;
-        protected virtual void OnReportTextFromCharacterEvent(ReportTextFromCharacterEvent e)
-        {
-            EventHandler handler = ReportTextFromCharacter;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-        }
-
         private String _description;
         //TODO - change combat traits when individual traits are changed.
         public CharacterSheet(string name, List<Trait> curTraits)
@@ -94,6 +84,11 @@ namespace XMLCharSheets
             _traits = curTraits;
             PopulateCombatTraits();
             
+        }
+
+        internal void Report(String newText)
+        {
+            TextReporter.Report(newText);
         }
 
         private List<Trait> _traits = new List<Trait>();
@@ -423,6 +418,7 @@ namespace XMLCharSheets
 
         public bool IsIncapacitated { get; private set; }
 
+        internal abstract String HealthStatusLineDescription { get; }
 
         public String Ruleset { get; set; }
         #endregion

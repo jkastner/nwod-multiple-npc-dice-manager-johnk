@@ -78,10 +78,12 @@
     <Compile Include="NWoD\NWoDDicePool.cs" />
     <Compile Include="NWoD\INWoDTrait.cs" />
     <Compile Include="NWoD\NWoDVampire.cs" />
+    <Compile Include="Pathfinder\PathfinderCharacter_HP.cs" />
+    <Compile Include="Pathfinder\PathfinderCharacter_WoundsVitality.cs" />
     <Compile Include="Pathfinder\PathfinderControl.xaml.cs">
       <DependentUpon>PathfinderControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ReportTextFromCharacterEvent.cs" />
+    <Compile Include="TextReporter.cs" />
     <Compile Include="ViewModelService.cs" />
     <Compile Include="Pathfinder\IPathfinderTrait.cs" />
     <Compile Include="Pathfinder\PathfinderAttackTrait.cs" />
