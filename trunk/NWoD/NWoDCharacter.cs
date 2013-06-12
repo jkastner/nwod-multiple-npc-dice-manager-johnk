@@ -142,6 +142,11 @@ namespace XMLCharSheets
             }
         }
 
+        internal override string HealthStatusLineDescription
+        {
+            get { return BuildHealthString(); }
+        }
+
         protected string BuildHealthString()
         {
             StringBuilder sb = new StringBuilder();
@@ -298,8 +303,8 @@ namespace XMLCharSheets
             {
                 succeeded = "succeeded";
             }
-            OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name +" "+succeeded+" rolled to stay conscious - "
-                + staminaCheck.ResultDescription));
+            Report(Name +" "+succeeded+" rolled to stay conscious - "
+                + staminaCheck.ResultDescription);
 
             if (staminaCheck.CurrentSuccesses == 0)
             {

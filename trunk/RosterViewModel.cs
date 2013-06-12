@@ -235,7 +235,10 @@ namespace XMLCharSheets
             }
         }
 
-
+        public void ReportText(String newText)
+        {
+            ResultText = newText;
+        }
 
 
         public CharacterSheet ReadCharacterFromFile(String fileName)
@@ -399,7 +402,6 @@ namespace XMLCharSheets
             for(int curIndex = characters.Count-1;curIndex>=0;curIndex--)
             {
                 CharacterSheet curChar = characters[curIndex] as CharacterSheet;
-                curChar.ReportTextFromCharacter -= CharacterTextChanged;
                 ActiveRoster.Remove(curChar);
                 foreach (var cur in Teams)
                 {
@@ -448,15 +450,20 @@ namespace XMLCharSheets
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {
+                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - "
+                       + curChar.ChosenAttackString + "} on " + curChar.Target.Name+"\n";
+                       
                     var damageResult = curChar.AttackTarget(RollModifier);
                     if (!targetToDamage.ContainsKey(curChar.Target))
                     {
                         targetToDamage.Add(curChar.Target, new List<Damage>());
                     }
+                    if (curChar is NWoDCharacter)
+                    {
+                        ResultText = "\nFinal pool: " + curChar.FinalAttackPool;
+                    }
                     targetToDamage[curChar.Target].AddRange(damageResult);
-                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - " 
-                        + curChar.ChosenAttackString + "} on " + curChar.Target.Name + 
-                        "\nFinal pool: "+curChar.FinalAttackPool+"\n"+ curChar.RollResults + "\n";
+                   ResultText = "\n"+ curChar.RollResults + "\n";
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
@@ -500,7 +507,7 @@ namespace XMLCharSheets
                 {
                     ResultText = ")";
                 }
-                
+                ResultText = "\t Current Status: " + curTargetPair.Key.HealthStatusLineDescription;
             }
         }
 
@@ -763,16 +770,6 @@ namespace XMLCharSheets
         internal void RegisterNewCharacter(CharacterSheet newInstance)
         {
             ActiveRoster.Add(newInstance);
-            newInstance.ReportTextFromCharacter += CharacterTextChanged;
-        }
-
-        private void CharacterTextChanged(object sender, EventArgs e)
-        {
-            var textevent = e as ReportTextFromCharacterEvent;
-            if (textevent != null)
-            {
-                ResultText = "\n"+textevent.ReportedText;
-            }
         }
 
         internal void PathfinderSingleAttack(IList attackers)

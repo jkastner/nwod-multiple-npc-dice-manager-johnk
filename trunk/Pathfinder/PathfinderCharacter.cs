@@ -7,31 +7,15 @@ using System.Windows.Media;
 
 namespace XMLCharSheets
 {
-    public class PathfinderCharacter : CharacterSheet
+    public abstract class PathfinderCharacter : CharacterSheet
     {
         public PathfinderCharacter(string name, List<Trait> curTraits):
             base(name, curTraits)
         {
         }
 
-        private int _hitPoints;
-        public int HitPoints
-        {
-            get { return _hitPoints; }
-            set { _hitPoints = value; }
-        }
-        private int _maxHitPoints;
-        public int MaxHitPoints
-        {
-            get { return _maxHitPoints; }
-            set { _maxHitPoints = value; }
-        }
 
-        public override void PopulateCombatTraits()
-        {
-            HitPoints = NumericTraits.Where(x => x.TraitLabel.Equals("HP")).FirstOrDefault().TraitValue;
-            MaxHitPoints = HitPoints;
-        }
+
 
         public override void RollInitiative()
         {
@@ -47,30 +31,6 @@ namespace XMLCharSheets
             
         }
 
-        public override SolidColorBrush StatusColor
-        {
-            get
-            {
-                if (HitPoints == 0)
-                    return new SolidColorBrush(Colors.Yellow);
-                if((HitPoints<0)&&(HitPoints>-10))
-                    return new SolidColorBrush(Colors.Orange);
-                if (HitPoints <= -10)
-                    return new SolidColorBrush(Colors.Red);
-                return new SolidColorBrush(Colors.Black);
-            }
-        }
-
-        public override string Status
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(base.Status);
-                sb.Append("HP: "+_hitPoints+"/"+MaxHitPoints);
-                return sb.ToString();
-            }
-        }
 
         private string _rollResults = "";
         public override String RollResults
@@ -85,52 +45,20 @@ namespace XMLCharSheets
             }
         }
 
-        internal override CharacterSheet Copy(string newName)
-        {
-            List<Trait> allTraits = new List<Trait>();
-            foreach(var cur in this.Traits)
-            {
-                allTraits.Add(cur.CopyTrait());
-            }
-            PathfinderCharacter copyChar = new PathfinderCharacter(newName, allTraits);
-            return copyChar;
-        }
-
-        internal override String DoDamage(int count, String descriptor)
-        {
-            _hitPoints -= count;
-            if (_hitPoints < 0)
-            {
-                SetIncapacitated(true);
-            }
-            else
-            {
-                SetIncapacitated(false);
-            }
-            return "";
-        }
-
         internal override string NewRound()
         {
             if (HasTrait("Regeneration"))
             {
-                if (HitPoints < MaxHitPoints)
-                {
-                    int regenValueMax = MaxHitPoints - HitPoints;
-                    int regenValue = FindNumericTrait("Regeneration").TraitValue;
-                    if (regenValueMax < regenValue)
-                    {
-                        regenValue = regenValueMax;
-                    }
-                    HitPoints += regenValue;
-                    OnReportTextFromCharacterEvent(new ReportTextFromCharacterEvent(Name + " regenerated " + regenValue + " damage -- " + HitPoints + "/" + MaxHitPoints));
-                }
+                int regenValue = FindNumericTrait("Regeneration").TraitValue;
+                HandleRegeneration(regenValue);
             }
             base.NewRound();
             return String.Empty;
         }
 
-        internal Damage AdjustDamageByResistances(Damage receivedDamage)
+        public abstract void HandleRegeneration(int regenValue);
+
+        internal PathfinderDamage AdjustDamageByResistances(PathfinderDamage receivedDamage)
         {
             String descriptor = receivedDamage.DamageDescriptor;
             var stringTraits = (from trait in Traits
@@ -149,20 +77,43 @@ namespace XMLCharSheets
                     count = 0;
                 return new PathfinderDamage(receivedDamage.DamageDescriptor, count);
             }
-            var damageReductionTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance"));
+            var damageReductionTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance")).FirstOrDefault();
+            if (damageReductionTrait != null)
             {
+                if (!damageReductionTrait.TraitDescription.Equals(receivedDamage.DamageDescriptor))
+                {
+                    int count = receivedDamage.DamageValue - damageReductionTrait.TraitValue;
+                    if (count < 0)
+                        count = 0;
+                    return new PathfinderDamage(receivedDamage.DamageDescriptor, count);
+                }
                 //TODO - I hate SRD damage reduction rules.
 
             }
             return receivedDamage;
         }
 
-
-        internal override void ResetHealth()
+        internal virtual List<PathfinderDamage> HandleAttackResults(PathfinderDicePool curDamage, int damageMultiplier, PathfinderCharacter pathfinderTarget, String damageDescriptor, bool wasCrit)
         {
-            _hitPoints = MaxHitPoints;
-            SetIncapacitated(false);
+            curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
+            curDamage.Modifier = curDamage.Modifier * damageMultiplier;
+            curDamage.Roll();
+            Report(curDamage.TotalValue + " " + damageDescriptor);
+            PathfinderDamage doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
+                curDamage.TotalValue));
+            if (doneDamage.DamageValue <= 0)
+            {
+                Report("\t" + Target.Name + " resisted all damage");
+                return null;
+            }
+            else
+            {
+                Target.DoDamage(doneDamage.DamageValue, damageDescriptor);
+                Report("Target took " + doneDamage.DamageValue + " " + damageDescriptor);
+                return new List<PathfinderDamage>(){doneDamage};
+            }
         }
+
 
         public override String ChosenAttackValue
         {
@@ -205,53 +156,46 @@ namespace XMLCharSheets
                     PathfinderDicePool curAttack = new PathfinderDicePool(1, 20, 0);
                     curAttack.Roll();
                     int hitValue = curAttack.TotalValue + curBonus;
-                    RollResults = RollResults + "Rolled "+curAttack.TotalValue+"+"+curBonus+"="+hitValue
-                        +" VS "+attack.DefenseTarget+" of "+targetDefense;
+                    Report(RollResults + "Rolled " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
+                        +" VS "+attack.DefenseTarget+" of "+targetDefense);
                     if (curAttack.TotalValue!=1&&(curAttack.TotalValue==20||curAttack.TotalValue+curBonus >= targetDefense))
                     {
-                        RollResults = RollResults + "\tDamage: ";
+                        Report("\tDamage: ");
                         for(int curIndex = 0;curIndex<attack.DamageDice.Count;curIndex++)
                         {
                             int damageMultiplier = 1;
+                            bool wasCrit = false;
+                            //If the damage is 1d8 + 1d6, as with a flaming longsword, the flaming damage is not multiplied on a critical hit
                             if (curIndex == 0)
                             {
                                 if (curAttack.TotalValue >= attack.LowestValueToCrit)
                                 {
                                     curAttack.Roll();
                                     hitValue = curAttack.TotalValue + curBonus;
-                                    RollResults = RollResults + "Crit confirm " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
-                                        + " VS " + attack.DefenseTarget + " of " + targetDefense;
+                                    Report("Crit confirm " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
+                                        + " VS " + attack.DefenseTarget + " of " + targetDefense);
                                     if (curAttack.TotalValue!=1 && (curAttack.TotalValue==20|| hitValue >= targetDefense))
                                     {
-                                        RollResults = RollResults + "--Crit confirmed--";
+                                        Report("--Crit confirmed--");
                                         damageMultiplier = attack.CritMultipier;
+                                        wasCrit = true;
                                     }
                                     else
                                     {
-                                        RollResults = RollResults + "--Crit fails--";
+                                        Report("--Crit fails--");
                                     }
                                 }
                             }
+                            Report("\n\t");
                             var curDamage = attack.DamageDice[curIndex].CopyPool();
-                            curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
-                            curDamage.Modifier = curDamage.Modifier * damageMultiplier;
-                            curDamage.Roll();
-                            RollResults = RollResults + " " + curDamage.TotalValue + " " + attack.DamageDescriptors[curIndex];
-                            var doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(attack.DamageDescriptors[curIndex],
-                                curDamage.TotalValue));
-                            if (doneDamage.DamageValue <= 0)
-                            {
-                                _rollResults = _rollResults + "\t" + Target.Name + " resisted all damage.";
-                            }
-                            else
-                            {
-                                Target.DoDamage(curDamage.TotalValue, attack.DamageDescriptors[curIndex]);
-                                damage.Add(doneDamage);
-                                _rollResults = _rollResults + "\t" + Target.Name + " has "+pathfinderTarget.HitPoints+"/"+pathfinderTarget.MaxHitPoints+" HP.";
-                            }
+                            var doneDamage = HandleAttackResults(curDamage,
+                                damageMultiplier, pathfinderTarget, attack.DamageDescriptors[curIndex], wasCrit);
+                            if (doneDamage != null)
+                                damage.AddRange(doneDamage);
+
                         }
                     }
-                    _rollResults = _rollResults + "\n";
+                    Report("\n");
                     if (SingleAttackOnly)
                     {
                         break;
