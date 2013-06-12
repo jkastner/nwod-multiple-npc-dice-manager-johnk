@@ -581,17 +581,21 @@ namespace XMLCharSheets
         }
 
 
-        internal void SetTargets(IList attackers, IList otherTraits, CharacterSheet target, string attackType, string damageType)
+        internal void SetTargets(IList attackers, IList otherTraits, CharacterSheet target, string attackType, List<String> otherAttacks, string damageType)
         {
-            List <String> otherAttackTraits = new List<string>();
+            List <String> allOtherAttackTraits = new List<string>();
             foreach(var cur in otherTraits)
             {
-                otherAttackTraits.Add(cur.ToString());
+                allOtherAttackTraits.Add(cur.ToString());
+            }
+            foreach (var cur in otherAttacks)
+            {
+                allOtherAttackTraits.Add(cur.ToString());
             }
             foreach (var curItem in attackers)
             {
                 CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.SetTarget(target, otherAttackTraits, attackType, damageType);
+                curChar.SetTarget(target, allOtherAttackTraits, attackType, damageType);
             }
         }
 

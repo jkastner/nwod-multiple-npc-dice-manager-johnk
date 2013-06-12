@@ -61,6 +61,7 @@ namespace XMLCharSheets
         {
             CurrentWoundPoints = MaxWoundPoints;
             CurrentVitalityPoints = MaxVitalityPoints;
+            _isStaggered = false;
             NotifyStatusChange();
         }
 
@@ -110,7 +111,8 @@ namespace XMLCharSheets
             CurrentVitalityPoints = NumericTraits.Where(x => x.TraitLabel.Equals("Vitality")).FirstOrDefault().TraitValue;
             MaxVitalityPoints = CurrentVitalityPoints;
         }
-        
+
+        bool _isStaggered = false;
         internal override String DoDamage(int count, String descriptor)
         {
             int startWounds = CurrentWoundPoints;
@@ -134,7 +136,7 @@ namespace XMLCharSheets
             }
             int vitalityDifference = startVitality - CurrentVitalityPoints;
             int woundsDifference = startWounds - CurrentWoundPoints;
-            if (CurrentWoundPoints <= WoundThreshhold)
+            if (!_isStaggered && CurrentWoundPoints <= WoundThreshhold)
             {
                 AssignStatus("Staggered from wounds", 500);
             }

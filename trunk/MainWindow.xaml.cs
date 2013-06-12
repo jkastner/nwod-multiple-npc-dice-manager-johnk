@@ -180,7 +180,7 @@ namespace XMLCharSheets
             if (!st.WasCancel&&st.SelectedTarget != null)
             {
                 _viewModel.SetTargets(ActiveList(), 
-                    st.Other_Traits_ListBox.SelectedItems, st.SelectedTarget, st.ChosenAttack, st.WoundType);
+                    st.Other_Traits_ListBox.SelectedItems, st.SelectedTarget, st.ChosenAttack, st.OtherAttacks, st.WoundType);
             }
         }
 

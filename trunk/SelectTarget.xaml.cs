@@ -92,10 +92,9 @@ namespace XMLCharSheets
             }
             DataContext = this;
             InitializeComponent();
-            
-            
-            
-            
+
+
+            Other_Attacks_ListBox.ItemsSource = attackTraits;
             TargetCharacters_ListBox.ItemsSource = targetCharacters;
             Shared_Attacks_ListBox.ItemsSource = attackTraits;
             Other_Traits_ListBox.ItemsSource = otherTraits;
@@ -117,6 +116,19 @@ namespace XMLCharSheets
         public String ChosenAttack
         {
             get { return Shared_Attacks_ListBox.SelectedItem as String; }
+        }
+
+        public List<String> OtherAttacks
+        {
+            get
+            {
+                List<String> attacks = new List<string>();
+                foreach(var cur in Other_Attacks_ListBox.SelectedItems)
+                {
+                    attacks.Add(cur as string);
+                }
+                return attacks;
+            }
         }
 
         private CharacterSheet _selectedTarget;
