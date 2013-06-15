@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\obj\x86\Debug\
 XMLCharSheets
 none
 false
 DEBUG;TRACE
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
+C:\Users\JohnLaptop\Desktop\NWoDDiceManager\App.xaml
 7-1710412458
 
-501808612323
-15-851957738
+501473367866
+151520968843
 MainWindow.xaml;NWoD\NWoDControl.xaml;Pathfinder\PathfinderControl.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
 False

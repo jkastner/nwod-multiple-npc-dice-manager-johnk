@@ -106,8 +106,8 @@ namespace XMLCharSheets
                 SetIncapacitated(false);
             }
             Report(Name+" has "+CurrentHitPoints+"/"+MaxHitPoints+" HP");
-            return "";
             NotifyStatusChange();
+            return "";
         }
 
 
