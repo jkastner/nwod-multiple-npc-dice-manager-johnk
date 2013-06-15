@@ -31,7 +31,7 @@ namespace XMLCharSheets
                 switch (curQuery.CharacterType)
                 {
                     default:
-                        newChar = new PathfinderCharacter_WoundsVitality(curQuery.Name, traits);
+                        newChar = new PathfinderCharacter_WoundsVigor(curQuery.Name, traits);
                         break;
 
                 }

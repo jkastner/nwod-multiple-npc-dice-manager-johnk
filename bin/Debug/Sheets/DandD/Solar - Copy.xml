@@ -7,7 +7,7 @@
 	<trait label='Armor Class' value='44'/>
 	<trait label='Touch' value='11'/>
 	<trait label='Flat-footed' value='42'/>
-	<trait label='Vitality' value='220'/>
+	<trait label='Vigor' value='220'/>
 	<trait label='Constitution' value='30'/>
 	<trait label='Regeneration' value='15'/>
 	<trait label='Fortitude' value='25'/>
