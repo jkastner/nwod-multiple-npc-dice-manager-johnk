@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace XMLCharSheets
 {
-    class PathfinderCharacter_WoundsVitality : PathfinderCharacter
+    class PathfinderCharacter_WoundsVigor : PathfinderCharacter
     {
         //http://paizo.com/pathfinderRPG/prd/ultimateCombat/variants/woundsAndVigor.html
         
@@ -24,32 +24,32 @@ namespace XMLCharSheets
             set { _maxWoundPoints = value; }
         }
 
-        private int _maxVitalityPoints;
+        private int _maxVigorPoints;
 
-        public int MaxVitalityPoints
+        public int MaxVigorPoints
         {
-            get { return _maxVitalityPoints; }
-            set { _maxVitalityPoints = value; }
+            get { return _maxVigorPoints; }
+            set { _maxVigorPoints = value; }
         }
 
-        private int _currentVitalityPoints;
+        private int _currentVigorPoints;
 
-        public int CurrentVitalityPoints
+        public int CurrentVigorPoints
         {
-            get { return _currentVitalityPoints; }
-            set { _currentVitalityPoints = value; }
+            get { return _currentVigorPoints; }
+            set { _currentVigorPoints = value; }
         }
 
         public override SolidColorBrush StatusColor
         {
             get
             {
-                //Target has taken some vitality, but no wounds.
-                if (MaxVitalityPoints > 10 && CurrentVitalityPoints <= 10 && CurrentWoundPoints==MaxWoundPoints)
+                //Target has taken some Vigor, but no wounds.
+                if (MaxVigorPoints > 10 && CurrentVigorPoints <= 10 && CurrentWoundPoints==MaxWoundPoints)
                     return new SolidColorBrush(Colors.Yellow);
                 if ((CurrentWoundPoints < MaxWoundPoints)&&CurrentWoundPoints>WoundThreshhold)
                     return new SolidColorBrush(Colors.Orange);
-                if (CurrentWoundPoints < WoundThreshhold && CurrentWoundPoints > 0)
+                if (CurrentWoundPoints <= WoundThreshhold && CurrentWoundPoints > 0)
                     return new SolidColorBrush(Colors.Red);
                 if (CurrentWoundPoints <= 0)
                     return new SolidColorBrush(Colors.DimGray);
@@ -60,22 +60,22 @@ namespace XMLCharSheets
         internal override void ResetHealth()
         {
             CurrentWoundPoints = MaxWoundPoints;
-            CurrentVitalityPoints = MaxVitalityPoints;
+            CurrentVigorPoints = MaxVigorPoints;
             _isStaggered = false;
             NotifyStatusChange();
         }
 
         public override void HandleRegeneration(int regenValue)
         {
-            if (CurrentVitalityPoints < MaxVitalityPoints)
+            if (CurrentVigorPoints < MaxVigorPoints)
             {
-                int regenValueMax = MaxVitalityPoints - CurrentVitalityPoints;
+                int regenValueMax = MaxVigorPoints - CurrentVigorPoints;
                 if (regenValueMax < regenValue)
                 {
                     regenValue = regenValueMax;
                 }
-                CurrentVitalityPoints += regenValue;
-                Report(Name + " regenerated " + regenValue + " vitality damage -- " + HealthStatusLineDescription);
+                CurrentVigorPoints += regenValue;
+                Report(Name + " regenerated " + regenValue + " Vigor damage -- " + HealthStatusLineDescription);
             }
         }
 
@@ -92,12 +92,12 @@ namespace XMLCharSheets
 
         internal override string HealthStatusLineDescription
         {
-            get { return CurrentVitalityPoints+"/"+MaxVitalityPoints+" Vitality "+ CurrentWoundPoints+"/"+MaxWoundPoints+" Wounds"; }
+            get { return CurrentVigorPoints+"/"+MaxVigorPoints+" Vigor "+ CurrentWoundPoints+"/"+MaxWoundPoints+" Wounds"; }
         }
 
         public int WoundThreshhold { get; set; }
 
-        public PathfinderCharacter_WoundsVitality(string name, List<Trait> curTraits) :
+        public PathfinderCharacter_WoundsVigor(string name, List<Trait> curTraits) :
             base(name, curTraits)
         {
         }
@@ -108,38 +108,46 @@ namespace XMLCharSheets
             CurrentWoundPoints = WoundThreshhold * 2;
             MaxWoundPoints = CurrentWoundPoints;
             
-            CurrentVitalityPoints = NumericTraits.Where(x => x.TraitLabel.Equals("Vitality")).FirstOrDefault().TraitValue;
-            MaxVitalityPoints = CurrentVitalityPoints;
+            CurrentVigorPoints = NumericTraits.Where(x => x.TraitLabel.Equals("Vigor")).FirstOrDefault().TraitValue;
+            MaxVigorPoints = CurrentVigorPoints;
         }
 
         bool _isStaggered = false;
         internal override String DoDamage(int count, String descriptor)
         {
             int startWounds = CurrentWoundPoints;
-            int startVitality = CurrentVitalityPoints;
+            int startVigor = CurrentVigorPoints;
             switch (descriptor)
             {
                 case "Wounds":
                     CurrentWoundPoints -= count;
                     break;
-                case "Vitality":
-                    CurrentVitalityPoints -= count;
-                    if (CurrentVitalityPoints < 0)
+                case "Vigor":
+                    CurrentVigorPoints -= count;
+                    if (CurrentVigorPoints < 0)
                     {
-                        int overflowDamage = Math.Abs(CurrentVitalityPoints);
-                        CurrentVitalityPoints = 0;
+                        int overflowDamage = Math.Abs(CurrentVigorPoints);
+                        CurrentVigorPoints = 0;
                         CurrentWoundPoints -= overflowDamage;
                     }
                     break;
                 default:
-                    throw new Exception("Unknown damage type.");
+                    DoDamage(count, "Vigor");
+                    return String.Empty;
             }
-            int vitalityDifference = startVitality - CurrentVitalityPoints;
+            int VigorDifference = startVigor - CurrentVigorPoints;
             int woundsDifference = startWounds - CurrentWoundPoints;
+            if (CurrentWoundPoints <= 0 && !IsIncapacitated)
+            {
+                Report(Name + " has been killed.\n");
+                SetIncapacitated(true);
+            }
             if (!_isStaggered && CurrentWoundPoints <= WoundThreshhold)
             {
                 AssignStatus("Staggered from wounds", 500);
+                _isStaggered = true;
             }
+            
             NotifyStatusChange();
             return String.Empty;
         }
@@ -172,13 +180,13 @@ namespace XMLCharSheets
             {
                 allTraits.Add(cur.CopyTrait());
             }
-            PathfinderCharacter_WoundsVitality copyChar = new PathfinderCharacter_WoundsVitality(newName, allTraits);
+            PathfinderCharacter_WoundsVigor copyChar = new PathfinderCharacter_WoundsVigor(newName, allTraits);
             return copyChar;
         }
 
         internal override List<PathfinderDamage> HandleAttackResults(PathfinderDicePool curDamage, int damageMultiplier, PathfinderCharacter pathfinderTarget, string damageDescriptor, bool wasCrit)
         {
-            var targetVitWounds = pathfinderTarget as PathfinderCharacter_WoundsVitality;
+            var targetVitWounds = pathfinderTarget as PathfinderCharacter_WoundsVigor;
             List<PathfinderDamage> damageList = new List<PathfinderDamage>();
             curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
             curDamage.Modifier = curDamage.Modifier * damageMultiplier;
@@ -194,25 +202,25 @@ namespace XMLCharSheets
             else
             {
                 //Split it up into 'Descriptor' and 'Descriptor - Wounds'
-                int vitalityDamage = 0;
+                int VigorDamage = 0;
                 int woundDamage = 0;
-                vitalityDamage = doneDamage.DamageValue;
-                int curVit = targetVitWounds.CurrentVitalityPoints;
-                curVit -= vitalityDamage;
+                VigorDamage = doneDamage.DamageValue;
+                int curVit = targetVitWounds.CurrentVigorPoints;
+                curVit -= VigorDamage;
                 if (curVit < 0)
                 {
                     woundDamage = Math.Abs(curVit);
-                    vitalityDamage = targetVitWounds.CurrentVitalityPoints;
+                    VigorDamage = targetVitWounds.CurrentVigorPoints;
                 }
                 if (wasCrit)
                 {
                     woundDamage += damageMultiplier;
                 }
                 String finalDamage = "";
-                if(vitalityDamage>0)
+                if(VigorDamage>0)
                 {
-                    var vitDmg = new PathfinderDamage(damageDescriptor + " Vitality", vitalityDamage);
-                    Target.DoDamage(vitDmg.DamageValue, "Vitality");
+                    var vitDmg = new PathfinderDamage(damageDescriptor + " Vigor", VigorDamage);
+                    Target.DoDamage(vitDmg.DamageValue, "Vigor");
                     finalDamage = vitDmg.DamageValue + " "+vitDmg.DamageDescriptor;
                     damageList.Add(vitDmg);
                 }
