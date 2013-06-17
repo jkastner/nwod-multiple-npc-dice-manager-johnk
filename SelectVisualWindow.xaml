@@ -4,6 +4,8 @@
         Title="SelectVisualWindow" Height="Auto" Width="300"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Loaded="WindowLoaded"
+        KeyDown="SelectVisualWindow_KeyDown"
+        WindowState="Maximized"
         >
 
     <Window.Resources>

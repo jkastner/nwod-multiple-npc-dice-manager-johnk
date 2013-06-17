@@ -14,7 +14,7 @@
 	<trait label='Will' value='2'/>
 	<trait label='Speed' value='40'/>
 	<trait label='Perception' value='12'/>
-	<trait label='Height' value='220'/>
+	<trait label='Height' value='10'/>
 	<trait label='Gore' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='8'  Damage='2d6+9' Descriptor='Slashing' />
 	</traits>
 </CharacterSheet>

@@ -85,7 +85,7 @@ namespace GameBoard
         Color defaultColor = Colors.Gray;
         public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List<StatusEffectDisplay> statusEffects, double speed)
         {
-            double heightFeet = height / 12;
+            double heightFeet = height;
             while (_visualToMoveablePicturesDictionary.Values.Any(
                 existingImage =>
                     existingImage.Location.X == location.X &&
@@ -584,6 +584,8 @@ namespace GameBoard
                 Length = BoardWidth,
                 Width = BoardHeight,
                 Thickness = .3,
+                MajorDistance = squareSizes,
+                MinorDistance = squareSizes,
                 Center = new Point3D(0, 0, 1),
                 Material = Materials.Black,
             };

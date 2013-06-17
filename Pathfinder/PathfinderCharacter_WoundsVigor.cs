@@ -191,7 +191,7 @@ namespace XMLCharSheets
             curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
             curDamage.Modifier = curDamage.Modifier * damageMultiplier;
             curDamage.Roll();
-            Report("Damage roll -- "+curDamage.TotalValue + " " + damageDescriptor);
+            Report("Damage roll -- " + curDamage.PoolDescription + " = " + curDamage.TotalValue + " " + damageDescriptor);
             PathfinderDamage doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
                 curDamage.TotalValue));
             if (doneDamage.DamageValue <= 0)

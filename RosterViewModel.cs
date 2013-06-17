@@ -318,7 +318,17 @@ namespace XMLCharSheets
 
         private void RollCharacter(CharacterSheet involvedCharacter, List<string> involvedTraits)
         {
-            ResultText = involvedCharacter.Name + " rolled: ";
+            String allTraits = "";
+            for(int curIndex = 0;curIndex<involvedTraits.Count;curIndex++)
+            {
+                allTraits = allTraits + involvedTraits[curIndex];
+                if(curIndex!=involvedTraits.Count-1)
+                {
+                    allTraits = allTraits +", ";
+                }
+            }
+            
+            ResultText = involvedCharacter.Name + " rolled: ("+allTraits+")";
             int totalDice = 0;
             List<Trait> charTraits = new List<Trait>();
             foreach(var cur in involvedTraits)

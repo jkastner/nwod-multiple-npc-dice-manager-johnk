@@ -4,6 +4,7 @@
         Title="Select Target" MinHeight="295" Height="Auto" SizeToContent="Height" Width="246" 
         WindowStyle="ToolWindow"
         KeyDown="GetName_KeyDown"
+        WindowState="Maximized"
         
         
         >
