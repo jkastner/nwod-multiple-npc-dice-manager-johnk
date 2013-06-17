@@ -98,7 +98,7 @@ namespace XMLCharSheets
             curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
             curDamage.Modifier = curDamage.Modifier * damageMultiplier;
             curDamage.Roll();
-            Report(curDamage.TotalValue + " " + damageDescriptor);
+            Report(curDamage.PoolDescription+" = "+curDamage.TotalValue + " " + damageDescriptor);
             PathfinderDamage doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
                 curDamage.TotalValue));
             if (doneDamage.DamageValue <= 0)
@@ -156,7 +156,7 @@ namespace XMLCharSheets
                     PathfinderDicePool curAttack = new PathfinderDicePool(1, 20, 0);
                     curAttack.Roll();
                     int hitValue = curAttack.TotalValue + curBonus;
-                    Report(RollResults + "Rolled " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
+                    Report(Name+" attacked with "+attack.TraitDescription + ": Rolled " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
                         +" VS "+attack.DefenseTarget+" of "+targetDefense);
                     if (curAttack.TotalValue!=1&&(curAttack.TotalValue==20||curAttack.TotalValue+curBonus >= targetDefense))
                     {

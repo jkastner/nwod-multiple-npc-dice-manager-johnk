@@ -111,7 +111,7 @@
     </Compile>
     <Compile Include="Team.cs" />
     <Compile Include="Trait.cs" />
-    <Compile Include="NumericTrait.cs" />
+    <Compile Include="NumericIntTrait.cs" />
     <Compile Include="StringTrait.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -48,14 +48,14 @@ namespace XMLCharSheets
             set { _curInitiative = value; }
         }
 
-        public NumericTrait HeightTrait
+        public NumericIntTrait HeightTrait
         {
             get
             {
                 return NumericTraits.Where(x => x.TraitLabel.Equals("Height")).FirstOrDefault();
             }
         }
-        public NumericTrait SpeedTrait
+        public NumericIntTrait SpeedTrait
         {
             get
             {
@@ -101,17 +101,17 @@ namespace XMLCharSheets
             }
         }
 
-        private List<NumericTrait> _numericTraits = new List<NumericTrait>();
-        public List<NumericTrait> NumericTraits
+        private List<NumericIntTrait> _numericTraits = new List<NumericIntTrait>();
+        public List<NumericIntTrait> NumericTraits
         {
             get
             {
-                return Traits.Where(x => x is NumericTrait).Select(z => z as NumericTrait).ToList();
+                return Traits.Where(x => x is NumericIntTrait).Select(z => z as NumericIntTrait).ToList();
             }
         }
 
 
-        public NumericTrait FindNumericTrait(String targetName)
+        public NumericIntTrait FindNumericTrait(String targetName)
         {
             return NumericTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
         }

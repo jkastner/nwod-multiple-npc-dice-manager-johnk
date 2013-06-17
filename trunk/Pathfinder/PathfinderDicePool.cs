@@ -9,13 +9,13 @@ namespace XMLCharSheets
     public class PathfinderDicePool : DicePool
     {
         public int DiceQuantity;
-        public int dieType;
+        public int DieType;
         public int Modifier;
 
         public PathfinderDicePool(int diceQuantity, int dieType, int modifier)
         {
             this.DiceQuantity = diceQuantity;
-            this.dieType = dieType;
+            this.DieType = dieType;
             this.Modifier = modifier;
         }
         internal override void Roll()
@@ -23,8 +23,8 @@ namespace XMLCharSheets
             int total = 0;
             for (int curIndex = 0; curIndex < DiceQuantity; curIndex++)
             {
-                var rollResult = _theRandomGenerator.Next(1, dieType+1);
-                _resultDescription = _resultDescription + rollResult+" (d" + dieType + ")";
+                var rollResult = _theRandomGenerator.Next(1, DieType+1);
+                _resultDescription = _resultDescription + rollResult+" (d" + DieType + ")";
                 total += rollResult;
             }
             _resultDescription = _resultDescription + "+" + Modifier + "=";
@@ -46,6 +46,14 @@ namespace XMLCharSheets
             }
         }
 
+        public String PoolDescription
+        {
+            get
+            {
+                return DiceQuantity + "d" + DieType + "+" + Modifier;
+            }
+        }
+
         private int _totalValue;
         public int TotalValue
         {
@@ -56,12 +64,12 @@ namespace XMLCharSheets
 
         public PathfinderDicePool CopyPool()
         {
-            return new PathfinderDicePool(this.DiceQuantity, this.dieType, this.Modifier);
+            return new PathfinderDicePool(this.DiceQuantity, this.DieType, this.Modifier);
         }
 
         public override string ToString()
         {
-            String result = DiceQuantity + "d" + dieType + " + " + Modifier;
+            String result = DiceQuantity + "d" + DieType + " + " + Modifier;
             return result;
         }
 

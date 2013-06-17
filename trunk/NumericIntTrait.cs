@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
-    public abstract class NumericTrait : Trait
+    public abstract class NumericIntTrait : Trait
     {
 
         private int _traitValue;
@@ -17,7 +17,7 @@ namespace XMLCharSheets
             set { _traitValue = value; }
         }
 
-        public NumericTrait(String traitLabel, int traitValue):
+        public NumericIntTrait(String traitLabel, int traitValue):
             base(traitLabel)
         {
             _traitValue = traitValue;

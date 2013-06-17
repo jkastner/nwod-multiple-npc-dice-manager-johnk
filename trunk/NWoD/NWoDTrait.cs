@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public class NWoDTrait: NumericTrait, INWoDTrait
+    public class NWoDTrait: NumericIntTrait, INWoDTrait
     {
         public NWoDTrait(string traitLabel, int traitValue, 
             int explodesOn, int subtractsOn, int autoSuccesses, int succeedsOn)

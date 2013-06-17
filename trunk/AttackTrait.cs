@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLCharSheets
 {
-    public abstract class AttackTrait : NumericTrait
+    public abstract class AttackTrait : NumericIntTrait
     {
         private String _defenseTarget;
         public String DefenseTarget

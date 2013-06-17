@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
-    public class PathfinderNumericTrait : NumericTrait
+    public class PathfinderNumericTrait : NumericIntTrait
     {
         //Depending on the trait, this could be the thing being resisted, the way to overcome the damage, or the type of damage.
         private String _descriptor;

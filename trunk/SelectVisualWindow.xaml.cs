@@ -111,5 +111,17 @@ namespace XMLCharSheets
                 RunSearch();
             }
         }
+
+        private void SelectVisualWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                OK_Button_Click(sender, e);
+            }
+            if (e.Key == Key.Escape)
+            {
+                Cancel_Button_Click(sender, e);
+            }
+        }
     }
 }

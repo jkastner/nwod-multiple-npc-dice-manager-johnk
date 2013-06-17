@@ -69,7 +69,7 @@ namespace XMLCharSheets
         public override void PopulateCombatTraits()
         {
             base.PopulateCombatTraits();
-            foreach (NumericTrait curTrait in NumericTraits)
+            foreach (NumericIntTrait curTrait in NumericTraits)
             {
                 switch (curTrait.TraitLabel)
                 {

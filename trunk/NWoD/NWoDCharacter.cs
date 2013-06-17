@@ -107,7 +107,7 @@ namespace XMLCharSheets
 
         public override void PopulateCombatTraits()
         {
-            foreach (NumericTrait curTrait in NumericTraits)
+            foreach (NumericIntTrait curTrait in NumericTraits)
             {
                 switch (curTrait.TraitLabel)
                 {
@@ -354,7 +354,7 @@ namespace XMLCharSheets
             {
                 targetDefense = Target.FindNumericTrait(ChosenAttackTrait.DefenseTarget).TraitValue;
             }
-            var attackPool = (ChosenAttackTrait as NWoDAttackTrait).CopyTrait() as NumericTrait;
+            var attackPool = (ChosenAttackTrait as NWoDAttackTrait).CopyTrait() as NumericIntTrait;
             foreach (String additionalAttackTrait in OtherAttackTraits)
             {
                 attackPool.TraitValue += FindNumericTrait(additionalAttackTrait).TraitValue;

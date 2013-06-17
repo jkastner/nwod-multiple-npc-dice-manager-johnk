@@ -174,7 +174,7 @@ namespace XMLCharSheets
                 {
                     if (curIndex == 0)
                     {
-                        result = result + DamageDescriptors[curIndex].ToString();
+                        result = result +" "+ DamageDescriptors[curIndex].ToString();
                     }
                     else
                     {
