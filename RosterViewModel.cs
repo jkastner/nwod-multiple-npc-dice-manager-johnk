@@ -33,6 +33,8 @@ namespace XMLCharSheets
             vm.PieceSelected += OnVisualPieceSelected;
         }
 
+
+
         private void RegisterReaders()
         {
             _characterReader.RegisterReader("NWoD", new NWoDCharacterReader());
@@ -436,7 +438,6 @@ namespace XMLCharSheets
         }
 
         private String _rollResults;
-        [DataMember]
         public String ResultText
         {
             get { return _rollResults; }
@@ -811,7 +812,7 @@ namespace XMLCharSheets
             }
         }
 
-        internal void OpenRoster(ObservableCollection<CharacterSheet> newRoster)
+        internal void OpenRoster(IList<CharacterSheet> newRoster)
         {
             List<CharacterSheet> oldRoster = new List<CharacterSheet>();
             oldRoster.AddRange(ActiveRoster);

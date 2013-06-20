@@ -453,7 +453,8 @@ namespace XMLCharSheets
 
         private void SaveFile_Click_MenuItem(object sender, RoutedEventArgs e)
         {
-            FileSaveOpenService.WriteToXML(CombatService.CurrentCombat.RosterViewModel.ActiveRoster, "ActiveCharacters.xml", typeof(ObservableCollection<CharacterSheet>));
+            Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo);
+            FileSaveOpenService.WriteToXML(currentCombat, "CurrentCombat.xml", typeof(Combat));
         }
 
         private void SaveAsFile_Click_MenuItem(object sender, RoutedEventArgs e)
