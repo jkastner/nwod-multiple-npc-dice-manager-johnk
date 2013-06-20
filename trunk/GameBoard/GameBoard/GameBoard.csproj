@@ -56,10 +56,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardInfo.cs" />
     <Compile Include="ClearSelectedPiecesEventArgs.cs" />
     <Compile Include="Helper3DCalcs.cs" />
-    <Compile Include="PieceMovedEventsArg.cs" />
-    <Compile Include="PieceSelectedEventArgs.cs" />
+    <Compile Include="Events\PieceMovedEventsArg.cs" />
+    <Compile Include="Events\PieceSelectedEventArgs.cs" />
     <Compile Include="StatusEffectDisplay.cs" />
     <Compile Include="VisualsService.cs" />
     <Compile Include="VisualsViewModel.cs" />

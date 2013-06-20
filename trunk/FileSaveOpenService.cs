@@ -32,10 +32,11 @@ namespace XMLCharSheets
 
         internal static void OpenSaveFile()
         {
-            var newRoster = FileSaveOpenService.ReadFromXML("ActiveCharacters.xml", typeof(ObservableCollection<CharacterSheet>)) as ObservableCollection<CharacterSheet>;
-            CombatService.CurrentCombat.RosterViewModel.OpenRoster(newRoster);
-            var allVisuals = newRoster.Select(x => x.Visual);
-            CombatService.CurrentCombat.VisualsViewModel.OpenVisuals(allVisuals);
+            var savedCombat = FileSaveOpenService.ReadFromXML("CurrentCombat.xml", typeof(Combat)) as Combat;
+            CombatService.RosterViewModel.OpenRoster(savedCombat.ActiveRoster);
+            var allVisuals = savedCombat.ActiveRoster.Select(x => x.Visual);
+            CombatService.VisualsViewModel.OpenVisuals(allVisuals);
+            CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
         }
     }
 }

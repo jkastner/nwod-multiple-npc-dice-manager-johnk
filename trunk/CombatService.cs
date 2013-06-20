@@ -12,32 +12,21 @@ namespace XMLCharSheets
     public class CombatService
     {
 
-        private static Combat _currentCombat = new Combat();
-        public static Combat CurrentCombat
-        {
-            get
-            {
-                return _currentCombat;
-            }
-            set
-            {
-                _currentCombat = value;
-            }
-
-        }
+        private static RosterViewModel _rosterViewModel = new RosterViewModel();
         public static RosterViewModel RosterViewModel
         {
             get
             {
-                return _currentCombat.RosterViewModel;
+                return _rosterViewModel;
             }
         }
 
+        private static VisualsViewModel _visualsViewModel = new VisualsViewModel();
         public static VisualsViewModel VisualsViewModel
         {
             get
             {
-                return _currentCombat.VisualsViewModel;
+                return _visualsViewModel;
             }
         }
 
@@ -48,7 +37,6 @@ namespace XMLCharSheets
             {
                 return _gameBoardVisual;
             }
-
         }
     }
 }

@@ -283,8 +283,18 @@ namespace GameBoard
             moveablePicture = null;
         }
 
+        private BoardInfo _currentBoardInfo;
+        public BoardInfo CurrentBoardInfo
+        {
+            get { return _currentBoardInfo; }
+            set { _currentBoardInfo = value; }
+        }
+        
+
         public void SetBoardBackground(string newImage, double definedBoardHeight, double definedBoardWidth, bool maintainRatio)
         {
+            CurrentBoardInfo = new BoardInfo(newImage, definedBoardHeight, definedBoardWidth, maintainRatio);
+            
             if (_theMap != null)
                 RemoveIfPresent(_theMap);
             ImageBrush boardFrontBrush = new ImageBrush();
@@ -713,6 +723,11 @@ namespace GameBoard
                     RegisterMoveablePicture(charImage);
                 }
             }
+        }
+
+        public void OpenBoardInfo(BoardInfo savedinfo)
+        {
+            SetBoardBackground(savedinfo.BoardImageName, savedinfo.DefinedBoardHeight, savedinfo.DefinedBoardWidth, savedinfo.MaintainRatio);
         }
     }
 }
