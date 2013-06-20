@@ -38,11 +38,21 @@ namespace XMLCharSheets
             CombatService.RosterViewModel.DamageTypes.Add("Lethal");
             CombatService.RosterViewModel.DamageTypes.Add("Aggrivated");
             CombatService.GameBoardVisual.Show();
+            CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
             CombatService.VisualsViewModel.PieceSelected += VisualPieceSelected;
             CombatService.VisualsViewModel.ClearSelectedPieces += ClearSelectedPieces;
             ShapeLength_TextBox.Text = "20";
         }
 
+        private void RulesetSelectedResponse(object sender, EventArgs e)
+        {
+            var ruleEvent = e as RulesetSelectedEventArgs;
+            if (ruleEvent != null)
+            {
+                CustomCombatPanel.Children.Add(CombatService.RosterViewModel.ControlFor(ruleEvent.SelectedRuleset));
+            }
+        }
+        
         private void ClearSelectedPieces(object sender, EventArgs e)
         {
             ActiveCharacters_ListBox.SelectedItems.Clear();
@@ -65,7 +75,6 @@ namespace XMLCharSheets
         }
 
 
-        private bool ruleSetChosen = false;
         private void AddCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
             if (CombatService.RosterViewModel.SelectedFullCharacter == null)
@@ -90,12 +99,6 @@ namespace XMLCharSheets
             CharacterSheet newInstance = CombatService.RosterViewModel.SelectedFullCharacter.Copy(newName);
             newInstance.Ruleset = CombatService.RosterViewModel.SelectedFullCharacter.Ruleset;
             CombatService.RosterViewModel.RegisterNewCharacter(newInstance);
-            if (!ruleSetChosen)
-            {
-                CombatService.RosterViewModel.SetMode(newInstance.Ruleset);
-                CustomCombatPanel.Children.Add(CombatService.RosterViewModel.ControlFor(newInstance.Ruleset));
-                ruleSetChosen = true;
-            }
         }
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -786,9 +786,25 @@ namespace XMLCharSheets
             return _characterReader.FindControl(rulesetName);
         }
 
+        private bool _ruleSetChosen = false;
         internal void RegisterNewCharacter(CharacterSheet newInstance)
         {
             ActiveRoster.Add(newInstance);
+            if (!_ruleSetChosen)
+            {
+                SetMode(newInstance.Ruleset);
+                OnRulesetSelected(new RulesetSelectedEventArgs(newInstance.Ruleset));
+                _ruleSetChosen = true;
+            }
+        }
+        public event EventHandler RulesetSelected;
+        protected virtual void OnRulesetSelected(RulesetSelectedEventArgs e)
+        {
+            EventHandler handler = RulesetSelected;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
 
         internal void PathfinderSingleAttack(IList attackers)
