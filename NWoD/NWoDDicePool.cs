@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class NWoDDicePool : DicePool
     {
         private int _numberOfDice;
+        [DataMember]
         public int NumberOfDice
         {
             get { return _numberOfDice; }
@@ -18,17 +21,21 @@ namespace XMLCharSheets
         }
 
         private int _currentSuccesses;
+        [DataMember]
         public int CurrentSuccesses
         {
             get { return _currentSuccesses; }
             set { _currentSuccesses = value; }
         }
 
-
+        [DataMember]
         public int ExplodesOn { get; set; }
+        [DataMember]
         public int SubtractsOn { get; set; }
+        [DataMember]
         public int AutomaticExtaSuccessesOnSuccess { get; set; }
         private String _resultDescription;
+        [DataMember]
         public override String ResultDescription
         {
             get { return _resultDescription; }

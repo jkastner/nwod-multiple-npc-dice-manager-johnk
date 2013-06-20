@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     class PathfinderCharacter_WoundsVigor : PathfinderCharacter
     {
         //http://paizo.com/pathfinderRPG/prd/ultimateCombat/variants/woundsAndVigor.html
         
         private int _currentWoundPoints;
+        [DataMember]
         public int CurrentWoundPoints
         {
             get { return _currentWoundPoints; }
             set { _currentWoundPoints = value; }
         }
         private int _maxWoundPoints;
+        [DataMember]
         public int MaxWoundPoints
         {
             get { return _maxWoundPoints; }
@@ -25,7 +29,7 @@ namespace XMLCharSheets
         }
 
         private int _maxVigorPoints;
-
+        [DataMember]
         public int MaxVigorPoints
         {
             get { return _maxVigorPoints; }
@@ -33,7 +37,7 @@ namespace XMLCharSheets
         }
 
         private int _currentVigorPoints;
-
+        [DataMember]
         public int CurrentVigorPoints
         {
             get { return _currentVigorPoints; }
@@ -95,6 +99,7 @@ namespace XMLCharSheets
             get { return CurrentVigorPoints+"/"+MaxVigorPoints+" Vigor "+ CurrentWoundPoints+"/"+MaxWoundPoints+" Wounds"; }
         }
 
+        [DataMember]
         public int WoundThreshhold { get; set; }
 
         public PathfinderCharacter_WoundsVigor(string name, List<Trait> curTraits) :
@@ -112,7 +117,9 @@ namespace XMLCharSheets
             MaxVigorPoints = CurrentVigorPoints;
         }
 
+        [DataMember]
         bool _isStaggered = false;
+
         internal override String DoDamage(int count, String descriptor)
         {
             int startWounds = CurrentWoundPoints;

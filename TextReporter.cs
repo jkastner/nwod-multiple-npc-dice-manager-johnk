@@ -10,7 +10,7 @@ namespace XMLCharSheets
     {
         public static void Report(String newText)
         {
-            ViewModelService.RosterViewModel.ReportText(newText);
+            CombatService.RosterViewModel.ReportText(newText);
         }
     }
 }

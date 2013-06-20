@@ -9,12 +9,15 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
+using System.Runtime.Serialization;
 
 namespace GameBoard
 {
-    public class VisualsViewmodel
+    [DataContract]
+    public class VisualsViewModel
     {
-        public VisualsViewmodel()
+
+        public VisualsViewModel()
         {
             _groupSingleMovementCircle = new TubeVisual3D()
             {
@@ -56,16 +59,10 @@ namespace GameBoard
         }
 
 
-        private HelixViewport3D _viewport;
-        public HelixViewport3D Viewport
-        {
-            get { return _viewport; }
-            set { _viewport = value; }
-        }
-
-
         private Visual3D _theMap;
+        [DataMember]
         public double BoardHeight { get; set; }
+        [DataMember]
         public double BoardWidth { get; set; }
 
         public Visual3D TheMap
@@ -83,10 +80,11 @@ namespace GameBoard
         }
 
         Color defaultColor = Colors.Gray;
-        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int height, Point3D location, List<StatusEffectDisplay> statusEffects, double speed)
+        public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, double height,
+            Point3D location, List<StatusEffectDisplay> statusEffects, double speed)
         {
             double heightFeet = height;
-            while (_visualToMoveablePicturesDictionary.Values.Any(
+            while (VisualToMoveablePicturesDictionary.Values.Any(
                 existingImage =>
                     existingImage.Location.X == location.X &&
                     existingImage.Location.Y == location.Y &&
@@ -95,10 +93,15 @@ namespace GameBoard
                 location = new Point3D(location.X + heightFeet, location.Y, location.Z);
             }
             MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet, name, pieceColor, location, statusEffects, speed);
-            VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
-            Viewport.Children.Add(charImage.CharImage);
-            Viewport.Children.Add(charImage.BaseCone);
+            RegisterMoveablePicture(charImage);
             return charImage;
+        }
+
+        private void RegisterMoveablePicture(MoveablePicture charImage)
+        {
+            VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
+            VisualsService.Viewport.Children.Add(charImage.CharImage);
+            VisualsService.Viewport.Children.Add(charImage.BaseCone);
         }
 
         Dictionary<AnimationClock, MeshElement3D> _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
@@ -116,7 +119,7 @@ namespace GameBoard
 
             };
             tube.ApplyAnimationClock(ArrowVisual3D.DiameterProperty, clock1);
-            Viewport.Children.Add(tube);
+            VisualsService.Viewport.Children.Add(tube);
             clock1.Completed += removeVisualTick;
             _temporaryVisuals.Add(clock1, tube);
         }
@@ -242,31 +245,31 @@ namespace GameBoard
         {
             if (Visual3D == null)
                 return;
-            if (_viewport.Children.Contains(Visual3D))
+            if (VisualsService.Viewport.Children.Contains(Visual3D))
             {
-                _viewport.Children.Remove(Visual3D);
+                VisualsService.Viewport.Children.Remove(Visual3D);
             }
         }
         private void RemoveIfPresent(Visual3D targetVisual)
         {
-            if (_viewport.Children.Contains(targetVisual))
+            if (VisualsService.Viewport.Children.Contains(targetVisual))
             {
-                _viewport.Children.Remove(targetVisual);
+                VisualsService.Viewport.Children.Remove(targetVisual);
             }
         }
 
         private void AddIfNew(MeshElement3D Visual3D)
         {
-            if (!_viewport.Children.Contains(Visual3D))
+            if (!VisualsService.Viewport.Children.Contains(Visual3D))
             {
-                _viewport.Children.Add(Visual3D);
+                VisualsService.Viewport.Children.Add(Visual3D);
             }
         }
         private void AddIfNew(Visual3D newVisual)
         {
-            if (!_viewport.Children.Contains(newVisual))
+            if (!VisualsService.Viewport.Children.Contains(newVisual))
             {
-                _viewport.Children.Add(newVisual);
+                VisualsService.Viewport.Children.Add(newVisual);
             }
         }
 
@@ -276,7 +279,7 @@ namespace GameBoard
             {
                 RemoveIfPresent(cur);
             }
-            _visualToMoveablePicturesDictionary.Remove(moveablePicture.CharImage);
+            VisualToMoveablePicturesDictionary.Remove(moveablePicture.CharImage);
             moveablePicture = null;
         }
 
@@ -319,9 +322,6 @@ namespace GameBoard
             _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
             AddIfNew(_theMap);
         }
-
-
-
 
         internal void MoveSelectedPiecesTo(Point3D point3D)
         {
@@ -436,7 +436,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            _viewport.Children.Add(shape);
+            VisualsService.Viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
             if (SelectInsideShape)
                 SelectFromInsideShape(point3D, point3D);
@@ -519,7 +519,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            _viewport.Children.Add(shape);
+            VisualsService.Viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
             if (SelectInsideShape)
                 SelectFromInsideShape(point1, point2);
@@ -540,7 +540,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            _viewport.Children.Add(shape);
+            VisualsService.Viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
             if (SelectInsideShape)
                 SelectFromInsideShape(point1, point2);
@@ -556,7 +556,7 @@ namespace GameBoard
 
         public void ZoomTo(Point3D targetPoint)
         {
-            _viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
+            VisualsService.Viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
         }
 
         public void ZoomTo(List<MoveablePicture> visuals)
@@ -589,14 +589,14 @@ namespace GameBoard
                 Center = new Point3D(0, 0, 1),
                 Material = Materials.Black,
             };
-            _viewport.Children.Add(_visualGrid);
+            VisualsService.Viewport.Children.Add(_visualGrid);
         }
 
         public void RemoveGrid()
         {
             if (_visualGrid != null)
             {
-                _viewport.Children.Remove(_visualGrid);
+                VisualsService.Viewport.Children.Remove(_visualGrid);
                 _visualGrid = null;
             }
         }
@@ -638,7 +638,7 @@ namespace GameBoard
                     Material = Materials.Black,
                     Radius = 2,
                 };
-                _viewport.Children.Add(_startPoint);
+                VisualsService.Viewport.Children.Add(_startPoint);
             }
             else if (_endPoint == null)
             {
@@ -648,7 +648,7 @@ namespace GameBoard
                     Material = Materials.Black,
                     Radius = 2,
                 };
-                _viewport.Children.Add(_endPoint);
+                VisualsService.Viewport.Children.Add(_endPoint);
                 double distance = (_startPoint.Center - _endPoint.Center).Length;
                 distance = Math.Round(distance, 0);
                 var textPos = _endPoint.Center;
@@ -666,26 +666,53 @@ namespace GameBoard
                     Path = new Point3DCollection(new List<Point3D>() { _startPoint.Center, _endPoint.Center }),
                     Material = Materials.LightGray,
                 };
-                _viewport.Children.Add(_textVisual);
-                _viewport.Children.Add(_distanceIndicator);
+                VisualsService.Viewport.Children.Add(_textVisual);
+                VisualsService.Viewport.Children.Add(_distanceIndicator);
             }
         }
 
         private void CleanupTapeMeasurerVisuals()
         {
             if (_startPoint != null)
-                _viewport.Children.Remove(_startPoint);
+                VisualsService.Viewport.Children.Remove(_startPoint);
             if (_endPoint != null)
-                _viewport.Children.Remove(_endPoint);
+                VisualsService.Viewport.Children.Remove(_endPoint);
             if (_textVisual != null)
-                _viewport.Children.Remove(_textVisual);
+                VisualsService.Viewport.Children.Remove(_textVisual);
             if (_distanceIndicator != null)
-                _viewport.Children.Remove(_distanceIndicator);
+                VisualsService.Viewport.Children.Remove(_distanceIndicator);
 
             _startPoint = null;
             _endPoint = null;
             _textVisual = null;
             _distanceIndicator = null;
+        }
+
+
+        public void ClearAll()
+        {
+            VisualsService.Viewport.Children.Clear();
+
+        }
+
+        public void OpenVisuals(IEnumerable<MoveablePicture> allVisuals)
+        {
+            foreach (var curpair in VisualToMoveablePicturesDictionary)
+            {
+                foreach (var curVisual in curpair.Value.AssociatedVisuals)
+                {
+                    RemoveIfPresent(curVisual);
+                }
+                RemoveIfPresent(curpair.Key);
+            }
+            VisualToMoveablePicturesDictionary.Clear();
+            foreach (var charImage in allVisuals)
+            {
+                if (charImage != null)
+                {
+                    RegisterMoveablePicture(charImage);
+                }
+            }
         }
     }
 }

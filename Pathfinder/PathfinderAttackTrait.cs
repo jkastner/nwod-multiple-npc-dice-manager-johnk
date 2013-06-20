@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class PathfinderAttackTrait : AttackTrait, IPathfinderTrait
     {
 
 
         private List<String> _damageDescriptors = new List<String>();
+        [DataMember]
         public List<String> DamageDescriptors
         {
             get { return _damageDescriptors; }
@@ -18,6 +21,7 @@ namespace XMLCharSheets
         }
 
         private int _critMultiplier;
+        [DataMember]
         public int CritMultipier
         {
             get { return _critMultiplier; }
@@ -25,6 +29,7 @@ namespace XMLCharSheets
         }
 
         private int _lowestValueToCrit;
+        [DataMember]
         public int LowestValueToCrit
         {
             get { return _lowestValueToCrit; }
@@ -32,6 +37,7 @@ namespace XMLCharSheets
         }
 
         private List<int> _toHitBonusList = new List<int>();
+        [DataMember]
         public List<int> ToHitBonusList
         {
             get { return _toHitBonusList; }
@@ -39,6 +45,7 @@ namespace XMLCharSheets
         }
 
         private List<PathfinderDicePool> _damageDice = new List<PathfinderDicePool>();
+        [DataMember]
         public List<PathfinderDicePool> DamageDice
         {
             get { return _damageDice; }

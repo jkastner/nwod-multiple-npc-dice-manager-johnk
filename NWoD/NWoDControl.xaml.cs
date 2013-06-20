@@ -27,7 +27,7 @@ namespace XMLCharSheets
         public NWoDControl()
         {
             InitializeComponent();
-            _viewModel = ViewModelService.RosterViewModel;
+            _viewModel = CombatService.RosterViewModel;
             DataContext = _viewModel;
         }
 

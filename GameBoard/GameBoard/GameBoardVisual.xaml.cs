@@ -25,31 +25,41 @@ namespace GameBoard
         Material _frontMaterial, _backMaterial;
 
 
-        public VisualsViewmodel _viewModel;
+        public VisualsViewModel _viewModel;
 
-        public GameBoardVisual(VisualsViewmodel ViewModel)
+        public GameBoardVisual()
         {
             InitializeComponent();
-            _viewModel = ViewModel;
-            _viewModel.Viewport = Viewport;
-            _viewModel.Initialize();
+            VisualsService.Viewport = Viewport;
 
             //_visuals.Add(knight.CharImage, knight);
             //_viewport.Children.Add(knight.CharImage);
 
+            AddLights();
 
-            Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0,0,1)));
+
+            Viewport.Background = new SolidColorBrush(Colors.SkyBlue);
+            Viewport.Camera.Position = new Point3D(1, 52, 5);
+            Viewport.Camera.LookDirection = new Vector3D(.01, .01, -1);
+        }
+
+        public void AddLights()
+        {
+            Viewport.Children.Add(new DefaultLights());
+            Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, 0, 1)));
             Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, 0, -1)));
-            
+
             Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, 1, 0)));
             Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, -1, 0)));
 
             Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(-1, 0, 0)));
             Viewport.Lights.Children.Add(new DirectionalLight(Colors.White, new Vector3D(1, 0, 0)));
+        }
 
-            Viewport.Background = new SolidColorBrush(Colors.SkyBlue);
-            Viewport.Camera.Position = new Point3D(1, 52, 5);
-            Viewport.Camera.LookDirection = new Vector3D(.01, .01, -1);
+        public void RegisterViewModel(VisualsViewModel ViewModel)
+        {
+            _viewModel = ViewModel;
+            _viewModel.Initialize();
         }
 
 
@@ -135,7 +145,7 @@ namespace GameBoard
 
         private void HandleValidHit(RayMeshGeometry3DHitTestResult rayMeshResult)
         {
-            if (_viewModel.ShapeSelection == GameBoard.VisualsViewmodel.ShapeMode.None)
+            if (_viewModel.ShapeSelection == GameBoard.VisualsViewModel.ShapeMode.None)
             {
                 if (!doubleClick && rayMeshResult.VisualHit is RectangleVisual3D)
                 {
@@ -164,12 +174,12 @@ namespace GameBoard
         {
             switch (_viewModel.ShapeSelection)
             {
-                case GameBoard.VisualsViewmodel.ShapeMode.Sphere:
+                case GameBoard.VisualsViewModel.ShapeMode.Sphere:
                         {
                             _viewModel.DrawSphere(point3D);
                             break;
                         }
-                case GameBoard.VisualsViewmodel.ShapeMode.Cone:
+                case GameBoard.VisualsViewModel.ShapeMode.Cone:
                     {
                         if (startPoint.Count == 0)
                         {
@@ -182,7 +192,7 @@ namespace GameBoard
                         }
                         break;
                     }
-                case GameBoard.VisualsViewmodel.ShapeMode.Line:
+                case GameBoard.VisualsViewModel.ShapeMode.Line:
                     {
                         if (startPoint.Count == 0)
                         {

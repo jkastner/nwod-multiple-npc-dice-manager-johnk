@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class PathfinderDicePool : DicePool
     {
+        [DataMember]
         public int DiceQuantity;
+        [DataMember]
         public int DieType;
+        [DataMember]
         public int Modifier;
 
         public PathfinderDicePool(int diceQuantity, int dieType, int modifier)
@@ -34,6 +39,7 @@ namespace XMLCharSheets
         }
 
         private String _resultDescription = "";
+        [DataMember]
         public override String ResultDescription
         {
             get
@@ -55,6 +61,7 @@ namespace XMLCharSheets
         }
 
         private int _totalValue;
+        [DataMember]
         public int TotalValue
         {
             get { return _totalValue; }

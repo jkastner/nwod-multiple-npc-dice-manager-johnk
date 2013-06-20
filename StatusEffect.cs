@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GameBoard;
+using System.Runtime.Serialization;
 
 namespace XMLCharSheets
 {
+    [DataContract]
     public class StatusEffect
     {
         private String _description;
+        [DataMember]
         public String Description
         {
             get { return _description; }
@@ -22,6 +25,7 @@ namespace XMLCharSheets
         }
 
         private int _durationRemaining;
+        [DataMember]
         public int DurationRemaining
         {
             get { return _durationRemaining; }

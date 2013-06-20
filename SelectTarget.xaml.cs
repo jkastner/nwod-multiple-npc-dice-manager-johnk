@@ -28,9 +28,9 @@ namespace XMLCharSheets
         ObservableCollection<String> attackTraits = new ObservableCollection<String>();
         ObservableCollection<String> otherTraits = new ObservableCollection<String>();
         List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
-        VisualsViewmodel _visualsViewModel;
+        VisualsViewModel _visualsViewModel;
         public SelectTarget(IList selectedObjects, ObservableCollection<CharacterSheet> allCharacters, 
-            ObservableCollection<string> damageTypes, VisualsViewmodel visualsViewModel)
+            ObservableCollection<string> damageTypes, VisualsViewModel visualsViewModel)
         {
 
             List<CharacterSheet> selectedCharacters = new List<CharacterSheet>();

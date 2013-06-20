@@ -9,9 +9,11 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
+using System.Runtime.Serialization;
 
 namespace GameBoard
 {
+    [DataContract(Namespace = "")]
     public class MoveablePicture : INotifyPropertyChanged
     {
         private RectangleVisual3D _charImage;
@@ -21,15 +23,7 @@ namespace GameBoard
             set { _charImage = value; }
         }
 
-        private RotateManipulator _rotator;
-        public RotateManipulator Rotator
-        {
-            get { return _rotator; }
-            set { _rotator = value; }
-        }
-
         private TruncatedConeVisual3D _baseCone;
-
         public TruncatedConeVisual3D BaseCone
         {
             get { return _baseCone; }
@@ -53,30 +47,41 @@ namespace GameBoard
         
 
         private double _pictureOffset;
-
+        [DataMember]
         public double PictureOffset
         {
             get { return _pictureOffset; }
             set { _pictureOffset = value; }
         }
         private String _name;
+        [DataMember]
         public String Name
         {
             get { return _name; }
             set { _name = value; }
         }
 
+        [DataMember]
         public double Speed { get; set; }
-
+        [DataMember]
         public Color PieceColor { get; set; }
 
+        [DataMember]
         public double LongestPictureSide { get; set; }
 
         public Point3D Location
         {
             get { return CharImage.Origin; }
-            set { MoveTo(value); }
+            set
+            {
+                LocationForSave = value;
+                MoveTo(value);
+            }
         }
+        [DataMember]
+        public Point3D LocationForSave
+        {get;set;}
+
         public double BaseConeRadius { get; set; }
         private bool _isSelected;
         public bool IsSelected
@@ -93,20 +98,23 @@ namespace GameBoard
             }
         }
 
+        [DataMember]
+        public String PictureFileName { get; set; }
+
         private List<StatusEffectDisplay> _statusEffects = new List<StatusEffectDisplay>();
+        [DataMember]
         public List<StatusEffectDisplay> StatusEffects
         {
             get { return _statusEffects; }
             set { _statusEffects = value; }
         }
-        
-
-
         public MoveablePicture(String pictureFile, double longestEdge, String imageName, Color pieceColor, Point3D location, List<StatusEffectDisplay> statuses, double speed)
         {
             PieceColor = pieceColor;
             Name = imageName;
             Speed = speed;
+            LocationForSave = location;
+            PictureFileName = pictureFile;
             _charImage = ImageToRectangle(pictureFile, longestEdge, location);
             AssociatedVisuals.Add(BaseCone);
             AssociatedVisuals.Add(MovementCircle);
@@ -117,6 +125,19 @@ namespace GameBoard
             AssociatedVisuals.Add(InfoText);
             StatusEffects = statuses;
 
+        }
+
+        [OnDeserialized]
+        public void OnDeserialized(StreamingContext context)
+        {
+            _charImage = ImageToRectangle(PictureFileName, LongestPictureSide, LocationForSave);
+            _associatedVisuals = new List<Visual3D>();
+            AssociatedVisuals.Add(BaseCone);
+            AssociatedVisuals.Add(MovementCircle);
+            AssociatedVisuals.Add(DoubleMovementCircle);
+            AssociatedVisuals.Add(CharImage);
+            RemakeInfoText(StatusEffects);
+            AssociatedVisuals.Add(InfoText);
         }
 
         public void RemakeInfoText(List<StatusEffectDisplay> statuses)
@@ -200,22 +221,6 @@ namespace GameBoard
         }
 
         int c = 1;
-        internal void AddaRotateTranslator(Point3D location)
-        {
-            Color color = Colors.Gray;
-            location.Z = location.Z + 50;
-            RotateManipulator around = new RotateManipulator()
-            {
-                Length = _pictureOffset,
-                Diameter = LongestPictureSide*c,
-                InnerDiameter = LongestPictureSide * .4 * c,
-                Color = color,
-                Axis = new Vector3D(0, 0, 1),
-                Position = location,
-            };
-            around.Bind(CharImage);
-            _rotator = around;
-        }
 
 
         internal void MoveTo(Point3D point3D)
@@ -229,6 +234,7 @@ namespace GameBoard
             CharImage.ApplyAnimationClock(RectangleVisual3D.OriginProperty, clock1);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.OriginProperty, clock2);
             InfoText.ApplyAnimationClock(BillboardTextVisual3D.PositionProperty, clock3);
+            LocationForSave = point3D;
             //CharImage.Origin = point1;
             //BaseCone.Origin = ;
         }

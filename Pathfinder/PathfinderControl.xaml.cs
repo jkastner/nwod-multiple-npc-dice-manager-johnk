@@ -25,7 +25,7 @@ namespace XMLCharSheets
         public PathfinderControl()
         {
             InitializeComponent();
-            _viewModel = ViewModelService.RosterViewModel;
+            _viewModel = CombatService.RosterViewModel;
             DataContext = _viewModel;
         }
 

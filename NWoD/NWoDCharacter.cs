@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     class NWoDCharacter : CharacterSheet
     {
 
         //private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
+        [DataMember]
         private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait("DefaultPool", 5, 10, 0, 0, 8));
         private List<HealthBox> _healthTrack = new List<HealthBox>();
+        [DataMember]
         public List<HealthBox> HealthTrack
         {
             get { return _healthTrack; }
@@ -20,6 +24,7 @@ namespace XMLCharSheets
 
         private bool _isVampire = false;
 
+        [DataMember]
         public bool IsVampire
         {
             get { return _isVampire; }
@@ -46,7 +51,7 @@ namespace XMLCharSheets
 
 
         private int _armor;
-
+        [DataMember]
         public int Armor
         {
             get { return _armor; }
@@ -235,6 +240,7 @@ namespace XMLCharSheets
         }
 
 
+        [DataMember]
         private bool _checkedAgainstUnconsciousness = false;
 
         private void AddDamageBox(HealthBox newDamage)
@@ -416,6 +422,7 @@ namespace XMLCharSheets
         }
 
         private int _normalMeleeDefense;
+        [DataMember]
         public int NormalMeleeDefense
         {
             get { return _normalMeleeDefense; }
@@ -423,6 +430,7 @@ namespace XMLCharSheets
         }
 
         private int _currentMeleeDefense;
+        [DataMember]
         public int CurrentMeleeDefense
         {
             get { return _currentMeleeDefense; }
