@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     internal class NWoDVampire : NWoDCharacter
     {
         public NWoDVampire(string characterName, List<Trait> traits)
@@ -13,19 +15,19 @@ namespace XMLCharSheets
             IsVampire = true;
         }
 
-        private int _vitae;
-
+        private int _currentVitae;
+        [DataMember]
         public int CurrentVitae
         {
-            get { return _vitae; }
+            get { return _currentVitae; }
             set
             { 
-                _vitae = value;
+                _currentVitae = value;
                 OnPropertyChanged("CurrentVitae");
             }
         }
         private int _maxVitae;
-
+        [DataMember]
         public int MaxVitae
         {
             get { return _maxVitae; }
@@ -37,6 +39,7 @@ namespace XMLCharSheets
         }
 
         private int _bloodAttackBonus = 0;
+        [DataMember]
         public int BloodAttackBonus
         {
             get { return _bloodAttackBonus; }
@@ -44,6 +47,7 @@ namespace XMLCharSheets
         }
 
         private int _bloodThisRound;
+        [DataMember]
         public int BloodThisRound
         {
             get { return _bloodThisRound; }

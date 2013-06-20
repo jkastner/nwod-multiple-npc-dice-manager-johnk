@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class Team
     {
         private ObservableCollection<CharacterSheet> _teamMembers = new ObservableCollection<CharacterSheet>();
+        [DataMember]
         public ObservableCollection<CharacterSheet> TeamMembers
         {
             get { return _teamMembers; }
@@ -18,6 +21,7 @@ namespace XMLCharSheets
         }
 
         private Color _teamColor;
+        [DataMember]
         public Color TeamColor
         {
             get { return _teamColor; }
@@ -39,6 +43,7 @@ namespace XMLCharSheets
             _teamBrush = new SolidColorBrush(TeamColor);
         }
         private String _teamName;
+        [DataMember]
         public String TeamName
         {
             get { return _teamName; }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class NWoDAttackTrait : AttackTrait, INWoDTrait
     {
         public NWoDAttackTrait(int value, string label, string defenseTarget, string damageType,
@@ -16,9 +18,13 @@ namespace XMLCharSheets
             AutomaticSuccesses = autoSuccesses;
         }
 
+        [DataMember]
         public int ExplodesOn { get; set; }
+        [DataMember]
         public int SubtractsOn { get; set; }
+        [DataMember]
         public int SucceedsOn { get; set; }
+        [DataMember]
         public int AutomaticSuccesses { get; set; }
         
         public override Trait CopyTrait()

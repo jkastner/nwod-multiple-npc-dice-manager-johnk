@@ -18,15 +18,19 @@ namespace XMLCharSheets
 {
     public class RosterViewModel : INotifyPropertyChanged
     {
-        VisualsViewmodel _visualsViewModel;
+        
         CharacterReader _characterReader = new CharacterReader();
-        public RosterViewModel(VisualsViewmodel visualsViewModel)
+
+        public RosterViewModel()
         {
             RegisterReaders();
-            _visualsViewModel = visualsViewModel;
-            _visualsViewModel.PieceSelected += OnVisualPieceSelected;
-            _visualsViewModel.PieceMoved += OnVisualPieceMoved;
             MakeTeams();
+        }
+
+        public void RegisterVisualsViewModel(VisualsViewModel vm)
+        {
+            vm.PieceMoved += OnVisualPieceMoved;
+            vm.PieceSelected += OnVisualPieceSelected;
         }
 
         private void RegisterReaders()
@@ -85,7 +89,6 @@ namespace XMLCharSheets
 
 
         private ObservableCollection<CharacterSheet> _fullRoster = new ObservableCollection<CharacterSheet>();
-
         public ObservableCollection<CharacterSheet> FullRoster
         {
             get { return _fullRoster; }
@@ -427,12 +430,13 @@ namespace XMLCharSheets
                 }
                 if (curChar.Visual != null)
                 {
-                    _visualsViewModel.RemovePiece(curChar.Visual);
+                    CombatService.VisualsViewModel.RemovePiece(curChar.Visual);
                 }
             }
         }
 
         private String _rollResults;
+        [DataMember]
         public String ResultText
         {
             get { return _rollResults; }
@@ -477,7 +481,7 @@ namespace XMLCharSheets
                 }
                 if (curChar.Visual != null&&curChar.Target.Visual!=null)
                 {
-                    _visualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.PieceColor, new Duration(new TimeSpan(0,0,0,5)));
+                    CombatService.VisualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.PieceColor, new Duration(new TimeSpan(0,0,0,5)));
                 }
             }
 
@@ -647,7 +651,7 @@ namespace XMLCharSheets
                 {
                     if (ActiveRoster[curIndex].Visual != null)
                     {
-                        _visualsViewModel.RemovePiece(ActiveRoster[curIndex].Visual);
+                        CombatService.VisualsViewModel.RemovePiece(ActiveRoster[curIndex].Visual);
                     }
                     foreach (var cur in ActiveRoster.Where(x => x.Target == ActiveRoster[curIndex]))
                     {
@@ -678,19 +682,19 @@ namespace XMLCharSheets
                 var curCharacter = cur as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetInactive(curCharacter.Visual);
+                    CombatService.VisualsViewModel.SetInactive(curCharacter.Visual);
                 }
             }
             foreach (var curCharacter in selectedCharacters)
             {
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.SetActive(curCharacter.Visual, curCharacter.PieceColor, selectedCharacters.Count == 1, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
+                    CombatService.VisualsViewModel.SetActive(curCharacter.Visual, curCharacter.PieceColor, selectedCharacters.Count == 1, curCharacter.SpeedTrait.TraitValue, MakeStatusList(curCharacter.StatusEffects));
                 }
             }
             if (selectedCharacters.Count(x => x.Visual!=null) > 1)
             {
-                _visualsViewModel.DrawGroupMovementCircle();
+                CombatService.VisualsViewModel.DrawGroupMovementCircle();
             }
         }
 
@@ -721,11 +725,11 @@ namespace XMLCharSheets
                 if (curCharacter.Visual != null)
                 {
                     baseOrigin = curCharacter.Visual.Location;
-                    _visualsViewModel.RemovePiece(curCharacter.Visual);
+                    CombatService.VisualsViewModel.RemovePiece(curCharacter.Visual);
                 }
                 //public MoveablePicture 
                 //AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height, Point3D location, String additionalInfo)
-                var createdVisual = _visualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor,
+                var createdVisual = CombatService.VisualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor,
                     curCharacter.Name, curCharacter.HeightTrait.TraitValue, baseOrigin, MakeStatusList(curCharacter.StatusEffects), curCharacter.SpeedTrait.TraitValue);
                 curCharacter.Visual = createdVisual;
                 curCharacter.PieceColor = pieceColor;
@@ -749,7 +753,7 @@ namespace XMLCharSheets
                 var curCharacter = curItem as CharacterSheet;
                 if (curCharacter.Visual != null)
                 {
-                    _visualsViewModel.RemovePiece(curCharacter.Visual);
+                    CombatService.VisualsViewModel.RemovePiece(curCharacter.Visual);
                     curCharacter.Visual = null;
                 }
             }
@@ -804,6 +808,17 @@ namespace XMLCharSheets
                 {
                     curChar.SingleAttackOnly = false;
                 }
+            }
+        }
+
+        internal void OpenRoster(ObservableCollection<CharacterSheet> newRoster)
+        {
+            List<CharacterSheet> oldRoster = new List<CharacterSheet>();
+            oldRoster.AddRange(ActiveRoster);
+            RemoveActiveCharacters(oldRoster);
+            foreach (var curNew in newRoster)
+            {
+                RegisterNewCharacter(curNew);
             }
         }
     }

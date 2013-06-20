@@ -8,7 +8,6 @@
         >
     <Grid>
         <h:HelixViewport3D ShowViewCube="False" Name="Viewport">
-            <h:DefaultLights/>
 
         </h:HelixViewport3D>
     </Grid>

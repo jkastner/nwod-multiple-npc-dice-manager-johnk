@@ -9,14 +9,21 @@ using System.ComponentModel;
 using System.Windows.Media;
 using GameBoard;
 using System.Windows.Media.Media3D;
+using System.Runtime.Serialization;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
+    [KnownType(typeof(PathfinderCharacter_HP))]
+    [KnownType(typeof(PathfinderCharacter_WoundsVigor))]
+    [KnownType(typeof(NWoDCharacter))]
+    [KnownType(typeof(NWoDVampire))]
     public abstract class CharacterSheet : INotifyPropertyChanged
     {
         internal static Random random = new Random();
         private String _name;
 
+        [DataMember]
         public String Name
         {
             get { return _name; }
@@ -26,8 +33,10 @@ namespace XMLCharSheets
                 OnPropertyChanged("Name");
             }
         }
+        
         private int _initiativeModifier;
 
+        [DataMember]
         public int InitiativeModifier
         {
             get { return _initiativeModifier; }
@@ -35,6 +44,7 @@ namespace XMLCharSheets
         }
 
         private int _initiative;
+        [DataMember]
         public int Initiative
         {
             get { return _initiative; }
@@ -42,12 +52,14 @@ namespace XMLCharSheets
         }       
         
         private int _curInitiative = -1;
+        [DataMember]
         public int CurInitiative
         {
             get { return _curInitiative; }
             set { _curInitiative = value; }
         }
 
+        
         public NumericIntTrait HeightTrait
         {
             get
@@ -76,7 +88,6 @@ namespace XMLCharSheets
             }
         }
 
-        private String _description;
         //TODO - change combat traits when individual traits are changed.
         public CharacterSheet(string name, List<Trait> curTraits)
         {
@@ -92,6 +103,7 @@ namespace XMLCharSheets
         }
 
         private List<Trait> _traits = new List<Trait>();
+        [DataMember]
         public List<Trait> Traits
         {
             get { return _traits; }
@@ -141,6 +153,7 @@ namespace XMLCharSheets
 
 
         private bool _isSelected;
+        [DataMember]
         public bool IsSelected
         {
             get 
@@ -163,6 +176,7 @@ namespace XMLCharSheets
         }
 
         private CharacterSheet _target;
+        [DataMember]
         public CharacterSheet Target
         {
             get { return _target; }
@@ -174,13 +188,14 @@ namespace XMLCharSheets
         }
 
         private String _damageType;
+        [DataMember]
         public String DamageType
         {
             get { return _damageType; }
             set { _damageType = value; }
         }
         private String _chosenAttack;
-
+        [DataMember]
         public String ChosenAttack
         {
             get { return _chosenAttack; }
@@ -228,6 +243,7 @@ namespace XMLCharSheets
         /// <summary>
         /// Other non-attack specific traits that can add to an attack.
         /// </summary>
+        [DataMember]
         public List<string> OtherAttackTraits
         {
             get
@@ -256,6 +272,7 @@ namespace XMLCharSheets
 
         private List<StatusEffect> _statusEffects = new List<StatusEffect>();
 
+        [DataMember]
         public List<StatusEffect> StatusEffects
         {
             get { return _statusEffects; }
@@ -302,10 +319,12 @@ namespace XMLCharSheets
 
         
 
+        [DataMember]
         public int FinalAttackPool { get; set; }
 
         private bool _displayCharacter;
 
+        [DataMember]
         public bool DisplayCharacter
         {
             get { return _displayCharacter; }
@@ -339,9 +358,11 @@ namespace XMLCharSheets
         }
 
 
+        [DataMember]
         public MoveablePicture Visual { get; set; }
 
         private Color _pieceColor;
+        [DataMember]
         public Color PieceColor
         {
             get { return _pieceColor; }
@@ -361,9 +382,11 @@ namespace XMLCharSheets
             return Helper3DCalcs.DistanceBetween(Visual.Location, target); 
         }
 
+        [DataMember]
         public Team Team { get; set; }
 
         private bool _hasAttacked = false;
+        [DataMember]
         public bool HasAttacked
         {
             get { return _hasAttacked; }
@@ -375,6 +398,7 @@ namespace XMLCharSheets
         }
 
         private bool _hasMoved = false;
+        [DataMember]
         public bool HasMoved
         {
             get { return _hasMoved; }
@@ -420,6 +444,7 @@ namespace XMLCharSheets
 
         internal abstract String HealthStatusLineDescription { get; }
 
+        [DataMember]
         public String Ruleset { get; set; }
         #endregion
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     class PathfinderCharacter_HP : PathfinderCharacter
     {
         public PathfinderCharacter_HP(string name, List<Trait> curTraits) :
@@ -21,12 +23,14 @@ namespace XMLCharSheets
         }
 
         private int _hitPoints;
+        [DataMember]
         public int CurrentHitPoints
         {
             get { return _hitPoints; }
             set { _hitPoints = value; }
         }
         private int _maxHitPoints;
+        [DataMember]
         public int MaxHitPoints
         {
             get { return _maxHitPoints; }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class NWoDTrait: NumericIntTrait, INWoDTrait
     {
         public NWoDTrait(string traitLabel, int traitValue, 
@@ -17,9 +19,13 @@ namespace XMLCharSheets
             SucceedsOn = succeedsOn;
         }
 
+        [DataMember]
         public int ExplodesOn { get; set; }
+        [DataMember]
         public int SubtractsOn { get; set; }
+        [DataMember]
         public int SucceedsOn { get; set; }
+        [DataMember]
         public int AutomaticSuccesses { get; set; }
         
 

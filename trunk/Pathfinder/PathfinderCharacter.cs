@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
+    [KnownType(typeof(PathfinderCharacter_HP))]
+    [KnownType(typeof(PathfinderCharacter_WoundsVigor))]
     public abstract class PathfinderCharacter : CharacterSheet
     {
         public PathfinderCharacter(string name, List<Trait> curTraits):

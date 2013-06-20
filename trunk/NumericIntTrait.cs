@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
+    [KnownType(typeof(PathfinderNumericTrait))]
+    [KnownType(typeof(NWoDTrait))]
     public abstract class NumericIntTrait : Trait
     {
 
         private int _traitValue;
 
+        [DataMember]
         public int TraitValue
         {
             get { return _traitValue; }

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class PathfinderNumericTrait : NumericIntTrait
     {
         //Depending on the trait, this could be the thing being resisted, the way to overcome the damage, or the type of damage.
         private String _descriptor;
+        [DataMember]
         public String Descriptor
         {
             get { return _descriptor; }

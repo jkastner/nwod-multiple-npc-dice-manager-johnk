@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace XMLCharSheets
 {
+    [DataContract(Namespace = "")]
     public class HealthBox
     {
+        [DataContract(Name = "DamageType")]
         public enum DamageType
         {
-            Empty, Bashing, Lethal, Aggrivated, Grievous
+            [EnumMember]
+            Empty,
+            [EnumMember]
+            Bashing,
+            [EnumMember]
+            Lethal,
+            [EnumMember]
+            Aggrivated,
+            [EnumMember]
+            Grievous
         }
         private DamageType _box;
-
+        [DataMember]
         public DamageType Box
         {
             get { return _box; }
