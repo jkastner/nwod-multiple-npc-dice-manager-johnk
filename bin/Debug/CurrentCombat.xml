@@ -1,821 +1,1123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Combat xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/XMLCharSheets">
-  <ActiveRoster z:Id="2" z:Size="5">
-    <CharacterSheet z:Id="3" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+  <ActiveRoster z:Id="2" z:Size="6">
+    <CharacterSheet z:Id="3" xmlns="" i:type="NWoDCharacter">
       <ChosenAttack i:nil="true" />
-      <CurInitiative>-1</CurInitiative>
+      <CurInitiative>16</CurInitiative>
       <DamageType i:nil="true" />
       <DisplayCharacter>false</DisplayCharacter>
       <FinalAttackPool>0</FinalAttackPool>
       <HasAttacked>false</HasAttacked>
-      <HasMoved>true</HasMoved>
-      <Initiative>0</Initiative>
+      <HasMoved>false</HasMoved>
+      <Initiative>6</Initiative>
       <InitiativeModifier>0</InitiativeModifier>
       <IsSelected>false</IsSelected>
-      <Name z:Id="4">Hobgoblin</Name>
+      <Name z:Id="4">Dog_5</Name>
       <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
       <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
         <d4p1:A>255</d4p1:A>
-        <d4p1:B>255</d4p1:B>
-        <d4p1:G>0</d4p1:G>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>128</d4p1:G>
         <d4p1:R>0</d4p1:R>
         <d4p1:ScA>1</d4p1:ScA>
-        <d4p1:ScB>1</d4p1:ScB>
-        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0.2158605</d4p1:ScG>
         <d4p1:ScR>0</d4p1:ScR>
       </PieceColor>
-      <Ruleset z:Id="5">Pathfinder</Ruleset>
+      <Ruleset z:Id="5">NWoD</Ruleset>
       <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="6" z:Size="0" />
       <Target i:nil="true" />
       <Team z:Id="7">
         <TeamColor xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
           <d5p1:A>255</d5p1:A>
-          <d5p1:B>255</d5p1:B>
-          <d5p1:G>0</d5p1:G>
+          <d5p1:B>0</d5p1:B>
+          <d5p1:G>128</d5p1:G>
           <d5p1:R>0</d5p1:R>
           <d5p1:ScA>1</d5p1:ScA>
-          <d5p1:ScB>1</d5p1:ScB>
-          <d5p1:ScG>0</d5p1:ScG>
+          <d5p1:ScB>0</d5p1:ScB>
+          <d5p1:ScG>0.2158605</d5p1:ScG>
           <d5p1:ScR>0</d5p1:ScR>
         </TeamColor>
-        <TeamMembers z:Id="8" z:Size="5">
-          <CharacterSheet z:Id="9" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
-            <ChosenAttack i:nil="true" />
-            <CurInitiative>-1</CurInitiative>
-            <DamageType i:nil="true" />
+        <TeamMembers z:Id="8" z:Size="6">
+          <CharacterSheet z:Id="9" xmlns="" i:type="NWoDCharacter">
+            <ChosenAttack z:Id="10">Teeth</ChosenAttack>
+            <CurInitiative>12</CurInitiative>
+            <DamageType z:Id="11">Lethal</DamageType>
             <DisplayCharacter>false</DisplayCharacter>
-            <FinalAttackPool>0</FinalAttackPool>
+            <FinalAttackPool>9</FinalAttackPool>
             <HasAttacked>false</HasAttacked>
-            <HasMoved>true</HasMoved>
-            <Initiative>0</Initiative>
+            <HasMoved>false</HasMoved>
+            <Initiative>6</Initiative>
             <InitiativeModifier>0</InitiativeModifier>
             <IsSelected>false</IsSelected>
-            <Name z:Id="10">Hobgoblin_1</Name>
-            <OtherAttackTraits xmlns:d7p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+            <Name z:Id="12">Dog</Name>
+            <OtherAttackTraits xmlns:d7p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="13" z:Size="0" />
             <PieceColor xmlns:d7p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
               <d7p1:A>255</d7p1:A>
-              <d7p1:B>255</d7p1:B>
-              <d7p1:G>0</d7p1:G>
+              <d7p1:B>0</d7p1:B>
+              <d7p1:G>128</d7p1:G>
               <d7p1:R>0</d7p1:R>
               <d7p1:ScA>1</d7p1:ScA>
-              <d7p1:ScB>1</d7p1:ScB>
-              <d7p1:ScG>0</d7p1:ScG>
+              <d7p1:ScB>0</d7p1:ScB>
+              <d7p1:ScG>0.2158605</d7p1:ScG>
               <d7p1:ScR>0</d7p1:ScR>
             </PieceColor>
             <Ruleset z:Ref="5" i:nil="true" />
-            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="11" z:Size="0" />
-            <Target i:nil="true" />
-            <Team z:Ref="7" i:nil="true" />
-            <Traits z:Id="12" z:Size="13">
-              <Trait z:Id="13" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="14">Initiative</TraitLabel>
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="15" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="16">Armor Class</TraitLabel>
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="17" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="18">Touch</TraitLabel>
-                <TraitValue>12</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="19" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="20">Flat-footed</TraitLabel>
-                <TraitValue>14</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="21" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="22">Constitution</TraitLabel>
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="23" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="24">Vigor</TraitLabel>
-                <TraitValue>10</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="25" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="26">Fortitude</TraitLabel>
-                <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="27" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="28">Reflex</TraitLabel>
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="29" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="30">Will</TraitLabel>
-                <TraitValue>1</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="31" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="32">Speed</TraitLabel>
-                <TraitValue>30</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="33" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Id="34">Height</TraitLabel>
-                <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="35" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Id="36">Longsword</TraitLabel>
-                <TraitValue>4</TraitValue>
-                <DamageType z:Id="37">System.Collections.Generic.List`1[System.String]</DamageType>
-                <DefenseTarget z:Id="38">Armor Class</DefenseTarget>
-                <CritMultipier>2</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="39" z:Size="1">
-                  <d9p1:string z:Id="40">Slashing</d9p1:string>
-                </DamageDescriptors>
-                <DamageDice z:Id="41" z:Size="1">
-                  <PathfinderDicePool z:Id="42">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>2</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>19</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="43" z:Size="1">
-                  <d9p1:int>4</d9p1:int>
-                </ToHitBonusList>
-              </Trait>
-              <Trait z:Id="44" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Id="45">Longbow</TraitLabel>
-                <TraitValue>3</TraitValue>
-                <DamageType z:Ref="37" i:nil="true" />
-                <DefenseTarget z:Id="46">Armor Class</DefenseTarget>
-                <CritMultipier>3</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="47" z:Size="1">
-                  <d9p1:string z:Id="48">Piercing</d9p1:string>
-                </DamageDescriptors>
-                <DamageDice z:Id="49" z:Size="1">
-                  <PathfinderDicePool z:Id="50">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>0</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>20</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="51" z:Size="1">
-                  <d9p1:int>3</d9p1:int>
-                </ToHitBonusList>
-              </Trait>
-            </Traits>
-            <Visual z:Id="52">
-              <LocationForSave xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
-                <d8p1:_x>18.897018068482957</d8p1:_x>
-                <d8p1:_y>17.011913804919566</d8p1:_y>
-                <d8p1:_z>3.4999999999999716</d8p1:_z>
-              </LocationForSave>
-              <LongestPictureSide>5</LongestPictureSide>
-              <Name z:Ref="10" i:nil="true" />
-              <PictureFileName z:Id="53">E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\PiecePictures\Pathfinder\Hobgoblin.jpg</PictureFileName>
-              <PictureOffset>3.5</PictureOffset>
+            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="14" z:Size="0" />
+            <Target z:Id="15" xmlns="" i:type="NWoDCharacter">
+              <ChosenAttack i:nil="true" />
+              <CurInitiative>11</CurInitiative>
+              <DamageType i:nil="true" />
+              <DisplayCharacter>false</DisplayCharacter>
+              <FinalAttackPool>0</FinalAttackPool>
+              <HasAttacked>false</HasAttacked>
+              <HasMoved>false</HasMoved>
+              <Initiative>6</Initiative>
+              <InitiativeModifier>0</InitiativeModifier>
+              <IsSelected>false</IsSelected>
+              <Name z:Id="16">Dog_4</Name>
+              <OtherAttackTraits xmlns:d8p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
               <PieceColor xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
                 <d8p1:A>255</d8p1:A>
-                <d8p1:B>255</d8p1:B>
-                <d8p1:G>0</d8p1:G>
+                <d8p1:B>0</d8p1:B>
+                <d8p1:G>128</d8p1:G>
                 <d8p1:R>0</d8p1:R>
                 <d8p1:ScA>1</d8p1:ScA>
-                <d8p1:ScB>1</d8p1:ScB>
-                <d8p1:ScG>0</d8p1:ScG>
+                <d8p1:ScB>0</d8p1:ScB>
+                <d8p1:ScG>0.2158605</d8p1:ScG>
                 <d8p1:ScR>0</d8p1:ScR>
               </PieceColor>
-              <Speed>30</Speed>
-              <StatusEffects z:Id="54" z:Size="0" />
-            </Visual>
-            <CurrentVigorPoints>10</CurrentVigorPoints>
-            <CurrentWoundPoints>32</CurrentWoundPoints>
-            <MaxVigorPoints>10</MaxVigorPoints>
-            <MaxWoundPoints>32</MaxWoundPoints>
-            <WoundThreshhold>16</WoundThreshhold>
-            <_isStaggered>false</_isStaggered>
-          </CharacterSheet>
-          <CharacterSheet z:Ref="3" i:nil="true" />
-          <CharacterSheet z:Id="55" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
-            <ChosenAttack i:nil="true" />
-            <CurInitiative>-1</CurInitiative>
-            <DamageType i:nil="true" />
-            <DisplayCharacter>false</DisplayCharacter>
-            <FinalAttackPool>0</FinalAttackPool>
-            <HasAttacked>false</HasAttacked>
-            <HasMoved>true</HasMoved>
-            <Initiative>0</Initiative>
-            <InitiativeModifier>0</InitiativeModifier>
-            <IsSelected>false</IsSelected>
-            <Name z:Id="56">Hobgoblin_2</Name>
-            <OtherAttackTraits xmlns:d7p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
-            <PieceColor xmlns:d7p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
-              <d7p1:A>255</d7p1:A>
-              <d7p1:B>255</d7p1:B>
-              <d7p1:G>0</d7p1:G>
-              <d7p1:R>0</d7p1:R>
-              <d7p1:ScA>1</d7p1:ScA>
-              <d7p1:ScB>1</d7p1:ScB>
-              <d7p1:ScG>0</d7p1:ScG>
-              <d7p1:ScR>0</d7p1:ScR>
-            </PieceColor>
-            <Ruleset z:Ref="5" i:nil="true" />
-            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="57" z:Size="0" />
-            <Target i:nil="true" />
+              <Ruleset z:Ref="5" i:nil="true" />
+              <StatusEffects xmlns:d8p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="17" z:Size="1">
+                <d8p1:StatusEffect z:Id="18">
+                  <d8p1:Description z:Id="19">Incapacitated</d8p1:Description>
+                  <d8p1:DurationRemaining>499</d8p1:DurationRemaining>
+                </d8p1:StatusEffect>
+              </StatusEffects>
+              <Target i:nil="true" />
+              <Team z:Ref="7" i:nil="true" />
+              <Traits z:Id="20" z:Size="11">
+                <Trait z:Id="21" xmlns="" i:type="NWoDAttackTrait">
+                  <TraitLabel z:Ref="10" i:nil="true" />
+                  <TraitValue>9</TraitValue>
+                  <DamageType z:Id="22">Lethal</DamageType>
+                  <DefenseTarget z:Id="23">Melee Defense</DefenseTarget>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>0</SucceedsOn>
+                </Trait>
+                <Trait z:Id="24" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="25">Initiative</TraitLabel>
+                  <TraitValue>6</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="26" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="27">Ranged Defense</TraitLabel>
+                  <TraitValue>0</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="28" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="29">Melee Defense</TraitLabel>
+                  <TraitValue>5</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="30" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="31">Notice</TraitLabel>
+                  <TraitValue>7</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="32" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="33">Armor</TraitLabel>
+                  <TraitValue>0</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="34" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="35">Resolve</TraitLabel>
+                  <TraitValue>4</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="36" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="37">Composure</TraitLabel>
+                  <TraitValue>3</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="38" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="39">Health</TraitLabel>
+                  <TraitValue>8</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="40" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="41">Height</TraitLabel>
+                  <TraitValue>5</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+                <Trait z:Id="42" xmlns="" i:type="NWoDTrait">
+                  <TraitLabel z:Id="43">Speed</TraitLabel>
+                  <TraitValue>42</TraitValue>
+                  <AutomaticSuccesses>0</AutomaticSuccesses>
+                  <ExplodesOn>10</ExplodesOn>
+                  <SubtractsOn>0</SubtractsOn>
+                  <SucceedsOn>8</SucceedsOn>
+                </Trait>
+              </Traits>
+              <Visual z:Id="44">
+                <LocationForSave xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
+                  <d9p1:_x>87.952930054526718</d9p1:_x>
+                  <d9p1:_y>-7.9386609654649085</d9p1:_y>
+                  <d9p1:_z>3.4999999999999432</d9p1:_z>
+                </LocationForSave>
+                <LongestPictureSide>5</LongestPictureSide>
+                <Name z:Ref="16" i:nil="true" />
+                <PictureFileName z:Id="45">E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\PiecePictures\Dog3.png</PictureFileName>
+                <PictureOffset>3.5</PictureOffset>
+                <PieceColor xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+                  <d9p1:A>255</d9p1:A>
+                  <d9p1:B>0</d9p1:B>
+                  <d9p1:G>128</d9p1:G>
+                  <d9p1:R>0</d9p1:R>
+                  <d9p1:ScA>1</d9p1:ScA>
+                  <d9p1:ScB>0</d9p1:ScB>
+                  <d9p1:ScG>0.2158605</d9p1:ScG>
+                  <d9p1:ScR>0</d9p1:ScR>
+                </PieceColor>
+                <Speed>42</Speed>
+                <StatusEffects z:Id="46" z:Size="0" />
+              </Visual>
+              <Armor>0</Armor>
+              <CurrentMeleeDefense>5</CurrentMeleeDefense>
+              <HealthTrack z:Id="47" z:Size="8">
+                <HealthBox z:Id="48">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="49">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="50">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="51">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="52">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="53">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="54">
+                  <Box>Grievous</Box>
+                </HealthBox>
+                <HealthBox z:Id="55">
+                  <Box>Grievous</Box>
+                </HealthBox>
+              </HealthTrack>
+              <IsVampire>false</IsVampire>
+              <NormalMeleeDefense>5</NormalMeleeDefense>
+              <_checkedAgainstUnconsciousness>false</_checkedAgainstUnconsciousness>
+              <curPool z:Id="56">
+                <AutomaticExtaSuccessesOnSuccess>0</AutomaticExtaSuccessesOnSuccess>
+                <CurrentSuccesses>0</CurrentSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <NumberOfDice>5</NumberOfDice>
+                <SubtractsOn>0</SubtractsOn>
+              </curPool>
+            </Target>
             <Team z:Ref="7" i:nil="true" />
-            <Traits z:Id="58" z:Size="13">
-              <Trait z:Id="59" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="14" i:nil="true" />
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
+            <Traits z:Id="57" z:Size="11">
+              <Trait z:Id="58" xmlns="" i:type="NWoDAttackTrait">
+                <TraitLabel z:Ref="10" i:nil="true" />
+                <TraitValue>9</TraitValue>
+                <DamageType z:Ref="22" i:nil="true" />
+                <DefenseTarget z:Ref="23" i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>0</SucceedsOn>
               </Trait>
-              <Trait z:Id="60" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="16" i:nil="true" />
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="59" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="25" i:nil="true" />
+                <TraitValue>6</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="61" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="18" i:nil="true" />
-                <TraitValue>12</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="60" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="27" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="62" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="20" i:nil="true" />
-                <TraitValue>14</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="63" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="22" i:nil="true" />
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="64" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="24" i:nil="true" />
-                <TraitValue>10</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="65" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="26" i:nil="true" />
+              <Trait z:Id="61" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="29" i:nil="true" />
                 <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="66" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="28" i:nil="true" />
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="62" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="31" i:nil="true" />
+                <TraitValue>7</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="67" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="30" i:nil="true" />
-                <TraitValue>1</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="63" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="33" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="68" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="32" i:nil="true" />
-                <TraitValue>30</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="69" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="34" i:nil="true" />
-                <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="70" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Ref="36" i:nil="true" />
+              <Trait z:Id="64" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="35" i:nil="true" />
                 <TraitValue>4</TraitValue>
-                <DamageType z:Ref="37" i:nil="true" />
-                <DefenseTarget z:Ref="38" i:nil="true" />
-                <CritMultipier>2</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="71" z:Size="1">
-                  <d9p1:string z:Ref="40" i:nil="true" />
-                </DamageDescriptors>
-                <DamageDice z:Id="72" z:Size="1">
-                  <PathfinderDicePool z:Id="73">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>2</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>19</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="74" z:Size="1">
-                  <d9p1:int>4</d9p1:int>
-                </ToHitBonusList>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="75" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Ref="45" i:nil="true" />
+              <Trait z:Id="65" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="37" i:nil="true" />
                 <TraitValue>3</TraitValue>
-                <DamageType z:Ref="37" i:nil="true" />
-                <DefenseTarget z:Ref="46" i:nil="true" />
-                <CritMultipier>3</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="76" z:Size="1">
-                  <d9p1:string z:Ref="48" i:nil="true" />
-                </DamageDescriptors>
-                <DamageDice z:Id="77" z:Size="1">
-                  <PathfinderDicePool z:Id="78">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>0</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>20</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="79" z:Size="1">
-                  <d9p1:int>3</d9p1:int>
-                </ToHitBonusList>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="66" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="39" i:nil="true" />
+                <TraitValue>8</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="67" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="41" i:nil="true" />
+                <TraitValue>5</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="68" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="43" i:nil="true" />
+                <TraitValue>42</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
             </Traits>
-            <Visual z:Id="80">
+            <Visual z:Id="69">
               <LocationForSave xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
-                <d8p1:_x>8.3540626973697556</d8p1:_x>
-                <d8p1:_y>19.092240040988329</d8p1:_y>
+                <d8p1:_x>69.5259723689355</d8p1:_x>
+                <d8p1:_y>-16.45221386773791</d8p1:_y>
                 <d8p1:_z>3.5</d8p1:_z>
               </LocationForSave>
               <LongestPictureSide>5</LongestPictureSide>
-              <Name z:Ref="56" i:nil="true" />
-              <PictureFileName z:Ref="53" i:nil="true" />
+              <Name z:Ref="12" i:nil="true" />
+              <PictureFileName z:Ref="45" i:nil="true" />
               <PictureOffset>3.5</PictureOffset>
               <PieceColor xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
                 <d8p1:A>255</d8p1:A>
-                <d8p1:B>255</d8p1:B>
-                <d8p1:G>0</d8p1:G>
+                <d8p1:B>0</d8p1:B>
+                <d8p1:G>128</d8p1:G>
                 <d8p1:R>0</d8p1:R>
                 <d8p1:ScA>1</d8p1:ScA>
-                <d8p1:ScB>1</d8p1:ScB>
-                <d8p1:ScG>0</d8p1:ScG>
+                <d8p1:ScB>0</d8p1:ScB>
+                <d8p1:ScG>0.2158605</d8p1:ScG>
                 <d8p1:ScR>0</d8p1:ScR>
               </PieceColor>
-              <Speed>30</Speed>
-              <StatusEffects z:Id="81" z:Size="0" />
+              <Speed>42</Speed>
+              <StatusEffects z:Id="70" z:Size="0" />
             </Visual>
-            <CurrentVigorPoints>10</CurrentVigorPoints>
-            <CurrentWoundPoints>32</CurrentWoundPoints>
-            <MaxVigorPoints>10</MaxVigorPoints>
-            <MaxWoundPoints>32</MaxWoundPoints>
-            <WoundThreshhold>16</WoundThreshhold>
-            <_isStaggered>false</_isStaggered>
+            <Armor>0</Armor>
+            <CurrentMeleeDefense>5</CurrentMeleeDefense>
+            <HealthTrack z:Id="71" z:Size="8">
+              <HealthBox z:Id="72">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="73">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="74">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="75">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="76">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="77">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="78">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="79">
+                <Box>Empty</Box>
+              </HealthBox>
+            </HealthTrack>
+            <IsVampire>false</IsVampire>
+            <NormalMeleeDefense>5</NormalMeleeDefense>
+            <_checkedAgainstUnconsciousness>false</_checkedAgainstUnconsciousness>
+            <curPool z:Id="80">
+              <AutomaticExtaSuccessesOnSuccess>0</AutomaticExtaSuccessesOnSuccess>
+              <CurrentSuccesses>0</CurrentSuccesses>
+              <ExplodesOn>10</ExplodesOn>
+              <NumberOfDice>5</NumberOfDice>
+              <SubtractsOn>0</SubtractsOn>
+            </curPool>
           </CharacterSheet>
-          <CharacterSheet z:Id="82" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+          <CharacterSheet z:Id="81" xmlns="" i:type="NWoDCharacter">
             <ChosenAttack i:nil="true" />
-            <CurInitiative>-1</CurInitiative>
+            <CurInitiative>7</CurInitiative>
             <DamageType i:nil="true" />
             <DisplayCharacter>false</DisplayCharacter>
             <FinalAttackPool>0</FinalAttackPool>
             <HasAttacked>false</HasAttacked>
-            <HasMoved>true</HasMoved>
-            <Initiative>0</Initiative>
+            <HasMoved>false</HasMoved>
+            <Initiative>6</Initiative>
             <InitiativeModifier>0</InitiativeModifier>
             <IsSelected>false</IsSelected>
-            <Name z:Id="83">Hobgoblin_3</Name>
+            <Name z:Id="82">Dog_1</Name>
             <OtherAttackTraits xmlns:d7p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
             <PieceColor xmlns:d7p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
               <d7p1:A>255</d7p1:A>
-              <d7p1:B>255</d7p1:B>
-              <d7p1:G>0</d7p1:G>
+              <d7p1:B>0</d7p1:B>
+              <d7p1:G>128</d7p1:G>
               <d7p1:R>0</d7p1:R>
               <d7p1:ScA>1</d7p1:ScA>
-              <d7p1:ScB>1</d7p1:ScB>
-              <d7p1:ScG>0</d7p1:ScG>
+              <d7p1:ScB>0</d7p1:ScB>
+              <d7p1:ScG>0.2158605</d7p1:ScG>
               <d7p1:ScR>0</d7p1:ScR>
             </PieceColor>
             <Ruleset z:Ref="5" i:nil="true" />
-            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="84" z:Size="0" />
+            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="83" z:Size="0" />
             <Target i:nil="true" />
             <Team z:Ref="7" i:nil="true" />
-            <Traits z:Id="85" z:Size="13">
-              <Trait z:Id="86" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="14" i:nil="true" />
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
+            <Traits z:Id="84" z:Size="11">
+              <Trait z:Id="85" xmlns="" i:type="NWoDAttackTrait">
+                <TraitLabel z:Ref="10" i:nil="true" />
+                <TraitValue>9</TraitValue>
+                <DamageType z:Ref="22" i:nil="true" />
+                <DefenseTarget z:Ref="23" i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>0</SucceedsOn>
               </Trait>
-              <Trait z:Id="87" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="16" i:nil="true" />
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="86" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="25" i:nil="true" />
+                <TraitValue>6</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="88" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="18" i:nil="true" />
-                <TraitValue>12</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="87" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="27" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="89" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="20" i:nil="true" />
-                <TraitValue>14</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="90" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="22" i:nil="true" />
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="91" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="24" i:nil="true" />
-                <TraitValue>10</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="92" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="26" i:nil="true" />
+              <Trait z:Id="88" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="29" i:nil="true" />
                 <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="93" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="28" i:nil="true" />
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="89" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="31" i:nil="true" />
+                <TraitValue>7</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="94" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="30" i:nil="true" />
-                <TraitValue>1</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="90" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="33" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="95" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="32" i:nil="true" />
-                <TraitValue>30</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="96" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="34" i:nil="true" />
-                <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="97" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Ref="36" i:nil="true" />
+              <Trait z:Id="91" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="35" i:nil="true" />
                 <TraitValue>4</TraitValue>
-                <DamageType z:Ref="37" i:nil="true" />
-                <DefenseTarget z:Ref="38" i:nil="true" />
-                <CritMultipier>2</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="98" z:Size="1">
-                  <d9p1:string z:Ref="40" i:nil="true" />
-                </DamageDescriptors>
-                <DamageDice z:Id="99" z:Size="1">
-                  <PathfinderDicePool z:Id="100">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>2</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>19</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="101" z:Size="1">
-                  <d9p1:int>4</d9p1:int>
-                </ToHitBonusList>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="102" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Ref="45" i:nil="true" />
+              <Trait z:Id="92" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="37" i:nil="true" />
                 <TraitValue>3</TraitValue>
-                <DamageType z:Ref="37" i:nil="true" />
-                <DefenseTarget z:Ref="46" i:nil="true" />
-                <CritMultipier>3</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="103" z:Size="1">
-                  <d9p1:string z:Ref="48" i:nil="true" />
-                </DamageDescriptors>
-                <DamageDice z:Id="104" z:Size="1">
-                  <PathfinderDicePool z:Id="105">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>0</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>20</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="106" z:Size="1">
-                  <d9p1:int>3</d9p1:int>
-                </ToHitBonusList>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="93" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="39" i:nil="true" />
+                <TraitValue>8</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="94" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="41" i:nil="true" />
+                <TraitValue>5</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="95" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="43" i:nil="true" />
+                <TraitValue>42</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
             </Traits>
-            <Visual z:Id="107">
+            <Visual z:Id="96">
               <LocationForSave xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
-                <d8p1:_x>-13.894836479106193</d8p1:_x>
-                <d8p1:_y>19.018565760653555</d8p1:_y>
-                <d8p1:_z>3.4999999999999716</d8p1:_z>
+                <d8p1:_x>72.952930054526718</d8p1:_x>
+                <d8p1:_y>-7.9386609654649085</d8p1:_y>
+                <d8p1:_z>3.4999999999999432</d8p1:_z>
               </LocationForSave>
               <LongestPictureSide>5</LongestPictureSide>
-              <Name z:Ref="83" i:nil="true" />
-              <PictureFileName z:Ref="53" i:nil="true" />
+              <Name z:Ref="82" i:nil="true" />
+              <PictureFileName z:Ref="45" i:nil="true" />
               <PictureOffset>3.5</PictureOffset>
               <PieceColor xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
                 <d8p1:A>255</d8p1:A>
-                <d8p1:B>255</d8p1:B>
-                <d8p1:G>0</d8p1:G>
+                <d8p1:B>0</d8p1:B>
+                <d8p1:G>128</d8p1:G>
                 <d8p1:R>0</d8p1:R>
                 <d8p1:ScA>1</d8p1:ScA>
-                <d8p1:ScB>1</d8p1:ScB>
-                <d8p1:ScG>0</d8p1:ScG>
+                <d8p1:ScB>0</d8p1:ScB>
+                <d8p1:ScG>0.2158605</d8p1:ScG>
                 <d8p1:ScR>0</d8p1:ScR>
               </PieceColor>
-              <Speed>30</Speed>
-              <StatusEffects z:Id="108" z:Size="0" />
+              <Speed>42</Speed>
+              <StatusEffects z:Id="97" z:Size="0" />
             </Visual>
-            <CurrentVigorPoints>10</CurrentVigorPoints>
-            <CurrentWoundPoints>32</CurrentWoundPoints>
-            <MaxVigorPoints>10</MaxVigorPoints>
-            <MaxWoundPoints>32</MaxWoundPoints>
-            <WoundThreshhold>16</WoundThreshhold>
-            <_isStaggered>false</_isStaggered>
+            <Armor>0</Armor>
+            <CurrentMeleeDefense>5</CurrentMeleeDefense>
+            <HealthTrack z:Id="98" z:Size="8">
+              <HealthBox z:Id="99">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="100">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="101">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="102">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="103">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="104">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="105">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="106">
+                <Box>Empty</Box>
+              </HealthBox>
+            </HealthTrack>
+            <IsVampire>false</IsVampire>
+            <NormalMeleeDefense>5</NormalMeleeDefense>
+            <_checkedAgainstUnconsciousness>false</_checkedAgainstUnconsciousness>
+            <curPool z:Id="107">
+              <AutomaticExtaSuccessesOnSuccess>0</AutomaticExtaSuccessesOnSuccess>
+              <CurrentSuccesses>0</CurrentSuccesses>
+              <ExplodesOn>10</ExplodesOn>
+              <NumberOfDice>5</NumberOfDice>
+              <SubtractsOn>0</SubtractsOn>
+            </curPool>
           </CharacterSheet>
-          <CharacterSheet z:Id="109" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+          <CharacterSheet z:Id="108" xmlns="" i:type="NWoDCharacter">
             <ChosenAttack i:nil="true" />
-            <CurInitiative>-1</CurInitiative>
+            <CurInitiative>9</CurInitiative>
             <DamageType i:nil="true" />
             <DisplayCharacter>false</DisplayCharacter>
             <FinalAttackPool>0</FinalAttackPool>
             <HasAttacked>false</HasAttacked>
-            <HasMoved>true</HasMoved>
-            <Initiative>0</Initiative>
+            <HasMoved>false</HasMoved>
+            <Initiative>6</Initiative>
             <InitiativeModifier>0</InitiativeModifier>
-            <IsSelected>true</IsSelected>
-            <Name z:Id="110">Hobgoblin_4</Name>
+            <IsSelected>false</IsSelected>
+            <Name z:Id="109">Dog_2</Name>
             <OtherAttackTraits xmlns:d7p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
             <PieceColor xmlns:d7p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
               <d7p1:A>255</d7p1:A>
-              <d7p1:B>255</d7p1:B>
-              <d7p1:G>0</d7p1:G>
+              <d7p1:B>0</d7p1:B>
+              <d7p1:G>128</d7p1:G>
               <d7p1:R>0</d7p1:R>
               <d7p1:ScA>1</d7p1:ScA>
-              <d7p1:ScB>1</d7p1:ScB>
-              <d7p1:ScG>0</d7p1:ScG>
+              <d7p1:ScB>0</d7p1:ScB>
+              <d7p1:ScG>0.2158605</d7p1:ScG>
               <d7p1:ScR>0</d7p1:ScR>
             </PieceColor>
             <Ruleset z:Ref="5" i:nil="true" />
-            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="111" z:Size="0" />
+            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="110" z:Size="0" />
             <Target i:nil="true" />
             <Team z:Ref="7" i:nil="true" />
-            <Traits z:Id="112" z:Size="13">
-              <Trait z:Id="113" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="14" i:nil="true" />
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
+            <Traits z:Id="111" z:Size="11">
+              <Trait z:Id="112" xmlns="" i:type="NWoDAttackTrait">
+                <TraitLabel z:Ref="10" i:nil="true" />
+                <TraitValue>9</TraitValue>
+                <DamageType z:Ref="22" i:nil="true" />
+                <DefenseTarget z:Ref="23" i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>0</SucceedsOn>
               </Trait>
-              <Trait z:Id="114" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="16" i:nil="true" />
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="113" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="25" i:nil="true" />
+                <TraitValue>6</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="115" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="18" i:nil="true" />
-                <TraitValue>12</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="114" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="27" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="116" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="20" i:nil="true" />
-                <TraitValue>14</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="117" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="22" i:nil="true" />
-                <TraitValue>16</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="118" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="24" i:nil="true" />
-                <TraitValue>10</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="119" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="26" i:nil="true" />
+              <Trait z:Id="115" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="29" i:nil="true" />
                 <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="120" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="28" i:nil="true" />
-                <TraitValue>2</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="116" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="31" i:nil="true" />
+                <TraitValue>7</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="121" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="30" i:nil="true" />
-                <TraitValue>1</TraitValue>
-                <Descriptor i:nil="true" />
+              <Trait z:Id="117" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="33" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="122" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="32" i:nil="true" />
-                <TraitValue>30</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="123" xmlns="" i:type="PathfinderNumericTrait">
-                <TraitLabel z:Ref="34" i:nil="true" />
-                <TraitValue>5</TraitValue>
-                <Descriptor i:nil="true" />
-              </Trait>
-              <Trait z:Id="124" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Ref="36" i:nil="true" />
+              <Trait z:Id="118" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="35" i:nil="true" />
                 <TraitValue>4</TraitValue>
-                <DamageType z:Id="125">System.Collections.Generic.List`1[System.String]</DamageType>
-                <DefenseTarget z:Ref="38" i:nil="true" />
-                <CritMultipier>2</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="126" z:Size="1">
-                  <d9p1:string z:Ref="40" i:nil="true" />
-                </DamageDescriptors>
-                <DamageDice z:Id="127" z:Size="1">
-                  <PathfinderDicePool z:Id="128">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>2</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>19</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="129" z:Size="1">
-                  <d9p1:int>4</d9p1:int>
-                </ToHitBonusList>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
-              <Trait z:Id="130" xmlns="" i:type="PathfinderAttackTrait">
-                <TraitLabel z:Ref="45" i:nil="true" />
+              <Trait z:Id="119" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="37" i:nil="true" />
                 <TraitValue>3</TraitValue>
-                <DamageType z:Ref="125" i:nil="true" />
-                <DefenseTarget z:Ref="46" i:nil="true" />
-                <CritMultipier>3</CritMultipier>
-                <DamageDescriptors xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="131" z:Size="1">
-                  <d9p1:string z:Ref="48" i:nil="true" />
-                </DamageDescriptors>
-                <DamageDice z:Id="132" z:Size="1">
-                  <PathfinderDicePool z:Id="133">
-                    <DiceQuantity>1</DiceQuantity>
-                    <DieType>8</DieType>
-                    <Modifier>0</Modifier>
-                    <TotalValue>0</TotalValue>
-                  </PathfinderDicePool>
-                </DamageDice>
-                <LowestValueToCrit>20</LowestValueToCrit>
-                <ToHitBonusList xmlns:d9p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="134" z:Size="1">
-                  <d9p1:int>3</d9p1:int>
-                </ToHitBonusList>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="120" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="39" i:nil="true" />
+                <TraitValue>8</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="121" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="41" i:nil="true" />
+                <TraitValue>5</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="122" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="43" i:nil="true" />
+                <TraitValue>42</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
               </Trait>
             </Traits>
-            <Visual z:Id="135">
+            <Visual z:Id="123">
               <LocationForSave xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
-                <d8p1:_x>28.677748191552919</d8p1:_x>
-                <d8p1:_y>14.303949306595616</d8p1:_y>
-                <d8p1:_z>3.4999999999999716</d8p1:_z>
+                <d8p1:_x>77.952930054526718</d8p1:_x>
+                <d8p1:_y>-7.9386609654649085</d8p1:_y>
+                <d8p1:_z>3.4999999999999432</d8p1:_z>
               </LocationForSave>
               <LongestPictureSide>5</LongestPictureSide>
-              <Name z:Ref="110" i:nil="true" />
-              <PictureFileName z:Ref="53" i:nil="true" />
+              <Name z:Ref="109" i:nil="true" />
+              <PictureFileName z:Ref="45" i:nil="true" />
               <PictureOffset>3.5</PictureOffset>
               <PieceColor xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
                 <d8p1:A>255</d8p1:A>
-                <d8p1:B>255</d8p1:B>
-                <d8p1:G>0</d8p1:G>
+                <d8p1:B>0</d8p1:B>
+                <d8p1:G>128</d8p1:G>
                 <d8p1:R>0</d8p1:R>
                 <d8p1:ScA>1</d8p1:ScA>
-                <d8p1:ScB>1</d8p1:ScB>
-                <d8p1:ScG>0</d8p1:ScG>
+                <d8p1:ScB>0</d8p1:ScB>
+                <d8p1:ScG>0.2158605</d8p1:ScG>
                 <d8p1:ScR>0</d8p1:ScR>
               </PieceColor>
-              <Speed>30</Speed>
-              <StatusEffects z:Id="136" z:Size="0" />
+              <Speed>42</Speed>
+              <StatusEffects z:Id="124" z:Size="0" />
             </Visual>
-            <CurrentVigorPoints>10</CurrentVigorPoints>
-            <CurrentWoundPoints>32</CurrentWoundPoints>
-            <MaxVigorPoints>10</MaxVigorPoints>
-            <MaxWoundPoints>32</MaxWoundPoints>
-            <WoundThreshhold>16</WoundThreshhold>
-            <_isStaggered>false</_isStaggered>
+            <Armor>0</Armor>
+            <CurrentMeleeDefense>5</CurrentMeleeDefense>
+            <HealthTrack z:Id="125" z:Size="8">
+              <HealthBox z:Id="126">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="127">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="128">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="129">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="130">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="131">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="132">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="133">
+                <Box>Empty</Box>
+              </HealthBox>
+            </HealthTrack>
+            <IsVampire>false</IsVampire>
+            <NormalMeleeDefense>5</NormalMeleeDefense>
+            <_checkedAgainstUnconsciousness>false</_checkedAgainstUnconsciousness>
+            <curPool z:Id="134">
+              <AutomaticExtaSuccessesOnSuccess>0</AutomaticExtaSuccessesOnSuccess>
+              <CurrentSuccesses>0</CurrentSuccesses>
+              <ExplodesOn>10</ExplodesOn>
+              <NumberOfDice>5</NumberOfDice>
+              <SubtractsOn>0</SubtractsOn>
+            </curPool>
           </CharacterSheet>
+          <CharacterSheet z:Id="135" xmlns="" i:type="NWoDCharacter">
+            <ChosenAttack i:nil="true" />
+            <CurInitiative>11</CurInitiative>
+            <DamageType i:nil="true" />
+            <DisplayCharacter>false</DisplayCharacter>
+            <FinalAttackPool>0</FinalAttackPool>
+            <HasAttacked>false</HasAttacked>
+            <HasMoved>false</HasMoved>
+            <Initiative>6</Initiative>
+            <InitiativeModifier>0</InitiativeModifier>
+            <IsSelected>true</IsSelected>
+            <Name z:Id="136">Dog_3</Name>
+            <OtherAttackTraits xmlns:d7p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+            <PieceColor xmlns:d7p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+              <d7p1:A>255</d7p1:A>
+              <d7p1:B>0</d7p1:B>
+              <d7p1:G>128</d7p1:G>
+              <d7p1:R>0</d7p1:R>
+              <d7p1:ScA>1</d7p1:ScA>
+              <d7p1:ScB>0</d7p1:ScB>
+              <d7p1:ScG>0.2158605</d7p1:ScG>
+              <d7p1:ScR>0</d7p1:ScR>
+            </PieceColor>
+            <Ruleset z:Ref="5" i:nil="true" />
+            <StatusEffects xmlns:d7p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="137" z:Size="0" />
+            <Target i:nil="true" />
+            <Team z:Ref="7" i:nil="true" />
+            <Traits z:Id="138" z:Size="11">
+              <Trait z:Id="139" xmlns="" i:type="NWoDAttackTrait">
+                <TraitLabel z:Ref="10" i:nil="true" />
+                <TraitValue>9</TraitValue>
+                <DamageType z:Ref="22" i:nil="true" />
+                <DefenseTarget z:Ref="23" i:nil="true" />
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>0</SucceedsOn>
+              </Trait>
+              <Trait z:Id="140" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="25" i:nil="true" />
+                <TraitValue>6</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="141" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="27" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="142" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="29" i:nil="true" />
+                <TraitValue>5</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="143" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="31" i:nil="true" />
+                <TraitValue>7</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="144" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="33" i:nil="true" />
+                <TraitValue>0</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="145" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="35" i:nil="true" />
+                <TraitValue>4</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="146" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="37" i:nil="true" />
+                <TraitValue>3</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="147" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="39" i:nil="true" />
+                <TraitValue>8</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="148" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="41" i:nil="true" />
+                <TraitValue>5</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+              <Trait z:Id="149" xmlns="" i:type="NWoDTrait">
+                <TraitLabel z:Ref="43" i:nil="true" />
+                <TraitValue>42</TraitValue>
+                <AutomaticSuccesses>0</AutomaticSuccesses>
+                <ExplodesOn>10</ExplodesOn>
+                <SubtractsOn>0</SubtractsOn>
+                <SucceedsOn>8</SucceedsOn>
+              </Trait>
+            </Traits>
+            <Visual z:Id="150">
+              <LocationForSave xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
+                <d8p1:_x>82.952930054526718</d8p1:_x>
+                <d8p1:_y>-7.9386609654649085</d8p1:_y>
+                <d8p1:_z>3.4999999999999432</d8p1:_z>
+              </LocationForSave>
+              <LongestPictureSide>5</LongestPictureSide>
+              <Name z:Ref="136" i:nil="true" />
+              <PictureFileName z:Ref="45" i:nil="true" />
+              <PictureOffset>3.5</PictureOffset>
+              <PieceColor xmlns:d8p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+                <d8p1:A>255</d8p1:A>
+                <d8p1:B>0</d8p1:B>
+                <d8p1:G>128</d8p1:G>
+                <d8p1:R>0</d8p1:R>
+                <d8p1:ScA>1</d8p1:ScA>
+                <d8p1:ScB>0</d8p1:ScB>
+                <d8p1:ScG>0.2158605</d8p1:ScG>
+                <d8p1:ScR>0</d8p1:ScR>
+              </PieceColor>
+              <Speed>42</Speed>
+              <StatusEffects z:Id="151" z:Size="0" />
+            </Visual>
+            <Armor>0</Armor>
+            <CurrentMeleeDefense>5</CurrentMeleeDefense>
+            <HealthTrack z:Id="152" z:Size="8">
+              <HealthBox z:Id="153">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="154">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="155">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="156">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="157">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="158">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="159">
+                <Box>Empty</Box>
+              </HealthBox>
+              <HealthBox z:Id="160">
+                <Box>Empty</Box>
+              </HealthBox>
+            </HealthTrack>
+            <IsVampire>false</IsVampire>
+            <NormalMeleeDefense>5</NormalMeleeDefense>
+            <_checkedAgainstUnconsciousness>false</_checkedAgainstUnconsciousness>
+            <curPool z:Id="161">
+              <AutomaticExtaSuccessesOnSuccess>0</AutomaticExtaSuccessesOnSuccess>
+              <CurrentSuccesses>0</CurrentSuccesses>
+              <ExplodesOn>10</ExplodesOn>
+              <NumberOfDice>5</NumberOfDice>
+              <SubtractsOn>0</SubtractsOn>
+            </curPool>
+          </CharacterSheet>
+          <CharacterSheet z:Ref="15" i:nil="true" />
+          <CharacterSheet z:Ref="3" i:nil="true" />
         </TeamMembers>
-        <TeamName z:Id="137">Team 2</TeamName>
+        <TeamName z:Id="162">Team 5</TeamName>
       </Team>
-      <Traits z:Id="138" z:Size="13">
-        <Trait z:Id="139" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="14" i:nil="true" />
-          <TraitValue>2</TraitValue>
-          <Descriptor i:nil="true" />
+      <Traits z:Id="163" z:Size="11">
+        <Trait z:Id="164" xmlns="" i:type="NWoDAttackTrait">
+          <TraitLabel z:Ref="10" i:nil="true" />
+          <TraitValue>9</TraitValue>
+          <DamageType z:Ref="22" i:nil="true" />
+          <DefenseTarget z:Ref="23" i:nil="true" />
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>0</SucceedsOn>
         </Trait>
-        <Trait z:Id="140" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="16" i:nil="true" />
-          <TraitValue>16</TraitValue>
-          <Descriptor i:nil="true" />
+        <Trait z:Id="165" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="25" i:nil="true" />
+          <TraitValue>6</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
-        <Trait z:Id="141" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="18" i:nil="true" />
-          <TraitValue>12</TraitValue>
-          <Descriptor i:nil="true" />
+        <Trait z:Id="166" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="27" i:nil="true" />
+          <TraitValue>0</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
-        <Trait z:Id="142" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="20" i:nil="true" />
-          <TraitValue>14</TraitValue>
-          <Descriptor i:nil="true" />
-        </Trait>
-        <Trait z:Id="143" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="22" i:nil="true" />
-          <TraitValue>16</TraitValue>
-          <Descriptor i:nil="true" />
-        </Trait>
-        <Trait z:Id="144" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="24" i:nil="true" />
-          <TraitValue>10</TraitValue>
-          <Descriptor i:nil="true" />
-        </Trait>
-        <Trait z:Id="145" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="26" i:nil="true" />
+        <Trait z:Id="167" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="29" i:nil="true" />
           <TraitValue>5</TraitValue>
-          <Descriptor i:nil="true" />
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
-        <Trait z:Id="146" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="28" i:nil="true" />
-          <TraitValue>2</TraitValue>
-          <Descriptor i:nil="true" />
+        <Trait z:Id="168" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="31" i:nil="true" />
+          <TraitValue>7</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
-        <Trait z:Id="147" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="30" i:nil="true" />
-          <TraitValue>1</TraitValue>
-          <Descriptor i:nil="true" />
+        <Trait z:Id="169" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="33" i:nil="true" />
+          <TraitValue>0</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
-        <Trait z:Id="148" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="32" i:nil="true" />
-          <TraitValue>30</TraitValue>
-          <Descriptor i:nil="true" />
-        </Trait>
-        <Trait z:Id="149" xmlns="" i:type="PathfinderNumericTrait">
-          <TraitLabel z:Ref="34" i:nil="true" />
-          <TraitValue>5</TraitValue>
-          <Descriptor i:nil="true" />
-        </Trait>
-        <Trait z:Id="150" xmlns="" i:type="PathfinderAttackTrait">
-          <TraitLabel z:Ref="36" i:nil="true" />
+        <Trait z:Id="170" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="35" i:nil="true" />
           <TraitValue>4</TraitValue>
-          <DamageType z:Ref="37" i:nil="true" />
-          <DefenseTarget z:Ref="38" i:nil="true" />
-          <CritMultipier>2</CritMultipier>
-          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="151" z:Size="1">
-            <d6p1:string z:Ref="40" i:nil="true" />
-          </DamageDescriptors>
-          <DamageDice z:Id="152" z:Size="1">
-            <PathfinderDicePool z:Id="153">
-              <DiceQuantity>1</DiceQuantity>
-              <DieType>8</DieType>
-              <Modifier>2</Modifier>
-              <TotalValue>0</TotalValue>
-            </PathfinderDicePool>
-          </DamageDice>
-          <LowestValueToCrit>19</LowestValueToCrit>
-          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="154" z:Size="1">
-            <d6p1:int>4</d6p1:int>
-          </ToHitBonusList>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
-        <Trait z:Id="155" xmlns="" i:type="PathfinderAttackTrait">
-          <TraitLabel z:Ref="45" i:nil="true" />
+        <Trait z:Id="171" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="37" i:nil="true" />
           <TraitValue>3</TraitValue>
-          <DamageType z:Ref="37" i:nil="true" />
-          <DefenseTarget z:Ref="46" i:nil="true" />
-          <CritMultipier>3</CritMultipier>
-          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="156" z:Size="1">
-            <d6p1:string z:Ref="48" i:nil="true" />
-          </DamageDescriptors>
-          <DamageDice z:Id="157" z:Size="1">
-            <PathfinderDicePool z:Id="158">
-              <DiceQuantity>1</DiceQuantity>
-              <DieType>8</DieType>
-              <Modifier>0</Modifier>
-              <TotalValue>0</TotalValue>
-            </PathfinderDicePool>
-          </DamageDice>
-          <LowestValueToCrit>20</LowestValueToCrit>
-          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="159" z:Size="1">
-            <d6p1:int>3</d6p1:int>
-          </ToHitBonusList>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
+        </Trait>
+        <Trait z:Id="172" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="39" i:nil="true" />
+          <TraitValue>8</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
+        </Trait>
+        <Trait z:Id="173" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="41" i:nil="true" />
+          <TraitValue>5</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
+        </Trait>
+        <Trait z:Id="174" xmlns="" i:type="NWoDTrait">
+          <TraitLabel z:Ref="43" i:nil="true" />
+          <TraitValue>42</TraitValue>
+          <AutomaticSuccesses>0</AutomaticSuccesses>
+          <ExplodesOn>10</ExplodesOn>
+          <SubtractsOn>0</SubtractsOn>
+          <SucceedsOn>8</SucceedsOn>
         </Trait>
       </Traits>
-      <Visual z:Id="160">
+      <Visual z:Id="175">
         <LocationForSave xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media.Media3D">
-          <d5p1:_x>-2.2317929454969914</d5p1:_x>
-          <d5p1:_y>10.544524953822297</d5p1:_y>
-          <d5p1:_z>3.5000000000000284</d5p1:_z>
+          <d5p1:_x>92.952930054526718</d5p1:_x>
+          <d5p1:_y>-7.9386609654649085</d5p1:_y>
+          <d5p1:_z>3.4999999999999432</d5p1:_z>
         </LocationForSave>
         <LongestPictureSide>5</LongestPictureSide>
         <Name z:Ref="4" i:nil="true" />
-        <PictureFileName z:Ref="53" i:nil="true" />
+        <PictureFileName z:Ref="45" i:nil="true" />
         <PictureOffset>3.5</PictureOffset>
         <PieceColor xmlns:d5p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
           <d5p1:A>255</d5p1:A>
-          <d5p1:B>255</d5p1:B>
-          <d5p1:G>0</d5p1:G>
+          <d5p1:B>0</d5p1:B>
+          <d5p1:G>128</d5p1:G>
           <d5p1:R>0</d5p1:R>
           <d5p1:ScA>1</d5p1:ScA>
-          <d5p1:ScB>1</d5p1:ScB>
-          <d5p1:ScG>0</d5p1:ScG>
+          <d5p1:ScB>0</d5p1:ScB>
+          <d5p1:ScG>0.2158605</d5p1:ScG>
           <d5p1:ScR>0</d5p1:ScR>
         </PieceColor>
-        <Speed>30</Speed>
-        <StatusEffects z:Id="161" z:Size="0" />
+        <Speed>42</Speed>
+        <StatusEffects z:Id="176" z:Size="0" />
       </Visual>
-      <CurrentVigorPoints>10</CurrentVigorPoints>
-      <CurrentWoundPoints>32</CurrentWoundPoints>
-      <MaxVigorPoints>10</MaxVigorPoints>
-      <MaxWoundPoints>32</MaxWoundPoints>
-      <WoundThreshhold>16</WoundThreshhold>
-      <_isStaggered>false</_isStaggered>
+      <Armor>0</Armor>
+      <CurrentMeleeDefense>5</CurrentMeleeDefense>
+      <HealthTrack z:Id="177" z:Size="8">
+        <HealthBox z:Id="178">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="179">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="180">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="181">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="182">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="183">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="184">
+          <Box>Empty</Box>
+        </HealthBox>
+        <HealthBox z:Id="185">
+          <Box>Empty</Box>
+        </HealthBox>
+      </HealthTrack>
+      <IsVampire>false</IsVampire>
+      <NormalMeleeDefense>5</NormalMeleeDefense>
+      <_checkedAgainstUnconsciousness>false</_checkedAgainstUnconsciousness>
+      <curPool z:Id="186">
+        <AutomaticExtaSuccessesOnSuccess>0</AutomaticExtaSuccessesOnSuccess>
+        <CurrentSuccesses>0</CurrentSuccesses>
+        <ExplodesOn>10</ExplodesOn>
+        <NumberOfDice>5</NumberOfDice>
+        <SubtractsOn>0</SubtractsOn>
+      </curPool>
     </CharacterSheet>
     <CharacterSheet z:Ref="9" i:nil="true" xmlns="" />
-    <CharacterSheet z:Ref="55" i:nil="true" xmlns="" />
-    <CharacterSheet z:Ref="82" i:nil="true" xmlns="" />
-    <CharacterSheet z:Ref="109" i:nil="true" xmlns="" />
+    <CharacterSheet z:Ref="135" i:nil="true" xmlns="" />
+    <CharacterSheet z:Ref="15" i:nil="true" xmlns="" />
+    <CharacterSheet z:Ref="108" i:nil="true" xmlns="" />
+    <CharacterSheet z:Ref="81" i:nil="true" xmlns="" />
   </ActiveRoster>
-  <BoardInfo xmlns:d2p1="http://schemas.datacontract.org/2004/07/GameBoard" z:Id="162">
-    <d2p1:BoardImageName z:Id="163">E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\MapPictures\MapFront.jpg</d2p1:BoardImageName>
-    <d2p1:DefinedBoardHeight>200</d2p1:DefinedBoardHeight>
-    <d2p1:DefinedBoardWidth>874.146341463415</d2p1:DefinedBoardWidth>
+  <BoardInfo xmlns:d2p1="http://schemas.datacontract.org/2004/07/GameBoard" z:Id="187">
+    <d2p1:BoardImageName z:Id="188">MapPictures\BattleMap.jpg</d2p1:BoardImageName>
+    <d2p1:DefinedBoardHeight>0</d2p1:DefinedBoardHeight>
+    <d2p1:DefinedBoardWidth>0</d2p1:DefinedBoardWidth>
     <d2p1:MaintainRatio>true</d2p1:MaintainRatio>
   </BoardInfo>
-  <DeceasedRoster z:Id="164" z:Size="0" />
+  <DeceasedRoster z:Id="189" z:Size="0" />
 </Combat>
