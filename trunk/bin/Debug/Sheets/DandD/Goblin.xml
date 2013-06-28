@@ -4,7 +4,7 @@
 	<CharacterType>Small Humanoid</CharacterType>
 	<traits>
 	<trait label='Initiative' value='6'/>
-	<trait label='Armor Class' value='16'/>
+	<trait label='Armor Class' value='12'/>
 	<trait label='Touch' value='12'/>
 	<trait label='Flat-footed' value='14'/>
 	<trait label='Vigor' value='10'/>
