@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 
 namespace XMLCharSheets
@@ -29,14 +31,66 @@ namespace XMLCharSheets
                 return ser.ReadObject(reader);
             }
         }
-
-        internal static void OpenSaveFile()
+        static String fileSaveOpenFilter = "xml files (*.xml)|*.xml";
+        internal static void OpenFile()
         {
-            var savedCombat = FileSaveOpenService.ReadFromXML("CurrentCombat.xml", typeof(Combat)) as Combat;
-            CombatService.RosterViewModel.OpenRoster(savedCombat.ActiveRoster);
-            var allVisuals = savedCombat.ActiveRoster.Select(x => x.Visual);
-            CombatService.VisualsViewModel.OpenVisuals(allVisuals);
-            CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Directory.GetCurrentDirectory()+"\\Saves";
+            openFileDialog.Filter = fileSaveOpenFilter;
+            if ((bool)openFileDialog.ShowDialog())
+            {
+                try
+                {
+                    var savedCombat = FileSaveOpenService.ReadFromXML(openFileDialog.FileName, typeof(Combat)) as Combat;
+                    CombatService.RosterViewModel.OpenRoster(savedCombat.ActiveRoster);
+                    var allVisuals = savedCombat.ActiveRoster.Select(x => x.Visual);
+                    CombatService.VisualsViewModel.OpenVisuals(allVisuals);
+                    CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
+                    _previousFileName = openFileDialog.FileName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+            
+            
+        }
+        static string _previousFileName = "";
+        internal static void SaveFile()
+        {
+            if(!string.IsNullOrWhiteSpace(_previousFileName))
+            {
+                SaveFile(_previousFileName);
+            }
+            else
+            {
+                SaveFileAs();
+            }
+        }
+
+        internal static void SaveFileAs()
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = fileSaveOpenFilter;
+            saveFileDialog1.InitialDirectory = Directory.GetCurrentDirectory() + "\\Saves";
+            saveFileDialog1.Title = "Save the current combat";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo);
+                WriteToXML(currentCombat, saveFileDialog1.FileName, typeof(Combat));
+                _previousFileName = saveFileDialog1.FileName;
+            }
+        }
+
+        private static void SaveFile(String fileName)
+        {
+            Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo);
+            WriteToXML(currentCombat, fileName, typeof(Combat));
+            _previousFileName = fileName;
         }
     }
 }

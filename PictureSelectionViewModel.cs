@@ -36,7 +36,9 @@ namespace XMLCharSheets
             string[] pictureFiles = Directory.GetFiles(picTarget, "*.*", SearchOption.AllDirectories);
             foreach(var cur in pictureFiles)
             {
-                AllLoadedPictures.Add(new PictureFileInfo(cur, Path.GetFileNameWithoutExtension(cur)));
+                   var currentDir = Directory.GetCurrentDirectory()+"\\";
+                var correctedPath = cur.Replace(currentDir, "");
+                AllLoadedPictures.Add(new PictureFileInfo(correctedPath, Path.GetFileNameWithoutExtension(cur)));
             }
         }
 
@@ -93,6 +95,18 @@ namespace XMLCharSheets
                 _pictureFile = value;
             }
         }
+
+        public String PictureFileAbsolutePath
+        {
+            get
+            {
+                var val = Directory.GetCurrentDirectory() + "\\"+PictureFile;
+                return val;
+            }
+        }
 	
     }
+
+
+	
 }
