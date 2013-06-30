@@ -12,5 +12,6 @@ namespace XMLCharSheets
     {
         CharacterSheet ReadCharacter(CharacterSheet newChar, XElement curChar);
         UserControl CustomControlItem();
+        List<string> DamageList { get; }
     }
 }

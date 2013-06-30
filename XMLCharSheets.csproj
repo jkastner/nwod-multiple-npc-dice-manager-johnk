@@ -78,6 +78,7 @@
     <Compile Include="NWoD\NWoDDamage.cs" />
     <Compile Include="NWoD\NWoDHealthBox.cs" />
     <Compile Include="NWoD\NWoDCharacter.cs" />
+    <Compile Include="NWoD\NWoDRosterViewModel.cs" />
     <Compile Include="NWoD\NWoDTrait.cs" />
     <Compile Include="NWoD\NWoDDicePool.cs" />
     <Compile Include="NWoD\INWoDTrait.cs" />

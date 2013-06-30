@@ -26,6 +26,7 @@ namespace XMLCharSheets
     {
         ObservableCollection<CharacterSheet> targetCharacters = new ObservableCollection<CharacterSheet>();
         ObservableCollection<String> attackTraits = new ObservableCollection<String>();
+        ObservableCollection<String> otherAttackTraits = new ObservableCollection<String>();
         ObservableCollection<String> otherTraits = new ObservableCollection<String>();
         List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
         VisualsViewModel _visualsViewModel;
@@ -64,6 +65,7 @@ namespace XMLCharSheets
                         if (!attackTraits.Contains(attackTrait.TraitLabel))
                         {
                             attackTraits.Add(attackTrait.TraitLabel);
+                            otherAttackTraits.Add(attackTrait.TraitLabel);
                         }
                     }
                     else
@@ -94,11 +96,14 @@ namespace XMLCharSheets
             InitializeComponent();
 
 
-            Other_Attacks_ListBox.ItemsSource = attackTraits;
+            Other_Attacks_ListBox.ItemsSource = otherAttackTraits;
             TargetCharacters_ListBox.ItemsSource = targetCharacters;
             Shared_Attacks_ListBox.ItemsSource = attackTraits;
             Other_Traits_ListBox.ItemsSource = otherTraits;
             DamageTypes_ListBox.ItemsSource = damageTypes;
+
+
+
             TargetCharacters_ListBox.SelectedIndex = 0;
             Shared_Attacks_ListBox.SelectedIndex = 0;
             
@@ -184,16 +189,43 @@ namespace XMLCharSheets
         private void Shared_Attacks_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AttackTrait attack = FindAttackTrait(Shared_Attacks_ListBox.SelectedItem as String);
-            
+            RefreshOtherAttacks(attack.TraitLabel);
             foreach (var curDamageType in DamageTypes_ListBox.Items)
             {
                 String damageString = curDamageType as String;
                 if (damageString.Equals(attack.DamageType))
                 {
                     DamageTypes_ListBox.SelectedItem = curDamageType;
+                    break;
+                }
+            }
+
+        }
+
+        private void RefreshOtherAttacks(string mainAttack)
+        {
+            List <String> previousItems = new List<string>();
+            foreach (var cur in Other_Traits_ListBox.SelectedItems)
+            {
+                previousItems.Add(cur as String);
+            }
+            otherAttackTraits.Clear();
+            foreach (var cur in attackTraits)
+            {
+                if (!cur.Equals(mainAttack))
+                {
+                    otherAttackTraits.Add(cur);
+                }
+            }
+            foreach (var previousSelected in previousItems)
+            {
+                if (!previousSelected.Equals(mainAttack))
+                {
+                    Other_Attacks_ListBox.SelectedItems.Add(previousSelected);
                 }
             }
         }
+
 
         private AttackTrait FindAttackTrait(String attackName)
         {
@@ -218,7 +250,7 @@ namespace XMLCharSheets
 
         private void DrawAttackLine()
         {
-            if (SelectedTarget.Visual == null)
+            if (SelectedTarget == null || SelectedTarget.Visual == null)
                 return;
             foreach (var cur in _selectedCharacters)
             {

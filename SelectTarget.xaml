@@ -10,16 +10,21 @@
         >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             
         </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Target"></Label>
-            <ListBox Grid.Row="1"
+        <Label Grid.Row="0" Content="Target"></Label>
+            
+        <ListBox Grid.Row="1"
                 Margin="0,0,0,5" Name="TargetCharacters_ListBox"  HorizontalAlignment="Stretch" MaxHeight="250" SelectionMode="Single"
                 SelectionChanged="PotentialTargetChanged_TargetCharacters_ListBox"
                 MouseDoubleClick="DrawAttackLine_TargetCharacters_ListBox"
@@ -40,39 +45,39 @@
                     </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>
-            <StackPanel Grid.Row="2">
-                <DockPanel>
-                    <Label>Status for</Label>
-                    <Label Content="{Binding SelectedTarget.Name}"></Label>
-                </DockPanel>
-                <TextBlock Margin="5,0,0,0" Text="{Binding SelectedTarget.Status}">
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Grid.Row="3">
-                <Label Content="Attack Type"></Label>
-                <ListBox 
+        </ListBox>
+        <StackPanel Grid.Row="2">
+            <DockPanel>
+                <Label>Status for</Label>
+                <Label Content="{Binding SelectedTarget.Name}"></Label>
+            </DockPanel>
+            <TextBlock Margin="5,0,0,0" Text="{Binding SelectedTarget.Status}">
+            </TextBlock>
+        </StackPanel>
+            
+        <Label Content="Attack Type" Grid.Row="3"></Label>
+        <ListBox Grid.Row="3"
                     SelectionChanged="Shared_Attacks_ListBox_SelectionChanged"
                     Margin="0,0,0,10" Name="Shared_Attacks_ListBox" HorizontalAlignment="Stretch" SelectionMode="Single">
-                </ListBox>
-                    <Label Content="Other Skills"></Label>
-                    <ListBox 
-                        Margin="0,0,0,10" MinHeight="50" Name="Other_Traits_ListBox" HorizontalAlignment="Stretch" SelectionMode="Extended">
+        </ListBox>
+        <Label Grid.Row="4" Content="Other Skills"></Label>
+        <ListBox Grid.Row="5" MaxHeight="70"
+                        Margin="0,0,0,10" Name="Other_Traits_ListBox" HorizontalAlignment="Stretch" SelectionMode="Extended">
                     </ListBox>
-                    <Label Content="Other Attacks"></Label>
-                    <ListBox 
-                        Margin="0,0,0,10" MinHeight="50" Name="Other_Attacks_ListBox" HorizontalAlignment="Stretch" SelectionMode="Extended">
-                    </ListBox>
-        </StackPanel>
+        <Label Grid.Row="6" Content="Other Attacks"></Label>
+        <ListBox  Grid.Row="7"
+                Margin="0,0,0,10" Name="Other_Attacks_ListBox" HorizontalAlignment="Stretch" SelectionMode="Extended">
+        </ListBox>
 
-            <ListBox Grid.Row="4"
-                Margin="0,0,0,10" Name="DamageTypes_ListBox" HorizontalAlignment="Stretch" SelectionMode="Single">
-            </ListBox>
 
-            <DockPanel Grid.Row="5">
-                <Button HorizontalAlignment="Left" Click="OK_Button_Click"  VerticalAlignment="Bottom" Content="OK" Width="75" MinWidth="50"/>
-                <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel" Width="75" MinWidth="50"/>
-            </DockPanel>
+        <ListBox Grid.Row="8" MaxHeight="70"
+            Margin="0,0,0,10" Name="DamageTypes_ListBox" HorizontalAlignment="Stretch" SelectionMode="Single">
+        </ListBox>
+
+        <DockPanel Grid.Row="9">
+            <Button HorizontalAlignment="Left" Click="OK_Button_Click"  VerticalAlignment="Bottom" Content="OK" Width="75" MinWidth="50"/>
+            <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel" Width="75" MinWidth="50"/>
+        </DockPanel>
 
     </Grid>
 </Window>

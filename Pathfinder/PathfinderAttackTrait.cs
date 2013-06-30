@@ -54,7 +54,7 @@ namespace XMLCharSheets
 
         //Copy constructor.public PathfinderAttackTrait(string label, int attackValue, List<String> damageDescriptors, List<int> toHitBonusList, List<PathfinderDicePool> damageDice, int lowestValueToCrit, int critMultipier)
         private PathfinderAttackTrait(string label, int attackValue, String targetDefense, List<String> damageDescriptors, List<int> toHitBonusList, List<PathfinderDicePool> damageDice, int lowestValueToCrit, int critMultipier)
-            : base(label, attackValue, targetDefense, damageDescriptors.ToString())
+            : base(label, attackValue, targetDefense, string.Join(",", damageDescriptors.ToArray()))
         {
             this.TraitLabel = label;
             this.TraitValue = attackValue;

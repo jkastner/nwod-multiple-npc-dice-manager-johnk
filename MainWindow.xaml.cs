@@ -34,9 +34,6 @@ namespace XMLCharSheets
             VisualsService.GameBoardVisual = CombatService.GameBoardVisual;
             CombatService.RosterViewModel.PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
             this.DataContext = CombatService.RosterViewModel;
-            CombatService.RosterViewModel.DamageTypes.Add("Bashing");
-            CombatService.RosterViewModel.DamageTypes.Add("Lethal");
-            CombatService.RosterViewModel.DamageTypes.Add("Aggrivated");
             CombatService.GameBoardVisual.Show();
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
             CombatService.VisualsViewModel.PieceSelected += VisualPieceSelected;
@@ -50,6 +47,7 @@ namespace XMLCharSheets
             if (ruleEvent != null)
             {
                 CustomCombatPanel.Children.Add(CombatService.RosterViewModel.ControlFor(ruleEvent.SelectedRuleset));
+                CombatService.RosterViewModel.LoadDamageFor(ruleEvent.SelectedRuleset);
             }
         }
         

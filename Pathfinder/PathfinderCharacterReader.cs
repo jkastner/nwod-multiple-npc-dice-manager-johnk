@@ -13,7 +13,7 @@ namespace XMLCharSheets
     {
         #region IReadCharacters Members
 
-        public  CharacterSheet ReadCharacter(CharacterSheet newChar, XElement curChar)
+        public CharacterSheet ReadCharacter(CharacterSheet newChar, XElement curChar)
         {
             var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
                         select new
@@ -94,5 +94,16 @@ namespace XMLCharSheets
             }
         }
         #endregion
+
+        public List<string> DamageList
+        {
+            get
+            {
+                return new List<string>(){"Slashing", "Bludgeoning", "Piercing",
+                    "Precision", "Fire", "Cold", "Electricity", "Acid", "Sonic", 
+                    "Force", "Holy", "Unholy", "Good", "Evil", "Law", "Chaos", "Magic", "Divine"            
+                };
+            }
+        }
     }
 }

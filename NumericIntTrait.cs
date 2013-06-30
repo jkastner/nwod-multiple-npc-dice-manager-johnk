@@ -19,7 +19,13 @@ namespace XMLCharSheets
         public int TraitValue
         {
             get { return _traitValue; }
-            set { _traitValue = value; }
+            set 
+            { 
+                _traitValue = value;
+                OnPropertyChanged("TraitDescription");
+                OnPropertyChanged("TraitValue");
+            
+            }
         }
 
         public NumericIntTrait(String traitLabel, int traitValue):
