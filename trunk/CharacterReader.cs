@@ -65,5 +65,14 @@ namespace XMLCharSheets
             }
             return null;
         }
+
+        internal List<String> LoadDamageFor(string rulesetName)
+        {
+            if (_readers.ContainsKey(rulesetName))
+            {
+                return _readers[rulesetName].DamageList;
+            }
+            return null;
+        }
     }
 }

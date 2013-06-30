@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -13,7 +14,7 @@ namespace XMLCharSheets
     [KnownType(typeof(PathfinderAttackTrait))]
     [KnownType(typeof(PathfinderStringTrait))]
     [KnownType(typeof(NWoDTrait))]
-    public abstract class Trait
+    public abstract class Trait : INotifyPropertyChanged
     {
         private String _traitLabel;
         [DataMember]
@@ -44,6 +45,17 @@ namespace XMLCharSheets
             get;
             set;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        
 
 
 

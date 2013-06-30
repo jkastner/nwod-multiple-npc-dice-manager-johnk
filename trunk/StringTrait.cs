@@ -16,7 +16,12 @@ namespace XMLCharSheets
         public String TraitContents
         {
             get { return _traitContents; }
-            set { _traitContents = value; }
+            set 
+            { 
+                _traitContents = value;
+                OnPropertyChanged("TraitContents");
+                OnPropertyChanged("TraitDescription");
+            }
         }
 
         public StringTrait(String label, String contents) :

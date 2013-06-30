@@ -192,8 +192,12 @@ namespace XMLCharSheets
                             }
                             Report("\n\t");
                             var curDamage = attack.DamageDice[curIndex].CopyPool();
+                            string damageDescriptor = attack.DamageDescriptors[curIndex];
+                            if(DamageType!=null)
+                                damageDescriptor = DamageType;
+
                             var doneDamage = HandleAttackResults(curDamage,
-                                damageMultiplier, pathfinderTarget, attack.DamageDescriptors[curIndex], wasCrit);
+                                damageMultiplier, pathfinderTarget, damageDescriptor, wasCrit);
                             if (doneDamage != null)
                                 damage.AddRange(doneDamage);
 

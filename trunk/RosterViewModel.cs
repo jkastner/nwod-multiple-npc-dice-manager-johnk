@@ -344,17 +344,6 @@ namespace XMLCharSheets
             ResultText = "\n" + result;
         }
     
-
-        internal void DoBashing(IList characters)
-        {
-            foreach (var curItem in characters)
-            {
-                CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.DoDamage(1, "Bashing");
-            }
-        }
-
-
         internal void DoDamage(IList characters, int value, String damageType)
         {
             foreach (var curItem in characters)
@@ -364,23 +353,7 @@ namespace XMLCharSheets
             }
         }
 
-        internal void DoLethal(IList characters)
-        {
-            foreach (var curItem in characters)
-            {
-                CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.DoDamage(1, "Lethal");
-            }
-        }
 
-        internal void DoAggrivated(IList characters)
-        {
-            foreach (var curItem in characters)
-            {
-                CharacterSheet curChar = curItem as CharacterSheet;
-                curChar.DoDamage(1, "Aggrivated");
-            }
-        }
 
         internal void ResetHealth(IList characters)
         {
@@ -437,12 +410,12 @@ namespace XMLCharSheets
             }
         }
 
-        private String _rollResults;
+        private String _resultText;
         public String ResultText
         {
-            get { return _rollResults; }
+            get { return _resultText; }
             set {
-                _rollResults = _rollResults + value;
+                _resultText = _resultText + value;
                 OnPropertyChanged("ResultText");
             }
         }
@@ -548,54 +521,6 @@ namespace XMLCharSheets
             }
         }
 
-        internal void BloodHeal(IList characters)
-        {
-            foreach (var curItem in characters)
-            {
-                var curVampire = curItem as NWoDVampire;
-                if (curVampire == null)
-                {
-                    var regularChar = curItem as CharacterSheet;
-                    ResultText = regularChar.Name + " is not a vampire.";
-                }
-                else
-                {
-                    if (curVampire.CurrentVitae > 0)
-                    {
-                        if (curVampire.HasHealableWounds())
-                            curVampire.BloodHeal();
-                        else
-                        {
-                            ResultText = curVampire.Name + " did not have wounds that could be healed.";
-                        }
-                    }
-                    else
-                        ResultText = curVampire.Name + " did not have enough Vitae.";
-                }
-            }
-        }
-
-        internal void BloodBuff(IList characters)
-        {
-            foreach (var curItem in characters)
-            {
-                var curVampire = curItem as NWoDVampire;
-                if (curVampire == null)
-                {
-                    CharacterSheet regularChar = curItem as CharacterSheet;
-                    ResultText = regularChar.Name + " is not a vampire.";
-                }
-                else
-                {
-                    if (curVampire.CurrentVitae > 0)
-                        curVampire.BloodBuff();
-                    else
-                        ResultText = curVampire.Name + " did not have enough Vitae.";
-                }
-            }
-        }
-
-
         internal void SetTargets(IList attackers, IList otherTraits, CharacterSheet target, string attackType, List<String> otherAttacks, string damageType)
         {
             List <String> allOtherAttackTraits = new List<string>();
@@ -614,22 +539,6 @@ namespace XMLCharSheets
             }
         }
 
-        internal void RefillVitae(IList characters)
-        {
-            foreach (var curItem in characters)
-            {
-                var curVampire = curItem as NWoDVampire;
-                if (curVampire == null)
-                {
-                    CharacterSheet regularChar = curItem as CharacterSheet;
-                    ResultText = regularChar.Name + " is not a vampire.";
-                }
-                else
-                {
-                    curVampire.ResetVitae();
-                }
-            }
-        }
 
         internal void AssignStatus(IList characters, int duration, string description)
         {
@@ -837,6 +746,22 @@ namespace XMLCharSheets
             {
                 RegisterNewCharacter(curNew);
             }
+        }
+
+        internal void ClearResultText()
+        {
+            _resultText = "";
+            OnPropertyChanged("ResultText");
+        }
+
+        internal void LoadDamageFor(string rulesetName)
+        {
+            var types = _characterReader.LoadDamageFor(rulesetName);
+            foreach (var cur in types)
+            {
+                DamageTypes.Add(cur);
+            }
+
         }
     }
 }

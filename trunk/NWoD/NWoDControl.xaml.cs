@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XMLCharSheets.NWoD;
 
 namespace XMLCharSheets
 {
@@ -24,6 +25,7 @@ namespace XMLCharSheets
 
 
         RosterViewModel _viewModel;
+        NWoDRosterViewModel _nwodViewModel = new NWoDRosterViewModel();
         public NWoDControl()
         {
             InitializeComponent();
@@ -42,21 +44,21 @@ namespace XMLCharSheets
         {
             if (!CheckValidActive())
                 return;
-            _viewModel.DoBashing(ActiveList());
+            _nwodViewModel.DoBashing(ActiveList());
         }
 
         private void Do_Lethal_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckValidActive())
                 return;
-            _viewModel.DoLethal(ActiveList());
+            _nwodViewModel.DoLethal(ActiveList());
         }
 
         private void Do_Aggrivated_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckValidActive())
                 return;
-            _viewModel.DoAggrivated(ActiveList());
+            _nwodViewModel.DoAggrivated(ActiveList());
         }
 
         private bool CheckValidActive()
@@ -68,17 +70,17 @@ namespace XMLCharSheets
 
         private void Blood_Heal_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.BloodHeal(ActiveList());
+            _nwodViewModel.BloodHeal(ActiveList());
         }
 
         private void Blood_Buff_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.BloodBuff(ActiveList());
+            _nwodViewModel.BloodBuff(ActiveList());
         }
 
         private void Refill_Vitae_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RefillVitae(ActiveList());
+            _nwodViewModel.RefillVitae(ActiveList());
         }
     }
 }

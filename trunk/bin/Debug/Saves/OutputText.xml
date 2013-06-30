@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Combat xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/XMLCharSheets">
+  <ActiveRoster z:Id="2" z:Size="6">
+    <CharacterSheet z:Id="3" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+      <ChosenAttack i:nil="true" />
+      <CurInitiative>-1</CurInitiative>
+      <DamageType i:nil="true" />
+      <DisplayCharacter>false</DisplayCharacter>
+      <FinalAttackPool>0</FinalAttackPool>
+      <HasAttacked>false</HasAttacked>
+      <HasMoved>false</HasMoved>
+      <Initiative>0</Initiative>
+      <InitiativeModifier>0</InitiativeModifier>
+      <IsSelected>true</IsSelected>
+      <Name z:Id="4">Hobgoblin Lieutenant</Name>
+      <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+      <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+        <d4p1:A>0</d4p1:A>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>0</d4p1:G>
+        <d4p1:R>0</d4p1:R>
+        <d4p1:ScA>0</d4p1:ScA>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScR>0</d4p1:ScR>
+      </PieceColor>
+      <Ruleset z:Id="5">Pathfinder</Ruleset>
+      <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="6" z:Size="0" />
+      <Target i:nil="true" />
+      <Team i:nil="true" />
+      <Traits z:Id="7" z:Size="13">
+        <Trait z:Id="8" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="9">Initiative</TraitLabel>
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="10" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="11">Armor Class</TraitLabel>
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="12" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="13">Touch</TraitLabel>
+          <TraitValue>12</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="14" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="15">Flat-footed</TraitLabel>
+          <TraitValue>14</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="16" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="17">Vigor</TraitLabel>
+          <TraitValue>40</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="18" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="19">Constitution</TraitLabel>
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="20" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="21">Fortitude</TraitLabel>
+          <TraitValue>8</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="22" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="23">Reflex</TraitLabel>
+          <TraitValue>3</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="24" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="25">Will</TraitLabel>
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="26" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="27">Speed</TraitLabel>
+          <TraitValue>30</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="28" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Id="29">Height</TraitLabel>
+          <TraitValue>5</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="30" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Id="31">Longsword</TraitLabel>
+          <TraitValue>10</TraitValue>
+          <DamageType z:Id="32">System.Collections.Generic.List`1[System.String]</DamageType>
+          <DefenseTarget z:Id="33">Armor Class</DefenseTarget>
+          <CritMultipier>2</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="34" z:Size="1">
+            <d6p1:string z:Id="35">Slashing</d6p1:string>
+          </DamageDescriptors>
+          <DamageDice z:Id="36" z:Size="1">
+            <PathfinderDicePool z:Id="37">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>2</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>19</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="38" z:Size="1">
+            <d6p1:int>10</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+        <Trait z:Id="39" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Id="40">Longbow</TraitLabel>
+          <TraitValue>6</TraitValue>
+          <DamageType z:Ref="32" i:nil="true" />
+          <DefenseTarget z:Id="41">Armor Class</DefenseTarget>
+          <CritMultipier>3</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="42" z:Size="1">
+            <d6p1:string z:Id="43">Piercing</d6p1:string>
+          </DamageDescriptors>
+          <DamageDice z:Id="44" z:Size="1">
+            <PathfinderDicePool z:Id="45">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>0</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>20</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="46" z:Size="1">
+            <d6p1:int>6</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+      </Traits>
+      <Visual i:nil="true" />
+      <CurrentVigorPoints>40</CurrentVigorPoints>
+      <CurrentWoundPoints>32</CurrentWoundPoints>
+      <MaxVigorPoints>40</MaxVigorPoints>
+      <MaxWoundPoints>32</MaxWoundPoints>
+      <WoundThreshhold>16</WoundThreshhold>
+      <_isStaggered>false</_isStaggered>
+    </CharacterSheet>
+    <CharacterSheet z:Id="47" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+      <ChosenAttack i:nil="true" />
+      <CurInitiative>-1</CurInitiative>
+      <DamageType i:nil="true" />
+      <DisplayCharacter>false</DisplayCharacter>
+      <FinalAttackPool>0</FinalAttackPool>
+      <HasAttacked>false</HasAttacked>
+      <HasMoved>false</HasMoved>
+      <Initiative>0</Initiative>
+      <InitiativeModifier>0</InitiativeModifier>
+      <IsSelected>true</IsSelected>
+      <Name z:Id="48">Hobgoblin Lieutenant_1</Name>
+      <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+      <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+        <d4p1:A>0</d4p1:A>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>0</d4p1:G>
+        <d4p1:R>0</d4p1:R>
+        <d4p1:ScA>0</d4p1:ScA>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScR>0</d4p1:ScR>
+      </PieceColor>
+      <Ruleset z:Ref="5" i:nil="true" />
+      <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="49" z:Size="0" />
+      <Target i:nil="true" />
+      <Team i:nil="true" />
+      <Traits z:Id="50" z:Size="13">
+        <Trait z:Id="51" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="9" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="52" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="11" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="53" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="13" i:nil="true" />
+          <TraitValue>12</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="54" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="15" i:nil="true" />
+          <TraitValue>14</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="55" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="17" i:nil="true" />
+          <TraitValue>40</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="56" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="19" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="57" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="21" i:nil="true" />
+          <TraitValue>8</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="58" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="23" i:nil="true" />
+          <TraitValue>3</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="59" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="25" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="60" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="27" i:nil="true" />
+          <TraitValue>30</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="61" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="29" i:nil="true" />
+          <TraitValue>5</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="62" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="31" i:nil="true" />
+          <TraitValue>10</TraitValue>
+          <DamageType z:Ref="32" i:nil="true" />
+          <DefenseTarget z:Ref="33" i:nil="true" />
+          <CritMultipier>2</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="63" z:Size="1">
+            <d6p1:string z:Ref="35" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="64" z:Size="1">
+            <PathfinderDicePool z:Id="65">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>2</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>19</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="66" z:Size="1">
+            <d6p1:int>10</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+        <Trait z:Id="67" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="40" i:nil="true" />
+          <TraitValue>6</TraitValue>
+          <DamageType z:Ref="32" i:nil="true" />
+          <DefenseTarget z:Ref="41" i:nil="true" />
+          <CritMultipier>3</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="68" z:Size="1">
+            <d6p1:string z:Ref="43" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="69" z:Size="1">
+            <PathfinderDicePool z:Id="70">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>0</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>20</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="71" z:Size="1">
+            <d6p1:int>6</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+      </Traits>
+      <Visual i:nil="true" />
+      <CurrentVigorPoints>40</CurrentVigorPoints>
+      <CurrentWoundPoints>32</CurrentWoundPoints>
+      <MaxVigorPoints>40</MaxVigorPoints>
+      <MaxWoundPoints>32</MaxWoundPoints>
+      <WoundThreshhold>16</WoundThreshhold>
+      <_isStaggered>false</_isStaggered>
+    </CharacterSheet>
+    <CharacterSheet z:Id="72" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+      <ChosenAttack i:nil="true" />
+      <CurInitiative>-1</CurInitiative>
+      <DamageType i:nil="true" />
+      <DisplayCharacter>false</DisplayCharacter>
+      <FinalAttackPool>0</FinalAttackPool>
+      <HasAttacked>false</HasAttacked>
+      <HasMoved>false</HasMoved>
+      <Initiative>0</Initiative>
+      <InitiativeModifier>0</InitiativeModifier>
+      <IsSelected>true</IsSelected>
+      <Name z:Id="73">Hobgoblin Lieutenant_2</Name>
+      <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+      <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+        <d4p1:A>0</d4p1:A>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>0</d4p1:G>
+        <d4p1:R>0</d4p1:R>
+        <d4p1:ScA>0</d4p1:ScA>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScR>0</d4p1:ScR>
+      </PieceColor>
+      <Ruleset z:Ref="5" i:nil="true" />
+      <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="74" z:Size="0" />
+      <Target i:nil="true" />
+      <Team i:nil="true" />
+      <Traits z:Id="75" z:Size="13">
+        <Trait z:Id="76" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="9" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="77" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="11" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="78" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="13" i:nil="true" />
+          <TraitValue>12</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="79" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="15" i:nil="true" />
+          <TraitValue>14</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="80" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="17" i:nil="true" />
+          <TraitValue>40</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="81" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="19" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="82" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="21" i:nil="true" />
+          <TraitValue>8</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="83" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="23" i:nil="true" />
+          <TraitValue>3</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="84" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="25" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="85" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="27" i:nil="true" />
+          <TraitValue>30</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="86" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="29" i:nil="true" />
+          <TraitValue>5</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="87" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="31" i:nil="true" />
+          <TraitValue>10</TraitValue>
+          <DamageType z:Id="88">System.Collections.Generic.List`1[System.String]</DamageType>
+          <DefenseTarget z:Ref="33" i:nil="true" />
+          <CritMultipier>2</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="89" z:Size="1">
+            <d6p1:string z:Ref="35" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="90" z:Size="1">
+            <PathfinderDicePool z:Id="91">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>2</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>19</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="92" z:Size="1">
+            <d6p1:int>10</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+        <Trait z:Id="93" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="40" i:nil="true" />
+          <TraitValue>6</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="41" i:nil="true" />
+          <CritMultipier>3</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="94" z:Size="1">
+            <d6p1:string z:Ref="43" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="95" z:Size="1">
+            <PathfinderDicePool z:Id="96">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>0</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>20</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="97" z:Size="1">
+            <d6p1:int>6</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+      </Traits>
+      <Visual i:nil="true" />
+      <CurrentVigorPoints>40</CurrentVigorPoints>
+      <CurrentWoundPoints>32</CurrentWoundPoints>
+      <MaxVigorPoints>40</MaxVigorPoints>
+      <MaxWoundPoints>32</MaxWoundPoints>
+      <WoundThreshhold>16</WoundThreshhold>
+      <_isStaggered>false</_isStaggered>
+    </CharacterSheet>
+    <CharacterSheet z:Id="98" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+      <ChosenAttack i:nil="true" />
+      <CurInitiative>-1</CurInitiative>
+      <DamageType i:nil="true" />
+      <DisplayCharacter>false</DisplayCharacter>
+      <FinalAttackPool>0</FinalAttackPool>
+      <HasAttacked>false</HasAttacked>
+      <HasMoved>false</HasMoved>
+      <Initiative>0</Initiative>
+      <InitiativeModifier>0</InitiativeModifier>
+      <IsSelected>true</IsSelected>
+      <Name z:Id="99">Hobgoblin Lieutenant_3</Name>
+      <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+      <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+        <d4p1:A>0</d4p1:A>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>0</d4p1:G>
+        <d4p1:R>0</d4p1:R>
+        <d4p1:ScA>0</d4p1:ScA>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScR>0</d4p1:ScR>
+      </PieceColor>
+      <Ruleset z:Ref="5" i:nil="true" />
+      <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="100" z:Size="0" />
+      <Target i:nil="true" />
+      <Team i:nil="true" />
+      <Traits z:Id="101" z:Size="13">
+        <Trait z:Id="102" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="9" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="103" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="11" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="104" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="13" i:nil="true" />
+          <TraitValue>12</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="105" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="15" i:nil="true" />
+          <TraitValue>14</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="106" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="17" i:nil="true" />
+          <TraitValue>40</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="107" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="19" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="108" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="21" i:nil="true" />
+          <TraitValue>8</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="109" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="23" i:nil="true" />
+          <TraitValue>3</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="110" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="25" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="111" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="27" i:nil="true" />
+          <TraitValue>30</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="112" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="29" i:nil="true" />
+          <TraitValue>5</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="113" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="31" i:nil="true" />
+          <TraitValue>10</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="33" i:nil="true" />
+          <CritMultipier>2</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="114" z:Size="1">
+            <d6p1:string z:Ref="35" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="115" z:Size="1">
+            <PathfinderDicePool z:Id="116">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>2</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>19</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="117" z:Size="1">
+            <d6p1:int>10</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+        <Trait z:Id="118" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="40" i:nil="true" />
+          <TraitValue>6</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="41" i:nil="true" />
+          <CritMultipier>3</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="119" z:Size="1">
+            <d6p1:string z:Ref="43" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="120" z:Size="1">
+            <PathfinderDicePool z:Id="121">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>0</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>20</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="122" z:Size="1">
+            <d6p1:int>6</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+      </Traits>
+      <Visual i:nil="true" />
+      <CurrentVigorPoints>40</CurrentVigorPoints>
+      <CurrentWoundPoints>32</CurrentWoundPoints>
+      <MaxVigorPoints>40</MaxVigorPoints>
+      <MaxWoundPoints>32</MaxWoundPoints>
+      <WoundThreshhold>16</WoundThreshhold>
+      <_isStaggered>false</_isStaggered>
+    </CharacterSheet>
+    <CharacterSheet z:Id="123" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+      <ChosenAttack i:nil="true" />
+      <CurInitiative>-1</CurInitiative>
+      <DamageType i:nil="true" />
+      <DisplayCharacter>false</DisplayCharacter>
+      <FinalAttackPool>0</FinalAttackPool>
+      <HasAttacked>false</HasAttacked>
+      <HasMoved>false</HasMoved>
+      <Initiative>0</Initiative>
+      <InitiativeModifier>0</InitiativeModifier>
+      <IsSelected>true</IsSelected>
+      <Name z:Id="124">Hobgoblin Lieutenant_4</Name>
+      <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+      <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+        <d4p1:A>0</d4p1:A>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>0</d4p1:G>
+        <d4p1:R>0</d4p1:R>
+        <d4p1:ScA>0</d4p1:ScA>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScR>0</d4p1:ScR>
+      </PieceColor>
+      <Ruleset z:Ref="5" i:nil="true" />
+      <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="125" z:Size="0" />
+      <Target i:nil="true" />
+      <Team i:nil="true" />
+      <Traits z:Id="126" z:Size="13">
+        <Trait z:Id="127" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="9" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="128" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="11" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="129" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="13" i:nil="true" />
+          <TraitValue>12</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="130" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="15" i:nil="true" />
+          <TraitValue>14</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="131" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="17" i:nil="true" />
+          <TraitValue>40</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="132" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="19" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="133" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="21" i:nil="true" />
+          <TraitValue>8</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="134" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="23" i:nil="true" />
+          <TraitValue>3</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="135" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="25" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="136" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="27" i:nil="true" />
+          <TraitValue>30</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="137" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="29" i:nil="true" />
+          <TraitValue>5</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="138" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="31" i:nil="true" />
+          <TraitValue>10</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="33" i:nil="true" />
+          <CritMultipier>2</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="139" z:Size="1">
+            <d6p1:string z:Ref="35" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="140" z:Size="1">
+            <PathfinderDicePool z:Id="141">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>2</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>19</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="142" z:Size="1">
+            <d6p1:int>10</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+        <Trait z:Id="143" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="40" i:nil="true" />
+          <TraitValue>6</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="41" i:nil="true" />
+          <CritMultipier>3</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="144" z:Size="1">
+            <d6p1:string z:Ref="43" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="145" z:Size="1">
+            <PathfinderDicePool z:Id="146">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>0</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>20</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="147" z:Size="1">
+            <d6p1:int>6</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+      </Traits>
+      <Visual i:nil="true" />
+      <CurrentVigorPoints>40</CurrentVigorPoints>
+      <CurrentWoundPoints>32</CurrentWoundPoints>
+      <MaxVigorPoints>40</MaxVigorPoints>
+      <MaxWoundPoints>32</MaxWoundPoints>
+      <WoundThreshhold>16</WoundThreshhold>
+      <_isStaggered>false</_isStaggered>
+    </CharacterSheet>
+    <CharacterSheet z:Id="148" xmlns="" i:type="PathfinderCharacter_WoundsVigor">
+      <ChosenAttack i:nil="true" />
+      <CurInitiative>-1</CurInitiative>
+      <DamageType i:nil="true" />
+      <DisplayCharacter>false</DisplayCharacter>
+      <FinalAttackPool>0</FinalAttackPool>
+      <HasAttacked>false</HasAttacked>
+      <HasMoved>false</HasMoved>
+      <Initiative>0</Initiative>
+      <InitiativeModifier>0</InitiativeModifier>
+      <IsSelected>true</IsSelected>
+      <Name z:Id="149">Hobgoblin Lieutenant_5</Name>
+      <OtherAttackTraits xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" i:nil="true" />
+      <PieceColor xmlns:d4p1="http://schemas.datacontract.org/2004/07/System.Windows.Media">
+        <d4p1:A>0</d4p1:A>
+        <d4p1:B>0</d4p1:B>
+        <d4p1:G>0</d4p1:G>
+        <d4p1:R>0</d4p1:R>
+        <d4p1:ScA>0</d4p1:ScA>
+        <d4p1:ScB>0</d4p1:ScB>
+        <d4p1:ScG>0</d4p1:ScG>
+        <d4p1:ScR>0</d4p1:ScR>
+      </PieceColor>
+      <Ruleset z:Ref="5" i:nil="true" />
+      <StatusEffects xmlns:d4p1="http://schemas.datacontract.org/2004/07/XMLCharSheets" z:Id="150" z:Size="0" />
+      <Target i:nil="true" />
+      <Team i:nil="true" />
+      <Traits z:Id="151" z:Size="13">
+        <Trait z:Id="152" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="9" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="153" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="11" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="154" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="13" i:nil="true" />
+          <TraitValue>12</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="155" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="15" i:nil="true" />
+          <TraitValue>14</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="156" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="17" i:nil="true" />
+          <TraitValue>40</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="157" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="19" i:nil="true" />
+          <TraitValue>16</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="158" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="21" i:nil="true" />
+          <TraitValue>8</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="159" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="23" i:nil="true" />
+          <TraitValue>3</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="160" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="25" i:nil="true" />
+          <TraitValue>2</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="161" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="27" i:nil="true" />
+          <TraitValue>30</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="162" xmlns="" i:type="PathfinderNumericTrait">
+          <TraitLabel z:Ref="29" i:nil="true" />
+          <TraitValue>5</TraitValue>
+          <Descriptor i:nil="true" />
+        </Trait>
+        <Trait z:Id="163" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="31" i:nil="true" />
+          <TraitValue>10</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="33" i:nil="true" />
+          <CritMultipier>2</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="164" z:Size="1">
+            <d6p1:string z:Ref="35" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="165" z:Size="1">
+            <PathfinderDicePool z:Id="166">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>2</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>19</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="167" z:Size="1">
+            <d6p1:int>10</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+        <Trait z:Id="168" xmlns="" i:type="PathfinderAttackTrait">
+          <TraitLabel z:Ref="40" i:nil="true" />
+          <TraitValue>6</TraitValue>
+          <DamageType z:Ref="88" i:nil="true" />
+          <DefenseTarget z:Ref="41" i:nil="true" />
+          <CritMultipier>3</CritMultipier>
+          <DamageDescriptors xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="169" z:Size="1">
+            <d6p1:string z:Ref="43" i:nil="true" />
+          </DamageDescriptors>
+          <DamageDice z:Id="170" z:Size="1">
+            <PathfinderDicePool z:Id="171">
+              <DiceQuantity>1</DiceQuantity>
+              <DieType>8</DieType>
+              <Modifier>0</Modifier>
+              <TotalValue>0</TotalValue>
+            </PathfinderDicePool>
+          </DamageDice>
+          <LowestValueToCrit>20</LowestValueToCrit>
+          <ToHitBonusList xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="172" z:Size="1">
+            <d6p1:int>6</d6p1:int>
+          </ToHitBonusList>
+        </Trait>
+      </Traits>
+      <Visual i:nil="true" />
+      <CurrentVigorPoints>40</CurrentVigorPoints>
+      <CurrentWoundPoints>32</CurrentWoundPoints>
+      <MaxVigorPoints>40</MaxVigorPoints>
+      <MaxWoundPoints>32</MaxWoundPoints>
+      <WoundThreshhold>16</WoundThreshhold>
+      <_isStaggered>false</_isStaggered>
+    </CharacterSheet>
+  </ActiveRoster>
+  <BoardInfo xmlns:d2p1="http://schemas.datacontract.org/2004/07/GameBoard" z:Id="173">
+    <d2p1:BoardImageName z:Id="174">MapPictures\BattleMap.jpg</d2p1:BoardImageName>
+    <d2p1:DefinedBoardHeight>0</d2p1:DefinedBoardHeight>
+    <d2p1:DefinedBoardWidth>0</d2p1:DefinedBoardWidth>
+    <d2p1:MaintainRatio>true</d2p1:MaintainRatio>
+  </BoardInfo>
+  <DeceasedRoster z:Id="175" z:Size="0" />
+  <OutputText z:Id="176">
+-----------
+Hobgoblin Lieutenant_1 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+16 (d20)+148=164Hobgoblin Lieutenant rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+11 (d20)+148=159Hobgoblin Lieutenant_2 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+13 (d20)+148=161Hobgoblin Lieutenant_3 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+20 (d20)+148=168Hobgoblin Lieutenant_4 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+2 (d20)+148=150Hobgoblin Lieutenant_5 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+11 (d20)+148=159
+-----------
+Hobgoblin Lieutenant_1 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+13 (d20)+148=161Hobgoblin Lieutenant rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+13 (d20)+148=161Hobgoblin Lieutenant_2 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+5 (d20)+148=153Hobgoblin Lieutenant_3 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+2 (d20)+148=150Hobgoblin Lieutenant_4 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+9 (d20)+148=157Hobgoblin Lieutenant_5 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+9 (d20)+148=157
+-----------
+Hobgoblin Lieutenant_1 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+20 (d20)+148=168Hobgoblin Lieutenant rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+13 (d20)+148=161Hobgoblin Lieutenant_2 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+17 (d20)+148=165Hobgoblin Lieutenant_3 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+3 (d20)+148=151Hobgoblin Lieutenant_4 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+1 (d20)+148=149Hobgoblin Lieutenant_5 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+9 (d20)+148=157
+-----------
+Hobgoblin Lieutenant_1 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+3 (d20)+148=151Hobgoblin Lieutenant rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+19 (d20)+148=167Hobgoblin Lieutenant_2 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+5 (d20)+148=153Hobgoblin Lieutenant_3 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+20 (d20)+148=168Hobgoblin Lieutenant_4 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+20 (d20)+148=168Hobgoblin Lieutenant_5 rolled: (Armor Class, Initiative, Touch, Flat-footed, Vigor, Constitution, Fortitude, Reflex, Will, Speed, Height, Longsword, Longbow)
+19 (d20)+148=167</OutputText>
+</Combat>

@@ -15,7 +15,7 @@
 	<trait label='Speed' value='50'/>
 	<trait label='Claw1' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
 	<trait label='Claw2' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
-	<trait label='String' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
+	<trait label='Sting' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
 	<trait label='Height' value='10'/>
 	</traits>
 </CharacterSheet>

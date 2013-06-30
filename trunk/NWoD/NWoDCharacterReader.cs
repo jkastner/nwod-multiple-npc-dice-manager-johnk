@@ -93,6 +93,15 @@ namespace XMLCharSheets
 
         }
 
+        public List<string> DamageList
+        {
+            get
+            {
+                return new List<string>(){"Bashing", "Lethal", "Aggrivated"
+                };
+            }
+        }
+
         #endregion
     }
 }

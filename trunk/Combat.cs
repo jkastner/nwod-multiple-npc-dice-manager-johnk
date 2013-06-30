@@ -19,13 +19,15 @@ namespace XMLCharSheets
         public IList<CharacterSheet> DeceasedRoster { get; set; }
         [DataMember]
         public BoardInfo BoardInfo { get; set; }
+        [DataMember]
+        public String OutputText { get; set; }
 
-        public Combat(IList<CharacterSheet> active, IList<CharacterSheet> deceased, BoardInfo boardInfo)
+        public Combat(IList<CharacterSheet> active, IList<CharacterSheet> deceased, BoardInfo boardInfo, String currentOutput)
         {
-            // TODO: Complete member initialization
             ActiveRoster = active;
             DeceasedRoster = deceased;
             this.BoardInfo = boardInfo;
+            OutputText = currentOutput;
         }
 
 

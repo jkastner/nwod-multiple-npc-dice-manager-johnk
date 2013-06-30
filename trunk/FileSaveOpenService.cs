@@ -47,6 +47,8 @@ namespace XMLCharSheets
                     CombatService.VisualsViewModel.OpenVisuals(allVisuals);
                     CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
                     _previousFileName = openFileDialog.FileName;
+                    CombatService.RosterViewModel.ClearResultText();
+                    CombatService.RosterViewModel.ResultText = savedCombat.OutputText;
                 }
                 catch (Exception ex)
                 {
@@ -80,15 +82,13 @@ namespace XMLCharSheets
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")
             {
-                Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo);
-                WriteToXML(currentCombat, saveFileDialog1.FileName, typeof(Combat));
-                _previousFileName = saveFileDialog1.FileName;
+                SaveFile(saveFileDialog1.FileName);
             }
         }
 
         private static void SaveFile(String fileName)
         {
-            Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo);
+            Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo, CombatService.RosterViewModel.ResultText);
             WriteToXML(currentCombat, fileName, typeof(Combat));
             _previousFileName = fileName;
         }
