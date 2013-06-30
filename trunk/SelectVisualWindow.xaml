@@ -39,7 +39,7 @@
                             Margin="5"
                             MaxWidth="50"
                             MaxHeight="50" 
-                           Source="{Binding PictureFile}"/>
+                           Source="{Binding PictureFileAbsolutePath}"/>
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -451,18 +451,17 @@ namespace XMLCharSheets
 
         private void OpenFile_Click_MenuItem(object sender, RoutedEventArgs e)
         {
-            FileSaveOpenService.OpenSaveFile();
+            FileSaveOpenService.OpenFile();
         }
 
         private void SaveFile_Click_MenuItem(object sender, RoutedEventArgs e)
         {
-            Combat currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DeceasedRoster, CombatService.VisualsViewModel.CurrentBoardInfo);
-            FileSaveOpenService.WriteToXML(currentCombat, "CurrentCombat.xml", typeof(Combat));
+            FileSaveOpenService.SaveFile();
         }
 
         private void SaveAsFile_Click_MenuItem(object sender, RoutedEventArgs e)
         {
-
+            FileSaveOpenService.SaveFileAs();
         }
 
         private void Exit_Click_MenuItem(object sender, RoutedEventArgs e)
