@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -129,6 +129,18 @@ namespace GameBoard
 	        }
         }
 
+
+        public static Boolean IsInCone(Point3D coneTip, Vector3D normalAxisVector, double coneHeight, double baseRadius, Point3D testPoint)
+        {
+            var cone_dist = Vector3D.DotProduct(testPoint - coneTip, normalAxisVector);
+            var cone_radius = (cone_dist/coneHeight)*baseRadius;
+            var orth_distance = ((testPoint - coneTip) - (cone_dist*normalAxisVector)).Length;
+            if (orth_distance < cone_radius)
+            {
+                return true;
+            }
+            return false;
+        }
         /*
          * http://stackoverflow.com/questions/10768142/verify-if-point-is-inside-a-cone-in-3d-space*
          * @param x coordinates of point to be tested 
