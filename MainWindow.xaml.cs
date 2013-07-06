@@ -1,39 +1,33 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Collections;
 using GameBoard;
 using Microsoft.Win32;
-using System.Collections.ObjectModel;
 
 namespace XMLCharSheets
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
+        private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
             CombatService.RosterViewModel.RegisterVisualsViewModel(CombatService.VisualsViewModel);
             CombatService.GameBoardVisual.RegisterViewModel(CombatService.VisualsViewModel);
             VisualsService.GameBoardVisual = CombatService.GameBoardVisual;
-            CombatService.RosterViewModel.PopulateCharacters(Directory.GetCurrentDirectory()+"\\Sheets");
-            this.DataContext = CombatService.RosterViewModel;
+            CombatService.RosterViewModel.PopulateCharacters(Directory.GetCurrentDirectory() + "\\Sheets");
+            DataContext = CombatService.RosterViewModel;
             CombatService.GameBoardVisual.Show();
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
             CombatService.VisualsViewModel.PieceSelected += VisualPieceSelected;
@@ -50,7 +44,7 @@ namespace XMLCharSheets
                 CombatService.RosterViewModel.LoadDamageFor(ruleEvent.SelectedRuleset);
             }
         }
-        
+
         private void ClearSelectedPieces(object sender, EventArgs e)
         {
             ActiveCharacters_ListBox.SelectedItems.Clear();
@@ -62,8 +56,11 @@ namespace XMLCharSheets
             var pieceEvent = e as PieceSelectedEventArgs;
             if (pieceEvent != null)
             {
-                var matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.Visual != null &&
-                            x.Visual.Equals(pieceEvent.SelectedPiece)).FirstOrDefault();
+                CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.Visual != null &&
+                                                                                                    x.Visual.Equals(
+                                                                                                        pieceEvent
+                                                                                                            .SelectedPiece))
+                                                           .FirstOrDefault();
                 if (matchingChar != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
@@ -81,7 +78,7 @@ namespace XMLCharSheets
                 return;
             }
             String newName = NewCharacterName_TextBox.Text.Trim();
-            if(String.IsNullOrWhiteSpace(newName))
+            if (String.IsNullOrWhiteSpace(newName))
             {
                 CreateCharacterError_Label.Content = "Please enter a name.";
                 return;
@@ -91,7 +88,7 @@ namespace XMLCharSheets
             String originalName = newName;
             while (CombatService.RosterViewModel.ActiveRoster.Any(x => x.Name.Equals(newName)))
             {
-                newName =  originalName + "_"+count;
+                newName = originalName + "_" + count;
                 count ++;
             }
             CharacterSheet newInstance = CombatService.RosterViewModel.SelectedFullCharacter.Copy(newName);
@@ -103,7 +100,9 @@ namespace XMLCharSheets
         {
             SetupTraits(ActiveCharacters_ListBox);
             if (ActiveCharacters_ListBox.SelectedItems.Count > 0)
-                CombatService.RosterViewModel.SelectedActiveCharacter = ActiveCharacters_ListBox.SelectedItems[ActiveCharacters_ListBox.SelectedItems.Count - 1] as CharacterSheet;
+                CombatService.RosterViewModel.SelectedActiveCharacter =
+                    ActiveCharacters_ListBox.SelectedItems[ActiveCharacters_ListBox.SelectedItems.Count - 1] as
+                    CharacterSheet;
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
             CombatService.RosterViewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
@@ -135,7 +134,7 @@ namespace XMLCharSheets
         private static bool IsTextNumeric(string text)
         {
             text = text.Trim();
-            Regex regex = new Regex("[^0-9-]"); //regex that matches disallowed text
+            var regex = new Regex("[^0-9-]"); //regex that matches disallowed text
             bool isGood = !regex.IsMatch(text);
             return isGood;
         }
@@ -145,15 +144,14 @@ namespace XMLCharSheets
         {
             bool isGood = IsTextNumeric(e.Text);
             e.Handled = !isGood;
-            
         }
 
         // Use the DataObject.Pasting Handler 
         private void Modifier_TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
         {
-            if (e.DataObject.GetDataPresent(typeof(String)))
+            if (e.DataObject.GetDataPresent(typeof (String)))
             {
-                String text = (String)e.DataObject.GetData(typeof(String));
+                var text = (String) e.DataObject.GetData(typeof (String));
                 if (!IsTextNumeric(text))
                 {
                     e.CancelCommand();
@@ -171,15 +169,18 @@ namespace XMLCharSheets
                 return;
             if (ActiveList().Count == CombatService.RosterViewModel.ActiveRoster.Count())
             {
-                MessageBox.Show("Please select an active character. Some characters must remain unselcted to provide targets.");
+                MessageBox.Show(
+                    "Please select an active character. Some characters must remain unselcted to provide targets.");
                 return;
             }
-            SelectTarget st = new SelectTarget(ActiveList(), CombatService.RosterViewModel.ActiveRoster, CombatService.RosterViewModel.DamageTypes, CombatService.VisualsViewModel);
+            var st = new SelectTarget(ActiveList(), CombatService.RosterViewModel.ActiveRoster,
+                                      CombatService.RosterViewModel.DamageTypes, CombatService.VisualsViewModel);
             st.ShowDialog();
-            if (!st.WasCancel&&st.SelectedTarget != null)
+            if (!st.WasCancel && st.SelectedTarget != null)
             {
-                CombatService.RosterViewModel.SetTargets(ActiveList(), 
-                    st.Other_Traits_ListBox.SelectedItems, st.SelectedTarget, st.ChosenAttack, st.OtherAttacks, st.WoundType);
+                CombatService.RosterViewModel.SetTargets(ActiveList(),
+                                                         st.Other_Traits_ListBox.SelectedItems, st.SelectedTarget,
+                                                         st.ChosenAttack, st.OtherAttacks, st.WoundType);
             }
         }
 
@@ -188,12 +189,12 @@ namespace XMLCharSheets
             if (!CheckValidActive())
                 return;
             CombatService.RosterViewModel.RollAttackTarget(ActiveList());
-
         }
 
         internal bool CheckValidActive()
         {
-            if (CombatService.RosterViewModel.SelectedActiveCharacter == null && CombatService.RosterViewModel.SelectedDeceasedCharacter==null)
+            if (CombatService.RosterViewModel.SelectedActiveCharacter == null &&
+                CombatService.RosterViewModel.SelectedDeceasedCharacter == null)
             {
                 MessageBox.Show("Please select an active character.");
                 return false;
@@ -215,9 +216,9 @@ namespace XMLCharSheets
         {
             if (CheckValidActive())
             {
-                StatusEffectWindow se = new StatusEffectWindow();
+                var se = new StatusEffectWindow();
                 se.ShowDialog();
-                if (!se.WasCancel&&!String.IsNullOrWhiteSpace(se.StatusDescription.Text))
+                if (!se.WasCancel && !String.IsNullOrWhiteSpace(se.StatusDescription.Text))
                 {
                     int duration = Int32.Parse(se.StatusDuration.Text);
                     String description = se.StatusDescription.Text;
@@ -225,7 +226,6 @@ namespace XMLCharSheets
                 }
             }
         }
-
 
 
         private void CleanDeceasedCharacters_Button_Click(object sender, RoutedEventArgs e)
@@ -245,22 +245,22 @@ namespace XMLCharSheets
             {
                 return;
             }
-            List<String> curTraits = new List<String>();
-            foreach (var cur in characterListbox.SelectedItems)
+            var curTraits = new List<String>();
+            foreach (object cur in characterListbox.SelectedItems)
             {
-                CharacterSheet curChar = cur as CharacterSheet;
-                foreach (var curTrait in curChar.Traits)
+                var curChar = cur as CharacterSheet;
+                foreach (Trait curTrait in curChar.Traits)
                 {
                     curTraits.Add(curTrait.TraitLabel);
                 }
             }
             curTraits = curTraits.Distinct().ToList();
-            foreach (var cur in curTraits)
+            foreach (string cur in curTraits)
             {
                 CombatService.RosterViewModel.CurrentTraits.Add(cur);
             }
         }
-        
+
         private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckValidActive())
@@ -275,7 +275,6 @@ namespace XMLCharSheets
                 return DeceasedCharacters.SelectedItems;
             }
             return ActiveCharacters_ListBox.SelectedItems;
-
         }
 
         private void AddVisual_Button_Click(object sender, RoutedEventArgs e)
@@ -286,14 +285,16 @@ namespace XMLCharSheets
                 return;
             }
             String possibleName = (ActiveCharacters_ListBox.SelectedItems[0] as CharacterSheet).Name;
-            SelectVisualWindow _visualWindow = new SelectVisualWindow(possibleName, _pictureSelectionViewModel, CombatService.RosterViewModel.Teams);
+            var _visualWindow = new SelectVisualWindow(possibleName, _pictureSelectionViewModel,
+                                                       CombatService.RosterViewModel.Teams);
             _visualWindow.ShowDialog();
             var pictureInfo = _visualWindow.SearchedDisplayItems_ListBox.SelectedItem as PictureFileInfo;
             Color pieceColor = _visualWindow.ChosenColor;
             Team chosenTeam = _visualWindow.ChosenTeam;
-            if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor!=null)
+            if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor != null)
             {
-                CombatService.RosterViewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo, pieceColor, chosenTeam);
+                CombatService.RosterViewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo,
+                                                                    pieceColor, chosenTeam);
             }
         }
 
@@ -309,18 +310,19 @@ namespace XMLCharSheets
 
         private void ChangeBackground_Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog o = new OpenFileDialog();
+            var o = new OpenFileDialog();
             o.InitialDirectory = Directory.GetCurrentDirectory() + @"\MapPictures\";
             o.Multiselect = false;
             o.ShowDialog();
             if (!String.IsNullOrWhiteSpace(o.FileName))
             {
-                SetBoardDimensions sbd = new SetBoardDimensions(CombatService.VisualsViewModel.BoardHeight, CombatService.VisualsViewModel.BoardWidth);
+                var sbd = new SetBoardDimensions(CombatService.VisualsViewModel.BoardHeight,
+                                                 CombatService.VisualsViewModel.BoardWidth);
                 sbd.ShowDialog();
                 if (!sbd.WasCancel && sbd.HasBoardHeight && sbd.HasBoardWidth)
                 {
-                    CombatService.VisualsViewModel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth, sbd.MaintainRatio);
-
+                    CombatService.VisualsViewModel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth,
+                                                                      sbd.MaintainRatio);
                 }
             }
         }
@@ -339,7 +341,7 @@ namespace XMLCharSheets
             }
             if (matchOrEmpty)
             {
-                NewCharacterName_TextBox.Text = (CombatService.RosterViewModel.SelectedFullCharacter as CharacterSheet).Name;
+                NewCharacterName_TextBox.Text = (CombatService.RosterViewModel.SelectedFullCharacter).Name;
             }
         }
 
@@ -348,21 +350,21 @@ namespace XMLCharSheets
             if (e.ClickCount == 2)
             {
                 //ActiveCharacters_ListBox.SelectedItems.Clear();
-                var team = (ActiveCharacters_ListBox.SelectedItem as CharacterSheet).Team;
-                if(team!=null)
+                Team team = (ActiveCharacters_ListBox.SelectedItem as CharacterSheet).Team;
+                if (team != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Clear();
-                    List<MoveablePicture> visuals = new List<MoveablePicture>();
-                    foreach (var cur in team.TeamMembers)
+                    var visuals = new List<MoveablePicture>();
+                    foreach (CharacterSheet cur in team.TeamMembers)
                     {
-                        var sheet = cur as CharacterSheet;
+                        CharacterSheet sheet = cur;
                         if (sheet.Visual != null)
                         {
                             visuals.Add(sheet.Visual);
                         }
                         ActiveCharacters_ListBox.SelectedItems.Add(cur);
                     }
-                    if(visuals.Count>0)
+                    if (visuals.Count > 0)
                         CombatService.VisualsViewModel.ZoomTo(visuals);
                     e.Handled = true;
                 }
@@ -373,12 +375,15 @@ namespace XMLCharSheets
         {
             if (e.ClickCount == 2)
             {
-                foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
+                foreach (object cur in ActiveCharacters_ListBox.SelectedItems)
                 {
                     var selectedCharacter = cur as CharacterSheet;
 
-                    if(selectedCharacter.Visual!=null&&selectedCharacter.Target.Visual!=null)
-                        CombatService.VisualsViewModel.DrawAttack(selectedCharacter.Visual, selectedCharacter.Target.Visual, selectedCharacter.PieceColor, new Duration(new TimeSpan(0,0,0,0,800)));
+                    if (selectedCharacter.Visual != null && selectedCharacter.Target.Visual != null)
+                        CombatService.VisualsViewModel.DrawAttack(selectedCharacter.Visual,
+                                                                  selectedCharacter.Target.Visual,
+                                                                  selectedCharacter.PieceColor,
+                                                                  new Duration(new TimeSpan(0, 0, 0, 0, 800)));
                 }
             }
         }
@@ -386,25 +391,25 @@ namespace XMLCharSheets
 
         private void SelectionMode_Button_Checked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.SetShapeMode(GameBoard.VisualsViewModel.ShapeMode.None);
+            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.None);
         }
 
         private void DrawLine_Button_Checked(object sender, RoutedEventArgs e)
         {
             CombatService.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
-            CombatService.VisualsViewModel.SetShapeMode(GameBoard.VisualsViewModel.ShapeMode.Line);
+            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Line);
         }
 
         private void DrawCone_Button_Checked(object sender, RoutedEventArgs e)
         {
             CombatService.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
-            CombatService.VisualsViewModel.SetShapeMode(GameBoard.VisualsViewModel.ShapeMode.Cone);
+            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Cone);
         }
 
         private void DrawSphere_Button_Checked(object sender, RoutedEventArgs e)
         {
             CombatService.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
-            CombatService.VisualsViewModel.SetShapeMode(GameBoard.VisualsViewModel.ShapeMode.Sphere);
+            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Sphere);
         }
 
         private void TapeMeasure_Button_Checked(object sender, RoutedEventArgs e)
@@ -422,7 +427,7 @@ namespace XMLCharSheets
             if (e.ClickCount == 2)
             {
                 //CombatService.VisualsViewModel.ZoomTo(
-                foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
+                foreach (object cur in ActiveCharacters_ListBox.SelectedItems)
                 {
                     var selectedCharacter = cur as CharacterSheet;
 
@@ -464,17 +469,7 @@ namespace XMLCharSheets
 
         private void Exit_Click_MenuItem(object sender, RoutedEventArgs e)
         {
-            System.Environment.Exit(0);
+            Environment.Exit(0);
         }
-
-
-
-
-
     }
 }
-
-
-
-
-

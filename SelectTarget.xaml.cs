@@ -4,51 +4,49 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
-using System.Windows.Shapes;
 using GameBoard;
 
 namespace XMLCharSheets
 {
-
     /// <summary>
-    /// Interaction logic for SelectTarget.xaml
+    ///     Interaction logic for SelectTarget.xaml
     /// </summary>
     public partial class SelectTarget : Window, INotifyPropertyChanged
     {
-        ObservableCollection<CharacterSheet> targetCharacters = new ObservableCollection<CharacterSheet>();
-        ObservableCollection<String> attackTraits = new ObservableCollection<String>();
-        ObservableCollection<String> otherAttackTraits = new ObservableCollection<String>();
-        ObservableCollection<String> otherTraits = new ObservableCollection<String>();
-        List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
-        VisualsViewModel _visualsViewModel;
-        public SelectTarget(IList selectedObjects, ObservableCollection<CharacterSheet> allCharacters, 
-            ObservableCollection<string> damageTypes, VisualsViewModel visualsViewModel)
-        {
+        private readonly ObservableCollection<CharacterSheet> _allCharacters;
+        private readonly List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
+        private readonly VisualsViewModel _visualsViewModel;
+        private readonly ObservableCollection<String> attackTraits = new ObservableCollection<String>();
+        private readonly ObservableCollection<String> otherAttackTraits = new ObservableCollection<String>();
+        private readonly ObservableCollection<String> otherTraits = new ObservableCollection<String>();
 
-            List<CharacterSheet> selectedCharacters = new List<CharacterSheet>();
-            foreach (var cur in selectedObjects)
+        private readonly ObservableCollection<CharacterSheet> targetCharacters =
+            new ObservableCollection<CharacterSheet>();
+
+        private CharacterSheet _selectedTarget;
+
+        public SelectTarget(IList selectedObjects, ObservableCollection<CharacterSheet> allCharacters,
+                            ObservableCollection<string> damageTypes, VisualsViewModel visualsViewModel)
+        {
+            var selectedCharacters = new List<CharacterSheet>();
+            foreach (object cur in selectedObjects)
             {
                 selectedCharacters.Add(cur as CharacterSheet);
             }
-            List<CharacterSheet> allTargets = new List<CharacterSheet>();
+            var allTargets = new List<CharacterSheet>();
             _visualsViewModel = visualsViewModel;
             _allCharacters = allCharacters;
-            foreach (var curChar in allCharacters)
+            foreach (CharacterSheet curChar in allCharacters)
             {
                 allTargets.Add(curChar);
             }
             //1. Remove all attackers from list of targets.
-            List<Team> attackingTeams = new List<Team>();
-            foreach (var curChar in selectedCharacters)
+            var attackingTeams = new List<Team>();
+            foreach (CharacterSheet curChar in selectedCharacters)
             {
                 if (!attackingTeams.Contains(curChar.Team))
                 {
@@ -57,7 +55,7 @@ namespace XMLCharSheets
                 _selectedCharacters.Add(curChar);
                 allTargets.Remove(curChar);
                 //2. Build list of possible attack traits.
-                foreach (var curTrait in curChar.NumericTraits)
+                foreach (NumericIntTrait curTrait in curChar.NumericTraits)
                 {
                     var attackTrait = curTrait as AttackTrait;
                     if (attackTrait != null)
@@ -79,16 +77,18 @@ namespace XMLCharSheets
             IEnumerable<CharacterSheet> teammateTargets;
             teammateTargets = from element in allTargets where attackingTeams.Contains(element.Team) select element;
             //teammateTargets.Select(targetCharacters.Where(x => attackingTeams.Contains(x.Team)));
-            var nonTeammateTargets = allTargets.Except(teammateTargets);
+            IEnumerable<CharacterSheet> nonTeammateTargets = allTargets.Except(teammateTargets);
             //4. Sort the remaining targets by distance to a common 'origin' of the group.
-            Point3D commonOrigin = Helper3DCalcs.FindMidpoint(selectedCharacters.Where(x=>x.Visual!=null).Select(x=>x.Visual.Location));
+            Point3D commonOrigin =
+                Helper3DCalcs.FindMidpoint(selectedCharacters.Where(x => x.Visual != null)
+                                                             .Select(x => x.Visual.Location));
             nonTeammateTargets = nonTeammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
             teammateTargets = teammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
-            foreach (var cur in nonTeammateTargets)
+            foreach (CharacterSheet cur in nonTeammateTargets)
             {
                 targetCharacters.Add(cur);
             }
-            foreach (var cur in teammateTargets)
+            foreach (CharacterSheet cur in teammateTargets)
             {
                 targetCharacters.Add(cur);
             }
@@ -103,20 +103,12 @@ namespace XMLCharSheets
             DamageTypes_ListBox.ItemsSource = damageTypes;
 
 
-
             TargetCharacters_ListBox.SelectedIndex = 0;
             Shared_Attacks_ListBox.SelectedIndex = 0;
-            
         }
 
 
-        bool _wasCancel;
-        private ObservableCollection<CharacterSheet> _allCharacters;
-        public bool WasCancel
-        {
-            get { return _wasCancel; }
-            set { _wasCancel = value; }
-        }
+        public bool WasCancel { get; set; }
 
         public String ChosenAttack
         {
@@ -127,8 +119,8 @@ namespace XMLCharSheets
         {
             get
             {
-                List<String> attacks = new List<string>();
-                foreach(var cur in Other_Attacks_ListBox.SelectedItems)
+                var attacks = new List<string>();
+                foreach (object cur in Other_Attacks_ListBox.SelectedItems)
                 {
                     attacks.Add(cur as string);
                 }
@@ -136,17 +128,16 @@ namespace XMLCharSheets
             }
         }
 
-        private CharacterSheet _selectedTarget;
         public CharacterSheet SelectedTarget
         {
             get { return _selectedTarget; }
-            set 
-            { 
+            set
+            {
                 _selectedTarget = value;
                 OnPropertyChanged("SelectedTarget");
             }
         }
-        
+
 
         public String WoundType
         {
@@ -160,7 +151,7 @@ namespace XMLCharSheets
 
         private void OK()
         {
-            this.Close();
+            Close();
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
@@ -171,7 +162,7 @@ namespace XMLCharSheets
         private void Cancel()
         {
             WasCancel = true;
-            this.Close();
+            Close();
         }
 
         private void GetName_KeyDown(object sender, KeyEventArgs e)
@@ -190,34 +181,33 @@ namespace XMLCharSheets
         {
             AttackTrait attack = FindAttackTrait(Shared_Attacks_ListBox.SelectedItem as String);
             RefreshOtherAttacks(attack.TraitLabel);
-            foreach (var curDamageType in DamageTypes_ListBox.Items)
+            foreach (object curDamageType in DamageTypes_ListBox.Items)
             {
-                String damageString = curDamageType as String;
+                var damageString = curDamageType as String;
                 if (damageString.Equals(attack.DamageType))
                 {
                     DamageTypes_ListBox.SelectedItem = curDamageType;
                     break;
                 }
             }
-
         }
 
         private void RefreshOtherAttacks(string mainAttack)
         {
-            List <String> previousItems = new List<string>();
-            foreach (var cur in Other_Traits_ListBox.SelectedItems)
+            var previousItems = new List<string>();
+            foreach (object cur in Other_Traits_ListBox.SelectedItems)
             {
                 previousItems.Add(cur as String);
             }
             otherAttackTraits.Clear();
-            foreach (var cur in attackTraits)
+            foreach (string cur in attackTraits)
             {
                 if (!cur.Equals(mainAttack))
                 {
                     otherAttackTraits.Add(cur);
                 }
             }
-            foreach (var previousSelected in previousItems)
+            foreach (string previousSelected in previousItems)
             {
                 if (!previousSelected.Equals(mainAttack))
                 {
@@ -252,17 +242,25 @@ namespace XMLCharSheets
         {
             if (SelectedTarget == null || SelectedTarget.Visual == null)
                 return;
-            foreach (var cur in _selectedCharacters)
+            foreach (CharacterSheet cur in _selectedCharacters)
             {
                 if (cur.Visual != null)
                 {
-                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Visual.PieceColor, new Duration(new TimeSpan(0, 0, 0, 1)));
+                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Visual.PieceColor,
+                                                 new Duration(new TimeSpan(0, 0, 0, 1)));
                 }
             }
         }
+
+        private void DrawAttackLine_TargetCharacters_ListBox(object sender, MouseButtonEventArgs e)
+        {
+            DrawAttackLine();
+        }
+
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -271,11 +269,7 @@ namespace XMLCharSheets
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        #endregion
 
-        private void DrawAttackLine_TargetCharacters_ListBox(object sender, MouseButtonEventArgs e)
-        {
-            DrawAttackLine();
-        }
+        #endregion
     }
 }

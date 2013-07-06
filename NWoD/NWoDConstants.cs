@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace XMLCharSheets
+﻿namespace XMLCharSheets
 {
     public static class NWoDConstants
     {
@@ -13,8 +8,5 @@ namespace XMLCharSheets
         public const string HealthStatName = "Health";
         public const string MeleeDefenseStatName = "Melee Defense";
         public const string InitiativeStatName = "Initiative";
-
-
-
     }
 }

@@ -1,25 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace XMLCharSheets
 {
     /// <summary>
-    /// Interaction logic for SetBoardDimensions.xaml
+    ///     Interaction logic for SetBoardDimensions.xaml
     /// </summary>
     public partial class SetBoardDimensions : Window
     {
-
         public SetBoardDimensions(double height, double width)
         {
             InitializeComponent();
@@ -35,19 +22,17 @@ namespace XMLCharSheets
                 return double.TryParse(BoardHeight_TextBox.Text, out Num);
             }
         }
+
         public double BoardHeight
         {
-            get
-            {
-                return double.Parse(BoardHeight_TextBox.Text);
-            }
+            get { return double.Parse(BoardHeight_TextBox.Text); }
         }
 
         public bool MaintainRatio
         {
-            get { return (bool)Maintain_Ratio_CheckBox.IsChecked; }
+            get { return (bool) Maintain_Ratio_CheckBox.IsChecked; }
         }
-        
+
 
         public bool HasBoardWidth
         {
@@ -57,22 +42,14 @@ namespace XMLCharSheets
                 return double.TryParse(BoardWidth_TextBox.Text, out Num);
             }
         }
+
         public double BoardWidth
         {
-            get
-            {
-                return double.Parse(BoardWidth_TextBox.Text);
-            }
+            get { return double.Parse(BoardWidth_TextBox.Text); }
         }
 
 
-
-        bool _wasCancel;
-        public bool WasCancel
-        {
-            get { return _wasCancel; }
-            set { _wasCancel = value; }
-        }
+        public bool WasCancel { get; set; }
 
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
@@ -82,8 +59,9 @@ namespace XMLCharSheets
 
         private void OK()
         {
-            this.Close();
+            Close();
         }
+
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             Cancel();
@@ -92,10 +70,7 @@ namespace XMLCharSheets
         private void Cancel()
         {
             WasCancel = true;
-            this.Close();
+            Close();
         }
-
-
     }
-
 }

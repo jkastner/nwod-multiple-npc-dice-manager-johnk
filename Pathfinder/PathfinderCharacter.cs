@@ -2,50 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
-    [KnownType(typeof(PathfinderCharacter_HP))]
-    [KnownType(typeof(PathfinderCharacter_WoundsVigor))]
+    [KnownType(typeof (PathfinderCharacter_HP))]
+    [KnownType(typeof (PathfinderCharacter_WoundsVigor))]
     public abstract class PathfinderCharacter : CharacterSheet
     {
-        public PathfinderCharacter(string name, List<Trait> curTraits):
+        private string _rollResults = "";
+
+        public PathfinderCharacter(string name, List<Trait> curTraits) :
             base(name, curTraits)
         {
         }
 
+        public override String RollResults
+        {
+            get { return _rollResults; }
+            set { _rollResults = value; }
+        }
 
+        public override String ChosenAttackValue
+        {
+            get { return ""; }
+        }
 
+        public bool SingleAttackOnly { get; set; }
 
         public override void RollInitiative()
         {
-            var matchingNumeric = Traits.Where(x => (x as PathfinderNumericTrait) != null && x.TraitLabel.Equals("Initiative")).FirstOrDefault() as PathfinderNumericTrait;
+            var matchingNumeric =
+                Traits.Where(x => (x as PathfinderNumericTrait) != null && x.TraitLabel.Equals("Initiative"))
+                      .FirstOrDefault() as PathfinderNumericTrait;
             if (matchingNumeric == null)
                 CurInitiative = -1;
             else
             {
-                PathfinderDicePool rollIni = new PathfinderDicePool(1, 20, matchingNumeric.TraitValue);
+                var rollIni = new PathfinderDicePool(1, 20, matchingNumeric.TraitValue);
                 rollIni.Roll();
                 CurInitiative = rollIni.TotalValue;
-            }
-            
-        }
-
-
-        private string _rollResults = "";
-        public override String RollResults
-        {
-            get
-            {
-                return _rollResults;
-            }
-            set
-            {
-                _rollResults = value;
             }
         }
 
@@ -65,15 +61,19 @@ namespace XMLCharSheets
         internal PathfinderDamage AdjustDamageByResistances(PathfinderDamage receivedDamage)
         {
             String descriptor = receivedDamage.DamageDescriptor;
-            var stringTraits = (from trait in Traits
-                                where trait as StringTrait != null
-                                select trait as StringTrait);
-            var immuneTrait = stringTraits.Where(x => x.TraitLabel.Equals("Immunity") && x.TraitContents.Equals(descriptor)).FirstOrDefault();
+            IEnumerable<StringTrait> stringTraits = (from trait in Traits
+                                                     where trait as StringTrait != null
+                                                     select trait as StringTrait);
+            StringTrait immuneTrait =
+                stringTraits.Where(x => x.TraitLabel.Equals("Immunity") && x.TraitContents.Equals(descriptor))
+                            .FirstOrDefault();
             if (immuneTrait != null)
             {
                 return new PathfinderDamage(receivedDamage.DamageDescriptor, 0);
             }
-            var resistTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Resist") && x.TraitDescription.Equals(descriptor)).FirstOrDefault();
+            NumericIntTrait resistTrait =
+                NumericTraits.Where(x => x.TraitLabel.Equals("Resist") && x.TraitDescription.Equals(descriptor))
+                             .FirstOrDefault();
             if (resistTrait != null)
             {
                 int count = receivedDamage.DamageValue - resistTrait.TraitValue;
@@ -81,7 +81,8 @@ namespace XMLCharSheets
                     count = 0;
                 return new PathfinderDamage(receivedDamage.DamageDescriptor, count);
             }
-            var damageReductionTrait = NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance")).FirstOrDefault();
+            NumericIntTrait damageReductionTrait =
+                NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance")).FirstOrDefault();
             if (damageReductionTrait != null)
             {
                 if (!damageReductionTrait.TraitDescription.Equals(receivedDamage.DamageDescriptor))
@@ -92,19 +93,21 @@ namespace XMLCharSheets
                     return new PathfinderDamage(receivedDamage.DamageDescriptor, count);
                 }
                 //TODO - I hate SRD damage reduction rules.
-
             }
             return receivedDamage;
         }
 
-        internal virtual List<PathfinderDamage> HandleAttackResults(PathfinderDicePool curDamage, int damageMultiplier, PathfinderCharacter pathfinderTarget, String damageDescriptor, bool wasCrit)
+        internal virtual List<PathfinderDamage> HandleAttackResults(PathfinderDicePool curDamage, int damageMultiplier,
+                                                                    PathfinderCharacter pathfinderTarget,
+                                                                    String damageDescriptor, bool wasCrit)
         {
-            curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
-            curDamage.Modifier = curDamage.Modifier * damageMultiplier;
+            curDamage.DiceQuantity = curDamage.DiceQuantity*damageMultiplier;
+            curDamage.Modifier = curDamage.Modifier*damageMultiplier;
             curDamage.Roll();
-            Report(curDamage.PoolDescription+" = "+curDamage.TotalValue + " " + damageDescriptor);
-            PathfinderDamage doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
-                curDamage.TotalValue));
+            Report(curDamage.PoolDescription + " = " + curDamage.TotalValue + " " + damageDescriptor);
+            PathfinderDamage doneDamage =
+                pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
+                                                                                curDamage.TotalValue));
             if (doneDamage.DamageValue <= 0)
             {
                 Report("\t" + Target.Name + " resisted all damage");
@@ -114,58 +117,52 @@ namespace XMLCharSheets
             {
                 Target.DoDamage(doneDamage.DamageValue, damageDescriptor);
                 Report("Target took " + doneDamage.DamageValue + " " + damageDescriptor);
-                return new List<PathfinderDamage>(){doneDamage};
+                return new List<PathfinderDamage> {doneDamage};
             }
         }
 
-
-        public override String ChosenAttackValue
-        {
-            get
-            {
-                return "";
-            }
-        }
 
         internal override List<Damage> AttackTarget(int RollModifier)
         {
             _rollResults = "";
-            List<Damage> damage = new List<Damage>();
+            var damage = new List<Damage>();
             var pathfinderTarget = Target as PathfinderCharacter;
             int targetDefense = 0;
             var ChosenAttackTrait = FindNumericTrait(ChosenAttack) as AttackTrait;
-            var defenseTrait = pathfinderTarget.FindNumericTrait(ChosenAttackTrait.DefenseTarget);
+            NumericIntTrait defenseTrait = pathfinderTarget.FindNumericTrait(ChosenAttackTrait.DefenseTarget);
             if (defenseTrait != null)
             {
                 targetDefense = defenseTrait.TraitValue;
             }
-            List<PathfinderAttackTrait> allAttacks = new List<PathfinderAttackTrait>(){ChosenAttackTrait as PathfinderAttackTrait};
-            foreach(var cur in OtherAttackTraits)
+            var allAttacks = new List<PathfinderAttackTrait> {ChosenAttackTrait as PathfinderAttackTrait};
+            foreach (string cur in OtherAttackTraits)
             {
-                var matchingAttack = FindNumericTrait(cur);
-                if(matchingAttack != null)
+                NumericIntTrait matchingAttack = FindNumericTrait(cur);
+                if (matchingAttack != null)
                 {
                     var matchingPathfinderAttack = matchingAttack as PathfinderAttackTrait;
-                    if(matchingPathfinderAttack!=null)
+                    if (matchingPathfinderAttack != null)
                     {
                         allAttacks.Add(matchingPathfinderAttack);
                     }
                 }
             }
-            foreach(var attack in allAttacks)
+            foreach (PathfinderAttackTrait attack in allAttacks)
             {
-                foreach(var curBase in attack.ToHitBonusList)
+                foreach (int curBase in attack.ToHitBonusList)
                 {
-                    var curBonus = curBase + RollModifier;
-                    PathfinderDicePool curAttack = new PathfinderDicePool(1, 20, 0);
+                    int curBonus = curBase + RollModifier;
+                    var curAttack = new PathfinderDicePool(1, 20, 0);
                     curAttack.Roll();
                     int hitValue = curAttack.TotalValue + curBonus;
-                    Report(Name+" attacked with "+attack.TraitDescription + ": Rolled " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
-                        +" VS "+attack.DefenseTarget+" of "+targetDefense);
-                    if (curAttack.TotalValue!=1&&(curAttack.TotalValue==20||curAttack.TotalValue+curBonus >= targetDefense))
+                    Report(Name + " attacked with " + attack.TraitDescription + ": Rolled " + curAttack.TotalValue + "+" +
+                           curBonus + "=" + hitValue
+                           + " VS " + attack.DefenseTarget + " of " + targetDefense);
+                    if (curAttack.TotalValue != 1 &&
+                        (curAttack.TotalValue == 20 || curAttack.TotalValue + curBonus >= targetDefense))
                     {
                         Report("\tDamage: ");
-                        for(int curIndex = 0;curIndex<attack.DamageDice.Count;curIndex++)
+                        for (int curIndex = 0; curIndex < attack.DamageDice.Count; curIndex++)
                         {
                             int damageMultiplier = 1;
                             bool wasCrit = false;
@@ -177,8 +174,9 @@ namespace XMLCharSheets
                                     curAttack.Roll();
                                     hitValue = curAttack.TotalValue + curBonus;
                                     Report("Crit confirm " + curAttack.TotalValue + "+" + curBonus + "=" + hitValue
-                                        + " VS " + attack.DefenseTarget + " of " + targetDefense);
-                                    if (curAttack.TotalValue!=1 && (curAttack.TotalValue==20|| hitValue >= targetDefense))
+                                           + " VS " + attack.DefenseTarget + " of " + targetDefense);
+                                    if (curAttack.TotalValue != 1 &&
+                                        (curAttack.TotalValue == 20 || hitValue >= targetDefense))
                                     {
                                         Report("--Crit confirmed--");
                                         damageMultiplier = attack.CritMultipier;
@@ -191,16 +189,16 @@ namespace XMLCharSheets
                                 }
                             }
                             Report("\n\t");
-                            var curDamage = attack.DamageDice[curIndex].CopyPool();
+                            PathfinderDicePool curDamage = attack.DamageDice[curIndex].CopyPool();
                             string damageDescriptor = attack.DamageDescriptors[curIndex];
-                            if(DamageType!=null)
+                            if (DamageType != null)
                                 damageDescriptor = DamageType;
 
-                            var doneDamage = HandleAttackResults(curDamage,
-                                damageMultiplier, pathfinderTarget, damageDescriptor, wasCrit);
+                            List<PathfinderDamage> doneDamage = HandleAttackResults(curDamage,
+                                                                                    damageMultiplier, pathfinderTarget,
+                                                                                    damageDescriptor, wasCrit);
                             if (doneDamage != null)
                                 damage.AddRange(doneDamage);
-
                         }
                     }
                     Report("\n");
@@ -219,10 +217,10 @@ namespace XMLCharSheets
 
         internal override DicePool RollBasePool(List<Trait> dicePools, int modifier)
         {
-            var rollabletraits = (from trait in dicePools
-                                where trait as PathfinderNumericTrait != null
-                                select trait as PathfinderNumericTrait);
-            foreach(var cur in rollabletraits)
+            IEnumerable<PathfinderNumericTrait> rollabletraits = (from trait in dicePools
+                                                                  where trait as PathfinderNumericTrait != null
+                                                                  select trait as PathfinderNumericTrait);
+            foreach (PathfinderNumericTrait cur in rollabletraits)
             {
                 modifier += cur.TraitValue;
             }
@@ -230,9 +228,5 @@ namespace XMLCharSheets
             pool.Roll();
             return pool;
         }
-
-
-
-        public bool SingleAttackOnly { get; set; }
     }
 }

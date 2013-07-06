@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xml.Linq;
 
@@ -11,22 +9,22 @@ namespace XMLCharSheets
 {
     public class NWoDCharacterReader : IReadCharacters
     {
-
         #region IReadCharacters Members
+
         public CharacterSheet ReadCharacter(CharacterSheet newChar, XElement curChar)
         {
             var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
                         select new
-                        {
-                            Name = (String)item.Element("name"),
-                            CharacterType = (String)item.Element("CharacterType"),
-                            Speed = (String)item.Element("Speed"),
-                            Height = (String)item.Element("Height"),
-                            Traits = item.Descendants("traits"),
-                        };
+                            {
+                                Name = (String) item.Element("name"),
+                                CharacterType = (String) item.Element("CharacterType"),
+                                Speed = (String) item.Element("Speed"),
+                                Height = (String) item.Element("Height"),
+                                Traits = item.Descendants("traits"),
+                            };
             foreach (var curQuery in query)
             {
-                List<Trait> traits = new List<Trait>();
+                var traits = new List<Trait>();
                 PopulateNWoDTraits(curQuery.Traits, traits);
                 switch (curQuery.CharacterType)
                 {
@@ -36,7 +34,6 @@ namespace XMLCharSheets
                     default:
                         newChar = new NWoDCharacter(curQuery.Name, traits);
                         break;
-
                 }
             }
             return newChar;
@@ -44,27 +41,40 @@ namespace XMLCharSheets
 
         public UserControl CustomControlItem()
         {
-            Type type = this.GetType();
+            Type type = GetType();
             Assembly assembly = type.Assembly;
-            UserControl customControl = (UserControl)assembly.CreateInstance(string.Format("{0}.NWoDControl", type.Namespace));
+            var customControl = (UserControl) assembly.CreateInstance(string.Format("{0}.NWoDControl", type.Namespace));
             var temp = customControl as NWoDControl;
             return customControl;
+        }
+
+        public List<string> DamageList
+        {
+            get
+            {
+                return new List<string>
+                    {
+                        "Bashing",
+                        "Lethal",
+                        "Aggrivated"
+                    };
+            }
         }
 
         private void PopulateNWoDTraits(IEnumerable<XElement> traitsElements, List<Trait> traits)
         {
             var query = from item in traitsElements.Elements("trait")
                         select new
-                        {
-                            Label = (String)item.Attribute("label"),
-                            Value = Int32.Parse((String)item.Attribute("value")),
-                            ExplodesOn = (String)item.Attribute("ExplodesOn"),
-                            SubtractsOn = (String)item.Attribute("SubtractsOn"),
-                            AutomaticSuccesses = (String)item.Attribute("AutomaticSuccesses"),
-                            TargetDefense = (String)item.Attribute("TargetDefense"),
-                            DamageType = (String)item.Attribute("DamageType"),
-                            SucceedsOn = (String)item.Attribute("SucceedsOn"),
-                        };
+                            {
+                                Label = (String) item.Attribute("label"),
+                                Value = Int32.Parse((String) item.Attribute("value")),
+                                ExplodesOn = (String) item.Attribute("ExplodesOn"),
+                                SubtractsOn = (String) item.Attribute("SubtractsOn"),
+                                AutomaticSuccesses = (String) item.Attribute("AutomaticSuccesses"),
+                                TargetDefense = (String) item.Attribute("TargetDefense"),
+                                DamageType = (String) item.Attribute("DamageType"),
+                                SucceedsOn = (String) item.Attribute("SucceedsOn"),
+                            };
 
             var listit = query.ToList();
             foreach (var curQuery in query)
@@ -74,14 +84,17 @@ namespace XMLCharSheets
                 int explodesOn = ExtractDefaultInt(curQuery.ExplodesOn, 10);
                 int succeedOn = ExtractDefaultInt(curQuery.SucceedsOn, 8);
                 if (curQuery.TargetDefense == null)
-                    traits.Add(new NWoDTrait(curQuery.Label, curQuery.Value, explodesOn, subtractsOn, autoSuccesses, succeedOn));
+                    traits.Add(new NWoDTrait(curQuery.Label, curQuery.Value, explodesOn, subtractsOn, autoSuccesses,
+                                             succeedOn));
                 else
                 {
-                    traits.Add(new NWoDAttackTrait(curQuery.Value, curQuery.Label, curQuery.TargetDefense, curQuery.DamageType,
-                        explodesOn, subtractsOn, autoSuccesses));
+                    traits.Add(new NWoDAttackTrait(curQuery.Value, curQuery.Label, curQuery.TargetDefense,
+                                                   curQuery.DamageType,
+                                                   explodesOn, subtractsOn, autoSuccesses));
                 }
             }
         }
+
         private int ExtractDefaultInt(String curValue, int defaultValue)
         {
             int result = -1;
@@ -90,16 +103,6 @@ namespace XMLCharSheets
                 return result;
             }
             return defaultValue;
-
-        }
-
-        public List<string> DamageList
-        {
-            get
-            {
-                return new List<string>(){"Bashing", "Lethal", "Aggrivated"
-                };
-            }
         }
 
         #endregion

@@ -1,31 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using XMLCharSheets.NWoD;
 
 namespace XMLCharSheets
 {
     /// <summary>
-    /// Interaction logic for NWoDControl.xaml
+    ///     Interaction logic for NWoDControl.xaml
     /// </summary>
     public partial class NWoDControl : UserControl
     {
+        private readonly NWoDRosterViewModel _nwodViewModel = new NWoDRosterViewModel();
+        private readonly RosterViewModel _viewModel;
 
-
-        RosterViewModel _viewModel;
-        NWoDRosterViewModel _nwodViewModel = new NWoDRosterViewModel();
         public NWoDControl()
         {
             InitializeComponent();
@@ -35,7 +22,7 @@ namespace XMLCharSheets
 
         protected IList ActiveList()
         {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            var parentWindow = Window.GetWindow(this) as MainWindow;
             return parentWindow.ActiveList();
         }
 
@@ -63,7 +50,7 @@ namespace XMLCharSheets
 
         private bool CheckValidActive()
         {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            var parentWindow = Window.GetWindow(this) as MainWindow;
             return parentWindow.CheckValidActive();
         }
 

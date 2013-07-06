@@ -3,40 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
-    class PathfinderCharacter_HP : PathfinderCharacter
+    internal class PathfinderCharacter_HP : PathfinderCharacter
     {
+        private int _hitPoints;
+
         public PathfinderCharacter_HP(string name, List<Trait> curTraits) :
             base(name, curTraits)
         {
         }
 
-        public override void PopulateCombatTraits()
-        {
-            CurrentHitPoints = NumericTraits.Where(x => x.TraitLabel.Equals("HP")).FirstOrDefault().TraitValue;
-            MaxHitPoints = CurrentHitPoints;
-        }
-
-        private int _hitPoints;
         [DataMember]
         public int CurrentHitPoints
         {
             get { return _hitPoints; }
             set { _hitPoints = value; }
         }
-        private int _maxHitPoints;
+
         [DataMember]
-        public int MaxHitPoints
-        {
-            get { return _maxHitPoints; }
-            set { _maxHitPoints = value; }
-        }
-        
+        public int MaxHitPoints { get; set; }
+
         public override SolidColorBrush StatusColor
         {
             get
@@ -55,11 +45,22 @@ namespace XMLCharSheets
         {
             get
             {
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
                 sb.Append(base.Status);
                 sb.Append("HP: " + _hitPoints + "/" + MaxHitPoints);
                 return sb.ToString();
             }
+        }
+
+        internal override string HealthStatusLineDescription
+        {
+            get { return CurrentHitPoints + "/" + MaxHitPoints; }
+        }
+
+        public override void PopulateCombatTraits()
+        {
+            CurrentHitPoints = NumericTraits.Where(x => x.TraitLabel.Equals("HP")).FirstOrDefault().TraitValue;
+            MaxHitPoints = CurrentHitPoints;
         }
 
         public override void HandleRegeneration(int regenValue)
@@ -75,10 +76,6 @@ namespace XMLCharSheets
                 Report(Name + " regenerated " + regenValue + " damage -- " + CurrentHitPoints + "/" + MaxHitPoints);
             }
         }
-        internal override string HealthStatusLineDescription
-        {
-            get { return CurrentHitPoints+"/"+MaxHitPoints; }
-        }
 
         internal override void ResetHealth()
         {
@@ -88,12 +85,12 @@ namespace XMLCharSheets
 
         internal override CharacterSheet Copy(string newName)
         {
-            List<Trait> allTraits = new List<Trait>();
-            foreach (var cur in this.Traits)
+            var allTraits = new List<Trait>();
+            foreach (Trait cur in Traits)
             {
                 allTraits.Add(cur.CopyTrait());
             }
-            PathfinderCharacter_HP copyChar = new PathfinderCharacter_HP(newName, allTraits);
+            var copyChar = new PathfinderCharacter_HP(newName, allTraits);
             return copyChar;
         }
 
@@ -109,11 +106,9 @@ namespace XMLCharSheets
             {
                 SetIncapacitated(false);
             }
-            Report(Name+" has "+CurrentHitPoints+"/"+MaxHitPoints+" HP");
+            Report(Name + " has " + CurrentHitPoints + "/" + MaxHitPoints + " HP");
             NotifyStatusChange();
             return "";
         }
-
-
     }
 }

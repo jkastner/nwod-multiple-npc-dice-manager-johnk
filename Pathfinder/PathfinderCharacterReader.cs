@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xml.Linq;
 
@@ -17,23 +15,22 @@ namespace XMLCharSheets
         {
             var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
                         select new
-                        {
-                            Name = (String)item.Element("name"),
-                            CharacterType = (String)item.Element("CharacterType"),
-                            Speed = (String)item.Element("Speed"),
-                            Height = (String)item.Element("Height"),
-                            Traits = item.Descendants("traits"),
-                        };
+                            {
+                                Name = (String) item.Element("name"),
+                                CharacterType = (String) item.Element("CharacterType"),
+                                Speed = (String) item.Element("Speed"),
+                                Height = (String) item.Element("Height"),
+                                Traits = item.Descendants("traits"),
+                            };
             foreach (var curQuery in query)
             {
-                List<Trait> traits = new List<Trait>();
+                var traits = new List<Trait>();
                 PopulatePathfinderTraits(curQuery.Traits, traits);
                 switch (curQuery.CharacterType)
                 {
                     default:
                         newChar = new PathfinderCharacter_WoundsVigor(curQuery.Name, traits);
                         break;
-
                 }
             }
             return newChar;
@@ -42,9 +39,10 @@ namespace XMLCharSheets
 
         public UserControl CustomControlItem()
         {
-            Type type = this.GetType();
+            Type type = GetType();
             Assembly assembly = type.Assembly;
-            UserControl customControl = (UserControl)assembly.CreateInstance(string.Format("{0}.PathfinderControl", type.Namespace));
+            var customControl =
+                (UserControl) assembly.CreateInstance(string.Format("{0}.PathfinderControl", type.Namespace));
             return customControl;
         }
 
@@ -53,18 +51,18 @@ namespace XMLCharSheets
         {
             var query = from item in enumerable.Elements("trait")
                         select new
-                        {
-                            Label = (String)item.Attribute("label"),
-                            Value = (String)item.Attribute("value"),
-                            Descriptor = (String)item.Attribute("Descriptor"),
-                            AttackBonus = (String)item.Attribute("AttackBonus"),
-                            Damage = (String)item.Attribute("Damage"),
-                            Triggers = (String)item.Attribute("Triggers"),
-                            TriggerEffect = (String)item.Attribute("TriggerEffect"),
-                            TargetDefense = (String)item.Attribute("TargetDefense"),
-                            CritRange = (String)item.Attribute("CritRange"),
-                            CritMultiplier = (String)item.Attribute("CritMultiplier"),
-                        };
+                            {
+                                Label = (String) item.Attribute("label"),
+                                Value = (String) item.Attribute("value"),
+                                Descriptor = (String) item.Attribute("Descriptor"),
+                                AttackBonus = (String) item.Attribute("AttackBonus"),
+                                Damage = (String) item.Attribute("Damage"),
+                                Triggers = (String) item.Attribute("Triggers"),
+                                TriggerEffect = (String) item.Attribute("TriggerEffect"),
+                                TargetDefense = (String) item.Attribute("TargetDefense"),
+                                CritRange = (String) item.Attribute("CritRange"),
+                                CritMultiplier = (String) item.Attribute("CritMultiplier"),
+                            };
 
             var listit = query.ToList();
             foreach (var curQuery in query)
@@ -73,7 +71,8 @@ namespace XMLCharSheets
                 {
                     if (curQuery.Value != null)
                     {
-                        traits.Add(new PathfinderNumericTrait(curQuery.Label, int.Parse(curQuery.Value), curQuery.Descriptor));
+                        traits.Add(new PathfinderNumericTrait(curQuery.Label, int.Parse(curQuery.Value),
+                                                              curQuery.Descriptor));
                     }
                     else
                     {
@@ -88,21 +87,42 @@ namespace XMLCharSheets
                     String firstBonus = curQuery.AttackBonus.Split('/').First();
                     int firstBonusNumeric = int.Parse(firstBonus);
                     String bonus = curQuery.AttackBonus;
-                    traits.Add(new PathfinderAttackTrait(curQuery.Label, firstBonusNumeric, curQuery.Descriptor, curQuery.AttackBonus, curQuery.Damage,
-                        curQuery.Triggers, curQuery.TriggerEffect, curQuery.TargetDefense, curQuery.CritRange, curQuery.CritMultiplier));
+                    traits.Add(new PathfinderAttackTrait(curQuery.Label, firstBonusNumeric, curQuery.Descriptor,
+                                                         curQuery.AttackBonus, curQuery.Damage,
+                                                         curQuery.Triggers, curQuery.TriggerEffect,
+                                                         curQuery.TargetDefense, curQuery.CritRange,
+                                                         curQuery.CritMultiplier));
                 }
             }
         }
+
         #endregion
 
         public List<string> DamageList
         {
             get
             {
-                return new List<string>(){"Slashing", "Bludgeoning", "Piercing",
-                    "Precision", "Fire", "Cold", "Electricity", "Acid", "Sonic", 
-                    "Force", "Holy", "Unholy", "Good", "Evil", "Law", "Chaos", "Magic", "Divine"            
-                };
+                return new List<string>
+                    {
+                        "Slashing",
+                        "Bludgeoning",
+                        "Piercing",
+                        "Precision",
+                        "Fire",
+                        "Cold",
+                        "Electricity",
+                        "Acid",
+                        "Sonic",
+                        "Force",
+                        "Holy",
+                        "Unholy",
+                        "Good",
+                        "Evil",
+                        "Law",
+                        "Chaos",
+                        "Magic",
+                        "Divine"
+                    };
             }
         }
     }

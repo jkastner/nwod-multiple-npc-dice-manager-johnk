@@ -3,55 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
-    class PathfinderCharacter_WoundsVigor : PathfinderCharacter
+    internal class PathfinderCharacter_WoundsVigor : PathfinderCharacter
     {
         //http://paizo.com/pathfinderRPG/prd/ultimateCombat/variants/woundsAndVigor.html
-        
-        private int _currentWoundPoints;
-        [DataMember]
-        public int CurrentWoundPoints
+
+        [DataMember] private bool _isStaggered;
+
+        public PathfinderCharacter_WoundsVigor(string name, List<Trait> curTraits) :
+            base(name, curTraits)
         {
-            get { return _currentWoundPoints; }
-            set { _currentWoundPoints = value; }
-        }
-        private int _maxWoundPoints;
-        [DataMember]
-        public int MaxWoundPoints
-        {
-            get { return _maxWoundPoints; }
-            set { _maxWoundPoints = value; }
         }
 
-        private int _maxVigorPoints;
         [DataMember]
-        public int MaxVigorPoints
-        {
-            get { return _maxVigorPoints; }
-            set { _maxVigorPoints = value; }
-        }
+        public int CurrentWoundPoints { get; set; }
 
-        private int _currentVigorPoints;
         [DataMember]
-        public int CurrentVigorPoints
-        {
-            get { return _currentVigorPoints; }
-            set { _currentVigorPoints = value; }
-        }
+        public int MaxWoundPoints { get; set; }
+
+        [DataMember]
+        public int MaxVigorPoints { get; set; }
+
+        [DataMember]
+        public int CurrentVigorPoints { get; set; }
 
         public override SolidColorBrush StatusColor
         {
             get
             {
                 //Target has taken some Vigor, but no wounds.
-                if (MaxVigorPoints > 10 && CurrentVigorPoints <= 10 && CurrentWoundPoints==MaxWoundPoints)
+                if (MaxVigorPoints > 10 && CurrentVigorPoints <= 10 && CurrentWoundPoints == MaxWoundPoints)
                     return new SolidColorBrush(Colors.Yellow);
-                if ((CurrentWoundPoints < MaxWoundPoints)&&CurrentWoundPoints>WoundThreshhold)
+                if ((CurrentWoundPoints < MaxWoundPoints) && CurrentWoundPoints > WoundThreshhold)
                     return new SolidColorBrush(Colors.Orange);
                 if (CurrentWoundPoints <= WoundThreshhold && CurrentWoundPoints > 0)
                     return new SolidColorBrush(Colors.Red);
@@ -60,6 +47,29 @@ namespace XMLCharSheets
                 return new SolidColorBrush(Colors.Black);
             }
         }
+
+        public override string Status
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.Append(base.Status);
+                sb.Append("Health: " + HealthStatusLineDescription);
+                return sb.ToString();
+            }
+        }
+
+        internal override string HealthStatusLineDescription
+        {
+            get
+            {
+                return CurrentVigorPoints + "/" + MaxVigorPoints + " Vigor " + CurrentWoundPoints + "/" + MaxWoundPoints +
+                       " Wounds";
+            }
+        }
+
+        [DataMember]
+        public int WoundThreshhold { get; set; }
 
         internal override void ResetHealth()
         {
@@ -83,42 +93,15 @@ namespace XMLCharSheets
             }
         }
 
-        public override string Status
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(base.Status);
-                sb.Append("Health: " + HealthStatusLineDescription);
-                return sb.ToString();
-            }
-        }
-
-        internal override string HealthStatusLineDescription
-        {
-            get { return CurrentVigorPoints+"/"+MaxVigorPoints+" Vigor "+ CurrentWoundPoints+"/"+MaxWoundPoints+" Wounds"; }
-        }
-
-        [DataMember]
-        public int WoundThreshhold { get; set; }
-
-        public PathfinderCharacter_WoundsVigor(string name, List<Trait> curTraits) :
-            base(name, curTraits)
-        {
-        }
-
         public override void PopulateCombatTraits()
         {
             WoundThreshhold = NumericTraits.Where(x => x.TraitLabel.Equals("Constitution")).FirstOrDefault().TraitValue;
-            CurrentWoundPoints = WoundThreshhold * 2;
+            CurrentWoundPoints = WoundThreshhold*2;
             MaxWoundPoints = CurrentWoundPoints;
-            
+
             CurrentVigorPoints = NumericTraits.Where(x => x.TraitLabel.Equals("Vigor")).FirstOrDefault().TraitValue;
             MaxVigorPoints = CurrentVigorPoints;
         }
-
-        [DataMember]
-        bool _isStaggered = false;
 
         internal override String DoDamage(int count, String descriptor)
         {
@@ -154,7 +137,7 @@ namespace XMLCharSheets
                 AssignStatus("Staggered from wounds", 500);
                 _isStaggered = true;
             }
-            
+
             NotifyStatusChange();
             return String.Empty;
         }
@@ -162,14 +145,14 @@ namespace XMLCharSheets
         internal override string NewRound()
         {
             String start = base.NewRound();
-            if (CurrentWoundPoints < WoundThreshhold&&!IsIncapacitated)
+            if (CurrentWoundPoints < WoundThreshhold && !IsIncapacitated)
             {
-                var con = NumericTraits.Where(x => x.TraitLabel.Equals("Constitution")).FirstOrDefault().TraitValue;
-                var conBonus = (con -10)/2;
-                PathfinderDicePool conCheck = new PathfinderDicePool(1, 20, conBonus);
+                int con = NumericTraits.Where(x => x.TraitLabel.Equals("Constitution")).FirstOrDefault().TraitValue;
+                int conBonus = (con - 10)/2;
+                var conCheck = new PathfinderDicePool(1, 20, conBonus);
                 conCheck.Roll();
-                Report("\n"+Name+" made a wound check VS DC 10 -- "+conCheck.ResultDescription);
-                
+                Report("\n" + Name + " made a wound check VS DC 10 -- " + conCheck.ResultDescription);
+
                 if (conCheck.TotalValue < 10)
                 {
                     Report(", fails and is unconscious.");
@@ -182,25 +165,28 @@ namespace XMLCharSheets
 
         internal override CharacterSheet Copy(string newName)
         {
-            List<Trait> allTraits = new List<Trait>();
-            foreach (var cur in this.Traits)
+            var allTraits = new List<Trait>();
+            foreach (Trait cur in Traits)
             {
                 allTraits.Add(cur.CopyTrait());
             }
-            PathfinderCharacter_WoundsVigor copyChar = new PathfinderCharacter_WoundsVigor(newName, allTraits);
+            var copyChar = new PathfinderCharacter_WoundsVigor(newName, allTraits);
             return copyChar;
         }
 
-        internal override List<PathfinderDamage> HandleAttackResults(PathfinderDicePool curDamage, int damageMultiplier, PathfinderCharacter pathfinderTarget, string damageDescriptor, bool wasCrit)
+        internal override List<PathfinderDamage> HandleAttackResults(PathfinderDicePool curDamage, int damageMultiplier,
+                                                                     PathfinderCharacter pathfinderTarget,
+                                                                     string damageDescriptor, bool wasCrit)
         {
             var targetVitWounds = pathfinderTarget as PathfinderCharacter_WoundsVigor;
-            List<PathfinderDamage> damageList = new List<PathfinderDamage>();
-            curDamage.DiceQuantity = curDamage.DiceQuantity * damageMultiplier;
-            curDamage.Modifier = curDamage.Modifier * damageMultiplier;
+            var damageList = new List<PathfinderDamage>();
+            curDamage.DiceQuantity = curDamage.DiceQuantity*damageMultiplier;
+            curDamage.Modifier = curDamage.Modifier*damageMultiplier;
             curDamage.Roll();
             Report("Damage roll -- " + curDamage.PoolDescription + " = " + curDamage.TotalValue + " " + damageDescriptor);
-            PathfinderDamage doneDamage = pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
-                curDamage.TotalValue));
+            PathfinderDamage doneDamage =
+                pathfinderTarget.AdjustDamageByResistances(new PathfinderDamage(damageDescriptor,
+                                                                                curDamage.TotalValue));
             if (doneDamage.DamageValue <= 0)
             {
                 Report("\t" + Target.Name + " resisted all damage");
@@ -224,24 +210,23 @@ namespace XMLCharSheets
                     woundDamage += damageMultiplier;
                 }
                 String finalDamage = "";
-                if(VigorDamage>0)
+                if (VigorDamage > 0)
                 {
                     var vitDmg = new PathfinderDamage(damageDescriptor + " Vigor", VigorDamage);
                     Target.DoDamage(vitDmg.DamageValue, "Vigor");
-                    finalDamage = vitDmg.DamageValue + " "+vitDmg.DamageDescriptor;
+                    finalDamage = vitDmg.DamageValue + " " + vitDmg.DamageDescriptor;
                     damageList.Add(vitDmg);
                 }
-                if(woundDamage>0)
+                if (woundDamage > 0)
                 {
                     var wndDmg = new PathfinderDamage(damageDescriptor + " Wounds", woundDamage);
                     Target.DoDamage(wndDmg.DamageValue, "Wounds");
-                    finalDamage = finalDamage + " "+ wndDmg.DamageValue + " " + wndDmg.DamageDescriptor;
+                    finalDamage = finalDamage + " " + wndDmg.DamageValue + " " + wndDmg.DamageDescriptor;
                     damageList.Add(wndDmg);
                 }
                 Report("\n\tTarget took " + finalDamage);
                 return damageList;
             }
         }
-
     }
 }

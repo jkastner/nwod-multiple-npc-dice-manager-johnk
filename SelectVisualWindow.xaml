@@ -5,41 +5,41 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Loaded="WindowLoaded"
         KeyDown="SelectVisualWindow_KeyDown"
-        WindowState="Maximized"
-        >
+        WindowState="Maximized">
 
     <Window.Resources>
         <ObjectDataProvider MethodName="GetType"
-        ObjectType="{x:Type sys:Type}" x:Key="colorsTypeOdp">
+                            ObjectType="{x:Type sys:Type}" x:Key="colorsTypeOdp">
             <ObjectDataProvider.MethodParameters>
-                <sys:String>System.Windows.Media.Colors, PresentationCore,
-                Version=3.0.0.0, Culture=neutral,
-                PublicKeyToken=31bf3856ad364e35</sys:String>
+                <sys:String>
+                    System.Windows.Media.Colors, PresentationCore,
+                    Version=3.0.0.0, Culture=neutral,
+                    PublicKeyToken=31bf3856ad364e35
+                </sys:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
 
         <ObjectDataProvider ObjectInstance="{StaticResource colorsTypeOdp}"
-        MethodName="GetProperties" x:Key="colorPropertiesOdp">
+                            MethodName="GetProperties" x:Key="colorPropertiesOdp">
         </ObjectDataProvider>
     </Window.Resources>
 
     <StackPanel>
-        <TextBox Name="TrimList_TextBox" KeyUp="TrimList_TextBox_KeyUp"/>
-        <ListBox x:Name="SearchedDisplayItems_ListBox" 
+        <TextBox Name="TrimList_TextBox" KeyUp="TrimList_TextBox_KeyUp" />
+        <ListBox x:Name="SearchedDisplayItems_ListBox"
                  SelectionMode="Single"
                  SelectedItem="{Binding SelectedPictureInfo}"
                  MaxHeight="250"
-                 ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 >
+                 ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Margin="5,5,5,5">
-                        <TextBlock Text="{Binding PictureName}" MinWidth="150"/>
-                        <Image 
+                        <TextBlock Text="{Binding PictureName}" MinWidth="150" />
+                        <Image
                             Margin="5"
                             MaxWidth="50"
-                            MaxHeight="50" 
-                           Source="{Binding PictureFileAbsolutePath}"/>
+                            MaxHeight="50"
+                            Source="{Binding PictureFileAbsolutePath}" />
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -49,15 +49,15 @@
                 <DataTemplate>
                     <StackPanel>
                         <DockPanel Margin="5,5,5,5">
-                            <TextBlock Text="{Binding TeamName}" MinWidth="150"/>
+                            <TextBlock Text="{Binding TeamName}" MinWidth="150" />
                             <Rectangle Fill="{Binding TeamBrush}" Height="10" Width="20" />
                         </DockPanel>
                         <ListBox ItemsSource="{Binding TeamMembers}" MaxHeight="100" IsHitTestVisible="False">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Margin="5,5,5,5">
-                                        <TextBlock Text="{Binding Name}" MinWidth="150"/>
-                                        <Rectangle Height="10" Width="20" >
+                                        <TextBlock Text="{Binding Name}" MinWidth="150" />
+                                        <Rectangle Height="10" Width="20">
                                             <Rectangle.Fill>
                                                 <SolidColorBrush Color="{Binding PieceColor}" />
                                             </Rectangle.Fill>
@@ -72,8 +72,10 @@
 
         </ListBox>
         <DockPanel>
-            <Button HorizontalAlignment="Left" Click="OK_Button_Click"  VerticalAlignment="Bottom" Content="OK" Width="75" MinWidth="50"/>
-            <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel" Width="75" MinWidth="50"/>
+            <Button HorizontalAlignment="Left" Click="OK_Button_Click" VerticalAlignment="Bottom" Content="OK"
+                    Width="75" MinWidth="50" />
+            <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel"
+                    Width="75" MinWidth="50" />
         </DockPanel>
     </StackPanel>
 </Window>
