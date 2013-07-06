@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
     public class NWoDDicePool : DicePool
     {
-        private int _numberOfDice;
-        [DataMember]
-        public int NumberOfDice
+        private int _currentSuccesses;
+        private String _resultDescription;
+
+        public NWoDDicePool(INWoDTrait curTrait)
         {
-            get { return _numberOfDice; }
-            set
-            {
-                _numberOfDice = value;
-            }
+            NumberOfDice = curTrait.TraitValue;
+            ExplodesOn = curTrait.ExplodesOn;
+            SubtractsOn = curTrait.SubtractsOn;
+            AutomaticExtaSuccessesOnSuccess = curTrait.AutomaticSuccesses;
         }
 
-        private int _currentSuccesses;
+        [DataMember]
+        public int NumberOfDice { get; set; }
+
         [DataMember]
         public int CurrentSuccesses
         {
@@ -30,24 +29,18 @@ namespace XMLCharSheets
 
         [DataMember]
         public int ExplodesOn { get; set; }
+
         [DataMember]
         public int SubtractsOn { get; set; }
+
         [DataMember]
         public int AutomaticExtaSuccessesOnSuccess { get; set; }
-        private String _resultDescription;
+
         [DataMember]
         public override String ResultDescription
         {
             get { return _resultDescription; }
             set { _resultDescription = value; }
-        }
-
-        public NWoDDicePool(INWoDTrait curTrait)
-        {
-            NumberOfDice = curTrait.TraitValue;
-            ExplodesOn = curTrait.ExplodesOn;
-            SubtractsOn = curTrait.SubtractsOn;
-            AutomaticExtaSuccessesOnSuccess = curTrait.AutomaticSuccesses;
         }
 
         internal override void Roll()
@@ -59,14 +52,13 @@ namespace XMLCharSheets
             CurrentSuccesses = 0;
             _resultDescription = "";
             int numInPool = NumberOfDice;
-            if(NumberOfDice<=0)
+            if (NumberOfDice <= 0)
             {
                 numInPool = 1;
                 minSuccess = 10;
-                uberFail = (NumberOfDice*-1)+1;
+                uberFail = (NumberOfDice*-1) + 1;
             }
             RollPool(numInPool, maxSides, minSuccess, minAgain, uberFail, SubtractsOn);
-            
         }
 
         private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
@@ -100,7 +92,7 @@ namespace XMLCharSheets
                         CurrentSuccesses++;
                     }
                 }
-                if(result<= subtractsOn)
+                if (result <= subtractsOn)
                 {
                     CurrentSuccesses--;
                     if (CurrentSuccesses < 0)
@@ -108,7 +100,7 @@ namespace XMLCharSheets
                 }
                 if (CurrentSuccesses == 0 && result <= uberFail)
                 {
-                    _resultDescription = "Dramatic failure -- "+_resultDescription;
+                    _resultDescription = "Dramatic failure -- " + _resultDescription;
                     return;
                 }
             }
@@ -117,13 +109,11 @@ namespace XMLCharSheets
                 CurrentSuccesses += AutomaticExtaSuccessesOnSuccess;
             }
             String successString = "Successes: " + _currentSuccesses;
-            if(AutomaticExtaSuccessesOnSuccess > 0 && CurrentSuccesses > 0)
+            if (AutomaticExtaSuccessesOnSuccess > 0 && CurrentSuccesses > 0)
             {
                 successString = successString + " {" + AutomaticExtaSuccessesOnSuccess + "} automatic";
             }
-            _resultDescription = successString + "\n" + _resultDescription; 
+            _resultDescription = successString + "\n" + _resultDescription;
         }
-
-
     }
 }

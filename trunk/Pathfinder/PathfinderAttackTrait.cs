@@ -2,17 +2,80 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
     public class PathfinderAttackTrait : AttackTrait, IPathfinderTrait
     {
-
-
         private List<String> _damageDescriptors = new List<String>();
+        private List<PathfinderDicePool> _damageDice = new List<PathfinderDicePool>();
+        private List<int> _toHitBonusList = new List<int>();
+
+        private PathfinderAttackTrait(string label, int attackValue, String targetDefense,
+                                      List<String> damageDescriptors, List<int> toHitBonusList,
+                                      List<PathfinderDicePool> damageDice, int lowestValueToCrit, int critMultipier)
+            : base(label, attackValue, targetDefense, string.Join(",", damageDescriptors.ToArray()))
+        {
+            TraitLabel = label;
+            TraitValue = attackValue;
+            DamageDescriptors = damageDescriptors;
+            ToHitBonusList = toHitBonusList;
+            DamageDice = damageDice;
+            LowestValueToCrit = lowestValueToCrit;
+            CritMultipier = critMultipier;
+        }
+
+        public PathfinderAttackTrait(string label, int attackValue, string descriptors, string attackbonuses,
+                                     string damage, string triggers, string triggeredeffects, string targetDefense,
+                                     string critRange, string critMultiplier)
+            //public AttackTrait(string label, int value, String defenseTarget, String damageType) :
+            : base(label, attackValue, targetDefense, descriptors)
+        {
+            //string triggers, string triggeredeffects, string critRange, string critMultiplier
+            String[] descriptorList = descriptors.Split(',');
+            foreach (string cur in descriptorList)
+            {
+                DamageDescriptors.Add(cur.Trim());
+            }
+            String[] attackList = attackbonuses.Split('/');
+            foreach (string cur in attackList)
+            {
+                int toHit = int.Parse(cur);
+                ToHitBonusList.Add(toHit);
+            }
+
+            String[] damageDice = damage.Split(',');
+            foreach (string curPool in damageDice)
+            {
+                //Damage='2d8+13'
+                String[] diceTypes = curPool.Split('d');
+                String[] secondHalf = diceTypes[1].Split('+');
+                int diceQuantity = int.Parse(diceTypes[0]);
+                int dieType = int.Parse(secondHalf[0]);
+                int modifier = 0;
+                if (secondHalf.Length == 2)
+                {
+                    modifier = int.Parse(secondHalf[1]);
+                }
+                var damagePool = new PathfinderDicePool(diceQuantity, dieType, modifier);
+                _damageDice.Add(damagePool);
+            }
+
+            //CritRange='19-20' CritMultiplier='2'
+            LowestValueToCrit = 20;
+            if (critRange != null)
+            {
+                String[] critLowest = critRange.Split('-');
+                LowestValueToCrit = int.Parse(critLowest[0]);
+            }
+            CritMultipier = 2;
+            if (critMultiplier != null)
+            {
+                CritMultipier = int.Parse(critMultiplier);
+            }
+        }
+
         [DataMember]
         public List<String> DamageDescriptors
         {
@@ -20,23 +83,12 @@ namespace XMLCharSheets
             set { _damageDescriptors = value; }
         }
 
-        private int _critMultiplier;
         [DataMember]
-        public int CritMultipier
-        {
-            get { return _critMultiplier; }
-            set { _critMultiplier = value; }
-        }
+        public int CritMultipier { get; set; }
 
-        private int _lowestValueToCrit;
         [DataMember]
-        public int LowestValueToCrit
-        {
-            get { return _lowestValueToCrit; }
-            set { _lowestValueToCrit = value; }
-        }
+        public int LowestValueToCrit { get; set; }
 
-        private List<int> _toHitBonusList = new List<int>();
         [DataMember]
         public List<int> ToHitBonusList
         {
@@ -44,7 +96,6 @@ namespace XMLCharSheets
             set { _toHitBonusList = value; }
         }
 
-        private List<PathfinderDicePool> _damageDice = new List<PathfinderDicePool>();
         [DataMember]
         public List<PathfinderDicePool> DamageDice
         {
@@ -53,18 +104,6 @@ namespace XMLCharSheets
         }
 
         //Copy constructor.public PathfinderAttackTrait(string label, int attackValue, List<String> damageDescriptors, List<int> toHitBonusList, List<PathfinderDicePool> damageDice, int lowestValueToCrit, int critMultipier)
-        private PathfinderAttackTrait(string label, int attackValue, String targetDefense, List<String> damageDescriptors, List<int> toHitBonusList, List<PathfinderDicePool> damageDice, int lowestValueToCrit, int critMultipier)
-            : base(label, attackValue, targetDefense, string.Join(",", damageDescriptors.ToArray()))
-        {
-            this.TraitLabel = label;
-            this.TraitValue = attackValue;
-            this.DamageDescriptors =  damageDescriptors;
-            this.ToHitBonusList = toHitBonusList;
-            this.DamageDice = damageDice;
-            this.LowestValueToCrit = lowestValueToCrit;
-            this.CritMultipier = critMultipier;
-
-        }
 
 
         public override object BaseTraitContents
@@ -81,57 +120,47 @@ namespace XMLCharSheets
         }
 
 
-        public PathfinderAttackTrait(string label, int attackValue, string descriptors, string attackbonuses,
-            string damage, string triggers, string triggeredeffects, string targetDefense, string critRange, string critMultiplier)
-            //public AttackTrait(string label, int value, String defenseTarget, String damageType) :
-            : base(label, attackValue, targetDefense, descriptors)
+        public override String TraitDescription
         {
-            //string triggers, string triggeredeffects, string critRange, string critMultiplier
-            String[] descriptorList = descriptors.Split(',');
-            foreach (var cur in descriptorList)
+            get
             {
-                DamageDescriptors.Add(cur.Trim());
-            }
-            String[] attackList = attackbonuses.Split('/');
-            foreach (var cur in attackList)
-            {
-                int toHit = int.Parse(cur);
-                ToHitBonusList.Add(toHit);
-            }
-            
-            String [] damageDice = damage.Split(',');
-            foreach (var curPool in damageDice)
-            {
-                //Damage='2d8+13'
-                String[] diceTypes = curPool.Split('d');
-                String[] secondHalf = diceTypes[1].Split('+');
-                int diceQuantity = int.Parse(diceTypes[0]);
-                int dieType = int.Parse(secondHalf[0]);
-                int modifier = 0;
-                if (secondHalf.Length == 2)
+                String result = TraitLabel + " ";
+                for (int curIndex = 0; curIndex < ToHitBonusList.Count; curIndex++)
                 {
-                    modifier = int.Parse(secondHalf[1]);
+                    if (curIndex == 0)
+                    {
+                        result = result + ToHitBonusList[curIndex];
+                    }
+                    else
+                    {
+                        result = result + "/" + ToHitBonusList[curIndex];
+                    }
                 }
-                PathfinderDicePool damagePool = new PathfinderDicePool(diceQuantity, dieType, modifier);
-                _damageDice.Add(damagePool);
+                result = result + " -- ";
+                for (int curIndex = 0; curIndex < DamageDice.Count; curIndex++)
+                {
+                    if (curIndex == 0)
+                    {
+                        result = result + DamageDice[curIndex];
+                    }
+                    else
+                    {
+                        result = result + ", " + DamageDice[curIndex];
+                    }
+                }
+                for (int curIndex = 0; curIndex < DamageDescriptors.Count; curIndex++)
+                {
+                    if (curIndex == 0)
+                    {
+                        result = result + " " + DamageDescriptors[curIndex];
+                    }
+                    else
+                    {
+                        result = result + ", " + DamageDescriptors[curIndex];
+                    }
+                }
+                return result;
             }
-
-            //CritRange='19-20' CritMultiplier='2'
-            LowestValueToCrit = 20;
-            if (critRange != null)
-            {
-                String[] critLowest = critRange.Split('-');
-                LowestValueToCrit = int.Parse(critLowest[0]);
-            }
-            CritMultipier = 2;
-            if (critMultiplier != null)
-            {
-                CritMultipier = int.Parse(critMultiplier);
-            }
-
-
-
-
         }
 
         public override Trait CopyTrait()
@@ -140,56 +169,14 @@ namespace XMLCharSheets
             //List<int> toHitBonusList, List<PathfinderDicePool> damageDice, int lowestValueToCrit, int critMultipier)
             List<String> descriptors = DamageDescriptors.ToList();
             List<int> toHit = ToHitBonusList.ToList();
-            List<PathfinderDicePool> dDice = new List<PathfinderDicePool>();
-            foreach(var cur in this.DamageDice)
+            var dDice = new List<PathfinderDicePool>();
+            foreach (PathfinderDicePool cur in DamageDice)
             {
                 dDice.Add(cur.CopyPool());
             }
-            var copyTrait = new PathfinderAttackTrait(this.TraitLabel, this.TraitValue, this.DefenseTarget, descriptors, toHit, dDice, this.LowestValueToCrit, this.CritMultipier);
+            var copyTrait = new PathfinderAttackTrait(TraitLabel, TraitValue, DefenseTarget, descriptors, toHit, dDice,
+                                                      LowestValueToCrit, CritMultipier);
             return copyTrait;
-                        
-        }
-        public override String TraitDescription
-        {
-            get
-            {
-                String result = TraitLabel+" ";
-                for(int curIndex=0;curIndex<ToHitBonusList.Count;curIndex++)
-                {
-                    if(curIndex == 0)
-                    {
-                        result = result +ToHitBonusList[curIndex];
-                    }
-                    else
-                    {
-                        result = result + "/" + ToHitBonusList[curIndex];
-                    }
-                }
-                result = result +" -- ";
-                for (int curIndex = 0; curIndex < DamageDice.Count; curIndex++)
-                {
-                    if (curIndex == 0)
-                    {
-                        result = result + DamageDice[curIndex].ToString();
-                    }
-                    else
-                    {
-                        result = result + ", " + DamageDice[curIndex].ToString();
-                    }
-                }
-                for (int curIndex = 0; curIndex < DamageDescriptors.Count; curIndex++)
-                {
-                    if (curIndex == 0)
-                    {
-                        result = result +" "+ DamageDescriptors[curIndex].ToString();
-                    }
-                    else
-                    {
-                        result = result + ", " + DamageDescriptors[curIndex];
-                    }
-                } 
-                return result;
-            }
         }
     }
 }

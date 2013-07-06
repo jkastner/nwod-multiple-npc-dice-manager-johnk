@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
 namespace XMLCharSheets.NWoD
 {
-    class NWoDRosterViewModel
+    internal class NWoDRosterViewModel
     {
         internal void BloodBuff(IList characters)
         {
-            foreach (var curItem in characters)
+            foreach (object curItem in characters)
             {
                 var curVampire = curItem as NWoDVampire;
                 if (curVampire == null)
                 {
-                    CharacterSheet regularChar = curItem as CharacterSheet;
+                    var regularChar = curItem as CharacterSheet;
                     TextReporter.Report(regularChar.Name + " is not a vampire.");
                 }
                 else
@@ -30,7 +26,7 @@ namespace XMLCharSheets.NWoD
 
         internal void BloodHeal(IList characters)
         {
-            foreach (var curItem in characters)
+            foreach (object curItem in characters)
             {
                 var curVampire = curItem as NWoDVampire;
                 if (curVampire == null)
@@ -57,39 +53,39 @@ namespace XMLCharSheets.NWoD
 
         internal void DoLethal(IList characters)
         {
-            foreach (var curItem in characters)
+            foreach (object curItem in characters)
             {
-                CharacterSheet curChar = curItem as CharacterSheet;
+                var curChar = curItem as CharacterSheet;
                 curChar.DoDamage(1, "Lethal");
             }
         }
 
         internal void DoAggrivated(IList characters)
         {
-            foreach (var curItem in characters)
+            foreach (object curItem in characters)
             {
-                CharacterSheet curChar = curItem as CharacterSheet;
+                var curChar = curItem as CharacterSheet;
                 curChar.DoDamage(1, "Aggrivated");
             }
         }
 
         internal void DoBashing(IList characters)
         {
-            foreach (var curItem in characters)
+            foreach (object curItem in characters)
             {
-                CharacterSheet curChar = curItem as CharacterSheet;
+                var curChar = curItem as CharacterSheet;
                 curChar.DoDamage(1, "Bashing");
             }
         }
 
         internal void RefillVitae(IList characters)
         {
-            foreach (var curItem in characters)
+            foreach (object curItem in characters)
             {
                 var curVampire = curItem as NWoDVampire;
                 if (curVampire == null)
                 {
-                    CharacterSheet regularChar = curItem as CharacterSheet;
+                    var regularChar = curItem as CharacterSheet;
                     TextReporter.Report(regularChar.Name + " is not a vampire.");
                 }
                 else
@@ -98,7 +94,5 @@ namespace XMLCharSheets.NWoD
                 }
             }
         }
-
-
     }
 }

@@ -8,13 +8,21 @@ using System.Windows.Media;
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
-    class NWoDCharacter : CharacterSheet
+    internal class NWoDCharacter : CharacterSheet
     {
-
         //private void RollPool(int numInPool, int maxSides, int minSuccess, int minAgain, int uberFail, int subtractsOn)
-        [DataMember]
-        private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait("DefaultPool", 5, 10, 0, 0, 8));
+        [DataMember] private bool _checkedAgainstUnconsciousness;
         private List<HealthBox> _healthTrack = new List<HealthBox>();
+
+        private bool _isVampire;
+        private String _rollResults = "";
+        [DataMember] private NWoDDicePool curPool = new NWoDDicePool(new NWoDTrait("DefaultPool", 5, 10, 0, 0, 8));
+
+        public NWoDCharacter(string characterName, List<Trait> traits)
+            : base(characterName, traits)
+        {
+        }
+
         [DataMember]
         public List<HealthBox> HealthTrack
         {
@@ -22,48 +30,21 @@ namespace XMLCharSheets
             set { _healthTrack = value; }
         }
 
-        private bool _isVampire = false;
-
         [DataMember]
         public bool IsVampire
         {
             get { return _isVampire; }
-            set 
+            set
             {
                 _isVampire = value;
                 OnPropertyChanged("IsVampire");
             }
         }
 
-        internal override CharacterSheet Copy(string newName)
-        {
-            List<Trait> copyTraits = new List<Trait>();
 
-            foreach (Trait curTrait in this.Traits)
-            {
-                Trait copiedTrait = curTrait.CopyTrait();
-                copyTraits.Add(copiedTrait);
-            }
-            CharacterSheet copy = new NWoDCharacter(newName, copyTraits);
-            return copy;
-        }
-
-
-
-        private int _armor;
         [DataMember]
-        public int Armor
-        {
-            get { return _armor; }
-            set { _armor = value; }
-        }
-        
+        public int Armor { get; set; }
 
-
-        public NWoDCharacter(string characterName, List<Trait> traits)
-            : base(characterName, traits)
-        {
-        }
 
         public override SolidColorBrush StatusColor
         {
@@ -82,12 +63,11 @@ namespace XMLCharSheets
                     case HealthBox.DamageType.Empty:
                     default:
                         return new SolidColorBrush(Colors.Black);
-
                 }
             }
         }
 
-        public int WoundPenalties 
+        public int WoundPenalties
         {
             get
             {
@@ -108,6 +88,64 @@ namespace XMLCharSheets
                 }
                 return 0;
             }
+        }
+
+        public override string Status
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.Append(base.Status);
+                sb.Append("Health: ");
+                sb.AppendLine(BuildHealthString());
+                sb.AppendLine("Melee Def: " + CurrentMeleeDefense);
+                return sb.ToString();
+            }
+        }
+
+        internal override string HealthStatusLineDescription
+        {
+            get { return BuildHealthString(); }
+        }
+
+        public override string ChosenAttackValue
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                int fullValue = FindNumericTrait(ChosenAttack).TraitValue;
+                sb.Append(ChosenAttack);
+                for (int curIndex = 0; curIndex < OtherAttackTraits.Count(); curIndex++)
+                {
+                    fullValue += FindNumericTrait(OtherAttackTraits[curIndex]).TraitValue;
+                }
+                return fullValue.ToString();
+            }
+        }
+
+        public override string RollResults
+        {
+            get { return _rollResults; }
+            set { _rollResults = value; }
+        }
+
+        [DataMember]
+        public int NormalMeleeDefense { get; set; }
+
+        [DataMember]
+        public int CurrentMeleeDefense { get; set; }
+
+        internal override CharacterSheet Copy(string newName)
+        {
+            var copyTraits = new List<Trait>();
+
+            foreach (Trait curTrait in Traits)
+            {
+                Trait copiedTrait = curTrait.CopyTrait();
+                copyTraits.Add(copiedTrait);
+            }
+            CharacterSheet copy = new NWoDCharacter(newName, copyTraits);
+            return copy;
         }
 
         public override void PopulateCombatTraits()
@@ -131,41 +169,22 @@ namespace XMLCharSheets
                         break;
                 }
             }
-
-        }
-
-        public override string Status
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(base.Status);
-                sb.Append("Health: ");
-                sb.AppendLine(BuildHealthString());
-                sb.AppendLine("Melee Def: " + CurrentMeleeDefense);
-                return sb.ToString();
-            }
-        }
-
-        internal override string HealthStatusLineDescription
-        {
-            get { return BuildHealthString(); }
         }
 
         protected string BuildHealthString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             int count = 0;
             foreach (HealthBox curBox in HealthTrack)
             {
                 count++;
-                sb.Append(curBox.ToBoxString()+" ");
-                if (count % 5 == 0)
+                sb.Append(curBox.ToBoxString() + " ");
+                if (count%5 == 0)
                     sb.Append("   ");
             }
             return sb.ToString().Trim();
         }
-        
+
 
         protected void InitializeHealthBoxes(int p)
         {
@@ -201,29 +220,27 @@ namespace XMLCharSheets
                     break;
             }
             return "";
-
         }
 
 
         internal void DoBashing()
         {
-            HealthBox newDamage = new HealthBox();
+            var newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Bashing;
             AddDamageBox(newDamage);
-
-
         }
-        
+
         internal String DoLethal()
         {
-            HealthBox newDamage = new HealthBox();
+            var newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Lethal;
             AddDamageBox(newDamage);
             return "";
         }
+
         internal String DoAggrivated()
         {
-            HealthBox newDamage = new HealthBox();
+            var newDamage = new HealthBox();
             newDamage.Box = HealthBox.DamageType.Aggrivated;
             AddDamageBox(newDamage);
             return "";
@@ -240,14 +257,11 @@ namespace XMLCharSheets
         }
 
 
-        [DataMember]
-        private bool _checkedAgainstUnconsciousness = false;
-
         private void AddDamageBox(HealthBox newDamage)
         {
             if (HealthTrack.Last().Box == HealthBox.DamageType.Grievous)
                 return;
-            while(newDamage.Box < HealthTrack.Last().Box)
+            while (newDamage.Box < HealthTrack.Last().Box)
             {
                 newDamage.Box++;
             }
@@ -267,7 +281,8 @@ namespace XMLCharSheets
                 {
                     SetIncapacitated(true);
                 }
-                if (!IsIncapacitated && HealthTrack.Last().Box == HealthBox.DamageType.Bashing && !_checkedAgainstUnconsciousness)
+                if (!IsIncapacitated && HealthTrack.Last().Box == HealthBox.DamageType.Bashing &&
+                    !_checkedAgainstUnconsciousness)
                 {
                     CheckToStayConscious();
                     _checkedAgainstUnconsciousness = true;
@@ -278,16 +293,14 @@ namespace XMLCharSheets
             }
             else
             {
-
-                var secondToLastBox = HealthTrack[HealthTrack.Count() - 2];
-                var lastBox = HealthTrack.Last();
-                HealthBox spilloverDamage = new HealthBox();
+                HealthBox secondToLastBox = HealthTrack[HealthTrack.Count() - 2];
+                HealthBox lastBox = HealthTrack.Last();
+                var spilloverDamage = new HealthBox();
                 spilloverDamage.Box = lastBox.Box + 1;
                 secondToLastBox.Box = HealthBox.DamageType.Empty;
                 HealthTrack.Remove(lastBox);
                 AddDamageBox(spilloverDamage);
             }
-
         }
 
         protected virtual void CheckToStayConscious()
@@ -296,41 +309,25 @@ namespace XMLCharSheets
             {
                 return;
             }
-            var stamina = FindNumericTrait("Stamina");
-            int staminaCheckNum = HealthTrack.Count()-5;
+            NumericIntTrait stamina = FindNumericTrait("Stamina");
+            int staminaCheckNum = HealthTrack.Count() - 5;
             if (stamina != null)
             {
                 staminaCheckNum = stamina.TraitValue;
             }
-            NWoDDicePool staminaCheck = new NWoDDicePool(new NWoDTrait("Stamina Check", staminaCheckNum, 10, 0, 0, 8));
+            var staminaCheck = new NWoDDicePool(new NWoDTrait("Stamina Check", staminaCheckNum, 10, 0, 0, 8));
             staminaCheck.Roll();
             String succeeded = "failed";
             if (staminaCheck.CurrentSuccesses > 0)
             {
                 succeeded = "succeeded";
             }
-            Report(Name +" "+succeeded+" rolled to stay conscious - "
-                + staminaCheck.ResultDescription);
+            Report(Name + " " + succeeded + " rolled to stay conscious - "
+                   + staminaCheck.ResultDescription);
 
             if (staminaCheck.CurrentSuccesses == 0)
             {
                 SetIncapacitated(true);
-            }
-
-        }
-
-        public override string ChosenAttackValue
-        {
-            get 
-            {
-                StringBuilder sb = new StringBuilder();
-                int fullValue = FindNumericTrait(ChosenAttack).TraitValue;
-                sb.Append(ChosenAttack);
-                for (int curIndex = 0; curIndex < OtherAttackTraits.Count(); curIndex++)
-                {
-                    fullValue += FindNumericTrait(OtherAttackTraits[curIndex]).TraitValue;
-                }
-                return fullValue.ToString();
             }
         }
 
@@ -339,16 +336,10 @@ namespace XMLCharSheets
             int r = random.Next(10) + 1;
             CurInitiative = r + Initiative;
         }
-        String _rollResults = "";
-        public override string RollResults
-        {
-            get { return _rollResults; }
-            set { _rollResults = value; }
-        }
 
         internal override List<Damage> AttackTarget(int modifier)
         {
-            List<Damage> damage = new List<Damage>();
+            var damage = new List<Damage>();
             var nwodTarget = Target as NWoDCharacter;
             int targetDefense = 0;
             var ChosenAttackTrait = FindNumericTrait(ChosenAttack) as AttackTrait;
@@ -371,7 +362,7 @@ namespace XMLCharSheets
             attackPool.TraitValue += WoundPenalties;
             FinalAttackPool = attackPool.TraitValue;
             int attackSuccesses = 0;
-            var results = RollBasePool(new List<Trait>(){attackPool}, 0) as NWoDDicePool;
+            var results = RollBasePool(new List<Trait> {attackPool}, 0) as NWoDDicePool;
             attackSuccesses = results.CurrentSuccesses;
             for (int curDamage = 0; curDamage < attackSuccesses; curDamage++)
             {
@@ -398,43 +389,26 @@ namespace XMLCharSheets
         }
 
         /// <summary>
-        /// Modifier is a flat value and must be negative to remove dice.
+        ///     Modifier is a flat value and must be negative to remove dice.
         /// </summary>
         internal override DicePool RollBasePool(List<Trait> dicePools, int modifier)
         {
             String curResults = "";
 
-            var firstPool = dicePools.First().CopyTrait();
+            Trait firstPool = dicePools.First().CopyTrait();
             var basepool = firstPool as INWoDTrait;
 
-            for(int curIndex = 1;curIndex<dicePools.Count;curIndex++)
+            for (int curIndex = 1; curIndex < dicePools.Count; curIndex++)
             {
                 var nextTrait = dicePools[curIndex] as INWoDTrait;
-                 /*Johnathan K. 12-06-2012
+                /*Johnathan K. 12-06-2012
                   * Presumed to take the 'non default' Modifier. */
-                 basepool.AddAndChangeFromDefaults(nextTrait);
+                basepool.AddAndChangeFromDefaults(nextTrait);
             }
             basepool.TraitValue += modifier;
-            NWoDDicePool curPool = new NWoDDicePool(basepool);
+            var curPool = new NWoDDicePool(basepool);
             curPool.Roll();
             return curPool;
-
-        }
-
-        private int _normalMeleeDefense;
-        [DataMember]
-        public int NormalMeleeDefense
-        {
-            get { return _normalMeleeDefense; }
-            set { _normalMeleeDefense = value; }
-        }
-
-        private int _currentMeleeDefense;
-        [DataMember]
-        public int CurrentMeleeDefense
-        {
-            get { return _currentMeleeDefense; }
-            set { _currentMeleeDefense = value; }
         }
 
         internal void WasAttacked(string DefenseType)
@@ -451,10 +425,6 @@ namespace XMLCharSheets
             base.NewRound();
             CurrentMeleeDefense = NormalMeleeDefense;
             return String.Empty;
-
         }
-
-
-
     }
 }

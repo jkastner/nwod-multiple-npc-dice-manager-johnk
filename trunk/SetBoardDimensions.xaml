@@ -10,9 +10,11 @@
         <Label>Maintain Default Ratio</Label>
         <CheckBox IsChecked="True" Margin="5,5,0,5" Name="Maintain_Ratio_CheckBox"></CheckBox>
         <DockPanel>
-            <Button HorizontalAlignment="Left" Click="OK_Button_Click"  VerticalAlignment="Bottom" Content="OK" Width="75" MinWidth="50"/>
-            <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel" Width="75" MinWidth="50"/>
+            <Button HorizontalAlignment="Left" Click="OK_Button_Click" VerticalAlignment="Bottom" Content="OK"
+                    Width="75" MinWidth="50" />
+            <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel"
+                    Width="75" MinWidth="50" />
         </DockPanel>
     </StackPanel>
-    
+
 </Window>

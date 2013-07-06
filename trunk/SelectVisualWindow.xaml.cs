@@ -1,32 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace XMLCharSheets
 {
     /// <summary>
-    /// Interaction logic for SelectVisualWindow.xaml
+    ///     Interaction logic for SelectVisualWindow.xaml
     /// </summary>
     public partial class SelectVisualWindow : Window
     {
+        private readonly String _baseName = "";
+        private readonly PictureSelectionViewModel _pictureSelectionViewModel;
+        private Color _chosenColor = Colors.Gray;
 
-        private PictureSelectionViewModel _pictureSelectionViewModel;
-        private String _baseName = "";
-        public SelectVisualWindow(String baseName, PictureSelectionViewModel pictureSelectionViewModel, ObservableCollection<Team> teams)
+        public SelectVisualWindow(String baseName, PictureSelectionViewModel pictureSelectionViewModel,
+                                  ObservableCollection<Team> teams)
         {
-            this._pictureSelectionViewModel = pictureSelectionViewModel;
+            _pictureSelectionViewModel = pictureSelectionViewModel;
             _baseName = baseName;
             InitializeComponent();
             DataContext = pictureSelectionViewModel;
@@ -34,15 +27,20 @@ namespace XMLCharSheets
             TeamSelection_ListBox.ItemsSource = teams;
             SearchedDisplayItems_ListBox.ItemsSource = _pictureSelectionViewModel.ActiveLoadedPictures;
             TeamSelection_ListBox.SelectedIndex = 0;
-
         }
 
 
-        bool _wasCancel;
-        public bool WasCancel
+        public bool WasCancel { get; set; }
+
+        public Color ChosenColor
         {
-            get { return _wasCancel; }
-            set { _wasCancel = value; }
+            get { return _chosenColor; }
+            set { _chosenColor = value; }
+        }
+
+        public Team ChosenTeam
+        {
+            get { return (TeamSelection_ListBox.SelectedItem as Team); }
         }
 
 
@@ -54,20 +52,7 @@ namespace XMLCharSheets
         private void OK()
         {
             ChosenColor = (TeamSelection_ListBox.SelectedItem as Team).TeamColor;
-            this.Close();
-        }
-
-        Color _chosenColor = Colors.Gray;
-        public Color ChosenColor 
-        {
-            get
-            {
-                return _chosenColor;
-            }
-            set
-            {
-                _chosenColor = value;
-            }
+            Close();
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
@@ -78,7 +63,7 @@ namespace XMLCharSheets
         private void Cancel()
         {
             WasCancel = true;
-            this.Close();
+            Close();
         }
 
         private void TrimList_TextBox_KeyUp(object sender, KeyEventArgs e)
@@ -95,17 +80,11 @@ namespace XMLCharSheets
             }
         }
 
-        public Team ChosenTeam 
-        {
-            get
-            {
-                return (TeamSelection_ListBox.SelectedItem as Team);
-            }
-        }
-
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            if (_pictureSelectionViewModel.AllLoadedPictures.Any(x => x.PictureName.ToLower().Contains(_baseName.ToLower())))
+            if (
+                _pictureSelectionViewModel.AllLoadedPictures.Any(
+                    x => x.PictureName.ToLower().Contains(_baseName.ToLower())))
             {
                 TrimList_TextBox.Text = _baseName;
                 RunSearch();

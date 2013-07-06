@@ -1,27 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace XMLCharSheets
 {
     /// <summary>
-    /// Interaction logic for PathfinderControl.xaml
+    ///     Interaction logic for PathfinderControl.xaml
     /// </summary>
     public partial class PathfinderControl : UserControl
     {
-        RosterViewModel _viewModel;
+        private readonly RosterViewModel _viewModel;
+
         public PathfinderControl()
         {
             InitializeComponent();
@@ -31,29 +23,30 @@ namespace XMLCharSheets
 
         private void WillSave_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RollCharacters(ActiveList(), new List<String>() { "Will" });
+            _viewModel.RollCharacters(ActiveList(), new List<String> {"Will"});
         }
 
-   
+
         private void ReflexSave_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RollCharacters(ActiveList(), new List<String>() { "Reflex" });
+            _viewModel.RollCharacters(ActiveList(), new List<String> {"Reflex"});
         }
 
         private void FortitudeSave_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RollCharacters(ActiveList(), new List<String>() { "Fortitude" });
+            _viewModel.RollCharacters(ActiveList(), new List<String> {"Fortitude"});
         }
+
         protected IList ActiveList()
         {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            var parentWindow = Window.GetWindow(this) as MainWindow;
             return parentWindow.ActiveList();
         }
 
 
         private void DoDamage_ButtonClick(object sender, RoutedEventArgs e)
         {
-            int sliderValue = -(int)DamageSlider.Value;
+            int sliderValue = -(int) DamageSlider.Value;
             _viewModel.DoDamage(ActiveList(), sliderValue, DamageDescriptor_TextBox.Text);
         }
 

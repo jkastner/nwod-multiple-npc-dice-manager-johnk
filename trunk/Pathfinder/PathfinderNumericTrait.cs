@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
@@ -11,29 +7,20 @@ namespace XMLCharSheets
     public class PathfinderNumericTrait : NumericIntTrait
     {
         //Depending on the trait, this could be the thing being resisted, the way to overcome the damage, or the type of damage.
-        private String _descriptor;
-        [DataMember]
-        public String Descriptor
-        {
-            get { return _descriptor; }
-            set { _descriptor = value; }
-        }
-        
-        
-        public PathfinderNumericTrait(String label, int value, String descriptor):
+
+
+        public PathfinderNumericTrait(String label, int value, String descriptor) :
             base(label, value)
         {
-            this._descriptor = descriptor;
+            Descriptor = descriptor;
         }
 
-        public override Trait CopyTrait()
-        {
-            return new PathfinderNumericTrait(this.TraitLabel, this.TraitValue, this.Descriptor);
-        }
+        [DataMember]
+        public String Descriptor { get; set; }
 
         public override string TraitDescription
         {
-            get 
+            get
             {
                 if (String.IsNullOrWhiteSpace(Descriptor))
                 {
@@ -46,5 +33,9 @@ namespace XMLCharSheets
             }
         }
 
+        public override Trait CopyTrait()
+        {
+            return new PathfinderNumericTrait(TraitLabel, TraitValue, Descriptor);
+        }
     }
 }

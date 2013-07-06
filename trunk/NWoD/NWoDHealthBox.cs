@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace XMLCharSheets
 {
@@ -12,30 +9,21 @@ namespace XMLCharSheets
         [DataContract(Name = "DamageType")]
         public enum DamageType
         {
-            [EnumMember]
-            Empty,
-            [EnumMember]
-            Bashing,
-            [EnumMember]
-            Lethal,
-            [EnumMember]
-            Aggrivated,
-            [EnumMember]
-            Grievous
-        }
-        private DamageType _box;
-        [DataMember]
-        public DamageType Box
-        {
-            get { return _box; }
-            set { _box = value; }
+            [EnumMember] Empty,
+            [EnumMember] Bashing,
+            [EnumMember] Lethal,
+            [EnumMember] Aggrivated,
+            [EnumMember] Grievous
         }
 
 
         public HealthBox()
         {
-            this.Box = DamageType.Empty;
+            Box = DamageType.Empty;
         }
+
+        [DataMember]
+        public DamageType Box { get; set; }
 
         public override string ToString()
         {

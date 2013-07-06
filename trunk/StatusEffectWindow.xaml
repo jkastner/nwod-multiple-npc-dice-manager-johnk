@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="StatusEffect" Height="300" SizeToContent="Height" Width="300"
         WindowStyle="ToolWindow" ResizeMode="NoResize"
-        KeyDown="StatusEffect_KeyDown"
-        >
+        KeyDown="StatusEffect_KeyDown">
     <Grid>
         <StackPanel>
             <Label>
@@ -17,13 +16,13 @@
                 Status Duration (Rounds)
             </Label>
             <TextBox Name="StatusDuration" Text="2" PreviewTextInput="Modifier_TextBox_PreviewTextInput"
-                             DataObject.Pasting="Modifier_TextBox_Pasting" 
-                     
-                     >
+                     DataObject.Pasting="Modifier_TextBox_Pasting">
             </TextBox>
             <DockPanel>
-                <Button HorizontalAlignment="Left" Click="OK_Button_Click"  VerticalAlignment="Bottom" Content="OK" Width="75" MinWidth="50"/>
-                <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom" Content="Cancel" Width="75" MinWidth="50"/>
+                <Button HorizontalAlignment="Left" Click="OK_Button_Click" VerticalAlignment="Bottom" Content="OK"
+                        Width="75" MinWidth="50" />
+                <Button HorizontalAlignment="Right" Click="Cancel_Button_Click" VerticalAlignment="Bottom"
+                        Content="Cancel" Width="75" MinWidth="50" />
             </DockPanel>
         </StackPanel>
     </Grid>

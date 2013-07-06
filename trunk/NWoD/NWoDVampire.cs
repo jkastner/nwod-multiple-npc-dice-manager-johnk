@@ -2,31 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace XMLCharSheets
 {
     [DataContract(Namespace = "")]
     internal class NWoDVampire : NWoDCharacter
     {
+        private int _currentVitae;
+
+        private int _maxVitae;
+
         public NWoDVampire(string characterName, List<Trait> traits)
             : base(characterName, traits)
         {
             IsVampire = true;
         }
 
-        private int _currentVitae;
         [DataMember]
         public int CurrentVitae
         {
             get { return _currentVitae; }
             set
-            { 
+            {
                 _currentVitae = value;
                 OnPropertyChanged("CurrentVitae");
             }
         }
-        private int _maxVitae;
+
         [DataMember]
         public int MaxVitae
         {
@@ -38,29 +40,30 @@ namespace XMLCharSheets
             }
         }
 
-        private int _bloodAttackBonus = 0;
         [DataMember]
-        public int BloodAttackBonus
+        public int BloodAttackBonus { get; set; }
+
+        [DataMember]
+        public int BloodThisRound { get; set; }
+
+        public override string Status
         {
-            get { return _bloodAttackBonus; }
-            set { _bloodAttackBonus = value; }
+            get
+            {
+                String normal = base.Status;
+                normal = normal + "\nVitae: " + CurrentVitae + "/" + MaxVitae;
+                normal = normal + "\nVitae this turn: " + BloodThisRound;
+                normal = normal + "\nBlood buff: " + BloodAttackBonus;
+                return normal;
+            }
         }
 
-        private int _bloodThisRound;
-        [DataMember]
-        public int BloodThisRound
-        {
-            get { return _bloodThisRound; }
-            set { _bloodThisRound = value; }
-        }
-        
-        
 
         internal override CharacterSheet Copy(String newName)
         {
-            List<Trait> copyTraits = new List<Trait>();
+            var copyTraits = new List<Trait>();
 
-            foreach (Trait curTrait in this.Traits)
+            foreach (Trait curTrait in Traits)
             {
                 Trait copiedTrait = curTrait.CopyTrait();
                 copyTraits.Add(copiedTrait);
@@ -87,18 +90,6 @@ namespace XMLCharSheets
             {
                 MaxVitae = 10;
                 //CurrentVitae = 10;
-            }
-        }
-
-        public override string Status
-        {
-            get
-            {
-                String normal = base.Status;
-                normal = normal + "\nVitae: " + CurrentVitae+"/"+MaxVitae;
-                normal = normal + "\nVitae this turn: "+BloodThisRound;
-                normal = normal + "\nBlood buff: " + BloodAttackBonus;
-                return normal;
             }
         }
 

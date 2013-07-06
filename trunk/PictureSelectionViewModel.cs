@@ -3,41 +3,43 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XMLCharSheets
 {
     public class PictureSelectionViewModel
     {
+        private readonly string picTarget = Directory.GetCurrentDirectory() + @"\PiecePictures";
+
+        private ObservableCollection<PictureFileInfo> _activeLoadedPictures =
+            new ObservableCollection<PictureFileInfo>();
+
         private ObservableCollection<PictureFileInfo> _loadedPictures = new ObservableCollection<PictureFileInfo>();
-        public ObservableCollection<PictureFileInfo> AllLoadedPictures
-        {
-            get { return _loadedPictures; }
-            set { _loadedPictures = value; }
-        }
 
-        private ObservableCollection<PictureFileInfo> _activeLoadedPictures = new ObservableCollection<PictureFileInfo>();
-        public ObservableCollection<PictureFileInfo> ActiveLoadedPictures
-        {
-            get { return _activeLoadedPictures; }
-            set { _activeLoadedPictures = value; }
-        }
-
-        string picTarget = Directory.GetCurrentDirectory() + @"\PiecePictures";
         public PictureSelectionViewModel()
         {
             LoadPictures();
             ResetActiveList();
         }
 
+        public ObservableCollection<PictureFileInfo> AllLoadedPictures
+        {
+            get { return _loadedPictures; }
+            set { _loadedPictures = value; }
+        }
+
+        public ObservableCollection<PictureFileInfo> ActiveLoadedPictures
+        {
+            get { return _activeLoadedPictures; }
+            set { _activeLoadedPictures = value; }
+        }
+
         private void LoadPictures()
         {
             string[] pictureFiles = Directory.GetFiles(picTarget, "*.*", SearchOption.AllDirectories);
-            foreach(var cur in pictureFiles)
+            foreach (string cur in pictureFiles)
             {
-                   var currentDir = Directory.GetCurrentDirectory()+"\\";
-                var correctedPath = cur.Replace(currentDir, "");
+                string currentDir = Directory.GetCurrentDirectory() + "\\";
+                string correctedPath = cur.Replace(currentDir, "");
                 AllLoadedPictures.Add(new PictureFileInfo(correctedPath, Path.GetFileNameWithoutExtension(cur)));
             }
         }
@@ -50,8 +52,9 @@ namespace XMLCharSheets
                 return;
             }
             ActiveLoadedPictures.Clear();
-            var matches = AllLoadedPictures.Where(x => x.PictureName.ToLower().Contains(searchTerm));
-            foreach (var curMatch in matches)
+            IEnumerable<PictureFileInfo> matches =
+                AllLoadedPictures.Where(x => x.PictureName.ToLower().Contains(searchTerm));
+            foreach (PictureFileInfo curMatch in matches)
                 ActiveLoadedPictures.Add(curMatch);
         }
 
@@ -60,53 +63,44 @@ namespace XMLCharSheets
             if (AllLoadedPictures.Count() != ActiveLoadedPictures.Count())
             {
                 ActiveLoadedPictures.Clear();
-                foreach (var cur in AllLoadedPictures)
+                foreach (PictureFileInfo cur in AllLoadedPictures)
                 {
                     ActiveLoadedPictures.Add(cur);
                 }
             }
         }
-
     }
+
     public class PictureFileInfo
     {
+        private String _pictureFile = "";
         private String _pictureName = "";
 
-        public String PictureName
-        {
-            get { return _pictureName; }
-            set
-            {
-                _pictureName = value;
-            }
-        }
-
-        private String _pictureFile = "";
         public PictureFileInfo(string filePath, string fileName)
         {
             PictureName = fileName;
             PictureFile = filePath;
         }
+
+        public String PictureName
+        {
+            get { return _pictureName; }
+            set { _pictureName = value; }
+        }
+
         public String PictureFile
         {
             get { return _pictureFile; }
-            set
-            {
-                _pictureFile = value;
-            }
+            set { _pictureFile = value; }
         }
 
         public String PictureFileAbsolutePath
         {
             get
             {
-                var val = Directory.GetCurrentDirectory() + "\\"+PictureFile;
+                string val = Directory.GetCurrentDirectory() + "\\" + PictureFile;
                 return val;
             }
         }
-	
     }
-
-
-	
 }
