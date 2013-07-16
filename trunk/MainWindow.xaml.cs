@@ -191,6 +191,13 @@ namespace XMLCharSheets
             CombatService.RosterViewModel.RollAttackTarget(ActiveList());
         }
 
+
+        private void Auto_Act_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckValidActive())
+                return;
+            CombatService.RosterViewModel.PerformAutomaticActions(ActiveList());
+        }
         internal bool CheckValidActive()
         {
             if (CombatService.RosterViewModel.SelectedActiveCharacter == null &&
@@ -471,5 +478,32 @@ namespace XMLCharSheets
         {
             Environment.Exit(0);
         }
+
+        private void Auto_Run_Combat(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Run entire combat until only one team remains?", "Confirm Auto Combat Mode", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                
+            }
+            else
+            {
+                var teams = CombatService.RosterViewModel.ActiveRoster.Select(x=>x.Team).Distinct();
+                if (teams.Count() <= 1)
+                {
+                    MessageBox.Show("Two teams must exist.");
+                    return;
+                }
+                else
+                {
+                    while (teams.Count() != 1)
+                    {
+                        Initiative_Button_Click(this, null);
+                        ActiveCharacters_ListBox.SelectAll();
+                        Auto_Act_Button_Click(this, null);
+                    }
+                }
+            }
+        }
+
     }
 }

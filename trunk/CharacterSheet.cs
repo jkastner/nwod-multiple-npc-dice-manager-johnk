@@ -30,6 +30,7 @@ namespace XMLCharSheets
         private String _statusesLine;
         private CharacterSheet _target;
         private List<Trait> _traits = new List<Trait>();
+        private CharacterActionScript _currentCharacterActionScript = null;
 
         public CharacterSheet(string name, List<Trait> curTraits)
         {
@@ -290,14 +291,6 @@ namespace XMLCharSheets
             return Name;
         }
 
-        internal void SetTarget(CharacterSheet target, String attackType, string damageType)
-        {
-            Target = target;
-            DamageType = damageType;
-            ChosenAttack = attackType;
-        }
-
-
         internal virtual String NewRound()
         {
             for (int curIndex = StatusEffects.Count - 1; curIndex >= 0; curIndex--)
@@ -366,7 +359,7 @@ namespace XMLCharSheets
             {
                 return double.MaxValue;
             }
-            return Helper3DCalcs.DistanceBetween(Visual.Location, target);
+            return Helper3DCalcs.DistanceBetween(Visual.LocationForSave, target);
         }
 
         #region INotifyPropertyChanged Members
@@ -383,5 +376,14 @@ namespace XMLCharSheets
         }
 
         #endregion
+
+        internal virtual void PerformAutomaticActions()
+        {
+            if (_currentCharacterActionScript == null)
+            {
+                _currentCharacterActionScript = new MoveAndMeleeAttackScript();
+            }
+            _currentCharacterActionScript.PerformAction(this);
+        }
     }
 }

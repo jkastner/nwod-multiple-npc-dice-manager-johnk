@@ -75,7 +75,7 @@ namespace XMLCharSheets
         {
             CurrentWoundPoints = MaxWoundPoints;
             CurrentVigorPoints = MaxVigorPoints;
-            _isStaggered = false;
+            SetIncapacitated(false);
             NotifyStatusChange();
         }
 

@@ -333,6 +333,12 @@ namespace GameBoard
             AddIfNew(_theMap);
         }
 
+        public void MovePieceToPoint(MoveablePicture selectedVisual, Point3D targetPoint)
+        {
+            selectedVisual.MoveTo(new Point3D(targetPoint.X, targetPoint.Y, targetPoint.Z));
+            OnPieceMoved(new PieceMovedEventsArg(selectedVisual));
+        }
+
         internal void MoveSelectedPiecesTo(Point3D point3D)
         {
             var selectedCharacters = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected);
