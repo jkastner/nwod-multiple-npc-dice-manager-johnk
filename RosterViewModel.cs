@@ -379,6 +379,21 @@ namespace XMLCharSheets
             }
         }
 
+        internal void PerformAutomaticActions(IList actors)
+        {
+            List<CharacterSheet> activeActors = new List<CharacterSheet>();
+            foreach (object curItem in actors)
+            {
+                var curChar = curItem as CharacterSheet;
+                activeActors.Add(curChar);
+            }
+            activeActors = activeActors.OrderByDescending(x => x.CurInitiative).ToList();
+            foreach (var cur in activeActors)
+            {
+                cur.PerformAutomaticActions();
+            }
+        }
+
         internal void RollAttackTarget(IList attackers)
         {
             ResultText = lineBreak;
@@ -743,5 +758,7 @@ namespace XMLCharSheets
         }
 
         #endregion
+
+
     }
 }

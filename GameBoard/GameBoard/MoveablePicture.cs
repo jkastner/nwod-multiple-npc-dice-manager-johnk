@@ -225,6 +225,7 @@ namespace GameBoard
 
         internal void MoveTo(Point3D point3D)
         {
+            LocationForSave = point3D;
             Point3DAnimation moveAnimationPic = new Point3DAnimation(CharImage.Origin, point3D, new Duration(new TimeSpan(0,0,0,1)));
             Point3DAnimation moveAnimationCone = new Point3DAnimation(BaseCone.Origin, new Point3D(point3D.X, point3D.Y, 0), new Duration(new TimeSpan(0, 0, 0, 1)));
             Point3DAnimation textAnimation = new Point3DAnimation(InfoText.Position, new Point3D(point3D.X, point3D.Y, InfoText.Position.Z), new Duration(new TimeSpan(0, 0, 0, 1)));
@@ -234,7 +235,6 @@ namespace GameBoard
             CharImage.ApplyAnimationClock(RectangleVisual3D.OriginProperty, clock1);
             BaseCone.ApplyAnimationClock(TruncatedConeVisual3D.OriginProperty, clock2);
             InfoText.ApplyAnimationClock(BillboardTextVisual3D.PositionProperty, clock3);
-            LocationForSave = point3D;
             //CharImage.Origin = point1;
             //BaseCone.Origin = ;
         }
