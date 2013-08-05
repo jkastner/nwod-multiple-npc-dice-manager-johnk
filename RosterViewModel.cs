@@ -354,12 +354,19 @@ namespace XMLCharSheets
             }
         }
 
-        internal void RemoveActiveCharacters(IList characters)
+        internal void RemoveCharactersFromRosters(IList characters)
         {
             for (int curIndex = characters.Count - 1; curIndex >= 0; curIndex--)
             {
                 var curChar = characters[curIndex] as CharacterSheet;
-                ActiveRoster.Remove(curChar);
+                if(ActiveRoster.Contains(curChar))
+                {
+                    ActiveRoster.Remove(curChar);
+                }
+                if (DeceasedRoster.Contains(curChar))
+                {
+                    DeceasedRoster.Remove(curChar);
+                }
                 foreach (Team cur in Teams)
                 {
                     if (cur.TeamMembers.Contains(curChar))
@@ -542,8 +549,7 @@ namespace XMLCharSheets
                     {
                         cur.Target = null;
                     }
-                    DeceasedRoster.Add(ActiveRoster[curIndex]);
-                    ActiveRoster.Remove(ActiveRoster[curIndex]);
+                    MoveCharacterToDeceasedRoster(ActiveRoster[curIndex]);
                 }
             }
             for (int curIndex = DeceasedRoster.Count() - 1; curIndex >= 0; curIndex--)
@@ -554,6 +560,12 @@ namespace XMLCharSheets
                     DeceasedRoster.Remove(DeceasedRoster[curIndex]);
                 }
             }
+        }
+
+        private void MoveCharacterToDeceasedRoster(CharacterSheet characterSheet)
+        {
+            DeceasedRoster.Add(characterSheet);
+            ActiveRoster.Remove(characterSheet);
         }
 
         internal void SetVisualActive(IList selectedObjects)
@@ -718,14 +730,35 @@ namespace XMLCharSheets
             }
         }
 
-        internal void OpenRoster(IList<CharacterSheet> newRoster)
+        internal void OpenActiveRoster(IList<CharacterSheet> newRoster)
         {
             var oldRoster = new List<CharacterSheet>();
             oldRoster.AddRange(ActiveRoster);
-            RemoveActiveCharacters(oldRoster);
+            RemoveCharactersFromRosters(oldRoster);
             foreach (CharacterSheet curNew in newRoster)
             {
                 RegisterNewCharacter(curNew);
+            }
+        }
+
+        internal void OpenDeceasedRoster(IList<CharacterSheet> deceasedRoster)
+        {
+            var oldRoster = new List<CharacterSheet>();
+            oldRoster.AddRange(DeceasedRoster);
+            RemoveCharactersFromRosters(oldRoster);
+            foreach (CharacterSheet curNew in deceasedRoster)
+            {
+                RegisterNewCharacter(curNew);
+                MoveCharacterToDeceasedRoster(curNew);
+            }
+        }
+
+        internal void OpenTeams(IList<Team> newteams)
+        {
+            Teams.Clear();
+            foreach (Team curNew in newteams)
+            {
+                Teams.Add(curNew);
             }
         }
 
@@ -758,6 +791,8 @@ namespace XMLCharSheets
         }
 
         #endregion
+
+
 
 
     }

@@ -272,7 +272,7 @@ namespace XMLCharSheets
         {
             if (!CheckValidActive())
                 return;
-            CombatService.RosterViewModel.RemoveActiveCharacters(ActiveList());
+            CombatService.RosterViewModel.RemoveCharactersFromRosters(ActiveList());
         }
 
         internal IList ActiveList()
@@ -328,7 +328,9 @@ namespace XMLCharSheets
                 sbd.ShowDialog();
                 if (!sbd.WasCancel && sbd.HasBoardHeight && sbd.HasBoardWidth)
                 {
-                    CombatService.VisualsViewModel.SetBoardBackground(o.FileName, sbd.BoardHeight, sbd.BoardWidth,
+                    string targetFile = o.FileName.Replace(Directory.GetCurrentDirectory()+Path.DirectorySeparatorChar, "");
+
+                    CombatService.VisualsViewModel.SetBoardBackground(targetFile, sbd.BoardHeight, sbd.BoardWidth,
                                                                       sbd.MaintainRatio);
                 }
             }
