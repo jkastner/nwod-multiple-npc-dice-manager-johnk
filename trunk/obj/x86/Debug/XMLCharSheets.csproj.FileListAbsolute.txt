@@ -176,3 +176,6 @@ C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.g.resources
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
+E:\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.exe.config
+E:\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.exe
+E:\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.pdb

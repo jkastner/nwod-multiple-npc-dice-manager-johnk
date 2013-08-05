@@ -42,7 +42,9 @@ namespace XMLCharSheets
                 try
                 {
                     var savedCombat = ReadFromXML(openFileDialog.FileName, typeof (Combat)) as Combat;
-                    CombatService.RosterViewModel.OpenRoster(savedCombat.ActiveRoster);
+                    CombatService.RosterViewModel.OpenActiveRoster(savedCombat.ActiveRoster);
+                    CombatService.RosterViewModel.OpenDeceasedRoster(savedCombat.DeceasedRoster);
+                    CombatService.RosterViewModel.OpenTeams(savedCombat.Teams);
                     IEnumerable<MoveablePicture> allVisuals = savedCombat.ActiveRoster.Select(x => x.Visual);
                     CombatService.VisualsViewModel.OpenVisuals(allVisuals);
                     CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
@@ -88,6 +90,7 @@ namespace XMLCharSheets
         {
             var currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster,
                                            CombatService.RosterViewModel.DeceasedRoster,
+                                           CombatService.RosterViewModel.Teams,
                                            CombatService.VisualsViewModel.CurrentBoardInfo,
                                            CombatService.RosterViewModel.ResultText);
             WriteToXML(currentCombat, fileName, typeof (Combat));
