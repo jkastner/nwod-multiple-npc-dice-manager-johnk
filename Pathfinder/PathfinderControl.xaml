@@ -33,32 +33,20 @@
                      Width="70" VerticalAlignment="Center">
                 Slashing
             </TextBox>
+            <Label VerticalAlignment="Center">Dmg</Label>
             <TextBox Name="DamageValue_TextBox" Margin="5,5,5,5" Height="50" KeyUp="DamageBox_TextBox_KeyUp" Width="30"
                      VerticalAlignment="Center" Text="{Binding ElementName=DamageSlider, Path=Value, Mode=TwoWay}">
             </TextBox>
-            <Button ToolTip="Change hitpoints by the indicated value." Height="38" Width="70"
-                    Click="DoDamage_ButtonClick">
-                <Path
-                    Data="M38.060001,9.6329989L64,9.6329989 64,16.306999 38.060001,16.306999z M9.6330004,0L16.306999,0 16.306999,9.6329999 25.940001,9.6329999 25.940001,16.306999 16.306999,16.306999 16.306999,25.939999 9.6330004,25.939999 9.6330004,16.306999 0,16.306999 0,9.6329999 9.6330004,9.6329999z"
-                    Stretch="Uniform" Fill="#FF0A0A0A"
-                    Width="38" Height="38" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
-                    <Path.RenderTransform>
-                        <TransformGroup>
-                            <TransformGroup.Children>
-                                <RotateTransform Angle="0" />
-                                <ScaleTransform ScaleX="1" ScaleY="1" />
-                            </TransformGroup.Children>
-                        </TransformGroup>
-                    </Path.RenderTransform>
-                </Path>
-
-            </Button>
         </DockPanel>
         <DockPanel>
             <Button Height="50" Margin="5,5,5,5" Click="FortitudeSave_Button_Click">Fort</Button>
             <Button Height="50" Margin="5,5,5,5" Click="ReflexSave_Button_Click">Ref</Button>
-            <Button Height="50" Margin="5,5,5,5" Click="WillSave_Button_Click">Wil</Button>
+            <Button Height="50" Margin="5,5,5,5" Click="WillSave_Button_Click">Will</Button>
         </DockPanel>
+        <Label VerticalAlignment="Center">Pool</Label>
+        <TextBox Name="RollDice_TextBox" Margin="5,5,5,5" Height="50" KeyDown="RollDice_TextBox_KeyDown" Width="70"
+                     VerticalAlignment="Center">5d4+5
+        </TextBox>
 
 
     </DockPanel>
