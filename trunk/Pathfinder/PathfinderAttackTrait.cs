@@ -48,17 +48,8 @@ namespace XMLCharSheets
             String[] damageDice = damage.Split(',');
             foreach (string curPool in damageDice)
             {
-                //Damage='2d8+13'
-                String[] diceTypes = curPool.Split('d');
-                String[] secondHalf = diceTypes[1].Split('+');
-                int diceQuantity = int.Parse(diceTypes[0]);
-                int dieType = int.Parse(secondHalf[0]);
-                int modifier = 0;
-                if (secondHalf.Length == 2)
-                {
-                    modifier = int.Parse(secondHalf[1]);
-                }
-                var damagePool = new PathfinderDicePool(diceQuantity, dieType, modifier);
+                var damagePool = PathfinderDicePool.ParseString(curPool);
+
                 _damageDice.Add(damagePool);
             }
 

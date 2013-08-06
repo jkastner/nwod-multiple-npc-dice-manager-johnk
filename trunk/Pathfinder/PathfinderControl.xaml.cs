@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace XMLCharSheets
 {
@@ -44,7 +45,7 @@ namespace XMLCharSheets
         }
 
 
-        private void DoDamage_ButtonClick(object sender, RoutedEventArgs e)
+        private void DoDamage()
         {
             int sliderValue = -(int) DamageSlider.Value;
             _viewModel.DoDamage(ActiveList(), sliderValue, DamageDescriptor_TextBox.Text);
@@ -54,7 +55,7 @@ namespace XMLCharSheets
         {
             if (e.Key == Key.Return)
             {
-                DoDamage_ButtonClick(sender, e);
+                DoDamage();
             }
             int newVal = 0;
             if (int.TryParse(DamageValue_TextBox.Text, out newVal))
@@ -66,6 +67,34 @@ namespace XMLCharSheets
         private void Pathfinder_SingleAttack_Button_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.PathfinderSingleAttack(ActiveList());
+        }
+
+        private void RollDice_TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                var createdPool = PathfinderDicePool.ParseString(RollDice_TextBox.Text);
+                if(createdPool==null)
+                {
+                    RollDice_TextBox.Background = new SolidColorBrush(Colors.Red);
+                    RollDice_TextBox.ToolTip = "Format must be as in \"quantity d dieType + modifier\" format - '1d8+2'";
+                    return;
+                }
+                ResetRollDiceTextBoxError();
+                createdPool.Roll();
+                DamageValue_TextBox.Text = "-"+createdPool.TotalValue;
+                TextReporter.Report(createdPool.PoolDescription + ": " + createdPool.ResultDescription+"\n");
+            }
+            else
+            {
+                ResetRollDiceTextBoxError();
+            }
+        }
+
+        private void ResetRollDiceTextBoxError()
+        {
+            RollDice_TextBox.Background = new SolidColorBrush(Colors.White);
+            RollDice_TextBox.ToolTip = "";
         }
     }
 }

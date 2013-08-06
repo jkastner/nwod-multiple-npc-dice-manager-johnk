@@ -460,6 +460,7 @@
                         VerticalScrollBarVisibility="Auto"
                         VerticalAlignment="Top"
                         Margin="5,5,5,5"
+                        TextWrapping="Wrap"
                         Text="{Binding Path=ResultText, UpdateSourceTrigger=PropertyChanged}"
                         TextChanged="Results_TextBox_TextChanged">
                     </TextBox>

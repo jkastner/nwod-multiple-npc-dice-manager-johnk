@@ -250,7 +250,11 @@ namespace XMLCharSheets
             {
                 var curChar = curItem as CharacterSheet;
                 if (CanRoll(curChar, involvedTraits))
+                {
                     RollCharacter(curChar, involvedTraits);
+                    ResultText = "\n";
+                }
+
             }
         }
 
@@ -304,7 +308,7 @@ namespace XMLCharSheets
                 }
             }
 
-            ResultText = involvedCharacter.Name + " rolled: (" + allTraits + ")";
+            ResultText = involvedCharacter.Name + " rolled (" + allTraits + ")";
             int totalDice = 0;
             var charTraits = new List<Trait>();
             foreach (string cur in involvedTraits)
@@ -312,7 +316,7 @@ namespace XMLCharSheets
                 charTraits.Add(involvedCharacter.FindNumericTrait(cur));
             }
             String result = involvedCharacter.RollBasePool(charTraits, RollModifier).ResultDescription;
-            ResultText = "\n" + result;
+            ResultText = ": " + result;
         }
 
         internal void DoDamage(IList characters, int value, String damageType)
@@ -791,9 +795,6 @@ namespace XMLCharSheets
         }
 
         #endregion
-
-
-
 
     }
 }
