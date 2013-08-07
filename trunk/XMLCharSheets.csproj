@@ -61,45 +61,48 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AttackTrait.cs" />
-    <Compile Include="CharacterActionScript.cs" />
-    <Compile Include="CharacterSheet.cs" />
+    <Compile Include="AbstractsAndInterfaces\AttackTrait.cs" />
+    <Compile Include="AbstractsAndInterfaces\CharacterActionScript.cs" />
+    <Compile Include="CharacterCreationControl.xaml.cs">
+      <DependentUpon>CharacterCreationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AbstractsAndInterfaces\CharacterSheet.cs" />
     <Compile Include="Combat.cs" />
     <Compile Include="CombatService.cs" />
-    <Compile Include="DicePool.cs" />
-    <Compile Include="Damage.cs" />
+    <Compile Include="AbstractsAndInterfaces\DicePool.cs" />
+    <Compile Include="AbstractsAndInterfaces\Damage.cs" />
     <Compile Include="FileSaveOpenService.cs" />
-    <Compile Include="IReadCharacters.cs" />
+    <Compile Include="AbstractsAndInterfaces\IReadCharacters.cs" />
     <Compile Include="MoveAndMeleeAttackScript.cs" />
-    <Compile Include="NWoD\NWoDAttackTrait.cs" />
-    <Compile Include="NWoD\NWoDCharacterReader.cs" />
-    <Compile Include="NWoD\NWoDConstants.cs" />
-    <Compile Include="NWoD\NWoDControl.xaml.cs">
+    <Compile Include="Systems\NWoD\NWoDAttackTrait.cs" />
+    <Compile Include="Systems\NWoD\NWoDCharacterReader.cs" />
+    <Compile Include="Systems\NWoD\NWoDConstants.cs" />
+    <Compile Include="Systems\NWoD\NWoDControl.xaml.cs">
       <DependentUpon>NWoDControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NWoD\NWoDDamage.cs" />
-    <Compile Include="NWoD\NWoDHealthBox.cs" />
-    <Compile Include="NWoD\NWoDCharacter.cs" />
-    <Compile Include="NWoD\NWoDRosterViewModel.cs" />
-    <Compile Include="NWoD\NWoDTrait.cs" />
-    <Compile Include="NWoD\NWoDDicePool.cs" />
-    <Compile Include="NWoD\INWoDTrait.cs" />
-    <Compile Include="NWoD\NWoDVampire.cs" />
-    <Compile Include="Pathfinder\PathfinderCharacter_HP.cs" />
-    <Compile Include="Pathfinder\PathfinderCharacter_WoundsVigor.cs" />
-    <Compile Include="Pathfinder\PathfinderControl.xaml.cs">
+    <Compile Include="Systems\NWoD\NWoDDamage.cs" />
+    <Compile Include="Systems\NWoD\NWoDHealthBox.cs" />
+    <Compile Include="Systems\NWoD\NWoDCharacter.cs" />
+    <Compile Include="Systems\NWoD\NWoDRosterViewModel.cs" />
+    <Compile Include="Systems\NWoD\NWoDTrait.cs" />
+    <Compile Include="Systems\NWoD\NWoDDicePool.cs" />
+    <Compile Include="Systems\NWoD\INWoDTrait.cs" />
+    <Compile Include="Systems\NWoD\NWoDVampire.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderCharacter_HP.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderCharacter_WoundsVigor.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderControl.xaml.cs">
       <DependentUpon>PathfinderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="RulesetSelectedEventArgs.cs" />
     <Compile Include="TextReporter.cs" />
-    <Compile Include="Pathfinder\IPathfinderTrait.cs" />
-    <Compile Include="Pathfinder\PathfinderAttackTrait.cs" />
-    <Compile Include="Pathfinder\PathfinderCharacter.cs" />
-    <Compile Include="Pathfinder\PathfinderCharacterReader.cs" />
-    <Compile Include="Pathfinder\PathfinderDamage.cs" />
-    <Compile Include="Pathfinder\PathfinderDicePool.cs" />
-    <Compile Include="Pathfinder\PathfinderNumericTrait.cs" />
-    <Compile Include="Pathfinder\PathfinderStringTrait.cs" />
+    <Compile Include="Systems\Pathfinder\IPathfinderTrait.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderAttackTrait.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderCharacter.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderCharacterReader.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderDamage.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderDicePool.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderNumericTrait.cs" />
+    <Compile Include="Systems\Pathfinder\PathfinderStringTrait.cs" />
     <Compile Include="PictureSelectionViewModel.cs" />
     <Compile Include="CharacterReader.cs" />
     <Compile Include="RosterViewModel.cs" />
@@ -117,9 +120,13 @@
       <DependentUpon>StatusEffectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Team.cs" />
-    <Compile Include="Trait.cs" />
-    <Compile Include="NumericIntTrait.cs" />
-    <Compile Include="StringTrait.cs" />
+    <Compile Include="AbstractsAndInterfaces\Trait.cs" />
+    <Compile Include="AbstractsAndInterfaces\NumericIntTrait.cs" />
+    <Compile Include="AbstractsAndInterfaces\StringTrait.cs" />
+    <Page Include="CharacterCreationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,11 +139,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NWoD\NWoDControl.xaml">
+    <Page Include="Systems\NWoD\NWoDControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pathfinder\PathfinderControl.xaml">
+    <Page Include="Systems\Pathfinder\PathfinderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,9 +203,9 @@
     <Resource Include="Images\HasMovedImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="NWoD\images\bloodbuff.png" />
-    <Resource Include="NWoD\images\bloodheal.jpg" />
-    <Resource Include="NWoD\images\increasebloodicon.png" />
+    <Resource Include="Systems\NWoD\images\bloodbuff.png" />
+    <Resource Include="Systems\NWoD\images\bloodheal.jpg" />
+    <Resource Include="Systems\NWoD\images\increasebloodicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

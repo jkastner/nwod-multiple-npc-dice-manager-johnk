@@ -108,7 +108,10 @@
                     </ListBox>
                 </StackPanel>
             </TabItem>
-            <TabItem Name="CurrentCharacterControlTab" Header="Current Character">
+                <TabItem Name="CreationTab2" Header="Create2">
+                <local:CharacterCreationControl></local:CharacterCreationControl>
+            </TabItem>
+                <TabItem Name="CurrentCharacterControlTab" Header="Current Character">
                 <StackPanel>
                     <TextBox FontSize="24" Text="{Binding Path=SelectedCharacter.Name, Mode=TwoWay}"></TextBox>
                     <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
