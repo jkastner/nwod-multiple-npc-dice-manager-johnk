@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="XMLCharSheets.CharacterCreationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <Grid Margin="0,2,0,-2">
+        <Grid.Resources>
+            <Style x:Key="BaseStyle"  TargetType="Control">
+                <Setter Property="Margin" Value="5,5,5,5" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="VerticalContentAlignment" Value="Bottom" />
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MaxWidth="120"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource BaseStyle}" >Search...</TextBox>
+        <ListBox Grid.Row="1" Grid.Column="0" Margin="5,5,5,5"></ListBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource BaseStyle}" MinWidth="120">Name</TextBox>
+        <ComboBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Style="{StaticResource BaseStyle}" MinWidth="90">Team</ComboBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" TextWrapping="Wrap"  FontSize="12" VerticalScrollBarVisibility="Auto">
+            Charcter Stat\n
+            These are stats
+            They are noisy.
+        </TextBox>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBox Style="{StaticResource BaseStyle}" FontSize="12">
+                Image search...
+            </TextBox>
+            <ListBox>
+                <Rectangle Height="50" Width="50" Fill="Red" Margin="5,5,5,5"></Rectangle>
+                <Rectangle Height="50" Width="50" Fill="Green" Margin="5,5,5,5"></Rectangle>
+            </ListBox>
+        </StackPanel>
+        <Border Grid.RowSpan="2" Grid.Column="3" BorderThickness="2" BorderBrush="Black" Margin="0,0,0,43">
+            <TextBlock>Active Teams</TextBlock>
+        </Border>
+        <Button Grid.Row="1" Grid.Column="3" VerticalAlignment="Bottom" Style="{StaticResource BaseStyle}" Height="33" HorizontalAlignment="Right" Width="73">OK</Button>
+
+    </Grid>
+</UserControl>
