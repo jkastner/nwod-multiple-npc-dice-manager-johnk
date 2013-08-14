@@ -27,6 +27,7 @@ namespace XMLCharSheets
             }
         }
 
+
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

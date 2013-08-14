@@ -21,13 +21,14 @@ namespace XMLCharSheets
     public partial class CharacterCreationControl : UserControl
     {
         CharacterCreationViewModel _characterCreationViewModel = new CharacterCreationViewModel();
+        private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         public CharacterCreationControl()
         {
             InitializeComponent();
             DataContext = _characterCreationViewModel;
             AvailableNPCS_ListBox.ItemsSource = _characterCreationViewModel.FilteredCharacters;
-            
-            
+            SearchedDisplayItems_ListBox.ItemsSource = _pictureSelectionViewModel.ActiveLoadedPictures;
+            TeamSelection_ListBox.ItemsSource = CombatService.RosterViewModel.Teams;
             
             /// Take largely from 
             /// http://www.intertech.com/Blog/post/How-to-Select-All-Text-in-a-WPF-Content-on-Focus.aspx
@@ -76,13 +77,13 @@ namespace XMLCharSheets
 
         private void CharacterSheetSearcher_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            RunSearch();
+            RunCharacterSheetSearch();
         }
 
-        private void RunSearch()
+        private void RunCharacterSheetSearch()
         {
             var searchText = CharacterSheetSearcher_TextBox.Text.Trim().ToLower();
-            if(searchText.Equals("search..."))
+            if(searchText.Contains("search..."))
                 return;
             ImageSearch_TextBox.Text = CharacterSheetSearcher_TextBox.Text;
             _characterCreationViewModel.SearchForText(searchText);
@@ -93,10 +94,63 @@ namespace XMLCharSheets
 
         }
 
+        private void TrimList_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RunImageSearch();
+        }
+
+        private void RunImageSearch()
+        {
+            var searchText = ImageSearch_TextBox.Text.Trim().ToLower();
+            if (searchText.Contains("search..."))
+            {
+                return;
+            }
+            _pictureSelectionViewModel.AdjustList(searchText);
+            if (SearchedDisplayItems_ListBox.Items.Count == 1)
+            {
+                SearchedDisplayItems_ListBox.SelectedIndex = 0;
+            }
+        }
+
         private void CharacterCreationControl_Loaded(object sender, RoutedEventArgs e)
         {
             _characterCreationViewModel.ResetActiveList();
-            RunSearch();
+            RunCharacterSheetSearch();
+            RunImageSearch();
+        }
+
+        private void CharacterName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ImageSearch_TextBox.Text = CharacterName_TextBox.Text;
+        }
+
+        private void CreateCharacter_ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            if (_characterCreationViewModel.SelectedNewCharacter == null)
+            {
+                //CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
+                return;
+            }
+            String newName = CharacterName_TextBox.Text.Trim();
+            if (String.IsNullOrWhiteSpace(newName))
+            {
+                //CreateCharacterError_Label.Content = "Please enter a name.";
+                return;
+            }
+            //CreateCharacterError_Label.Content = "";
+            int count = 1;
+            String originalName = newName;
+            while (CombatService.RosterViewModel.ActiveRoster.Any(x => x.Name.Equals(newName)))
+            {
+                newName = originalName + "_" + count;
+                count++;
+            }
+            CharacterSheet newInstance = _characterCreationViewModel.SelectedNewCharacter.Copy(newName);
+            
+            
+            newInstance.Ruleset = _characterCreationViewModel.SelectedNewCharacter.Ruleset;
+            CombatService.RosterViewModel.RegisterNewCharacter(newInstance);
         }
 
 
