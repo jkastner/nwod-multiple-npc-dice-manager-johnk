@@ -249,7 +249,6 @@ namespace XMLCharSheets
         public abstract String RollResults { get; set; }
         public abstract String ChosenAttackValue { get; }
         public bool IsIncapacitated { get; private set; }
-
         internal abstract String HealthStatusLineDescription { get; }
 
         [DataMember]
@@ -384,6 +383,20 @@ namespace XMLCharSheets
                 _currentCharacterActionScript = new MoveAndMeleeAttackScript();
             }
             _currentCharacterActionScript.PerformAction(this);
+        }
+
+        public virtual String CharacterSheetDescription 
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Name + "\n");
+                foreach (var cur in Traits)
+                {
+                    sb.Append(cur.ToString()+"\n");
+                }
+                return sb.ToString();
+            }
         }
     }
 }

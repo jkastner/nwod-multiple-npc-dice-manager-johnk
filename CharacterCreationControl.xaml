@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="CharacterCreationControl_Loaded">
     
     <Grid Margin="0,2,0,-2">
         <Grid.Resources>
@@ -26,17 +26,15 @@
             <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource BaseStyle}" >Search...</TextBox>
-        <ListBox Grid.Row="1" Grid.Column="0" Margin="5,5,5,5"></ListBox>
-        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource BaseStyle}" MinWidth="120">Name</TextBox>
+        <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource BaseStyle}" Name="CharacterSheetSearcher_TextBox" TextChanged="CharacterSheetSearcher_TextBox_TextChanged" >Search...</TextBox>
+        <ListBox Name="AvailableNPCS_ListBox" SelectedItem="{Binding SelectedNewCharacter}" Grid.Row="1" Grid.Column="0" Margin="5,5,5,5"></ListBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource BaseStyle}" Name="CharacterName_TextBox" MinWidth="120" Text="{Binding CurrentCharacterName}"></TextBox>
         <ComboBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Style="{StaticResource BaseStyle}" MinWidth="90">Team</ComboBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" TextWrapping="Wrap"  FontSize="12" VerticalScrollBarVisibility="Auto">
-            Charcter Stat\n
-            These are stats
-            They are noisy.
+        <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" TextWrapping="Wrap" DataContext="{Binding SelectedNewCharacter}"
+                 Text="{Binding CharacterSheetDescription, Mode=OneWay}"   FontSize="12" VerticalScrollBarVisibility="Auto">
         </TextBox>
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <TextBox Style="{StaticResource BaseStyle}" FontSize="12">
+            <TextBox Style="{StaticResource BaseStyle}" Name="ImageSearch_TextBox" FontSize="12">
                 Image search...
             </TextBox>
             <ListBox>
