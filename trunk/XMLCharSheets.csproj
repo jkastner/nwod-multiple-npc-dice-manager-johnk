@@ -67,6 +67,7 @@
       <DependentUpon>CharacterCreationControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="AbstractsAndInterfaces\CharacterSheet.cs" />
+    <Compile Include="CharacterCreationViewModel.cs" />
     <Compile Include="Combat.cs" />
     <Compile Include="CombatService.cs" />
     <Compile Include="AbstractsAndInterfaces\DicePool.cs" />
