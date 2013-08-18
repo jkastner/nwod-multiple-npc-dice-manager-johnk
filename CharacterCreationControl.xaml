@@ -41,7 +41,7 @@
         <TextBox Grid.Row="1"  Grid.Column="2" Style="{StaticResource BaseStyle}" Name="ImageSearch_TextBox" TextChanged="TrimList_TextBox_TextChanged" FontSize="12">
                 Image search...
             </TextBox>
-        <ListBox Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" x:Name="SearchedDisplayItems_ListBox"
+        <ListBox Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" x:Name="PictureSearch_ListBox"
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedPictureInfo}"
                 ScrollViewer.VerticalScrollBarVisibility="Visible">
