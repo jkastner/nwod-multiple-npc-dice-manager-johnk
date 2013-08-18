@@ -27,7 +27,7 @@ namespace XMLCharSheets
             InitializeComponent();
             DataContext = _characterCreationViewModel;
             AvailableNPCS_ListBox.ItemsSource = _characterCreationViewModel.FilteredCharacters;
-            SearchedDisplayItems_ListBox.ItemsSource = _pictureSelectionViewModel.ActiveLoadedPictures;
+            PictureSearch_ListBox.ItemsSource = _pictureSelectionViewModel.ActiveLoadedPictures;
             TeamSelection_ListBox.ItemsSource = CombatService.RosterViewModel.Teams;
             
             /// Take largely from 
@@ -37,6 +37,7 @@ namespace XMLCharSheets
             EventManager.RegisterClassHandler(typeof(TextBox), UIElement.GotKeyboardFocusEvent,
                 new RoutedEventHandler(SelectAllText), true);
             ///
+
         }
 
 
@@ -107,9 +108,9 @@ namespace XMLCharSheets
                 return;
             }
             _pictureSelectionViewModel.AdjustList(searchText);
-            if (SearchedDisplayItems_ListBox.Items.Count == 1)
+            if (PictureSearch_ListBox.Items.Count == 1)
             {
-                SearchedDisplayItems_ListBox.SelectedIndex = 0;
+                PictureSearch_ListBox.SelectedIndex = 0;
             }
         }
 
@@ -127,10 +128,20 @@ namespace XMLCharSheets
 
         private void CreateCharacter_ButtonClicked(object sender, RoutedEventArgs e)
         {
-            if (_characterCreationViewModel.SelectedNewCharacter == null)
+            var pictureInfo = PictureSearch_ListBox.SelectedItem as PictureFileInfo;
+            var selectedTeam = TeamSelection_ListBox.SelectedItem as Team;
+            if (_characterCreationViewModel.SelectedNewCharacter == null ||
+                pictureInfo == null ||
+                selectedTeam == null
+                )
             {
+                HighlightMissingData();
                 //CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
                 return;
+            }
+            else
+            {
+                ResetMissingDataHighlight();
             }
             String newName = CharacterName_TextBox.Text.Trim();
             if (String.IsNullOrWhiteSpace(newName))
@@ -146,13 +157,44 @@ namespace XMLCharSheets
                 newName = originalName + "_" + count;
                 count++;
             }
+
             CharacterSheet newInstance = _characterCreationViewModel.SelectedNewCharacter.Copy(newName);
             
             
             newInstance.Ruleset = _characterCreationViewModel.SelectedNewCharacter.Ruleset;
             CombatService.RosterViewModel.RegisterNewCharacter(newInstance);
+
+            if (pictureInfo != null && selectedTeam != null)
+            {
+                CombatService.RosterViewModel.AddVisualToCharacters(new List<CharacterSheet>(){newInstance}, pictureInfo,
+                                                                    selectedTeam.TeamColor, selectedTeam);
+            }
         }
 
+        private void ResetMissingDataHighlight()
+        {
+            AvailableNPCS_ListBox.Background = Brushes.White;
+            PictureSearch_ListBox.Background = Brushes.White;
+            TeamSelection_ListBox.Background = Brushes.White;
+        }
+
+        private void HighlightMissingData()
+        {
+            var pictureInfo = PictureSearch_ListBox.SelectedItem as PictureFileInfo;
+            var selectedTeam = TeamSelection_ListBox.SelectedItem as Team;
+            if(_characterCreationViewModel.SelectedNewCharacter == null )
+            {
+                AvailableNPCS_ListBox.Background = Brushes.Red;
+            }
+            if(pictureInfo == null)
+            {
+                PictureSearch_ListBox.Background=Brushes.Red;
+            }
+            if (selectedTeam == null)
+            {
+                TeamSelection_ListBox.Background = Brushes.Red;
+            }
+        }
 
     }
 }

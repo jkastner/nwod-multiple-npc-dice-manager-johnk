@@ -14,7 +14,19 @@ namespace XMLCharSheets
         public CharacterCreationViewModel()
         {
             ResetActiveList();
+            CombatService.RosterViewModel.RulesetSelected += RulesetSelected;
         }
+
+        private void RulesetSelected(object sender, EventArgs e)
+        {
+            var prevSelected = SelectedNewCharacter;
+            ResetActiveList();
+            if (FilteredCharacters.Contains(prevSelected))
+            {
+                SelectedNewCharacter = prevSelected;
+            }
+        }
+
         public CharacterSheet _selectedNewCharacter;
         public CharacterSheet SelectedNewCharacter
         {
