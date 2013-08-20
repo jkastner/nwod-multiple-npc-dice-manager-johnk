@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -63,6 +63,11 @@ namespace XMLCharSheets
         {
             if (!string.IsNullOrWhiteSpace(_previousFileName))
             {
+                if (!Directory.Exists(Path.GetDirectoryName(_previousFileName)))
+                {
+                    SaveFileAs();
+                    return;
+                }
                 SaveFile(_previousFileName);
             }
             else
