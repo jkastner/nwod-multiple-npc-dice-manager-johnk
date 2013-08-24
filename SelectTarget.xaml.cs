@@ -246,7 +246,7 @@ namespace XMLCharSheets
             {
                 if (cur.Visual != null)
                 {
-                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Visual.PieceColor,
+                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Team.TeamColor,
                                                  new Duration(new TimeSpan(0, 0, 0, 1)));
                 }
             }

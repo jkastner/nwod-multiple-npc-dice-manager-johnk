@@ -26,5 +26,6 @@ namespace XMLCharSheets
         {
             get { return _gameBoardVisual; }
         }
+
     }
 }

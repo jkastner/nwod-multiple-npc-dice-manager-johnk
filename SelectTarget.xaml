@@ -33,7 +33,7 @@
                                    HorizontalAlignment="Left" />
                         <Rectangle Height="10" Width="20">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="{Binding PieceColor}" />
+                                <SolidColorBrush Color="{Binding Team.TeamColor}" />
                             </Rectangle.Fill>
                         </Rectangle>
                         <TextBlock Margin="16,0,0,0" Text="{Binding Path=StatusesLine}"

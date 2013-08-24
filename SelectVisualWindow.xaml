@@ -59,7 +59,7 @@
                                         <TextBlock Text="{Binding Name}" MinWidth="150" />
                                         <Rectangle Height="10" Width="20">
                                             <Rectangle.Fill>
-                                                <SolidColorBrush Color="{Binding PieceColor}" />
+                                                <SolidColorBrush Color="{Binding Team.TeamColor}" />
                                             </Rectangle.Fill>
                                         </Rectangle>
                                     </DockPanel>

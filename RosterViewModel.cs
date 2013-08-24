@@ -23,7 +23,6 @@ namespace XMLCharSheets
 
 
         private ObservableCollection<CharacterSheet> _fullRoster = new ObservableCollection<CharacterSheet>();
-        private String _resultText;
         private int _rollModifier;
         private bool _ruleSetChosen;
         private CharacterSheet _selectedActiveCharacter;
@@ -80,7 +79,10 @@ namespace XMLCharSheets
         public CharacterSheet SelectedFullCharacter
         {
             get { return _selectedFullCharacter; }
-            set { SetActiveCharacter(value, null, null); }
+            set 
+            {
+                SetActiveCharacter(value, null, null);
+            }
         }
 
         public CharacterSheet SelectedActiveCharacter
@@ -107,16 +109,6 @@ namespace XMLCharSheets
             {
                 _rollModifier = value;
                 OnPropertyChanged("RollModifier");
-            }
-        }
-
-        public String ResultText
-        {
-            get { return _resultText; }
-            set
-            {
-                _resultText = _resultText + value;
-                OnPropertyChanged("ResultText");
             }
         }
 
@@ -151,6 +143,9 @@ namespace XMLCharSheets
             }
         }
 
+
+        public const string UnassignedTeamName = "Unassigned";
+        public static readonly Team UnassignedTeam = new Team(UnassignedTeamName, Colors.Beige); 
         private void MakeTeams()
         {
             Teams.Add(new Team("Team 1", Colors.Red));
@@ -162,6 +157,7 @@ namespace XMLCharSheets
             Teams.Add(new Team("Team 6", Colors.Yellow));
             Teams.Add(new Team("Team 7", Colors.Teal));
             Teams.Add(new Team("Team 8", Colors.Purple));
+            Teams.Add(UnassignedTeam);
         }
 
         private void OnVisualPieceSelected(object sender, EventArgs e)
@@ -215,8 +211,7 @@ namespace XMLCharSheets
             {
                 FullRoster.Add(ReadCharacterFromFile(fileName));
             }
-
-
+            
             // Recurse into subdirectories of this directory.
             string[] subdirEntries = Directory.GetDirectories(sourceDir);
             foreach (string subdir in subdirEntries)
@@ -225,13 +220,7 @@ namespace XMLCharSheets
             }
         }
 
-
-        public void ReportText(String newText)
-        {
-            ResultText = newText;
-        }
-
-
+        public List<Tuple<String, String>> LoadingErrors = new List<Tuple<string, string>>();
         public CharacterSheet ReadCharacterFromFile(String fileName)
         {
             return _characterReader.Read(fileName);
@@ -239,7 +228,7 @@ namespace XMLCharSheets
 
         internal void RollCharacters(IList characters, IList selectedTraits)
         {
-            ResultText = lineBreak;
+            TextReporter.Report(lineBreak);
             var involvedTraits = new List<String>();
             foreach (object curTraitItem in selectedTraits)
             {
@@ -252,7 +241,7 @@ namespace XMLCharSheets
                 if (CanRoll(curChar, involvedTraits))
                 {
                     RollCharacter(curChar, involvedTraits);
-                    ResultText = "\n";
+                    TextReporter.Report("\n");
                 }
 
             }
@@ -291,7 +280,7 @@ namespace XMLCharSheets
                         result.Append(", " + missingTraits[curIndex]);
                     }
                 }
-                ResultText = "\n" + result + "\n";
+                TextReporter.Report("\n" + result + "\n");
             }
             return canRoll;
         }
@@ -308,7 +297,7 @@ namespace XMLCharSheets
                 }
             }
 
-            ResultText = involvedCharacter.Name + " rolled (" + allTraits + ")";
+            TextReporter.Report(involvedCharacter.Name + " rolled (" + allTraits + ")");
             int totalDice = 0;
             var charTraits = new List<Trait>();
             foreach (string cur in involvedTraits)
@@ -316,7 +305,7 @@ namespace XMLCharSheets
                 charTraits.Add(involvedCharacter.FindNumericTrait(cur));
             }
             String result = involvedCharacter.RollBasePool(charTraits, RollModifier).ResultDescription;
-            ResultText = ": " + result;
+            TextReporter.Report(": " + result);
         }
 
         internal void DoDamage(IList characters, int value, String damageType)
@@ -407,7 +396,7 @@ namespace XMLCharSheets
 
         internal void RollAttackTarget(IList attackers)
         {
-            ResultText = lineBreak;
+            TextReporter.Report(lineBreak);
             var targetToDamage = new Dictionary<CharacterSheet, List<Damage>>();
             foreach (object curItem in attackers)
             {
@@ -415,15 +404,15 @@ namespace XMLCharSheets
                 var attackName = new List<String>();
                 if (curChar.Target == null)
                 {
-                    ResultText = curChar.Name + " has no target.\n";
+                    TextReporter.Report(curChar.Name + " has no target.\n");
                     continue;
                 }
                 curChar.HasAttacked = true;
                 attackName.Add(curChar.ChosenAttack);
                 if (CanRoll(curChar, attackName))
                 {
-                    ResultText = curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - "
-                                 + curChar.ChosenAttackString + "} on " + curChar.Target.Name + "\n";
+                    TextReporter.Report(curChar.Name + " rolled attack {" + curChar.ChosenAttackValue + " - "
+                                 + curChar.ChosenAttackString + "} on " + curChar.Target.Name + "\n");
 
                     List<Damage> damageResult = curChar.AttackTarget(RollModifier);
                     if (!targetToDamage.ContainsKey(curChar.Target))
@@ -432,14 +421,14 @@ namespace XMLCharSheets
                     }
                     if (curChar is NWoDCharacter)
                     {
-                        ResultText = "\nFinal pool: " + curChar.FinalAttackPool;
+                        TextReporter.Report("\nFinal pool: " + curChar.FinalAttackPool);
                     }
                     targetToDamage[curChar.Target].AddRange(damageResult);
-                    ResultText = "\n" + curChar.RollResults + "\n";
+                    TextReporter.Report("\n" + curChar.RollResults + "\n");
                 }
                 if (curChar.Visual != null && curChar.Target.Visual != null)
                 {
-                    CombatService.VisualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.PieceColor,
+                    CombatService.VisualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.Team.TeamColor,
                                                               new Duration(new TimeSpan(0, 0, 0, 5)));
                 }
             }
@@ -450,7 +439,7 @@ namespace XMLCharSheets
 
         private void SummarizeDamage(Dictionary<CharacterSheet, List<Damage>> targetToDamage)
         {
-            ResultText = "\n\nDamage summary:";
+            TextReporter.Report("\n\nDamage summary:");
             foreach (var curTargetPair in targetToDamage)
             {
                 var damageResultsTotal = new Dictionary<string, int>();
@@ -467,20 +456,20 @@ namespace XMLCharSheets
                         summedDamage += cur.DamageValue;
                     }
                 }
-                ResultText = "\n\t" + curTargetPair.Key.Name + " took ";
+                TextReporter.Report("\n\t" + curTargetPair.Key.Name + " took ");
                 if (summedDamage > 0)
                 {
-                    ResultText = summedDamage + " total (";
+                    TextReporter.Report(summedDamage + " total (");
                 }
                 foreach (var curDamage in damageResultsTotal)
                 {
-                    ResultText = curDamage.Key + " " + curDamage.Value + " ";
+                    TextReporter.Report(curDamage.Key + " " + curDamage.Value + " ", Brushes.Red);
                 }
                 if (summedDamage > 0)
                 {
-                    ResultText = ")";
+                    TextReporter.Report(")");
                 }
-                ResultText = "\t Current Status: " + curTargetPair.Key.HealthStatusLineDescription;
+                TextReporter.Report("\t Current Status: " + curTargetPair.Key.HealthStatusLineDescription);
             }
         }
 
@@ -492,7 +481,7 @@ namespace XMLCharSheets
                 String info = curCharacter.NewRound();
                 if (!String.IsNullOrWhiteSpace(info))
                 {
-                    ResultText = info;
+                    TextReporter.Report(info);
                 }
             }
         }
@@ -587,7 +576,7 @@ namespace XMLCharSheets
             {
                 if (curCharacter.Visual != null)
                 {
-                    CombatService.VisualsViewModel.SetActive(curCharacter.Visual, curCharacter.PieceColor,
+                    CombatService.VisualsViewModel.SetActive(curCharacter.Visual, curCharacter.Team.TeamColor,
                                                              selectedCharacters.Count == 1,
                                                              curCharacter.SpeedTrait.TraitValue,
                                                              MakeStatusList(curCharacter.StatusEffects));
@@ -609,8 +598,7 @@ namespace XMLCharSheets
             return values;
         }
 
-        internal void AddVisualToCharacters(IList characters, PictureFileInfo pictureInfo, Color pieceColor,
-                                            Team chosenTeam)
+        internal void AddVisualToCharacters(IList characters, PictureFileInfo pictureInfo, Team chosenTeam)
         {
             foreach (object curItem in characters)
             {
@@ -620,8 +608,7 @@ namespace XMLCharSheets
                     curCharacter.Team.TeamMembers.Remove(curCharacter);
                     curCharacter.Team = null;
                 }
-                curCharacter.Team = chosenTeam;
-                chosenTeam.TeamMembers.Add(curCharacter);
+                RegisterTeamMemberOnTeam(curCharacter, chosenTeam);
 
                 var baseOrigin = new Point3D(0, 0, 0);
                 if (curCharacter.Visual != null)
@@ -632,14 +619,19 @@ namespace XMLCharSheets
                 //public MoveablePicture 
                 //AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height, Point3D location, String additionalInfo)
                 MoveablePicture createdVisual =
-                    CombatService.VisualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, pieceColor,
+                    CombatService.VisualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, chosenTeam.TeamColor,
                                                                       curCharacter.Name,
                                                                       curCharacter.HeightTrait.TraitValue, baseOrigin,
                                                                       MakeStatusList(curCharacter.StatusEffects),
                                                                       curCharacter.SpeedTrait.TraitValue);
                 curCharacter.Visual = createdVisual;
-                curCharacter.PieceColor = pieceColor;
             }
+        }
+
+        internal void RegisterTeamMemberOnTeam(CharacterSheet curCharacter, Team chosenTeam)
+        {
+            curCharacter.Team = chosenTeam;
+            chosenTeam.TeamMembers.Add(curCharacter);
         }
 
         private List<StatusEffectDisplay> MakeStatusList(List<StatusEffect> list)
@@ -713,6 +705,32 @@ namespace XMLCharSheets
             }
         }
 
+
+        internal void ReportText(ReportTextEventArgs reportTextEventArgs)
+        {
+            OnReportTextEvent(reportTextEventArgs);
+        }
+        
+        public event EventHandler ReportTextEvent;
+        private void OnReportTextEvent(ReportTextEventArgs e)
+        {
+            EventHandler handler = ReportTextEvent;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler ClearReportTextEvent;
+        private void OnClearReportTextEvent(EventArgs e)
+        {
+            EventHandler handler = ClearReportTextEvent;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         internal void PathfinderSingleAttack(IList attackers)
         {
             foreach (object cur in attackers)
@@ -768,8 +786,7 @@ namespace XMLCharSheets
 
         internal void ClearResultText()
         {
-            _resultText = "";
-            OnPropertyChanged("ResultText");
+            OnClearReportTextEvent(null);
         }
 
         internal void LoadDamageFor(string rulesetName)
@@ -795,6 +812,17 @@ namespace XMLCharSheets
         }
 
         #endregion
+
+
+        internal void ShowErrors()
+        {
+            if (LoadingErrors.Any())
+            {
+                LoadingErrorsWindow lew = new LoadingErrorsWindow();
+                lew.SetErrors(LoadingErrors);
+                lew.ShowDialog();
+            }
+        }
 
     }
 }

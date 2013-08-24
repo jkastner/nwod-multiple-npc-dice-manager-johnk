@@ -28,87 +28,6 @@
         </Menu>
         <TabControl DockPanel.Dock="Top">
             <TabItem Name="CreationTab" Header="Create">
-                <StackPanel>
-
-                    <StackPanel>
-                        <Label Name="CreateCharacterError_Label"></Label>
-                        <DockPanel>
-                            <StackPanel>
-                                <Label>Single Character</Label>
-                                <TextBox HorizontalAlignment="Left" Name="NewCharacterName_TextBox" Width="125"></TextBox>
-                            </StackPanel>
-                            <Button HorizontalAlignment="Left"
-                                    Margin="5,5,5,5"
-                                    Name="AddCharacter_Button"
-                                    Content="Add" ToolTip="Add character to active roster."
-                                    Height="30" Width="75" Click="AddCharacter_Button_Click" />
-                        </DockPanel>
-                    </StackPanel>
-                    <DockPanel>
-                        <StackPanel>
-                            <Label>Available Characters</Label>
-                            <ListBox Name="AllCharacters_ListBox"
-                                     MaxHeight="250"
-                                     MinHeight="250"
-                                     SelectedItem="{Binding Path=SelectedFullCharacter, Mode=TwoWay}"
-                                     ItemsSource="{Binding Path=FullRoster, UpdateSourceTrigger=PropertyChanged}"
-                                     Height="Auto"
-                                     SelectionMode="Single"
-                                     SelectionChanged="AllCharacters_ListBox_SelectionChanged">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <DockPanel>
-                                            <TextBlock Margin="5,0,15,0" Text="{Binding Path=Name}" FontSize="16"
-                                                       HorizontalAlignment="Left" />
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label>Active Characters</Label>
-                            <ListBox
-                                Name="ActiveCharacters_CreationPage_ListBox"
-                                Background="LightGray"
-                                MaxHeight="250"
-                                MinHeight="250"
-                                ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}"
-                                SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
-                                Height="Auto"
-                                SelectionMode="Extended">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <DockPanel>
-                                            <TextBlock Text="{Binding Path=Name}" FontSize="16"
-                                                       HorizontalAlignment="Left" />
-                                            <Rectangle Height="10" Width="20">
-                                                <Rectangle.Fill>
-                                                    <SolidColorBrush Color="{Binding PieceColor}" />
-                                                </Rectangle.Fill>
-                                            </Rectangle>
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
-                    </DockPanel>
-                    <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
-                              Margin="5,5,5,5"
-                              ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
-                              CurrentCellChanged="DataChanged_DataGrid">
-                    </DataGrid>
-                    <ListBox>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-            </TabItem>
-                <TabItem Name="CreationTab2" Header="Create2">
                 <local:CharacterCreationControl></local:CharacterCreationControl>
             </TabItem>
                 <TabItem Name="CurrentCharacterControlTab" Header="Current Character">
@@ -164,7 +83,7 @@
                                         <Rectangle MouseDown="TeamColor_ActiveCharacters_ListBox_Click" Grid.Column="3"
                                                    Height="10" Width="20">
                                             <Rectangle.Fill>
-                                                <SolidColorBrush Color="{Binding PieceColor}" />
+                                                <SolidColorBrush Color="{Binding Team.TeamColor}" />
                                             </Rectangle.Fill>
                                         </Rectangle>
                                         <Image Grid.Column="4"
@@ -457,16 +376,14 @@
                                     </DockPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>-->
-                    <TextBox
-                        Name="Results_TextBox"
+                    <RichTextBox
+                        Name="Results_RichTextBox"
                         IsReadOnly="True"
                         VerticalScrollBarVisibility="Auto"
                         VerticalAlignment="Top"
                         Margin="5,5,5,5"
-                        TextWrapping="Wrap"
-                        Text="{Binding Path=ResultText, UpdateSourceTrigger=PropertyChanged}"
                         TextChanged="Results_TextBox_TextChanged">
-                    </TextBox>
+                    </RichTextBox>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Deceased">

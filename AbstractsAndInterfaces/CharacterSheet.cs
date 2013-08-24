@@ -208,17 +208,6 @@ namespace XMLCharSheets
         public MoveablePicture Visual { get; set; }
 
         [DataMember]
-        public Color PieceColor
-        {
-            get { return _pieceColor; }
-            set
-            {
-                _pieceColor = value;
-                OnPropertyChanged("PieceColor");
-            }
-        }
-
-        [DataMember]
         public Team Team { get; set; }
 
         [DataMember]

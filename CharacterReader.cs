@@ -9,40 +9,47 @@ namespace XMLCharSheets
     internal class CharacterReader
     {
         private readonly Dictionary<String, IReadCharacters> _readers = new Dictionary<string, IReadCharacters>();
-
         internal CharacterSheet Read(string fileName)
         {
-            XDocument theDoc = XDocument.Load(fileName);
-            CharacterSheet newChar = null;
-            IEnumerable<XElement> foundChars = theDoc.Elements("CharacterSheet");
-            foreach (XElement curChar in foundChars)
+            try
             {
-                var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
-                            select new
-                                {
-                                    Ruleset = (String) item.Element("Ruleset"),
-                                };
-                foreach (var curQuery in query)
+                XDocument theDoc = XDocument.Load(fileName);
+                CharacterSheet newChar = null;
+                IEnumerable<XElement> foundChars = theDoc.Elements("CharacterSheet");
+                foreach (XElement curChar in foundChars)
                 {
-                    if (_readers.ContainsKey(curQuery.Ruleset))
+                    var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
+                                select new
+                                    {
+                                        Ruleset = (String)item.Element("Ruleset"),
+                                    };
+                    foreach (var curQuery in query)
                     {
-                        try
+                        if (_readers.ContainsKey(curQuery.Ruleset))
                         {
-                            newChar = _readers[curQuery.Ruleset].ReadCharacter(newChar, curChar);
+                            try
+                            {
+                                newChar = _readers[curQuery.Ruleset].ReadCharacter(newChar, curChar);
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Failed to read " + fileName);
+                            }
+                            newChar.Ruleset = curQuery.Ruleset;
                         }
-                        catch (Exception e)
+                        else
                         {
-                            MessageBox.Show("Failed to read " + fileName);
+                            throw new Exception("Unknown ruleset " + curQuery.Ruleset + " presented.");
                         }
-                        newChar.Ruleset = curQuery.Ruleset;
-                    }
-                    else
-                    {
-                        throw new Exception("Unknown ruleset " + curQuery.Ruleset + " presented.");
                     }
                 }
+                return newChar;
             }
-            return newChar;
+            catch (Exception e)
+            {
+                CombatService.RosterViewModel.LoadingErrors.Add(new Tuple<string,string>(fileName, e.Message));
+            }
+            return null;
         }
 
         public void RegisterReader(String RulesetName, IReadCharacters reader)

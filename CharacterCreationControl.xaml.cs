@@ -128,12 +128,7 @@ namespace XMLCharSheets
 
         private void CreateCharacter_ButtonClicked(object sender, RoutedEventArgs e)
         {
-            var pictureInfo = PictureSearch_ListBox.SelectedItem as PictureFileInfo;
-            var selectedTeam = TeamSelection_ListBox.SelectedItem as Team;
-            if (_characterCreationViewModel.SelectedNewCharacter == null ||
-                pictureInfo == null ||
-                selectedTeam == null
-                )
+            if (_characterCreationViewModel.SelectedNewCharacter==null)
             {
                 HighlightMissingData();
                 //CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
@@ -163,19 +158,26 @@ namespace XMLCharSheets
             
             newInstance.Ruleset = _characterCreationViewModel.SelectedNewCharacter.Ruleset;
             CombatService.RosterViewModel.RegisterNewCharacter(newInstance);
-
+            var pictureInfo = PictureSearch_ListBox.SelectedItem as PictureFileInfo;
+            var selectedTeam = TeamSelection_ListBox.SelectedItem as Team;
+            if (selectedTeam == null)
+            {
+                selectedTeam = RosterViewModel.UnassignedTeam;
+            }
             if (pictureInfo != null && selectedTeam != null)
             {
-                CombatService.RosterViewModel.AddVisualToCharacters(new List<CharacterSheet>(){newInstance}, pictureInfo,
-                                                                    selectedTeam.TeamColor, selectedTeam);
+                CombatService.RosterViewModel.AddVisualToCharacters(new List<CharacterSheet>() { newInstance }, pictureInfo, selectedTeam);
             }
+            else
+            {
+                CombatService.RosterViewModel.RegisterTeamMemberOnTeam(newInstance, selectedTeam);
+            }
+                 
         }
 
         private void ResetMissingDataHighlight()
         {
             AvailableNPCS_ListBox.Background = Brushes.White;
-            PictureSearch_ListBox.Background = Brushes.White;
-            TeamSelection_ListBox.Background = Brushes.White;
         }
 
         private void HighlightMissingData()
@@ -185,14 +187,6 @@ namespace XMLCharSheets
             if(_characterCreationViewModel.SelectedNewCharacter == null )
             {
                 AvailableNPCS_ListBox.Background = Brushes.Red;
-            }
-            if(pictureInfo == null)
-            {
-                PictureSearch_ListBox.Background=Brushes.Red;
-            }
-            if (selectedTeam == null)
-            {
-                TeamSelection_ListBox.Background = Brushes.Red;
             }
         }
 
