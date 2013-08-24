@@ -50,7 +50,6 @@ namespace XMLCharSheets
                     CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
                     _previousFileName = openFileDialog.FileName;
                     CombatService.RosterViewModel.ClearResultText();
-                    CombatService.RosterViewModel.ResultText = savedCombat.OutputText;
                 }
                 catch (Exception ex)
                 {
@@ -97,7 +96,7 @@ namespace XMLCharSheets
                                            CombatService.RosterViewModel.DeceasedRoster,
                                            CombatService.RosterViewModel.Teams,
                                            CombatService.VisualsViewModel.CurrentBoardInfo,
-                                           CombatService.RosterViewModel.ResultText);
+                                           String.Empty);
             WriteToXML(currentCombat, fileName, typeof (Combat));
             _previousFileName = fileName;
         }

@@ -35,6 +35,7 @@ namespace XMLCharSheets
             { 
                 _selectedNewCharacter = value;
                 OnPropertyChanged("SelectedNewCharacter");
+                CombatService.RosterViewModel.SelectedFullCharacter = value;
                 CheckForNameChange();
             }
         }

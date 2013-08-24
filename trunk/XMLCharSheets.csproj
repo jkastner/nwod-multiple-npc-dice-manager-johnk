@@ -74,7 +74,12 @@
     <Compile Include="AbstractsAndInterfaces\Damage.cs" />
     <Compile Include="FileSaveOpenService.cs" />
     <Compile Include="AbstractsAndInterfaces\IReadCharacters.cs" />
+    <Compile Include="ListBoxSelectionBehavior.cs" />
+    <Compile Include="LoadingErrorsWindow.xaml.cs">
+      <DependentUpon>LoadingErrorsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MoveAndMeleeAttackScript.cs" />
+    <Compile Include="ReportTextEventArgs.cs" />
     <Compile Include="Systems\NWoD\NWoDAttackTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDCharacterReader.cs" />
     <Compile Include="Systems\NWoD\NWoDConstants.cs" />
@@ -125,6 +130,10 @@
     <Compile Include="AbstractsAndInterfaces\NumericIntTrait.cs" />
     <Compile Include="AbstractsAndInterfaces\StringTrait.cs" />
     <Page Include="CharacterCreationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadingErrorsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Windows.Media;
 
 namespace XMLCharSheets
 {
     public static class TextReporter
     {
+        static Brush defaultBrush = Brushes.Black;
+        static double defaultFont = 12;
         public static void Report(String newText)
         {
-            CombatService.RosterViewModel.ReportText(newText);
+            CombatService.RosterViewModel.ReportText(new ReportTextEventArgs(newText, defaultBrush, defaultFont));
         }
+
+        public static void Report(String newText, Brush reportColor)
+        {
+            CombatService.RosterViewModel.ReportText(new ReportTextEventArgs(newText, reportColor, 12));
+        }
+
     }
 }

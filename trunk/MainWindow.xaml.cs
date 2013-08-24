@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using GameBoard;
 using Microsoft.Win32;
+using System.Windows.Documents;
 
 namespace XMLCharSheets
 {
@@ -19,7 +20,7 @@ namespace XMLCharSheets
     public partial class MainWindow : Window
     {
         private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
-
+        private Paragraph RichTextParagraph;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,12 +28,32 @@ namespace XMLCharSheets
             CombatService.GameBoardVisual.RegisterViewModel(CombatService.VisualsViewModel);
             VisualsService.GameBoardVisual = CombatService.GameBoardVisual;
             CombatService.RosterViewModel.PopulateCharacters(Directory.GetCurrentDirectory() + "\\Sheets");
+            CombatService.RosterViewModel.ShowErrors();
             DataContext = CombatService.RosterViewModel;
             CombatService.GameBoardVisual.Show();
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
             CombatService.VisualsViewModel.PieceSelected += VisualPieceSelected;
             CombatService.VisualsViewModel.ClearSelectedPieces += ClearSelectedPieces;
+            CombatService.RosterViewModel.ReportTextEvent += UpdateResultsRichTextBox;
+            CombatService.RosterViewModel.ClearReportTextEvent += ClearResultsRichTextBox;
+            this.RichTextParagraph = new Paragraph();
+            Results_RichTextBox.Document = new FlowDocument(RichTextParagraph);
             ShapeLength_TextBox.Text = "20";
+        }
+
+        private void ClearResultsRichTextBox(object sender, EventArgs e)
+        {
+            RichTextParagraph.Inlines.Clear();
+        }
+
+        private void UpdateResultsRichTextBox(object sender, EventArgs e)
+        {
+            var textEvent = e as ReportTextEventArgs;
+            RichTextParagraph.Inlines.Add(new Bold(new Run(textEvent.Message))
+            {
+                Foreground = textEvent.DisplayColor,
+                FontSize = textEvent.FontSize,
+            });
         }
 
         private void RulesetSelectedResponse(object sender, EventArgs e)
@@ -48,7 +69,6 @@ namespace XMLCharSheets
         private void ClearSelectedPieces(object sender, EventArgs e)
         {
             ActiveCharacters_ListBox.SelectedItems.Clear();
-            ActiveCharacters_CreationPage_ListBox.SelectedItems.Clear();
         }
 
         private void VisualPieceSelected(object sender, EventArgs e)
@@ -64,37 +84,10 @@ namespace XMLCharSheets
                 if (matchingChar != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
-                    ActiveCharacters_CreationPage_ListBox.SelectedItems.Add(matchingChar);
                 }
             }
         }
 
-
-        private void AddCharacter_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (CombatService.RosterViewModel.SelectedFullCharacter == null)
-            {
-                CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
-                return;
-            }
-            String newName = NewCharacterName_TextBox.Text.Trim();
-            if (String.IsNullOrWhiteSpace(newName))
-            {
-                CreateCharacterError_Label.Content = "Please enter a name.";
-                return;
-            }
-            CreateCharacterError_Label.Content = "";
-            int count = 1;
-            String originalName = newName;
-            while (CombatService.RosterViewModel.ActiveRoster.Any(x => x.Name.Equals(newName)))
-            {
-                newName = originalName + "_" + count;
-                count ++;
-            }
-            CharacterSheet newInstance = CombatService.RosterViewModel.SelectedFullCharacter.Copy(newName);
-            newInstance.Ruleset = CombatService.RosterViewModel.SelectedFullCharacter.Ruleset;
-            CombatService.RosterViewModel.RegisterNewCharacter(newInstance);
-        }
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -211,7 +204,7 @@ namespace XMLCharSheets
 
         private void Results_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Results_TextBox.ScrollToEnd();
+            Results_RichTextBox.ScrollToEnd();
         }
 
         private void DataChanged_DataGrid(object sender, EventArgs e)
@@ -300,8 +293,7 @@ namespace XMLCharSheets
             Team chosenTeam = _visualWindow.ChosenTeam;
             if (!_visualWindow.WasCancel && pictureInfo != null && pieceColor != null)
             {
-                CombatService.RosterViewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo,
-                                                                    pieceColor, chosenTeam);
+                CombatService.RosterViewModel.AddVisualToCharacters(ActiveCharacters_ListBox.SelectedItems, pictureInfo, chosenTeam);
             }
         }
 
@@ -336,23 +328,6 @@ namespace XMLCharSheets
             }
         }
 
-        private void AllCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CombatService.RosterViewModel.SelectedFullCharacter == null)
-            {
-                return;
-            }
-            String givenName = NewCharacterName_TextBox.Text.Trim();
-            bool matchOrEmpty = String.IsNullOrWhiteSpace(givenName);
-            if (!matchOrEmpty)
-            {
-                matchOrEmpty = CombatService.RosterViewModel.FullRoster.Any(x => x.Name.Equals(givenName));
-            }
-            if (matchOrEmpty)
-            {
-                NewCharacterName_TextBox.Text = (CombatService.RosterViewModel.SelectedFullCharacter).Name;
-            }
-        }
 
         private void TeamColor_ActiveCharacters_ListBox_Click(object sender, MouseButtonEventArgs e)
         {
@@ -391,7 +366,7 @@ namespace XMLCharSheets
                     if (selectedCharacter.Visual != null && selectedCharacter.Target.Visual != null)
                         CombatService.VisualsViewModel.DrawAttack(selectedCharacter.Visual,
                                                                   selectedCharacter.Target.Visual,
-                                                                  selectedCharacter.PieceColor,
+                                                                  selectedCharacter.Team.TeamColor,
                                                                   new Duration(new TimeSpan(0, 0, 0, 0, 800)));
                 }
             }
