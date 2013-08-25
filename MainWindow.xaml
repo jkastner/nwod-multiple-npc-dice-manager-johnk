@@ -77,51 +77,57 @@
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <!--Name-->
-                                        <ColumnDefinition Width="200"></ColumnDefinition>
-                                        <!--Initiative-->
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <!--Name, team, picture.-->
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <!--Cur initiative and target-->
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
                                         <!--Status-->
-                                        <ColumnDefinition Width="250"></ColumnDefinition>
-                                        <!--Team Color-->
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <!--Has Attacked-->
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <!--Has Moved-->
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <!--Target-->
-                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding Path=Name}"
-                                                MouseDown="ZoomToVisual_Click" FontSize="16"
+                                    <StackPanel Grid.Column="0" > 
+                                        <TextBlock Text="{Binding Path=Name}"
+                                                FontSize="18"
+                                                MouseDown="ZoomToVisual_Click"
                                                 Foreground="{Binding Path=StatusColor}" MinWidth="100"
                                                 HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="1" Margin="8,0,0,0" Text="{Binding Path=CurInitiative}"
+                                        <Image 
+                                            HorizontalAlignment="Left"
+                                            Height="90" Source="{Binding Visual.PictureFileAbsolutePath}" MouseDown="ZoomToVisual_Click" >
+                                            
+                                        </Image>
+                                        <Rectangle Margin="2,2,2,2" HorizontalAlignment="Left" MouseDown="TeamColor_ActiveCharacters_ListBox_Click" Grid.Column="3"
+                                                Height="20" Width="30">
+                                            <Rectangle.Fill>
+                                                <SolidColorBrush Color="{Binding Team.TeamColor}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Grid.Column="1" Margin="8,0,0,0" Text="{Binding Path=CurInitiative}"
                                                 Width="20" Foreground="{Binding Path=StatusColor}"
                                                 HorizontalAlignment="Center" />
-                                    <TextBlock Grid.Column="2" Margin="16,0,0,0" Text="{Binding Path=StatusesLine}"
-                                                ToolTip="{Binding Path=StatusesLine}" MinWidth="50"
-                                                Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
-                                    <Rectangle MouseDown="TeamColor_ActiveCharacters_ListBox_Click" Grid.Column="3"
-                                                Height="10" Width="20">
-                                        <Rectangle.Fill>
-                                            <SolidColorBrush Color="{Binding Team.TeamColor}" />
-                                        </Rectangle.Fill>
-                                    </Rectangle>
-                                    <Image Grid.Column="4"
-                                            Visibility="{Binding Path=HasAttacked, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                            Source="images/HasAttackedImage.jpg">
-                                    </Image>
-                                    <Image Grid.Column="5"
-                                            Visibility="{Binding Path=HasMoved, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                            Source="images/HasMovedImage.jpg">
-                                    </Image>
-                                    <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="6"
+                                        <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="6"
                                                 MinWidth="100" Margin="8,0,0,0"
                                                 Foreground="{Binding Path=Target.StatusColor}"
                                                 ToolTip="{Binding Path=Target.Status}"
                                                 Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}"
                                                 HorizontalAlignment="Center" />
+                                        <DockPanel>
+                                            <Image Grid.Column="5"
+                                                Visibility="{Binding Path=HasMoved, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                Source="images/HasMovedImage.jpg">
+                                            </Image>
+                                            <Image Grid.Column="4"
+                                                Visibility="{Binding Path=HasAttacked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                Source="images/HasAttackedImage.jpg">
+                                            </Image>
+                                        </DockPanel>
+                                    </StackPanel>
+
+                                    <TextBlock Grid.Column="2" Margin="16,0,0,0" Text="{Binding Path=Status}"
+                                                ToolTip="{Binding Path=Status}" MinWidth="50"
+                                                Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

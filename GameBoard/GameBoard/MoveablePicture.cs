@@ -10,6 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using System.Runtime.Serialization;
+using System.IO;
 
 namespace GameBoard
 {
@@ -98,8 +99,21 @@ namespace GameBoard
             }
         }
 
+        private string _pictureFileName = "";
         [DataMember]
-        public String PictureFileName { get; set; }
+        public String PictureFileName 
+        {
+            get { return _pictureFileName;}
+            set { _pictureFileName = value;}
+        }
+
+        public String PictureFileAbsolutePath
+        {
+            get
+            {
+                return Directory.GetCurrentDirectory() + "\\" + _pictureFileName;
+            }
+        }
 
         private List<StatusEffectDisplay> _statusEffects = new List<StatusEffectDisplay>();
         [DataMember]

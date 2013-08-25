@@ -173,22 +173,6 @@ namespace XMLCharSheets
             }
         }
 
-        public String StatusesLine
-        {
-            get
-            {
-                String statusLine = "";
-                foreach (StatusEffect cur in StatusEffects)
-                {
-                    statusLine = statusLine + " " + cur.Description;
-                }
-                _statusesLine = statusLine.Trim();
-                return _statusesLine;
-            }
-            set { _statusesLine = value; }
-        }
-
-
         [DataMember]
         public int FinalAttackPool { get; set; }
 
