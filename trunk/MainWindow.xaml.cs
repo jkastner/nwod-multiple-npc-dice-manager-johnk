@@ -103,12 +103,12 @@ namespace XMLCharSheets
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActiveList().Count == 0 || CurrentTraits_ListBox.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an active character and at least one trait.");
-                return;
-            }
-            CombatService.RosterViewModel.RollCharacters(ActiveList(), CurrentTraits_ListBox.SelectedItems);
+            //if (ActiveList().Count == 0 || CurrentTraits_ListBox.SelectedItems.Count == 0)
+            //{
+            //    MessageBox.Show("Please select an active character and at least one trait.");
+            //    return;
+            //}
+            //CombatService.RosterViewModel.RollCharacters(ActiveList(), CurrentTraits_ListBox.SelectedItems);
         }
 
         private void Reset_Health_Button_Click(object sender, RoutedEventArgs e)
