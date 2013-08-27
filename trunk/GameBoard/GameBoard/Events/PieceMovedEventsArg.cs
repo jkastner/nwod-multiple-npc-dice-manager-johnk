@@ -8,10 +8,10 @@ namespace GameBoard
 {
     public class PieceMovedEventsArg : EventArgs
     {
-        public MoveablePicture Mover { get; set; }
-        public PieceMovedEventsArg(MoveablePicture mover)
+        public Guid MoverID { get; set; }
+        public PieceMovedEventsArg(Guid mover)
         {
-            Mover = mover;
+            MoverID = mover;
         }
 
     }

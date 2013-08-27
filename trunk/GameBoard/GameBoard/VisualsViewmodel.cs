@@ -16,7 +16,7 @@ namespace GameBoard
     [DataContract]
     public class VisualsViewModel
     {
-
+        
         public VisualsViewModel()
         {
             _groupSingleMovementCircle = new TubeVisual3D()
@@ -81,7 +81,7 @@ namespace GameBoard
 
         Color defaultColor = Colors.Gray;
         public MoveablePicture AddImagePieceToMap(String charImageFile, Color pieceColor, String name, double height,
-            Point3D location, List<StatusEffectDisplay> statusEffects, double speed)
+            Point3D location, List<StatusEffectDisplay> statusEffects, double speed, Guid characterGuid)
         {
             double heightFeet = height;
             while (VisualToMoveablePicturesDictionary.Values.Any(
@@ -93,20 +93,24 @@ namespace GameBoard
                 location = new Point3D(location.X + heightFeet, location.Y, location.Z);
             }
             MoveablePicture charImage = new MoveablePicture(charImageFile, heightFeet, name, pieceColor, location, statusEffects, speed);
-            RegisterMoveablePicture(charImage);
+            RegisterMoveablePicture(charImage, characterGuid);
             return charImage;
         }
 
-        private void RegisterMoveablePicture(MoveablePicture charImage)
+        private void RegisterMoveablePicture(MoveablePicture charImage, Guid characterGuid)
         {
             VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
+            _charactersToMoveablePicture.Add(characterGuid, charImage);
             _viewport.Children.Add(charImage.CharImage);
             _viewport.Children.Add(charImage.BaseCone);
         }
 
         Dictionary<AnimationClock, MeshElement3D> _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
-        public void DrawAttack(MoveablePicture attacker, MoveablePicture target, Color materialColor, Duration showDuration)
+        public void DrawAttack(Guid attackerID, Guid targetID, Color materialColor, Duration showDuration)
         {
+            MoveablePicture attacker = _charactersToMoveablePicture[attackerID];
+            MoveablePicture target = _charactersToMoveablePicture[targetID];
+
             DoubleAnimation moveAnimationPic = new DoubleAnimation(1, .1, showDuration);
             AnimationClock clock1 = moveAnimationPic.CreateClock();
             Point3DCollection thePath = new Point3DCollection(new List<Point3D>() { attacker.CharImage.Origin, target.CharImage.Origin });
@@ -206,19 +210,31 @@ namespace GameBoard
                 foreach (var cur in previousSelections)
                 {
                     cur.IsSelected = true;
-                    OnPieceSelected(new PieceSelectedEventArgs(cur));
+                    OnPieceSelected(new PieceSelectedEventArgs(IDFromPicture(cur)));
                 }
             }
             else
             {
                 VisualToMoveablePicturesDictionary[lastHit].IsSelected = true;
-                OnPieceSelected(new PieceSelectedEventArgs(VisualToMoveablePicturesDictionary[lastHit]));
+                OnPieceSelected(new PieceSelectedEventArgs(IDFromPicture(VisualToMoveablePicturesDictionary[lastHit])));
             }
         }
 
-
-        public void SetActive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
+        private Guid IDFromPicture(MoveablePicture moveablePicture)
         {
+            foreach (var cur in _charactersToMoveablePicture)
+            {
+                if (cur.Value == moveablePicture)
+                {
+                    return cur.Key;
+                }
+            }
+            throw new Exception("Unregistered picture ID");
+        }
+
+        public void SetActive(Guid targetId, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
+        {
+            MoveablePicture moveablePicture = _charactersToMoveablePicture[targetId];
             moveablePicture.Speed = curSpeed;
             moveablePicture.IsSelected = true;
             moveablePicture.RemakeInfoText(statuses);
@@ -230,8 +246,9 @@ namespace GameBoard
             }
         }
 
-        public void SetInactive(MoveablePicture moveablePicture)
+        public void SetInactive(Guid targetID)
         {
+            MoveablePicture moveablePicture = _charactersToMoveablePicture[targetID];
             RemoveIfPresent(_groupSingleMovementCircle);
             RemoveIfPresent(_groupDoubleMovementCircle);
             moveablePicture.IsSelected = false;
@@ -273,14 +290,15 @@ namespace GameBoard
             }
         }
 
-        public void RemovePiece(MoveablePicture moveablePicture)
+        public void RemovePiece(Guid uniqueID)
         {
-            foreach (var cur in moveablePicture.AssociatedVisuals)
+            MoveablePicture match = _charactersToMoveablePicture[uniqueID];
+            foreach (var cur in match.AssociatedVisuals)
             {
                 RemoveIfPresent(cur);
             }
-            VisualToMoveablePicturesDictionary.Remove(moveablePicture.CharImage);
-            moveablePicture = null;
+            VisualToMoveablePicturesDictionary.Remove(match.CharImage);
+            match = null;
         }
 
         private BoardInfo _currentBoardInfo;
@@ -333,10 +351,11 @@ namespace GameBoard
             AddIfNew(_theMap);
         }
 
-        public void MovePieceToPoint(MoveablePicture selectedVisual, Point3D targetPoint)
+        public void MovePieceToPoint(Guid selectedID, Point3D targetPoint)
         {
-            selectedVisual.MoveTo(new Point3D(targetPoint.X, targetPoint.Y, targetPoint.Z));
-            OnPieceMoved(new PieceMovedEventsArg(selectedVisual));
+            var matchingVisual = _charactersToMoveablePicture[selectedID];
+            matchingVisual.MoveTo(new Point3D(targetPoint.X, targetPoint.Y, targetPoint.Z));
+            OnPieceMoved(new PieceMovedEventsArg(selectedID));
         }
 
         internal void MoveSelectedPiecesTo(Point3D point3D)
@@ -369,7 +388,7 @@ namespace GameBoard
             }
             foreach (var cur in selectedCharacters)
             {
-                OnPieceMoved(new PieceMovedEventsArg(cur.Value));
+                OnPieceMoved(new PieceMovedEventsArg(IDFromPicture(cur.Value)));
             }
         }
 
@@ -507,8 +526,8 @@ namespace GameBoard
             foreach (var cur in selectedByShape)
             {
                 //public void SetActive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
-                SetActive(cur, cur.PieceColor, !multiSelect, cur.Speed, cur.StatusEffects);
-                OnPieceSelected(new PieceSelectedEventArgs(cur));
+                SetActive(IDFromPicture(cur), cur.PieceColor, !multiSelect, cur.Speed, cur.StatusEffects);
+                OnPieceSelected(new PieceSelectedEventArgs(IDFromPicture(cur)));
             }
 
             if (multiSelect)
@@ -573,12 +592,6 @@ namespace GameBoard
         public void ZoomTo(Point3D targetPoint)
         {
             _viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
-        }
-
-        public void ZoomTo(List<MoveablePicture> visuals)
-        {
-            var midpoint = Helper3DCalcs.FindMidpoint(visuals.Select(x => x.Location));
-            ZoomTo(midpoint);
         }
 
         GridLinesVisual3D _visualGrid = null;
@@ -711,25 +724,25 @@ namespace GameBoard
 
         }
 
-        public void OpenVisuals(IEnumerable<MoveablePicture> allVisuals)
-        {
-            foreach (var curpair in VisualToMoveablePicturesDictionary)
-            {
-                foreach (var curVisual in curpair.Value.AssociatedVisuals)
-                {
-                    RemoveIfPresent(curVisual);
-                }
-                RemoveIfPresent(curpair.Key);
-            }
-            VisualToMoveablePicturesDictionary.Clear();
-            foreach (var charImage in allVisuals)
-            {
-                if (charImage != null)
-                {
-                    RegisterMoveablePicture(charImage);
-                }
-            }
-        }
+        //public void OpenVisuals(IEnumerable<MoveablePicture> allVisuals)
+        //{
+        //    foreach (var curpair in VisualToMoveablePicturesDictionary)
+        //    {
+        //        foreach (var curVisual in curpair.Value.AssociatedVisuals)
+        //        {
+        //            RemoveIfPresent(curVisual);
+        //        }
+        //        RemoveIfPresent(curpair.Key);
+        //    }
+        //    VisualToMoveablePicturesDictionary.Clear();
+        //    foreach (var charImage in allVisuals)
+        //    {
+        //        if (charImage != null)
+        //        {
+        //            RegisterMoveablePicture(charImage);
+        //        }
+        //    }
+        //}
 
         public void OpenBoardInfo(BoardInfo savedinfo)
         {
@@ -740,6 +753,34 @@ namespace GameBoard
         internal void SetViewport(HelixViewport3D helixViewport3D)
         {
             _viewport = helixViewport3D;
+        }
+
+        [DataMember]
+        private Dictionary<Guid, MoveablePicture> _charactersToMoveablePicture = new Dictionary<Guid, MoveablePicture>();
+        internal bool HasAssociatedVisual(Guid characterGuid)
+        {
+            return _charactersToMoveablePicture.ContainsKey(characterGuid);
+        }
+
+        public MoveablePicture MatchingVisual(Guid characterGuid)
+        {
+            return _charactersToMoveablePicture[characterGuid];
+        }
+
+        public void RemakeInfoTextFor(Guid guid, List<StatusEffectDisplay> statuses)
+        {
+            _charactersToMoveablePicture[guid].RemakeInfoText(statuses);
+        }
+
+        public void ZoomTo(List<Guid> visualIDs)
+        {
+            List<MoveablePicture> matchingPictures = new List<MoveablePicture>();
+            foreach (var curID in visualIDs)
+            {
+                matchingPictures.Add(_charactersToMoveablePicture[curID]);
+            }
+            var midpoint = Helper3DCalcs.FindMidpoint(matchingPictures.Select(x => x.Location));
+            ZoomTo(midpoint);
         }
     }
 }

@@ -8,11 +8,11 @@ namespace GameBoard
 {
     public class PieceSelectedEventArgs : EventArgs
     {
-        public PieceSelectedEventArgs(MoveablePicture _selectedPiece)
+        public PieceSelectedEventArgs(Guid _selectedPiece)
         {
             // TODO: Complete member initialization
-            SelectedPiece = _selectedPiece;
+            SelectedPieceID = _selectedPiece;
         }
-        public MoveablePicture SelectedPiece { get; set; }
+        public Guid SelectedPieceID { get; set; }
     }
 }

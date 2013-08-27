@@ -8,13 +8,13 @@ namespace XMLCharSheets
     [DataContract]
     public class Combat
     {
-        public Combat(IList<CharacterSheet> active, IList<CharacterSheet> deceased, IList<Team> teams, BoardInfo boardInfo,
+        public Combat(IList<CharacterSheet> active, IList<CharacterSheet> deceased, IList<Team> teams, IList<Board> boards,
                       String currentOutput)
         {
             ActiveRoster = active;
             DeceasedRoster = deceased;
             Teams = teams;
-            BoardInfo = boardInfo;
+            Boards = boards;
             OutputText = currentOutput;
         }
 
@@ -28,7 +28,7 @@ namespace XMLCharSheets
         public IList<CharacterSheet> DeceasedRoster { get; set; }
 
         [DataMember]
-        public BoardInfo BoardInfo { get; set; }
+        public IList<Board> Boards{ get; set; }
 
         [DataMember]
         public String OutputText { get; set; }

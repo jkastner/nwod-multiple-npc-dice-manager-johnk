@@ -130,10 +130,9 @@ namespace XMLCharSheets
             var pieceEvent = e as PieceMovedEventsArg;
             if (pieceEvent != null)
             {
-                if (pieceEvent.Mover != null)
+                if (pieceEvent.MoverID != null)
                 {
-                    CharacterSheet matchingChar = ActiveRoster.Where(x => x.Visual != null &&
-                                                                          x.Visual.Equals(pieceEvent.Mover))
+                    CharacterSheet matchingChar = ActiveRoster.Where(x => x.UniqueCharacterID == pieceEvent.MoverID)
                                                               .FirstOrDefault();
                     if (matchingChar != null)
                     {
@@ -165,10 +164,10 @@ namespace XMLCharSheets
             var pieceEvent = e as PieceSelectedEventArgs;
             if (pieceEvent != null)
             {
-                if (pieceEvent.SelectedPiece != null)
+                if (pieceEvent.SelectedPieceID != null)
                 {
-                    CharacterSheet matchingChar = ActiveRoster.Where(x => x.Visual != null &&
-                                                                          x.Visual.Equals(pieceEvent.SelectedPiece))
+                    CharacterSheet matchingChar = ActiveRoster.Where(x => x.HasVisual &&
+                                                                          x.UniqueCharacterID == pieceEvent.SelectedPieceID)
                                                               .FirstOrDefault();
                     if (matchingChar != null)
                     {
@@ -326,9 +325,10 @@ namespace XMLCharSheets
                 curChar.ResetHealth();
                 curChar.StatusEffects.Clear();
                 curChar.NotifyStatusChange();
-                if (curChar.Visual != null)
+                if (curChar.HasVisual)
                 {
-                    curChar.Visual.RemakeInfoText(MakeStatusList(curChar.StatusEffects));
+                    var statuses = MakeStatusList(curChar.StatusEffects);
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.RemakeInfoTextFor(curChar.UniqueCharacterID, statuses));
                 }
             }
         }
@@ -372,9 +372,9 @@ namespace XMLCharSheets
                         cur.Target = null;
                     }
                 }
-                if (curChar.Visual != null)
+                if (curChar.HasVisual)
                 {
-                    CombatService.VisualsViewModel.RemovePiece(curChar.Visual);
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.RemovePiece(curChar.UniqueCharacterID));
                 }
             }
         }
@@ -426,10 +426,10 @@ namespace XMLCharSheets
                     targetToDamage[curChar.Target].AddRange(damageResult);
                     TextReporter.Report("\n" + curChar.RollResults + "\n");
                 }
-                if (curChar.Visual != null && curChar.Target.Visual != null)
+                if (curChar.HasVisual && curChar.Target.HasVisual)
                 {
-                    CombatService.VisualsViewModel.DrawAttack(curChar.Visual, curChar.Target.Visual, curChar.Team.TeamColor,
-                                                              new Duration(new TimeSpan(0, 0, 0, 5)));
+                    VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.DrawAttack(curChar.UniqueCharacterID, curChar.Target.UniqueCharacterID, curChar.Team.TeamColor,
+                                                              new Duration(new TimeSpan(0, 0, 0, 5))));
                 }
             }
 
@@ -521,9 +521,11 @@ namespace XMLCharSheets
             {
                 var curCharacter = curItem as CharacterSheet;
                 curCharacter.AssignStatus(description, duration);
-                if (curCharacter.Visual != null)
+                if (curCharacter.HasVisual)
                 {
-                    curCharacter.Visual.RemakeInfoText(MakeStatusList(curCharacter.StatusEffects));
+                    var statusList = MakeStatusList(curCharacter.StatusEffects);
+                    VisualsService.BoardsViewModel.ForeachBoard(
+                        x=>x.VisualsViewModel.RemakeInfoTextFor(curCharacter.UniqueCharacterID, statusList));
                 }
             }
         }
@@ -534,9 +536,9 @@ namespace XMLCharSheets
             {
                 if (ActiveRoster[curIndex].IsIncapacitated)
                 {
-                    if (ActiveRoster[curIndex].Visual != null)
+                    if (ActiveRoster[curIndex].HasVisual)
                     {
-                        CombatService.VisualsViewModel.RemovePiece(ActiveRoster[curIndex].Visual);
+                        VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.RemovePiece(ActiveRoster[curIndex].UniqueCharacterID));
                     }
                     foreach (CharacterSheet cur in ActiveRoster.Where(x => x.Target == ActiveRoster[curIndex]))
                     {
@@ -567,24 +569,25 @@ namespace XMLCharSheets
             foreach (CharacterSheet cur in _activeRoster)
             {
                 CharacterSheet curCharacter = cur;
-                if (curCharacter.Visual != null)
+                if (curCharacter.HasVisual)
                 {
-                    CombatService.VisualsViewModel.SetInactive(curCharacter.Visual);
+                    VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetInactive(curCharacter.UniqueCharacterID));
                 }
             }
             foreach (CharacterSheet curCharacter in selectedCharacters)
             {
-                if (curCharacter.Visual != null)
+                if (curCharacter.HasVisual)
                 {
-                    CombatService.VisualsViewModel.SetActive(curCharacter.Visual, curCharacter.Team.TeamColor,
-                                                             selectedCharacters.Count == 1,
-                                                             curCharacter.SpeedTrait.TraitValue,
-                                                             MakeStatusList(curCharacter.StatusEffects));
+                    VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetActive(curCharacter.UniqueCharacterID, 
+                        curCharacter.Team.TeamColor,
+                        selectedCharacters.Count == 1,
+                        curCharacter.SpeedTrait.TraitValue,
+                        MakeStatusList(curCharacter.StatusEffects)));
                 }
             }
-            if (selectedCharacters.Count(x => x.Visual != null) > 1)
+            if (selectedCharacters.Count(x => x.HasVisual) > 1)
             {
-                CombatService.VisualsViewModel.DrawGroupMovementCircle();
+                VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.DrawGroupMovementCircle());
             }
         }
 
@@ -611,20 +614,18 @@ namespace XMLCharSheets
                 RegisterTeamMemberOnTeam(curCharacter, chosenTeam);
 
                 var baseOrigin = new Point3D(0, 0, 0);
-                if (curCharacter.Visual != null)
+                if (curCharacter.HasVisual)
                 {
-                    baseOrigin = curCharacter.Visual.Location;
-                    CombatService.VisualsViewModel.RemovePiece(curCharacter.Visual);
+                    baseOrigin = curCharacter.FirstVisual.Location;
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.RemovePiece(curCharacter.UniqueCharacterID));
                 }
                 //public MoveablePicture 
                 //AddImagePieceToMap(String charImageFile, Color pieceColor, String name, int speed, int height, Point3D location, String additionalInfo)
-                MoveablePicture createdVisual =
-                    CombatService.VisualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, chosenTeam.TeamColor,
+                VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.AddImagePieceToMap(pictureInfo.PictureFile, chosenTeam.TeamColor,
                                                                       curCharacter.Name,
                                                                       curCharacter.HeightTrait.TraitValue, baseOrigin,
                                                                       MakeStatusList(curCharacter.StatusEffects),
-                                                                      curCharacter.SpeedTrait.TraitValue);
-                curCharacter.Visual = createdVisual;
+                                                                      curCharacter.SpeedTrait.TraitValue, curCharacter.UniqueCharacterID));
             }
         }
 
@@ -649,10 +650,9 @@ namespace XMLCharSheets
             foreach (object curItem in characters)
             {
                 var curCharacter = curItem as CharacterSheet;
-                if (curCharacter.Visual != null)
+                if (curCharacter.HasVisual)
                 {
-                    CombatService.VisualsViewModel.RemovePiece(curCharacter.Visual);
-                    curCharacter.Visual = null;
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.RemovePiece(curCharacter.UniqueCharacterID));
                 }
             }
         }

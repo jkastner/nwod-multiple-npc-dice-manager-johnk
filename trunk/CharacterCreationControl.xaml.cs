@@ -154,6 +154,7 @@ namespace XMLCharSheets
             }
 
             CharacterSheet newInstance = _characterCreationViewModel.SelectedNewCharacter.Copy(newName);
+            newInstance.ResetIDOfCopy();
             
             
             newInstance.Ruleset = _characterCreationViewModel.SelectedNewCharacter.Ruleset;

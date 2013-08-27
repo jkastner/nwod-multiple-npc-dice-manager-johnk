@@ -28,12 +28,17 @@ namespace XMLCharSheets
             CombatService.RosterViewModel.ShowErrors();
 
             VisualsService.BoardsViewModel.BoardRegistered += BoardRegistered;
+            VisualsService.BoardsViewModel.BoardDeregistered += BoardDeregistered;
             
-            var boardWindow = VisualsService.BoardsViewModel.RegisterNewBoard();
+            var boardForWindow = VisualsService.BoardsViewModel.RegisterNewBoard();
+            var boardForSecondWindow = VisualsService.BoardsViewModel.RegisterNewBoard();
+
             
             DataContext = CombatService.RosterViewModel;
-            GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(boardWindow);
+            GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(boardForWindow);
+            GameBoardVisual_Window secondWindow = new GameBoardVisual_Window(boardForSecondWindow);
             boardVisualWindow.Show();
+            secondWindow.Show();
 
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
 
@@ -44,6 +49,13 @@ namespace XMLCharSheets
             this.RichTextParagraph = new Paragraph();
             Results_RichTextBox.Document = new FlowDocument(RichTextParagraph);
             ShapeLength_TextBox.Text = "20";
+        }
+
+        private void BoardDeregistered(object sender, EventArgs e)
+        {
+            var boardEvent = e as BoardRegisteredEventArgs;
+            boardEvent.NewBoard.VisualsViewModel.PieceSelected -= VisualPieceSelected;
+            boardEvent.NewBoard.VisualsViewModel.ClearSelectedPieces -= ClearSelectedPieces;
         }
 
         private void BoardRegistered(object sender, EventArgs e)
@@ -88,10 +100,7 @@ namespace XMLCharSheets
             var pieceEvent = e as PieceSelectedEventArgs;
             if (pieceEvent != null)
             {
-                CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.Visual != null &&
-                                                                                                    x.Visual.Equals(
-                                                                                                        pieceEvent
-                                                                                                            .SelectedPiece))
+                CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.UniqueCharacterID == pieceEvent.SelectedPieceID)
                                                            .FirstOrDefault();
                 if (matchingChar != null)
                 {
@@ -327,15 +336,15 @@ namespace XMLCharSheets
             o.ShowDialog();
             if (!String.IsNullOrWhiteSpace(o.FileName))
             {
-                var sbd = new SetBoardDimensions(CombatService.VisualsViewModel.BoardHeight,
-                                                 CombatService.VisualsViewModel.BoardWidth);
+                var sbd = new SetBoardDimensions(BoardsViewModel.Instance.Boards.First().VisualsViewModel.BoardHeight,
+                                                 BoardsViewModel.Instance.Boards.First().VisualsViewModel.BoardWidth);
                 sbd.ShowDialog();
                 if (!sbd.WasCancel && sbd.HasBoardHeight && sbd.HasBoardWidth)
                 {
                     string targetFile = o.FileName.Replace(Directory.GetCurrentDirectory()+Path.DirectorySeparatorChar, "");
 
-                    CombatService.VisualsViewModel.SetBoardBackground(targetFile, sbd.BoardHeight, sbd.BoardWidth,
-                                                                      sbd.MaintainRatio);
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.SetBoardBackground(targetFile, sbd.BoardHeight, sbd.BoardWidth,
+                                                                      sbd.MaintainRatio));
                 }
             }
         }
@@ -350,18 +359,18 @@ namespace XMLCharSheets
                 if (team != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Clear();
-                    var visuals = new List<MoveablePicture>();
+                    var visuals = new List<Guid>();
                     foreach (CharacterSheet cur in team.TeamMembers)
                     {
                         CharacterSheet sheet = cur;
-                        if (sheet.Visual != null)
+                        if (sheet.HasVisual)
                         {
-                            visuals.Add(sheet.Visual);
+                            visuals.Add(sheet.UniqueCharacterID);
                         }
                         ActiveCharacters_ListBox.SelectedItems.Add(cur);
                     }
                     if (visuals.Count > 0)
-                        CombatService.VisualsViewModel.ZoomTo(visuals);
+                        VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ZoomTo(visuals));
                     e.Handled = true;
                 }
             }
@@ -375,11 +384,11 @@ namespace XMLCharSheets
                 {
                     var selectedCharacter = cur as CharacterSheet;
 
-                    if (selectedCharacter.Visual != null && selectedCharacter.Target.Visual != null)
-                        CombatService.VisualsViewModel.DrawAttack(selectedCharacter.Visual,
-                                                                  selectedCharacter.Target.Visual,
+                    if (selectedCharacter.HasVisual && selectedCharacter.Target.HasVisual)
+                        VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.DrawAttack(selectedCharacter.UniqueCharacterID,
+                                                                  selectedCharacter.Target.UniqueCharacterID,
                                                                   selectedCharacter.Team.TeamColor,
-                                                                  new Duration(new TimeSpan(0, 0, 0, 0, 800)));
+                                                                  new Duration(new TimeSpan(0, 0, 0, 0, 800))));
                 }
             }
         }
@@ -387,48 +396,48 @@ namespace XMLCharSheets
 
         private void SelectionMode_Button_Checked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.None);
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.None));
         }
 
         private void DrawLine_Button_Checked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
-            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Line);
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text));
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Line));
         }
 
         private void DrawCone_Button_Checked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
-            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Cone);
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text));
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Cone));
         }
 
         private void DrawSphere_Button_Checked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text);
-            CombatService.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Sphere);
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text));
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Sphere));
         }
 
         private void TapeMeasure_Button_Checked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.TapeMeasurerActive = true;
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.TapeMeasurerActive = true);
         }
 
         private void TapeMeasure_Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.TapeMeasurerActive = false;
+            VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.TapeMeasurerActive = false);
         }
 
         private void ZoomToVisual_Click(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
             {
-                //CombatService.VisualsViewModel.ZoomTo(
+                //VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ZoomTo(
                 foreach (object cur in ActiveCharacters_ListBox.SelectedItems)
                 {
                     var selectedCharacter = cur as CharacterSheet;
 
-                    if (selectedCharacter.Visual != null)
-                        CombatService.VisualsViewModel.ZoomTo(selectedCharacter.Visual.Location);
+                    if (selectedCharacter.HasVisual)
+                        VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ZoomTo(selectedCharacter.FirstVisual.Location));
                 }
             }
         }
@@ -440,12 +449,12 @@ namespace XMLCharSheets
 
         private void GridIsChecked_ToggleButton(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.DrawGrid(5);
+            VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.DrawGrid(5));
         }
 
         private void GridIsUnchecked_ToggleButton(object sender, RoutedEventArgs e)
         {
-            CombatService.VisualsViewModel.RemoveGrid();
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.RemoveGrid());
         }
 
         private void OpenFile_Click_MenuItem(object sender, RoutedEventArgs e)

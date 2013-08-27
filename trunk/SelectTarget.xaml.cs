@@ -78,8 +78,8 @@ namespace XMLCharSheets
             IEnumerable<CharacterSheet> nonTeammateTargets = allTargets.Except(teammateTargets);
             //4. Sort the remaining targets by distance to a common 'origin' of the group.
             Point3D commonOrigin =
-                Helper3DCalcs.FindMidpoint(selectedCharacters.Where(x => x.Visual != null)
-                                                             .Select(x => x.Visual.Location));
+                Helper3DCalcs.FindMidpoint(selectedCharacters.Where(x => x.HasVisual)
+                                                             .Select(x => x.FirstVisual.Location));
             nonTeammateTargets = nonTeammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
             teammateTargets = teammateTargets.OrderBy(x => x.DistanceTo(commonOrigin));
             foreach (CharacterSheet cur in nonTeammateTargets)
@@ -238,13 +238,14 @@ namespace XMLCharSheets
 
         private void DrawAttackLine()
         {
-            if (SelectedTarget == null || SelectedTarget.Visual == null)
+            if (SelectedTarget == null || !SelectedTarget.HasVisual)
                 return;
             foreach (CharacterSheet cur in _selectedCharacters)
             {
-                if (cur.Visual != null)
+                if (cur.HasVisual)
                 {
-                    VisualsService.BoardsViewModel.ForeachBoard(v => v.VisualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Team.TeamColor,
+                    VisualsService.BoardsViewModel.ForeachBoard(
+                        v => v.VisualsViewModel.DrawAttack(cur.UniqueCharacterID, SelectedTarget.UniqueCharacterID, cur.Team.TeamColor,
                                                  new Duration(new TimeSpan(0, 0, 0, 1))));
                 }
             }

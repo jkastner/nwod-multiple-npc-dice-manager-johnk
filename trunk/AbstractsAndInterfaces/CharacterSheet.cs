@@ -37,6 +37,7 @@ namespace XMLCharSheets
             Name = name;
             _traits = curTraits;
             PopulateCombatTraits();
+            UniqueCharacterID = Guid.NewGuid();
         }
 
         [DataMember]
@@ -107,22 +108,40 @@ namespace XMLCharSheets
         {
             get
             {
-                if (Visual != null)
+                if (HasVisual)
                 {
-                    return Visual.IsSelected;
+                    return BoardsViewModel.Instance.AssociatedVisual(UniqueCharacterID).IsSelected;
                 }
                 return _isSelected;
             }
             set
             {
                 _isSelected = value;
-                if (Visual != null)
+                if (HasVisual)
                 {
-                    Visual.IsSelected = value;
+                    BoardsViewModel.Instance.ForeachBoard(x=>x.VisualsViewModel.MatchingVisual(UniqueCharacterID).IsSelected = value);
                 }
                 OnPropertyChanged("IsSelected");
             }
         }
+        public bool HasVisual
+        {
+            get
+            {
+                return VisualsService.BoardsViewModel.HasAssociatedVisual(this.UniqueCharacterID);
+            }
+        }
+        public MoveablePicture FirstVisual
+        {
+            get
+            {
+                return VisualsService.BoardsViewModel.AssociatedVisual(UniqueCharacterID);
+            }
+        }
+        
+
+
+
 
         [DataMember]
         public CharacterSheet Target
@@ -140,6 +159,14 @@ namespace XMLCharSheets
 
         [DataMember]
         public String ChosenAttack { get; set; }
+
+        [DataMember]
+        public Guid UniqueCharacterID
+        {
+            get;
+            private set;
+        }
+
 
 
         /// <summary>
@@ -188,8 +215,7 @@ namespace XMLCharSheets
         }
 
 
-        [DataMember]
-        public MoveablePicture Visual { get; set; }
+        
 
         [DataMember]
         public Team Team { get; set; }
@@ -327,11 +353,11 @@ namespace XMLCharSheets
 
         public double DistanceTo(Point3D target)
         {
-            if (Visual == null)
+            if (HasVisual)
             {
                 return double.MaxValue;
             }
-            return Helper3DCalcs.DistanceBetween(Visual.LocationForSave, target);
+            return Helper3DCalcs.DistanceBetween(FirstVisual.LocationForSave, target);
         }
 
         #region INotifyPropertyChanged Members
@@ -370,6 +396,11 @@ namespace XMLCharSheets
                 }
                 return sb.ToString();
             }
+        }
+
+        internal void ResetIDOfCopy()
+        {
+            UniqueCharacterID = Guid.NewGuid();
         }
     }
 }
