@@ -77,3 +77,22 @@ C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.csproj.GenerateResource.Cache
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.dll
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.pdb
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\bin\Debug\GameBoard.dll.config
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\bin\Debug\GameBoard.dll
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\bin\Debug\GameBoard.pdb
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\bin\Debug\HelixToolkit.Wpf.dll
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\App.baml
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoardVisual.baml
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\OldBoard.baml
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\App.g.cs
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoardVisual.g.cs
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoardVisual_Window.g.cs
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\OldBoard.g.cs
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard_MarkupCompile.cache
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard_MarkupCompile.lref
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoardVisual_Window.baml
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard.g.resources
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard.Properties.Resources.resources
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard.csproj.GenerateResource.Cache
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard.dll
+C:\Users\johnathan\Desktop\homeprok\GameBoard\GameBoard\obj\Debug\GameBoard.pdb

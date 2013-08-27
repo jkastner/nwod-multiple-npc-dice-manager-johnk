@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\
 XMLCharSheets
 none
 false
 DEBUG;TRACE
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
+C:\Users\johnathan\Desktop\homeprok\App.xaml
 9344856277
 
 571632464585
-162095142651
+16-1109809794
 CharacterCreationControl.xaml;LoadingErrorsWindow.xaml;MainWindow.xaml;Systems\NWoD\NWoDControl.xaml;Systems\Pathfinder\PathfinderControl.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
-False
+True
 

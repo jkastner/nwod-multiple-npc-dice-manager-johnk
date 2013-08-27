@@ -20,7 +20,7 @@ namespace GameBoard
     /// <summary>
     /// Interaction logic for GameBoardVisual.xaml
     /// </summary>
-    public partial class GameBoardVisual : Window
+    public partial class GameBoardVisual : UserControl
     {
         Material _frontMaterial, _backMaterial;
 
@@ -30,7 +30,6 @@ namespace GameBoard
         public GameBoardVisual()
         {
             InitializeComponent();
-            VisualsService.Viewport = Viewport;
 
             //_visuals.Add(knight.CharImage, knight);
             //_viewport.Children.Add(knight.CharImage);
@@ -59,7 +58,6 @@ namespace GameBoard
         public void RegisterViewModel(VisualsViewModel ViewModel)
         {
             _viewModel = ViewModel;
-            _viewModel.Initialize();
         }
 
 

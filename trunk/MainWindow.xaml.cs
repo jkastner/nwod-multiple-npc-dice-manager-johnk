@@ -24,21 +24,33 @@ namespace XMLCharSheets
         public MainWindow()
         {
             InitializeComponent();
-            CombatService.RosterViewModel.RegisterVisualsViewModel(CombatService.VisualsViewModel);
-            CombatService.GameBoardVisual.RegisterViewModel(CombatService.VisualsViewModel);
-            VisualsService.GameBoardVisual = CombatService.GameBoardVisual;
             CombatService.RosterViewModel.PopulateCharacters(Directory.GetCurrentDirectory() + "\\Sheets");
             CombatService.RosterViewModel.ShowErrors();
+
+            VisualsService.BoardsViewModel.BoardRegistered += BoardRegistered;
+            
+            var boardWindow = VisualsService.BoardsViewModel.RegisterNewBoard();
+            
             DataContext = CombatService.RosterViewModel;
-            CombatService.GameBoardVisual.Show();
+            GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(boardWindow);
+            boardVisualWindow.Show();
+
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
-            CombatService.VisualsViewModel.PieceSelected += VisualPieceSelected;
-            CombatService.VisualsViewModel.ClearSelectedPieces += ClearSelectedPieces;
+
+            
+
             CombatService.RosterViewModel.ReportTextEvent += UpdateResultsRichTextBox;
             CombatService.RosterViewModel.ClearReportTextEvent += ClearResultsRichTextBox;
             this.RichTextParagraph = new Paragraph();
             Results_RichTextBox.Document = new FlowDocument(RichTextParagraph);
             ShapeLength_TextBox.Text = "20";
+        }
+
+        private void BoardRegistered(object sender, EventArgs e)
+        {
+            var boardEvent = e as BoardRegisteredEventArgs;
+            boardEvent.NewBoard.VisualsViewModel.PieceSelected += VisualPieceSelected;
+            boardEvent.NewBoard.VisualsViewModel.ClearSelectedPieces += ClearSelectedPieces;
         }
 
         private void ClearResultsRichTextBox(object sender, EventArgs e)
@@ -167,7 +179,7 @@ namespace XMLCharSheets
                 return;
             }
             var st = new SelectTarget(ActiveList(), CombatService.RosterViewModel.ActiveRoster,
-                                      CombatService.RosterViewModel.DamageTypes, CombatService.VisualsViewModel);
+                                      CombatService.RosterViewModel.DamageTypes);
             st.ShowDialog();
             if (!st.WasCancel && st.SelectedTarget != null)
             {

@@ -19,7 +19,6 @@ namespace XMLCharSheets
     {
         private readonly ObservableCollection<CharacterSheet> _allCharacters;
         private readonly List<CharacterSheet> _selectedCharacters = new List<CharacterSheet>();
-        private readonly VisualsViewModel _visualsViewModel;
         private readonly ObservableCollection<String> attackTraits = new ObservableCollection<String>();
         private readonly ObservableCollection<String> otherAttackTraits = new ObservableCollection<String>();
         private readonly ObservableCollection<String> otherTraits = new ObservableCollection<String>();
@@ -30,7 +29,7 @@ namespace XMLCharSheets
         private CharacterSheet _selectedTarget;
 
         public SelectTarget(IList selectedObjects, ObservableCollection<CharacterSheet> allCharacters,
-                            ObservableCollection<string> damageTypes, VisualsViewModel visualsViewModel)
+                            ObservableCollection<string> damageTypes)
         {
             var selectedCharacters = new List<CharacterSheet>();
             foreach (object cur in selectedObjects)
@@ -38,7 +37,6 @@ namespace XMLCharSheets
                 selectedCharacters.Add(cur as CharacterSheet);
             }
             var allTargets = new List<CharacterSheet>();
-            _visualsViewModel = visualsViewModel;
             _allCharacters = allCharacters;
             foreach (CharacterSheet curChar in allCharacters)
             {
@@ -246,8 +244,8 @@ namespace XMLCharSheets
             {
                 if (cur.Visual != null)
                 {
-                    _visualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Team.TeamColor,
-                                                 new Duration(new TimeSpan(0, 0, 0, 1)));
+                    VisualsService.BoardsViewModel.ForeachBoard(v => v.VisualsViewModel.DrawAttack(cur.Visual, SelectedTarget.Visual, cur.Team.TeamColor,
+                                                 new Duration(new TimeSpan(0, 0, 0, 1))));
                 }
             }
         }

@@ -1,14 +1,11 @@
-﻿<Window x:Class="GameBoard.GameBoardVisual"
+﻿<UserControl x:Class="GameBoard.GameBoardVisual"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Combat Visual" Height="350" Width="525"
         xmlns:h="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
         MouseDown="ViewportMouseDown"
         MouseDoubleClick="Viewport_DoubleClick"
         >
-    <Grid>
         <h:HelixViewport3D ShowViewCube="False" Name="Viewport">
 
         </h:HelixViewport3D>
-    </Grid>
-</Window>
+</UserControl>

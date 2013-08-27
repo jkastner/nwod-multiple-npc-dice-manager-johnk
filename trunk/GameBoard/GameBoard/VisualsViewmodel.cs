@@ -100,8 +100,8 @@ namespace GameBoard
         private void RegisterMoveablePicture(MoveablePicture charImage)
         {
             VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
-            VisualsService.Viewport.Children.Add(charImage.CharImage);
-            VisualsService.Viewport.Children.Add(charImage.BaseCone);
+            _viewport.Children.Add(charImage.CharImage);
+            _viewport.Children.Add(charImage.BaseCone);
         }
 
         Dictionary<AnimationClock, MeshElement3D> _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
@@ -119,7 +119,7 @@ namespace GameBoard
 
             };
             tube.ApplyAnimationClock(ArrowVisual3D.DiameterProperty, clock1);
-            VisualsService.Viewport.Children.Add(tube);
+            _viewport.Children.Add(tube);
             clock1.Completed += removeVisualTick;
             _temporaryVisuals.Add(clock1, tube);
         }
@@ -245,31 +245,31 @@ namespace GameBoard
         {
             if (Visual3D == null)
                 return;
-            if (VisualsService.Viewport.Children.Contains(Visual3D))
+            if (_viewport.Children.Contains(Visual3D))
             {
-                VisualsService.Viewport.Children.Remove(Visual3D);
+                _viewport.Children.Remove(Visual3D);
             }
         }
         private void RemoveIfPresent(Visual3D targetVisual)
         {
-            if (VisualsService.Viewport.Children.Contains(targetVisual))
+            if (_viewport.Children.Contains(targetVisual))
             {
-                VisualsService.Viewport.Children.Remove(targetVisual);
+                _viewport.Children.Remove(targetVisual);
             }
         }
 
         private void AddIfNew(MeshElement3D Visual3D)
         {
-            if (!VisualsService.Viewport.Children.Contains(Visual3D))
+            if (!_viewport.Children.Contains(Visual3D))
             {
-                VisualsService.Viewport.Children.Add(Visual3D);
+                _viewport.Children.Add(Visual3D);
             }
         }
         private void AddIfNew(Visual3D newVisual)
         {
-            if (!VisualsService.Viewport.Children.Contains(newVisual))
+            if (!_viewport.Children.Contains(newVisual))
             {
-                VisualsService.Viewport.Children.Add(newVisual);
+                _viewport.Children.Add(newVisual);
             }
         }
 
@@ -452,7 +452,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            VisualsService.Viewport.Children.Add(shape);
+            _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
             if (SelectInsideShape)
                 SelectFromInsideShape(point3D, point3D);
@@ -535,7 +535,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            VisualsService.Viewport.Children.Add(shape);
+            _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
             if (SelectInsideShape)
                 SelectFromInsideShape(point1, point2);
@@ -556,7 +556,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            VisualsService.Viewport.Children.Add(shape);
+            _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
             if (SelectInsideShape)
                 SelectFromInsideShape(point1, point2);
@@ -572,7 +572,7 @@ namespace GameBoard
 
         public void ZoomTo(Point3D targetPoint)
         {
-            VisualsService.Viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
+            _viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
         }
 
         public void ZoomTo(List<MoveablePicture> visuals)
@@ -605,14 +605,14 @@ namespace GameBoard
                 Center = new Point3D(0, 0, 1),
                 Material = Materials.Black,
             };
-            VisualsService.Viewport.Children.Add(_visualGrid);
+            _viewport.Children.Add(_visualGrid);
         }
 
         public void RemoveGrid()
         {
             if (_visualGrid != null)
             {
-                VisualsService.Viewport.Children.Remove(_visualGrid);
+                _viewport.Children.Remove(_visualGrid);
                 _visualGrid = null;
             }
         }
@@ -654,7 +654,7 @@ namespace GameBoard
                     Material = Materials.Black,
                     Radius = 2,
                 };
-                VisualsService.Viewport.Children.Add(_startPoint);
+                _viewport.Children.Add(_startPoint);
             }
             else if (_endPoint == null)
             {
@@ -664,7 +664,7 @@ namespace GameBoard
                     Material = Materials.Black,
                     Radius = 2,
                 };
-                VisualsService.Viewport.Children.Add(_endPoint);
+                _viewport.Children.Add(_endPoint);
                 double distance = (_startPoint.Center - _endPoint.Center).Length;
                 distance = Math.Round(distance, 0);
                 var textPos = _endPoint.Center;
@@ -682,21 +682,21 @@ namespace GameBoard
                     Path = new Point3DCollection(new List<Point3D>() { _startPoint.Center, _endPoint.Center }),
                     Material = Materials.LightGray,
                 };
-                VisualsService.Viewport.Children.Add(_textVisual);
-                VisualsService.Viewport.Children.Add(_distanceIndicator);
+                _viewport.Children.Add(_textVisual);
+                _viewport.Children.Add(_distanceIndicator);
             }
         }
 
         private void CleanupTapeMeasurerVisuals()
         {
             if (_startPoint != null)
-                VisualsService.Viewport.Children.Remove(_startPoint);
+                _viewport.Children.Remove(_startPoint);
             if (_endPoint != null)
-                VisualsService.Viewport.Children.Remove(_endPoint);
+                _viewport.Children.Remove(_endPoint);
             if (_textVisual != null)
-                VisualsService.Viewport.Children.Remove(_textVisual);
+                _viewport.Children.Remove(_textVisual);
             if (_distanceIndicator != null)
-                VisualsService.Viewport.Children.Remove(_distanceIndicator);
+                _viewport.Children.Remove(_distanceIndicator);
 
             _startPoint = null;
             _endPoint = null;
@@ -707,7 +707,7 @@ namespace GameBoard
 
         public void ClearAll()
         {
-            VisualsService.Viewport.Children.Clear();
+            _viewport.Children.Clear();
 
         }
 
@@ -734,6 +734,12 @@ namespace GameBoard
         public void OpenBoardInfo(BoardInfo savedinfo)
         {
             SetBoardBackground(savedinfo.BoardImageName, savedinfo.DefinedBoardHeight, savedinfo.DefinedBoardWidth, savedinfo.MaintainRatio);
+        }
+
+        private HelixViewport3D _viewport;
+        internal void SetViewport(HelixViewport3D helixViewport3D)
+        {
+            _viewport = helixViewport3D;
         }
     }
 }
