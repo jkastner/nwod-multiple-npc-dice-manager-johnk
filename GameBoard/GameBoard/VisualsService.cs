@@ -9,18 +9,9 @@ namespace GameBoard
 {
     public class VisualsService
     {
-        private static HelixViewport3D _viewport;
-        public static HelixViewport3D Viewport
+        public static BoardsViewModel BoardsViewModel
         {
-            get { return _viewport; }
-            set { _viewport = value; }
-        }
-
-        private static GameBoardVisual _gameBoardVisual;
-        public static GameBoardVisual GameBoardVisual
-        {
-            get { return _gameBoardVisual; }
-            set { _gameBoardVisual = value; }
+            get { return BoardsViewModel.Instance; }
         }
 
     }

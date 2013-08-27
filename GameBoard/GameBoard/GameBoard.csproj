@@ -56,8 +56,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board.cs" />
     <Compile Include="BoardInfo.cs" />
+    <Compile Include="BoardsViewModel.cs" />
     <Compile Include="ClearSelectedPiecesEventArgs.cs" />
+    <Compile Include="Events\BoardRegisteredEventArgs.cs" />
+    <Compile Include="GameBoardVisual_Window.xaml.cs">
+      <DependentUpon>GameBoardVisual_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helper3DCalcs.cs" />
     <Compile Include="Events\PieceMovedEventsArg.cs" />
     <Compile Include="Events\PieceSelectedEventArgs.cs" />
@@ -80,6 +86,10 @@
       <DependentUpon>GameBoardVisual.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GameBoardVisual_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OldBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

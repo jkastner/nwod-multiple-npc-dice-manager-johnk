@@ -184,3 +184,25 @@ E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Sys
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.g.cs
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\LoadingErrorsWindow.baml
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\LoadingErrorsWindow.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\XMLCharSheets.csprojResolveAssemblyReference.cache
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\LoadingErrorsWindow.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\Systems\NWoD\NWoDControl.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\SelectTarget.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\SelectVisualWindow.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\SetBoardDimensions.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\StatusEffectWindow.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\App.baml
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\CharacterCreationControl.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\LoadingErrorsWindow.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\MainWindow.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\Systems\NWoD\NWoDControl.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\SelectTarget.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\SelectVisualWindow.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\SetBoardDimensions.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\StatusEffectWindow.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\App.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\XMLCharSheets_MarkupCompile.cache
+C:\Users\johnathan\Desktop\homeprok\obj\x86\Debug\XMLCharSheets_MarkupCompile.lref
