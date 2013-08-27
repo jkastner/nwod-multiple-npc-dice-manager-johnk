@@ -36,10 +36,26 @@ namespace GameBoard
             return newB;
         }
 
+        private void DeregisterBoard(Board cur)
+        {
+            cur.Dispose();
+            OnBoardDeregistered(new BoardRegisteredEventArgs(cur));
+        }
+
         public event EventHandler BoardRegistered;
         protected virtual void OnBoardRegistered(BoardRegisteredEventArgs e)
         {
             EventHandler handler = BoardRegistered;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler BoardDeregistered;
+        protected virtual void OnBoardDeregistered(BoardRegisteredEventArgs e)
+        {
+            EventHandler handler = BoardDeregistered;
             if (handler != null)
             {
                 handler(this, e);
@@ -55,6 +71,33 @@ namespace GameBoard
             }
         }
 
+        public bool HasAssociatedVisual(Guid characterGuid)
+        {
+            return _boards.First().VisualsViewModel.HasAssociatedVisual(characterGuid);
+        }
+        public MoveablePicture AssociatedVisual(Guid characterGuid)
+        {
+            if(HasAssociatedVisual(characterGuid))
+                return _boards.First().VisualsViewModel.MatchingVisual(characterGuid);
+            return null;
+        }
 
+
+        public void ClearAllBoards()
+        {
+            foreach (var cur in Boards)
+            {
+                DeregisterBoard(cur);
+            }
+        }
+
+
+
+        public void ImportBoardFromSave(Board cur)
+        {
+            Boards.Add(cur);
+            cur.VisualsViewModel.OpenBoardInfo(cur.VisualsViewModel.CurrentBoardInfo);
+            OnBoardRegistered(new BoardRegisteredEventArgs(cur));
+        }
     }
 }

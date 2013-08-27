@@ -34,7 +34,7 @@ namespace XMLCharSheets
 
             bool canAttack = true;
             //2 Move towards target, if necessary.
-            if (_activeChar.Visual != null && validTarget.Visual != null)
+            if (VisualsService.BoardsViewModel.HasAssociatedVisual(_activeChar.UniqueCharacterID) && VisualsService.BoardsViewModel.HasAssociatedVisual(validTarget.UniqueCharacterID))
             {
                 canAttack = MoveToTarget(validTarget);
             }
@@ -61,7 +61,7 @@ namespace XMLCharSheets
         protected virtual bool MoveToTarget(CharacterSheet target)
         {
             bool canAttack = true;
-            var neededDistance = _activeChar.DistanceTo(target.Visual.LocationForSave);
+            var neededDistance = _activeChar.DistanceTo(target.FirstVisual.LocationForSave);
             //1. Character doesn't need to move.
             //2. Character needs to move once.
             //3. Character needs to move twice, and hence cannot attack.
@@ -80,8 +80,8 @@ namespace XMLCharSheets
                 }
                 canAttack = false;
             }
-            var targetPoint = Helper3DCalcs.MovePointTowards(_activeChar.Visual.LocationForSave, target.Visual.LocationForSave, neededDistance);
-            CombatService.VisualsViewModel.MovePieceToPoint(_activeChar.Visual, targetPoint);
+            var targetPoint = Helper3DCalcs.MovePointTowards(_activeChar.FirstVisual.LocationForSave, target.FirstVisual.LocationForSave, neededDistance);
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.MovePieceToPoint(_activeChar.UniqueCharacterID, targetPoint));
             return canAttack;
         }
 
@@ -95,7 +95,7 @@ namespace XMLCharSheets
             //3. This has a visual, opponents also have a visual.
             
             //Case 1. This has no visual.
-            if (_activeChar.Visual == null)
+            if (_activeChar.FirstVisual==null)
             {
                 validTarget = CombatService.RosterViewModel.ActiveRoster.Where(x => x != _activeChar && !x.IsIncapacitated).FirstOrDefault();
             }
@@ -104,7 +104,7 @@ namespace XMLCharSheets
             {
                 
                 var possibleTargetsWithVisual = CombatService.RosterViewModel.ActiveRoster.Where(x => x!=_activeChar 
-                    && x.Team != _activeChar.Team && x.Visual != null && !x.IsIncapacitated).ToList();
+                    && x.Team != _activeChar.Team && x.HasVisual && !x.IsIncapacitated).ToList();
                 var possibleTargetsWithoutVisual = CombatService.RosterViewModel.ActiveRoster.Where(x =>  x!=_activeChar 
                     && x.Team != _activeChar.Team && !x.IsIncapacitated).ToList();
                 //Case 2. This has a visual, no opponent has a visual.
@@ -116,7 +116,7 @@ namespace XMLCharSheets
                 {
                     foreach (var cur in possibleTargetsWithVisual)
                     {
-                        Point3D curLoc = cur.Visual.LocationForSave;
+                        Point3D curLoc = cur.FirstVisual.LocationForSave;
                         double curDistance = _activeChar.DistanceTo(curLoc);
                         if (curDistance < distance)
                         {

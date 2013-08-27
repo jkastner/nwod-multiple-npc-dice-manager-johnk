@@ -45,9 +45,11 @@ namespace XMLCharSheets
                     CombatService.RosterViewModel.OpenActiveRoster(savedCombat.ActiveRoster);
                     CombatService.RosterViewModel.OpenDeceasedRoster(savedCombat.DeceasedRoster);
                     CombatService.RosterViewModel.OpenTeams(savedCombat.Teams);
-                    IEnumerable<MoveablePicture> allVisuals = savedCombat.ActiveRoster.Select(x => x.Visual);
-                    CombatService.VisualsViewModel.OpenVisuals(allVisuals);
-                    CombatService.VisualsViewModel.OpenBoardInfo(savedCombat.BoardInfo);
+                    BoardsViewModel.Instance.ClearAllBoards();
+                    foreach (var cur in savedCombat.Boards)
+                    {
+                        BoardsViewModel.Instance.ImportBoardFromSave(cur);
+                    }
                     _previousFileName = openFileDialog.FileName;
                     CombatService.RosterViewModel.ClearResultText();
                 }
@@ -95,7 +97,7 @@ namespace XMLCharSheets
             var currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster,
                                            CombatService.RosterViewModel.DeceasedRoster,
                                            CombatService.RosterViewModel.Teams,
-                                           CombatService.VisualsViewModel.CurrentBoardInfo,
+                                           VisualsService.BoardsViewModel.Boards,
                                            String.Empty);
             WriteToXML(currentCombat, fileName, typeof (Combat));
             _previousFileName = fileName;
