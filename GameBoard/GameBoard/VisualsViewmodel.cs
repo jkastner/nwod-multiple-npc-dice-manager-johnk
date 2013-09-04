@@ -355,7 +355,7 @@ namespace GameBoard
         {
             var matchingVisual = _charactersToMoveablePicture[selectedID];
             matchingVisual.MoveTo(new Point3D(targetPoint.X, targetPoint.Y, targetPoint.Z));
-            OnPieceMoved(new PieceMovedEventsArg(selectedID));
+            OnPieceMoved(new PieceMovedEventsArg(selectedID, targetPoint));
         }
 
         internal void MoveSelectedPiecesTo(Point3D point3D)
@@ -364,7 +364,9 @@ namespace GameBoard
             if (selectedCharacters.Count() == 1)
             {
                 var fc = selectedCharacters.First().Value;
-                fc.MoveTo(new Point3D(point3D.X, point3D.Y, point3D.Z + fc.PictureOffset));
+                Point3D targetPoint = new Point3D(point3D.X, point3D.Y, point3D.Z + fc.PictureOffset);
+                fc.MoveTo(targetPoint);
+                OnPieceMoved(new PieceMovedEventsArg(IDFromPicture(fc), targetPoint));
             }
             else
             {
@@ -383,13 +385,12 @@ namespace GameBoard
                     double distance = Helper3DCalcs.DistanceBetween(curP, middleSelection);
                     vectorToOldMidpoint = vectorToOldMidpoint * distance;
                     var np = new Point3D(vectorToOldMidpoint.X + point3D.X, vectorToOldMidpoint.Y + point3D.Y, vectorToOldMidpoint.Z + point3D.Z);
-                    cur.Value.MoveTo(new Point3D(np.X, np.Y, np.Z + cur.Value.PictureOffset));
+                    Point3D targetPoint = new Point3D(np.X, np.Y, np.Z + cur.Value.PictureOffset);
+                    cur.Value.MoveTo(targetPoint);
+                    OnPieceMoved(new PieceMovedEventsArg(IDFromPicture(cur.Value), targetPoint));
                 }
             }
-            foreach (var cur in selectedCharacters)
-            {
-                OnPieceMoved(new PieceMovedEventsArg(IDFromPicture(cur.Value)));
-            }
+
         }
 
         internal void ClearSelectedCharacters()
@@ -782,5 +783,13 @@ namespace GameBoard
             var midpoint = Helper3DCalcs.FindMidpoint(matchingPictures.Select(x => x.Location));
             ZoomTo(midpoint);
         }
+
+        internal void OtherBoardPieceMoved(object sender, EventArgs e)
+        {
+            var movedEvent = e as PieceMovedEventsArg;
+            var matchingVisual = _charactersToMoveablePicture[movedEvent.MoverID];
+            matchingVisual.MoveTo(new Point3D(movedEvent.Destination.X, movedEvent.Destination.Y, movedEvent.Destination.Z));
+        }
+
     }
 }

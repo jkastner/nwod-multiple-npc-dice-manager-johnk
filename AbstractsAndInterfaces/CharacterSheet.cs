@@ -402,5 +402,17 @@ namespace XMLCharSheets
         {
             UniqueCharacterID = Guid.NewGuid();
         }
+
+        public String PictureFilePath
+        {
+            get
+            {
+                if (HasVisual)
+                {
+                    return FirstVisual.PictureFileAbsolutePath;
+                }
+                return String.Empty;
+            }
+        }
     }
 }
