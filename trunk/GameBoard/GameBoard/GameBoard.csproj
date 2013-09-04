@@ -61,6 +61,7 @@
     <Compile Include="BoardsViewModel.cs" />
     <Compile Include="ClearSelectedPiecesEventArgs.cs" />
     <Compile Include="Events\BoardRegisteredEventArgs.cs" />
+    <Compile Include="Events\ShapeDrawnEvent.cs" />
     <Compile Include="GameBoardVisual_Window.xaml.cs">
       <DependentUpon>GameBoardVisual_Window.xaml</DependentUpon>
     </Compile>

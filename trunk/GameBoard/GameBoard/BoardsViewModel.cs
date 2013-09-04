@@ -31,15 +31,34 @@ namespace GameBoard
         public Board RegisterNewBoard()
         {
             var newB = Board.NewBoard();
+            foreach (Board curboard in _boards)
+            {
+                newB.VisualsViewModel.PieceMoved += curboard.VisualsViewModel.OtherBoardPieceMoved;
+                newB.GameBoardVisual.ShapeDrawn += curboard.GameBoardVisual.OtherBoardShapeDrawn;
+
+                curboard.VisualsViewModel.PieceMoved += newB.VisualsViewModel.OtherBoardPieceMoved;
+                curboard.GameBoardVisual.ShapeDrawn += newB.GameBoardVisual.OtherBoardShapeDrawn;
+
+            }
             _boards.Add(newB);
             OnBoardRegistered(new BoardRegisteredEventArgs(newB));
             return newB;
         }
 
-        private void DeregisterBoard(Board cur)
+        private void DeregisterBoard(Board oldBoard)
         {
-            cur.Dispose();
-            OnBoardDeregistered(new BoardRegisteredEventArgs(cur));
+            oldBoard.Dispose();
+            foreach (Board curboard in _boards)
+            {
+                oldBoard.VisualsViewModel.PieceMoved -= curboard.VisualsViewModel.OtherBoardPieceMoved;
+                oldBoard.GameBoardVisual.ShapeDrawn -= curboard.GameBoardVisual.OtherBoardShapeDrawn;
+
+                curboard.VisualsViewModel.PieceMoved -= oldBoard.VisualsViewModel.OtherBoardPieceMoved;
+                curboard.GameBoardVisual.ShapeDrawn -= oldBoard.GameBoardVisual.OtherBoardShapeDrawn;
+
+            }
+
+            OnBoardDeregistered(new BoardRegisteredEventArgs(oldBoard));
         }
 
         public event EventHandler BoardRegistered;

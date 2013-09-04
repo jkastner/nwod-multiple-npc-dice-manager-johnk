@@ -112,13 +112,6 @@ namespace XMLCharSheets
             }
         }
 
-        public void RegisterVisualsViewModel(VisualsViewModel vm)
-        {
-            vm.PieceMoved += OnVisualPieceMoved;
-            vm.PieceSelected += OnVisualPieceSelected;
-        }
-
-
         private void RegisterReaders()
         {
             _characterReader.RegisterReader("NWoD", new NWoDCharacterReader());

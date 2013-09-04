@@ -92,7 +92,7 @@
                                                 HorizontalAlignment="Left" />
                                         <Image 
                                             HorizontalAlignment="Left"
-                                            Height="90" Source="{Binding Visual.PictureFileAbsolutePath}" MouseDown="ZoomToVisual_Click" >
+                                            Height="90" Source="{Binding PictureFilePath}" MouseDown="ZoomToVisual_Click" >
                                             
                                         </Image>
                                         <Rectangle Margin="2,2,2,2" HorizontalAlignment="Center" MouseDown="TeamColor_ActiveCharacters_ListBox_Click" Grid.Column="3"

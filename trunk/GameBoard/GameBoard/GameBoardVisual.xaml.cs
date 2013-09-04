@@ -162,50 +162,62 @@ namespace GameBoard
             }
             else
             {
-                DrawShape(rayMeshResult.PointHit);
+                DrawShape(rayMeshResult.PointHit, true);
             }
         }
 
-        //Used because Point3D is non-nullable.
-        List<Point3D> startPoint = new List<Point3D>();
-        private void DrawShape(Point3D point3D)
+        List<Point3D> _drawnPoints = new List<Point3D>();
+        private void DrawShape(Point3D point3D, bool thisBoardOriginatedTheShape)
         {
+            _drawnPoints.Add(point3D);
             switch (_viewModel.ShapeSelection)
             {
                 case GameBoard.VisualsViewModel.ShapeMode.Sphere:
-                        {
-                            _viewModel.DrawSphere(point3D);
-                            break;
-                        }
+                    {
+                        _viewModel.DrawSphere(point3D);
+                        if (thisBoardOriginatedTheShape)
+                            OnShapeDrawn(new ShapeDrawnEvent(_drawnPoints));
+                        _drawnPoints.Clear();
+                        break;
+                    }
                 case GameBoard.VisualsViewModel.ShapeMode.Cone:
                     {
-                        if (startPoint.Count == 0)
+                        if (_drawnPoints.Count==2)
                         {
-                            startPoint.Add(point3D);
-                        }
-                        else
-                        {
-                            _viewModel.DrawCone(startPoint.First(), point3D);
-                            startPoint.Clear();
+                            _viewModel.DrawCone(_drawnPoints.First(), point3D);
+                            if(thisBoardOriginatedTheShape)
+                                OnShapeDrawn(new ShapeDrawnEvent(_drawnPoints));
+                            _drawnPoints.Clear();
                         }
                         break;
                     }
                 case GameBoard.VisualsViewModel.ShapeMode.Line:
                     {
-                        if (startPoint.Count == 0)
+                        if (_drawnPoints.Count==2)
                         {
-                            startPoint.Add(point3D);
-                        }
-                        else
-                        {
-                            _viewModel.DrawLine(startPoint.First(), point3D);
-                            startPoint.Clear();
+                            _viewModel.DrawLine(_drawnPoints.First(), point3D);
+                            if (thisBoardOriginatedTheShape)
+                                OnShapeDrawn(new ShapeDrawnEvent(_drawnPoints));
+                            _drawnPoints.Clear();
                         }
                         break;
                     }
                 default:
                     throw new Exception("Unknown shape");
                     break;
+            }
+
+
+
+        }
+
+        public event EventHandler ShapeDrawn;
+        protected virtual void OnShapeDrawn(ShapeDrawnEvent e)
+        {
+            EventHandler handler = ShapeDrawn;
+            if (handler != null)
+            {
+                handler(this, e);
             }
         }
 
@@ -218,5 +230,14 @@ namespace GameBoard
         }
 
 
+
+        internal void OtherBoardShapeDrawn(object sender, EventArgs e)
+        {
+            var shapeDrawnEvent = e as ShapeDrawnEvent;
+            foreach (var cur in shapeDrawnEvent.Points)
+            {
+                DrawShape(cur, false);
+            }
+        }
     }
 }
