@@ -30,15 +30,14 @@ namespace XMLCharSheets
             VisualsService.BoardsViewModel.BoardRegistered += BoardRegistered;
             VisualsService.BoardsViewModel.BoardDeregistered += BoardDeregistered;
             
-            var boardForWindow = VisualsService.BoardsViewModel.RegisterNewBoard();
-            var boardForSecondWindow = VisualsService.BoardsViewModel.RegisterNewBoard();
+            var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard();
+            var boardForMainControl = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard();
+            VisualControl_BoardSpace_DockPanel.Children.Add(boardForMainControl.GameBoardVisual);
 
             
             DataContext = CombatService.RosterViewModel;
             GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(boardForWindow);
-            GameBoardVisual_Window secondWindow = new GameBoardVisual_Window(boardForSecondWindow);
             boardVisualWindow.Show();
-            secondWindow.Show();
 
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
 
@@ -120,6 +119,12 @@ namespace XMLCharSheets
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
             CombatService.RosterViewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
+            String names = "";
+            foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
+            {
+                var curIsSheet = cur is CharacterSheet;
+                names = names + "\n" + (cur as CharacterSheet).Name;
+            }
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
