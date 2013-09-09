@@ -28,7 +28,7 @@ namespace GameBoard
             get { return _boards; }
         }
 
-        public Board RegisterNewBoard()
+        public Board CreateAndRegisterNewBoard()
         {
             var newB = Board.NewBoard();
             foreach (Board curboard in _boards)

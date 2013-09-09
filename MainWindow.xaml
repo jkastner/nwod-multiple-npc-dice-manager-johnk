@@ -256,8 +256,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Visual Controls">
-                <StackPanel>
-                    <DockPanel DockPanel.Dock="Top">
+                <Grid Name="VisualControl_Grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"></RowDefinition>
+                        <RowDefinition Height="58"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DockPanel DockPanel.Dock="Top" Grid.Row="0">
                         <Button
                                 Margin="5,5,0,0"
                                 HorizontalAlignment="Left"
@@ -292,7 +297,7 @@
                     </DockPanel>
 
                     <DockPanel DockPanel.Dock="Top" Margin="5,5,5,5" HorizontalAlignment="Left"
-                                   VerticalAlignment="Center">
+                                   VerticalAlignment="Center" Grid.Row="1">
                         <CheckBox Name="SelectUnderShape_CheckBox" VerticalAlignment="Center">
                             Shape Select
                         </CheckBox>
@@ -391,7 +396,8 @@
                         </ToggleButton>
 
                     </DockPanel>
-                </StackPanel>
+                    <DockPanel Name="VisualControl_BoardSpace_DockPanel" Grid.Row="2"></DockPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Deceased">
                 <StackPanel>

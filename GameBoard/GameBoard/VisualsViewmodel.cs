@@ -100,6 +100,10 @@ namespace GameBoard
         private void RegisterMoveablePicture(MoveablePicture charImage, Guid characterGuid)
         {
             VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
+            if(_charactersToMoveablePicture.ContainsKey(characterGuid))
+            {
+                _charactersToMoveablePicture.Remove(characterGuid);
+            }
             _charactersToMoveablePicture.Add(characterGuid, charImage);
             _viewport.Children.Add(charImage.CharImage);
             _viewport.Children.Add(charImage.BaseCone);

@@ -24,15 +24,6 @@ namespace XMLCharSheets
             }
         }
 
-        public override object BaseTraitContents
-        {
-            get { return TraitDescription; }
-            set
-            {
-                //Todo - change attack bonuses?
-            }
-        }
-
         [DataMember]
         public int ExplodesOn { get; set; }
 

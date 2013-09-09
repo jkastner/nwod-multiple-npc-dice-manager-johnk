@@ -161,7 +161,7 @@ namespace GameBoard
                 InfoText = new BillboardTextVisual3D()
                 {
                     Position = new Point3D(
-                        CharImage.Origin.X, CharImage.Origin.Y,
+                        CharImage.Origin.X, CharImage.Origin.Y + LongestPictureSide * 1.1,
                         CharImage.Origin.Z + PictureOffset + LongestPictureSide + 3),
                     FontSize = 18,
                     Background= new SolidColorBrush(Colors.Wheat),
@@ -242,7 +242,7 @@ namespace GameBoard
             LocationForSave = point3D;
             Point3DAnimation moveAnimationPic = new Point3DAnimation(CharImage.Origin, point3D, new Duration(new TimeSpan(0,0,0,1)));
             Point3DAnimation moveAnimationCone = new Point3DAnimation(BaseCone.Origin, new Point3D(point3D.X, point3D.Y, 0), new Duration(new TimeSpan(0, 0, 0, 1)));
-            Point3DAnimation textAnimation = new Point3DAnimation(InfoText.Position, new Point3D(point3D.X, point3D.Y, InfoText.Position.Z), new Duration(new TimeSpan(0, 0, 0, 1)));
+            Point3DAnimation textAnimation = new Point3DAnimation(InfoText.Position, new Point3D(point3D.X, point3D.Y+LongestPictureSide*1.1, InfoText.Position.Z), new Duration(new TimeSpan(0, 0, 0, 1)));
             AnimationClock clock1 = moveAnimationPic.CreateClock();
             AnimationClock clock2 = moveAnimationCone.CreateClock();
             AnimationClock clock3 = textAnimation.CreateClock();

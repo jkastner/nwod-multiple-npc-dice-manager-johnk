@@ -108,10 +108,6 @@ namespace XMLCharSheets
         {
             get
             {
-                if (HasVisual)
-                {
-                    return BoardsViewModel.Instance.AssociatedVisual(UniqueCharacterID).IsSelected;
-                }
                 return _isSelected;
             }
             set
