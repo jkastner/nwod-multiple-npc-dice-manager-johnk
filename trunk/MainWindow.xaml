@@ -21,7 +21,9 @@
                     <MenuItem Header="_Exit" Click="Exit_Click_MenuItem" />
                 </MenuItem>
                 <MenuItem Header="_Options">
-                    <MenuItem Header="_Auto Run Combat..." Click="Auto_Run_Combat" />
+                    <MenuItem Header="_Autosave..." Click="Auto_Run_Combat" />
+                    <MenuItem Header="_Auto Complete Combat..." IsCheckable="True" IsChecked="{Binding AutoSaveEachTurn}" />
+                    
                 </MenuItem>
             </Menu>
             <MenuItem Header="_Help" />
