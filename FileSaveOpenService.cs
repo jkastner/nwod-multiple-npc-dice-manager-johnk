@@ -69,7 +69,7 @@ namespace XMLCharSheets
                     SaveFileAs();
                     return;
                 }
-                SaveFile(_previousFileName);
+                SaveFileWithName(_previousFileName);
             }
             else
             {
@@ -88,11 +88,11 @@ namespace XMLCharSheets
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")
             {
-                SaveFile(saveFileDialog1.FileName);
+                SaveFileWithName(saveFileDialog1.FileName);
             }
         }
 
-        private static void SaveFile(String fileName)
+        internal static void SaveFileWithName(String fileName)
         {
             var currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster,
                                            CombatService.RosterViewModel.DeceasedRoster,

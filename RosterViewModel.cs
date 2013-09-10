@@ -477,6 +477,18 @@ namespace XMLCharSheets
                     TextReporter.Report(info);
                 }
             }
+            if (AutoSaveEachTurn)
+            {
+                if (Directory.Exists(@"Saves\Autosaves"))
+                {
+                    string fileName = string.Format("Autosave-{0:yyyy-MM-dd_hh-mm-ss-tt}.xml", DateTime.Now);
+                    FileSaveOpenService.SaveFileWithName(@"Saves\Autosaves\" + fileName);
+                }
+                else
+                {
+                    MessageBox.Show("Could not autosave - directory Saves\\Autosaves not found");
+                }
+            }
         }
 
         internal void RecalculateCombatStats(IList characters)
@@ -814,6 +826,22 @@ namespace XMLCharSheets
                 LoadingErrorsWindow lew = new LoadingErrorsWindow();
                 lew.SetErrors(LoadingErrors);
                 lew.ShowDialog();
+            }
+        }
+
+
+        private bool _autoSaveEachTurn;
+
+        public bool AutoSaveEachTurn
+        {
+            get
+            {
+                return _autoSaveEachTurn;
+            }
+            set
+            {
+                _autoSaveEachTurn = value;
+                OnPropertyChanged("AutoSaveEachTurn");
             }
         }
 
