@@ -499,7 +499,8 @@ namespace XMLCharSheets
                 {
                     if (ActiveRoster[curIndex].HasVisual)
                     {
-                        VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.RemovePiece(ActiveRoster[curIndex].UniqueCharacterID));
+                        var curId = ActiveRoster[curIndex].UniqueCharacterID;
+                        VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.RemovePiece(curId));
                     }
                     foreach (CharacterSheet cur in ActiveRoster.Where(x => x.Target == ActiveRoster[curIndex]))
                     {

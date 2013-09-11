@@ -106,7 +106,7 @@ namespace XMLCharSheets
                 var possibleTargetsWithVisual = CombatService.RosterViewModel.ActiveRoster.Where(x => x!=_activeChar 
                     && x.Team != _activeChar.Team && x.HasVisual && !x.IsIncapacitated).ToList();
                 var possibleTargetsWithoutVisual = CombatService.RosterViewModel.ActiveRoster.Where(x =>  x!=_activeChar 
-                    && x.Team != _activeChar.Team && !x.IsIncapacitated).ToList();
+                    && x.Team != _activeChar.Team && !x.IsIncapacitated && !x.HasVisual).ToList();
                 //Case 2. This has a visual, no opponent has a visual.
                 if (possibleTargetsWithVisual.Count() == 0)
                 {

@@ -349,7 +349,7 @@ namespace XMLCharSheets
 
         public double DistanceTo(Point3D target)
         {
-            if (HasVisual)
+            if (!HasVisual)
             {
                 return double.MaxValue;
             }

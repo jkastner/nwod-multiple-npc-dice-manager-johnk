@@ -19,21 +19,10 @@ namespace GameBoard
         
         public VisualsViewModel()
         {
-            _groupSingleMovementCircle = new TubeVisual3D()
-            {
-                Diameter = .5,
-                Material = new DiffuseMaterial(new SolidColorBrush(Colors.DarkBlue)),
-                ThetaDiv = 15,
-            };
-            _groupDoubleMovementCircle = new TubeVisual3D()
-            {
-                Diameter = .5,
-                Material = new DiffuseMaterial(new SolidColorBrush(Colors.DarkBlue)),
-                ThetaDiv = 15,
-            };
+            Initialize();
         }
 
-        public void Initialize()
+        public void SetInitialBackground()
         {
             SetBoardBackground(@"MapPictures\BattleMap.jpg", 0, 0, true);
         }
@@ -74,8 +63,24 @@ namespace GameBoard
         [OnDeserialized]
         private void OnDeserialized(StreamingContext sc)
         {
-            _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
+            Initialize();
+        }
 
+        private void Initialize()
+        {
+            _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
+            _groupSingleMovementCircle = new TubeVisual3D()
+            {
+                Diameter = .5,
+                Material = new DiffuseMaterial(new SolidColorBrush(Colors.DarkBlue)),
+                ThetaDiv = 15,
+            };
+            _groupDoubleMovementCircle = new TubeVisual3D()
+            {
+                Diameter = .5,
+                Material = new DiffuseMaterial(new SolidColorBrush(Colors.DarkBlue)),
+                ThetaDiv = 15,
+            };
         }
 
         Color defaultColor = Colors.Gray;

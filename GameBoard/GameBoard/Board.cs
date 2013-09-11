@@ -25,7 +25,7 @@ namespace GameBoard
             // TODO: Complete member initialization
             GameBoardVisual = gameBoardVisual;
             VisualsViewModel = visualsViewModel;
-            VisualsViewModel.Initialize();
+            VisualsViewModel.SetInitialBackground();
         }
         
         private GameBoardVisual _gameBoardVisual;

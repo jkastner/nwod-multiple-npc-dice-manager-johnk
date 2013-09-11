@@ -76,7 +76,7 @@ namespace GameBoard
             foreach (Board curBoard in _boards)
             {
                 Board local = curBoard;
-                curBoard.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => action(local)));
+                curBoard.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => action(local)));
             }
         }
 
