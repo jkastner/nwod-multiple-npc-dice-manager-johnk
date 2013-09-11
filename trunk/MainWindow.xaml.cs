@@ -21,14 +21,15 @@ namespace XMLCharSheets
     {
         private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         private Paragraph RichTextParagraph;
+        List<GameBoardVisual_Window> _gameBoardWindows = new List<GameBoardVisual_Window>();
         public MainWindow()
         {
             InitializeComponent();
             CombatService.RosterViewModel.PopulateCharacters(Directory.GetCurrentDirectory() + "\\Sheets");
             CombatService.RosterViewModel.ShowErrors();
 
-            VisualsService.BoardsViewModel.BoardRegistered += BoardRegistered;
-            VisualsService.BoardsViewModel.BoardDeregistered += BoardDeregistered;
+            VisualsService.BoardsViewModel.BoardRegistered += OnBoardRegistered;
+            VisualsService.BoardsViewModel.BoardDeregistered += OnBoardDeregistered;
             
             var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard();
             var boardForMainControl = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard();
@@ -37,6 +38,7 @@ namespace XMLCharSheets
             
             DataContext = CombatService.RosterViewModel;
             GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(boardForWindow);
+            _gameBoardWindows.Add(boardVisualWindow);
             boardVisualWindow.Show();
 
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
@@ -50,19 +52,39 @@ namespace XMLCharSheets
             ShapeLength_TextBox.Text = "20";
         }
 
-        private void BoardDeregistered(object sender, EventArgs e)
+        private void OnBoardDeregistered(object sender, EventArgs e)
         {
             var boardEvent = e as BoardRegisteredEventArgs;
             boardEvent.NewBoard.VisualsViewModel.PieceSelected -= VisualPieceSelected;
             boardEvent.NewBoard.VisualsViewModel.ClearSelectedPieces -= ClearSelectedPieces;
+            boardEvent.NewBoard.VisualsViewModel.PieceMoved -= OnVisualPieceMoved;
         }
 
-        private void BoardRegistered(object sender, EventArgs e)
+        private void OnBoardRegistered(object sender, EventArgs e)
         {
             var boardEvent = e as BoardRegisteredEventArgs;
             boardEvent.NewBoard.VisualsViewModel.PieceSelected += VisualPieceSelected;
             boardEvent.NewBoard.VisualsViewModel.ClearSelectedPieces += ClearSelectedPieces;
+            boardEvent.NewBoard.VisualsViewModel.PieceMoved += OnVisualPieceMoved;
         }
+
+        private void OnVisualPieceMoved(object sender, EventArgs e)
+        {
+            var pieceEvent = e as PieceMovedEventsArg;
+            if (pieceEvent != null)
+            {
+                if (pieceEvent.MoverID != null)
+                {
+                    CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.UniqueCharacterID == pieceEvent.MoverID)
+                                                              .FirstOrDefault();
+                    if (matchingChar != null)
+                    {
+                        matchingChar.HasMoved = true;
+                    }
+                }
+            }
+        }
+
 
         private void ClearResultsRichTextBox(object sender, EventArgs e)
         {
@@ -104,6 +126,7 @@ namespace XMLCharSheets
                 if (matchingChar != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
+                    ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
                 }
             }
         }
@@ -147,6 +170,8 @@ namespace XMLCharSheets
         private void Initiative_Button_Click(object sender, RoutedEventArgs e)
         {
             CombatService.RosterViewModel.RollInitiative();
+            CombatService.RosterViewModel.CurrentRound++;
+            CurrentRound_Label.Content = "Label " + CombatService.RosterViewModel.CurrentRound;
             CombatService.RosterViewModel.NewRound();
         }
 
@@ -464,7 +489,32 @@ namespace XMLCharSheets
 
         private void OpenFile_Click_MenuItem(object sender, RoutedEventArgs e)
         {
-            FileSaveOpenService.OpenFile();
+            var readBoards = FileSaveOpenService.OpenFile();
+            if (readBoards != null && readBoards.Count > 0)
+            {
+                foreach (var cur in _gameBoardWindows)
+                {
+                    cur.Close();
+                }
+                _gameBoardWindows.Clear();
+                BoardsViewModel.Instance.ClearAllBoards();
+                for (int curIndex = 0; curIndex < readBoards.Count; curIndex++)
+                {
+                    var curBoard = readBoards[curIndex];
+                    BoardsViewModel.Instance.RegisterBoard(curBoard);
+                    if (curIndex == 0)
+                    {
+                        VisualControl_BoardSpace_DockPanel.Children.Clear();
+                        VisualControl_BoardSpace_DockPanel.Children.Add(curBoard.GameBoardVisual);
+                    }
+                    else
+                    {
+                        GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(curBoard);
+                        _gameBoardWindows.Add(boardVisualWindow);
+                        boardVisualWindow.Show();
+                    }
+                }
+            }
         }
 
         private void SaveFile_Click_MenuItem(object sender, RoutedEventArgs e)

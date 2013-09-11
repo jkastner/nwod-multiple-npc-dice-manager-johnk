@@ -25,7 +25,7 @@ namespace GameBoard
         Material _frontMaterial, _backMaterial;
 
 
-        public VisualsViewModel _viewModel;
+        private VisualsViewModel _viewModel;
 
         public GameBoardVisual()
         {
@@ -113,7 +113,7 @@ namespace GameBoard
                 return HitTestResultBehavior.Stop;
 
             }
-            foreach (var curVisual in _viewModel.VisualToMoveablePicturesDictionary)
+            foreach (var curVisual in _viewModel.CharactersToMoveablePicture)
             {
                 var curMoveable = curVisual.Value;
                 IEnumerable<Visual3D> targets;
@@ -153,7 +153,7 @@ namespace GameBoard
                 }
                 else if (doubleClick)
                 {
-                    if (_viewModel.VisualToMoveablePicturesDictionary.Any(x => x.Value.IsSelected))
+                    if (_viewModel.CharactersToMoveablePicture.Any(x => x.Value.IsSelected))
                     {
                         var movedHit = rayMeshResult.PointHit;
                         _viewModel.MoveSelectedPiecesTo(movedHit);

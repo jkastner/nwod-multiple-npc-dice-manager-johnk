@@ -21,8 +21,8 @@
                     <MenuItem Header="_Exit" Click="Exit_Click_MenuItem" />
                 </MenuItem>
                 <MenuItem Header="_Options">
-                    <MenuItem Header="_Autosave..." Click="Auto_Run_Combat" />
-                    <MenuItem Header="_Auto Complete Combat..." IsCheckable="True" IsChecked="{Binding AutoSaveEachTurn}" />
+                    <MenuItem Header="_Auto Complete Combat..." Click="Auto_Run_Combat" />
+                    <MenuItem Header="_Autosave..." IsCheckable="True" IsChecked="{Binding AutoSaveEachTurn}" />
                     
                 </MenuItem>
             </Menu>
@@ -66,7 +66,7 @@
                         <!--Custom control column -->
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Name="CurrentRound_Label" Grid.Row="0" Grid.Column="1" FontSize="16">Round X</Label>                        
+                    <Label Name="CurrentRound_Label" Grid.Row="0" Grid.Column="1" FontSize="16"></Label>                        
 
                     <ListBox Grid.RowSpan="5" Grid.Column="0"
                         Name="ActiveCharacters_ListBox"

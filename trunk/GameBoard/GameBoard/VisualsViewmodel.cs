@@ -71,12 +71,11 @@ namespace GameBoard
             set { _theMap = value; }
         }
 
-
-        private Dictionary<Visual3D, MoveablePicture> _visualToMoveablePicturesDictionary = new Dictionary<Visual3D, MoveablePicture>();
-        public Dictionary<Visual3D, MoveablePicture> VisualToMoveablePicturesDictionary
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext sc)
         {
-            get { return _visualToMoveablePicturesDictionary; }
-            set { _visualToMoveablePicturesDictionary = value; }
+            _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
+
         }
 
         Color defaultColor = Colors.Gray;
@@ -84,7 +83,7 @@ namespace GameBoard
             Point3D location, List<StatusEffectDisplay> statusEffects, double speed, Guid characterGuid)
         {
             double heightFeet = height;
-            while (VisualToMoveablePicturesDictionary.Values.Any(
+            while (CharactersToMoveablePicture.Values.Any(
                 existingImage =>
                     existingImage.Location.X == location.X &&
                     existingImage.Location.Y == location.Y &&
@@ -99,7 +98,6 @@ namespace GameBoard
 
         private void RegisterMoveablePicture(MoveablePicture charImage, Guid characterGuid)
         {
-            VisualToMoveablePicturesDictionary.Add(charImage.CharImage, charImage);
             if(_charactersToMoveablePicture.ContainsKey(characterGuid))
             {
                 _charactersToMoveablePicture.Remove(characterGuid);
@@ -206,11 +204,19 @@ namespace GameBoard
 
         public void ToggleSelectCharacterFromVisual(RectangleVisual3D lastHit)
         {
-            if (VisualToMoveablePicturesDictionary[lastHit].IsSelected)
+            MoveablePicture match = null;
+            foreach (var cur in CharactersToMoveablePicture)
             {
-                List<MoveablePicture> previousSelections = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected).Select(z => z.Value).ToList();
+                if (cur.Value.CharImage.Equals(lastHit))
+                {
+                    match = cur.Value;
+                }
+            }
+            if (match.IsSelected)
+            {
+                List<MoveablePicture> previousSelections = CharactersToMoveablePicture.Where(x => x.Value.IsSelected).Select(z => z.Value).ToList();
                 ClearSelectedCharacters();
-                previousSelections.Remove(VisualToMoveablePicturesDictionary[lastHit]);
+                previousSelections.Remove(match);
                 foreach (var cur in previousSelections)
                 {
                     cur.IsSelected = true;
@@ -219,8 +225,8 @@ namespace GameBoard
             }
             else
             {
-                VisualToMoveablePicturesDictionary[lastHit].IsSelected = true;
-                OnPieceSelected(new PieceSelectedEventArgs(IDFromPicture(VisualToMoveablePicturesDictionary[lastHit])));
+                match.IsSelected = true;
+                OnPieceSelected(new PieceSelectedEventArgs(IDFromPicture(match)));
             }
         }
 
@@ -301,11 +307,12 @@ namespace GameBoard
             {
                 RemoveIfPresent(cur);
             }
-            VisualToMoveablePicturesDictionary.Remove(match.CharImage);
+            CharactersToMoveablePicture.Remove(uniqueID);
             match = null;
         }
 
         private BoardInfo _currentBoardInfo;
+        [DataMember]
         public BoardInfo CurrentBoardInfo
         {
             get { return _currentBoardInfo; }
@@ -364,7 +371,7 @@ namespace GameBoard
 
         internal void MoveSelectedPiecesTo(Point3D point3D)
         {
-            var selectedCharacters = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected);
+            var selectedCharacters = CharactersToMoveablePicture.Where(x => x.Value.IsSelected);
             if (selectedCharacters.Count() == 1)
             {
                 var fc = selectedCharacters.First().Value;
@@ -399,7 +406,7 @@ namespace GameBoard
 
         internal void ClearSelectedCharacters()
         {
-            foreach (var cur in VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected))
+            foreach (var cur in CharactersToMoveablePicture.Where(x => x.Value.IsSelected))
             {
                 cur.Value.IsSelected = false;
             }
@@ -422,8 +429,8 @@ namespace GameBoard
 
         public void DrawGroupMovementCircle()
         {
-            List<Point3D> selectedPictures = VisualToMoveablePicturesDictionary.Where(x => x.Value.IsSelected).Select(z => z.Value.Location).ToList();
-            double minSpeed = VisualToMoveablePicturesDictionary.Min(x => x.Value.Speed);
+            List<Point3D> selectedPictures = CharactersToMoveablePicture.Where(x => x.Value.IsSelected).Select(z => z.Value.Location).ToList();
+            double minSpeed = CharactersToMoveablePicture.Min(x => x.Value.Speed);
             Point3D midPoint = Helper3DCalcs.FindMidpoint(selectedPictures);
             var sMove = Helper3DCalcs.CirclePoints(minSpeed, midPoint);
             var dMove = Helper3DCalcs.CirclePoints(minSpeed * 2, midPoint);
@@ -486,7 +493,7 @@ namespace GameBoard
         {
             List<MoveablePicture> selectedByShape = new List<MoveablePicture>();
             ClearSelectedCharacters();
-            foreach (var cur in VisualToMoveablePicturesDictionary)
+            foreach (var cur in CharactersToMoveablePicture)
             {
                 switch (ShapeSelection)
                 {
@@ -527,7 +534,7 @@ namespace GameBoard
                 }
 
             }
-            bool multiSelect = VisualToMoveablePicturesDictionary.Count(x => x.Value.IsSelected) > 1;
+            bool multiSelect = CharactersToMoveablePicture.Count(x => x.Value.IsSelected) > 1;
             foreach (var cur in selectedByShape)
             {
                 //public void SetActive(MoveablePicture moveablePicture, Color pieceColor, bool drawSingleSelectionDetails, double curSpeed, List<StatusEffectDisplay> statuses)
@@ -588,7 +595,7 @@ namespace GameBoard
 
         public Color SelectedTeamColor()
         {
-            var selectedCharacter = VisualToMoveablePicturesDictionary.FirstOrDefault(cur => cur.Value.IsSelected);
+            var selectedCharacter = CharactersToMoveablePicture.FirstOrDefault(cur => cur.Value.IsSelected);
             if (selectedCharacter.Value != null)
                 return selectedCharacter.Value.PieceColor;
             return Colors.Red;
@@ -729,25 +736,16 @@ namespace GameBoard
 
         }
 
-        //public void OpenVisuals(IEnumerable<MoveablePicture> allVisuals)
-        //{
-        //    foreach (var curpair in VisualToMoveablePicturesDictionary)
-        //    {
-        //        foreach (var curVisual in curpair.Value.AssociatedVisuals)
-        //        {
-        //            RemoveIfPresent(curVisual);
-        //        }
-        //        RemoveIfPresent(curpair.Key);
-        //    }
-        //    VisualToMoveablePicturesDictionary.Clear();
-        //    foreach (var charImage in allVisuals)
-        //    {
-        //        if (charImage != null)
-        //        {
-        //            RegisterMoveablePicture(charImage);
-        //        }
-        //    }
-        //}
+        public void OpenVisuals()
+        {
+            var keys = CharactersToMoveablePicture.Keys.ToList();
+            var values = CharactersToMoveablePicture.Values.ToList();
+            CharactersToMoveablePicture.Clear();
+            for (int curIndex = 0; curIndex < keys.Count; curIndex++)
+            {
+                RegisterMoveablePicture(values[curIndex], keys[curIndex]);
+            }
+        }
 
         public void OpenBoardInfo(BoardInfo savedinfo)
         {
@@ -762,6 +760,12 @@ namespace GameBoard
 
         [DataMember]
         private Dictionary<Guid, MoveablePicture> _charactersToMoveablePicture = new Dictionary<Guid, MoveablePicture>();
+        public Dictionary<Guid, MoveablePicture> CharactersToMoveablePicture
+        {
+            get { return _charactersToMoveablePicture; }
+            set { _charactersToMoveablePicture = value; }
+        }
+
         internal bool HasAssociatedVisual(Guid characterGuid)
         {
             return _charactersToMoveablePicture.ContainsKey(characterGuid);
@@ -794,6 +798,7 @@ namespace GameBoard
             var matchingVisual = _charactersToMoveablePicture[movedEvent.MoverID];
             matchingVisual.MoveTo(new Point3D(movedEvent.Destination.X, movedEvent.Destination.Y, movedEvent.Destination.Z));
         }
+
 
     }
 }

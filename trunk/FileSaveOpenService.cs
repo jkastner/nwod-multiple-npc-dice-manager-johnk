@@ -14,6 +14,7 @@ namespace XMLCharSheets
     {
         private static String fileSaveOpenFilter = "xml files (*.xml)|*.xml";
         private static string _previousFileName = "";
+        private static string _previousFileFullPath = "";
 
         public static void WriteToXML(Object someObject, String fileName, Type theType)
         {
@@ -32,7 +33,7 @@ namespace XMLCharSheets
             }
         }
 
-        internal static void OpenFile()
+        internal static IList<Board> OpenFile()
         {
             var openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Directory.GetCurrentDirectory() + "\\Saves";
@@ -42,34 +43,46 @@ namespace XMLCharSheets
                 try
                 {
                     var savedCombat = ReadFromXML(openFileDialog.FileName, typeof (Combat)) as Combat;
+                    for (int curIndex = 0; curIndex < savedCombat.Boards.Count(); curIndex++)
+                    {
+                        var curBoard = savedCombat.Boards[curIndex];
+                        BoardsViewModel.Instance.ImportBoardFromSave(curBoard);
+                    }
+
                     CombatService.RosterViewModel.OpenActiveRoster(savedCombat.ActiveRoster);
                     CombatService.RosterViewModel.OpenDeceasedRoster(savedCombat.DeceasedRoster);
                     CombatService.RosterViewModel.OpenTeams(savedCombat.Teams);
-                    BoardsViewModel.Instance.ClearAllBoards();
-                    foreach (var cur in savedCombat.Boards)
-                    {
-                        BoardsViewModel.Instance.ImportBoardFromSave(cur);
-                    }
-                    _previousFileName = openFileDialog.FileName;
+
+
+                    SetCurrentSaveFileName(openFileDialog.FileName);
                     CombatService.RosterViewModel.ClearResultText();
+                    return savedCombat.Boards;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
+                return null;
             }
+            return null;
+        }
+
+        private static void SetCurrentSaveFileName(string fullPath)
+        {
+ 	        _previousFileFullPath = fullPath;
+            _previousFileName = Path.GetFileNameWithoutExtension(fullPath);
         }
 
         internal static void SaveFile()
         {
-            if (!string.IsNullOrWhiteSpace(_previousFileName))
+            if (!string.IsNullOrWhiteSpace(_previousFileFullPath))
             {
-                if (!Directory.Exists(Path.GetDirectoryName(_previousFileName)))
+                if (!Directory.Exists(Path.GetDirectoryName(_previousFileFullPath)))
                 {
                     SaveFileAs();
                     return;
                 }
-                SaveFileWithName(_previousFileName);
+                Save(_previousFileFullPath);
             }
             else
             {
@@ -88,11 +101,12 @@ namespace XMLCharSheets
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")
             {
-                SaveFileWithName(saveFileDialog1.FileName);
+                Save(saveFileDialog1.FileName);
+                SetCurrentSaveFileName(saveFileDialog1.FileName);
             }
         }
 
-        internal static void SaveFileWithName(String fileName)
+        private static void Save(String fileName)
         {
             var currentCombat = new Combat(CombatService.RosterViewModel.ActiveRoster,
                                            CombatService.RosterViewModel.DeceasedRoster,
@@ -100,7 +114,23 @@ namespace XMLCharSheets
                                            VisualsService.BoardsViewModel.Boards,
                                            String.Empty);
             WriteToXML(currentCombat, fileName, typeof (Combat));
-            _previousFileName = fileName;
+        }
+
+        internal static void AutoSave(string currentRound)
+        {
+            if (Directory.Exists(@"Saves\Autosaves"))
+            {
+                string fileName = string.Format("Autosave-{0:yyyy-MM-dd_hh-mm-ss-tt}.xml", DateTime.Now);
+                if (!String.IsNullOrWhiteSpace(_previousFileName))
+                {
+                    fileName = _previousFileName + currentRound;
+                }
+                Save(@"Saves\Autosaves\" + fileName+".xml");
+            }
+            else
+            {
+                MessageBox.Show("Could not autosave - directory Saves\\Autosaves not found");
+            }
         }
     }
 }
