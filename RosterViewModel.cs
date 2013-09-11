@@ -118,24 +118,6 @@ namespace XMLCharSheets
             _characterReader.RegisterReader("Pathfinder", new PathfinderCharacterReader());
         }
 
-        private void OnVisualPieceMoved(object sender, EventArgs e)
-        {
-            var pieceEvent = e as PieceMovedEventsArg;
-            if (pieceEvent != null)
-            {
-                if (pieceEvent.MoverID != null)
-                {
-                    CharacterSheet matchingChar = ActiveRoster.Where(x => x.UniqueCharacterID == pieceEvent.MoverID)
-                                                              .FirstOrDefault();
-                    if (matchingChar != null)
-                    {
-                        matchingChar.HasMoved = true;
-                    }
-                }
-            }
-        }
-
-
         public const string UnassignedTeamName = "Unassigned";
         public static readonly Team UnassignedTeam = new Team(UnassignedTeamName, Colors.Beige); 
         private void MakeTeams()
@@ -150,24 +132,6 @@ namespace XMLCharSheets
             Teams.Add(new Team("Team 7", Colors.Teal));
             Teams.Add(new Team("Team 8", Colors.Purple));
             Teams.Add(UnassignedTeam);
-        }
-
-        private void OnVisualPieceSelected(object sender, EventArgs e)
-        {
-            var pieceEvent = e as PieceSelectedEventArgs;
-            if (pieceEvent != null)
-            {
-                if (pieceEvent.SelectedPieceID != null)
-                {
-                    CharacterSheet matchingChar = ActiveRoster.Where(x => x.HasVisual &&
-                                                                          x.UniqueCharacterID == pieceEvent.SelectedPieceID)
-                                                              .FirstOrDefault();
-                    if (matchingChar != null)
-                    {
-                        SelectedActiveCharacter = matchingChar;
-                    }
-                }
-            }
         }
 
         private void SetActiveCharacter(CharacterSheet fullChar, CharacterSheet activeChar,
@@ -479,15 +443,7 @@ namespace XMLCharSheets
             }
             if (AutoSaveEachTurn)
             {
-                if (Directory.Exists(@"Saves\Autosaves"))
-                {
-                    string fileName = string.Format("Autosave-{0:yyyy-MM-dd_hh-mm-ss-tt}.xml", DateTime.Now);
-                    FileSaveOpenService.SaveFileWithName(@"Saves\Autosaves\" + fileName);
-                }
-                else
-                {
-                    MessageBox.Show("Could not autosave - directory Saves\\Autosaves not found");
-                }
+                FileSaveOpenService.AutoSave("R_"+CurrentRound.ToString());
             }
         }
 
@@ -845,5 +801,13 @@ namespace XMLCharSheets
             }
         }
 
+
+        private int _currentRound = 0;
+        public int CurrentRound
+        {
+            get { return _currentRound; }
+            set { _currentRound = value; }
+        }
+        
     }
 }

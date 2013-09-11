@@ -31,17 +31,7 @@ namespace GameBoard
         public Board CreateAndRegisterNewBoard()
         {
             var newB = Board.NewBoard();
-            foreach (Board curboard in _boards)
-            {
-                newB.VisualsViewModel.PieceMoved += curboard.VisualsViewModel.OtherBoardPieceMoved;
-                newB.GameBoardVisual.ShapeDrawn += curboard.GameBoardVisual.OtherBoardShapeDrawn;
-
-                curboard.VisualsViewModel.PieceMoved += newB.VisualsViewModel.OtherBoardPieceMoved;
-                curboard.GameBoardVisual.ShapeDrawn += newB.GameBoardVisual.OtherBoardShapeDrawn;
-
-            }
-            _boards.Add(newB);
-            OnBoardRegistered(new BoardRegisteredEventArgs(newB));
+            RegisterBoard(newB);
             return newB;
         }
 
@@ -108,15 +98,34 @@ namespace GameBoard
             {
                 DeregisterBoard(cur);
             }
+            Boards.Clear();
         }
 
 
 
         public void ImportBoardFromSave(Board cur)
         {
-            Boards.Add(cur);
+            cur.GameBoardVisual = new GameBoardVisual();
+            cur.GameBoardVisual.RegisterViewModel(cur.VisualsViewModel);
+
+            cur.VisualsViewModel.SetViewport(cur.GameBoardVisual.Viewport);
             cur.VisualsViewModel.OpenBoardInfo(cur.VisualsViewModel.CurrentBoardInfo);
-            OnBoardRegistered(new BoardRegisteredEventArgs(cur));
+            cur.VisualsViewModel.OpenVisuals();
+        }
+
+        public void RegisterBoard(Board newB)
+        {
+            foreach (Board curboard in _boards)
+            {
+                newB.VisualsViewModel.PieceMoved += curboard.VisualsViewModel.OtherBoardPieceMoved;
+                newB.GameBoardVisual.ShapeDrawn += curboard.GameBoardVisual.OtherBoardShapeDrawn;
+
+                curboard.VisualsViewModel.PieceMoved += newB.VisualsViewModel.OtherBoardPieceMoved;
+                curboard.GameBoardVisual.ShapeDrawn += newB.GameBoardVisual.OtherBoardShapeDrawn;
+
+            }
+            _boards.Add(newB);
+            OnBoardRegistered(new BoardRegisteredEventArgs(newB));
         }
     }
 }
