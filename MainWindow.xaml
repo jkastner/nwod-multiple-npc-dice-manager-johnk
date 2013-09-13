@@ -46,7 +46,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <!--0: Name and round label-->
-                        <RowDefinition Height="42"></RowDefinition>
+                        <RowDefinition Height="120"></RowDefinition>
                         <!--1: First row of generic buttons-->
                         <RowDefinition Height="42"></RowDefinition>
                         <!--2: Second row of generic buttons-->
@@ -241,11 +241,11 @@
                         </Button>
                     </DockPanel>
                         
-                    <StackPanel Name="CustomCombatPanel" Grid.Row="0" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <StackPanel Name="CustomCombatPanel" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2"/>
 
-                   <Label Grid.Row="0" Grid.Column="2" FontSize="16"
-                        Content="{Binding Path=SelectedCharacter.Name, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
-                    </Label>
+                    <DockPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Name="ActiveCharacterDisplay_DockPanel">
+
+                    </DockPanel>
                     <RichTextBox Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3"
                         Name="Results_RichTextBox"
                         IsReadOnly="True"

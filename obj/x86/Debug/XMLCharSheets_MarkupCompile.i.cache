@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
-9344856277
+101156947336
 
-61854504474
+62-2130957352
 162095142651
-CharacterCreationControl.xaml;LoadingErrorsWindow.xaml;MainWindow.xaml;Systems\NWoD\NWoDControl.xaml;Systems\Pathfinder\PathfinderControl.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
+ActiveCharacterDisplay.xaml;CharacterCreationControl.xaml;LoadingErrorsWindow.xaml;MainWindow.xaml;Systems\NWoD\NWoDControl.xaml;Systems\Pathfinder\PathfinderControl.xaml;SelectTarget.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
 False
 

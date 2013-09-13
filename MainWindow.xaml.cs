@@ -129,6 +129,7 @@ namespace XMLCharSheets
                     ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
                 }
             }
+            UpdateActivePictureDisplay();
         }
 
 
@@ -142,12 +143,15 @@ namespace XMLCharSheets
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
             CombatService.RosterViewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
-            String names = "";
-            foreach (var cur in ActiveCharacters_ListBox.SelectedItems)
-            {
-                var curIsSheet = cur is CharacterSheet;
-                names = names + "\n" + (cur as CharacterSheet).Name;
-            }
+            UpdateActivePictureDisplay();
+        }
+
+        private void UpdateActivePictureDisplay()
+        {
+            ActiveCharacterDisplay_DockPanel.Children.Clear();
+            List<CharacterSheet> activeList = CombatService.RosterViewModel.ActiveRoster.Where(x=>x.IsSelected).ToList();
+            ActiveCharacterDisplay p = new ActiveCharacterDisplay(activeList);
+            ActiveCharacterDisplay_DockPanel.Children.Add(p);
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
@@ -171,7 +175,8 @@ namespace XMLCharSheets
         {
             CombatService.RosterViewModel.RollInitiative();
             CombatService.RosterViewModel.CurrentRound++;
-            CurrentRound_Label.Content = "Label " + CombatService.RosterViewModel.CurrentRound;
+            UpdateActivePictureDisplay();
+            CurrentRound_Label.Content = "Round " + CombatService.RosterViewModel.CurrentRound;
             CombatService.RosterViewModel.NewRound();
         }
 

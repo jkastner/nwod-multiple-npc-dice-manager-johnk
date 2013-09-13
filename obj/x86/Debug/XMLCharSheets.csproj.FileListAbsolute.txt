@@ -238,3 +238,5 @@ C:\Users\johnathan\Desktop\myproj\obj\x86\Debug\MainWindow.baml
 C:\Users\johnathan\Desktop\myproj\obj\x86\Debug\XMLCharSheets.g.resources
 C:\Users\johnathan\Desktop\myproj\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
 C:\Users\johnathan\Desktop\myproj\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.g.cs
