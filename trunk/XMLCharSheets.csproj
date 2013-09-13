@@ -63,6 +63,9 @@
     </ApplicationDefinition>
     <Compile Include="AbstractsAndInterfaces\AttackTrait.cs" />
     <Compile Include="AbstractsAndInterfaces\CharacterActionScript.cs" />
+    <Compile Include="ActiveCharacterDisplay.xaml.cs">
+      <DependentUpon>ActiveCharacterDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CharacterCreationControl.xaml.cs">
       <DependentUpon>CharacterCreationControl.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
     <Compile Include="AbstractsAndInterfaces\Trait.cs" />
     <Compile Include="AbstractsAndInterfaces\NumericIntTrait.cs" />
     <Compile Include="AbstractsAndInterfaces\StringTrait.cs" />
+    <Page Include="ActiveCharacterDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CharacterCreationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
