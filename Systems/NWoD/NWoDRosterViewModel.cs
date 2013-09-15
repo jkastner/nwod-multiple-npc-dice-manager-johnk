@@ -53,29 +53,17 @@ namespace XMLCharSheets.NWoD
 
         internal void DoLethal(IList characters)
         {
-            foreach (object curItem in characters)
-            {
-                var curChar = curItem as CharacterSheet;
-                curChar.DoDamage(1, "Lethal");
-            }
+            CombatService.RosterViewModel.DoDamage(characters, 1, "Lethal");
         }
 
         internal void DoAggrivated(IList characters)
         {
-            foreach (object curItem in characters)
-            {
-                var curChar = curItem as CharacterSheet;
-                curChar.DoDamage(1, "Aggrivated");
-            }
+            CombatService.RosterViewModel.DoDamage(characters, 1, "Aggrivated");
         }
 
         internal void DoBashing(IList characters)
         {
-            foreach (object curItem in characters)
-            {
-                var curChar = curItem as CharacterSheet;
-                curChar.DoDamage(1, "Bashing");
-            }
+            CombatService.RosterViewModel.DoDamage(characters, 1, "Bashing");
         }
 
         internal void RefillVitae(IList characters)
