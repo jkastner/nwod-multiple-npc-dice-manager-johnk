@@ -131,16 +131,12 @@ C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\HelixToolkit.Wpf.dll
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\bin\Debug\GameBoard.pdb
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.csprojResolveAssemblyReference.cache
-C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\NWoD\NWoDControl.baml
-C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Pathfinder\PathfinderControl.baml
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectTarget.baml
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.baml
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.baml
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\StatusEffectWindow.baml
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\App.baml
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\MainWindow.g.cs
-C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\NWoD\NWoDControl.g.cs
-C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Pathfinder\PathfinderControl.g.cs
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectTarget.g.cs
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SelectVisualWindow.g.cs
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\SetBoardDimensions.g.cs
@@ -240,3 +236,17 @@ C:\Users\johnathan\Desktop\myproj\obj\x86\Debug\XMLCharSheets.Properties.Resourc
 C:\Users\johnathan\Desktop\myproj\obj\x86\Debug\XMLCharSheets.csproj.GenerateResource.Cache
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.baml
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.g.cs
+C:\Users\JohnLaptop\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.exe.config
+C:\Users\JohnLaptop\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.exe
+C:\Users\JohnLaptop\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.pdb
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.baml
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\LoadingErrorsWindow.baml
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Systems\NWoD\NWoDControl.baml
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.baml
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\CharacterCreationControl.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\LoadingErrorsWindow.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Systems\NWoD\NWoDControl.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\CharacterCreationControl.baml

@@ -7,6 +7,7 @@ namespace XMLCharSheets
     {
         static Brush defaultBrush = Brushes.Black;
         static double defaultFont = 12;
+        public static Brush DamageBrush = Brushes.Red;
         public static void Report(String newText)
         {
             CombatService.RosterViewModel.ReportText(new ReportTextEventArgs(newText, defaultBrush, defaultFont));

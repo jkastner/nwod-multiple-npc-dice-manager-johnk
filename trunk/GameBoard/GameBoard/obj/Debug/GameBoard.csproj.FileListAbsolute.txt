@@ -119,4 +119,6 @@ C:\Users\johnathan\Desktop\myproj\GameBoard\GameBoard\obj\Debug\GameBoard.Proper
 C:\Users\johnathan\Desktop\myproj\GameBoard\GameBoard\obj\Debug\GameBoard.csproj.GenerateResource.Cache
 C:\Users\johnathan\Desktop\myproj\GameBoard\GameBoard\obj\Debug\GameBoard.dll
 C:\Users\johnathan\Desktop\myproj\GameBoard\GameBoard\obj\Debug\GameBoard.pdb
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.csprojResolveAssemblyReference.cache
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoardVisual_Window.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard_MarkupCompile.lref
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoardVisual_Window.baml

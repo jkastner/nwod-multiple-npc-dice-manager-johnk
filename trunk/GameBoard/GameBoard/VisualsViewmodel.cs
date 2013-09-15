@@ -452,14 +452,6 @@ namespace GameBoard
             set { _shapeSize = value; }
         }
 
-        private bool _selectInsideShape = true;
-
-        public bool SelectInsideShape
-        {
-            get { return _selectInsideShape; }
-            set { _selectInsideShape = value; }
-        }
-
         public enum ShapeMode
         {
             None, Sphere, Cone, Line
@@ -490,8 +482,7 @@ namespace GameBoard
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
-            if (SelectInsideShape)
-                SelectFromInsideShape(point3D, point3D);
+            SelectFromInsideShape(point3D, point3D);
         }
 
         private void SelectFromInsideShape(Point3D point1, Point3D point2)
@@ -573,8 +564,7 @@ namespace GameBoard
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
-            if (SelectInsideShape)
-                SelectFromInsideShape(point1, point2);
+            SelectFromInsideShape(point1, point2);
         }
 
         const int LineDiameter = 5;
@@ -594,8 +584,7 @@ namespace GameBoard
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
             _viewport.Children.Add(shape);
             _temporaryVisuals.Add(animationClock, shape);
-            if (SelectInsideShape)
-                SelectFromInsideShape(point1, point2);
+            SelectFromInsideShape(point1, point2);
         }
 
         public Color SelectedTeamColor()

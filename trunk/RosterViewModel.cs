@@ -270,6 +270,9 @@ namespace XMLCharSheets
             {
                 var curChar = curItem as CharacterSheet;
                 curChar.DoDamage(value, damageType);
+                TextReporter.Report("\n"+curChar.Name+" took ");
+                TextReporter.Report(value+" ", TextReporter.DamageBrush);
+                TextReporter.Report(damageType + "\n" + curChar.Name+": "+curChar.HealthStatusLineDescription);
             }
         }
 
@@ -420,7 +423,7 @@ namespace XMLCharSheets
                 }
                 foreach (var curDamage in damageResultsTotal)
                 {
-                    TextReporter.Report(curDamage.Key + " " + curDamage.Value + " ", Brushes.Red);
+                    TextReporter.Report(curDamage.Key + " " + curDamage.Value + " ", TextReporter.DamageBrush);
                 }
                 if (summedDamage > 0)
                 {
