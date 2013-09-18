@@ -6,9 +6,9 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="630">
     <DockPanel>
-        <Button Name="Pathfinder_SingleAttack_Button" ToolTip="Roll single attack instead of full attack." Height="50"
+        <Button Name="Pathfinder_SingleAttack_Button" ToolTip="Roll single attack instead of full attack." Height="40"
                 Margin="5,5,5,5" Click="Pathfinder_SingleAttack_Button_Click">
-            <Path Stretch="Uniform" Fill="#FF0A0A0A" Width="38" Height="38" Margin="0,0,0,0"
+            <Path Stretch="Uniform" Fill="#FF0A0A0A" Width="28" Height="28" Margin="0,0,0,0"
                   RenderTransformOrigin="0.5,0.5">
                 <Path.Data>
                     <PathGeometry FillRule="Nonzero"
@@ -26,25 +26,25 @@
 
         </Button>
         <DockPanel>
-            <Slider IsSnapToTickEnabled="True" TickFrequency="1" Margin="5,5,5,5" Width="160" Value="0" Minimum="-150"
+            <Slider IsSnapToTickEnabled="True" TickFrequency="1" Margin="5,5,5,5" Width="80" Value="0" Minimum="-150"
                     Maximum="150" Name="DamageSlider" VerticalAlignment="Center">
             </Slider>
-            <TextBox Name="DamageDescriptor_TextBox" Margin="5,5,5,5" Height="50" KeyDown="DamageBox_TextBox_KeyUp"
+            <TextBox Name="DamageDescriptor_TextBox" Margin="5,5,5,5" Height="40" KeyDown="DamageBox_TextBox_KeyUp"
                      Width="70" VerticalAlignment="Center">
                 Slashing
             </TextBox>
             <Label VerticalAlignment="Center">Dmg</Label>
-            <TextBox Name="DamageValue_TextBox" Margin="5,5,5,5" Height="50" KeyUp="DamageBox_TextBox_KeyUp" Width="30"
+            <TextBox Name="DamageValue_TextBox" Margin="5,5,5,5" Height="40" KeyUp="DamageBox_TextBox_KeyUp" Width="30"
                      VerticalAlignment="Center" Text="{Binding ElementName=DamageSlider, Path=Value, Mode=TwoWay}">
             </TextBox>
         </DockPanel>
         <DockPanel>
-            <Button Height="50" Margin="5,5,5,5" Click="FortitudeSave_Button_Click">Fort</Button>
-            <Button Height="50" Margin="5,5,5,5" Click="ReflexSave_Button_Click">Ref</Button>
-            <Button Height="50" Margin="5,5,5,5" Click="WillSave_Button_Click">Will</Button>
+            <Button Height="40" Margin="5,5,5,5" Click="FortitudeSave_Button_Click">Fort</Button>
+            <Button Height="40" Margin="5,5,5,5" Click="ReflexSave_Button_Click">Ref</Button>
+            <Button Height="40" Margin="5,5,5,5" Click="WillSave_Button_Click">Will</Button>
         </DockPanel>
         <Label VerticalAlignment="Center">Pool</Label>
-        <TextBox Name="RollDice_TextBox" Margin="5,5,5,5" Height="50" KeyDown="RollDice_TextBox_KeyDown" Width="70"
+        <TextBox HorizontalAlignment="Left" Name="RollDice_TextBox" Margin="5,5,5,5" Height="40" KeyDown="RollDice_TextBox_KeyDown" Width="70"
                      VerticalAlignment="Center">5d4+5
         </TextBox>
 

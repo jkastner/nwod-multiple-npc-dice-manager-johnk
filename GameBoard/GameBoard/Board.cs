@@ -11,6 +11,13 @@ namespace GameBoard
     [DataContract]
     public class Board
     {
+        [DataMember]
+        public string BoardName
+        {
+            get;
+            private set;
+        }
+
         private VisualsViewModel _visualsViewModel = new VisualsViewModel();
         [DataMember]
         public VisualsViewModel VisualsViewModel
@@ -20,12 +27,13 @@ namespace GameBoard
         }
 
         
-        public Board(GameBoardVisual gameBoardVisual, VisualsViewModel visualsViewModel)
+        public Board(GameBoardVisual gameBoardVisual, VisualsViewModel visualsViewModel, String boardName)
         {
             // TODO: Complete member initialization
             GameBoardVisual = gameBoardVisual;
             VisualsViewModel = visualsViewModel;
             VisualsViewModel.SetInitialBackground();
+            BoardName = boardName; 
         }
         
         private GameBoardVisual _gameBoardVisual;
@@ -35,13 +43,13 @@ namespace GameBoard
             set { _gameBoardVisual = value; }
         }
         
-        internal static Board NewBoard()
+        internal static Board NewBoard(String boardName)
         {
             GameBoardVisual gbv = new GameBoardVisual();
             VisualsViewModel vvm = new VisualsViewModel();
             gbv.RegisterViewModel(vvm);
             vvm.SetViewport(gbv.Viewport);
-            return new Board(gbv, vvm);
+            return new Board(gbv, vvm, boardName);
         }
 
         public Dispatcher Dispatcher

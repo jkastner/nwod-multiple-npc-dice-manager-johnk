@@ -28,9 +28,9 @@ namespace GameBoard
             get { return _boards; }
         }
 
-        public Board CreateAndRegisterNewBoard()
+        public Board CreateAndRegisterNewBoard(string boardName)
         {
-            var newB = Board.NewBoard();
+            var newB = Board.NewBoard(boardName);
             RegisterBoard(newB);
             return newB;
         }
@@ -127,5 +127,7 @@ namespace GameBoard
             _boards.Add(newB);
             OnBoardRegistered(new BoardRegisteredEventArgs(newB));
         }
+
+        
     }
 }
