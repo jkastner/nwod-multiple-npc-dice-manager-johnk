@@ -22,6 +22,9 @@ namespace XMLCharSheets
         private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         private Paragraph RichTextParagraph;
         List<GameBoardVisual_Window> _gameBoardWindows = new List<GameBoardVisual_Window>();
+        private const String mainBoardName = "MainBoard";
+        private const String visualTabBoardName = "VisualTab";
+        private const String windowBoardName = "Window";
         public MainWindow()
         {
             InitializeComponent();
@@ -31,11 +34,13 @@ namespace XMLCharSheets
             VisualsService.BoardsViewModel.BoardRegistered += OnBoardRegistered;
             VisualsService.BoardsViewModel.BoardDeregistered += OnBoardDeregistered;
             
-            var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard();
-            var boardForMainControl = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard();
-            VisualControl_BoardSpace_DockPanel.Children.Add(boardForMainControl.GameBoardVisual);
-
+            var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(windowBoardName);
+            var boardForVisualTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(visualTabBoardName);
+            var boardForMainTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(mainBoardName);
             
+            VisualControl_BoardSpace_DockPanel.Children.Add(boardForVisualTab.GameBoardVisual);
+            MainBoard_DockPanel.Children.Add(boardForMainTab.GameBoardVisual);
+
             DataContext = CombatService.RosterViewModel;
             GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(boardForWindow);
             _gameBoardWindows.Add(boardVisualWindow);
@@ -129,7 +134,6 @@ namespace XMLCharSheets
                     ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
                 }
             }
-            UpdateActivePictureDisplay();
         }
 
 
@@ -143,15 +147,6 @@ namespace XMLCharSheets
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
             CombatService.RosterViewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
-            UpdateActivePictureDisplay();
-        }
-
-        private void UpdateActivePictureDisplay()
-        {
-            ActiveCharacterDisplay_DockPanel.Children.Clear();
-            List<CharacterSheet> activeList = CombatService.RosterViewModel.ActiveRoster.Where(x=>x.IsSelected).ToList();
-            ActiveCharacterDisplay p = new ActiveCharacterDisplay(activeList);
-            ActiveCharacterDisplay_DockPanel.Children.Add(p);
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
@@ -175,7 +170,6 @@ namespace XMLCharSheets
         {
             CombatService.RosterViewModel.RollInitiative();
             CombatService.RosterViewModel.CurrentRound++;
-            UpdateActivePictureDisplay();
             CurrentRound_Label.Content = "Round " + CombatService.RosterViewModel.CurrentRound;
             CombatService.RosterViewModel.NewRound();
         }
@@ -507,16 +501,27 @@ namespace XMLCharSheets
                 {
                     var curBoard = readBoards[curIndex];
                     BoardsViewModel.Instance.RegisterBoard(curBoard);
-                    if (curIndex == 0)
+                    switch (curBoard.BoardName)
                     {
-                        VisualControl_BoardSpace_DockPanel.Children.Clear();
-                        VisualControl_BoardSpace_DockPanel.Children.Add(curBoard.GameBoardVisual);
-                    }
-                    else
-                    {
-                        GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(curBoard);
-                        _gameBoardWindows.Add(boardVisualWindow);
-                        boardVisualWindow.Show();
+                        case windowBoardName:
+                            {
+                                GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(curBoard);
+                                _gameBoardWindows.Add(boardVisualWindow);
+                                boardVisualWindow.Show();
+                            }
+                            break;
+                        case mainBoardName:
+                            {
+                                MainBoard_DockPanel.Children.Clear();
+                                MainBoard_DockPanel.Children.Add(curBoard.GameBoardVisual);
+                            }
+                            break;
+                        case visualTabBoardName:
+                            {
+                                VisualControl_BoardSpace_DockPanel.Children.Clear();
+                                VisualControl_BoardSpace_DockPanel.Children.Add(curBoard.GameBoardVisual);
+                            }
+                            break;
                     }
                 }
             }
@@ -567,3 +572,4 @@ namespace XMLCharSheets
 
     }
 }
+
