@@ -239,5 +239,36 @@ namespace GameBoard
                 DrawShape(cur, false);
             }
         }
+
+        internal void RemoveVisual(Visual3D toRemove)
+        {
+            if (toRemove == null)
+                return;
+            if (Viewport.Children.Contains(toRemove))
+            {
+                Viewport.Children.Remove(toRemove);
+            }
+        }
+
+        internal void AddVisual(Visual3D toAdd)
+        {
+            if (toAdd == null)
+                return;
+            if (!Viewport.Children.Contains(toAdd))
+            {
+                Viewport.Children.Add(toAdd);
+            }
+        }
+
+        internal void ZoomTo(Rect3D rect3D, int zoomSpeed)
+        {
+            //When the board isn't loaded, zooming using helix had an odd unfixable crash.
+            //this dodges that.
+            if (this.ActualHeight!=0&&this.ActualWidth!=0)
+            {
+                Viewport.ZoomExtents(rect3D, zoomSpeed);
+            }
+        }
+
     }
 }

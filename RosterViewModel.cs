@@ -528,9 +528,13 @@ namespace XMLCharSheets
             ActiveRoster.Remove(characterSheet);
         }
 
-        internal void SetVisualActive(IList selectedObjects)
+        internal void SetActive(IList selectedObjects)
         {
             List<CharacterSheet> selectedCharacters = GetListOfCharacters(selectedObjects);
+            foreach (var cur in selectedCharacters)
+            {
+                cur.IsSelected = true;
+            }
             foreach (CharacterSheet cur in _activeRoster)
             {
                 CharacterSheet curCharacter = cur;
@@ -631,7 +635,7 @@ namespace XMLCharSheets
             DeceasedRoster.Clear();
         }
 
-        internal void SetMode(string rulesetName)
+        internal void SetRulesetMode(string rulesetName)
         {
             for (int curIndex = FullRoster.Count - 1; curIndex >= 0; curIndex--)
             {
@@ -653,7 +657,7 @@ namespace XMLCharSheets
             ActiveRoster.Add(newInstance);
             if (!_ruleSetChosen)
             {
-                SetMode(newInstance.Ruleset);
+                SetRulesetMode(newInstance.Ruleset);
                 OnRulesetSelected(new RulesetSelectedEventArgs(newInstance.Ruleset));
                 _ruleSetChosen = true;
             }

@@ -48,7 +48,7 @@ namespace GameBoard
             GameBoardVisual gbv = new GameBoardVisual();
             VisualsViewModel vvm = new VisualsViewModel();
             gbv.RegisterViewModel(vvm);
-            vvm.SetViewport(gbv.Viewport);
+            vvm.SetGameBoardVisual(gbv);
             return new Board(gbv, vvm, boardName);
         }
 

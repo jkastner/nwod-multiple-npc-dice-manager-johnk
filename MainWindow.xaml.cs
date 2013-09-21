@@ -146,7 +146,7 @@ namespace XMLCharSheets
                     CharacterSheet;
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
-            CombatService.RosterViewModel.SetVisualActive(ActiveCharacters_ListBox.SelectedItems);
+            CombatService.RosterViewModel.SetActive(ActiveCharacters_ListBox.SelectedItems);
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)

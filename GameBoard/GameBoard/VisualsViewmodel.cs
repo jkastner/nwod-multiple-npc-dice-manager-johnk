@@ -108,8 +108,8 @@ namespace GameBoard
                 _charactersToMoveablePicture.Remove(characterGuid);
             }
             _charactersToMoveablePicture.Add(characterGuid, charImage);
-            _viewport.Children.Add(charImage.CharImage);
-            _viewport.Children.Add(charImage.BaseCone);
+            _gameBoardVisual.AddVisual(charImage.CharImage);
+            _gameBoardVisual.AddVisual(charImage.BaseCone);
         }
 
         Dictionary<AnimationClock, MeshElement3D> _temporaryVisuals = new Dictionary<AnimationClock, MeshElement3D>();
@@ -130,14 +130,14 @@ namespace GameBoard
 
             };
             tube.ApplyAnimationClock(ArrowVisual3D.DiameterProperty, clock1);
-            _viewport.Children.Add(tube);
+            _gameBoardVisual.AddVisual(tube);
             clock1.Completed += removeVisualTick;
             _temporaryVisuals.Add(clock1, tube);
         }
 
         private void removeVisualTick(object sender, EventArgs e)
         {
-            RemoveIfPresent(_temporaryVisuals[sender as AnimationClock]);
+            _gameBoardVisual.RemoveVisual(_temporaryVisuals[sender as AnimationClock]);
         }
 
 
@@ -253,56 +253,23 @@ namespace GameBoard
             moveablePicture.Speed = curSpeed;
             moveablePicture.IsSelected = true;
             moveablePicture.RemakeInfoText(statuses);
-            AddIfNew(moveablePicture.InfoText);
+            _gameBoardVisual.AddVisual(moveablePicture.InfoText);
             if (drawSingleSelectionDetails)
             {
-                AddIfNew(moveablePicture.MovementCircle);
-                AddIfNew(moveablePicture.DoubleMovementCircle);
+                _gameBoardVisual.AddVisual(moveablePicture.MovementCircle);
+                _gameBoardVisual.AddVisual(moveablePicture.DoubleMovementCircle);
             }
         }
 
         public void SetInactive(Guid targetID)
         {
             MoveablePicture moveablePicture = _charactersToMoveablePicture[targetID];
-            RemoveIfPresent(_groupSingleMovementCircle);
-            RemoveIfPresent(_groupDoubleMovementCircle);
+            _gameBoardVisual.RemoveVisual(_groupSingleMovementCircle);
+            _gameBoardVisual.RemoveVisual(_groupDoubleMovementCircle);
             moveablePicture.IsSelected = false;
-            RemoveIfPresent(moveablePicture.MovementCircle);
-            RemoveIfPresent(moveablePicture.DoubleMovementCircle);
-            RemoveIfPresent(moveablePicture.InfoText);
-        }
-
-
-        private void RemoveIfPresent(MeshElement3D Visual3D)
-        {
-            if (Visual3D == null)
-                return;
-            if (_viewport.Children.Contains(Visual3D))
-            {
-                _viewport.Children.Remove(Visual3D);
-            }
-        }
-        private void RemoveIfPresent(Visual3D targetVisual)
-        {
-            if (_viewport.Children.Contains(targetVisual))
-            {
-                _viewport.Children.Remove(targetVisual);
-            }
-        }
-
-        private void AddIfNew(MeshElement3D Visual3D)
-        {
-            if (!_viewport.Children.Contains(Visual3D))
-            {
-                _viewport.Children.Add(Visual3D);
-            }
-        }
-        private void AddIfNew(Visual3D newVisual)
-        {
-            if (!_viewport.Children.Contains(newVisual))
-            {
-                _viewport.Children.Add(newVisual);
-            }
+            _gameBoardVisual.RemoveVisual(moveablePicture.MovementCircle);
+            _gameBoardVisual.RemoveVisual(moveablePicture.DoubleMovementCircle);
+            _gameBoardVisual.RemoveVisual(moveablePicture.InfoText);
         }
 
         public void RemovePiece(Guid uniqueID)
@@ -310,7 +277,7 @@ namespace GameBoard
             MoveablePicture match = _charactersToMoveablePicture[uniqueID];
             foreach (var cur in match.AssociatedVisuals)
             {
-                RemoveIfPresent(cur);
+                _gameBoardVisual.RemoveVisual(cur);
             }
             CharactersToMoveablePicture.Remove(uniqueID);
             match = null;
@@ -330,7 +297,7 @@ namespace GameBoard
             CurrentBoardInfo = new BoardInfo(newImage, definedBoardHeight, definedBoardWidth, maintainRatio);
             
             if (_theMap != null)
-                RemoveIfPresent(_theMap);
+                _gameBoardVisual.RemoveVisual(_theMap);
             ImageBrush boardFrontBrush = new ImageBrush();
             ImageBrush frontBrush = MaterialMaker.MakeImageMaterial(newImage);
             Material frontMaterial = new DiffuseMaterial(frontBrush);
@@ -364,7 +331,7 @@ namespace GameBoard
                 mb.TextureCoordinates[curIndex] = backward[curIndex];
             }
             _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
-            AddIfNew(_theMap);
+            _gameBoardVisual.AddVisual(_theMap);
         }
 
         public void MovePieceToPoint(Guid selectedID, Point3D targetPoint)
@@ -441,8 +408,8 @@ namespace GameBoard
             var dMove = Helper3DCalcs.CirclePoints(minSpeed * 2, midPoint);
             _groupSingleMovementCircle.Path = new Point3DCollection(sMove);
             _groupDoubleMovementCircle.Path = new Point3DCollection(dMove);
-            AddIfNew(_groupSingleMovementCircle);
-            AddIfNew(_groupDoubleMovementCircle);
+            _gameBoardVisual.AddVisual(_groupSingleMovementCircle);
+            _gameBoardVisual.AddVisual(_groupDoubleMovementCircle);
         }
 
         private double _shapeSize = 20;
@@ -480,7 +447,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            _viewport.Children.Add(shape);
+            _gameBoardVisual.AddVisual(shape);
             _temporaryVisuals.Add(animationClock, shape);
             SelectFromInsideShape(point3D, point3D);
         }
@@ -562,7 +529,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            _viewport.Children.Add(shape);
+            _gameBoardVisual.AddVisual(shape);
             _temporaryVisuals.Add(animationClock, shape);
             SelectFromInsideShape(point1, point2);
         }
@@ -582,7 +549,7 @@ namespace GameBoard
             AnimationClock animationClock = sizeChange.CreateClock();
             animationClock.Completed += removeVisualTick;
             shape.ApplyAnimationClock(SphereVisual3D.RadiusProperty, animationClock);
-            _viewport.Children.Add(shape);
+            _gameBoardVisual.AddVisual(shape);
             _temporaryVisuals.Add(animationClock, shape);
             SelectFromInsideShape(point1, point2);
         }
@@ -597,7 +564,7 @@ namespace GameBoard
 
         public void ZoomTo(Point3D targetPoint)
         {
-            _viewport.ZoomExtents(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
+            _gameBoardVisual.ZoomTo(new Rect3D(targetPoint, new Size3D(0, 0, BoardWidth / 30)), 500);
         }
 
         GridLinesVisual3D _visualGrid = null;
@@ -624,14 +591,14 @@ namespace GameBoard
                 Center = new Point3D(0, 0, 1),
                 Material = Materials.Black,
             };
-            _viewport.Children.Add(_visualGrid);
+            _gameBoardVisual.AddVisual(_visualGrid);
         }
 
         public void RemoveGrid()
         {
             if (_visualGrid != null)
             {
-                _viewport.Children.Remove(_visualGrid);
+                _gameBoardVisual.RemoveVisual(_visualGrid);
                 _visualGrid = null;
             }
         }
@@ -673,7 +640,7 @@ namespace GameBoard
                     Material = Materials.Black,
                     Radius = 2,
                 };
-                _viewport.Children.Add(_startPoint);
+                _gameBoardVisual.AddVisual(_startPoint);
             }
             else if (_endPoint == null)
             {
@@ -683,7 +650,7 @@ namespace GameBoard
                     Material = Materials.Black,
                     Radius = 2,
                 };
-                _viewport.Children.Add(_endPoint);
+                _gameBoardVisual.AddVisual(_endPoint);
                 double distance = (_startPoint.Center - _endPoint.Center).Length;
                 distance = Math.Round(distance, 0);
                 var textPos = _endPoint.Center;
@@ -701,33 +668,26 @@ namespace GameBoard
                     Path = new Point3DCollection(new List<Point3D>() { _startPoint.Center, _endPoint.Center }),
                     Material = Materials.LightGray,
                 };
-                _viewport.Children.Add(_textVisual);
-                _viewport.Children.Add(_distanceIndicator);
+                _gameBoardVisual.AddVisual(_textVisual);
+                _gameBoardVisual.AddVisual(_distanceIndicator);
             }
         }
 
         private void CleanupTapeMeasurerVisuals()
         {
             if (_startPoint != null)
-                _viewport.Children.Remove(_startPoint);
+                _gameBoardVisual.RemoveVisual(_startPoint);
             if (_endPoint != null)
-                _viewport.Children.Remove(_endPoint);
+                _gameBoardVisual.RemoveVisual(_endPoint);
             if (_textVisual != null)
-                _viewport.Children.Remove(_textVisual);
+                _gameBoardVisual.RemoveVisual(_textVisual);
             if (_distanceIndicator != null)
-                _viewport.Children.Remove(_distanceIndicator);
+                _gameBoardVisual.RemoveVisual(_distanceIndicator);
 
             _startPoint = null;
             _endPoint = null;
             _textVisual = null;
             _distanceIndicator = null;
-        }
-
-
-        public void ClearAll()
-        {
-            _viewport.Children.Clear();
-
         }
 
         public void OpenVisuals()
@@ -746,10 +706,10 @@ namespace GameBoard
             SetBoardBackground(savedinfo.BoardImageName, savedinfo.DefinedBoardHeight, savedinfo.DefinedBoardWidth, savedinfo.MaintainRatio);
         }
 
-        private HelixViewport3D _viewport;
-        internal void SetViewport(HelixViewport3D helixViewport3D)
+        private GameBoardVisual _gameBoardVisual;
+        internal void SetGameBoardVisual(GameBoardVisual gameBoardVisual)
         {
-            _viewport = helixViewport3D;
+            _gameBoardVisual = gameBoardVisual;
         }
 
         [DataMember]
