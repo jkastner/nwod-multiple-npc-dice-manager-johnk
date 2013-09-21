@@ -426,5 +426,14 @@ namespace XMLCharSheets
             CurrentMeleeDefense = NormalMeleeDefense;
             return String.Empty;
         }
+
+        
+
+        public virtual Trait ResistanceTrait()
+        {
+            return null;
+        }
+        
+        
     }
 }

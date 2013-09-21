@@ -165,5 +165,12 @@ namespace XMLCharSheets
             CurrentVitae = MaxVitae;
             NotifyStatusChange();
         }
+
+
+        public override Trait ResistanceTrait()
+        {
+            return FindNumericTrait("Blood Potency");
+        }
+        
     }
 }
