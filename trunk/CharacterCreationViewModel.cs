@@ -112,7 +112,15 @@ namespace XMLCharSheets
             {
                 if (SelectedNewCharacter == null)
                 {
-                    CurrentCharacterName = "Name";
+                    
+                    /* There was a bug where when the first character was selected, the ruleset would be set.
+                     * Then the roster would be trimmed of non-usable characters, cleared, and added to available characters.
+                     * The selectedcharacter was null during this
+                     * And the 'name' was set to 'Name'. Once that changed, the image search was reset, and the 
+                     * selected image would be set to null.
+                     * Simply, don't change the name in this case.
+                     * */
+                    //CurrentCharacterName = "Name";
                 }
                 else
                 {

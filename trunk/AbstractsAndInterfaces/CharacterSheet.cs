@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using GameBoard;
+using System.Windows;
 
 namespace XMLCharSheets
 {

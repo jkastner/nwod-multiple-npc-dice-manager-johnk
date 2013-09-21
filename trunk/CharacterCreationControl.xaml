@@ -39,16 +39,28 @@
         <TextBox IsReadOnly="True" Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" TextWrapping="Wrap" DataContext="{Binding SelectedNewCharacter}"
                  Text="{Binding CharacterSheetDescription, Mode=OneWay}"   FontSize="12" VerticalScrollBarVisibility="Auto">
         </TextBox>
-        <TextBox Grid.Row="1"  Grid.Column="2" Style="{StaticResource BaseStyle}" Name="ImageSearch_TextBox" TextChanged="TrimList_TextBox_TextChanged" FontSize="12">
+        <TextBox Grid.Row="1"  Grid.Column="2" Style="{StaticResource BaseStyle}" Name="ImageSearch_TextBox" TextChanged="ImageSearch_TextBox_TextChanged" FontSize="12">
                 Image search...
             </TextBox>
         <ListBox Margin ="5,5,5,5"  Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" x:Name="PictureSearch_ListBox"
                 local:ListBoxSelectionBehavior.ClickSelection="True"
                 SelectedItem="{Binding SelectedPictureInfo}"
                 ScrollViewer.VerticalScrollBarVisibility="Visible">
-            <ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Silver"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True" >
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="FontSize" Value="16" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate> 
                 <DataTemplate>
-                    <StackPanel Margin="5,5,5,5" >
+                    <StackPanel Margin="5,5,5,5">
                         <TextBlock Text="{Binding PictureName}" />
                         <Image
                         Margin="5"

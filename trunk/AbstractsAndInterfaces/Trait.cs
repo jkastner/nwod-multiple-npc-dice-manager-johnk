@@ -19,7 +19,7 @@ namespace XMLCharSheets
         }
 
         [DataMember]
-        public String TraitLabel { set; get; }
+        public String TraitLabel { get; protected set; }
 
         public abstract String TraitDescription { get; }
 

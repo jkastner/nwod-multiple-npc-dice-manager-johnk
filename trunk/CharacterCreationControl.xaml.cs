@@ -95,7 +95,7 @@ namespace XMLCharSheets
 
         }
 
-        private void TrimList_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ImageSearch_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             RunImageSearch();
         }
@@ -152,13 +152,13 @@ namespace XMLCharSheets
                 newName = originalName + "_" + count;
                 count++;
             }
-
+            
             CharacterSheet newInstance = _characterCreationViewModel.SelectedNewCharacter.Copy(newName);
             newInstance.ResetIDOfCopy();
-            
-            
+
             newInstance.Ruleset = _characterCreationViewModel.SelectedNewCharacter.Ruleset;
             CombatService.RosterViewModel.RegisterNewCharacter(newInstance);
+
             var pictureInfo = PictureSearch_ListBox.SelectedItem as PictureFileInfo;
             var selectedTeam = TeamSelection_ListBox.SelectedItem as Team;
             if (selectedTeam == null)

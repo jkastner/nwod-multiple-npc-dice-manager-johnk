@@ -108,7 +108,7 @@ namespace GameBoard
             cur.GameBoardVisual = new GameBoardVisual();
             cur.GameBoardVisual.RegisterViewModel(cur.VisualsViewModel);
 
-            cur.VisualsViewModel.SetViewport(cur.GameBoardVisual.Viewport);
+            cur.VisualsViewModel.SetGameBoardVisual(cur.GameBoardVisual);
             cur.VisualsViewModel.OpenBoardInfo(cur.VisualsViewModel.CurrentBoardInfo);
             cur.VisualsViewModel.OpenVisuals();
         }

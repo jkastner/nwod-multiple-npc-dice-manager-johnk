@@ -106,7 +106,26 @@ namespace XMLCharSheets
             }
             set
             {
-                //Todo - change attack bonuses?
+                if(value==null)
+                    return;
+                var bonuses = value.ToString().Split('\\');
+                List<int> newBonusHitList = new List<int>();
+                bool allValid = true;
+                foreach (var cur in bonuses)
+                {
+                    int curBonus = 0;
+                    if (!int.TryParse(cur, out curBonus))
+                    {
+                        allValid = false;
+                        break;
+                    }
+                    newBonusHitList.Add(curBonus);
+                }
+                if (allValid)
+                {
+                    ToHitBonusList.Clear();
+                    ToHitBonusList = newBonusHitList;
+                }
             }
         }
 
