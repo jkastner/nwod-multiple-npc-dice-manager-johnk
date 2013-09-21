@@ -186,10 +186,11 @@ namespace XMLCharSheets
         {
             TextReporter.Report(lineBreak);
             var involvedTraits = new List<String>();
-            foreach (object curTraitItem in selectedTraits)
+            foreach (object cur in selectedTraits)
             {
-                String curTrait = curTraitItem.ToString();
-                involvedTraits.Add(curTrait);
+                var curTrait = cur as Trait;
+                String curTraitLabel = curTrait.TraitLabel;
+                involvedTraits.Add(curTraitLabel);
             }
             foreach (object curItem in characters)
             {

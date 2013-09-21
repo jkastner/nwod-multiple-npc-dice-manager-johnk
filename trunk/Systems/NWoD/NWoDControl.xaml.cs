@@ -69,5 +69,20 @@ namespace XMLCharSheets
         {
             _nwodViewModel.RefillVitae(ActiveList());
         }
+
+        private void Roll_Resolve_and_Resistance(object sender, RoutedEventArgs e)
+        {
+            _nwodViewModel.Roll_Resolve_and_Resistance(ActiveList());
+        }
+
+        private void Roll_Composure_and_Resistance(object sender, RoutedEventArgs e)
+        {
+            _nwodViewModel.Roll_Composure_and_Resistance(ActiveList());
+        }
+
+        private void Roll_Resolve_And_Composure(object sender, RoutedEventArgs e)
+        {
+            _nwodViewModel.Roll_Resolve_And_Composure(ActiveList());
+        }
     }
 }

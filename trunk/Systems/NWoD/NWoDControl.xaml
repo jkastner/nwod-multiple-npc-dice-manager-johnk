@@ -68,7 +68,15 @@
                 </Path.RenderTransform>
             </Path>
         </Button>
-
+        <Button Click="Roll_Resolve_And_Composure">
+            <TextBlock>Resolve<LineBreak/>Composure</TextBlock>
+        </Button>
+        <Button Click="Roll_Resolve_and_Resistance">
+            <TextBlock>Resolve<LineBreak/>Resistance</TextBlock>
+        </Button>
+        <Button Click="Roll_Composure_and_Resistance">
+            <TextBlock>Composure<LineBreak/>Resistance</TextBlock>
+        </Button>
 
         <!--Vampire specific buttons-->
         <DockPanel
