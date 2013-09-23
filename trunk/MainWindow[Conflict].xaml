@@ -1,0 +1,424 @@
+﻿<Window x:Class="XMLCharSheets.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:XMLCharSheets"
+        Title="Combat Manager Window" Background="#FFD4D4D4">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <DockPanel>
+        <Menu IsMainMenu="True" DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New..." />
+                    <Separator />
+                    <MenuItem Header="_Open..." Click="OpenFile_Click_MenuItem" />
+                    <Separator />
+                    <MenuItem Header="_Save" Click="SaveFile_Click_MenuItem" />
+                    <MenuItem Header="_Save As..." Click="SaveAsFile_Click_MenuItem" />
+                    <Separator />
+                    <MenuItem Header="_Exit" Click="Exit_Click_MenuItem" />
+                </MenuItem>
+                <MenuItem Header="_Options">
+                    <MenuItem Header="_Auto Complete Combat..." Click="Auto_Run_Combat" />
+                    <MenuItem Header="_Autosave..." IsCheckable="True" IsChecked="{Binding AutoSaveEachTurn}" />
+                    
+                </MenuItem>
+            </Menu>
+            <MenuItem Header="_Help" />
+        </Menu>
+        <TabControl DockPanel.Dock="Top">
+            <TabItem Name="CreationTab" Header="Create">
+                <local:CharacterCreationControl></local:CharacterCreationControl>
+            </TabItem>
+                <TabItem Name="CurrentCharacterControlTab" Header="Current Character">
+                <StackPanel>
+                    <TextBox FontSize="24" Text="{Binding Path=SelectedCharacter.Name, Mode=TwoWay}"></TextBox>
+                    <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
+                              Margin="5,5,5,5"
+                              ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
+                              CurrentCellChanged="DataChanged_DataGrid">
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Name="MainTab" Header="Combat">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="6*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--left grid-->
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <!--0: Round label-->
+                            <RowDefinition Height="50"></RowDefinition>
+                            <!--1: Active Roster Listbox-->
+                            <RowDefinition Height="*"></RowDefinition>
+                            <!--2: First row of generic buttons-->
+                            <RowDefinition Height="52"></RowDefinition>
+                            <!--3: Second row of generic buttons-->
+                            <RowDefinition Height="42"></RowDefinition>
+                            <!--4: Custom control row-->
+                            <RowDefinition Height="42"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Name="CurrentRound_Label" Grid.Row="0" FontSize="16"></Label> 
+                        <ListBox Grid.Row="1"
+                            Name="ActiveCharacters_ListBox"
+                            Background="LightGray"
+                            ItemsSource="{Binding Path=ActiveRoster, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionChanged="ActiveCharacters_ListBox_SelectionChanged"
+                            Height="Auto"
+                            SelectionMode="Extended">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="5,5,5,5">
+                                        <Grid.ColumnDefinitions>
+                                            <!--Name, team, picture.-->
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                            <!--Cur initiative and target-->
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                            <!--Status-->
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" > 
+                                            <TextBlock Text="{Binding Path=Name}"
+                                                    FontSize="18"
+                                                    MouseDown="ZoomToVisual_Click"
+                                                    Foreground="{Binding Path=StatusColor}" MinWidth="100"
+                                                    HorizontalAlignment="Left" />
+                                            <Image 
+                                                HorizontalAlignment="Left"
+                                                Height="90" Source="{Binding PictureFilePath}" MouseDown="ZoomToVisual_Click" >
+                                            
+                                            </Image>
+                                            <Rectangle Margin="2,2,2,2" HorizontalAlignment="Center" MouseDown="TeamColor_ActiveCharacters_ListBox_Click" Grid.Column="3"
+                                                    Height="20" Width="50">
+                                                <Rectangle.Fill>
+                                                    <SolidColorBrush Color="{Binding Team.TeamColor}" />
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Grid.Column="1" FontSize="16" Margin="8,0,0,0" Text="{Binding Path=CurInitiative}"
+                                                    Width="20" Foreground="{Binding Path=StatusColor}"
+                                                    HorizontalAlignment="Center" />
+                                            <TextBlock MouseDown="Target_ActiveCharacters_ListBox_Click" Grid.Column="6"
+                                                    MinWidth="100" Margin="8,0,0,0"
+                                                    Foreground="{Binding Path=Target.StatusColor}"
+                                                    ToolTip="{Binding Path=Target.Status}"
+                                                    Text="{Binding Path=Target.Name, StringFormat=Targetting {0:c}!}"
+                                                    HorizontalAlignment="Center" />
+                                            <DockPanel>
+                                                <Image Grid.Column="5"
+                                                    Visibility="{Binding Path=HasMoved, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Source="images/HasMovedImage.jpg">
+                                                </Image>
+                                                <Image Grid.Column="4"
+                                                    Visibility="{Binding Path=HasAttacked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Source="images/HasAttackedImage.jpg">
+                                                </Image>
+                                            </DockPanel>
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="2" Margin="16,0,0,0" Text="{Binding Path=Status}"
+                                                    ToolTip="{Binding Path=Status}" MinWidth="50"
+                                                    Foreground="{Binding Path=StatusColor}" HorizontalAlignment="Left" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="Background" Value="Silver"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True" >
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Foreground" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                        </ListBox>
+
+
+                        <DockPanel Grid.Row="2">
+                            <Button Name="Initiative_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
+                                    HorizontalAlignment="Center" Click="Initiative_Button_Click"
+                                    ToolTip="Roll initiative for all characters"
+                                
+                                >
+                                <Path
+                                Data="M55.665421,19.196998C52.989647,22.674911,46.835999,22.13981,46.835999,22.13981L48.440186,33.111248C57.002609,34.181453,57.806,29.900238,57.806,29.900238z M33.724003,7.9589988L35.062466,17.323177 34.981153,17.234861C33.140602,15.35972,23.289,12.507001,23.289,12.507L24.893036,24.012779 24.881151,24.009895C24.75951,23.980814 23.744785,23.748417 22.41353,23.756193 20.338139,23.768314 17.493451,24.364153 16.063999,27.224064L17.401199,36.054001C17.401198,36.054001,23.021101,31.772541,26.232,33.378139L24.893457,24.013261 24.986589,23.944071C27.065659,22.607216,36.400002,28.83,36.400002,28.83L38.273588,37.927635 50.047001,42.743999 48.440212,33.111271 36.400002,28.83 35.06278,17.324333 35.083172,17.387792C35.686283,18.769935,46.836002,22.139999,46.836002,22.139999L45.49749,12.5071C42.554771,12.5071,33.724003,7.9589993,33.724003,7.9589988z M2.8216758,4.3689996C4.3789334,4.3689996,5.6420002,5.6267878,5.6419992,7.1774503L5.6396456,7.2238781 14.960034,60.743663 14.991171,60.865169C15.025811,61.035026 15.044,61.210903 15.044,61.391048 15.044,62.831112 13.879876,63.999 12.442345,63.999 11.275408,63.999 10.28811,63.228012 9.958898,62.166473L9.9180415,62.007114 9.9090883,62.008999 0.19957066,8.2109 0.12683582,8.0129954C0.044404984,7.749056 0,7.468424 0,7.1774503 0,5.6267878 1.2630672,4.3689996 2.8216758,4.3689996z M20.613209,2.7928387C15.440449,2.7199437,12.853001,7.4235141,12.853002,7.4235136L14.190174,15.718C16.599028,12.506928,23.289,12.506928,23.289,12.506929L21.68223,2.8739113C21.3144,2.8237855,20.958059,2.7976987,20.613209,2.7928387z M20.122,5.8653558E-05C23.988783,0.011202592 29.19655,1.6122228 36.132845,6.3533618 36.132845,6.3533632 50.580666,14.647658 54.059845,5.5500647 54.059845,5.5500638 56.73563,3.9445647 57.002529,6.6203634L62.354,39.800041C62.354,39.800041 57.539028,49.432838 43.891998,43.814338 43.891998,43.814338 25.429806,31.505747 19.274939,38.194545 19.274939,38.194545 16.599154,41.673641 14.993663,37.927643L9.9090006,6.6203634C9.9090004,6.6203634,12.204298,-0.022760498,20.122,5.8653558E-05z"
+                                Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                                RenderTransformOrigin="0.5,0.5" />
+                            </Button>
+                            <StackPanel HorizontalAlignment="Left">
+                                <Label >Roll Modifier</Label>
+                                <TextBox HorizontalAlignment="Left"
+                                    Margin="5,0,5,5" FontSize="14"
+                                    Name="Modifier_TextBox" Width="85" Height="40"
+                                    Text="{Binding Path=RollModifier, Mode=TwoWay}"
+                                    PreviewTextInput="Modifier_TextBox_PreviewTextInput"
+                                    DataObject.Pasting="Modifier_TextBox_Pasting">
+
+                                </TextBox>
+                            </StackPanel>
+                        </DockPanel>
+                        <DockPanel Grid.Row="3">
+                            <Button Name="Attack_Target_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
+                                    HorizontalAlignment="Right" Click="Attack_Target_Button_Click"
+                                    ToolTip="Attack the target of the selected characters.">
+                                <Path
+                                    Data="F1M557.484,621.692C557.958,621.273 558.426,620.832 558.891,620.367 559.023,620.237 559.15,620.104 559.278,619.972 564.476,614.622 566.954,608.651 564.82,606.354L564.737,606.372C564.695,606.32,564.654,606.265,564.547,606.149L564.523,606.174C564.374,606.153 563.999,606.099 563.469,606.015 563.489,606.079 563.497,606.151 563.512,606.218 560.926,605.872 555.287,605 552.541,603.666 552.188,603.494 551.822,603.284 551.45,603.04 552.163,602.332 552.566,601.932 552.566,601.932 553.23,601.268 553.342,600.304 552.817,599.781L548.419,595.381C547.893,594.856,546.929,594.968,546.266,595.633L545.067,597.169C544.372,596.39,543.942,595.869,543.942,595.869L534.467,605.345C534.467,605.345,535.562,606.247,536.955,607.562L534.827,610.289 502.191,641.638C501.528,642.302 501.416,643.265 501.939,643.789 501.939,643.789 502.945,645.224 504.366,646.431 505.788,647.638 506.879,648.14 507.825,648.496 508.771,648.851 509.689,649.207 510.4,648.497 510.4,648.497 514.099,641.256 518.336,636.484 520.868,633.633 532.594,621.853 541.624,612.832 541.872,613.211 542.09,613.583 542.265,613.942 543.612,616.721 544.49,622.468 544.827,625.01 544.734,624.989 544.636,624.976 544.547,624.95 544.631,625.474 544.684,625.843 544.705,625.992L544.715,626.065 544.723,626.073C544.84,626.185 544.971,626.281 545.106,626.369 547.225,628.135 552.357,626.187 557.356,621.807 557.398,621.771 557.441,621.731 557.484,621.692z"
+                                    Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                </Path>
+                            </Button>
+
+                            <Button Name="Make_Status_Button" Width="Auto" Height="Auto"
+                                    Margin="5,5,5,5" HorizontalAlignment="Left" Click="Make_Status_Button_Click"
+                                    ToolTip="Add a status effect to the character.">
+
+                                <Path
+                                    Data="F1M1548.36,536.949L1573.21,524.905 1586.59,542.918 1580.36,545.181 1597.29,560.611 1592.21,563.012 1612.36,588.908 1578.08,568.84 1584.43,566.166 1563.68,553.616 1570.75,549.775 1548.36,536.949z"
+                                    Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <RotateTransform Angle="0" />
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Button>
+
+                            <Button Name="Roll_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
+                                    HorizontalAlignment="Left" Click="Roll_Button_Click"
+                                    ToolTip="Roll selected pool for selected characters.">
+                                <Path
+                                    Data="M35.540567,49.520442C35.474573,49.518455 35.408056,49.518852 35.341112,49.521587 34.162909,49.569755 32.852962,50.344012 31.954464,51.651859 30.645859,53.552978 30.701759,55.861606 32.077765,56.808116 33.455671,57.756225 35.630478,56.981319 36.940084,55.080295 38.248089,53.179176 38.192089,50.870651 36.815083,49.924037 36.438749,49.664844 36.00252,49.534347 35.540567,49.520442z M21.172548,46.771575C19.180337,46.771575 17.564528,48.662277 17.564528,50.99948 17.564528,53.333987 19.180337,55.229892 21.172548,55.229892 23.167059,55.229892 24.781967,53.333987 24.781967,50.99948 24.781967,48.662277 23.167059,46.771575 21.172548,46.771575z M46.804003,36.403522C45.503714,36.408942 44.086618,37.189288 43.142607,38.55791 41.773104,40.552833 41.924501,43.035861 43.484407,44.108875 45.042715,45.181785 47.417723,44.435676 48.789728,42.443454 50.159235,40.451232 50.008535,37.964305 48.449327,36.893993 47.96195,36.558707 47.395044,36.401061 46.804003,36.403522z M5.1575422,34.249446C3.164062,34.249446 1.5478435,36.14405 1.5478435,38.478656 1.5478435,40.81726 3.164062,42.709064 5.1575422,42.709064 7.1510231,42.709064 8.7669418,40.81726 8.7669414,38.478656 8.7669418,36.14405 7.1510231,34.249446 5.1575422,34.249446z M14.067111,31.42904C12.073899,31.42904 10.457691,33.323543 10.457691,35.659648 10.457691,37.995456 12.073899,39.891357 14.067111,39.891357 16.06062,39.891357 17.677429,37.995456 17.677429,35.659648 17.677429,33.323543 16.06062,31.42904 14.067111,31.42904z M24.444065,27.709033C22.451855,27.709033 20.834646,29.600936 20.834646,31.936942 20.834646,34.272846 22.451855,36.16735 24.444065,36.16735 26.437675,36.16735 28.053885,34.272846 28.053885,31.936942 28.053885,29.600936 26.437675,27.709033 24.444065,27.709033z M57.197592,23.632207C57.131594,23.63026 57.065069,23.630691 56.998125,23.63346 55.819895,23.682214 54.510633,24.456159 53.611448,25.764966 52.301443,27.667188 52.356543,29.974614 53.734449,30.921226 55.110754,31.870435 57.287264,31.095727 58.596167,29.194705 59.904772,27.292283 59.848074,24.983659 58.472769,24.034347 58.095999,23.775892 57.65959,23.645835 57.197592,23.632207z M61.059526,20.415494C61.313429,20.426257,61.525179,20.616359,61.356577,21.333717L54.586653,50.605045C54.586653,50.605045,54.37665,51.534656,53.616346,51.831661L27.010746,61.770473C27.010746,61.770473,25.995142,62.322578,26.080042,61.222366L32.678368,31.064426C32.678368,31.064426,32.932268,29.878312,33.947872,29.711612L60.509573,20.573308C60.509573,20.573308,60.805624,20.404731,61.059526,20.415494z M54.106268,19.488637L53.074389,19.758035C53.442183,19.698236,53.789877,19.608335,54.106268,19.488637z M8.9915528,14.961705C6.9980723,14.961705 5.3831336,16.856109 5.3831334,19.192115 5.3831336,21.528119 6.9980723,23.420024 8.9915528,23.420024 10.984994,23.420024 12.600902,21.528119 12.600902,19.192115 12.600902,16.856109 10.984994,14.961705 8.9915528,14.961705z M6.5893636,10.15334C6.7717674,10.158598,7.0043899,10.225348,7.3004436,10.393996L30.309397,28.835334C30.309397,28.835334 31.095201,29.263736 30.8601,30.512439 30.591898,31.936942 24.133863,60.756103 24.133863,60.756103 24.133863,60.756103 23.936962,61.770305 22.977958,60.926704 22.019953,60.080203 0.13829279,41.186961 0.13829231,41.186961 0.13829279,41.186961 -0.17286587,41.030761 0.13829231,39.891357L5.9469171,10.675196C5.9469167,10.675196,6.0421541,10.137563,6.5893636,10.15334z M34.183178,9.8053095C33.17758,9.8121588 32.234221,10.143546 31.697731,10.788074 30.624947,12.075769 30.40485,14.331059 31.977026,15.639453 33.548,16.949546 36.315855,16.810148 37.388737,15.522354 38.461721,14.23336 38.614319,12.075769 37.042044,10.769776 36.256605,10.116148 35.188772,9.7984593 34.183178,9.8053095z M35.158531,1.1641253E-05C35.438675,0.0011351982,36.00206,0.084759012,36.73905,0.60843861L59.832079,17.442945C59.832079,17.442945,61.186258,18.120042,60.086374,18.54334L33.354603,27.763198C33.354603,27.763198,32.33902,28.384298,31.324736,27.311303L8.1460651,8.5627444C8.1460654,8.5627444,7.3567184,8.0810664,8.8237942,7.7164381L34.962376,0.016034822C34.962376,0.01603414,35.031193,-0.00050016227,35.158531,1.1641253E-05z"
+                                    Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                                    RenderTransformOrigin="0.5,0.5" />
+                            </Button>
+
+                            <Button Name="SelectTarget_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
+                                HorizontalAlignment="Right" Click="SelectTarget_Button_Click"
+                                ToolTip="Select target for selected characters">
+                                <Path
+                                Data="M31.647835,21.819011C37.056774,21.819011 41.4459,26.202763 41.4459,31.610512 41.4459,37.017222 37.056774,41.402012 31.647835,41.402012 26.239018,41.402012 21.859899,37.017222 21.859899,31.610512 21.859899,26.202763 26.239018,21.819011 31.647835,21.819011z M31.648463,11.80599C20.728994,11.80599 11.839426,20.691982 11.839426,31.610973 11.839426,42.532965 20.728994,51.417955 31.648463,51.417955 42.567934,51.417955 51.457502,42.532965 51.457502,31.610973 51.457502,20.691982 42.567934,11.80599 31.648463,11.80599z M29.86855,0L32.798408,0 32.798408,10.187991C43.367895,10.74999,51.90748,18.918984,53.007425,29.330975L53.007425,29.305974 62.666958,29.305974 62.666958,32.240973 53.127401,32.240973 53.130848,32.147326C53.135221,31.969078 53.137421,31.790286 53.137421,31.610973 53.137421,31.822973 53.12742,32.030972 53.11742,32.240973L53.127401,32.240973 53.111229,32.680408C52.572058,43.662609,43.773811,52.452738,32.798408,53.034954L32.798408,62.666946 29.86855,62.666946 29.86855,53.119955C30.07854,53.125956 30.288529,53.129955 30.49852,53.129955 30.798505,53.129955 31.098491,53.093954 31.398476,53.080956 20.016216,52.949205 10.764194,43.978889 10.197059,32.708606L10.17942,32.240973 10.175706,32.104497 10.169507,31.610973C10.169507,31.716973,10.169507,31.821973,10.170757,31.926723L10.175706,32.104497 10.176422,32.161503 10.17942,32.240973 0,32.240973 0,29.305974 10.289501,29.305974C11.379448,18.857984 20.049027,10.63199 30.728508,10.176991 30.648512,10.174992 30.578516,10.163991 30.49852,10.163991 30.288529,10.163991 30.07854,10.166991 29.86855,10.174992z"
+                                Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                                RenderTransformOrigin="0.5,0.5" />
+
+                            </Button>
+
+                            <Button Name="Reset_Health_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
+                                    HorizontalAlignment="Left" Click="Reset_Health_Button_Click"
+                                    ToolTip="Reset the health of the selected characters.">
+                                <Path
+                                    Data="M7.4166234,16.197001L13.497334,16.345396 13.322834,23.436422 20.413999,23.61352 20.262901,29.691471 13.171835,29.516974 12.997336,36.608002 6.9166257,36.456905 7.0910952,29.363379 0,29.191483 0.1484375,23.11223 7.2421548,23.284727z M11.898108,2.8243951E-06C12.047457,-8.1059967E-05 12.194343,0.0017042016 12.338866,0.0052749978 16.963824,0.1159917 19.130506,2.1726163 21.594083,5.2591434 24.20856,2.2982254 26.475539,0.35292793 31.099097,0.46883325 31.674691,0.48317698 32.289287,0.52742664 32.948079,0.60817621 36.937644,1.0977344 41.474006,4.8737665 41.866,11.910204L41.807403,14.247387C41.119907,20.953037 35.841254,29.115776 20.75809,39.146999 19.094106,37.917812 17.565419,36.723721 16.144833,35.553227L16.221631,32.535049 19.617501,32.615749C20.039397,32.958145 20.455993,33.295445 20.893489,33.639141 31.127797,26.420496 36.658946,19.803345 37.346439,13.946589L37.395942,11.990903C37.070445,7.3073483 34.244972,5.2682934 32.403785,5.043015 31.898589,4.9831453 31.420797,4.9466458 30.989799,4.9349261 28.333522,4.8711462 27.202031,5.6523905 24.945552,8.2174912L21.423486,12.209702 18.101915,8.0456229C15.974234,5.3789525 14.883144,4.5378385 12.229568,4.4727092 11.792072,4.4622693 11.318076,4.475339 10.808981,4.5085388 8.9587071,4.6458679 6.0368631,6.5430041 5.4821784,11.204409L5.4483378,13.269493 5.0915616,17.82156 1.846801,17.74086C1.3207757,16.161371,1.0395283,14.662783,0.96399985,13.238295L1.0239084,10.901112C1.7556518,3.8965435 6.4756691,0.345116 10.484783,0.053491898 10.979854,0.017329086 11.450062,0.0002546377 11.898108,2.8243951E-06z"
+                                    Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <RotateTransform Angle="0" />
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+
+                            </Button>
+
+                            <Button Name="Auto_Act_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
+                                HorizontalAlignment="Left" Click="Auto_Act_Button_Click"
+                                ToolTip="Perform turn actions automatically.">
+                                <Path Data="M42.25,47.934999L42.25,50.714998 46.742004,50.714998 46.742004,47.934999z M33.588001,47.934999L33.588001,50.714998 38.08,50.714998 38.08,47.934999z M24.927,47.934999L24.927,50.714998 29.417,50.714998 29.417,47.934999z M16.264,47.934999L16.264,50.714998 20.756,50.714998 20.756,47.934999z M47.278004,44.834L47.278004,47.615 51.769001,47.615 51.769001,44.834z M38.402,44.834L38.402,47.615 42.893002,47.615 42.893002,44.834z M29.525002,44.834L29.525002,47.615 34.016001,47.615 34.016001,44.834z M20.649,44.834L20.649,47.615 25.139999,47.615 25.139999,44.834z M11.773,44.834L11.773,47.615 16.264,47.615 16.264,44.834z M42.493549,26.169999C44.998554,26.169999 47.026997,28.199899 47.026997,30.703199 47.026997,33.207699 44.998554,35.237 42.493549,35.237 39.988544,35.237 37.960001,33.207699 37.960001,30.703199 37.960001,28.199899 39.988544,26.169999 42.493549,26.169999z M20.73205,26.169999C23.232078,26.169999 25.265999,28.199899 25.265999,30.703199 25.265999,33.207699 23.232078,35.237 20.73205,35.237 18.226923,35.237 16.197001,33.207699 16.197001,30.703199 16.197001,28.199899 18.226923,26.169999 20.73205,26.169999z M20.731351,23.104001C16.530878,23.104001 13.13,26.506288 13.13,30.70335 13.13,34.901711 16.530878,38.304001 20.731351,38.304001 24.928022,38.304001 28.328999,34.901711 28.328999,30.70335 28.328999,26.506288 24.928022,23.104001 20.731351,23.104001z M42.493351,23.104C38.296822,23.104 34.893,26.506288 34.893,30.703349 34.893,34.901711 38.296822,38.303997 42.493351,38.303997 46.68998,38.303997 50.095001,34.901711 50.095001,30.703349 50.095001,26.506288 46.68998,23.104 42.493351,23.104z M38.047279,3.6700001C36.759315,3.6700001 35.715,4.7136898 35.715,6.0014791 35.715,7.291379 36.759315,8.3349996 38.047279,8.335 39.333704,8.3349996 40.377998,7.291379 40.377998,6.0014791 40.377998,4.7136898 39.333704,3.6700001 38.047279,3.6700001z M26.820021,3.6700001C25.532257,3.6700001 24.483999,4.7136898 24.483999,6.0014791 24.483999,7.291379 25.532257,8.3349996 26.820021,8.335 28.106665,8.3349996 29.151001,7.291379 29.151001,6.0014791 29.151001,4.7136898 28.106665,3.6700001 26.820021,3.6700001z M26.8204,0C29.305901,0,31.439051,1.5120573,32.350281,3.6660728L32.386141,3.757 32.477877,3.757 32.513737,3.6660728C33.425074,1.5120573 35.558781,0 38.04706,0 41.360695,0 44.048,2.6881018 44.048,6.0018492 44.048,9.3196578 41.360695,12.006 38.04706,12.006 36.802919,12.006 35.647423,11.628233 34.689045,10.981062L34.504,10.84953 34.504,15.504 55.620998,15.504 55.620998,23.686 61.151001,23.686 61.151001,26.796 64,26.796 64,33.923 61.151001,33.923 61.151001,37.029999 55.620998,37.029999 55.620998,56.268999 8.2919989,56.268999 8.2919989,36.9 2.8519993,36.9 2.8519993,33.792 0,33.792 0,26.667 2.8519993,26.667 2.8519993,23.558 8.2919989,23.558 8.2919989,15.504 30.187,15.504 30.187,10.97302 30.175692,10.981062C29.217812,11.628233 28.06315,12.006 26.8204,12.006 23.502749,12.006 20.815,9.3196578 20.815,6.0018492 20.815,2.6881018 23.502749,0 26.8204,0z"
+                                      Stretch="Uniform" Fill="#FF0A0A0A" Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                            </Button>
+                        </DockPanel>
+                        
+                        <StackPanel Name="CustomCombatPanel" Grid.Row="4" />
+                    </Grid>
+                    <!--right grid-->
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel Name="MainBoard_DockPanel" Grid.Row="0"></DockPanel>
+                        <RichTextBox Grid.Row="1"
+                            Name="Results_RichTextBox"
+                            IsReadOnly="True"
+                            Height="Auto"
+                            VerticalScrollBarVisibility="Auto"
+                            VerticalAlignment="Top"
+                            Margin="5,5,5,5"
+                            TextChanged="Results_TextBox_TextChanged">
+                        </RichTextBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Visual Controls">
+                <Grid Name="VisualControl_Grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"></RowDefinition>
+                        <RowDefinition Height="58"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DockPanel DockPanel.Dock="Top" Grid.Row="0">
+                        <Button
+                                Margin="5,5,0,0"
+                                HorizontalAlignment="Left"
+                                Name="RemoveCharacter_Button"
+                                Content="Remove" ToolTip="Remove character from active roster."
+                                Width="75" Click="RemoveCharacter_Button_Click" />
+                        <Button
+                                Margin="5,5,0,0"
+                                HorizontalAlignment="Left"
+                                Name="CleanDeceasedCharacters_Button"
+                                Content="Clean" ToolTip="Remove inactive characters from the roster."
+                                Width="75" Click="CleanDeceasedCharacters_Button_Click" />
+                        <Button
+                                Margin="5,5,0,0"
+                                HorizontalAlignment="Left"
+                                Name="AddVisual_Button"
+                                Content="Add Visual" ToolTip="Add visual to selected characters.."
+                                Width="75" Click="AddVisual_Button_Click" />
+                        <Button
+                                Margin="5,5,0,0"
+                                HorizontalAlignment="Left"
+                                Name="RemoveVisual_Button"
+                                Content="Remove Visual" ToolTip="Remove visual from selected characters.."
+                                Width="95" Click="RemoveVisual_Button_Click" />
+                        <Button
+                                Margin="5,5,0,0"
+                                HorizontalAlignment="Left"
+                                Name="ChangeBackgroundImage_Button"
+                                Content="Background" ToolTip="Change Background Image..."
+                                Width="95" Click="ChangeBackground_Button_Click" />
+
+                    </DockPanel>
+
+                    <DockPanel DockPanel.Dock="Top" Margin="5,5,5,5" HorizontalAlignment="Left"
+                                   VerticalAlignment="Center" Grid.Row="1">
+                        <TextBox
+                                Margin="5,5,5,5"
+                                DataContext="{Binding VisualsViewModel}"
+                                Name="ShapeLength_TextBox" Width="35" Height="20"
+                                Text="{Binding Path=ShapeLength, Mode=TwoWay}"
+                                PreviewTextInput="Modifier_TextBox_PreviewTextInput"
+                                DataObject.Pasting="Modifier_TextBox_Pasting">
+                        </TextBox>
+                        <RadioButton Name="SelectionMode_Button" GroupName="ShapeType"
+                                         Style="{StaticResource {x:Type ToggleButton}}"
+                                         Width="38" Height="38" Checked="SelectionMode_Button_Checked">
+                            <Path
+                                    Data="M8.0289998,24.707999L12.476999,24.707999 12.476999,26.19 8.0289998,26.19z M0,23.845L1.4821367,23.845 1.4821367,24.708337 3.5839996,24.708337 3.5839996,26.190001 0,26.190001z M0,14.953L1.4819994,14.953 1.4819994,19.398 0,19.398z M20.627999,14.81L22.108999,14.81 22.108999,19.255 20.627999,19.255z M12.267999,14.603L27.366399,23.455908 22.3774,25.131392 27.780999,31.894525 25.1508,34.159999 19.8122,27.229071 16.2238,31.584525z M0,6.0599995L1.4819994,6.0599995 1.4819994,10.506 0,10.506z M20.627999,5.9169998L22.108999,5.9169998 22.108999,10.363 20.627999,10.363z M17.652,0L22.109,0 22.109,1.4714975 21.367517,1.4819994 17.652,1.4819994z M8.7599998,0L13.206,0 13.206,1.4819994 8.7599998,1.4819994z M0,0L4.3129997,0 4.3129997,1.4821482 1.4818506,1.4821482 1.4818506,1.6149998 0,1.6149998z"
+                                    Stretch="Uniform" Fill="#FF1C18FF" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </RadioButton>
+                        <RadioButton Name="DrawSphere_Button" GroupName="ShapeType"
+                                         Style="{StaticResource {x:Type ToggleButton}}"
+                                         Height="38" Width="38" Checked="DrawSphere_Button_Checked">
+                            <Path
+                                    Data="M64,32C64,49.673112 49.673112,64 32,64 14.326888,64 0,49.673112 0,32 0,14.326888 14.326888,0 32,0 49.673112,0 64,14.326888 64,32z"
+                                    Stretch="Uniform" Fill="#FF1C18FF"
+                                    Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </RadioButton>
+                        <RadioButton Name="DrawCone_Button" GroupName="ShapeType"
+                                         Style="{StaticResource {x:Type ToggleButton}}"
+                                         Height="38" Width="38" Checked="DrawCone_Button_Checked">
+                            <Path
+                                    Data="F1M1464.78,374.21C1466.31,374.21,1466.94,375.538,1466.17,376.861L1435.89,429.439C1435.12,430.759,1433.87,430.823,1433.11,429.5L1402.82,376.827C1402.06,375.507,1402.69,374.21,1404.21,374.21L1464.78,374.21z"
+                                    Fill="#FF1C18FF"
+                                    Stretch="Uniform" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </RadioButton>
+                        <RadioButton Name="DrawLine_Button" GroupName="ShapeType"
+                                         Style="{StaticResource {x:Type ToggleButton}}"
+                                         Width="38" Height="38" Checked="DrawLine_Button_Checked">
+                            <Path Data="M0,0L53.333,0 53.333,8.888 0,8.888z" Fill="#FF1C18FF"
+                                      Stretch="Uniform" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </RadioButton>
+                        <RadioButton Name="TapeMeasure_Button" GroupName="ShapeType"
+                                         Style="{StaticResource {x:Type ToggleButton}}"
+                                         Width="38" Height="38" Checked="TapeMeasure_Button_Checked"
+                                         Unchecked="TapeMeasure_Button_Unchecked">
+                            <Path
+                                    Data="M52.186001,4.4060001L52.186001,10.35164 54.718998,10.35164 54.718998,4.4233942 55.659393,4.4551535C56.470497,4.4921421,57.264008,4.5482645,58.031357,4.6264534L58.189999,4.6439238 58.189999,16.592753 60.723,16.592753 60.723,5.0200377 60.769581,5.0288229C61.974586,5.2702098,63.066692,5.5903993,64,6.005106L64,27.023085C64,27.023085 50.567902,24.653404 37.7682,27.180683 37.7682,27.180683 12.4839,33.502333 1.4218798,28.444973 1.42188,28.444973 0.15820301,27.338182 0,26.234091L0,6.005106C0,6.0051055,0.75551623,6.8275933,3.1916056,7.5640211L3.3549995,7.6117563 3.3549995,19.437805 5.8889999,19.437805 5.8889999,8.182807 6.2221479,8.2381096C7.1369615,8.3826358,8.1760836,8.5028548,9.3539667,8.5845709L9.4399996,8.5899553 9.4399996,14.459715 11.973,14.459715 11.973,8.6933041 12.596128,8.7004299C13.305723,8.7042727,14.05302,8.6955328,14.839826,8.6724348L15.601999,8.6458082 15.601999,14.459715 18.136,14.459715 18.136,8.503684 18.202042,8.4992609C19.097416,8.43472,20.034708,8.353456,21.015724,8.2536936L21.607,8.1907492 21.607,19.437805 24.140999,19.437805 24.140999,7.890542 25.177261,7.7517805C25.911146,7.6502831,26.665533,7.5395126,27.44096,7.4189444L27.77,7.3664007 27.77,12.801684 30.302999,12.801684 30.302999,6.9442129 31.074196,6.808466C31.913944,6.6573179 32.775532,6.4955819 33.6595,6.3227329 33.6595,6.3227327 33.744686,6.306681 33.90649,6.2775097L33.934002,6.2725811 33.934002,11.852666 36.466999,11.852666 36.466999,5.8517427 36.801586,5.8001776C37.708866,5.6616578,38.77866,5.5076534,39.965073,5.353879L40.016998,5.3472471 40.016998,16.752756 42.550999,16.752756 42.550999,5.043622 42.669147,5.0304413C43.618851,4.9265642,44.611324,4.8285312,45.629837,4.7420692L46.102001,4.7046242 46.102001,10.192637 48.634998,10.192637 48.634998,4.5313616 49.380077,4.4906893C50.225616,4.4503331,51.074974,4.4217809,51.919586,4.4079647z M14.301447,0C22.025696,0 28.286999,1.3436942 28.286999,3.0037851 28.286999,4.6613061 22.025696,6.0050001 14.301447,6.0050001 6.5773067,6.0050001 0.31599998,4.6613061 0.31599998,3.0037851 0.31599998,1.3436942 6.5773067,0 14.301447,0z"
+                                    Fill="#FF1C18FF" Stretch="Uniform" Margin="0,0,0,0">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </RadioButton>
+                        <ToggleButton Checked="GridIsChecked_ToggleButton" Unchecked="GridIsUnchecked_ToggleButton">
+                            Grid
+                        </ToggleButton>
+
+                    </DockPanel>
+                    <DockPanel Name="VisualControl_BoardSpace_DockPanel" Grid.Row="2"></DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Deceased">
+                <StackPanel>
+                    <ListBox Name="DeceasedCharacters"
+                             Margin="8,0,0,0"
+                             MinWidth="70"
+                             MinHeight="150"
+                             SelectedItem="{Binding Path=SelectedDeceasedCharacter, Mode=TwoWay}"
+                             ItemsSource="{Binding Path=DeceasedRoster, UpdateSourceTrigger=PropertyChanged}"
+                             SelectionChanged="DeceasedCharacters_ListBox_SelectionChanged"
+                             SelectionMode="Extended">
+                    </ListBox>
+                    <Button Margin="8,8,8,8" HorizontalAlignment="Left" Width="80" Click="RestoreDeceased_Button_Click">Restore</Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
+    

@@ -270,5 +270,20 @@ namespace GameBoard
             }
         }
 
+        public void MatchOtherCamera(ProjectionCamera otherCamera)
+        {
+            Viewport.Camera.LookDirection = otherCamera.LookDirection;
+            Viewport.Camera.Position = otherCamera.Position;
+            Viewport.Camera.UpDirection = otherCamera.UpDirection;
+        }
+
+        public ProjectionCamera Camera
+        {
+            get
+            {
+                return Viewport.Camera;
+            }
+        }
+
     }
 }

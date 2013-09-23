@@ -21,9 +21,9 @@
                     <MenuItem Header="_Exit" Click="Exit_Click_MenuItem" />
                 </MenuItem>
                 <MenuItem Header="_Options">
-                    <MenuItem Header="_Auto Complete Combat..." Click="Auto_Run_Combat" />
                     <MenuItem Header="_Autosave..." IsCheckable="True" IsChecked="{Binding AutoSaveEachTurn}" />
-                    
+                    <MenuItem Header="_Auto Complete Combat..." Click="Auto_Run_Combat" />
+                    <MenuItem Header="_Match all views to main..." IsCheckable="True" IsChecked="{Binding OrientAllCamerasToMatchMain}" />
                 </MenuItem>
             </Menu>
             <MenuItem Header="_Help" />

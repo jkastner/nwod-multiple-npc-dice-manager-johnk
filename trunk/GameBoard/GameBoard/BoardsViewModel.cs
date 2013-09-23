@@ -9,6 +9,9 @@ namespace GameBoard
 {
     public class BoardsViewModel
     {
+        public const String MainBoardName = "MainBoard";
+        public const String VisualTabBoardName = "VisualTab";
+        public const String WindowBoardName = "Window";
         private static BoardsViewModel _instance;
         public static BoardsViewModel Instance
         {
@@ -47,8 +50,15 @@ namespace GameBoard
                 curboard.GameBoardVisual.ShapeDrawn -= oldBoard.GameBoardVisual.OtherBoardShapeDrawn;
 
             }
-
             OnBoardDeregistered(new BoardRegisteredEventArgs(oldBoard));
+        }
+
+        public Board MainBoard
+        {
+            get
+            {
+                return _boards.Where(x => x.BoardName.Equals(MainBoardName)).FirstOrDefault(); ;
+            }
         }
 
         public event EventHandler BoardRegistered;

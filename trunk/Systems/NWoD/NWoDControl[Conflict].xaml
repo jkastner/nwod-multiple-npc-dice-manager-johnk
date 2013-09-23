@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="XMLCharSheets.NWoDControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DockPanel>
+        <DockPanel.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </DockPanel.Resources>
+        <Button Name="Do_Bashing_Button" Width="Auto" Height="Auto" Margin="5,5,5,5" HorizontalAlignment="Left"
+                Click="Do_Bashing_Button_Click"
+                ToolTip="Do bashing damage to the selected characters.">
+            <Path Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.Data>
+                    <PathGeometry FillRule="Nonzero"
+                                  Figures="M-1.24331563711166E-07,9.29135513305664L3.3984375,9.29135513305664 13.3359375,44.8226051330566 9.9609375,44.8226051330566 -1.24331563711166E-07,9.29135513305664z" />
+                </Path.Data>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <RotateTransform Angle="0" />
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Button>
+        <Button Name="Do_Lethal_Button" Width="Auto" Height="Auto" Margin="5,5,5,5" HorizontalAlignment="Left"
+                Click="Do_Lethal_Button_Click"
+                ToolTip="Do lethal damage to the selected characters.">
+
+            <Path Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.Data>
+                    <PathGeometry FillRule="Nonzero"
+                                  Figures="M1.78125,9.87729263305664L7.1953125,9.87729263305664 13.4296875,18.6897926330566 15.0937490463257,21.1155738830566 16.1953125,22.9085426330566 18.9140625,18.9944801330566 25.828125,9.87729263305664 30.7734375,9.87729263305664 18.703125,26.0726051330566 31.7109375,44.2366676330566 26.0859375,44.2366676330566 17.4375,31.9788551330566 15.9375,29.6819801330566 14.9531240463257,31.2640113830566 14.296875,32.2601051330566 5.671875,44.2366676330566 0.210937529802322,44.2366676330566 13.5,26.3304176330566 1.78125,9.87729263305664z" />
+                </Path.Data>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <RotateTransform Angle="0" />
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+
+        </Button>
+        <Button Name="Do_Aggrivated_Button" Width="Auto" Height="Auto"
+                Margin="5,5,5,5" HorizontalAlignment="Left" Click="Do_Aggrivated_Button_Click"
+                ToolTip="Do aggrivated damage to the selected characters.">
+            <Path Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.Data>
+                    <PathGeometry FillRule="Nonzero"
+                                  Figures="M7.5234375,9.29135513305664L10.921875,9.29135513305664 10.751953125,11.904637336731 10.3828125,15.1038551330566 15.9140625,12.8538551330566 16.9921875,16.1819801330566 11.15625,17.4944801330566 12.8789052963257,19.2229976654053 15.1875,21.9241676330566 12.375,23.9163551330566 10.892578125,21.7308082580566 9.1640625,18.8772926330566 7.53515625,21.7894020080566 6.1171875,23.9163551330566 3.3515625,21.9241676330566 5.68359327316284,19.1409664154053 7.2421875,17.4944801330566 1.5,16.1819801330566 2.578125,12.8538551330566 5.79492139816284,14.0784664154053 7.9921875,15.1272926330566 7.65234327316284,11.547215461731 7.5234375,9.29135513305664z" />
+                </Path.Data>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <RotateTransform Angle="0" />
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Button>
+        <Button Click="Roll_Resolve_And_Composure">
+            <TextBlock>Resolve<LineBreak/>Composure</TextBlock>
+        </Button>
+        <Button Click="Roll_Resolve_and_Resistance">
+            <TextBlock>Resolve<LineBreak/>Resistance</TextBlock>
+        </Button>
+        <Button Click="Roll_Composure_and_Resistance">
+            <TextBlock>Composure<LineBreak/>Resistance</TextBlock>
+        </Button>
+
+        <!--Vampire specific buttons-->
+        <DockPanel
+            HorizontalAlignment="Left" MinWidth="50" Margin="10,0,0,0"
+            Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Button Name="Blood_Buff_Button" Width="35" Height="35" Margin="5,5,5,5" HorizontalAlignment="Left"
+                    Click="Blood_Buff_Button_Click"
+                    Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    ToolTip="Spend a point of vitae to augment attack stats by two.">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="images/BloodBuff.png" />
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <Button Name="Blood_Heal_Button" Width="35" Height="35" Margin="5,5,5,5" HorizontalAlignment="Left"
+                    Click="Blood_Heal_Button_Click"
+                    Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    ToolTip="Spend a point of vitae to heal.">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="images/bloodheal.jpg" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="Refill_Vitae_Button" Width="35" Height="35" Margin="5,5,5,5" HorizontalAlignment="Left"
+                    Click="Refill_Vitae_Button_Click"
+                    Visibility="{Binding Path=SelectedCharacter.IsVampire, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    ToolTip="Refill Vitae to maximum.">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="images/increasebloodicon.png" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
