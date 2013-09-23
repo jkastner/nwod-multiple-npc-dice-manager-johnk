@@ -22,9 +22,7 @@ namespace XMLCharSheets
         private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         private Paragraph RichTextParagraph;
         List<GameBoardVisual_Window> _gameBoardWindows = new List<GameBoardVisual_Window>();
-        private const String mainBoardName = "MainBoard";
-        private const String visualTabBoardName = "VisualTab";
-        private const String windowBoardName = "Window";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,10 +31,12 @@ namespace XMLCharSheets
 
             VisualsService.BoardsViewModel.BoardRegistered += OnBoardRegistered;
             VisualsService.BoardsViewModel.BoardDeregistered += OnBoardDeregistered;
-            
-            var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(windowBoardName);
-            var boardForVisualTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(visualTabBoardName);
-            var boardForMainTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(mainBoardName);
+
+            var boardForMainTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(BoardsViewModel.MainBoardName);
+            CombatService.RosterViewModel.MainCamera = boardForMainTab.GameBoardVisual.Camera;
+            var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(BoardsViewModel.WindowBoardName);
+            var boardForVisualTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(BoardsViewModel.VisualTabBoardName);
+
             
             VisualControl_BoardSpace_DockPanel.Children.Add(boardForVisualTab.GameBoardVisual);
             MainBoard_DockPanel.Children.Add(boardForMainTab.GameBoardVisual);
@@ -399,9 +399,24 @@ namespace XMLCharSheets
                         ActiveCharacters_ListBox.SelectedItems.Add(cur);
                     }
                     if (visuals.Count > 0)
-                        VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ZoomTo(visuals));
+                    {
+                        BoardsZoomTo(visuals);
+                        VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ZoomTo(visuals));
+                    }
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void BoardsZoomTo(List<Guid> visuals)
+        {
+            if (!CombatService.RosterViewModel.OrientAllCamerasToMatchMain)
+            {
+                VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ZoomTo(visuals));
+            }
+            else
+            {
+                VisualsService.BoardsViewModel.MainBoard.VisualsViewModel.ZoomTo(visuals);
             }
         }
 
@@ -460,13 +475,14 @@ namespace XMLCharSheets
         {
             if (e.ClickCount == 2)
             {
-                //VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ZoomTo(
                 foreach (object cur in ActiveCharacters_ListBox.SelectedItems)
                 {
                     var selectedCharacter = cur as CharacterSheet;
 
                     if (selectedCharacter.HasVisual)
-                        VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ZoomTo(selectedCharacter.FirstVisual.Location));
+                    {
+                        BoardsZoomTo(new List<Guid>(){ selectedCharacter.UniqueCharacterID});
+                    }
                 }
             }
         }
@@ -503,20 +519,21 @@ namespace XMLCharSheets
                     BoardsViewModel.Instance.RegisterBoard(curBoard);
                     switch (curBoard.BoardName)
                     {
-                        case windowBoardName:
+                        case BoardsViewModel.WindowBoardName:
                             {
                                 GameBoardVisual_Window boardVisualWindow = new GameBoardVisual_Window(curBoard);
                                 _gameBoardWindows.Add(boardVisualWindow);
                                 boardVisualWindow.Show();
                             }
                             break;
-                        case mainBoardName:
+                        case BoardsViewModel.MainBoardName:
                             {
                                 MainBoard_DockPanel.Children.Clear();
+                                CombatService.RosterViewModel.MainCamera = curBoard.GameBoardVisual.Camera;
                                 MainBoard_DockPanel.Children.Add(curBoard.GameBoardVisual);
                             }
                             break;
-                        case visualTabBoardName:
+                        case BoardsViewModel.VisualTabBoardName:
                             {
                                 VisualControl_BoardSpace_DockPanel.Children.Clear();
                                 VisualControl_BoardSpace_DockPanel.Children.Add(curBoard.GameBoardVisual);
@@ -566,6 +583,11 @@ namespace XMLCharSheets
                     }
                 }
             }
+        }
+
+        private void OrientCamera(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         

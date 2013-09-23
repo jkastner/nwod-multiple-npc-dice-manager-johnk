@@ -796,7 +796,7 @@ namespace XMLCharSheets
 
 
         private bool _autoSaveEachTurn;
-
+        private bool _orientAllCamerasToMatchMain = true;
         public bool AutoSaveEachTurn
         {
             get
@@ -810,6 +810,19 @@ namespace XMLCharSheets
             }
         }
 
+        public bool OrientAllCamerasToMatchMain
+        {
+            get
+            {
+                return _orientAllCamerasToMatchMain;
+            }
+            set
+            {
+                _orientAllCamerasToMatchMain = value;
+                OnPropertyChanged("OrientAllCamerasToMatchMain");
+            }
+        }
+
 
         private int _currentRound = 0;
         public int CurrentRound
@@ -817,6 +830,37 @@ namespace XMLCharSheets
             get { return _currentRound; }
             set { _currentRound = value; }
         }
-        
+
+        ProjectionCamera _mainCamera;
+        public ProjectionCamera MainCamera
+        {
+            get
+            {
+                return _mainCamera;
+            }
+            set
+            {
+                if (_mainCamera != null)
+                {
+                    _mainCamera.Changed -= MainCameraViewChanged;
+                }
+                _mainCamera = value;
+                _mainCamera.Changed += MainCameraViewChanged;
+            }
+        }
+
+        private void MainCameraViewChanged(object sender, EventArgs e)
+        {
+            if (!OrientAllCamerasToMatchMain)
+            {
+                return;
+            }
+            var nonMainBoards = BoardsViewModel.Instance.Boards.Where(x => !x.BoardName.Equals(BoardsViewModel.MainBoardName));
+            foreach (var otherBoard in nonMainBoards)
+            {
+                otherBoard.GameBoardVisual.MatchOtherCamera(MainCamera);
+            }
+            //BoardsViewModel.Instance.ForeachBoard(x=>x.GameBoardVisual.Se
+        }
     }
 }

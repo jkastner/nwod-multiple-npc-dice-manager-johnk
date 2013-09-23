@@ -122,3 +122,4 @@ C:\Users\johnathan\Desktop\myproj\GameBoard\GameBoard\obj\Debug\GameBoard.pdb
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoardVisual_Window.g.cs
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard_MarkupCompile.lref
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoardVisual_Window.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\GameBoard\GameBoard\obj\Debug\GameBoard.csprojResolveAssemblyReference.cache
