@@ -185,16 +185,14 @@ namespace XMLCharSheets
         internal void RollCharacters(IList characters, IList selectedTraits)
         {
             TextReporter.Report(lineBreak);
-            var involvedTraits = new List<String>();
-            foreach (object cur in selectedTraits)
-            {
-                var curTrait = cur as Trait;
-                String curTraitLabel = curTrait.TraitLabel;
-                involvedTraits.Add(curTraitLabel);
-            }
             foreach (object curItem in characters)
             {
                 var curChar = curItem as CharacterSheet;
+                List<string> involvedTraits = new List<string>();
+                foreach(var cur in selectedTraits)
+                {
+                    involvedTraits.Add(cur.ToString());
+                }
                 if (CanRoll(curChar, involvedTraits))
                 {
                     RollCharacter(curChar, involvedTraits);
