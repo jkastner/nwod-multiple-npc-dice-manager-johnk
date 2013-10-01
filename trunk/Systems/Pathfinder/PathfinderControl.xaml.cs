@@ -83,7 +83,7 @@ namespace XMLCharSheets
                 ResetRollDiceTextBoxError();
                 createdPool.Roll();
                 DamageValue_TextBox.Text = "-"+createdPool.TotalValue;
-                TextReporter.Report(createdPool.PoolDescription + ": " + createdPool.ResultDescription+"\n");
+                TextReporter.Report("\n"+createdPool.PoolDescription + ": " + createdPool.ResultDescription+"\n");
             }
             else
             {
