@@ -794,7 +794,6 @@ namespace XMLCharSheets
 
 
         private bool _autoSaveEachTurn;
-        private bool _orientAllCamerasToMatchMain = true;
         public bool AutoSaveEachTurn
         {
             get
@@ -808,6 +807,7 @@ namespace XMLCharSheets
             }
         }
 
+        private bool _orientAllCamerasToMatchMain = true;
         public bool OrientAllCamerasToMatchMain
         {
             get
@@ -821,6 +821,21 @@ namespace XMLCharSheets
             }
         }
 
+        private bool _lockCameraRotation = true;
+        public bool LockCameraRotation
+        {
+            get
+            {
+                return _lockCameraRotation;
+            }
+            set
+            {
+                _lockCameraRotation = value;
+                OnPropertyChanged("LockCameraRotation");
+                VisualsService.BoardsViewModel.ForeachBoard(x => x.GameBoardVisual.LockRotation = _lockCameraRotation);
+            }
+        }
+        
 
         private int _currentRound = 0;
         public int CurrentRound

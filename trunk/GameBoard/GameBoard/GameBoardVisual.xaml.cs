@@ -39,7 +39,9 @@ namespace GameBoard
 
             Viewport.Background = new SolidColorBrush(Colors.SkyBlue);
             Viewport.Camera.Position = new Point3D(1, 52, 5);
-            Viewport.Camera.LookDirection = new Vector3D(.01, .01, -1);
+            Viewport.Camera.UpDirection = new Vector3D(0, 1, 1);
+            Viewport.Camera.LookDirection = new Vector3D(0, 0, -1);
+            Viewport.IsRotationEnabled = false;
         }
 
         public void AddLights()
@@ -285,5 +287,17 @@ namespace GameBoard
             }
         }
 
+
+        public bool LockRotation 
+        {
+            get
+            {
+                return Viewport.IsRotationEnabled;
+            }
+            set
+            {
+                Viewport.IsRotationEnabled = !value;
+            }
+        }
     }
 }
