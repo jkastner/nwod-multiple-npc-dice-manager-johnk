@@ -250,3 +250,5 @@ C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.g.cs
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\CharacterCreationControl.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\NewSelectTarget.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\NewSelectTarget.g.cs

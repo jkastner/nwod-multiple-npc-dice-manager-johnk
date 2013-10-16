@@ -12,6 +12,7 @@ namespace GameBoard
         public const String MainBoardName = "MainBoard";
         public const String VisualTabBoardName = "VisualTab";
         public const String WindowBoardName = "Window";
+        public const String TargetBoardName = "TargetBoard";
         private static BoardsViewModel _instance;
         public static BoardsViewModel Instance
         {
@@ -37,7 +38,10 @@ namespace GameBoard
             RegisterBoard(newB);
             return newB;
         }
-
+        public void RemoveBoard(Board targetBoard)
+        {
+            DeregisterBoard(targetBoard);
+        }
         private void DeregisterBoard(Board oldBoard)
         {
             oldBoard.Dispose();
@@ -137,6 +141,8 @@ namespace GameBoard
             _boards.Add(newB);
             OnBoardRegistered(new BoardRegisteredEventArgs(newB));
         }
+
+
 
         
     }

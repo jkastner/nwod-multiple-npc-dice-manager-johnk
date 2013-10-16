@@ -82,6 +82,9 @@
       <DependentUpon>LoadingErrorsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MoveAndMeleeAttackScript.cs" />
+    <Compile Include="NewSelectTarget.xaml.cs">
+      <DependentUpon>NewSelectTarget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportTextEventArgs.cs" />
     <Compile Include="Systems\NWoD\NWoDAttackTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDCharacterReader.cs" />
@@ -156,6 +159,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewSelectTarget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Systems\NWoD\NWoDControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
