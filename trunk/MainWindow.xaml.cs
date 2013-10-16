@@ -22,7 +22,7 @@ namespace XMLCharSheets
         private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
         private Paragraph RichTextParagraph;
         List<GameBoardVisual_Window> _gameBoardWindows = new List<GameBoardVisual_Window>();
-
+        private Board _targetBoard;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +36,7 @@ namespace XMLCharSheets
             CombatService.RosterViewModel.MainCamera = boardForMainTab.GameBoardVisual.Camera;
             var boardForWindow = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(BoardsViewModel.WindowBoardName);
             var boardForVisualTab = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(BoardsViewModel.VisualTabBoardName);
+            _targetBoard = VisualsService.BoardsViewModel.CreateAndRegisterNewBoard(BoardsViewModel.TargetBoardName);
 
             
             VisualControl_BoardSpace_DockPanel.Children.Add(boardForVisualTab.GameBoardVisual);
@@ -588,6 +589,12 @@ namespace XMLCharSheets
         private void OrientCamera(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void SelectedTargetButtonNew_Click(object sender, RoutedEventArgs e)
+        {
+            NewSelectTarget t = new NewSelectTarget(_targetBoard, ActiveCharacters_ListBox.SelectedItems);
+            t.ShowDialog();
         }
 
         
