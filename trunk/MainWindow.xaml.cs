@@ -49,8 +49,6 @@ namespace XMLCharSheets
 
             CombatService.RosterViewModel.RulesetSelected += RulesetSelectedResponse;
 
-            
-
             CombatService.RosterViewModel.ReportTextEvent += UpdateResultsRichTextBox;
             CombatService.RosterViewModel.ClearReportTextEvent += ClearResultsRichTextBox;
             this.RichTextParagraph = new Paragraph();
@@ -207,27 +205,21 @@ namespace XMLCharSheets
             }
         }
 
-        private void SelectTarget_Button_Click(object sender, RoutedEventArgs e)
+        private void SelectedTargetButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!CheckValidActive())
-                return;
-            if (ActiveList().Count == CombatService.RosterViewModel.ActiveRoster.Count())
+            NewSelectTarget t = new NewSelectTarget(_targetBoard, ActiveCharacters_ListBox.SelectedItems);
+            t.ShowDialog();
+
+            if (!t.WasCancel && t.SelectedTarget != null)
             {
-                MessageBox.Show(
-                    "Please select an active character. Some characters must remain unselcted to provide targets.");
-                return;
-            }
-            var st = new SelectTarget(ActiveList(), CombatService.RosterViewModel.ActiveRoster,
-                                      CombatService.RosterViewModel.DamageTypes);
-            st.ShowDialog();
-            if (!st.WasCancel && st.SelectedTarget != null)
-            {
-                CombatService.RosterViewModel.SetTargets(ActiveList(),
-                                                         st.Other_Traits_ListBox.SelectedItems, st.SelectedTarget,
-                                                         st.ChosenAttack, st.OtherAttacks, st.WoundType);
+                CombatService.RosterViewModel.SetTargets(
+                    attackers: t.Attackers.ToList(),
+                    otherAttacks: t.OtherTraits.ToList(), 
+                    target: t.SelectedTarget,
+                    attackType: t.MainAttack, 
+                    damageType: t.DamageType);
             }
         }
-
         private void Attack_Target_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckValidActive())
@@ -411,14 +403,7 @@ namespace XMLCharSheets
 
         private void BoardsZoomTo(List<Guid> visuals)
         {
-            if (!CombatService.RosterViewModel.OrientAllCamerasToMatchMain)
-            {
-                VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ZoomTo(visuals));
-            }
-            else
-            {
-                VisualsService.BoardsViewModel.MainBoard.VisualsViewModel.ZoomTo(visuals);
-            }
+            VisualsService.BoardsViewModel.ZoomTo(visuals, CombatService.RosterViewModel.OrientAllCamerasToMatchMain);
         }
 
         private void Target_ActiveCharacters_ListBox_Click(object sender, MouseButtonEventArgs e)
@@ -429,7 +414,8 @@ namespace XMLCharSheets
                 {
                     var selectedCharacter = cur as CharacterSheet;
 
-                    if (selectedCharacter.HasVisual && selectedCharacter.Target.HasVisual)
+                    if (selectedCharacter.HasVisual && selectedCharacter.Target !=null 
+                        && selectedCharacter.Target.HasVisual)
                         VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.DrawAttack(selectedCharacter.UniqueCharacterID,
                                                                   selectedCharacter.Target.UniqueCharacterID,
                                                                   selectedCharacter.Team.TeamColor,
@@ -591,11 +577,6 @@ namespace XMLCharSheets
             
         }
 
-        private void SelectedTargetButtonNew_Click(object sender, RoutedEventArgs e)
-        {
-            NewSelectTarget t = new NewSelectTarget(_targetBoard, ActiveCharacters_ListBox.SelectedItems);
-            t.ShowDialog();
-        }
 
         
 
