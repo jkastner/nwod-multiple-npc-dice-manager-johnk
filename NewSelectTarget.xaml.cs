@@ -25,9 +25,9 @@ namespace XMLCharSheets
     {
         ObservableCollection <CharacterSheet> _selectedCharacters = new ObservableCollection<CharacterSheet>();
         ObservableCollection<CharacterSheet> _targetCharacters = new ObservableCollection<CharacterSheet>();
-        private readonly ObservableCollection<String> _attackTraits = new ObservableCollection<String>();
-        private readonly ObservableCollection<String> _otherAttackTraits = new ObservableCollection<String>();
-        private readonly ObservableCollection<String> _otherTraits = new ObservableCollection<String>();
+        private readonly ObservableCollection<Trait> _attackTraits = new ObservableCollection<Trait>();
+        private readonly ObservableCollection<Trait> _otherAttackTraits = new ObservableCollection<Trait>();
+        private readonly ObservableCollection<Trait> _otherTraits = new ObservableCollection<Trait>();
         public NewSelectTarget(Board targetBoard, IList selectedObjects)
         {
             InitializeComponent();
@@ -40,10 +40,92 @@ namespace XMLCharSheets
             Attackers_ListBox.ItemsSource = _selectedCharacters;
             PossibleTargets_ListBox.ItemsSource = _targetCharacters;
             MainAttacks_ListBox.ItemsSource = _attackTraits;
-            OtherAttacks_ListBox.ItemsSource = _otherAttackTraits;
             OtherTraits_ListBox.ItemsSource = _otherTraits;
+            DamageType_ListBox.ItemsSource = CombatService.RosterViewModel.DamageTypes;
             RemakeListOfTargets();
+            SelectDefaults();
         }
+
+        private void SelectDefaults()
+        {
+            if (MainAttacks_ListBox.Items.Count > 0)
+            {
+                MainAttacks_ListBox.SelectedIndex = 0;
+                var selectedAttack = _attackTraits.First() as AttackTrait;
+                var damageIndex = DamageType_ListBox.Items.IndexOf(selectedAttack.DamageType);
+                if(damageIndex >= 0)
+                {
+                    DamageType_ListBox.SelectedIndex = damageIndex;
+                }
+                if (PossibleTargets_ListBox.Items.Count > 0)
+                {
+                    PossibleTargets_ListBox.SelectedIndex = 0;
+                }
+            }
+            
+            
+        }
+
+        public CharacterSheet SelectedTarget
+        {
+            get
+            {
+                if (PossibleTargets_ListBox.SelectedItem == null)
+                {
+                    return null;
+                }
+                return PossibleTargets_ListBox.SelectedItem as CharacterSheet;
+            }
+        }
+        public IEnumerable<String> OtherTraits
+        {
+            get
+            {
+                foreach (var cur in OtherTraits_ListBox.SelectedItems)
+                {
+                    yield return (cur as Trait).TraitLabel;
+                }
+                for (int curIndex = 1; curIndex < MainAttacks_ListBox.SelectedItems.Count;curIndex++)
+                {
+                    var curTrait = MainAttacks_ListBox.SelectedItems[curIndex] as Trait;
+                    yield return curTrait.TraitLabel;
+                }
+            }
+        }
+
+
+        public IEnumerable<CharacterSheet> Attackers
+        {
+            get
+            {
+                foreach (var cur in Attackers_ListBox.Items)
+                    yield return cur as CharacterSheet;
+            }
+        }
+        public String DamageType
+        {
+            get
+            {
+                if (DamageType_ListBox.SelectedItem == null)
+                {
+                    return null;
+                }
+                return DamageType_ListBox.SelectedItem.ToString();
+            }
+        }
+        public String MainAttack
+        {
+            get
+            {
+                if (MainAttacks_ListBox.SelectedItems.Count ==  0)
+                {
+                    return null;
+                }
+                return (MainAttacks_ListBox.SelectedItems[0] as Trait).TraitLabel;
+            }
+        }
+
+
 
         private void RemakeListOfTargets()
         {
@@ -71,16 +153,16 @@ namespace XMLCharSheets
                     var attackTrait = curTrait as AttackTrait;
                     if (attackTrait != null)
                     {
-                        if (!_attackTraits.Contains(attackTrait.TraitLabel))
+                        if (!_attackTraits.Contains(attackTrait))
                         {
-                            _attackTraits.Add(attackTrait.TraitLabel);
-                            _otherAttackTraits.Add(attackTrait.TraitLabel);
+                            _attackTraits.Add(attackTrait);
+                            _otherAttackTraits.Add(attackTrait);
                         }
                     }
                     else
                     {
-                        if (!_otherTraits.Contains(curTrait.TraitLabel))
-                            _otherTraits.Add(curTrait.TraitLabel);
+                        if (!_otherTraits.Contains(curTrait))
+                            _otherTraits.Add(curTrait);
                     }
                 }
             }
@@ -121,7 +203,13 @@ namespace XMLCharSheets
             {
                 _selectedCharacters.Remove(cur);
             }
+            SetAttackersAsActive(); 
             RemakeListOfTargets();
+        }
+
+        private void SetAttackersAsActive()
+        {
+            CombatService.RosterViewModel.SetActive(Attackers_ListBox.Items);
         }
 
         private void MoveToAttacker_Button_Click(object sender, RoutedEventArgs e)
@@ -135,8 +223,55 @@ namespace XMLCharSheets
             {
                 _selectedCharacters.Add(cur);
             }
+            SetAttackersAsActive(); 
             RemakeListOfTargets();
         }
+
+        private void OK_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            WasCancel = true;
+            this.Close();
+        }
+
+
+
+        public bool WasCancel { get; set; }
+
+        private void Characters_ListBox_Selected(object sender, MouseButtonEventArgs e)
+        {
+            var curSelected = (sender as ListBoxItem).Content as CharacterSheet;
+            if (curSelected != null)
+            {
+                if (curSelected.FirstVisual != null)
+                {
+                    VisualsService.BoardsViewModel.ZoomTo(
+                        new List<Guid>() { curSelected.UniqueCharacterID },
+                        CombatService.RosterViewModel.OrientAllCamerasToMatchMain);
+                }
+            }
+            foreach (var curA in Attackers_ListBox.Items)
+            {
+                var curAttacker = curA as CharacterSheet;
+                if(curAttacker.HasVisual &&
+                      SelectedTarget!=null &&
+                        SelectedTarget.HasVisual)
+                {
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.DrawAttack(
+                        curAttacker.UniqueCharacterID,
+                        SelectedTarget.UniqueCharacterID,
+                        Colors.Red,
+                        new Duration(new TimeSpan(0, 0, 0, 1))));
+                }
+            }
+        }
+
+
+
 
 
     }

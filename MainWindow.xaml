@@ -206,22 +206,12 @@
                                     RenderTransformOrigin="0.5,0.5" />
                             </Button>
 
-                            <Button Name="SelectTarget_Button" Width="Auto" Height="Auto" Margin="5,5,5,5"
-                                HorizontalAlignment="Right" Click="SelectTarget_Button_Click"
-                                ToolTip="Select target for selected characters">
-                                <Path
-                                Data="M31.647835,21.819011C37.056774,21.819011 41.4459,26.202763 41.4459,31.610512 41.4459,37.017222 37.056774,41.402012 31.647835,41.402012 26.239018,41.402012 21.859899,37.017222 21.859899,31.610512 21.859899,26.202763 26.239018,21.819011 31.647835,21.819011z M31.648463,11.80599C20.728994,11.80599 11.839426,20.691982 11.839426,31.610973 11.839426,42.532965 20.728994,51.417955 31.648463,51.417955 42.567934,51.417955 51.457502,42.532965 51.457502,31.610973 51.457502,20.691982 42.567934,11.80599 31.648463,11.80599z M29.86855,0L32.798408,0 32.798408,10.187991C43.367895,10.74999,51.90748,18.918984,53.007425,29.330975L53.007425,29.305974 62.666958,29.305974 62.666958,32.240973 53.127401,32.240973 53.130848,32.147326C53.135221,31.969078 53.137421,31.790286 53.137421,31.610973 53.137421,31.822973 53.12742,32.030972 53.11742,32.240973L53.127401,32.240973 53.111229,32.680408C52.572058,43.662609,43.773811,52.452738,32.798408,53.034954L32.798408,62.666946 29.86855,62.666946 29.86855,53.119955C30.07854,53.125956 30.288529,53.129955 30.49852,53.129955 30.798505,53.129955 31.098491,53.093954 31.398476,53.080956 20.016216,52.949205 10.764194,43.978889 10.197059,32.708606L10.17942,32.240973 10.175706,32.104497 10.169507,31.610973C10.169507,31.716973,10.169507,31.821973,10.170757,31.926723L10.175706,32.104497 10.176422,32.161503 10.17942,32.240973 0,32.240973 0,29.305974 10.289501,29.305974C11.379448,18.857984 20.049027,10.63199 30.728508,10.176991 30.648512,10.174992 30.578516,10.163991 30.49852,10.163991 30.288529,10.163991 30.07854,10.166991 29.86855,10.174992z"
-                                Stretch="Uniform" Fill="#FF000000" Width="24" Height="24" Margin="0,0,0,0"
-                                RenderTransformOrigin="0.5,0.5" />
-
-                            </Button>
-
                             <Button Width="Auto" Height="Auto" Margin="5,5,5,5"
-                                HorizontalAlignment="Right" Click="SelectedTargetButtonNew_Click"
+                                HorizontalAlignment="Right" Click="SelectedTargetButton_Click"
                                 ToolTip="Select target for selected characters">
                                 <Path
                                 Data="M31.647835,21.819011C37.056774,21.819011 41.4459,26.202763 41.4459,31.610512 41.4459,37.017222 37.056774,41.402012 31.647835,41.402012 26.239018,41.402012 21.859899,37.017222 21.859899,31.610512 21.859899,26.202763 26.239018,21.819011 31.647835,21.819011z M31.648463,11.80599C20.728994,11.80599 11.839426,20.691982 11.839426,31.610973 11.839426,42.532965 20.728994,51.417955 31.648463,51.417955 42.567934,51.417955 51.457502,42.532965 51.457502,31.610973 51.457502,20.691982 42.567934,11.80599 31.648463,11.80599z M29.86855,0L32.798408,0 32.798408,10.187991C43.367895,10.74999,51.90748,18.918984,53.007425,29.330975L53.007425,29.305974 62.666958,29.305974 62.666958,32.240973 53.127401,32.240973 53.130848,32.147326C53.135221,31.969078 53.137421,31.790286 53.137421,31.610973 53.137421,31.822973 53.12742,32.030972 53.11742,32.240973L53.127401,32.240973 53.111229,32.680408C52.572058,43.662609,43.773811,52.452738,32.798408,53.034954L32.798408,62.666946 29.86855,62.666946 29.86855,53.119955C30.07854,53.125956 30.288529,53.129955 30.49852,53.129955 30.798505,53.129955 31.098491,53.093954 31.398476,53.080956 20.016216,52.949205 10.764194,43.978889 10.197059,32.708606L10.17942,32.240973 10.175706,32.104497 10.169507,31.610973C10.169507,31.716973,10.169507,31.821973,10.170757,31.926723L10.175706,32.104497 10.176422,32.161503 10.17942,32.240973 0,32.240973 0,29.305974 10.289501,29.305974C11.379448,18.857984 20.049027,10.63199 30.728508,10.176991 30.648512,10.174992 30.578516,10.163991 30.49852,10.163991 30.288529,10.163991 30.07854,10.166991 29.86855,10.174992z"
-                                Stretch="Uniform" Fill="Red" Width="24" Height="24" Margin="0,0,0,0"
+                                Stretch="Uniform" Fill="Black" Width="24" Height="24" Margin="0,0,0,0"
                                 RenderTransformOrigin="0.5,0.5" />
                             </Button>
 
@@ -309,7 +299,7 @@
                                 Margin="5,5,0,0"
                                 HorizontalAlignment="Left"
                                 Name="ChangeBackgroundImage_Button"
-                                Content="Background" ToolTip="Change Background Image..."
+                                Content="Background" ToolTip="Change background image"
                                 Width="95" Click="ChangeBackground_Button_Click" />
 
                     </DockPanel>
@@ -326,6 +316,7 @@
                         </TextBox>
                         <RadioButton Name="SelectionMode_Button" GroupName="ShapeType"
                                          Style="{StaticResource {x:Type ToggleButton}}"
+                                     ToolTip="Select by directly clicking"
                                          Width="38" Height="38" Checked="SelectionMode_Button_Checked">
                             <Path
                                     Data="M8.0289998,24.707999L12.476999,24.707999 12.476999,26.19 8.0289998,26.19z M0,23.845L1.4821367,23.845 1.4821367,24.708337 3.5839996,24.708337 3.5839996,26.190001 0,26.190001z M0,14.953L1.4819994,14.953 1.4819994,19.398 0,19.398z M20.627999,14.81L22.108999,14.81 22.108999,19.255 20.627999,19.255z M12.267999,14.603L27.366399,23.455908 22.3774,25.131392 27.780999,31.894525 25.1508,34.159999 19.8122,27.229071 16.2238,31.584525z M0,6.0599995L1.4819994,6.0599995 1.4819994,10.506 0,10.506z M20.627999,5.9169998L22.108999,5.9169998 22.108999,10.363 20.627999,10.363z M17.652,0L22.109,0 22.109,1.4714975 21.367517,1.4819994 17.652,1.4819994z M8.7599998,0L13.206,0 13.206,1.4819994 8.7599998,1.4819994z M0,0L4.3129997,0 4.3129997,1.4821482 1.4818506,1.4821482 1.4818506,1.6149998 0,1.6149998z"
@@ -340,7 +331,7 @@
                                 </Path.RenderTransform>
                             </Path>
                         </RadioButton>
-                        <RadioButton Name="DrawSphere_Button" GroupName="ShapeType"
+                        <RadioButton ToolTip="Select from inside sphere" Name="DrawSphere_Button" GroupName="ShapeType"
                                          Style="{StaticResource {x:Type ToggleButton}}"
                                          Height="38" Width="38" Checked="DrawSphere_Button_Checked">
                             <Path
@@ -358,7 +349,8 @@
                             </Path>
                         </RadioButton>
                         <RadioButton Name="DrawCone_Button" GroupName="ShapeType"
-                                         Style="{StaticResource {x:Type ToggleButton}}"
+                                     ToolTip="Select from inside cone"    
+                                     Style="{StaticResource {x:Type ToggleButton}}"
                                          Height="38" Width="38" Checked="DrawCone_Button_Checked">
                             <Path
                                     Data="F1M1464.78,374.21C1466.31,374.21,1466.94,375.538,1466.17,376.861L1435.89,429.439C1435.12,430.759,1433.87,430.823,1433.11,429.5L1402.82,376.827C1402.06,375.507,1402.69,374.21,1404.21,374.21L1464.78,374.21z"
@@ -375,6 +367,7 @@
                             </Path>
                         </RadioButton>
                         <RadioButton Name="DrawLine_Button" GroupName="ShapeType"
+                                     ToolTip="Select from inside line"
                                          Style="{StaticResource {x:Type ToggleButton}}"
                                          Width="38" Height="38" Checked="DrawLine_Button_Checked">
                             <Path Data="M0,0L53.333,0 53.333,8.888 0,8.888z" Fill="#FF1C18FF"
@@ -389,7 +382,9 @@
                                 </Path.RenderTransform>
                             </Path>
                         </RadioButton>
-                        <RadioButton Name="TapeMeasure_Button" GroupName="ShapeType"
+                        <RadioButton 
+                            ToolTip="Measure the distance between two points"
+                            Name="TapeMeasure_Button" GroupName="ShapeType"
                                          Style="{StaticResource {x:Type ToggleButton}}"
                                          Width="38" Height="38" Checked="TapeMeasure_Button_Checked"
                                          Unchecked="TapeMeasure_Button_Unchecked">
@@ -406,7 +401,7 @@
                                 </Path.RenderTransform>
                             </Path>
                         </RadioButton>
-                        <ToggleButton Checked="GridIsChecked_ToggleButton" Unchecked="GridIsUnchecked_ToggleButton">
+                        <ToggleButton ToolTip="Show movement grid" Checked="GridIsChecked_ToggleButton" Unchecked="GridIsUnchecked_ToggleButton">
                             Grid
                         </ToggleButton>
 

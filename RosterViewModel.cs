@@ -458,22 +458,15 @@ namespace XMLCharSheets
             }
         }
 
-        internal void SetTargets(IList attackers, IList otherTraits, CharacterSheet target, string attackType,
-                                 List<String> otherAttacks, string damageType)
+        internal void SetTargets(List<CharacterSheet> attackers, 
+            List<String> otherAttacks, 
+            CharacterSheet target, 
+            string attackType,
+            string damageType)
         {
-            var allOtherAttackTraits = new List<string>();
-            foreach (object cur in otherTraits)
+            foreach (CharacterSheet curChar in attackers)
             {
-                allOtherAttackTraits.Add(cur.ToString());
-            }
-            foreach (string cur in otherAttacks)
-            {
-                allOtherAttackTraits.Add(cur);
-            }
-            foreach (object curItem in attackers)
-            {
-                var curChar = curItem as CharacterSheet;
-                curChar.SetTarget(target, allOtherAttackTraits, attackType, damageType);
+                curChar.SetTarget(target, otherAttacks, attackType, damageType);
             }
         }
 
@@ -875,5 +868,6 @@ namespace XMLCharSheets
             }
             //BoardsViewModel.Instance.ForeachBoard(x=>x.GameBoardVisual.Se
         }
+
     }
 }

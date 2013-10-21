@@ -143,7 +143,16 @@ namespace GameBoard
         }
 
 
-
-        
+        public void ZoomTo(List<Guid> visuals, bool useMainOnly)
+        {
+            if (!useMainOnly)
+            {
+                ForeachBoard(x => x.VisualsViewModel.ZoomTo(visuals));
+            }
+            else
+            {
+                MainBoard.VisualsViewModel.ZoomTo(visuals);
+            }
+        }
     }
 }
