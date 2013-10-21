@@ -35,6 +35,7 @@ namespace GameBoard
             //_viewport.Children.Add(knight.CharImage);
 
             AddLights();
+            Loaded += ZoomOnLoad;
 
 
             Viewport.Background = new SolidColorBrush(Colors.SkyBlue);
@@ -262,13 +263,27 @@ namespace GameBoard
             }
         }
 
+        Stack<Rect3D> _lastZoom = new Stack<Rect3D>();
         internal void ZoomTo(Rect3D rect3D, int zoomSpeed)
         {
             //When the board isn't loaded, zooming using helix had an odd unfixable crash.
             //this dodges that.
-            if (this.ActualHeight!=0&&this.ActualWidth!=0)
+            if (this.ActualHeight != 0 && this.ActualWidth != 0)
             {
                 Viewport.ZoomExtents(rect3D, zoomSpeed);
+            }
+            else
+            {
+                _lastZoom.Push(rect3D);
+            }
+        }
+
+        private void ZoomOnLoad(object sender, RoutedEventArgs e)
+        {
+            if (_lastZoom.Count > 0)
+            {
+                ZoomTo(_lastZoom.Pop(), 0);
+                _lastZoom.Clear();
             }
         }
 

@@ -51,8 +51,19 @@
 
                 </Grid>
             </DataTemplate>
+            
+            <Style x:Key="ListBoxItem_Style" TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Background" Value="Silver"/>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True" >
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Foreground" Value="Black" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -61,47 +72,51 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0">Attackers</Label>
+        <Label Grid.Row="0" Grid.Column="1">Possible Targets</Label>
 
-        <ListBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" x:Name="Attackers_ListBox" ItemTemplate="{StaticResource ListBox_Template}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Background" Value="Silver"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True" >
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Foreground" Value="Black" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListBox.ItemContainerStyle>
+        <Label Grid.Row="0" Grid.Column="2">Selected Targets</Label>
+        <ListBox Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" x:Name="Attackers_ListBox" 
+                 ItemTemplate="{StaticResource ListBox_Template}" ItemContainerStyle="{StaticResource ListBoxItem_Style}">
         </ListBox>
-        <Button Grid.Row="1" Grid.Column="0" FontSize="16" Click="MoveToTarget_Button_Click"> → </Button>
-        <Button Grid.Row="1" Grid.Column="1" FontSize="16" Click="MoveToAttacker_Button_Click"> ← </Button>
-        <ListBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" x:Name="Targets_ListBox" ItemTemplate="{StaticResource ListBox_Template}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Background" Value="Silver"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True" >
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Foreground" Value="Black" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListBox.ItemContainerStyle>
+        <Button VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" FontSize="26" Height="25" Click="MoveToTarget_Button_Click"> 
+            <TextBlock VerticalAlignment="Center">
+            →
+            </TextBlock>
+        </Button>
+        <Button VerticalAlignment="Top" Grid.Row="4" Grid.Column="1" FontSize="26" Height="25" Click="MoveToAttacker_Button_Click">
+            <TextBlock VerticalAlignment="Center">
+            ←
+            </TextBlock>
+        </Button>
+        <ListBox Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" x:Name="PossibleTargets_ListBox" 
+                 ItemTemplate="{StaticResource ListBox_Template}" ItemContainerStyle="{StaticResource ListBoxItem_Style}">
         </ListBox>
-        <DockPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="5" x:Name="Viewport_DockPanel"></DockPanel>
 
-        <ListBox Grid.Row="1" Grid.Column="2" x:Name="MainAttacks_ListBox"></ListBox>
-        <ListBox Grid.Row="1" Grid.Column="3" x:Name="OtherAttacks_ListBox"></ListBox>
-        <ListBox Grid.Row="1" Grid.Column="4" x:Name="DamageType_ListBox"></ListBox>
-        <ListBox Grid.Row="1" Grid.Column="5" x:Name="OtherTraits_ListBox"></ListBox>
-        <Button Grid.Row="2" Grid.Column="5" FontSize="16" Height="Auto" Width="88">OK</Button>
-        <Button Grid.Row="2" Grid.Column="0" FontSize="16"  Height="Auto" Width="88">Cancel</Button>
+
+        <DockPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="5" x:Name="Viewport_DockPanel"></DockPanel>
+        <Label Grid.Row="2" Grid.Column="2">Main Attack</Label>
+        <Label Grid.Row="2" Grid.Column="3">Additional Attacks</Label>
+        <Label Grid.Row="2" Grid.Column="4">Other Skills</Label>
+
+        <ListBox Grid.Row="3" Grid.Column="2" x:Name="MainAttacks_ListBox" SelectionMode="Extended"
+                 ItemContainerStyle="{StaticResource ListBoxItem_Style}"
+                 ></ListBox>
+        <ListBox Grid.Row="3" Grid.Column="3" x:Name="OtherAttacks_ListBox" SelectionMode="Multiple"
+                 ItemContainerStyle="{StaticResource ListBoxItem_Style}"
+                 ></ListBox>
+        <ListBox Grid.Row="3" Grid.Column="4" x:Name="DamageType_ListBox"
+                 ItemContainerStyle="{StaticResource ListBoxItem_Style}"
+                 ></ListBox>
+        <ListBox Grid.Row="3" Grid.Column="5" x:Name="OtherTraits_ListBox"
+                 ItemContainerStyle="{StaticResource ListBoxItem_Style}"
+                 ></ListBox>
+        <Button Grid.Row="4" Grid.Column="3" FontSize="16" Height="Auto" Width="88">OK</Button>
+        <Button Grid.Row="4" Grid.Column="4" FontSize="16"  Height="Auto" Width="88">Cancel</Button>
     </Grid>
 </Window>
 

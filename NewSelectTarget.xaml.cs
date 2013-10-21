@@ -38,7 +38,7 @@ namespace XMLCharSheets
                 _selectedCharacters.Add(cur as CharacterSheet);
             }
             Attackers_ListBox.ItemsSource = _selectedCharacters;
-            Targets_ListBox.ItemsSource = _targetCharacters;
+            PossibleTargets_ListBox.ItemsSource = _targetCharacters;
             MainAttacks_ListBox.ItemsSource = _attackTraits;
             OtherAttacks_ListBox.ItemsSource = _otherAttackTraits;
             OtherTraits_ListBox.ItemsSource = _otherTraits;
@@ -127,7 +127,7 @@ namespace XMLCharSheets
         private void MoveToAttacker_Button_Click(object sender, RoutedEventArgs e)
         {
             List<CharacterSheet> _selected = new List<CharacterSheet>();
-            foreach (var cur in Targets_ListBox.SelectedItems)
+            foreach (var cur in PossibleTargets_ListBox.SelectedItems)
             {
                 _selected.Add(cur as CharacterSheet);
             }

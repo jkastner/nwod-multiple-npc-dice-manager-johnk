@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameBoard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -141,10 +142,8 @@ namespace XMLCharSheets
             String newName = CharacterName_TextBox.Text.Trim();
             if (String.IsNullOrWhiteSpace(newName))
             {
-                //CreateCharacterError_Label.Content = "Please enter a name.";
                 return;
             }
-            //CreateCharacterError_Label.Content = "";
             int count = 1;
             String originalName = newName;
             while (CombatService.RosterViewModel.ActiveRoster.Any(x => x.Name.Equals(newName)))
@@ -168,6 +167,10 @@ namespace XMLCharSheets
             if (pictureInfo != null && selectedTeam != null)
             {
                 CombatService.RosterViewModel.AddVisualToCharacters(new List<CharacterSheet>() { newInstance }, pictureInfo, selectedTeam);
+                //Zoom on create
+                
+                VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ZoomTo
+                    (newInstance.FirstVisual.Location));
             }
             else
             {
