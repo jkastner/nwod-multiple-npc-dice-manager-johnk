@@ -520,36 +520,45 @@ namespace XMLCharSheets
             ActiveRoster.Remove(characterSheet);
         }
 
-        internal void SetActive(IList selectedObjects)
+        internal void ResetToActive(IList activeObjects, IList inactiveObjects)
         {
-            List<CharacterSheet> selectedCharacters = GetListOfCharacters(selectedObjects);
-            foreach (var cur in selectedCharacters)
-            {
-                cur.IsSelected = true;
-            }
-            foreach (CharacterSheet cur in _activeRoster)
+            foreach (CharacterSheet cur in inactiveObjects)
             {
                 CharacterSheet curCharacter = cur;
                 if (curCharacter.HasVisual)
                 {
                     VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetInactive(curCharacter.UniqueCharacterID));
                 }
+                curCharacter.IsSelected = false;
             }
+            AddToActive(activeObjects);
+        }
+
+        internal void AddToActive(IList selectedObjects)
+        {
+            List<CharacterSheet> selectedCharacters = GetListOfCharacters(selectedObjects);
+            foreach (var cur in selectedCharacters)
+            {
+                cur.IsSelected = true;
+            }
+            bool multiplePiecesAreSelected = ActiveRoster.Count(x => x.HasVisual && x.IsSelected) > 1;
             foreach (CharacterSheet curCharacter in selectedCharacters)
             {
                 if (curCharacter.HasVisual)
                 {
-                    VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetActive(curCharacter.UniqueCharacterID, 
+                    VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.SetActive(
+                        curCharacter.UniqueCharacterID,
                         curCharacter.Team.TeamColor,
-                        selectedCharacters.Count == 1,
+                        !multiplePiecesAreSelected,
                         curCharacter.SpeedTrait.TraitValue,
                         MakeStatusList(curCharacter.StatusEffects)));
                 }
             }
-            if (selectedCharacters.Count(x => x.HasVisual) > 1)
+            if (multiplePiecesAreSelected)
             {
-                VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.DrawGroupMovementCircle());
+                VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.DrawGroupMovementCircle());
             }
+
         }
 
         private List<CharacterSheet> GetListOfCharacters(IList selectedObjects)

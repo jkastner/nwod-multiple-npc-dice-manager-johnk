@@ -68,12 +68,12 @@ namespace XMLCharSheets
 
         public NumericIntTrait HeightTrait
         {
-            get { return NumericTraits.Where(x => x.TraitLabel.Equals("Height")).FirstOrDefault(); }
+            get { return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals("Height")); }
         }
 
         public NumericIntTrait SpeedTrait
         {
-            get { return NumericTraits.Where(x => x.TraitLabel.Equals("Speed")).FirstOrDefault(); }
+            get { return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals("Speed")); }
         }
 
         public virtual String Status
@@ -104,7 +104,6 @@ namespace XMLCharSheets
         }
 
 
-        [DataMember]
         public bool IsSelected
         {
             get
@@ -273,7 +272,7 @@ namespace XMLCharSheets
 
         public NumericIntTrait FindNumericTrait(String targetName)
         {
-            return NumericTraits.Where(x => x.TraitLabel.Equals(targetName)).FirstOrDefault();
+            return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals(targetName));
         }
 
         public bool HasTrait(String targetName)
@@ -328,7 +327,7 @@ namespace XMLCharSheets
 
         protected void SetIncapacitated(bool isDead)
         {
-            StatusEffect incapEffect = StatusEffects.Where(x => x.Description.Equals("Incapacitated")).FirstOrDefault();
+            StatusEffect incapEffect = StatusEffects.FirstOrDefault(x => x.Description.Equals("Incapacitated"));
 
             if (isDead)
             {

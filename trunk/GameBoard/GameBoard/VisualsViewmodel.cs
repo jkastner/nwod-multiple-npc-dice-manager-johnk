@@ -259,6 +259,12 @@ namespace GameBoard
                 _gameBoardVisual.AddVisual(moveablePicture.MovementCircle);
                 _gameBoardVisual.AddVisual(moveablePicture.DoubleMovementCircle);
             }
+            else
+            {
+                _gameBoardVisual.AddVisual(moveablePicture.MovementCircle);
+                _gameBoardVisual.AddVisual(moveablePicture.DoubleMovementCircle);
+
+            }
         }
 
         public void SetInactive(Guid targetID)
@@ -410,6 +416,11 @@ namespace GameBoard
             _groupDoubleMovementCircle.Path = new Point3DCollection(dMove);
             _gameBoardVisual.AddVisual(_groupSingleMovementCircle);
             _gameBoardVisual.AddVisual(_groupDoubleMovementCircle);
+            foreach(var cur in CharactersToMoveablePicture.Where(x=>x.Value.IsSelected))
+            {
+                _gameBoardVisual.RemoveVisual(cur.Value.MovementCircle);
+                _gameBoardVisual.RemoveVisual(cur.Value.DoubleMovementCircle);
+            }
         }
 
         private double _shapeSize = 20;

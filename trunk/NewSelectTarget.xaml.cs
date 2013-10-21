@@ -210,7 +210,7 @@ namespace XMLCharSheets
 
         private void SetAttackersAsActive()
         {
-            CombatService.RosterViewModel.SetActive(Attackers_ListBox.Items);
+            CombatService.RosterViewModel.ResetToActive(Attackers_ListBox.Items, new List<CharacterSheet>());
         }
 
         private void MoveToAttacker_Button_Click(object sender, RoutedEventArgs e)
