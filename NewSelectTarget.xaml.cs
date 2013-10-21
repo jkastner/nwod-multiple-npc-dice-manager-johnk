@@ -153,7 +153,7 @@ namespace XMLCharSheets
                     var attackTrait = curTrait as AttackTrait;
                     if (attackTrait != null)
                     {
-                        if (!_attackTraits.Contains(attackTrait))
+                        if (!_attackTraits.Any(x=>x.TraitLabel.Equals(attackTrait.TraitLabel)))
                         {
                             _attackTraits.Add(attackTrait);
                             _otherAttackTraits.Add(attackTrait);
@@ -161,7 +161,7 @@ namespace XMLCharSheets
                     }
                     else
                     {
-                        if (!_otherTraits.Contains(curTrait))
+                        if (!_otherTraits.Any(x=>x.TraitLabel.Equals(curTrait)))
                             _otherTraits.Add(curTrait);
                     }
                 }
@@ -205,6 +205,7 @@ namespace XMLCharSheets
             }
             SetAttackersAsActive(); 
             RemakeListOfTargets();
+            SelectDefaults();
         }
 
         private void SetAttackersAsActive()
@@ -225,6 +226,7 @@ namespace XMLCharSheets
             }
             SetAttackersAsActive(); 
             RemakeListOfTargets();
+            SelectDefaults();
         }
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
