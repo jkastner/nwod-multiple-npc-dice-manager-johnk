@@ -97,7 +97,8 @@ namespace XMLCharSheets
             //Case 1. This has no visual.
             if (_activeChar.FirstVisual==null)
             {
-                validTarget = CombatService.RosterViewModel.ActiveRoster.Where(x => x != _activeChar && !x.IsIncapacitated).FirstOrDefault();
+                validTarget = CombatService.RosterViewModel.ActiveRoster.FirstOrDefault
+                    (x => x != _activeChar && !x.IsIncapacitated);
             }
             //Cases 2 and 3
             else

@@ -146,7 +146,7 @@ namespace XMLCharSheets
 
         private void RemoveDamage(HealthBox.DamageType damageType)
         {
-            HealthBox matchingBox = HealthTrack.Where(x => x.Box == damageType).FirstOrDefault();
+            HealthBox matchingBox = HealthTrack.FirstOrDefault(x => x.Box == damageType);
             if (matchingBox != null)
             {
                 HealthTrack.Remove(matchingBox);

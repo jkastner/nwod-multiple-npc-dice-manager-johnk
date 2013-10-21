@@ -61,7 +61,7 @@ namespace GameBoard
         {
             get
             {
-                return _boards.Where(x => x.BoardName.Equals(MainBoardName)).FirstOrDefault(); ;
+                return _boards.FirstOrDefault(x => x.BoardName.Equals(MainBoardName));
             }
         }
 

@@ -79,8 +79,8 @@ namespace XMLCharSheets
             {
                 if (pieceEvent.MoverID != null)
                 {
-                    CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.UniqueCharacterID == pieceEvent.MoverID)
-                                                              .FirstOrDefault();
+                    CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.
+                        FirstOrDefault(x => x.UniqueCharacterID == pieceEvent.MoverID);
                     if (matchingChar != null)
                     {
                         matchingChar.HasMoved = true;
@@ -125,8 +125,8 @@ namespace XMLCharSheets
             var pieceEvent = e as PieceSelectedEventArgs;
             if (pieceEvent != null)
             {
-                CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.Where(x => x.UniqueCharacterID == pieceEvent.SelectedPieceID)
-                                                           .FirstOrDefault();
+                CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.FirstOrDefault(x => x.UniqueCharacterID == pieceEvent.SelectedPieceID);
+                                                           
                 if (matchingChar != null)
                 {
                     ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
@@ -138,14 +138,14 @@ namespace XMLCharSheets
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SetupTraits(ActiveCharacters_ListBox);
+            //SetupTraits(ActiveCharacters_ListBox);
             if (ActiveCharacters_ListBox.SelectedItems.Count > 0)
                 CombatService.RosterViewModel.SelectedActiveCharacter =
                     ActiveCharacters_ListBox.SelectedItems[ActiveCharacters_ListBox.SelectedItems.Count - 1] as
                     CharacterSheet;
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
-            CombatService.RosterViewModel.SetActive(ActiveCharacters_ListBox.SelectedItems);
+            CombatService.RosterViewModel.ResetToActive(e.AddedItems, e.RemovedItems);
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)

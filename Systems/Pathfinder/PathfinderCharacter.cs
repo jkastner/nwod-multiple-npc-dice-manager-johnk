@@ -65,15 +65,15 @@ namespace XMLCharSheets
                                                      where trait as StringTrait != null
                                                      select trait as StringTrait);
             StringTrait immuneTrait =
-                stringTraits.Where(x => x.TraitLabel.Equals("Immunity") && x.TraitContents.Equals(descriptor))
-                            .FirstOrDefault();
+                stringTraits.FirstOrDefault(x => x.TraitLabel.Equals("Immunity") 
+                    && x.TraitContents.Equals(descriptor));
             if (immuneTrait != null)
             {
                 return new PathfinderDamage(receivedDamage.DamageDescriptor, 0);
             }
             NumericIntTrait resistTrait =
-                NumericTraits.Where(x => x.TraitLabel.Equals("Resist") && x.TraitDescription.Equals(descriptor))
-                             .FirstOrDefault();
+                NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals("Resist") && x.TraitDescription.
+                    Equals(descriptor));
             if (resistTrait != null)
             {
                 int count = receivedDamage.DamageValue - resistTrait.TraitValue;
@@ -82,7 +82,7 @@ namespace XMLCharSheets
                 return new PathfinderDamage(receivedDamage.DamageDescriptor, count);
             }
             NumericIntTrait damageReductionTrait =
-                NumericTraits.Where(x => x.TraitLabel.Equals("Damage Resistance")).FirstOrDefault();
+                NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals("Damage Resistance"));
             if (damageReductionTrait != null)
             {
                 if (!damageReductionTrait.TraitDescription.Equals(receivedDamage.DamageDescriptor))
