@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Select Target" Height="300" Width="300"
         WindowState="Maximized"
+        KeyDown="SelectTarget_KeyDown"
         >
     <Grid>
         <Grid.Resources>

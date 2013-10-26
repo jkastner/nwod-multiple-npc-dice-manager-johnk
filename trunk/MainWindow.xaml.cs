@@ -526,6 +526,12 @@ namespace XMLCharSheets
                                 VisualControl_BoardSpace_DockPanel.Children.Add(curBoard.GameBoardVisual);
                             }
                             break;
+                        case BoardsViewModel.TargetBoardName:
+                            {
+                                _targetBoard = curBoard;
+                                _targetBoard.GameBoardVisual.IsEnabled = false;
+                            }
+                            break;
                     }
                 }
             }
