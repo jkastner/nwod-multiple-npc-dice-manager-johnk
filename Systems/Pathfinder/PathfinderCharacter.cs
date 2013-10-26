@@ -115,8 +115,8 @@ namespace XMLCharSheets
             }
             else
             {
-                Target.DoDamage(doneDamage.DamageValue, damageDescriptor);
-                Report("Target took " + doneDamage.DamageValue + " " + damageDescriptor);
+                pathfinderTarget.DoDamage(doneDamage.DamageValue, damageDescriptor);
+                Report("\n\t"+pathfinderTarget.Name+" took " + doneDamage.DamageValue + " " + damageDescriptor);
                 return new List<PathfinderDamage> {doneDamage};
             }
         }
@@ -194,7 +194,7 @@ namespace XMLCharSheets
                             if (DamageType != null)
                                 damageDescriptor = DamageType;
 
-                            List<PathfinderDamage> doneDamage = HandleAttackResults(curDamage,
+                            List<PathfinderDamage> doneDamage = pathfinderTarget.HandleAttackResults(curDamage,
                                                                                     damageMultiplier, pathfinderTarget,
                                                                                     damageDescriptor, wasCrit);
                             if (doneDamage != null)

@@ -26,10 +26,14 @@ namespace XMLCharSheets
             {
                 var traits = new List<Trait>();
                 PopulatePathfinderTraits(curQuery.Traits, traits);
+                bool hasWoundsVigor = traits.Any(x=>x.TraitLabel.Equals("Vigor"));
                 switch (curQuery.CharacterType)
                 {
                     default:
-                        newChar = new PathfinderCharacter_WoundsVigor(curQuery.Name, traits);
+                        if (hasWoundsVigor)
+                            newChar = new PathfinderCharacter_WoundsVigor(curQuery.Name, traits);
+                        else
+                            newChar = new PathfinderCharacter_HP(curQuery.Name, traits);
                         break;
                 }
             }

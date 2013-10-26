@@ -272,6 +272,18 @@ namespace XMLCharSheets
             }
         }
 
+        private void SelectTarget_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                OK_Button_Click(sender, e);
+            }
+            if (e.Key == Key.Escape)
+            {
+                Cancel_Click(sender, e);
+            }
+        }
+
 
 
 
