@@ -60,6 +60,7 @@
     <Compile Include="BoardInfo.cs" />
     <Compile Include="BoardsViewModel.cs" />
     <Compile Include="ClearSelectedPiecesEventArgs.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Events\BoardRegisteredEventArgs.cs" />
     <Compile Include="Events\ShapeDrawnEvent.cs" />
     <Compile Include="GameBoardVisual_Window.xaml.cs">

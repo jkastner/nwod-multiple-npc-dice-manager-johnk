@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HelixToolkit.Wpf;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +13,7 @@ namespace GameBoard
 {
     public class MaterialMaker
     {
-
-        static String boardBackground = @"MapPictures\SquarePaper.jpg";
+        
         public static ImageBrush MakeImageMaterial(String imageLocation)
         {
             ImageBrush imageBrush = new ImageBrush();
@@ -30,7 +31,26 @@ namespace GameBoard
 
         public static Material PaperbackMaterial()
         {
-            return new DiffuseMaterial(MakeImageMaterial(boardBackground));
+            var expected = Constants.MapPictureDirectory + "\\" + Constants.BackgroundName;
+            if (File.Exists(expected))
+            {
+                return new DiffuseMaterial(MakeImageMaterial(expected));
+            }
+            return DefaultBackMaterial;
+        }
+        public static Material DefaultFrontMaterial
+        {
+            get
+            {
+                return Materials.Green;
+            }
+        }
+        private static Material DefaultBackMaterial
+        {
+            get
+            {
+                return Materials.LightGray;
+            }
         }
     }
 }

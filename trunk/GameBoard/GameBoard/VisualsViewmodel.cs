@@ -10,6 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using System.Runtime.Serialization;
+using System.IO;
 
 namespace GameBoard
 {
@@ -24,7 +25,15 @@ namespace GameBoard
 
         public void SetInitialBackground()
         {
-            SetBoardBackground(@"MapPictures\BattleMap.jpg", 0, 0, true);
+            var files = Directory.GetFiles(Constants.MapPictureDirectory);
+            if (files.Any())
+            {
+                SetBoardBackground(files.First(), 0, 0, true);
+            }
+            else
+            {
+                SetBoardToDefault();
+            }
         }
 
 
@@ -305,32 +314,56 @@ namespace GameBoard
             if (_theMap != null)
                 _gameBoardVisual.RemoveVisual(_theMap);
             ImageBrush boardFrontBrush = new ImageBrush();
-            ImageBrush frontBrush = MaterialMaker.MakeImageMaterial(newImage);
-            Material frontMaterial = new DiffuseMaterial(frontBrush);
-            if (maintainRatio)
+            Material frontMaterial;
+            try
             {
-                if (definedBoardHeight <= 0)
+                ImageBrush frontBrush = MaterialMaker.MakeImageMaterial(newImage);
+                frontMaterial = new DiffuseMaterial(frontBrush);
+
+                if (maintainRatio)
                 {
-                    BoardHeight = frontBrush.ImageSource.Height;
-                    BoardWidth = frontBrush.ImageSource.Width;
+                    if (definedBoardHeight <= 0)
+                    {
+                        BoardHeight = frontBrush.ImageSource.Height / 4;
+                        BoardWidth = frontBrush.ImageSource.Width / 4;
+                    }
+                    else
+                    {
+                        BoardHeight = definedBoardHeight;
+                        double normalHeight = frontBrush.ImageSource.Height;
+                        double normalWidth = frontBrush.ImageSource.Width;
+                        double ratio = normalHeight / normalWidth;
+                        BoardWidth = (definedBoardHeight / ratio);
+                    }
                 }
                 else
                 {
                     BoardHeight = definedBoardHeight;
-                    double normalHeight = frontBrush.ImageSource.Height;
-                    double normalWidth = frontBrush.ImageSource.Width;
-                    double ratio = normalHeight / normalWidth;
-                    BoardWidth = (definedBoardHeight / ratio);
+                    BoardWidth = definedBoardWidth;
                 }
             }
-            else
+            catch (Exception e)
             {
-                BoardHeight = definedBoardHeight;
-                BoardWidth = definedBoardWidth;
-
+                MessageBox.Show("Unable to set map background to " + newImage);
+                SetBoardToDefault();
+                return;
             }
             Material backMaterial = MaterialMaker.PaperbackMaterial();
             var mb = InitializeBoardBoundaries(BoardHeight, BoardWidth);
+            var backward = mb.TextureCoordinates.Reverse().ToList();
+            for (int curIndex = 0; curIndex < mb.TextureCoordinates.Count; curIndex++)
+            {
+                mb.TextureCoordinates[curIndex] = backward[curIndex];
+            }
+            _theMap = MeshToVisual3D(mb, frontMaterial, backMaterial);
+            _gameBoardVisual.AddVisual(_theMap);
+        }
+
+        private void SetBoardToDefault()
+        {
+            Material frontMaterial = MaterialMaker.DefaultFrontMaterial;
+            Material backMaterial = MaterialMaker.PaperbackMaterial();
+            var mb = InitializeBoardBoundaries(300, 300);
             var backward = mb.TextureCoordinates.Reverse().ToList();
             for (int curIndex = 0; curIndex < mb.TextureCoordinates.Count; curIndex++)
             {

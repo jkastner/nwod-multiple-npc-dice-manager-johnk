@@ -31,9 +31,6 @@ namespace GameBoard
         {
             InitializeComponent();
 
-            //_visuals.Add(knight.CharImage, knight);
-            //_viewport.Children.Add(knight.CharImage);
-
             AddLights();
             Loaded += ZoomOnLoad;
 
