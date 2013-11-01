@@ -113,10 +113,10 @@ namespace XMLCharSheets.NWoD
             foreach (var curPair in _charactersByType)
             {
                 var someChar = curPair.Value[0];
-                List<Trait> traits = new List<Trait>();
-                traits.Add(someChar.FindNumericTrait(traitOther));
+                List<String> traits = new List<String>();
+                traits.Add(someChar.FindNumericTrait(traitOther).TraitLabel);
                 if (someChar.ResistanceTrait() != null)
-                    traits.Add(someChar.ResistanceTrait());
+                    traits.Add(someChar.ResistanceTrait().TraitLabel);
                 CombatService.RosterViewModel.RollCharacters(curPair.Value, traits);
 
             }
@@ -134,9 +134,9 @@ namespace XMLCharSheets.NWoD
                 var curChar = curItem as NWoDCharacter;
                 if (curChar != null)
                 {
-                    List<Trait> traits = new List<Trait>();
-                    traits.Add(curChar.FindNumericTrait("Composure"));
-                    traits.Add(curChar.FindNumericTrait("Resolve"));
+                    List<String> traits = new List<String>();
+                    traits.Add("Composure");
+                    traits.Add("Resolve");
                     CombatService.RosterViewModel.RollCharacters(characters, traits);
                 }
             }

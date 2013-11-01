@@ -126,13 +126,19 @@ namespace XMLCharSheets
             if (pieceEvent != null)
             {
                 CharacterSheet matchingChar = CombatService.RosterViewModel.ActiveRoster.FirstOrDefault(x => x.UniqueCharacterID == pieceEvent.SelectedPieceID);
-                                                           
+                                                                           
                 if (matchingChar != null)
                 {
-                    ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
-                    ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
+                    ActivateCharacter(matchingChar);
                 }
             }
+        }
+
+        private void ActivateCharacter(CharacterSheet matchingChar)
+        {
+            ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
+            ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
+            BoardsZoomTo(new List<Guid>() { matchingChar.UniqueCharacterID });
         }
 
 
@@ -584,7 +590,34 @@ namespace XMLCharSheets
         }
 
 
-        
+        private void ActivateNext_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ActivateNextValid();
+        }
+
+        private void ActivateNextValid()
+        {
+            var firstChar = CombatService.RosterViewModel.ActiveRoster.Where(x =>
+                !x.HasMoved &&
+                !x.HasAttacked &&
+                !x.IsIncapacitated).OrderByDescending(x => x.CurInitiative).FirstOrDefault();
+
+            if (firstChar != null && ActiveCharacters_ListBox.Items.Contains(firstChar))
+            {
+                var curChar = ActiveCharacters_ListBox.SelectedItem as CharacterSheet;
+                if (curChar == firstChar)
+                {
+                    curChar.HasAttacked = true;
+                    curChar.HasMoved = true;
+                }
+                ClearSelectedPieces(this, null);
+                ActivateCharacter(firstChar);
+            }
+            else
+            {
+                TextReporter.Report("No valid characters to select.\n");
+            }
+        }
 
     }
 }
