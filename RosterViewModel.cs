@@ -385,10 +385,12 @@ namespace XMLCharSheets
                     targetToDamage[curChar.Target].AddRange(damageResult);
                     TextReporter.Report("\n" + curChar.RollResults + "\n");
                 }
+                var curTargetID = curChar.Target.UniqueCharacterID;
                 if (curChar.HasVisual && curChar.Target.HasVisual)
                 {
-                    VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.DrawAttack(curChar.UniqueCharacterID, curChar.Target.UniqueCharacterID, curChar.Team.TeamColor,
-                                                              new Duration(new TimeSpan(0, 0, 0, 5))));
+                    VisualsService.BoardsViewModel.ForeachBoard(x=> x.VisualsViewModel.DrawAttack(curChar.UniqueCharacterID,
+                curTargetID, curChar.Team.TeamColor,
+                new Duration(new TimeSpan(0, 0, 0, 5))));
                 }
             }
 

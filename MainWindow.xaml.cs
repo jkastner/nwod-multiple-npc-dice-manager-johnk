@@ -129,16 +129,17 @@ namespace XMLCharSheets
                                                                            
                 if (matchingChar != null)
                 {
-                    ActivateCharacter(matchingChar);
+                    ActivateCharacter(matchingChar, false);
                 }
             }
         }
 
-        private void ActivateCharacter(CharacterSheet matchingChar)
+        private void ActivateCharacter(CharacterSheet matchingChar, bool zoomToCharacter)
         {
             ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
             ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
-            BoardsZoomTo(new List<Guid>() { matchingChar.UniqueCharacterID });
+            if(zoomToCharacter)
+                BoardsZoomTo(new List<Guid>() { matchingChar.UniqueCharacterID });
         }
 
 
@@ -611,7 +612,7 @@ namespace XMLCharSheets
                     curChar.HasMoved = true;
                 }
                 ClearSelectedPieces(this, null);
-                ActivateCharacter(firstChar);
+                ActivateCharacter(firstChar, true);
             }
             else
             {
