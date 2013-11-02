@@ -90,8 +90,9 @@ namespace GameBoard
             foreach (Board curBoard in _boards)
             {
                 Board local = curBoard;
-                curBoard.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => action(local)));
+                curBoard.Dispatcher.BeginInvoke(new Action(() => action(local)));
             }
+           
         }
 
         public bool HasAssociatedVisual(Guid characterGuid)

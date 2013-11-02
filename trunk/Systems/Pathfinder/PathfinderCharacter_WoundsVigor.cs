@@ -213,14 +213,14 @@ namespace XMLCharSheets
                 if (VigorDamage > 0)
                 {
                     var vitDmg = new PathfinderDamage(damageDescriptor + " Vigor", VigorDamage);
-                    Target.DoDamage(vitDmg.DamageValue, "Vigor");
+                    DoDamage(vitDmg.DamageValue, "Vigor");
                     finalDamage = vitDmg.DamageValue + " " + vitDmg.DamageDescriptor;
                     damageList.Add(vitDmg);
                 }
                 if (woundDamage > 0)
                 {
                     var wndDmg = new PathfinderDamage(damageDescriptor + " Wounds", woundDamage);
-                    Target.DoDamage(wndDmg.DamageValue, "Wounds");
+                    DoDamage(wndDmg.DamageValue, "Wounds");
                     finalDamage = finalDamage + " " + wndDmg.DamageValue + " " + wndDmg.DamageDescriptor;
                     damageList.Add(wndDmg);
                 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace GameBoard
@@ -54,7 +55,7 @@ namespace GameBoard
 
         public Dispatcher Dispatcher
         {
-            get { return _gameBoardVisual.Dispatcher; }
+            get { return Application.Current.Dispatcher; }
         }
 
 

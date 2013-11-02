@@ -50,12 +50,11 @@ namespace XMLCharSheets
                 var chosenAttack = possibleAttacks.Aggregate((i1, i2) => i1.TraitValue > i2.TraitValue ? i1 : i2);
 
                 _activeChar.SetTarget(validTarget, new List<string>(), chosenAttack.TraitLabel, chosenAttack.DamageType);
-
-                _activeChar.AttackTarget(CombatService.RosterViewModel.RollModifier);
-
+                CombatService.RosterViewModel.RollAttackTarget(new List<CharacterSheet>(){_activeChar});
                 //4 Clean deceased characters.
                 CombatService.RosterViewModel.MarkCharactersAsDeceased();
             }
+            
         }
 
         protected virtual bool MoveToTarget(CharacterSheet target)
