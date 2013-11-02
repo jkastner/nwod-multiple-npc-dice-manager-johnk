@@ -279,7 +279,7 @@ namespace XMLCharSheets
                 HealthTrack.Remove(HealthTrack.Last());
                 if (!IsIncapacitated && HealthTrack.Last().Box > HealthBox.DamageType.Bashing)
                 {
-                    SetIncapacitated(true);
+                    CheckForUnconsciousness(HealthTrack.Last().Box);
                 }
                 if (!IsIncapacitated && HealthTrack.Last().Box == HealthBox.DamageType.Bashing &&
                     !_checkedAgainstUnconsciousness)
@@ -300,6 +300,14 @@ namespace XMLCharSheets
                 secondToLastBox.Box = HealthBox.DamageType.Empty;
                 HealthTrack.Remove(lastBox);
                 AddDamageBox(spilloverDamage);
+            }
+        }
+
+        protected virtual void CheckForUnconsciousness(HealthBox.DamageType damageType)
+        {
+            if (damageType > HealthBox.DamageType.Bashing)
+            {
+                SetIncapacitated(true);
             }
         }
 

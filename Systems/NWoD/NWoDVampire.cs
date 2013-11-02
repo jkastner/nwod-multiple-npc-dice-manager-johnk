@@ -93,6 +93,14 @@ namespace XMLCharSheets
             }
         }
 
+        protected override void CheckForUnconsciousness(HealthBox.DamageType damageType)
+        {
+            if (damageType > HealthBox.DamageType.Lethal)
+            {
+                SetIncapacitated(true);
+            }
+        }
+
         internal override List<Damage> AttackTarget(int modifier)
         {
             var ChosenAttackTrait = FindNumericTrait(ChosenAttack) as AttackTrait;

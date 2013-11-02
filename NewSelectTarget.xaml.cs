@@ -284,6 +284,21 @@ namespace XMLCharSheets
             }
         }
 
+        private void MainAttacks_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                var curAttack = e.AddedItems[0] as AttackTrait;
+                if (curAttack != null)
+                {
+                    if(DamageType_ListBox.Items.Contains(curAttack.DamageType))
+                    {
+                        DamageType_ListBox.SelectedItem = curAttack.DamageType;
+                    }
+                }
+            }
+        }
+
 
 
 
