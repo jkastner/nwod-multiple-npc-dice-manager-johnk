@@ -126,6 +126,7 @@
 
         <ListBox Grid.Row="3" Grid.Column="2" x:Name="MainAttacks_ListBox" SelectionMode="Extended"
                  ItemTemplate="{StaticResource TraitTemplate_ListboxItem}"
+                 SelectionChanged="MainAttacks_ListBox_SelectionChanged"
                  ItemContainerStyle="{StaticResource ListBoxItem_Style}"
                  >
         </ListBox>
