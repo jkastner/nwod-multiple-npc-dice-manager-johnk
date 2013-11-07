@@ -100,6 +100,9 @@
     <Compile Include="Systems\NWoD\NWoDDicePool.cs" />
     <Compile Include="Systems\NWoD\INWoDTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDVampire.cs" />
+    <Compile Include="Systems\Pathfinder\AoEControl.xaml.cs">
+      <DependentUpon>AoEControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Systems\Pathfinder\PathfinderCharacter_HP.cs" />
     <Compile Include="Systems\Pathfinder\PathfinderCharacter_WoundsVigor.cs" />
     <Compile Include="Systems\Pathfinder\PathfinderControl.xaml.cs">
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Systems\NWoD\NWoDControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Systems\Pathfinder\AoEControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,57 @@
+﻿<Window x:Class="XMLCharSheets.AoEControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <StackPanel>
+        <DockPanel Height="50" Margin="5,5,5,5">
+            <Label FontSize="14">DC:</Label>
+            <TextBox Name="DC_TextBox" BorderBrush="Black" BorderThickness="1">17</TextBox>
+        </DockPanel>
+        <DockPanel Margin="5,5,5,5">
+            <RadioButton Margin="5,5,5,5" Name="DamageGroup_RadioButton" GroupName="AoEType_Group" IsChecked="True" Checked="DamageGroup_RadioButton_Checked">Damage</RadioButton>
+            <RadioButton Margin="5,5,5,5" Name="StatusGroup_RadioButton"  GroupName="AoEType_Group" Checked="StatusGroup_RadioButton_Checked">Status</RadioButton>
+        </DockPanel>
+        <DockPanel>
+            <RadioButton Name="Fort_RadioButton" GroupName="SaveTypeGroup">Fortitude</RadioButton>
+            <RadioButton Name="Ref_RadioButton" GroupName="SaveTypeGroup" IsChecked="True">Reflex</RadioButton>
+            <RadioButton Name="Will_RadioButton" GroupName="SaveTypeGroup">Will</RadioButton>
+        </DockPanel>
+        <DockPanel>
+            <StackPanel Name="Damage_StackPanel">
+                <Label>Damage on failing</Label>
+                <RadioButton Name="FullDamageOnFail"  GroupName="DamageOnFail" IsChecked="True">Full</RadioButton>
+                <RadioButton Name="HalfDamageOnFail_RadioButton" GroupName="DamageOnFail">Half</RadioButton>
+                <Label>Damage on succeeding</Label>
+                
+                <RadioButton Name="HalfDamageOnSuccess_RadioButton" GroupName="DamageOnSuccess" IsChecked="True">Half</RadioButton>
+                <RadioButton Name="NoDamageOnSuccess_RadioButton" GroupName="DamageOnSuccess">None</RadioButton>
+                
+
+                <DockPanel Grid.Row="2" Grid.Column="0"  Height="50" Margin="5,5,5,5">
+                    <Label FontSize="14">Damage:</Label>
+                    <TextBox Name="Damage_TextBox"></TextBox>
+                </DockPanel>
+            </StackPanel>
+            <StackPanel Name="StatusEffect_StackPanel">
+                <Label>
+                    Status Descriptor
+                </Label>
+                <TextBox Margin="5,5,5,5" BorderBrush="Black" BorderThickness="1" Name="StatusDescription"/>
+                <Label>
+                    Status Duration (Rounds)
+                </Label>
+                <TextBox Margin="5,5,5,5" BorderBrush="Black" BorderThickness="1" Name="StatusDuration" Text="2">
+                </TextBox>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Margin="5,5,5,5" >
+            <Button FontSize="16" Height="Auto" Width="88" Click="OK_Button_Click">OK</Button>
+            <Button FontSize="16"  Height="Auto" Width="88" Click="Cancel_Click">Cancel</Button>
+        </DockPanel>
+    </StackPanel>
+</Window>
+
+    

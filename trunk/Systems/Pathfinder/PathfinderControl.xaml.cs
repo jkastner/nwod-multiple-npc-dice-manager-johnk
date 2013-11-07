@@ -24,18 +24,18 @@ namespace XMLCharSheets
 
         private void WillSave_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RollCharacters(ActiveList(), new List<String> {"Will"});
+            _viewModel.RollCharacters(ActiveList(), new List<String> { "Will" });
         }
 
 
         private void ReflexSave_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RollCharacters(ActiveList(), new List<String> {"Reflex"});
+            _viewModel.RollCharacters(ActiveList(), new List<String> { "Reflex" });
         }
 
         private void FortitudeSave_Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.RollCharacters(ActiveList(), new List<String> {"Fortitude"});
+            _viewModel.RollCharacters(ActiveList(), new List<String> { "Fortitude" });
         }
 
         protected IList ActiveList()
@@ -47,7 +47,7 @@ namespace XMLCharSheets
 
         private void DoDamage()
         {
-            int sliderValue = -(int) DamageSlider.Value;
+            int sliderValue = -(int)DamageSlider.Value;
             _viewModel.DoDamage(ActiveList(), sliderValue, DamageDescriptor_TextBox.Text);
         }
 
@@ -74,7 +74,7 @@ namespace XMLCharSheets
             if (e.Key == Key.Enter)
             {
                 var createdPool = PathfinderDicePool.ParseString(RollDice_TextBox.Text);
-                if(createdPool==null)
+                if (createdPool == null)
                 {
                     RollDice_TextBox.Background = new SolidColorBrush(Colors.Red);
                     RollDice_TextBox.ToolTip = "Format must be as in \"quantity d dieType + modifier\" format - '1d8+2'";
@@ -82,8 +82,8 @@ namespace XMLCharSheets
                 }
                 ResetRollDiceTextBoxError();
                 createdPool.Roll();
-                DamageValue_TextBox.Text = "-"+createdPool.TotalValue;
-                TextReporter.Report("\n"+createdPool.PoolDescription + ": " + createdPool.ResultDescription+"\n");
+                DamageValue_TextBox.Text = "-" + createdPool.TotalValue;
+                TextReporter.Report("\n" + createdPool.PoolDescription + ": " + createdPool.ResultDescription + "\n");
             }
             else
             {
@@ -96,5 +96,86 @@ namespace XMLCharSheets
             RollDice_TextBox.Background = new SolidColorBrush(Colors.White);
             RollDice_TextBox.ToolTip = "";
         }
+
+        private void AreaOfEffect_Button_Click(object sender, RoutedEventArgs e)
+        {
+            AoEControl w = new AoEControl();
+            w.ShowDialog();
+            if (w.WasCancel)
+            {
+                return;
+            }
+            List<PathfinderCharacter> _chosenCharacters = new List<PathfinderCharacter>();
+            foreach (var cur in ActiveList())
+            {
+                _chosenCharacters.Add(cur as PathfinderCharacter);
+            }
+            var chosenSave = w.ChosenSave;
+            int dc, originalDamage;
+            bool validDamage = true;
+            double modOnSuccess = w.ModOnSuccess;
+            double modOnFail = w.ModOnFail;
+            validDamage &= int.TryParse(w.DC_TextBox.Text, out dc);
+            validDamage &= int.TryParse(w.Damage_TextBox.Text, out originalDamage);
+            int durationRounds = 0;
+            String desc = w.StatusDescription.Text;
+            String duration = w.StatusDuration.Text;
+            bool validStatus = int.TryParse(duration, out durationRounds);
+
+            if (validDamage)
+            {
+                foreach (var cur in _chosenCharacters)
+                {
+                    double damageDouble = originalDamage;
+                    var curTrait = cur.FindNumericTrait(chosenSave);
+                    PathfinderDicePool savePool = new PathfinderDicePool(1, 20, curTrait.TraitValue);
+                    savePool.Roll();
+                    if (!validDamage && !w.WasStatusEffect)
+                    {
+                        continue;
+                    }
+                    if (!validStatus && w.WasStatusEffect)
+                    {
+                        continue;
+                    }
+                    TextReporter.Report(cur.Name + " rolled " + chosenSave + ": " + savePool.TotalValue + " VS DC: " + dc);
+                    bool madeSave = savePool.TotalValue >= dc;
+                    if (madeSave)
+                    {
+                        TextReporter.Report("--Success--", Brushes.Green);
+                    }
+                    else
+                    {
+                        TextReporter.Report("--Failure--", Brushes.Red);
+                    }
+                    if (w.WasStatusEffect && !madeSave)
+                    {
+                        cur.AssignStatus(desc, durationRounds);
+                    }
+                    else
+                    {
+
+                        int damageInt;
+                        if (madeSave)
+                        {
+                            damageDouble = Math.Floor(damageDouble * modOnSuccess);
+                            damageInt = (int)(damageDouble);
+                            TextReporter.Report(damageInt+" damage.");
+
+                        }
+                        else
+                        {
+                            damageDouble = Math.Floor(damageDouble * modOnFail);
+                            damageInt = (int)(damageDouble);
+                            TextReporter.Report(damageInt + " damage.");
+                        }
+                        cur.DoDamage(damageInt, "Area Damage");
+                    }
+                    TextReporter.Report("\n");
+
+                }
+            }
+        }
+
     }
 }

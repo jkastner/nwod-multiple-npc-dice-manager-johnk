@@ -25,6 +25,7 @@
             </Path>
 
         </Button>
+        <Button Width="28" Height="40" Margin="0,0,0,0" Click="AreaOfEffect_Button_Click" >AoE</Button>
         <DockPanel>
             <Slider IsSnapToTickEnabled="True" TickFrequency="1" Margin="5,5,5,5" Width="80" Value="0" Minimum="-150"
                     Maximum="150" Name="DamageSlider" VerticalAlignment="Center">
