@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Retriever</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="HP" value="137" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="10" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="36" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="4 claws" IsAttack="True" AttackBonus="+19" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Derhii</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="59" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="13" />
+    <trait label="CMD" value="26" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="mwk falchion" IsAttack="True" AttackBonus="+12/+7" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" />
+    <trait label="javelin" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

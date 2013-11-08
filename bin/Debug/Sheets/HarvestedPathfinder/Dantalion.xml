@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dantalion</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="40" />
+    <trait label="Touch" value="25" />
+    <trait label="Flat-footed" value="32" />
+    <trait label="Vigor" value="126" />
+    <trait label="Constitution" value="31" />
+    <trait label="HP" value="356" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="19" />
+    <trait label="Will" value="19" />
+    <trait label="Reflex" value="17" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="35" />
+    <trait label="CMB" value="34" />
+    <trait label="CMD" value="52" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+4 unholy heavy mace" IsAttack="True" AttackBonus="+37/+32/+27/+22" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+14 and tail sting +32" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

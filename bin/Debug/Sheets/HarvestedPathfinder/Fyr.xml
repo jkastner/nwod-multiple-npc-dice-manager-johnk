@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Fyr</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="7" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="9" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Spell Resistance" value="15" />
+    <trait label="CMB" value="1" />
+    <trait label="CMD" value="12" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="butt" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1 or longsword +4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

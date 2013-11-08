@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Efreeti</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="95" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="9" />
+    <trait label="Reflex" value="10" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="CMB" value="17" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6 plus 1d6 fire) or mwk falchion +16" Descriptor="Generic Damage" Triggers="1d6 fire or mwk falchion +16/+11 (2d6+9/18-20" />
+  </traits>
+</CharacterSheet>

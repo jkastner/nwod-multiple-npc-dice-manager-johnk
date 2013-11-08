@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Crystal Ooze</Name>
+  <CharacterType>ooze</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-5" />
+    <trait label="Armor Class" value="5" />
+    <trait label="Touch" value="5" />
+    <trait label="Flat-footed" value="5" />
+    <trait label="Vigor" value="25" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="65" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="-4" />
+    <trait label="Reflex" value="-4" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Ooze Traits" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="slam" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="paralysis" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,24 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>Hill Giant</Name>
+	<CharacterType>Large Humanoid</CharacterType>
+	<traits>
+	<trait label='Initiative' value='-1'/>
+	<trait label='Armor Class' value='21'/>
+	<trait label='Touch' value='8'/>
+	<trait label='Flat-footed' value='21'/>
+	<trait label='Vigor' value='80'/>
+	<trait label='Constitution' value='19'/>
+	<trait label='Fortitude' value='11'/>
+	<trait label='Reflex' value='2'/>
+	<trait label='Will' value='3'/>
+	<trait label='Speed' value='40'/>
+	<trait label='Height' value='15'/>
+	<trait label='Greatclub' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='14/9'  Damage='2d8+10' Descriptor='Bludgeoning' />
+	<trait label='Slam'  AttackBonus='13/13' CritRange='20' TargetDefense='Armor Class' Damage='1d8+7' Descriptor='Bashing'/>
+	<trait label='Rock' TargetDefense='Armor Class' AttackBonus='6' CritRange='20' Damage='1d8+10' Descriptor='Bashing' />
+	
+	</traits>
+</CharacterSheet>
+
+

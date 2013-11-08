@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mawler</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="39" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="16" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="3" />
+    <trait label="bite" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

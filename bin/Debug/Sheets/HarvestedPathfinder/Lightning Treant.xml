@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Lightning Treant</Name>
+  <CharacterType>plant</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="22" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="24" />
+    <trait label="HP" value="138" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="3" />
+    <trait label="Damage Resistance" Descriptor="slashing" value="slashing" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Plant Traits" />
+    <trait label="CMB" value="20" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="2 slam" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

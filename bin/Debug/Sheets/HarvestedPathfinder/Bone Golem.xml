@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Bone Golem</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="19" />
+    <trait label="HP" value="90" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="5" />
+    <trait label="Damage Resistance" Descriptor="adamantine and bludgeoning" value="adamantine and bludgeoning" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

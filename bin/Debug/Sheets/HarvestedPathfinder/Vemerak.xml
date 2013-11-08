@@ -1,0 +1,32 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Vemerak</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="93" />
+    <trait label="Constitution" value="23" />
+    <trait label="HP" value="195" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="13" />
+    <trait label="Reflex" value="8" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Mind-Affecting" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="25" />
+    <trait label="CMB" value="25" />
+    <trait label="CMD" value="38" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="sonic" value="20" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+22" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+11" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+22" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+11" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="3 tentacles" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+5" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

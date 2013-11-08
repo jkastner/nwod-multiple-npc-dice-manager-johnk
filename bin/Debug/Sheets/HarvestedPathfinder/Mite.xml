@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mite</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="12" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="3" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="3" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="3" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="CMB" value="-2" />
+    <trait label="CMD" value="9" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="4" />
+    <trait label="dagger" IsAttack="True" AttackBonus="+2" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2-1" Descriptor="Generic Damage" />
+    <trait label="dart" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

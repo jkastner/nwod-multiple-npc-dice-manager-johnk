@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Moloch</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="46" />
+    <trait label="Touch" value="30" />
+    <trait label="Flat-footed" value="39" />
+    <trait label="Vigor" value="187" />
+    <trait label="Constitution" value="32" />
+    <trait label="HP" value="561" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="24" />
+    <trait label="Will" value="29" />
+    <trait label="Reflex" value="28" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="37" />
+    <trait label="CMB" value="47" />
+    <trait label="CMD" value="78" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+4 unholy shocking six-tailed whip" IsAttack="True" AttackBonus="+50/+45/+40/+35" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+22" Descriptor="Generic Damage" Triggers="1d6 electricity" />
+    <trait label="bite" IsAttack="True" AttackBonus="+40" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+6 or 2 claws +45" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="bite" IsAttack="True" AttackBonus="+45" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

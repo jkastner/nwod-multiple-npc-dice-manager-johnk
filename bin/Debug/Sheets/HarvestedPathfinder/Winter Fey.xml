@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Winter Fey</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="22" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="28" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="68" />
+    <trait label="Regeneration" value="3" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="Medium scythe" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="4" TargetDefense="Armor Class" Damage="1d6+11" Descriptor="Generic Damage" Triggers="1d6 cold" />
+    <trait label="kick" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+7 plus 1d6 cold or 2 claws +10" Descriptor="Generic Damage" Triggers="1d6 cold" />
+  </traits>
+</CharacterSheet>

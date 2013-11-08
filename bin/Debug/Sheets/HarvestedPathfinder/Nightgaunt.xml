@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nightgaunt</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="37" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="8" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Gaze Weapons" />
+    <trait label="Immunity" Descriptor="Inhaled Toxins" />
+    <trait label="Immunity" Descriptor="Scent-Based Attacks" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

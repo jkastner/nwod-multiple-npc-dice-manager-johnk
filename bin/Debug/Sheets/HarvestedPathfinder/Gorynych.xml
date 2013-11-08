@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Gorynych</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="22" />
+    <trait label="HP" value="212" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="15" />
+    <trait label="Reflex" value="14" />
+    <trait label="Damage Resistance" Descriptor="lawful" value="lawful" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="27" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="15" />
+    <trait label="3 bites" IsAttack="True" AttackBonus="+24" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+8" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

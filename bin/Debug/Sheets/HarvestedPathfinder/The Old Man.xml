@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>The Old Man</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="10" />
+    <trait label="Armor Class" value="37" />
+    <trait label="Touch" value="35" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="93" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="178" />
+    <trait label="Regeneration" value="15" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="20" />
+    <trait label="Reflex" value="20" />
+    <trait label="Damage Resistance" Descriptor="chaotic" value="chaotic" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="27" />
+    <trait label="CMD" value="57" />
+    <trait label="Speed" value="80" />
+    <trait label="Resist" Descriptor="acid" value="30" />
+    <trait label="Resist" Descriptor="cold" value="30" />
+    <trait label="Resist" Descriptor="electricity" value="30" />
+    <trait label="Resist" Descriptor="fire" value="30" />
+    <trait label="Resist" Descriptor="sonic" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="unarmed strike" IsAttack="True" AttackBonus="+22/+17/+12/+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+5) or flurry of blows +20" Descriptor="Generic Damage" />
+    <trait label="pebble" IsAttack="True" AttackBonus="+27/+22/+17/+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3+5" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

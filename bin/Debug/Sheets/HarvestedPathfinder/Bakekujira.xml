@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Bakekujira</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="32" />
+    <trait label="Touch" value="2" />
+    <trait label="Flat-footed" value="32" />
+    <trait label="HP" value="262" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="bludgeoning" value="bludgeoning" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="42" />
+    <trait label="CMD" value="52" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="35" />
+    <trait label="bite" IsAttack="True" AttackBonus="+27" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d6+16" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+21" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

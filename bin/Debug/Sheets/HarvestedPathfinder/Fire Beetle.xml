@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Fire Beetle</Name>
+  <CharacterType>vermin</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="12" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="4" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="4" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="0" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="9" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="bite" IsAttack="True" AttackBonus="+1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Fuath</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="6" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="7" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="3" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Spell Resistance" value="12" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="7" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="3" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-2" Descriptor="Generic Damage" />
+    <trait label="dart" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2-2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Thunder Beast</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="39" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="69" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+15" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

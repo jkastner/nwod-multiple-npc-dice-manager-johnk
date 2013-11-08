@@ -1,0 +1,23 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>Giant Scorpion</Name>
+	<CharacterType>Insectoid</CharacterType>
+	<traits>
+	<trait label='Initiative' value='0'/>
+	<trait label='Armor Class' value='16'/>
+	<trait label='Touch' value='9'/>
+	<trait label='Flat-footed' value='16'/>
+	<trait label='Vigor' value='40'/>
+	<trait label='Constitution' value='16'/>
+	<trait label='Fortitude' value='7'/>
+	<trait label='Reflex' value='1'/>
+	<trait label='Will' value='1'/>
+	<trait label='Speed' value='50'/>
+	<trait label='Claw1' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
+	<trait label='Claw2' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
+	<trait label='Sting' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='1d6+4' Descriptor='Piercing' />
+	<trait label='Height' value='10'/>
+	</traits>
+</CharacterSheet>
+
+

@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Phoenix</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="210" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="17" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="19" />
+    <trait label="Damage Resistance" Descriptor="evil" value="evil" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="32" />
+    <trait label="CMD" value="50" />
+    <trait label="Speed" value="90" />
+    <trait label="Height" value="20" />
+    <trait label="2 talons" IsAttack="True" AttackBonus="+24" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" Triggers="1d6 fire" />
+  </traits>
+</CharacterSheet>

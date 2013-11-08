@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Bone Crawler</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="11" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="10" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="114" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="9" />
+    <trait label="Spell Resistance" value="23" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="15" />
+    <trait label="up to 12 bone blades" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

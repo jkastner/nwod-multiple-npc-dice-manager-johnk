@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ettin</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="45" />
+    <trait label="Constitution" value="15" />
+    <trait label="HP" value="65" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="2" />
+    <trait label="CMB" value="14" />
+    <trait label="CMD" value="23" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="2 flails" IsAttack="True" AttackBonus="+12/+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+    <trait label="2 javelins" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

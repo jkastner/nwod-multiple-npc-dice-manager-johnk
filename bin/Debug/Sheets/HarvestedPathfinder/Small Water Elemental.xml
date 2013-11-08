@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Small Water Elemental</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="11" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="13" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="3" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="13" />
+    <trait label="Speed" value="90" />
+    <trait label="Height" value="4" />
+    <trait label="slam" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

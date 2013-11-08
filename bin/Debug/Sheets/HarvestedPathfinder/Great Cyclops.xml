@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Great Cyclops</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="26" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="76" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="195" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="27" />
+    <trait label="CMD" value="38" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="15" />
+    <trait label="mwk greatclub" IsAttack="True" AttackBonus="+24/+19/+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+19" Descriptor="Generic Damage" />
+    <trait label="gore" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6 or gore +23" Descriptor="Generic Damage" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" />
+    <trait label="rock" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+19" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

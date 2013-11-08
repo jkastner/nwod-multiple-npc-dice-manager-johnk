@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Veranallia</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="36" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="28" />
+    <trait label="Vigor" value="156" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="324" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="22" />
+    <trait label="Reflex" value="16" />
+    <trait label="Damage Resistance" Descriptor="cold iron and evil" value="cold iron and evil" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="34" />
+    <trait label="CMD" value="52" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+3 icy burst sickle" IsAttack="True" AttackBonus="+35/+30/+25/+20" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+12" Descriptor="Generic Damage" Triggers="1d6 cold" />
+    <trait label="4 vines" IsAttack="True" AttackBonus="+27" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

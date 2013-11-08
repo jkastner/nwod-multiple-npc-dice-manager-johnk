@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dust Digger</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="27" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="1" />
+    <trait label="CMB" value="7" />
+    <trait label="CMD" value="17" />
+    <trait label="Speed" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="5 tentacles" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" Triggers="grab and bite +8 (2d6+3" />
+  </traits>
+</CharacterSheet>

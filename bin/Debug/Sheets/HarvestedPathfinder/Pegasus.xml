@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Pegasus</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="34" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="21" />
+    <trait label="Speed" value="120" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3+4" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

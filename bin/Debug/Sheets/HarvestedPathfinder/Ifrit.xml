@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ifrit</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="10" />
+    <trait label="Vigor" value="7" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="8" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="3" />
+    <trait label="CMB" value="0" />
+    <trait label="CMD" value="13" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="fire" value="5" />
+    <trait label="Height" value="5" />
+    <trait label="scimitar" IsAttack="True" AttackBonus="+0" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

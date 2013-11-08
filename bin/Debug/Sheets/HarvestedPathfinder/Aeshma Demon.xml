@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Aeshma Demon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="21" />
+    <trait label="Vigor" value="77" />
+    <trait label="Constitution" value="27" />
+    <trait label="HP" value="189" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="13" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="22" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="35" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+1 wounding spear" IsAttack="True" AttackBonus="+21/+16/+11" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="2d6+10" Descriptor="Generic Damage" Triggers="1 bleed or 2 claws +19 (1d6+6" />
+    <trait label="+1 wounding spear" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" Triggers="1 bleed" />
+  </traits>
+</CharacterSheet>

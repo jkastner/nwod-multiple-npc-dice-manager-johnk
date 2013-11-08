@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Behemoth Hippopotamus</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="23" />
+    <trait label="Vigor" value="63" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="133" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="30" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+17" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d8+13" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

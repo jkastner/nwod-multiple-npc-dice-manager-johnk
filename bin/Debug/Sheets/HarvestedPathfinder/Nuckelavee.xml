@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nuckelavee</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="22" />
+    <trait label="HP" value="104" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="16" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="10" />
+    <trait label="mwk longsword" IsAttack="True" AttackBonus="+10" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2 or 2 claws +9" Descriptor="Generic Damage" Triggers="disease" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Shrroth Demon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="23" />
+    <trait label="Vigor" value="66" />
+    <trait label="Constitution" value="27" />
+    <trait label="HP" value="162" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="23" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="37" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="trident" IsAttack="True" AttackBonus="+19/+12/+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+9 or 2 claws +19" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+9" Descriptor="Generic Damage" />
+    <trait label="6 tentacles" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

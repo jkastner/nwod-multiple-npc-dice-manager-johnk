@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>The Oinodaemon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="16" />
+    <trait label="Armor Class" value="60" />
+    <trait label="Touch" value="40" />
+    <trait label="Flat-footed" value="48" />
+    <trait label="Vigor" value="318" />
+    <trait label="Constitution" value="33" />
+    <trait label="HP" value="857" />
+    <trait label="Fortitude" value="39" />
+    <trait label="Will" value="27" />
+    <trait label="Reflex" value="40" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="48" />
+    <trait label="CMB" value="62" />
+    <trait label="CMD" value="84" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+61" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" Triggers="disease" />
+  </traits>
+</CharacterSheet>

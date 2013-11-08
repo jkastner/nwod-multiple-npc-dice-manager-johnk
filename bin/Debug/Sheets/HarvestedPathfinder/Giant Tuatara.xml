@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Tuatara</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="42" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

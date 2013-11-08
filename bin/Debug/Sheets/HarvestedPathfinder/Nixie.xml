@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nixie</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="7" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="9" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Spell Resistance" value="12" />
+    <trait label="CMB" value="-2" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="short sword" IsAttack="True" AttackBonus="+5" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4-2" Descriptor="Generic Damage" />
+    <trait label="light crossbow" IsAttack="True" AttackBonus="+5" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

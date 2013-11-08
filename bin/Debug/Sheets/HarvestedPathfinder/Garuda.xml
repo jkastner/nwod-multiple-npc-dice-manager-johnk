@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Garuda</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="60" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="115" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="9" />
+    <trait label="Reflex" value="12" />
+    <trait label="Damage Resistance" Descriptor="evil or magic" value="evil or magic" />
+    <trait label="Spell Resistance" value="21" />
+    <trait label="CMB" value="14" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="80" />
+    <trait label="Height" value="5" />
+    <trait label="bite" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+3" Descriptor="Generic Damage" />
+    <trait label="2 talons" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+3" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+    <trait label="+1 shock longbow" IsAttack="True" AttackBonus="+17/+12/+7" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" Triggers="1d6 electricity" />
+  </traits>
+</CharacterSheet>

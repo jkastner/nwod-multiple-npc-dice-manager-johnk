@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Avoral</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="94" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="12" />
+    <trait label="Damage Resistance" Descriptor="evil or silver" value="evil or silver" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Spell Resistance" value="20" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="90" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="sonic" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+3" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

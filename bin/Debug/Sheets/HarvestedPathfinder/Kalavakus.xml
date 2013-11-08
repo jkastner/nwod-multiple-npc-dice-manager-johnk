@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Kalavakus</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="24" />
+    <trait label="HP" value="125" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="8" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="21" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="27" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="bite" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+6" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" />
+    <trait label="gore" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

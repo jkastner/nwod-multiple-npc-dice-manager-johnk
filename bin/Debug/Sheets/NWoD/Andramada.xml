@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Vampire</CharacterType>
-	<name>Andramada</name>
+	<Name>Andramada</Name>
 	<traits>
 	<trait label='Claws and Vigor' value='12' TargetDefense='Melee Defense' DamageType='Aggrivated'/>
 	<trait label='Fists and Vigor' value='11' TargetDefense='Melee Defense' DamageType='Bashing'/>

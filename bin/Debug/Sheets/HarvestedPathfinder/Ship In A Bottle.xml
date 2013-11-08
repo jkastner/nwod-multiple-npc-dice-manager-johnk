@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ship In A Bottle</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="HP" value="19" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="3" />
+    <trait label="Damage Resistance" Descriptor="bludgeoning" value="bludgeoning" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="3" />
+    <trait label="ram" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3" Descriptor="Generic Damage" />
+    <trait label="ballista" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

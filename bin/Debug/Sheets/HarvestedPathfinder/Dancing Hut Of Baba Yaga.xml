@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dancing Hut Of Baba Yaga</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="34" />
+    <trait label="Touch" value="20" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="HP" value="188" />
+    <trait label="Regeneration" value="20" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="17" />
+    <trait label="Reflex" value="21" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Gaze Attacks" />
+    <trait label="Immunity" Descriptor="Visual Effects And Illusions" />
+    <trait label="Immunity" Descriptor="Sight-Based Attacks" />
+    <trait label="Spell Resistance" value="28" />
+    <trait label="CMB" value="42" />
+    <trait label="CMD" value="64" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="15" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+38" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="slam" IsAttack="True" AttackBonus="+38" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+13" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

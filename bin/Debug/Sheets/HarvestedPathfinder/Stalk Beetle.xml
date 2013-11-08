@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Stalk Beetle</Name>
+  <CharacterType>vermin</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="2" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="17" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="bite" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

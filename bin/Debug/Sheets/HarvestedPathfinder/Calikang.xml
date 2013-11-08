@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Calikang</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="27" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="82" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="157" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="11" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Immunity" Descriptor="Negative Energy" />
+    <trait label="Spell Resistance" value="23" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="35" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="+1 longsword" IsAttack="True" AttackBonus="+18/+13/+8" CritRange="17" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" />
+    <trait label="+1 longsword" IsAttack="True" AttackBonus="+18" CritRange="17" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" />
+    <trait label="4 slams" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

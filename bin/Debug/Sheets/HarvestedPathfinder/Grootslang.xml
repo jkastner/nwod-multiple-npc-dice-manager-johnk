@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Grootslang</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="31" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="115" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="283" />
+    <trait label="Fortitude" value="20" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="16" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Spell Resistance" value="27" />
+    <trait label="CMB" value="38" />
+    <trait label="CMD" value="53" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+30" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d8+13" Descriptor="Generic Damage" />
+    <trait label="2 stomps" IsAttack="True" AttackBonus="+25" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+25" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

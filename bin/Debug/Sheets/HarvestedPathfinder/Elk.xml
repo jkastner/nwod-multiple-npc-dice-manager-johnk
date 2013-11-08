@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Elk</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="10" />
+    <trait label="Vigor" value="9" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="15" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="16" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="5" />
+    <trait label="gore" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="-2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

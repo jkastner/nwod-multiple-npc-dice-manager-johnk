@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Larva Helix Moth</Name>
+  <CharacterType>vermin</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="45" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="55" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="3" />
+    <trait label="Immunity" Descriptor="Vermin Traits" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="21" />
+    <trait label="Speed" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+3" Descriptor="Generic Damage" Triggers="1d6 acid" />
+  </traits>
+</CharacterSheet>

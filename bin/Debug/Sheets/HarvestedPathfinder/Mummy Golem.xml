@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mummy Golem</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="HP" value="64" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="2" />
+    <trait label="Damage Resistance" Descriptor="magic and slashing or piercing" value="magic and slashing or piercing" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="13" />
+    <trait label="CMD" value="23" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="5" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+13" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

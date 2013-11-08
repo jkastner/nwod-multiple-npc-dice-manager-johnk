@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Cadaver</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="HP" value="16" />
+    <trait label="Regeneration" value="0" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="1" />
+    <trait label="Damage Resistance" Descriptor="bludgeoning" value="bludgeoning" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="2" />
+    <trait label="CMD" value="13" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1 plus disease and bite +2" Descriptor="Generic Damage" Triggers="disease" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Viper Vine</Name>
+  <CharacterType>plant</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="27" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="190" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="12" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Plant Traits" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+23" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" Triggers="3d6 acid" />
+    <trait label="4 tentacles" IsAttack="True" AttackBonus="+21" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

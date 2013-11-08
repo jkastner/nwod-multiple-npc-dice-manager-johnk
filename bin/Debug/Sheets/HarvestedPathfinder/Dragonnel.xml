@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dragonnel</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="44" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="76" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="26" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

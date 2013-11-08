@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Vulchling</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="5" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="4" />
+    <trait label="CMB" value="1" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="5" />
+    <trait label="bite" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

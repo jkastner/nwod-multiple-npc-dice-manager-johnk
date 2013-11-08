@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Agathion</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="38" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="8" />
+    <trait label="Damage Resistance" Descriptor="evil or silver" value="evil or silver" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Spell Resistance" value="15" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="sonic" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d10+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

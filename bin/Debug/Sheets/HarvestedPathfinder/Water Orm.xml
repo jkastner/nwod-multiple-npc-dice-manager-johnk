@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Water Orm</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="21" />
+    <trait label="Vigor" value="71" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="136" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="13" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="36" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="fire" value="20" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+19" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+8" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

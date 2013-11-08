@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Vegepygmy</Name>
+  <CharacterType>plant</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="4" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="2" />
+    <trait label="Damage Resistance" Descriptor="slashing or bludgeoning" value="slashing or bludgeoning" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4 or longspear +1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

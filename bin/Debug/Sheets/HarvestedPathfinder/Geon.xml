@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Geon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="22" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="44" />
+    <trait label="Constitution" value="22" />
+    <trait label="HP" value="92" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="1" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="Spell Resistance" value="20" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="20" />
+    <trait label="Resist" Descriptor="fire" value="5" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

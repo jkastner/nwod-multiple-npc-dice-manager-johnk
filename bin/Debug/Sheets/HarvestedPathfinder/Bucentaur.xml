@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Bucentaur</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="44" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="68" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="14" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="greataxe" IsAttack="True" AttackBonus="+12/+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+7" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+5" Descriptor="Generic Damage" />
+    <trait label="gore" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+5" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

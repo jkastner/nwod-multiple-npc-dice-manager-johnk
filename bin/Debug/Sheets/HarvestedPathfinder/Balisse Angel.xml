@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Balisse Angel</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="95" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="7" />
+    <trait label="Damage Resistance" Descriptor="evil" value="evil" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Spell Resistance" value="19" />
+    <trait label="CMB" value="13" />
+    <trait label="CMD" value="26" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="+1 flaming heavy mace" IsAttack="True" AttackBonus="+14/+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

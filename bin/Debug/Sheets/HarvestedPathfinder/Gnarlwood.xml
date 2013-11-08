@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Gnarlwood</Name>
+  <CharacterType>plant</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="Vigor" value="63" />
+    <trait label="Constitution" value="23" />
+    <trait label="HP" value="147" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="slashing and good" value="slashing and good" />
+    <trait label="Immunity" Descriptor="Plant Traits" />
+    <trait label="Spell Resistance" value="22" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="4 claws" IsAttack="True" AttackBonus="+18" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

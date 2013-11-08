@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Shaggy Demodand</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="82" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="157" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="13" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="good and magic" value="good and magic" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="37" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+24" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+9" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+24" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9) or morningstar +24" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+24" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

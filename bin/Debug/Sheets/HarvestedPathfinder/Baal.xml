@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Baal</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="38" />
+    <trait label="Touch" value="19" />
+    <trait label="Flat-footed" value="36" />
+    <trait label="Vigor" value="126" />
+    <trait label="Constitution" value="29" />
+    <trait label="HP" value="333" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="22" />
+    <trait label="Reflex" value="20" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="33" />
+    <trait label="CMB" value="37" />
+    <trait label="CMD" value="62" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+4 unholy morningstar" IsAttack="True" AttackBonus="+40/+35/+30/+25" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+17" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

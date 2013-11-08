@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mezlan</Name>
+  <CharacterType>ooze</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="18" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="76" />
+    <trait label="Constitution" value="24" />
+    <trait label="HP" value="195" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="14" />
+    <trait label="Immunity" Descriptor="Ooze Traits" />
+    <trait label="Spell Resistance" value="25" />
+    <trait label="CMB" value="22" />
+    <trait label="CMD" value="40" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="2 morphic weapons" IsAttack="True" AttackBonus="+22" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" />
+    <trait label="morphic weapon" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

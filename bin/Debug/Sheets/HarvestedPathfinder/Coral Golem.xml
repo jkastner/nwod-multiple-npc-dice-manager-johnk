@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Coral Golem</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="21" />
+    <trait label="HP" value="96" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="20" />
+    <trait label="CMD" value="30" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+18" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" Triggers="bleed" />
+  </traits>
+</CharacterSheet>

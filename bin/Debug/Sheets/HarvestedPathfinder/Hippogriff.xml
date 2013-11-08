@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Hippogriff</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="19" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

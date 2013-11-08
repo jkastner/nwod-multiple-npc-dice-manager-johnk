@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Goat</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="4" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="3" />
+    <trait label="CMB" value="0" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="gore" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

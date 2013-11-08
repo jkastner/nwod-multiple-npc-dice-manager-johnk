@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Shantak</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="60" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="104" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="10" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="34" />
+    <trait label="Speed" value="80" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8 2 talons +17" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

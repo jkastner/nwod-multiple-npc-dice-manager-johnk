@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Jade Colossus</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="34" />
+    <trait label="Touch" value="2" />
+    <trait label="Flat-footed" value="34" />
+    <trait label="HP" value="256" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="CMB" value="59" />
+    <trait label="CMD" value="69" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="35" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+43" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d8+19" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

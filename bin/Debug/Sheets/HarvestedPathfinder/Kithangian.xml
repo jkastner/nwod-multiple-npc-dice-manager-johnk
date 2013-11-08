@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Kithangian</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="60" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="115" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="9" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Fear" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="20" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+16" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+6" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="2 stings" IsAttack="True" AttackBonus="+16" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+6" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

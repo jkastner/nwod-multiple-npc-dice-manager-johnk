@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Owlbear</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="47" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="21" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="bite" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

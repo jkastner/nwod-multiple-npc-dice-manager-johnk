@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Cyclops</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="19" />
+    <trait label="Vigor" value="45" />
+    <trait label="Constitution" value="15" />
+    <trait label="HP" value="65" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="2" />
+    <trait label="CMB" value="13" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="heavy crossbow" IsAttack="True" AttackBonus="+5" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

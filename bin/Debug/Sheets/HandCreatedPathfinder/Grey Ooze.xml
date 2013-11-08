@@ -1,0 +1,22 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>Gray Ooze</Name>
+	<CharacterType>Ooze</CharacterType>
+	<traits>
+	<trait label='Initiative' value='-5'/>
+	<trait label='Armor Class' value='5'/>
+	<trait label='Touch' value='5'/>
+	<trait label='Flat-footed' value='5'/>
+	<trait label='Vigor' value='50'/>
+	<trait label='Constitution' value='40'/>
+	<trait label='Fortitude' value='9'/>
+	<trait label='Reflex' value='-4'/>
+	<trait label='Will' value='-4'/>
+	<trait label='Speed' value='10'/>
+	<trait label='Perception' value='-5'/>
+	<trait label='Height' value='10'/>
+	<trait label='Slime' IsAttack='True' CritRange='20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='6'  Damage='2d6+4' Descriptor='Acid and Crushing' />
+	</traits>
+</CharacterSheet>
+
+

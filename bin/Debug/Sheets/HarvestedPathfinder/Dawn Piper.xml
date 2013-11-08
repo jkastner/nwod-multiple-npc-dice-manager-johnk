@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dawn Piper</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="24" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="45" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="9" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Spell Resistance" value="16" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="mwk rapier" IsAttack="True" AttackBonus="+8" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

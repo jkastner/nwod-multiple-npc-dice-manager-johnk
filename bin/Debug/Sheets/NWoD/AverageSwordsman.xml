@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Human</CharacterType>
-	<name>Average Swordsman</name>
+	<Name>Average Swordsman</Name>
 	<traits>
 	<trait label='Weaponry' value='5' TargetDefense='Melee Defense' DamageType='Lethal'/>
 	<trait label='Brawl' value='3' IsAttack='true' TargetDefense='Melee Defense' DamageType='Bashing'/>

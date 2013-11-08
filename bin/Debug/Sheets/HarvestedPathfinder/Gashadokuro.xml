@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Gashadokuro</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="28" />
+    <trait label="HP" value="180" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="bludgeoning" value="bludgeoning" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="26" />
+    <trait label="CMD" value="36" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+22" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+23" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+10" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

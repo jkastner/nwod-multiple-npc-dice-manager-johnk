@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Slag Worm</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="36" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="34" />
+    <trait label="Vigor" value="156" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="348" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="20" />
+    <trait label="Reflex" value="18" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="43" />
+    <trait label="CMD" value="55" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+36" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d10+22" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

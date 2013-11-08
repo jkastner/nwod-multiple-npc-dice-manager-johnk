@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Eagle</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="26" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="80" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Vepar</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="37" />
+    <trait label="Touch" value="26" />
+    <trait label="Flat-footed" value="29" />
+    <trait label="Vigor" value="121" />
+    <trait label="Constitution" value="33" />
+    <trait label="HP" value="363" />
+    <trait label="Fortitude" value="26" />
+    <trait label="Will" value="15" />
+    <trait label="Reflex" value="21" />
+    <trait label="Damage Resistance" Descriptor="cold iron and good" value="cold iron and good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="32" />
+    <trait label="CMB" value="34" />
+    <trait label="CMD" value="61" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+2 trident" IsAttack="True" AttackBonus="+35/+30/+25/+20" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" Triggers="hypothermic touch" />
+  </traits>
+</CharacterSheet>

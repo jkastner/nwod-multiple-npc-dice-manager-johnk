@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Snallygaster</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="30" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="3" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="5" />
+    <trait label="beak" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+3 plus bleed or 2 claws +6" Descriptor="Generic Damage" Triggers="bleed or 2 claws +6 (1d4+3" />
+    <trait label="tentacles" IsAttack="True" AttackBonus="+1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

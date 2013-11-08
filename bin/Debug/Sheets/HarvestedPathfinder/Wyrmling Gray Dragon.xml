@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Wyrmling Gray Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="19" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="8" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="3" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

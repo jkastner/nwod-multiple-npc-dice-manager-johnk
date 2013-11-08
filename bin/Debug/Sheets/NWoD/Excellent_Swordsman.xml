@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Human</CharacterType>
-	<name>Excellent Swordsman</name>
+	<Name>Excellent Swordsman</Name>
 	<traits>
 	<trait label='Weaponry' value='10' TargetDefense='Melee Defense' DamageType='Lethal'/>
 	<trait label='Brawl' value='6' IsAttack='true' TargetDefense='Melee Defense' DamageType='Bashing'/>
@@ -14,7 +14,7 @@
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='9'/>
 	<trait label='Height' value='5'/>
-	<trait label='Speed' value='30'/>
+	<trait label='Speed' value='11'/>
 	</traits>
 </CharacterSheet>
 

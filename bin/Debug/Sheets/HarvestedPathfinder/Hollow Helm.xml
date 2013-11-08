@@ -1,0 +1,21 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Hollow Helm</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="HP" value="9" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="0" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="3" />
+    <trait label="1 slam" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

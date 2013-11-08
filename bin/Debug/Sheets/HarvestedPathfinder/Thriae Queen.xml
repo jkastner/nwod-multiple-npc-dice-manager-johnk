@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Thriae Queen</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="33" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="33" />
+    <trait label="Vigor" value="137" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="312" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="21" />
+    <trait label="Reflex" value="14" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sonic" />
+    <trait label="Spell Resistance" value="29" />
+    <trait label="CMB" value="36" />
+    <trait label="CMD" value="46" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="acid" value="20" />
+    <trait label="Height" value="15" />
+    <trait label="+2 axiomatic light mace" IsAttack="True" AttackBonus="+35/+30/+25/+20" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+11" Descriptor="Generic Damage" />
+    <trait label="sting" IsAttack="True" AttackBonus="+27" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+4" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mallor Demon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="Vigor" value="77" />
+    <trait label="Constitution" value="30" />
+    <trait label="HP" value="217" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="24" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="40" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+1 anarchic longspear" IsAttack="True" AttackBonus="+22/+17/+12" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

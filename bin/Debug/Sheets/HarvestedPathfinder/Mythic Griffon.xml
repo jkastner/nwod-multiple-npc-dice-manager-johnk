@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mythic Griffon</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="47" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="62" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="epic" value="epic" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="2 talons" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

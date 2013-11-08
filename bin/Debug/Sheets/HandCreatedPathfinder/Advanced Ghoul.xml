@@ -1,0 +1,21 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ghoul</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="HP" value="13" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="2" />
+    <trait label="CMB" value="2" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+	<trait label='Bite' TargetDefense='Armor Class' AttackBonus='6' CritRange='20' Damage='1d6+1' Descriptor='Slashing' />
+	<trait label='2 Claws' TargetDefense='Armor Class' AttackBonus='4/4' CritRange='20' Damage='1d6+1' Descriptor='Slashing' />
+  </traits>
+</CharacterSheet>

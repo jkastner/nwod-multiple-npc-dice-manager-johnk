@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Jubilex</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="43" />
+    <trait label="Touch" value="30" />
+    <trait label="Flat-footed" value="38" />
+    <trait label="Vigor" value="148" />
+    <trait label="Constitution" value="41" />
+    <trait label="HP" value="553" />
+    <trait label="Fortitude" value="32" />
+    <trait label="Will" value="20" />
+    <trait label="Reflex" value="20" />
+    <trait label="Damage Resistance" Descriptor="cold iron and good" value="cold iron and good" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Ooze Traits" />
+    <trait label="Spell Resistance" value="34" />
+    <trait label="CMB" value="43" />
+    <trait label="CMD" value="74" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="slam" IsAttack="True" AttackBonus="+42" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+22" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

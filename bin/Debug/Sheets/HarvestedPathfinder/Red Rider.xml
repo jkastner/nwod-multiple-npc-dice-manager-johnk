@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Red Rider</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="Vigor" value="56" />
+    <trait label="Constitution" value="22" />
+    <trait label="HP" value="152" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="23" />
+    <trait label="CMB" value="15" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="+2 flaming scimitar" IsAttack="True" AttackBonus="+18/+13" CritRange="15" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -16,7 +16,7 @@ namespace XMLCharSheets
             var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
                         select new
                             {
-                                Name = (String) item.Element("name"),
+                                Name = (String) item.Element("Name"),
                                 CharacterType = (String) item.Element("CharacterType"),
                                 Speed = (String) item.Element("Speed"),
                                 Height = (String) item.Element("Height"),

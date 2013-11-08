@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Woodwose</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="59" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="127" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="13" />
+    <trait label="Reflex" value="13" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Immunity" Descriptor="Wood" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="club" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3 or 2 slams +11" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

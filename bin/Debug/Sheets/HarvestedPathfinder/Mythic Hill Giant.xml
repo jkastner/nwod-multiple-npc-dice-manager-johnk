@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mythic Hill Giant</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="Vigor" value="69" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="119" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="2" />
+    <trait label="Damage Resistance" Descriptor="epic" value="epic" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="greatclub" IsAttack="True" AttackBonus="+16/+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12 plus trip or 2 slams +14" Descriptor="Generic Damage" Triggers="trip or 2 slams +14 (1d8+8" />
+    <trait label="rock" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+12" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

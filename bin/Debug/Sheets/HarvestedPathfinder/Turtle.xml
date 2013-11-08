@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Turtle</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-2" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="4" />
+    <trait label="Constitution" value="8" />
+    <trait label="HP" value="3" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="0" />
+    <trait label="CMB" value="-4" />
+    <trait label="CMD" value="2" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="3" />
+    <trait label="bite" IsAttack="True" AttackBonus="-2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

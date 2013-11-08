@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ja Noi</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="33" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="57" />
+    <trait label="Regeneration" value="3" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="mwk tetsubo" IsAttack="True" AttackBonus="+11/+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d10+6" Descriptor="Generic Damage" />
+    <trait label="longbow" IsAttack="True" AttackBonus="+8/+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

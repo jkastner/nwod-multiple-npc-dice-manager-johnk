@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Clockwork Leviathan</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="HP" value="128" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="29" />
+    <trait label="CMD" value="45" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+25" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+11" Descriptor="Generic Damage" />
+    <trait label="2 slam" IsAttack="True" AttackBonus="+25" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+11" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

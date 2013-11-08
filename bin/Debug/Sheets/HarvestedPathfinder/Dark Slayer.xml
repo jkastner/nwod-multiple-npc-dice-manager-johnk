@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dark Slayer</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="1" />
+    <trait label="CMD" value="15" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="kukri" IsAttack="True" AttackBonus="+8" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" Triggers="black smear poison" />
+  </traits>
+</CharacterSheet>

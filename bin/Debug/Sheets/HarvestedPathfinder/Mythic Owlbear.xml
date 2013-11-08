@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mythic Owlbear</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7M" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="47" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="67" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="5" />
+    <trait label="Damage Resistance" Descriptor="epic" value="epic" />
+    <trait label="Spell Resistance" value="16" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+5" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

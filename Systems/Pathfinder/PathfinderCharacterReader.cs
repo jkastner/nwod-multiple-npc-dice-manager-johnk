@@ -16,10 +16,8 @@ namespace XMLCharSheets
             var query = from item in curChar.DescendantsAndSelf("CharacterSheet")
                         select new
                             {
-                                Name = (String) item.Element("name"),
+                                Name = (String) item.Element("Name"),
                                 CharacterType = (String) item.Element("CharacterType"),
-                                Speed = (String) item.Element("Speed"),
-                                Height = (String) item.Element("Height"),
                                 Traits = item.Descendants("traits"),
                             };
             foreach (var curQuery in query)
@@ -27,6 +25,14 @@ namespace XMLCharSheets
                 var traits = new List<Trait>();
                 PopulatePathfinderTraits(curQuery.Traits, traits);
                 bool hasWoundsVigor = traits.Any(x=>x.TraitLabel.Equals("Vigor"));
+                if (
+                    String.IsNullOrEmpty(curQuery.Name) ||
+                    String.IsNullOrEmpty(curQuery.CharacterType) ||
+                    curQuery.Traits == null
+                    )
+                {
+                    return null;
+                }
                 switch (curQuery.CharacterType)
                 {
                     default:
@@ -73,9 +79,10 @@ namespace XMLCharSheets
             {
                 if (curQuery.AttackBonus == null)
                 {
-                    if (curQuery.Value != null)
+                    int queryValue = 0;
+                    if (curQuery.Value != null && int.TryParse(curQuery.Value, out queryValue))
                     {
-                        traits.Add(new PathfinderNumericTrait(curQuery.Label, int.Parse(curQuery.Value),
+                        traits.Add(new PathfinderNumericTrait(curQuery.Label, queryValue,
                                                               curQuery.Descriptor));
                     }
                     else

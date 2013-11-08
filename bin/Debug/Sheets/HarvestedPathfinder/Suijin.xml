@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Suijin</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="Vigor" value="99" />
+    <trait label="Constitution" value="23" />
+    <trait label="HP" value="207" />
+    <trait label="Regeneration" value="7" />
+    <trait label="Fortitude" value="17" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="cold iron and evil" value="cold iron and evil" />
+    <trait label="Immunity" Descriptor="Bleed" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Immunity" Descriptor="Polymorph Effects" />
+    <trait label="Spell Resistance" value="25" />
+    <trait label="CMB" value="26" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+24" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+7" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+3" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

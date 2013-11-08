@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Deathstroke Serpent</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="23" />
+    <trait label="Vigor" value="91" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="161" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Spell Resistance" value="23" />
+    <trait label="CMB" value="27" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="20" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+24" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+16" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

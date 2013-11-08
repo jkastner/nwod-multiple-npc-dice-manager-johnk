@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Hala</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="37" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="8" />
+    <trait label="Damage Resistance" Descriptor="cold iron or good" value="cold iron or good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="15" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+3" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

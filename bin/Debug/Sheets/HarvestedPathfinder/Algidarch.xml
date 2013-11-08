@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Algidarch</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="66" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="2" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="greatsword" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+9 or 2 slams +10" Descriptor="Generic Damage" Triggers="1d6 cold" />
+  </traits>
+</CharacterSheet>

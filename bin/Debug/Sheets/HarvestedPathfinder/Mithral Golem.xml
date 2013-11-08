@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mithral Golem</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="32" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="HP" value="172" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="adamantine, evasion" value="adamantine, evasion" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="CMB" value="37" />
+    <trait label="CMD" value="55" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="15" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+33" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d10+11" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

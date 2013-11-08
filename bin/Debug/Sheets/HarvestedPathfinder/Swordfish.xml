@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Swordfish</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="70" />
+    <trait label="Height" value="10" />
+    <trait label="gore" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

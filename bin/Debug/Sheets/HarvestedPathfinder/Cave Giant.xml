@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Cave Giant</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="23" />
+    <trait label="HP" value="126" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="30" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="Gargantuan greatclub" IsAttack="True" AttackBonus="+16/+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+12 or 2 slams +15" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="rock" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

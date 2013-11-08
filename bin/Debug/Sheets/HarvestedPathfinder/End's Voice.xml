@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>End's Voice</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="31" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="Vigor" value="99" />
+    <trait label="Constitution" value="24" />
+    <trait label="HP" value="225" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="19" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="law and magic" value="law and magic" />
+    <trait label="Immunity" Descriptor="Confusion" />
+    <trait label="Immunity" Descriptor="Insanity" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="30" />
+    <trait label="Resist" Descriptor="cold" value="30" />
+    <trait label="Resist" Descriptor="electricity" value="30" />
+    <trait label="Resist" Descriptor="fire" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="+1 shock heavy flail" IsAttack="True" AttackBonus="+23/+18/+13/+8" CritRange="17" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+7" Descriptor="Generic Damage" Triggers="1d6 electricity and maddening strike" />
+  </traits>
+</CharacterSheet>
