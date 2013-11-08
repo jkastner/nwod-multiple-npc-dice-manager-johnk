@@ -122,58 +122,56 @@ namespace XMLCharSheets
             String duration = w.StatusDuration.Text;
             bool validStatus = int.TryParse(duration, out durationRounds);
 
-            if (validDamage)
+
+            foreach (var cur in _chosenCharacters)
             {
-                foreach (var cur in _chosenCharacters)
+                double damageDouble = originalDamage;
+                var curTrait = cur.FindNumericTrait(chosenSave);
+                PathfinderDicePool savePool = new PathfinderDicePool(1, 20, curTrait.TraitValue);
+                savePool.Roll();
+                if (!validDamage && !w.WasStatusEffect)
                 {
-                    double damageDouble = originalDamage;
-                    var curTrait = cur.FindNumericTrait(chosenSave);
-                    PathfinderDicePool savePool = new PathfinderDicePool(1, 20, curTrait.TraitValue);
-                    savePool.Roll();
-                    if (!validDamage && !w.WasStatusEffect)
-                    {
-                        continue;
-                    }
-                    if (!validStatus && w.WasStatusEffect)
-                    {
-                        continue;
-                    }
-                    TextReporter.Report(cur.Name + " rolled " + chosenSave + ": " + savePool.TotalValue + " VS DC: " + dc);
-                    bool madeSave = savePool.TotalValue >= dc;
+                    continue;
+                }
+                if (!validStatus && w.WasStatusEffect)
+                {
+                    continue;
+                }
+                TextReporter.Report(cur.Name + " rolled " + chosenSave + ": " + savePool.TotalValue + " VS DC: " + dc);
+                bool madeSave = savePool.TotalValue >= dc;
+                if (madeSave)
+                {
+                    TextReporter.Report("--Success--", Brushes.Green);
+                }
+                else
+                {
+                    TextReporter.Report("--Failure--", Brushes.Red);
+                }
+                if (w.WasStatusEffect && !madeSave)
+                {
+                    cur.AssignStatus(desc, durationRounds);
+                }
+                if(!w.WasStatusEffect)
+                {
+
+                    int damageInt;
                     if (madeSave)
                     {
-                        TextReporter.Report("--Success--", Brushes.Green);
+                        damageDouble = Math.Floor(damageDouble * modOnSuccess);
+                        damageInt = (int)(damageDouble);
+                        TextReporter.Report(damageInt + " damage.");
+
                     }
                     else
                     {
-                        TextReporter.Report("--Failure--", Brushes.Red);
+                        damageDouble = Math.Floor(damageDouble * modOnFail);
+                        damageInt = (int)(damageDouble);
+                        TextReporter.Report(damageInt + " damage.");
                     }
-                    if (w.WasStatusEffect && !madeSave)
-                    {
-                        cur.AssignStatus(desc, durationRounds);
-                    }
-                    else
-                    {
-
-                        int damageInt;
-                        if (madeSave)
-                        {
-                            damageDouble = Math.Floor(damageDouble * modOnSuccess);
-                            damageInt = (int)(damageDouble);
-                            TextReporter.Report(damageInt+" damage.");
-
-                        }
-                        else
-                        {
-                            damageDouble = Math.Floor(damageDouble * modOnFail);
-                            damageInt = (int)(damageDouble);
-                            TextReporter.Report(damageInt + " damage.");
-                        }
-                        cur.DoDamage(damageInt, "Area Damage");
-                    }
-                    TextReporter.Report("\n");
-
+                    cur.DoDamage(damageInt, "Area Damage");
                 }
+                TextReporter.Report("\n");
+
             }
         }
 
