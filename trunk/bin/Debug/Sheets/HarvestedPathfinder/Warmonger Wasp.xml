@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Warmonger Wasp</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="10" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="HP" value="85" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="9" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="15" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+    <trait label="sting" IsAttack="True" AttackBonus="+15" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

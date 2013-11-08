@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Kronosaurus</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="24" />
+    <trait label="HP" value="138" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="9" />
+    <trait label="CMB" value="26" />
+    <trait label="CMD" value="37" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+19" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+19" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

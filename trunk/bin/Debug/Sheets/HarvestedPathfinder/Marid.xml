@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Marid</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="66" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="114" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="12" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="34" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6) or mwk trident +18" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

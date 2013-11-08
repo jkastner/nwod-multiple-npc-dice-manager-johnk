@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Air Elemental Construct</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="19" />
+    <trait label="Flat-footed" value="19" />
+    <trait label="HP" value="205" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="21" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="CMB" value="40" />
+    <trait label="CMD" value="61" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="15" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+36" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

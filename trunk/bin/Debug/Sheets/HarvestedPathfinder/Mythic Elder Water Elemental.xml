@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mythic Elder Water Elemental</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="138" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="202" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="18" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="28" />
+    <trait label="CMD" value="48" />
+    <trait label="Speed" value="90" />
+    <trait label="Height" value="15" />
+    <trait label="4 slams" IsAttack="True" AttackBonus="+24" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d10+10" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

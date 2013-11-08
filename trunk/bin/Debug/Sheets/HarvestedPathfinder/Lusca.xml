@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Lusca</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="32" />
+    <trait label="Touch" value="6" />
+    <trait label="Flat-footed" value="32" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="270" />
+    <trait label="Fortitude" value="20" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="12" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="34" />
+    <trait label="CMD" value="44" />
+    <trait label="Speed" value="200" />
+    <trait label="Height" value="20" />
+    <trait label="3 bites" IsAttack="True" AttackBonus="+27" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" />
+    <trait label="8 tentacles" IsAttack="True" AttackBonus="+21" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

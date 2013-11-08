@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mortuary Cyclone</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="HP" value="263" />
+    <trait label="Fortitude" value="20" />
+    <trait label="Will" value="24" />
+    <trait label="Reflex" value="17" />
+    <trait label="Damage Resistance" Descriptor="bludgeoning and magic" value="bludgeoning and magic" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="36" />
+    <trait label="CMD" value="49" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="15" />
+    <trait label="slam" IsAttack="True" AttackBonus="+33" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+16" Descriptor="Generic Damage" Triggers="energy drain" />
+  </traits>
+</CharacterSheet>

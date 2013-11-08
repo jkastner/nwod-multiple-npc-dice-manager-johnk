@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Muckdweller</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="5" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="4" />
+    <trait label="CMB" value="2" />
+    <trait label="CMD" value="9" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="4" />
+    <trait label="bite" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4-2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

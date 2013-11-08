@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Morlock</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="15" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="9" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="19" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="club" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+0" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Trumpet Archon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="27" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="Vigor" value="77" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="175" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="9" />
+    <trait label="Damage Resistance" Descriptor="evil" value="evil" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Spell Resistance" value="25" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="90" />
+    <trait label="Height" value="5" />
+    <trait label="+4 greatsword" IsAttack="True" AttackBonus="+23/+18/+13" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+11" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Lorthact</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="45" />
+    <trait label="Touch" value="29" />
+    <trait label="Flat-footed" value="33" />
+    <trait label="Vigor" value="176" />
+    <trait label="Constitution" value="35" />
+    <trait label="HP" value="560" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="26" />
+    <trait label="Will" value="30" />
+    <trait label="Reflex" value="31" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="36" />
+    <trait label="CMB" value="38" />
+    <trait label="CMD" value="65" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="acid" value="30" />
+    <trait label="Resist" Descriptor="cold" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+44" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+6 plus 1 Int drain) or +2 quarterstaff +40" Descriptor="Generic Damage" Triggers="1 Intelligence drain" />
+  </traits>
+</CharacterSheet>

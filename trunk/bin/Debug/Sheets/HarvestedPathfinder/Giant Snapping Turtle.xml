@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Snapping Turtle</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="4" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="66" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="150" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+16" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d10+16" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

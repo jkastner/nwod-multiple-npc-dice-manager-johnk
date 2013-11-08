@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Slithering Tracker</Name>
+  <CharacterType>ooze</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="23" />
+    <trait label="HP" value="42" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="5" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Immunity" Descriptor="Ooze Traits" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="19" />
+    <trait label="Speed" value="10" />
+    <trait label="Height" value="4" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" Triggers="grab and paralysis" />
+  </traits>
+</CharacterSheet>

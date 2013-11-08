@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Adult Dungeon Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="71" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="104" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="7" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Enchantment Spells And Effects" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Spell Resistance" value="20" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="200" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+10" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+10" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

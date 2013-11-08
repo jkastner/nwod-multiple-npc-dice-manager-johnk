@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Morrigna</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="28" />
+    <trait label="Vigor" value="99" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="171" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="16" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="24" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="40" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+24" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+    <trait label="2 wrappings" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ugash-iram</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="6" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="Vigor" value="93" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="229" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="14" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="CMB" value="36" />
+    <trait label="CMD" value="50" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="35" />
+    <trait label="tentacles" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d6+11" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Bog Turtle</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="26" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="104" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="184" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="10" />
+    <trait label="CMB" value="30" />
+    <trait label="CMD" value="40" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+27" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+18" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

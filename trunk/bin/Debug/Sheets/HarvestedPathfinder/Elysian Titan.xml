@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Elysian Titan</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="37" />
+    <trait label="Touch" value="5" />
+    <trait label="Flat-footed" value="34" />
+    <trait label="Vigor" value="115" />
+    <trait label="Constitution" value="39" />
+    <trait label="HP" value="409" />
+    <trait label="Regeneration" value="15" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="21" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="evil" value="evil" />
+    <trait label="Immunity" Descriptor="Aging" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Spell Resistance" value="32" />
+    <trait label="CMB" value="46" />
+    <trait label="CMD" value="59" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="35" />
+    <trait label="maul of the titans" IsAttack="True" AttackBonus="+33/+28/+23/+18" CritRange="17" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d8+28" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

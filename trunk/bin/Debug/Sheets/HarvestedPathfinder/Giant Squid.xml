@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Squid</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="102" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="13" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="260" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" />
+    <trait label="2 arms" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+7" Descriptor="Generic Damage" />
+    <trait label="tentacles" IsAttack="True" AttackBonus="+12" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+3" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

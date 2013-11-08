@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Sprite</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="3" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="4" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="CMB" value="-2" />
+    <trait label="CMD" value="13" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="4" />
+    <trait label="short sword" IsAttack="True" AttackBonus="+5" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4-1" Descriptor="Generic Damage" />
+    <trait label="shortbow" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

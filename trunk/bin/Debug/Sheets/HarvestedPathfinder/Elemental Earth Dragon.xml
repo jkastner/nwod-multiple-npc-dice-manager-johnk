@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Elemental Earth Dragon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="26" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="132" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="252" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="15" />
+    <trait label="Reflex" value="14" />
+    <trait label="Damage Resistance" Descriptor="magic and cold iron" value="magic and cold iron" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="38" />
+    <trait label="CMD" value="48" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+35" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+18" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+35" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+32" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+12" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+32" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+18" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

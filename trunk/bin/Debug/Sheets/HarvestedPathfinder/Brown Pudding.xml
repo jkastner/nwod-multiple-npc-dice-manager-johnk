@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Brown Pudding</Name>
+  <CharacterType>ooze</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-5" />
+    <trait label="Armor Class" value="8" />
+    <trait label="Touch" value="3" />
+    <trait label="Flat-footed" value="8" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="22" />
+    <trait label="HP" value="115" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="-2" />
+    <trait label="Reflex" value="-2" />
+    <trait label="Immunity" Descriptor="Ooze Traits" />
+    <trait label="CMB" value="13" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="15" />
+    <trait label="slam" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d4+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

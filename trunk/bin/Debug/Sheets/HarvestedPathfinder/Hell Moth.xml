@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Hell Moth</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="76" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="fire" value="20" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+7" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

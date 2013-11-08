@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Oracular Cyclops</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="63" />
+    <trait label="Constitution" value="15" />
+    <trait label="HP" value="91" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="heavy crossbow" IsAttack="True" AttackBonus="+10" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

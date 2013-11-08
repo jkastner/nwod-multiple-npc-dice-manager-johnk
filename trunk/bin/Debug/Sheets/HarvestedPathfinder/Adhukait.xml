@@ -1,0 +1,32 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Adhukait</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="76" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="9" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Curse Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Flanking" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="18" />
+    <trait label="CMB" value="14" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 mwk kukris" IsAttack="True" AttackBonus="+15/+10" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+5" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

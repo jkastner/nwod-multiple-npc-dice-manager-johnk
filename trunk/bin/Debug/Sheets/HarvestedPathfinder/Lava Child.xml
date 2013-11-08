@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Lava Child</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Earth Magic" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Metal" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1 and bite +4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

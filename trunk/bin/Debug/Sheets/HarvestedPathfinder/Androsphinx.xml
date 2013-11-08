@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Androsphinx</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="23" />
+    <trait label="Vigor" value="71" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="123" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="22" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+20" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

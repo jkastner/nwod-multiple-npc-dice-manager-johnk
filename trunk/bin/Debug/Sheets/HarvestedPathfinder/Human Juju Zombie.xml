@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Human Juju Zombie</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="HP" value="15" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="7" />
+    <trait label="Damage Resistance" Descriptor="magic and slashing" value="magic and slashing" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Magic Missile" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="19" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="mwk short sword" IsAttack="True" AttackBonus="+6" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

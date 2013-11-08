@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ancient Crystal Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="37" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="37" />
+    <trait label="Vigor" value="136" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="283" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="17" />
+    <trait label="Reflex" value="14" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Immunity" Descriptor="Sonic" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="33" />
+    <trait label="CMD" value="43" />
+    <trait label="Speed" value="200" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+30" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+15" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+29" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+10" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+27" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+15" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+27" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

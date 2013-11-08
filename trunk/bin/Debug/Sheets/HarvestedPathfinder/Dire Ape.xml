@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dire Ape</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="18" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="30" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

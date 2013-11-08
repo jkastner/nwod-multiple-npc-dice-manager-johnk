@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Kirin</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="85" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="12" />
+    <trait label="Spell Resistance" value="18" />
+    <trait label="CMB" value="15" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="120" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="30" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="gore" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

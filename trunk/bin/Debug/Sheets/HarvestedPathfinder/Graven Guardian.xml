@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Graven Guardian</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="HP" value="53" />
+    <trait label="Regeneration" value="2" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Spell Resistance" value="16" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="21" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="+1 keen scimitar" IsAttack="True" AttackBonus="+10/+5" CritRange="15" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+5" Descriptor="Generic Damage" Triggers="bleed or slam +9 (1d6+4" />
+  </traits>
+</CharacterSheet>

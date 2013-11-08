@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Earth Elemental Construct</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="HP" value="205" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="9" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="CMB" value="46" />
+    <trait label="CMD" value="55" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+42" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d10+14" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

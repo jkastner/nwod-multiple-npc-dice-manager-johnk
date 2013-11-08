@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Hawanar Genie</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="71" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="97" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="12" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="CMB" value="22" />
+    <trait label="CMD" value="37" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8 plus 1d8 fire) or masterwork falchion +21" Descriptor="Generic Damage" Triggers="1d8 fire" />
+  </traits>
+</CharacterSheet>

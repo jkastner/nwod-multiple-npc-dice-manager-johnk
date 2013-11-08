@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Djinni</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="52" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="9" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="27" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4) or mwk scimitar +11" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

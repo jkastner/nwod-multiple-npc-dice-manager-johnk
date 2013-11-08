@@ -1,0 +1,32 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>Solar</Name>
+	<CharacterType>Outsider</CharacterType>
+	<traits>
+	<trait label='Initiative' value='9'/>
+	<trait label='Armor Class' value='44'/>
+	<trait label='Touch' value='11'/>
+	<trait label='Flat-footed' value='42'/>
+	<trait label='Vigor' value='220'/>
+	<trait label='Constitution' value='30'/>
+	<trait label='Regeneration' value='15'/>
+	<trait label='Fortitude' value='25'/>
+	<trait label='Reflex' value='14'/>
+	<trait label='Will' value='23'/>
+	<trait label='Damage Resistance' Descriptor='Epic and Evil' value='15' />
+	<trait label='Immunity' Descriptor='Cold' />
+	<trait label='Immunity' Descriptor='Acid' />
+	<trait label='Immunity' Descriptor='Petrification' />
+	<trait label='Resist' value='10' Descriptor='Fire' />
+	<trait label='Resist' value='10' Descriptor='Electricity' />
+	<trait label='Spell Resistance' value='34'/>
+	<trait label='Speed' value='100'/>
+	<trait label='Height' value='10'/>
+	<trait label='+5 Dancing Greatsword' IsAttack='True' CritRange='19-20' CritMultiplier='2' TargetDefense='Armor Class' AttackBonus='35/30/25/20'  Damage='3d6+18,1d10' Descriptor='Slashing,Holy' />
+	<trait label='Slam'  IsAttack='True' AttackBonus='30' CritRange='20' TargetDefense='Armor Class' Damage='2d8+13' Descriptor='Bashing'/>
+	<trait label='+5 Composite Longbow' IsAttack='True' TargetDefense='Armor Class' AttackBonus='31/26/21/16' CritRange='20' Damage='2d6+14' Descriptor='Piercing' Triggers='Arrow of Slaying' TriggerEffect='Fortitude=DC 20 vs Death' />
+	
+	</traits>
+</CharacterSheet>
+
+

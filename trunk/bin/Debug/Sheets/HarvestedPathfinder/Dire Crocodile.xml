@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dire Crocodile</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="6" />
+    <trait label="Flat-footed" value="21" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="138" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="26" />
+    <trait label="CMD" value="36" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+18" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+13" Descriptor="Generic Damage" Triggers="grab and tail slap +13 (4d8+6" />
+  </traits>
+</CharacterSheet>

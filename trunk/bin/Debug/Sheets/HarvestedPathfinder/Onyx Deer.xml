@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Onyx Deer</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="59" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="7" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="24" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="gore" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+    <trait label="1 bite" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

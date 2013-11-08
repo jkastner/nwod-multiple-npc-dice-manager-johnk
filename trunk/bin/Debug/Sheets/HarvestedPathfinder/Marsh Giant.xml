@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Marsh Giant</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="102" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="gaff" IsAttack="True" AttackBonus="+16/+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12 or 2 slams +16" Descriptor="Generic Damage" />
+    <trait label="rock" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

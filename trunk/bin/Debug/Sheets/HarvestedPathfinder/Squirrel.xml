@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Squirrel</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="18" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="3" />
+    <trait label="Constitution" value="9" />
+    <trait label="HP" value="3" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="6" />
+    <trait label="CMB" value="0" />
+    <trait label="CMD" value="6" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="1" />
+    <trait label="bite" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2-4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

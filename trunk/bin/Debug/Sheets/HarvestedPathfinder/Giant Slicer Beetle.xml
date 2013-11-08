@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Slicer Beetle</Name>
+  <CharacterType>vermin</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="37" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="10" />
+    <trait label="type" IsAttack="True" AttackBonus="+8" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

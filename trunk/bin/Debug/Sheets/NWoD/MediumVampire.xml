@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Vampire</CharacterType>
-	<name>Medium Vampire</name>
+	<Name>Medium Vampire</Name>
 	<traits>
 	<trait label='Fists' value='5' TargetDefense='Melee Defense' DamageType='Bashing'/>
 	<trait label='Weaponry' value='7' TargetDefense='Melee Defense' DamageType='Lethal'/>
@@ -16,7 +16,7 @@
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='8'/>
 	<trait label='Clan Discipline Pool' value='7'/>
-	<trait label='Speed' value='30'/>
+	<trait label='Speed' value='10'/>
 	<trait label='Height' value='5'/>
 	</traits>
 </CharacterSheet>

@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Triton</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="19" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="1" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="mwk trident" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+1" Descriptor="Generic Damage" />
+    <trait label="heavy crossbow" IsAttack="True" AttackBonus="+3" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d10" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

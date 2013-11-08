@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Gray Nisp</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="21" />
+    <trait label="Vigor" value="28" />
+    <trait label="Constitution" value="24" />
+    <trait label="HP" value="84" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="9" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="24" />
+    <trait label="Speed" value="80" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+6" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Rock Troll</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="19" />
+    <trait label="Vigor" value="36" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="92" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="3" />
+    <trait label="CMB" value="14" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+7 and bite +12" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

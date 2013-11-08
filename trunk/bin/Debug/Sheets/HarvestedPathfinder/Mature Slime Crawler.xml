@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mature Slime Crawler</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="13" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="19" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="3" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="17" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="4 tentacles" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+2 plus paralysis and bite +3" Descriptor="Generic Damage" Triggers="paralysis and bite +3 (1d6+2" />
+  </traits>
+</CharacterSheet>

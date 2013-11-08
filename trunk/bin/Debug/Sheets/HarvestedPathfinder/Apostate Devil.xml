@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Apostate Devil</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="14" />
+    <trait label="Armor Class" value="46" />
+    <trait label="Touch" value="20" />
+    <trait label="Flat-footed" value="36" />
+    <trait label="Vigor" value="99" />
+    <trait label="Constitution" value="28" />
+    <trait label="HP" value="261" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="20" />
+    <trait label="Will" value="20" />
+    <trait label="Reflex" value="16" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="27" />
+    <trait label="CMB" value="28" />
+    <trait label="CMD" value="47" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+28" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+9" Descriptor="Generic Damage" Triggers="1d6 Wisdom drain" />
+  </traits>
+</CharacterSheet>

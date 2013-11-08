@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Jack-in-irons Giant</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="Vigor" value="113" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="321" />
+    <trait label="Fortitude" value="23" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="11" />
+    <trait label="CMB" value="34" />
+    <trait label="CMD" value="45" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="15" />
+    <trait label="spiked greatclub" IsAttack="True" AttackBonus="+31/+26/+21/+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+19 plus daze) or great chain +31" Descriptor="Generic Damage" Triggers="daze" />
+    <trait label="rock" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+19" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

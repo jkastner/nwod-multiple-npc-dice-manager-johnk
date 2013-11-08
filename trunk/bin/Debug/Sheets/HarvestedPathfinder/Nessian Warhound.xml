@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nessian Warhound</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="66" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="126" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="10" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="33" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+20" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" Triggers="2d6 fire" />
+  </traits>
+</CharacterSheet>

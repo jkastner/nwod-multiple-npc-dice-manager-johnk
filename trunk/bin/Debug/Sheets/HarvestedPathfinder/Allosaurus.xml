@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Allosaurus</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="93" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="8" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+14" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Moxix</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="34" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="31" />
+    <trait label="Vigor" value="126" />
+    <trait label="Constitution" value="32" />
+    <trait label="HP" value="379" />
+    <trait label="Fortitude" value="24" />
+    <trait label="Will" value="22" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="adamantine and good" value="adamantine and good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="37" />
+    <trait label="CMD" value="50" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="20" />
+    <trait label="Resist" Descriptor="cold" value="20" />
+    <trait label="Resist" Descriptor="fire" value="20" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+29" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" />
+    <trait label="gore" IsAttack="True" AttackBonus="+29" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" />
+    <trait label="4 slams" IsAttack="True" AttackBonus="+29" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+10" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

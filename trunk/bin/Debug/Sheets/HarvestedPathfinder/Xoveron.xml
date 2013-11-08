@@ -1,0 +1,37 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Xoveron</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="45" />
+    <trait label="Touch" value="30" />
+    <trait label="Flat-footed" value="39" />
+    <trait label="Vigor" value="181" />
+    <trait label="Constitution" value="38" />
+    <trait label="HP" value="643" />
+    <trait label="Regeneration" value="30" />
+    <trait label="Fortitude" value="36" />
+    <trait label="Will" value="33" />
+    <trait label="Reflex" value="23" />
+    <trait label="Damage Resistance" Descriptor="cold iron, good, and epic" value="cold iron, good, and epic" />
+    <trait label="Immunity" Descriptor="Ability Damage And Drain" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Charm And Compulsion Effects" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Level Drain" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="38" />
+    <trait label="CMB" value="52" />
+    <trait label="CMD" value="86" />
+    <trait label="Speed" value="80" />
+    <trait label="Resist" Descriptor="cold" value="30" />
+    <trait label="Resist" Descriptor="fire" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="4 claws" IsAttack="True" AttackBonus="+48" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+17" Descriptor="Generic Damage" />
+    <trait label="4 bites" IsAttack="True" AttackBonus="+48" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+17" Descriptor="Generic Damage" />
+    <trait label="sting" IsAttack="True" AttackBonus="+48" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+17" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

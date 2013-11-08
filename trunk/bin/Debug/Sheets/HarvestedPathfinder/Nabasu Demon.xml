@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nabasu Demon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="29" />
+    <trait label="Vigor" value="71" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="175" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="5" />
+    <trait label="Damage Resistance" Descriptor="cold iron or good" value="cold iron or good" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Electricity Paralysis" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="21" />
+    <trait label="CMB" value="20" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+7" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

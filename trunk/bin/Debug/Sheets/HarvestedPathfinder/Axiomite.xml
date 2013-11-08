@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Axiomite</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="85" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="chaotic" value="chaotic" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Spell Resistance" value="19" />
+    <trait label="CMB" value="15" />
+    <trait label="CMD" value="30" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="+1 longsword" IsAttack="True" AttackBonus="+16/+11" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

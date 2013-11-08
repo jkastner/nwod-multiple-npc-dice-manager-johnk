@@ -1,0 +1,22 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>Small Fire Elemental</Name>
+	<CharacterType>Elemental</CharacterType>
+	<traits>
+	<trait label='Initiative' value='5'/>
+	<trait label='Armor Class' value='16'/>
+	<trait label='Touch' value='13'/>
+	<trait label='Flat-footed' value='14'/>
+	<trait label='Vigor' value='11'/>
+	<trait label='Constitution' value='1'/>
+	<trait label='Fortitude' value='3'/>
+	<trait label='Reflex' value='4'/>
+	<trait label='Will' value='0'/>
+	<trait label='Speed' value='50'/>
+	<trait label='Fire Slam'  IsAttack='True' AttackBonus='4' CritRange='20' TargetDefense='Armor Class' Damage='1d4' Descriptor='Fire'/>
+	<trait label='Height' value='3'/>
+	
+	</traits>
+</CharacterSheet>
+
+

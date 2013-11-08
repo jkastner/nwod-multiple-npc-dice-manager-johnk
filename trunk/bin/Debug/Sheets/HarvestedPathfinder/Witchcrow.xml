@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Witchcrow</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="8" />
+    <trait label="HP" value="13" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="12" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="cold" value="5" />
+    <trait label="Height" value="3" />
+    <trait label="2 talons" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

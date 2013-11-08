@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ancient Silver Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="38" />
+    <trait label="Touch" value="5" />
+    <trait label="Flat-footed" value="38" />
+    <trait label="Vigor" value="162" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="337" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="23" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="magic Immune acid, cold, paralysis, sleep" value="magic Immune acid, cold, paralysis, sleep" />
+    <trait label="Spell Resistance" value="30" />
+    <trait label="CMB" value="41" />
+    <trait label="CMD" value="50" />
+    <trait label="Speed" value="250" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+34" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+18" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+33" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+31" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+31" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+18" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

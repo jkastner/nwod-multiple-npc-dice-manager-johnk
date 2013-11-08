@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Human</CharacterType>
-	<name>Dragon</name>
+	<Name>Dragon</Name>
 	<traits>
 	<trait label='Claws' value='15' IsAttack='true' TargetDefense='Melee Defense' DamageType='Lethal'/>
 	<trait label='Initiative' value='7'/>

@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Harpy</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="10" />
+    <trait label="HP" value="38" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="21" />
+    <trait label="Speed" value="80" />
+    <trait label="Height" value="5" />
+    <trait label="morningstar" IsAttack="True" AttackBonus="+8/+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+1" Descriptor="Generic Damage" />
+    <trait label="2 talons" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

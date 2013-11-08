@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Amon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="44" />
+    <trait label="Touch" value="24" />
+    <trait label="Flat-footed" value="36" />
+    <trait label="Vigor" value="154" />
+    <trait label="Constitution" value="31" />
+    <trait label="HP" value="434" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="25" />
+    <trait label="Reflex" value="24" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="36" />
+    <trait label="CMB" value="42" />
+    <trait label="CMD" value="67" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="Huge +4 axiomatic thundering heavy mace" IsAttack="True" AttackBonus="+45/+40/+35/+30" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+30" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+35" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

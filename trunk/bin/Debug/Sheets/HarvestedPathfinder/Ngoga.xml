@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ngoga</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="85" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="11" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

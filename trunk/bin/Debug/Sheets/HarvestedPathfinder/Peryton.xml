@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Peryton</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="42" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="7" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="21" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="5" />
+    <trait label="gore" IsAttack="True" AttackBonus="+9" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+    <trait label="2 hooves" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

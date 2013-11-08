@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dwiergeth</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="58" />
+    <trait label="Constitution" value="28" />
+    <trait label="HP" value="175" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="15" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="lawful" value="lawful" />
+    <trait label="Immunity" Descriptor="Blindness" />
+    <trait label="Immunity" Descriptor="Dazzling" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Visual Effects" />
+    <trait label="Spell Resistance" value="24" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="cold" value="20" />
+    <trait label="Resist" Descriptor="fire" value="20" />
+    <trait label="Height" value="10" />
+    <trait label="2 bites" IsAttack="True" AttackBonus="+19" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+11" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

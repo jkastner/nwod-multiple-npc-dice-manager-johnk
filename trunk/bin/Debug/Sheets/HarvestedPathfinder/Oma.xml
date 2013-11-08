@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Oma</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-2" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="0" />
+    <trait label="Flat-footed" value="30" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="29" />
+    <trait label="HP" value="290" />
+    <trait label="Fortitude" value="23" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="10" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="CMB" value="49" />
+    <trait label="CMD" value="57" />
+    <trait label="Speed" value="200" />
+    <trait label="Height" value="35" />
+    <trait label="bite" IsAttack="True" AttackBonus="+33" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+21" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+28" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+10" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

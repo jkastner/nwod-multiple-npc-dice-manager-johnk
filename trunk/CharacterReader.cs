@@ -30,12 +30,12 @@ namespace XMLCharSheets
                             try
                             {
                                 newChar = _readers[curQuery.Ruleset].ReadCharacter(newChar, curChar);
+                                if(newChar!=null)
+                                    newChar.Ruleset = curQuery.Ruleset;
                             }
                             catch (Exception e)
                             {
-                                MessageBox.Show("Failed to read " + fileName);
                             }
-                            newChar.Ruleset = curQuery.Ruleset;
                         }
                         else
                         {

@@ -1,0 +1,23 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>BattleCaster</Name>
+	<CharacterType>Large Humanoid</CharacterType>
+	<traits>
+	<trait label='Initiative' value='3'/>
+	<trait label='Armor Class' value='14'/>
+	<trait label='Touch' value='10'/>
+	<trait label='Flat-footed' value='14'/>
+	<trait label='Vigor' value='30'/>
+	<trait label='Constitution' value='14'/>
+	<trait label='Fortitude' value='3'/>
+	<trait label='Reflex' value='2'/>
+	<trait label='Will' value='7'/>
+	<trait label='Speed' value='30'/>
+	<trait label='Height' value='5'/>
+	<trait label='Magic Missile' IsAttack='True' CritRange='20' CritMultiplier='1' TargetDefense='Armor Class' AttackBonus='100'  Damage='2d4+2' Descriptor='Magic' />
+	<trait label='Sorching Ray'  AttackBonus='5' CritRange='20' TargetDefense='Armor Class' Damage='4d6' Descriptor='Fire'/>
+	<trait label='Dagger'  AttackBonus='3' CritRange='20' TargetDefense='Armor Class' Damage='1d4' Descriptor='Slashing'/>
+	</traits>
+</CharacterSheet>
+
+

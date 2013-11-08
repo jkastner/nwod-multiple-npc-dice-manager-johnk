@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Orc</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="5" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="6" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="-1" />
+    <trait label="Reflex" value="0" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="falchion" IsAttack="True" AttackBonus="+5" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d4+4" Descriptor="Generic Damage" />
+    <trait label="javelin" IsAttack="True" AttackBonus="+1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Akvan</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="38" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="34" />
+    <trait label="Vigor" value="132" />
+    <trait label="Constitution" value="30" />
+    <trait label="HP" value="372" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="21" />
+    <trait label="Reflex" value="22" />
+    <trait label="Damage Resistance" Descriptor="cold iron and good" value="cold iron and good" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="40" />
+    <trait label="CMD" value="58" />
+    <trait label="Speed" value="120" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+32" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12" Descriptor="Generic Damage" Triggers="grab/19-20" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+32" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+30" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d10+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

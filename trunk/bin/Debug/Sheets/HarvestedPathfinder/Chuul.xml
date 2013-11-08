@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Chuul</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="22" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="19" />
+    <trait label="Vigor" value="45" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="85" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="9" />
+    <trait label="Reflex" value="6" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="15" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

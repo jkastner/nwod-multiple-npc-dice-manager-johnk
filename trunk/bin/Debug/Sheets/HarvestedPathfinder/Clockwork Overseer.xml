@@ -1,0 +1,21 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Clockwork Overseer</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="HP" value="21" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="1" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="15" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="4" />
+    <trait label="slam" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

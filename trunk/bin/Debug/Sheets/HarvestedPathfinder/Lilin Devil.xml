@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Lilin Devil</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="38" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="73" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="silver" value="silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="17" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="23" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="+1 longsword" IsAttack="True" AttackBonus="+11/+6" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

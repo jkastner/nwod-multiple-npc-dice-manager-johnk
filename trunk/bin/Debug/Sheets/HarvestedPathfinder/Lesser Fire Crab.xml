@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Lesser Fire Crab</Name>
+  <CharacterType>vermin</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="3" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="4" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="2" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Vermin Traits Vulnerabilities Cold" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="4" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

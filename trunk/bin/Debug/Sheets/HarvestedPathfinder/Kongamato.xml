@@ -1,0 +1,32 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Kongamato</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="Vigor" value="117" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="261" />
+    <trait label="Fortitude" value="19" />
+    <trait label="Will" value="13" />
+    <trait label="Reflex" value="16" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Magic Paralysis And Sleep" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="32" />
+    <trait label="CMD" value="45" />
+    <trait label="Speed" value="160" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+28" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+2" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+28" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+12" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+26" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+26" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

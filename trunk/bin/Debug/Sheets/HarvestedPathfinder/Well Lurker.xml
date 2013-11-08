@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Well Lurker</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="21" />
+    <trait label="Vigor" value="54" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="114" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="9" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="6 tentacles" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="bite" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

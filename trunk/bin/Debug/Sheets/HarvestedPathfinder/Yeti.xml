@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Yeti</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="30" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="5" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

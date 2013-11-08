@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Furnace Golem</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="29" />
+    <trait label="HP" value="144" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="5" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="Immunity" Descriptor="Rust" />
+    <trait label="CMB" value="32" />
+    <trait label="CMD" value="41" />
+    <trait label="Speed" value="20" />
+    <trait label="Resist" Descriptor="cold" value="20" />
+    <trait label="Height" value="15" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+28" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+11" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

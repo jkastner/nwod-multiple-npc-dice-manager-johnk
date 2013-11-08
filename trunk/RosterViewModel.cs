@@ -165,7 +165,15 @@ namespace XMLCharSheets
             string[] fileEntries = Directory.GetFiles(sourceDir);
             foreach (string fileName in fileEntries)
             {
-                FullRoster.Add(ReadCharacterFromFile(fileName));
+                var readCharacter = ReadCharacterFromFile(fileName);
+                if (readCharacter != null)
+                {
+                    FullRoster.Add(readCharacter);
+                }
+                else
+                {
+                    MessageBox.Show("Error reading " + fileName);
+                }
             }
             
             // Recurse into subdirectories of this directory.

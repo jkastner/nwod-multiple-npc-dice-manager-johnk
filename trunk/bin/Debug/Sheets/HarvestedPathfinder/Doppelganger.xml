@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Doppelganger</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="26" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="5" />
+    <trait label="Immunity" Descriptor="Charm" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Isopod</Name>
+  <CharacterType>vermin</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="4" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="6" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="-1" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="CMB" value="-3" />
+    <trait label="CMD" value="4" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="3" />
+    <trait label="bite" IsAttack="True" AttackBonus="-1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

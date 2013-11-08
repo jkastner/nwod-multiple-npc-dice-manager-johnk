@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ogre Mage</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="44" />
+    <trait label="Constitution" value="23" />
+    <trait label="HP" value="92" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="5" />
+    <trait label="Spell Resistance" value="19" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="greatsword" IsAttack="True" AttackBonus="+14/+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+10" Descriptor="Generic Damage" />
+    <trait label="composite longbow" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

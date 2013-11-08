@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Olethrodaemon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="38" />
+    <trait label="Touch" value="18" />
+    <trait label="Flat-footed" value="30" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="37" />
+    <trait label="HP" value="370" />
+    <trait label="Fortitude" value="29" />
+    <trait label="Will" value="26" />
+    <trait label="Reflex" value="18" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="36" />
+    <trait label="CMD" value="54" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="20" />
+    <trait label="2 bites" IsAttack="True" AttackBonus="+28" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="4 claws" IsAttack="True" AttackBonus="+28" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="gore" IsAttack="True" AttackBonus="+28" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

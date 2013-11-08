@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Bedlam</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="12" />
+    <trait label="Armor Class" value="26" />
+    <trait label="Touch" value="18" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="58" />
+    <trait label="Constitution" value="15" />
+    <trait label="HP" value="84" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="12" />
+    <trait label="Damage Resistance" Descriptor="lawful" value="lawful" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Immunity" Descriptor="Polymorph" />
+    <trait label="Immunity" Descriptor="Spells And Effects With Chaotic Or Anarchic Descriptor" />
+    <trait label="Spell Resistance" value="20" />
+    <trait label="CMB" value="13" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d4+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

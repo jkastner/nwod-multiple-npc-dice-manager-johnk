@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Glabrezu</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="28" />
+    <trait label="Vigor" value="66" />
+    <trait label="Constitution" value="31" />
+    <trait label="HP" value="186" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="good" value="good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="24" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="34" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="2 pincers" IsAttack="True" AttackBonus="+20" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+10" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+10" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+10" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

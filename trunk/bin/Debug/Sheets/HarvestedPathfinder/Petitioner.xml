@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Petitioner</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="10" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="10" />
+    <trait label="Vigor" value="14" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="16" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="3" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="CMB" value="2" />
+    <trait label="CMD" value="12" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="slam" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Fext</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="HP" value="127" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="9" />
+    <trait label="Damage Resistance" Descriptor="glass or obsidian" value="glass or obsidian" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="21" />
+    <trait label="CMB" value="17" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="bastard sword" IsAttack="True" AttackBonus="+18/+13/+8" CritRange="17" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d10+6" Descriptor="Generic Damage" Triggers="energy drain" />
+  </traits>
+</CharacterSheet>

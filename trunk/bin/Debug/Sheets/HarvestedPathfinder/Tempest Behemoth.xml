@@ -1,0 +1,40 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Tempest Behemoth</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="40" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="34" />
+    <trait label="Vigor" value="181" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="445" />
+    <trait label="Regeneration" value="20" />
+    <trait label="Fortitude" value="26" />
+    <trait label="Will" value="16" />
+    <trait label="Reflex" value="23" />
+    <trait label="Damage Resistance" Descriptor="epic" value="epic" />
+    <trait label="Immunity" Descriptor="Ability Damage" />
+    <trait label="Immunity" Descriptor="Aging" />
+    <trait label="Immunity" Descriptor="Bleed" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Energy Drain" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Immunity" Descriptor="Negative Levels" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Permanent Wounds" />
+    <trait label="Immunity" Descriptor="Petrification" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Polymorph" />
+    <trait label="Spell Resistance" value="33" />
+    <trait label="CMB" value="57" />
+    <trait label="CMD" value="73" />
+    <trait label="Speed" value="200" />
+    <trait label="Height" value="35" />
+    <trait label="bite" IsAttack="True" AttackBonus="+41" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+16" Descriptor="Generic Damage" Triggers="bleed" />
+    <trait label="6 scales" IsAttack="True" AttackBonus="+31" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d10+16" Descriptor="Generic Damage" Triggers="bleed" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Choker</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="13" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="16" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="3" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="16" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="4" />
+    <trait label="2 tentacles" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+3" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

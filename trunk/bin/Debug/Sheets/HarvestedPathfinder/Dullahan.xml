@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Dullahan</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="HP" value="85" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="5" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="18" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="24" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="+1 keen longsword" IsAttack="True" AttackBonus="+14/+9" CritRange="17" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" Triggers="1d6 cold" />
+  </traits>
+</CharacterSheet>

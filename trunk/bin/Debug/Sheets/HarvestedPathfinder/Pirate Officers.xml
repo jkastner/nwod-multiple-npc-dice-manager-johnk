@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Pirate Officers</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="21" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="25" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="16" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="mwk rapier" IsAttack="True" AttackBonus="+7" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+    <trait label="dagger" IsAttack="True" AttackBonus="+6" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

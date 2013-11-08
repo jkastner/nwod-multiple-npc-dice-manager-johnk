@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Sepia Snake</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="66" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="114" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="CMB" value="21" />
+    <trait label="CMD" value="34" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

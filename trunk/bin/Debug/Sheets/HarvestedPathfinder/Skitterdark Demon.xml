@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Skitterdark Demon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="34" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="14" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="15" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="3" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+9" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4-1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

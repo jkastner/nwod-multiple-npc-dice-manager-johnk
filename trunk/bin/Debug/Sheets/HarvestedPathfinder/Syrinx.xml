@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Syrinx</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="9" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="9" />
+    <trait label="Vigor" value="5" />
+    <trait label="Constitution" value="9" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="-1" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="-1" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="8" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="5" />
+    <trait label="quarterstaff" IsAttack="True" AttackBonus="-1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6-1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

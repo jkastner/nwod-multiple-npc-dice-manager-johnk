@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Great Wyrm Green Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="37" />
+    <trait label="Touch" value="0" />
+    <trait label="Flat-footed" value="37" />
+    <trait label="Vigor" value="175" />
+    <trait label="Constitution" value="27" />
+    <trait label="HP" value="391" />
+    <trait label="Fortitude" value="23" />
+    <trait label="Will" value="23" />
+    <trait label="Reflex" value="13" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="49" />
+    <trait label="CMD" value="57" />
+    <trait label="Speed" value="250" />
+    <trait label="Height" value="35" />
+    <trait label="bite" IsAttack="True" AttackBonus="+33" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d8+21" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+33" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+14" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+31" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+7" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+31" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+21" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

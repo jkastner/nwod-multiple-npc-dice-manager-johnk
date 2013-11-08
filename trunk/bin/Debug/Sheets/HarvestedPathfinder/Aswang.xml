@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Aswang</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="HP" value="60" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="8" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+2" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="bite" IsAttack="True" AttackBonus="+8" CritRange="18" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

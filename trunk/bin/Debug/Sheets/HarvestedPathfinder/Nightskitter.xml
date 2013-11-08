@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nightskitter</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="HP" value="157" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="15" />
+    <trait label="Reflex" value="14" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="23" />
+    <trait label="CMB" value="22" />
+    <trait label="CMD" value="38" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+21" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d8+16" Descriptor="Generic Damage" Triggers="4d6 cold and poison" />
+  </traits>
+</CharacterSheet>

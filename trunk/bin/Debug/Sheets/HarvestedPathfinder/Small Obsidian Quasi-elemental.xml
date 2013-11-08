@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Small Obsidian Quasi-elemental</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="5" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="2" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="20" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="4" />
+    <trait label="claw" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

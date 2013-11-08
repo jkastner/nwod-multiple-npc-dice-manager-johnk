@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nightwalker</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="31" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="29" />
+    <trait label="HP" value="241" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="19" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="27" />
+    <trait label="CMB" value="29" />
+    <trait label="CMD" value="41" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="15" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+28" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d6+15" Descriptor="Generic Damage" Triggers="4d6 cold" />
+  </traits>
+</CharacterSheet>

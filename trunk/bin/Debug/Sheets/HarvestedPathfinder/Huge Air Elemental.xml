@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Huge Air Elemental</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="13" />
+    <trait label="Armor Class" value="22" />
+    <trait label="Touch" value="18" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="95" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="16" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="38" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="15" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

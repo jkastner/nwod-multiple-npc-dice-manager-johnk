@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Werecrocodile</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="17" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="23" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="1" />
+    <trait label="Damage Resistance" Descriptor="silver" value="silver" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="16" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="battleaxe" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+3" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+5" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+3" Descriptor="Generic Damage" Triggers="grab and curse of lycanthropy" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+0" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d12+1" Descriptor="Generic Damage" />
+    <trait label="longbow" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Brontotherium</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="60" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="115" />
+    <trait label="Fortitude" value="14" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="29" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="15" />
+    <trait label="gore" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

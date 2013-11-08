@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Star-Spawn of Cthulhu</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="5" />
+    <trait label="Armor Class" value="36" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="35" />
+    <trait label="Vigor" value="112" />
+    <trait label="Constitution" value="30" />
+    <trait label="HP" value="362" />
+    <trait label="Regeneration" value="15" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="25" />
+    <trait label="Reflex" value="9" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="36" />
+    <trait label="CMD" value="47" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="15" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+32" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+16" Descriptor="Generic Damage" />
+    <trait label="6 tentacles" IsAttack="True" AttackBonus="+27" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

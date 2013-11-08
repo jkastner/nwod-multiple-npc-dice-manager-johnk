@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Demoriel</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="40" />
+    <trait label="Touch" value="25" />
+    <trait label="Flat-footed" value="35" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="210" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="20" />
+    <trait label="Reflex" value="17" />
+    <trait label="Damage Resistance" Descriptor="good and silver" value="good and silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="30" />
+    <trait label="CMB" value="26" />
+    <trait label="CMD" value="51" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="+3 unholy short sword" IsAttack="True" AttackBonus="+30/+25/+20/+15" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+9" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

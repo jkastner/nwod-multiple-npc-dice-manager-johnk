@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mobogo</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="22" />
+    <trait label="Vigor" value="71" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="136" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="10" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="36" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9" Descriptor="Generic Damage" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+9 or tongue +20" Descriptor="Generic Damage" Triggers="grab and pull" />
+  </traits>
+</CharacterSheet>

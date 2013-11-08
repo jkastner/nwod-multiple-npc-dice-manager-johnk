@@ -1,0 +1,31 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Venedaemon</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="33" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="51" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="7" />
+    <trait label="Damage Resistance" Descriptor="good or silver" value="good or silver" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="16" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="2 tentacles" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

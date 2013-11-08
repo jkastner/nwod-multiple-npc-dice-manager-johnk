@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Soul Eater</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="75" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="13" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Critical Hits" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Immunity" Descriptor="Stun" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="5" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+16" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+1" Descriptor="Generic Damage" Triggers="1d6 Wis damage" />
+  </traits>
+</CharacterSheet>

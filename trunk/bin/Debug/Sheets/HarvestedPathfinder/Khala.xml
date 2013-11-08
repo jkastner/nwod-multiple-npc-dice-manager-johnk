@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Khala</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="10" />
+    <trait label="Armor Class" value="31" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="117" />
+    <trait label="Constitution" value="27" />
+    <trait label="HP" value="261" />
+    <trait label="Fortitude" value="19" />
+    <trait label="Will" value="16" />
+    <trait label="Reflex" value="17" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Magic Paralysis And Sleep" />
+    <trait label="CMB" value="28" />
+    <trait label="CMD" value="38" />
+    <trait label="Speed" value="90" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="3 bites" IsAttack="True" AttackBonus="+26" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d10+9" Descriptor="Generic Damage" Triggers="disease" />
+    <trait label="tail" IsAttack="True" AttackBonus="+26" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+9" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

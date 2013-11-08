@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Fey Wolverine</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="15" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="7" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="Spell Resistance" value="14" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="bite" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+2" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

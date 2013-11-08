@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Wendigo</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="13" />
+    <trait label="Armor Class" value="32" />
+    <trait label="Touch" value="18" />
+    <trait label="Flat-footed" value="23" />
+    <trait label="Vigor" value="99" />
+    <trait label="Constitution" value="31" />
+    <trait label="HP" value="279" />
+    <trait label="Regeneration" value="15" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="22" />
+    <trait label="Damage Resistance" Descriptor="cold iron and magic" value="cold iron and magic" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Fear" />
+    <trait label="Spell Resistance" value="28" />
+    <trait label="CMB" value="28" />
+    <trait label="CMD" value="47" />
+    <trait label="Speed" value="120" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+26" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+9" Descriptor="Generic Damage" Triggers="4d6 cold and grab" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+26" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9" Descriptor="Generic Damage" Triggers="4d6 cold" />
+  </traits>
+</CharacterSheet>

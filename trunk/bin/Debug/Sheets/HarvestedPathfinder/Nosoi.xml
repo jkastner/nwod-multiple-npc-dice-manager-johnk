@@ -1,0 +1,28 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Nosoi</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="19" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="13" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Height" value="3" />
+    <trait label="bite" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

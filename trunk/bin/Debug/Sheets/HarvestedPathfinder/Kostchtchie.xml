@@ -1,0 +1,29 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Kostchtchie</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="10" />
+    <trait label="Armor Class" value="43" />
+    <trait label="Touch" value="31" />
+    <trait label="Flat-footed" value="37" />
+    <trait label="Vigor" value="159" />
+    <trait label="Constitution" value="37" />
+    <trait label="HP" value="536" />
+    <trait label="Fortitude" value="31" />
+    <trait label="Will" value="19" />
+    <trait label="Reflex" value="24" />
+    <trait label="Damage Resistance" Descriptor="cold iron and good" value="cold iron and good" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="34" />
+    <trait label="CMB" value="45" />
+    <trait label="CMD" value="77" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="Huge +4 cold iron thundering icy burst warhammer" IsAttack="True" AttackBonus="+48/+43/+38/+33" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="3d6+26" Descriptor="Generic Damage" Triggers="stun" />
+  </traits>
+</CharacterSheet>

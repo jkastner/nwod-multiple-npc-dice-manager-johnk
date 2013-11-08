@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Electric Catfish</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="45" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="75" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="9" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="24" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+6" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

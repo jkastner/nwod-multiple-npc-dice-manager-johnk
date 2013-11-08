@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Abasheen Genie</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="55" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="85" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="13" />
+    <trait label="Reflex" value="12" />
+    <trait label="CMB" value="14" />
+    <trait label="CMD" value="28" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="10" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+3) or masterwork falchion +13" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

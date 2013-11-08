@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Maharaja</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="13" />
+    <trait label="Armor Class" value="37" />
+    <trait label="Touch" value="24" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="30" />
+    <trait label="HP" value="310" />
+    <trait label="Fortitude" value="16" />
+    <trait label="Will" value="18" />
+    <trait label="Reflex" value="21" />
+    <trait label="Damage Resistance" Descriptor="good and piercing" value="good and piercing" />
+    <trait label="Spell Resistance" value="35" />
+    <trait label="CMB" value="28" />
+    <trait label="CMD" value="52" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="5" />
+    <trait label="+3 falchion" IsAttack="True" AttackBonus="+31/+26/+21/+16" CritRange="15" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d4+15" Descriptor="Generic Damage" />
+    <trait label="4 bites" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

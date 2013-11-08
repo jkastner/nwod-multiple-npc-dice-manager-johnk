@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Thriae Soldier</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="16" />
+    <trait label="HP" value="42" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="7" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sonic" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="23" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="5" />
+    <trait label="composite longbow" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+5" Descriptor="Generic Damage" Triggers="poison" />
+  </traits>
+</CharacterSheet>

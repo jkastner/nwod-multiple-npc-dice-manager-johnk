@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mummy Of The Deep</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="0" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="HP" value="40" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="1" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="16" />
+    <trait label="Speed" value="20" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="slam" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

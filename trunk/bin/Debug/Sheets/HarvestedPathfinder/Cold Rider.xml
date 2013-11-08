@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Cold Rider</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="45" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="97" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="10" />
+    <trait label="Reflex" value="11" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Spell Resistance" value="19" />
+    <trait label="CMB" value="9" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="+2 icy burst glaive" IsAttack="True" AttackBonus="+12/+7" CritRange="20" CritMultiplier="3" TargetDefense="Armor Class" Damage="1d10+6" Descriptor="Generic Damage" Triggers="1d6 cold" />
+  </traits>
+</CharacterSheet>

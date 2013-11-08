@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Cinder Knight</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="26" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="82" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="142" />
+    <trait label="Fortitude" value="15" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="8" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Spell Resistance" value="21" />
+    <trait label="CMB" value="22" />
+    <trait label="CMD" value="35" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="mwk greatsword" IsAttack="True" AttackBonus="+24/+19/+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+10 plus 1d6 fire or 2 slams +22" Descriptor="Generic Damage" Triggers="1d6 fire" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Balor</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="11" />
+    <trait label="Armor Class" value="36" />
+    <trait label="Touch" value="20" />
+    <trait label="Flat-footed" value="29" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="36" />
+    <trait label="HP" value="370" />
+    <trait label="Fortitude" value="29" />
+    <trait label="Will" value="25" />
+    <trait label="Reflex" value="17" />
+    <trait label="Damage Resistance" Descriptor="cold iron and good" value="cold iron and good" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="33" />
+    <trait label="CMD" value="54" />
+    <trait label="Speed" value="90" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+1 vorpal unholy longsword" IsAttack="True" AttackBonus="+31/+26/+21/+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" />
+    <trait label="+1 vorpal flaming whip" IsAttack="True" AttackBonus="+30/+25/+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+7 plus 1d6 fire and entangle or 2 slams +31" Descriptor="Generic Damage" Triggers="1d6 fire and entangle or 2 slams +31 (1d10+12" />
+  </traits>
+</CharacterSheet>

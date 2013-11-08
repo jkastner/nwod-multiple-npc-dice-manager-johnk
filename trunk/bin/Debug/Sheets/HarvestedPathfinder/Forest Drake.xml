@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Forest Drake</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="32" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="42" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="6" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="CMB" value="10" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

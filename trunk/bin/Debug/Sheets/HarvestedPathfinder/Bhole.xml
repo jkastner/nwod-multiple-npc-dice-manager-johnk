@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Bhole</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="33" />
+    <trait label="Touch" value="1" />
+    <trait label="Flat-footed" value="33" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="28" />
+    <trait label="HP" value="290" />
+    <trait label="Fortitude" value="21" />
+    <trait label="Will" value="11" />
+    <trait label="Reflex" value="13" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Magical Control" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Immunity" Descriptor="Stunning Effects" />
+    <trait label="Spell Resistance" value="28" />
+    <trait label="CMB" value="45" />
+    <trait label="CMD" value="54" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="35" />
+    <trait label="bite" IsAttack="True" AttackBonus="+29" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d6+25" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="slam" IsAttack="True" AttackBonus="+29" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+25" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,32 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mythic Marilith</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="40" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="36" />
+    <trait label="Vigor" value="168" />
+    <trait label="Constitution" value="32" />
+    <trait label="HP" value="344" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="25" />
+    <trait label="Will" value="13" />
+    <trait label="Reflex" value="18" />
+    <trait label="Damage Resistance" Descriptor="cold iron and epic and good" value="cold iron and epic and good" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="32" />
+    <trait label="CMB" value="27" />
+    <trait label="CMD" value="45" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="+2 longsword" IsAttack="True" AttackBonus="+28/+23/+18/+13" CritRange="16" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+12" Descriptor="Generic Damage" Triggers="poison" />
+    <trait label="5 +2 longswords" IsAttack="True" AttackBonus="+28" CritRange="16" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" Triggers="poison" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+20" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+5" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

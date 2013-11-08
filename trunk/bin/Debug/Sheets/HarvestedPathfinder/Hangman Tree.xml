@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Hangman Tree</Name>
+  <CharacterType>plant</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="36" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="76" />
+    <trait label="Fortitude" value="11" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Plant Traits" />
+    <trait label="Spell Resistance" value="19" />
+    <trait label="CMB" value="16" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="4 vines" IsAttack="True" AttackBonus="+13" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+8" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

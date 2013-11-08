@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Brine Zombie</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="HP" value="22" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="0" />
+    <trait label="Damage Resistance" Descriptor="slashing" value="slashing" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="14" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="cutlass" IsAttack="True" AttackBonus="+5" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

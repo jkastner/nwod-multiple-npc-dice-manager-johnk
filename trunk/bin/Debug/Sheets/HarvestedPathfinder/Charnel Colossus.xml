@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Charnel Colossus</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="29" />
+    <trait label="Touch" value="1" />
+    <trait label="Flat-footed" value="29" />
+    <trait label="HP" value="345" />
+    <trait label="Fortitude" value="19" />
+    <trait label="Will" value="32" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="magic and slashing" value="magic and slashing" />
+    <trait label="Immunity" Descriptor="Critical Hits" />
+    <trait label="Immunity" Descriptor="Precision Damage" />
+    <trait label="Immunity" Descriptor="Turning" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="30" />
+    <trait label="CMB" value="42" />
+    <trait label="CMD" value="51" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="35" />
+    <trait label="6 slams" IsAttack="True" AttackBonus="+26" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+12" Descriptor="Generic Damage" Triggers="grab and pull" />
+  </traits>
+</CharacterSheet>

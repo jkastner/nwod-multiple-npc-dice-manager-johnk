@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Yamaraj</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="16" />
+    <trait label="Armor Class" value="40" />
+    <trait label="Touch" value="21" />
+    <trait label="Flat-footed" value="27" />
+    <trait label="Vigor" value="148" />
+    <trait label="Constitution" value="27" />
+    <trait label="HP" value="364" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="23" />
+    <trait label="Will" value="27" />
+    <trait label="Reflex" value="21" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Death Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="38" />
+    <trait label="CMD" value="61" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+34" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+9" Descriptor="Generic Damage" Triggers="grab and poison" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+32" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+4" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+29" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+4" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+29" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

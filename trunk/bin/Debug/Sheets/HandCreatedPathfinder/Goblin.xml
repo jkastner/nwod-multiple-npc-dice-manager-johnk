@@ -1,0 +1,23 @@
+<CharacterSheet>
+	<Ruleset>Pathfinder</Ruleset>
+	<Name>Goblin</Name>
+	<CharacterType>Small Humanoid</CharacterType>
+	<traits>
+	<trait label='Initiative' value='6'/>
+	<trait label='Armor Class' value='12'/>
+	<trait label='Touch' value='12'/>
+	<trait label='Flat-footed' value='14'/>
+	<trait label='Vigor' value='10'/>
+	<trait label='Constitution' value='12'/>
+	<trait label='Fortitude' value='3'/>
+	<trait label='Reflex' value='2'/>
+	<trait label='Will' value='-1'/>
+	<trait label='Speed' value='30'/>
+	<trait label='Short Sword'  IsAttack='True' AttackBonus='2' CritRange='19-20' TargetDefense='Armor Class' Damage='1d4' Descriptor='Slashing'/>
+	<trait label='Shortbow' IsAttack='True' CritMultiplier='3' TargetDefense='Armor Class' AttackBonus='4' CritRange='20' Damage='1d4' Descriptor='Piercing'/>
+	<trait label='Height' value='3'/>
+	
+	</traits>
+</CharacterSheet>
+
+

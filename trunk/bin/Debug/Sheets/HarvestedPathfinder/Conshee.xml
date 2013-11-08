@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Conshee</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="3" />
+    <trait label="Constitution" value="11" />
+    <trait label="HP" value="3" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="CMB" value="0" />
+    <trait label="CMD" value="12" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="3" />
+    <trait label="dagger" IsAttack="True" AttackBonus="+0" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2-2" Descriptor="Generic Damage" />
+    <trait label="short bow" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

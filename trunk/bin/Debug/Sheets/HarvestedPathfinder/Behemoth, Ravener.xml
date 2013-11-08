@@ -1,0 +1,34 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Behemoth, Ravener</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-2" />
+    <trait label="Armor Class" value="35" />
+    <trait label="Touch" value="0" />
+    <trait label="Flat-footed" value="35" />
+    <trait label="Vigor" value="137" />
+    <trait label="Constitution" value="26" />
+    <trait label="HP" value="337" />
+    <trait label="Regeneration" value="15" />
+    <trait label="Fortitude" value="22" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="12" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Curse Effects" />
+    <trait label="Immunity" Descriptor="Disease" />
+    <trait label="Immunity" Descriptor="Mindaffecting Effects" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sonic" />
+    <trait label="Spell Resistance" value="29" />
+    <trait label="CMB" value="49" />
+    <trait label="CMD" value="57" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="cold" value="20" />
+    <trait label="Resist" Descriptor="fire" value="20" />
+    <trait label="Height" value="35" />
+    <trait label="rock" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+24" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

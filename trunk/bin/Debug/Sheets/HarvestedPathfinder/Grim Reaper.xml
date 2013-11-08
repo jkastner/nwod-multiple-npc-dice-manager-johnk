@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Grim Reaper</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="32" />
+    <trait label="Touch" value="20" />
+    <trait label="Flat-footed" value="30" />
+    <trait label="HP" value="378" />
+    <trait label="Fortitude" value="18" />
+    <trait label="Will" value="20" />
+    <trait label="Reflex" value="11" />
+    <trait label="Damage Resistance" Descriptor="cold iron and good" value="cold iron and good" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="Spell Resistance" value="31" />
+    <trait label="CMB" value="24" />
+    <trait label="CMD" value="50" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="10" />
+    <trait label="+3 scythe" IsAttack="True" AttackBonus="+27/+22/+17/+12" CritRange="20" CritMultiplier="4" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" Triggers="death touch" />
+  </traits>
+</CharacterSheet>

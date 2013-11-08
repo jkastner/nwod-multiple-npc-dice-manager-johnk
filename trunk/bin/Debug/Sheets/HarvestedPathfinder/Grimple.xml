@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Grimple</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="3" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="4" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="3" />
+    <trait label="Damage Resistance" Descriptor="cold iron" value="cold iron" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="5" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="3" />
+    <trait label="bite" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-4" Descriptor="Generic Damage" />
+    <trait label="rock" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2-4" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

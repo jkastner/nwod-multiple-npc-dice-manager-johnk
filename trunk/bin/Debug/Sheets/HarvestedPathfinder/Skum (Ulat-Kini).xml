@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Skum (Ulat-Kini)</Name>
+  <CharacterType>monstrous humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="13" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="Vigor" value="14" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="20" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="4" />
+    <trait label="CMB" value="4" />
+    <trait label="CMD" value="15" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="5" />
+    <trait label="trident" IsAttack="True" AttackBonus="+4" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+2" Descriptor="Generic Damage" />
+    <trait label="claw" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+1" Descriptor="Generic Damage" />
+    <trait label="trident" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

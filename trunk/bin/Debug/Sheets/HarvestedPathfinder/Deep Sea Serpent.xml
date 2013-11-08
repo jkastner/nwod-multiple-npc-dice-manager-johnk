@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Deep Sea Serpent</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="34" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="28" />
+    <trait label="Vigor" value="126" />
+    <trait label="Constitution" value="28" />
+    <trait label="HP" value="333" />
+    <trait label="Fortitude" value="22" />
+    <trait label="Will" value="12" />
+    <trait label="Reflex" value="20" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="CMB" value="41" />
+    <trait label="CMD" value="57" />
+    <trait label="Speed" value="50" />
+    <trait label="Resist" Descriptor="fire" value="30" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+33" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d10+14" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+33" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="6d8+14" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

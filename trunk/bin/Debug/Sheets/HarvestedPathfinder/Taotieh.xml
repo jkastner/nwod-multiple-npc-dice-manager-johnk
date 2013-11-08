@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Taotieh</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="28" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="26" />
+    <trait label="HP" value="107" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="25" />
+    <trait label="CMD" value="37" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="electricity" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+10" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+10" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

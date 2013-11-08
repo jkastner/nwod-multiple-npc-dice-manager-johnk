@@ -1,0 +1,27 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mythic Great Cyclops</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="32" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="31" />
+    <trait label="Vigor" value="124" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="243" />
+    <trait label="Fortitude" value="12" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="epic" value="epic" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="CMB" value="28" />
+    <trait label="CMD" value="39" />
+    <trait label="Speed" value="35" />
+    <trait label="Height" value="15" />
+    <trait label="mwk greatclub" IsAttack="True" AttackBonus="+25/+20/+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+21" Descriptor="Generic Damage" />
+    <trait label="gore" IsAttack="True" AttackBonus="+24" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+14" Descriptor="Generic Damage" />
+    <trait label="rock" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+21" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Huge Obsidian Quasi-elemental</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="7" />
+    <trait label="Flat-footed" value="17" />
+    <trait label="Vigor" value="44" />
+    <trait label="Constitution" value="19" />
+    <trait label="HP" value="76" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="5" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="Immunity" Descriptor="Elemental Traits" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="27" />
+    <trait label="Speed" value="20" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="15" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+14" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

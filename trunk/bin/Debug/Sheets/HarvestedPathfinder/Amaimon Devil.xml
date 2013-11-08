@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Amaimon Devil</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="23" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="19" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="94" />
+    <trait label="Regeneration" value="5" />
+    <trait label="Fortitude" value="8" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="10" />
+    <trait label="Damage Resistance" Descriptor="silver" value="silver" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Spell Resistance" value="19" />
+    <trait label="CMB" value="17" />
+    <trait label="CMD" value="31" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="acid" value="10" />
+    <trait label="Resist" Descriptor="cold" value="10" />
+    <trait label="Height" value="10" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+16" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" />
+    <trait label="bite" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

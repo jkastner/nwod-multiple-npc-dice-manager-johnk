@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Human</CharacterType>
-	<name>Dog</name>
+	<Name>Dog</Name>
 	<traits>
 	<trait label='Teeth' value='9' IsAttack='true' TargetDefense='Melee Defense' DamageType='Lethal'/>
 	<trait label='Initiative' value='6'/>
@@ -13,7 +13,7 @@
 	<trait label='Composure' value='3'/>
 	<trait label='Health' value='8'/>
 	<trait label='Height' value='5'/>
-	<trait label='Speed' value='42'/>
+	<trait label='Speed' value='14'/>
 	</traits>
 </CharacterSheet>
 

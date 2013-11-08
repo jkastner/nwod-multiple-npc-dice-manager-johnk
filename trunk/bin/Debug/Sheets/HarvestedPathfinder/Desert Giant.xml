@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Desert Giant</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="58" />
+    <trait label="Constitution" value="21" />
+    <trait label="HP" value="123" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="11" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="CMB" value="18" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="10" />
+    <trait label="mwk scimitars" IsAttack="True" AttackBonus="+16/+16/+11/+11" CritRange="15" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" />
+    <trait label="rock" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

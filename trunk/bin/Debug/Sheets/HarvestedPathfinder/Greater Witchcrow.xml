@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Greater Witchcrow</Name>
+  <CharacterType>magical beast</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="15" />
+    <trait label="Touch" value="15" />
+    <trait label="Flat-footed" value="11" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="12" />
+    <trait label="HP" value="32" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="7" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="19" />
+    <trait label="Speed" value="60" />
+    <trait label="Resist" Descriptor="cold" value="5" />
+    <trait label="Height" value="4" />
+    <trait label="2 talons" IsAttack="True" AttackBonus="+7" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

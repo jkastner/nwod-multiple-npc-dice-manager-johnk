@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Smoke Mephit</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="6" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="14" />
+    <trait label="Vigor" value="16" />
+    <trait label="Constitution" value="10" />
+    <trait label="HP" value="16" />
+    <trait label="Regeneration" value="2" />
+    <trait label="Fortitude" value="1" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="5" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Outsider Traits" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="17" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="5" />
+    <trait label="2 claw" IsAttack="True" AttackBonus="+3" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

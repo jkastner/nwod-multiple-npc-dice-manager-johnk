@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Vanara</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="17" />
+    <trait label="Touch" value="17" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="9" />
+    <trait label="Constitution" value="10" />
+    <trait label="HP" value="9" />
+    <trait label="Fortitude" value="2" />
+    <trait label="Will" value="5" />
+    <trait label="Reflex" value="5" />
+    <trait label="CMB" value="1" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="quarterstaff" IsAttack="True" AttackBonus="+1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+1) or flurry of blows +0" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

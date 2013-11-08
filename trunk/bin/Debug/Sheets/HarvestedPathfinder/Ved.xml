@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Ved</Name>
+  <CharacterType>humanoid</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-1" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="8" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="20" />
+    <trait label="HP" value="57" />
+    <trait label="Fortitude" value="7" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="1" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="22" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="10" />
+    <trait label="club" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

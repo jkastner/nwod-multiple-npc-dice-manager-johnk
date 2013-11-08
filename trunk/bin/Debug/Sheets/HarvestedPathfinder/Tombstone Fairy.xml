@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Tombstone Fairy</Name>
+  <CharacterType>fey</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="13" />
+    <trait label="Vigor" value="52" />
+    <trait label="Constitution" value="14" />
+    <trait label="HP" value="82" />
+    <trait label="Fortitude" value="9" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="13" />
+    <trait label="Damage Resistance" Descriptor="good and cold iron" value="good and cold iron" />
+    <trait label="Spell Resistance" value="20" />
+    <trait label="CMB" value="5" />
+    <trait label="CMD" value="20" />
+    <trait label="Speed" value="20" />
+    <trait label="Height" value="4" />
+    <trait label="dagger" IsAttack="True" AttackBonus="+12" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

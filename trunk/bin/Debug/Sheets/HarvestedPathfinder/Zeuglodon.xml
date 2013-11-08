@@ -1,0 +1,22 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Zeuglodon</Name>
+  <CharacterType>animal</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="25" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="49" />
+    <trait label="Constitution" value="22" />
+    <trait label="HP" value="115" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="11" />
+    <trait label="CMB" value="25" />
+    <trait label="CMD" value="40" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+17" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+19" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

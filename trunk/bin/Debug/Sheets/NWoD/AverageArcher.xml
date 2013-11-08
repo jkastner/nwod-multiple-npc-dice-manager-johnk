@@ -1,7 +1,7 @@
 <CharacterSheet>
 	<Ruleset>NWoD</Ruleset>
 	<CharacterType>Human</CharacterType>
-	<name>Average Archer</name>
+	<Name>Average Archer</Name>
 	<traits>
 	<trait label='Archery' value='5' IsAttack='true' TargetDefense='Ranged Defense' DamageType='Lethal'/>
 	<trait label='Brawl' value='2' IsAttack='true' TargetDefense='Melee Defense' DamageType='Bashing'/>
@@ -13,7 +13,7 @@
 	<trait label='Resolve' value='2'/>
 	<trait label='Composure' value='2'/>
 	<trait label='Health' value='7'/>
-	<trait label='Speed' value='30'/>
+	<trait label='Speed' value='10'/>
 	<trait label='Height' value='5'/>
 	</traits>
 </CharacterSheet>

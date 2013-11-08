@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Spine Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="31" />
+    <trait label="Touch" value="9" />
+    <trait label="Flat-footed" value="28" />
+    <trait label="Vigor" value="104" />
+    <trait label="Constitution" value="29" />
+    <trait label="HP" value="248" />
+    <trait label="Fortitude" value="19" />
+    <trait label="Will" value="16" />
+    <trait label="Reflex" value="12" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep Effects" />
+    <trait label="Immunity" Descriptor="Sonic" />
+    <trait label="Spell Resistance" value="27" />
+    <trait label="CMB" value="31" />
+    <trait label="CMD" value="44" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="cold" value="20" />
+    <trait label="Resist" Descriptor="electricity" value="20" />
+    <trait label="Resist" Descriptor="fire" value="20" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+11" Descriptor="Generic Damage" />
+    <trait label="claws" IsAttack="True" AttackBonus="+23" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+11" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+18" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+16" Descriptor="Generic Damage" />
+    <trait label="4 spines" IsAttack="True" AttackBonus="+14" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+11" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

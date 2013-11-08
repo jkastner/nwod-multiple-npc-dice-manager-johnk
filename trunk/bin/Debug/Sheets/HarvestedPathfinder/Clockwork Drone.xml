@@ -1,0 +1,21 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Clockwork Drone</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="4" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="16" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="4" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="CMB" value="3" />
+    <trait label="CMD" value="10" />
+    <trait label="Speed" value="60" />
+    <trait label="Height" value="3" />
+    <trait label="slam" IsAttack="True" AttackBonus="+0" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d3-3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

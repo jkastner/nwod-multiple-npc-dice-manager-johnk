@@ -1,0 +1,21 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Severed Head</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="14" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="12" />
+    <trait label="HP" value="4" />
+    <trait label="Fortitude" value="0" />
+    <trait label="Will" value="2" />
+    <trait label="Reflex" value="2" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="11" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="3" />
+    <trait label="slam" IsAttack="True" AttackBonus="+1" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d2" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

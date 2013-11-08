@@ -1,0 +1,21 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Skaveling</Name>
+  <CharacterType>undead</CharacterType>
+  <traits>
+    <trait label="Initiative" value="7" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="HP" value="58" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="8" />
+    <trait label="Reflex" value="6" />
+    <trait label="Immunity" Descriptor="Undead Traits" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="26" />
+    <trait label="Speed" value="40" />
+    <trait label="Height" value="10" />
+	<trait label='Bite' TargetDefense='Armor Class' AttackBonus='10' CritRange='20' Damage='2d8+7' Descriptor='Slashing' />
+  </traits>
+</CharacterSheet>

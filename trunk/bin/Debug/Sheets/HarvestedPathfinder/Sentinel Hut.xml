@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Sentinel Hut</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="21" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="HP" value="95" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="6" />
+    <trait label="Damage Resistance" Descriptor="adamantine" value="adamantine" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Immunity" Descriptor="Magic" />
+    <trait label="CMB" value="19" />
+    <trait label="CMD" value="32" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="bite" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d4+7" Descriptor="Generic Damage" Triggers="grab" />
+    <trait label="slam" IsAttack="True" AttackBonus="+15" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

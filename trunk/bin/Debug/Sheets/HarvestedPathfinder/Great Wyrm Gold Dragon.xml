@@ -1,0 +1,30 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Great Wyrm Gold Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="-2" />
+    <trait label="Armor Class" value="40" />
+    <trait label="Touch" value="0" />
+    <trait label="Flat-footed" value="40" />
+    <trait label="Vigor" value="195" />
+    <trait label="Constitution" value="29" />
+    <trait label="HP" value="465" />
+    <trait label="Fortitude" value="26" />
+    <trait label="Will" value="27" />
+    <trait label="Reflex" value="15" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Spell Resistance" value="34" />
+    <trait label="CMB" value="54" />
+    <trait label="CMD" value="62" />
+    <trait label="Speed" value="300" />
+    <trait label="Height" value="35" />
+    <trait label="bite" IsAttack="True" AttackBonus="+38" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d8+24" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+38" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+16" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+36" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="4d6+24" Descriptor="Generic Damage" />
+    <trait label="2 wings" IsAttack="True" AttackBonus="+36" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+8" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

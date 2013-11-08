@@ -1,0 +1,24 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Tiberolith</Name>
+  <CharacterType>construct</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="10" />
+    <trait label="Flat-footed" value="24" />
+    <trait label="HP" value="101" />
+    <trait label="Fortitude" value="4" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="4" />
+    <trait label="Damage Resistance" Descriptor="adamantine and bludgeoning" value="adamantine and bludgeoning" />
+    <trait label="Immunity" Descriptor="Acid" />
+    <trait label="Immunity" Descriptor="Construct Traits" />
+    <trait label="Spell Resistance" value="24" />
+    <trait label="CMB" value="23" />
+    <trait label="CMD" value="33" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="15" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+19" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="3d8+7" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

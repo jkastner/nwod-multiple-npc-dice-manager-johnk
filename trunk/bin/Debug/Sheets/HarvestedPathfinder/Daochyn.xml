@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Daochyn</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="3" />
+    <trait label="Armor Class" value="20" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="44" />
+    <trait label="Constitution" value="18" />
+    <trait label="HP" value="76" />
+    <trait label="Fortitude" value="10" />
+    <trait label="Will" value="3" />
+    <trait label="Reflex" value="9" />
+    <trait label="Damage Resistance" Descriptor="magic" value="magic" />
+    <trait label="Immunity" Descriptor="Cold" />
+    <trait label="CMB" value="11" />
+    <trait label="CMD" value="25" />
+    <trait label="Speed" value="50" />
+    <trait label="Height" value="5" />
+    <trait label="bite" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+11" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+3" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+6" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+1 or tongue +11" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

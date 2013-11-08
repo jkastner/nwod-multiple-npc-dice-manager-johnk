@@ -1,0 +1,23 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Crag Man</Name>
+  <CharacterType>aberration</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="19" />
+    <trait label="Touch" value="11" />
+    <trait label="Flat-footed" value="18" />
+    <trait label="Vigor" value="27" />
+    <trait label="Constitution" value="17" />
+    <trait label="HP" value="45" />
+    <trait label="Fortitude" value="5" />
+    <trait label="Will" value="6" />
+    <trait label="Reflex" value="3" />
+    <trait label="Damage Resistance" Descriptor="-" value="-" />
+    <trait label="CMB" value="7" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="30" />
+    <trait label="Height" value="5" />
+    <trait label="2 slams" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+3" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

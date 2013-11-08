@@ -1,0 +1,26 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Wyrmling Bronze Dragon</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="2" />
+    <trait label="Armor Class" value="18" />
+    <trait label="Touch" value="13" />
+    <trait label="Flat-footed" value="16" />
+    <trait label="Vigor" value="39" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="45" />
+    <trait label="Fortitude" value="6" />
+    <trait label="Will" value="7" />
+    <trait label="Reflex" value="7" />
+    <trait label="Immunity" Descriptor="Electricity" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="CMB" value="6" />
+    <trait label="CMD" value="18" />
+    <trait label="Speed" value="150" />
+    <trait label="Height" value="4" />
+    <trait label="bite" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d6+1" Descriptor="Generic Damage" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+8" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4+1" Descriptor="Generic Damage" />
+  </traits>
+</CharacterSheet>

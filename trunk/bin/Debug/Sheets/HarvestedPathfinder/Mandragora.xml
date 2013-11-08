@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Mandragora</Name>
+  <CharacterType>plant</CharacterType>
+  <traits>
+    <trait label="Initiative" value="1" />
+    <trait label="Armor Class" value="16" />
+    <trait label="Touch" value="12" />
+    <trait label="Flat-footed" value="15" />
+    <trait label="Vigor" value="4" />
+    <trait label="Constitution" value="13" />
+    <trait label="HP" value="5" />
+    <trait label="Fortitude" value="3" />
+    <trait label="Will" value="0" />
+    <trait label="Reflex" value="1" />
+    <trait label="Immunity" Descriptor="Plant Traits" />
+    <trait label="Spell Resistance" value="12" />
+    <trait label="CMB" value="-1" />
+    <trait label="CMD" value="10" />
+    <trait label="Speed" value="30" />
+    <trait label="Resist" Descriptor="fire" value="10" />
+    <trait label="Height" value="4" />
+    <trait label="2 tentacle slaps" IsAttack="True" AttackBonus="+2" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d4" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

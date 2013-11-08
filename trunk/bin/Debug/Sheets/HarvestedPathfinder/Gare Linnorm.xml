@@ -1,0 +1,33 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Gare Linnorm</Name>
+  <CharacterType>dragon</CharacterType>
+  <traits>
+    <trait label="Initiative" value="9" />
+    <trait label="Armor Class" value="30" />
+    <trait label="Touch" value="30" />
+    <trait label="Flat-footed" value="25" />
+    <trait label="Vigor" value="110" />
+    <trait label="Constitution" value="25" />
+    <trait label="HP" value="229" />
+    <trait label="Regeneration" value="10" />
+    <trait label="Fortitude" value="17" />
+    <trait label="Will" value="14" />
+    <trait label="Reflex" value="15" />
+    <trait label="Immunity" Descriptor="Curse Effects" />
+    <trait label="Immunity" Descriptor="Dragon Traits" />
+    <trait label="Immunity" Descriptor="Fire" />
+    <trait label="Immunity" Descriptor="Mind-Affecting Effects" />
+    <trait label="Immunity" Descriptor="Paralysis" />
+    <trait label="Immunity" Descriptor="Poison" />
+    <trait label="Immunity" Descriptor="Sleep" />
+    <trait label="Spell Resistance" value="26" />
+    <trait label="CMB" value="34" />
+    <trait label="CMD" value="68" />
+    <trait label="Speed" value="100" />
+    <trait label="Height" value="20" />
+    <trait label="bite" IsAttack="True" AttackBonus="+26" CritRange="19" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+13" Descriptor="Generic Damage" Triggers="poison" />
+    <trait label="2 claws" IsAttack="True" AttackBonus="+26" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d6+13" Descriptor="Generic Damage" />
+    <trait label="tail slap" IsAttack="True" AttackBonus="+21" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="2d8+6" Descriptor="Generic Damage" Triggers="grab" />
+  </traits>
+</CharacterSheet>

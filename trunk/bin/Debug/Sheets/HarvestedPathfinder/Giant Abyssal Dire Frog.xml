@@ -1,0 +1,25 @@
+<CharacterSheet>
+  <Ruleset>Pathfinder</Ruleset>
+  <Name>Giant Abyssal Dire Frog</Name>
+  <CharacterType>outsider</CharacterType>
+  <traits>
+    <trait label="Initiative" value="8" />
+    <trait label="Armor Class" value="24" />
+    <trait label="Touch" value="14" />
+    <trait label="Flat-footed" value="20" />
+    <trait label="Vigor" value="22" />
+    <trait label="Constitution" value="28" />
+    <trait label="HP" value="58" />
+    <trait label="Fortitude" value="13" />
+    <trait label="Will" value="4" />
+    <trait label="Reflex" value="10" />
+    <trait label="Spell Resistance" value="9" />
+    <trait label="CMB" value="12" />
+    <trait label="CMD" value="26" />
+    <trait label="Speed" value="40" />
+    <trait label="Resist" Descriptor="ance" value="cold" />
+    <trait label="Resist" Descriptor="fire" value="5" />
+    <trait label="Height" value="10" />
+    <trait label="bite" IsAttack="True" AttackBonus="+10" CritRange="20" CritMultiplier="2" TargetDefense="Armor Class" Damage="1d8+8" Descriptor="Generic Damage" Triggers="grab or tongue +10 touch (grab" />
+  </traits>
+</CharacterSheet>
