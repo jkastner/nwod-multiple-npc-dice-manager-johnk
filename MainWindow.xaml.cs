@@ -174,6 +174,14 @@ namespace XMLCharSheets
 
         private void Initiative_Button_Click(object sender, RoutedEventArgs e)
         {
+            bool someActiveLeft = CombatService.RosterViewModel.ActiveRoster.Any(x => !x.HasAttacked && !x.HasMoved);
+            if (someActiveLeft)
+            {
+                if (MessageBox.Show("Some characters have not acted. Roll initiative anyway?", "Confirm New Round", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             CombatService.RosterViewModel.RollInitiative();
             CombatService.RosterViewModel.CurrentRound++;
             CurrentRound_Label.Content = "Round " + CombatService.RosterViewModel.CurrentRound;

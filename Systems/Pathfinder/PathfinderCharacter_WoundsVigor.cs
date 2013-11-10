@@ -89,7 +89,7 @@ namespace XMLCharSheets
                     regenValue = regenValueMax;
                 }
                 CurrentVigorPoints += regenValue;
-                Report(Name + " regenerated " + regenValue + " Vigor damage -- " + HealthStatusLineDescription);
+                Report(Name + " regenerated " + regenValue + " Vigor damage -- " + HealthStatusLineDescription+"\n");
             }
         }
 
@@ -159,6 +159,7 @@ namespace XMLCharSheets
                     AssignStatus("Unconscious from wounds", 500);
                     SetIncapacitated(true);
                 }
+                Report("\n");
             }
             return start;
         }

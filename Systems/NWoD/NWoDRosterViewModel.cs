@@ -15,14 +15,14 @@ namespace XMLCharSheets.NWoD
                 if (curVampire == null)
                 {
                     var regularChar = curItem as CharacterSheet;
-                    TextReporter.Report(regularChar.Name + " is not a vampire.");
+                    TextReporter.Report(regularChar.Name + " is not a vampire.\n");
                 }
                 else
                 {
                     if (curVampire.CurrentVitae > 0)
                         curVampire.BloodBuff();
                     else
-                        TextReporter.Report(curVampire.Name + " did not have enough Vitae.");
+                        TextReporter.Report(curVampire.Name + " did not have enough Vitae.\n");
                 }
             }
         }
@@ -35,7 +35,7 @@ namespace XMLCharSheets.NWoD
                 if (curVampire == null)
                 {
                     var regularChar = curItem as CharacterSheet;
-                    TextReporter.Report(regularChar.Name + " is not a vampire.");
+                    TextReporter.Report(regularChar.Name + " is not a vampire.\n");
                 }
                 else
                 {
@@ -45,11 +45,11 @@ namespace XMLCharSheets.NWoD
                             curVampire.BloodHeal();
                         else
                         {
-                            TextReporter.Report(curVampire.Name + " did not have wounds that could be healed.");
+                            TextReporter.Report(curVampire.Name + " did not have wounds that could be healed.\n");
                         }
                     }
                     else
-                        TextReporter.Report(curVampire.Name + " did not have enough Vitae.");
+                        TextReporter.Report(curVampire.Name + " did not have enough Vitae.\n");
                 }
             }
         }
@@ -77,7 +77,7 @@ namespace XMLCharSheets.NWoD
                 if (curVampire == null)
                 {
                     var regularChar = curItem as CharacterSheet;
-                    TextReporter.Report(regularChar.Name + " is not a vampire.");
+                    TextReporter.Report(regularChar.Name + " is not a vampire.\n");
                 }
                 else
                 {
