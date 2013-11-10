@@ -25,7 +25,7 @@ namespace GameBoard
 
         public void SetInitialBackground()
         {
-            var files = Directory.GetFiles(Constants.MapPictureDirectory);
+            var files = Directory.GetFiles(GameboardConstants.MapPictureDirectory);
             if (files.Any())
             {
                 SetBoardBackground(files.First(), 0, 0, true);

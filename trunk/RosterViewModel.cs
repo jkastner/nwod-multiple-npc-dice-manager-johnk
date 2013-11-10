@@ -892,5 +892,11 @@ namespace XMLCharSheets
             //BoardsViewModel.Instance.ForeachBoard(x=>x.GameBoardVisual.Se
         }
 
+
+        internal void ResetOnOpen()
+        {
+            _ruleSetChosen = false;
+            OnRulesetSelected(new RulesetSelectedEventArgs(RulesetSelectedEventArgs.ClearRulesetString));
+        }
     }
 }
