@@ -502,6 +502,11 @@ namespace XMLCharSheets
             {
                 if (ActiveRoster[curIndex].IsIncapacitated)
                 {
+                    //The character should be removed from the active list first.
+                    //Otherwise, when removed later, it would trigger a 'set inactive'
+                    //event, which cannot complete due to the character already being
+                    //removed from all the boards.
+                    MoveCharacterToDeceasedRoster(ActiveRoster[curIndex]);
                     if (ActiveRoster[curIndex].HasVisual)
                     {
                         var curId = ActiveRoster[curIndex].UniqueCharacterID;
@@ -511,7 +516,6 @@ namespace XMLCharSheets
                     {
                         cur.Target = null;
                     }
-                    MoveCharacterToDeceasedRoster(ActiveRoster[curIndex]);
                 }
             }
             for (int curIndex = DeceasedRoster.Count() - 1; curIndex >= 0; curIndex--)
