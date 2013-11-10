@@ -42,6 +42,8 @@ namespace XMLCharSheets
             {
                 try
                 {
+                    CombatService.RosterViewModel.ResetOnOpen();
+
                     var savedCombat = ReadFromXML(openFileDialog.FileName, typeof (Combat)) as Combat;
                     for (int curIndex = 0; curIndex < savedCombat.Boards.Count(); curIndex++)
                     {

@@ -110,8 +110,15 @@ namespace XMLCharSheets
             var ruleEvent = e as RulesetSelectedEventArgs;
             if (ruleEvent != null)
             {
-                CustomCombatPanel.Children.Add(CombatService.RosterViewModel.ControlFor(ruleEvent.SelectedRuleset));
-                CombatService.RosterViewModel.LoadDamageFor(ruleEvent.SelectedRuleset);
+                if (ruleEvent.SelectedRuleset.Equals(RulesetSelectedEventArgs.ClearRulesetString))
+                {
+                    CustomCombatPanel.Children.Clear();
+                }
+                else
+                {
+                    CustomCombatPanel.Children.Add(CombatService.RosterViewModel.ControlFor(ruleEvent.SelectedRuleset));
+                    CombatService.RosterViewModel.LoadDamageFor(ruleEvent.SelectedRuleset);
+                }
             }
         }
 

@@ -31,7 +31,7 @@ namespace GameBoard
 
         public static Material PaperbackMaterial()
         {
-            var expected = Constants.MapPictureDirectory + "\\" + Constants.BackgroundName;
+            var expected = GameboardConstants.MapPictureDirectory + "\\" + GameboardConstants.BackgroundName;
             if (File.Exists(expected))
             {
                 return new DiffuseMaterial(MakeImageMaterial(expected));

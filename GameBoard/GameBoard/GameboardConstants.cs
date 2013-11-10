@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameBoard
 {
-    public class Constants
+    public class GameboardConstants
     {
         public const string MapPictureDirectory = "MapPictures";
         public const string BackgroundName = "MapBackground.jpg";
