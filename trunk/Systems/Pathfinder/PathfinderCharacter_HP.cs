@@ -73,7 +73,7 @@ namespace XMLCharSheets
                     regenValue = regenValueMax;
                 }
                 CurrentHitPoints += regenValue;
-                Report(Name + " regenerated " + regenValue + " damage -- " + CurrentHitPoints + "/" + MaxHitPoints);
+                Report(Name + " regenerated " + regenValue + " damage -- " + CurrentHitPoints + "/" + MaxHitPoints+"\n");
             }
         }
 
@@ -106,7 +106,7 @@ namespace XMLCharSheets
             {
                 SetIncapacitated(false);
             }
-            Report(Name + " has " + CurrentHitPoints + "/" + MaxHitPoints + " HP");
+            Report(Name + " has " + CurrentHitPoints + "/" + MaxHitPoints + " HP\n");
             NotifyStatusChange();
             return "";
         }
