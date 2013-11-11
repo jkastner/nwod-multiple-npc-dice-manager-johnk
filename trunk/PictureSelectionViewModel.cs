@@ -8,7 +8,7 @@ namespace XMLCharSheets
 {
     public class PictureSelectionViewModel
     {
-        private string picTarget = Directory.GetCurrentDirectory() + @"\Pictures";
+        private string picTarget = Directory.GetCurrentDirectory() + @"\PiecePictures";
 
         private ObservableCollection<PictureFileInfo> _activeLoadedPictures =
             new ObservableCollection<PictureFileInfo>();
