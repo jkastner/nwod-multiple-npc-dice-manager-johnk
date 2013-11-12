@@ -6,9 +6,9 @@
         >
     <StackPanel>
         <Label>Height</Label>
-        <local:PositiveIntegerTextBox Name="BoardHeight_TextBox"></local:PositiveIntegerTextBox>
+        <local:PositiveIntegerTextBox x:Name="BoardHeight_TextBox"></local:PositiveIntegerTextBox>
         <Label>Width</Label>
-        <local:PositiveIntegerTextBox Name="BoardWidth_TextBox"></local:PositiveIntegerTextBox>
+        <local:PositiveIntegerTextBox x:Name="BoardWidth_TextBox"></local:PositiveIntegerTextBox>
         <Label>Maintain Default Ratio</Label>
         <CheckBox IsChecked="True" Margin="5,5,0,5" Name="Maintain_Ratio_CheckBox"></CheckBox>
         <DockPanel>
