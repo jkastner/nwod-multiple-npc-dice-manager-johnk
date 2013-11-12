@@ -75,7 +75,9 @@
         </TextBox>
         <Button
             ToolTip="Roll the indicated pool."
-            HorizontalAlignment="Left" Height="34" Width="15" FontSize="15" FontWeight="Bold">></Button>
+            HorizontalAlignment="Left" Height="34" Width="15" FontSize="15" FontWeight="Bold"
+            Click="RollPool_Button_Click"
+            >></Button>
 
 
     </DockPanel>
