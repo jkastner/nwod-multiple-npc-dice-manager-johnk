@@ -172,7 +172,7 @@ namespace XMLCharSheets
             {
                 double damageDouble = originalDamage;
                 var curTrait = cur.FindNumericTrait(chosenSave);
-                PathfinderDicePool savePool = new PathfinderDicePool(1, 20, curTrait.TraitValue);
+                PathfinderDicePool savePool = new PathfinderDicePool(1, 20, 0);
                 savePool.Roll();
                 if (!validDamage && !w.WasStatusEffect)
                 {
@@ -183,7 +183,15 @@ namespace XMLCharSheets
                     continue;
                 }
                 TextReporter.Report(cur.Name + " rolled " + chosenSave + ": " + savePool.TotalValue + " VS DC: " + dc);
-                bool madeSave = savePool.TotalValue >= dc;
+                bool madeSave = savePool.TotalValue+curTrait.TraitValue >= dc;
+                if (savePool.TotalValue == 20)
+                {
+                    madeSave = true;
+                }
+                if (savePool.TotalValue == 1)
+                {
+                    madeSave = false;
+                }
                 if (madeSave)
                 {
                     TextReporter.Report("--Success--", Brushes.Green);

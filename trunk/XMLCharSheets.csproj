@@ -85,6 +85,9 @@
     <Compile Include="NewSelectTarget.xaml.cs">
       <DependentUpon>NewSelectTarget.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PositiveIntegerTextBox.xaml.cs">
+      <DependentUpon>PositiveIntegerTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportTextEventArgs.cs" />
     <Compile Include="Systems\NWoD\NWoDAttackTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDCharacterReader.cs" />
@@ -160,6 +163,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewSelectTarget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PositiveIntegerTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

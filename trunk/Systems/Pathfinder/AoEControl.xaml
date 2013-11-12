@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:XMLCharSheets"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
     <StackPanel>
         <DockPanel Height="50" Margin="5,5,5,5">
             <Label FontSize="14">DC:</Label>
-            <TextBox Name="DC_TextBox" BorderBrush="Black" BorderThickness="1">17</TextBox>
+            <local:PositiveIntegerTextBox x:Name="DC_TextBox" BorderBrush="Black" BorderThickness="1">17</local:PositiveIntegerTextBox>
         </DockPanel>
         <DockPanel Margin="5,5,5,5">
             <RadioButton Margin="5,5,5,5" Name="DamageGroup_RadioButton" GroupName="AoEType_Group" IsChecked="True" Checked="DamageGroup_RadioButton_Checked">Damage</RadioButton>
@@ -28,11 +29,9 @@
                 
                 <RadioButton Name="HalfDamageOnSuccess_RadioButton" GroupName="DamageOnSuccess" IsChecked="True">Half</RadioButton>
                 <RadioButton Name="NoDamageOnSuccess_RadioButton" GroupName="DamageOnSuccess">None</RadioButton>
-                
-
-                <DockPanel Grid.Row="2" Grid.Column="0"  Height="50" Margin="5,5,5,5">
+                <DockPanel Grid.Row="2" Grid.Column="0"  Height="60" Margin="5,5,5,5">
                     <Label FontSize="14">Damage:</Label>
-                    <TextBox Name="Damage_TextBox"></TextBox>
+                    <local:PositiveIntegerTextBox x:Name="Damage_TextBox" FontSize="14"></local:PositiveIntegerTextBox>
                 </DockPanel>
             </StackPanel>
             <StackPanel Name="StatusEffect_StackPanel">
@@ -43,8 +42,8 @@
                 <Label>
                     Status Duration (Rounds)
                 </Label>
-                <TextBox Margin="5,5,5,5" BorderBrush="Black" BorderThickness="1" Name="StatusDuration" Text="2">
-                </TextBox>
+                <local:PositiveIntegerTextBox Margin="5,5,5,5" BorderBrush="Black" BorderThickness="1" x:Name="StatusDuration" Text="2">
+                    </local:PositiveIntegerTextBox>
             </StackPanel>
         </DockPanel>
         <DockPanel Margin="5,5,5,5" >
