@@ -21,32 +21,51 @@ namespace XMLCharSheets
         public RollTraitsWindow(List <CharacterSheet> selectedCharacters)
         {
             InitializeComponent();
-            List<NumericIntTrait> _allTraits = new List<NumericIntTrait>();
-            foreach(var cur in selectedCharacters)
+            List<String> sharedTraits = new List<String>();
+            List<String> unsharedTraits = new List<String>();
+            foreach (var curCharacter in selectedCharacters)
             {
-                var numericTraits = cur.NumericTraits;
-                if (_allTraits.Any())
+                foreach (var curTrait in curCharacter.NumericTraits)
                 {
-                    foreach (var curTrait in numericTraits)
+                    if (!sharedTraits.Contains(curTrait.TraitLabel))
                     {
-                        if (!_allTraits.Any(x => x.TraitLabel.Equals(curTrait.TraitLabel)))
-                        {
-                            UnsharedTraits_ListBox.Items.Add(curTrait);
-                        }
-                    }
-                }
-                else
-                {
-                    _allTraits.AddRange(numericTraits);
-                    foreach (var curTrait in _allTraits)
-                    {
-                        AvailableTraits_ListBox.Items.Add(curTrait);
+                        sharedTraits.Add(curTrait.TraitLabel);
                     }
                 }
             }
-            if (!(UnsharedTraits_ListBox.Items.Count > 0))
+            foreach(var curCharacter in selectedCharacters)
+            {
+                List<String> toRemove = new List<String>();
+                foreach (var cur in sharedTraits)
+                {
+                    if (!curCharacter.HasTrait(cur))
+                    {
+                        toRemove.Add(cur);
+                    }
+                }
+                foreach (var cur in toRemove)
+                {
+                    sharedTraits.Remove(cur);
+                    unsharedTraits.Add(cur);
+                }
+            }
+
+
+            foreach (var cur in sharedTraits)
+            {
+                AvailableTraits_ListBox.Items.Add(cur);
+            }
+            foreach (var cur in unsharedTraits)
+            {
+                UnsharedTraits_ListBox.Items.Add(cur);
+            }
+            if ((UnsharedTraits_ListBox.Items.Count == 0))
             {
                 UnsharedTraits_Column.Width = new GridLength(0);
+            }
+            if ((AvailableTraits_ListBox.Items.Count == 0))
+            {
+                SharedTraits_Column.Width = new GridLength(0);
             }
             WasCancel = true;
         }
@@ -58,13 +77,11 @@ namespace XMLCharSheets
             {
                 foreach (var cur in AvailableTraits_ListBox.SelectedItems)
                 {
-                    var curtrait = cur as Trait;
-                    yield return curtrait.TraitLabel;
+                    yield return cur.ToString();
                 }
                 foreach (var cur in UnsharedTraits_ListBox.SelectedItems)
                 {
-                    var curtrait = cur as Trait;
-                    yield return curtrait.TraitLabel;
+                    yield return cur.ToString();
                 }
             }
         }
