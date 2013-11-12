@@ -114,26 +114,38 @@ namespace XMLCharSheets
             _viewModel.PathfinderSingleAttack(ActiveList());
         }
 
+
+        private void RollPool_Button_Click(object sender, RoutedEventArgs e)
+        {
+            RollPoolFromTextBox();
+        }
+
         private void RollDice_TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                var createdPool = PathfinderDicePool.ParseString(RollDice_TextBox.Text);
-                if (createdPool == null)
-                {
-                    RollDice_TextBox.Background = new SolidColorBrush(Colors.Red);
-                    RollDice_TextBox.ToolTip = "Format must be as in \"quantity d dieType + modifier\" format - '1d8+2'";
-                    return;
-                }
-                ResetRollDiceTextBoxError();
-                createdPool.Roll();
-                DamageValue_TextBox.Text = "-" + createdPool.TotalValue;
-                TextReporter.Report("\n" + createdPool.PoolDescription + ": " + createdPool.ResultDescription + "\n");
+                RollPoolFromTextBox();
             }
             else
             {
                 ResetRollDiceTextBoxError();
             }
+        }
+
+        private void RollPoolFromTextBox()
+        {
+            var createdPool = PathfinderDicePool.ParseString(RollDice_TextBox.Text);
+            if (createdPool == null)
+            {
+                RollDice_TextBox.Background = new SolidColorBrush(Colors.Red);
+                RollDice_TextBox.ToolTip = "Format must be as in \"quantity d dieType + modifier\" format - '1d8+2'";
+                return;
+            }
+            ResetRollDiceTextBoxError();
+            createdPool.Roll();
+            DamageValue_TextBox.Text = createdPool.TotalValue.ToString();
+            _lastSuccessfullyParsedDamage = createdPool.TotalValue;
+            TextReporter.Report("\n" + createdPool.PoolDescription + ": " + createdPool.ResultDescription + "\n");
         }
 
         private void ResetRollDiceTextBoxError()
@@ -227,6 +239,7 @@ namespace XMLCharSheets
 
             }
         }
+
 
 
     }
