@@ -89,6 +89,9 @@
       <DependentUpon>PositiveIntegerTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReportTextEventArgs.cs" />
+    <Compile Include="RollTraitsWindow.xaml.cs">
+      <DependentUpon>RollTraitsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Systems\NWoD\NWoDAttackTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDCharacterReader.cs" />
     <Compile Include="Systems\NWoD\NWoDConstants.cs" />
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PositiveIntegerTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RollTraitsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
