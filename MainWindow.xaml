@@ -11,8 +11,6 @@
         <Menu IsMainMenu="True" DockPanel.Dock="Top">
             <Menu>
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New..." />
-                    <Separator />
                     <MenuItem Header="_Open..." Click="OpenFile_Click_MenuItem" />
                     <Separator />
                     <MenuItem Header="_Save" Click="SaveFile_Click_MenuItem" />
@@ -43,7 +41,7 @@
                     </DataGrid>
                 </StackPanel>
             </TabItem>
-            <TabItem Name="MainTab" Header="Combat">
+            <TabItem Name="MainTab" Header="Combat" Margin="-1,-2,-3,-1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -140,6 +138,14 @@
                                     </Style.Triggers>
                                 </Style>
                             </ListBox.ItemContainerStyle>
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="_Remove" Click="RemoveCharacter_Button_Click"/>
+                                    <MenuItem Header="_Clean deceased characters" Click="CleanDeceasedCharacters_Button_Click"/>
+                                    <MenuItem Header="_Add visual" Click="AddVisual_Button_Click"/>
+                                    <MenuItem Header="Remove visual" Click="RemoveVisual_Button_Click"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
 
                         </ListBox>
 
@@ -273,48 +279,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Visual Controls">
-                <Grid Name="VisualControl_Grid">
+                <Grid Name="VisualControl_Grid" Height="Auto">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="28"></RowDefinition>
                         <RowDefinition Height="58"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <DockPanel DockPanel.Dock="Top" Grid.Row="0">
-                        <Button
-                                Margin="5,5,0,0"
-                                HorizontalAlignment="Left"
-                                Name="RemoveCharacter_Button"
-                                Content="Remove" ToolTip="Remove character from active roster."
-                                Width="75" Click="RemoveCharacter_Button_Click" />
-                        <Button
-                                Margin="5,5,0,0"
-                                HorizontalAlignment="Left"
-                                Name="CleanDeceasedCharacters_Button"
-                                Content="Clean" ToolTip="Remove inactive characters from the roster."
-                                Width="75" Click="CleanDeceasedCharacters_Button_Click" />
-                        <Button
-                                Margin="5,5,0,0"
-                                HorizontalAlignment="Left"
-                                Name="AddVisual_Button"
-                                Content="Add Visual" ToolTip="Add visual to selected characters.."
-                                Width="75" Click="AddVisual_Button_Click" />
-                        <Button
-                                Margin="5,5,0,0"
-                                HorizontalAlignment="Left"
-                                Name="RemoveVisual_Button"
-                                Content="Remove Visual" ToolTip="Remove visual from selected characters.."
-                                Width="95" Click="RemoveVisual_Button_Click" />
-                        <Button
-                                Margin="5,5,0,0"
-                                HorizontalAlignment="Left"
-                                Name="ChangeBackgroundImage_Button"
-                                Content="Background" ToolTip="Change background image"
-                                Width="95" Click="ChangeBackground_Button_Click" />
-
-                    </DockPanel>
-
-                    <DockPanel DockPanel.Dock="Top" Margin="5,5,5,5" HorizontalAlignment="Left"
-                                   VerticalAlignment="Center" Grid.Row="1">
+                    <DockPanel Margin="5,5,5,5" HorizontalAlignment="Left"
+                                   VerticalAlignment="Top" Grid.Row="0">
                         <TextBox
                                 Margin="5,5,5,5"
                                 DataContext="{Binding VisualsViewModel}"
@@ -410,12 +381,18 @@
                                 </Path.RenderTransform>
                             </Path>
                         </RadioButton>
-                        <ToggleButton ToolTip="Show movement grid" Checked="GridIsChecked_ToggleButton" Unchecked="GridIsUnchecked_ToggleButton">
+                        <ToggleButton ToolTip="Show movement grid" Checked="GridIsChecked_ToggleButton" 
+                                      Unchecked="GridIsUnchecked_ToggleButton">
                             Grid
                         </ToggleButton>
-
+                        <Button 
+                                Margin="5,5,0,0"
+                                HorizontalAlignment="Left"
+                                Name="ChangeBackgroundImage_Button"
+                                Content="Background" ToolTip="Change background image"
+                                Width="95" Click="ChangeBackground_Button_Click" />
                     </DockPanel>
-                    <DockPanel Name="VisualControl_BoardSpace_DockPanel" Grid.Row="2"></DockPanel>
+                    <DockPanel Name="VisualControl_BoardSpace_DockPanel" Grid.Row="1"></DockPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="Deceased">

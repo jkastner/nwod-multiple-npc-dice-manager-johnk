@@ -1,12 +1,14 @@
 ﻿<Window x:Class="XMLCharSheets.SetBoardDimensions"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SetBoardDimensions" Height="300" Width="300">
+        Title="SetBoardDimensions" Height="300" Width="300"
+        xmlns:local="clr-namespace:XMLCharSheets"
+        >
     <StackPanel>
         <Label>Height</Label>
-        <TextBox Name="BoardHeight_TextBox"></TextBox>
+        <local:PositiveIntegerTextBox Name="BoardHeight_TextBox"></local:PositiveIntegerTextBox>
         <Label>Width</Label>
-        <TextBox Name="BoardWidth_TextBox"></TextBox>
+        <local:PositiveIntegerTextBox Name="BoardWidth_TextBox"></local:PositiveIntegerTextBox>
         <Label>Maintain Default Ratio</Label>
         <CheckBox IsChecked="True" Margin="5,5,0,5" Name="Maintain_Ratio_CheckBox"></CheckBox>
         <DockPanel>
