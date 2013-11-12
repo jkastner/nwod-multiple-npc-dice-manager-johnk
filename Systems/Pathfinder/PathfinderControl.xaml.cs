@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -45,22 +46,66 @@ namespace XMLCharSheets
         }
 
 
-        private void DoDamage()
+        int _lastSuccessfullyParsedDamage = 0;
+        private void DoDamage(int amount)
         {
-            int sliderValue = -(int)DamageSlider.Value;
-            _viewModel.DoDamage(ActiveList(), sliderValue, DamageDescriptor_TextBox.Text);
+            _viewModel.DoDamage(ActiveList(), amount, DamageDescriptor_TextBox.Text);
         }
 
         private void DamageBox_TextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                DoDamage();
+                DoDamage(_lastSuccessfullyParsedDamage);
             }
             int newVal = 0;
             if (int.TryParse(DamageValue_TextBox.Text, out newVal))
             {
-                DamageSlider.Value = newVal;
+                _lastSuccessfullyParsedDamage = newVal;
+            }
+        }
+
+        private void DoDamage_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoDamage(_lastSuccessfullyParsedDamage);
+        }
+
+        private void HealDamage_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoDamage(-_lastSuccessfullyParsedDamage);
+        }
+
+
+
+        private static bool IsTextNumeric(string text)
+        {
+            text = text.Trim();
+            var regex = new Regex("[^0-9]"); //regex that matches disallowed text
+            bool isGood = !regex.IsMatch(text);
+            return isGood;
+        }
+
+
+        private void DamageValue_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            bool isGood = IsTextNumeric(e.Text);
+            e.Handled = !isGood;
+        }
+
+        // Use the DataObject.Pasting Handler 
+        private void DamageValue_TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                var text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextNumeric(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
             }
         }
 
@@ -174,6 +219,7 @@ namespace XMLCharSheets
 
             }
         }
+
 
     }
 }
