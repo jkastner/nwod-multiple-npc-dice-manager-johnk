@@ -40,6 +40,7 @@ namespace GameBoard
             Viewport.Camera.UpDirection = new Vector3D(0, 1, 1);
             Viewport.Camera.LookDirection = new Vector3D(0, 0, -1);
             Viewport.IsRotationEnabled = false;
+            Viewport.PanGesture = new MouseGesture(MouseAction.LeftClick);
         }
 
         public void AddLights()
@@ -62,7 +63,7 @@ namespace GameBoard
 
 
         bool multiSelect = false;
-        public void ViewportMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs args)
+        public void Viewport_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs args)
         {
             Point mouseposition = args.GetPosition(Viewport);
             Point3D testpoint3D = new Point3D(mouseposition.X, mouseposition.Y, 0);
@@ -225,7 +226,7 @@ namespace GameBoard
         private void Viewport_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             doubleClick = true;
-            ViewportMouseDown(sender, e);
+            Viewport_MouseUp(sender, e);
             doubleClick = false;
         }
 
