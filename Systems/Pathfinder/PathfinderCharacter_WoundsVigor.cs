@@ -190,7 +190,7 @@ namespace XMLCharSheets
                                                                                 curDamage.TotalValue));
             if (doneDamage.DamageValue <= 0)
             {
-                Report("\t" + Target.Name + " resisted all damage");
+                Report("\t" + Name + " resisted all damage");
                 return null;
             }
             else
