@@ -31,7 +31,7 @@
                 <RadioButton Name="NoDamageOnSuccess_RadioButton" GroupName="DamageOnSuccess">None</RadioButton>
                 <DockPanel Grid.Row="2" Grid.Column="0"  Height="60" Margin="5,5,5,5">
                     <Label FontSize="14">Damage:</Label>
-                    <local:PositiveIntegerTextBox x:Name="Damage_TextBox" FontSize="14"></local:PositiveIntegerTextBox>
+                    <local:PositiveIntegerTextBox x:Name="Damage_TextBox" FontSize="14">24</local:PositiveIntegerTextBox>
                 </DockPanel>
             </StackPanel>
             <StackPanel Name="StatusEffect_StackPanel">
