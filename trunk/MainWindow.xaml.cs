@@ -152,7 +152,6 @@ namespace XMLCharSheets
 
         private void ActiveCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //SetupTraits(ActiveCharacters_ListBox);
             if (ActiveCharacters_ListBox.SelectedItems.Count > 0)
                 CombatService.RosterViewModel.SelectedActiveCharacter =
                     ActiveCharacters_ListBox.SelectedItems[ActiveCharacters_ListBox.SelectedItems.Count - 1] as
@@ -160,16 +159,6 @@ namespace XMLCharSheets
             else
                 CombatService.RosterViewModel.SelectedActiveCharacter = null;
             CombatService.RosterViewModel.ResetToActive(e.AddedItems, e.RemovedItems);
-        }
-
-        private void Roll_Button_Click(object sender, RoutedEventArgs e)
-        {
-            //if (ActiveList().Count == 0 || CurrentTraits_ListBox.SelectedItems.Count == 0)
-            //{
-            //    MessageBox.Show("Please select an active character and at least one trait.");
-            //    return;
-            //}
-            //CombatService.RosterViewModel.RollCharacters(ActiveList(), CurrentTraits_ListBox.SelectedItems);
         }
 
         private void Reset_Health_Button_Click(object sender, RoutedEventArgs e)
@@ -296,34 +285,6 @@ namespace XMLCharSheets
         private void CleanDeceasedCharacters_Button_Click(object sender, RoutedEventArgs e)
         {
             CombatService.RosterViewModel.MarkCharactersAsDeceased();
-        }
-
-        private void DeceasedCharacters_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            SetupTraits(DeceasedCharacters);
-        }
-
-        private void SetupTraits(ListBox characterListbox)
-        {
-            CombatService.RosterViewModel.CurrentTraits.Clear();
-            if (characterListbox.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            var curTraits = new List<String>();
-            foreach (object cur in characterListbox.SelectedItems)
-            {
-                var curChar = cur as CharacterSheet;
-                foreach (Trait curTrait in curChar.Traits)
-                {
-                    curTraits.Add(curTrait.TraitLabel);
-                }
-            }
-            curTraits = curTraits.Distinct().ToList();
-            foreach (string cur in curTraits)
-            {
-                CombatService.RosterViewModel.CurrentTraits.Add(cur);
-            }
         }
 
         private void RemoveCharacter_Button_Click(object sender, RoutedEventArgs e)
@@ -600,12 +561,6 @@ namespace XMLCharSheets
             }
         }
 
-        private void OrientCamera(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-
         private void ActivateNext_Button_Click(object sender, RoutedEventArgs e)
         {
             ActivateNextValid();
@@ -632,6 +587,21 @@ namespace XMLCharSheets
             else
             {
                 TextReporter.Report("No valid characters to select.\n");
+            }
+        }
+
+        private void RollTraits_Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<CharacterSheet> sheets = new List<CharacterSheet>();
+            foreach (var cur in ActiveList())
+            {
+                sheets.Add(cur as CharacterSheet);
+            }
+            RollTraitsWindow RT = new RollTraitsWindow(sheets);
+            RT.ShowDialog();
+            if (!RT.WasCancel)
+            {
+                CombatService.RosterViewModel.RollCharacters(ActiveList(), RT.SelectedTraitLabels.ToList());
             }
         }
 
