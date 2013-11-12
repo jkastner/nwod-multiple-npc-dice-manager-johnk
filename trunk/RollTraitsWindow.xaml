@@ -1,7 +1,7 @@
 ﻿<Window x:Class="XMLCharSheets.RollTraitsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Roll Traits" Height="300" Width="300">
+        Title="Roll Traits" Height="300" Width="400">
     <StackPanel>
         <Grid>
             <Grid.RowDefinitions>
@@ -10,28 +10,20 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="59*"></ColumnDefinition>
-                <ColumnDefinition Width="87*"/>
-                <ColumnDefinition Name="UnsharedTraits_Column" Width="54*"></ColumnDefinition>
-                <ColumnDefinition Width="92*"/>
+
+                <ColumnDefinition Name="SharedTraits_Column" Width="5*"/>
+                <ColumnDefinition Name="UnsharedTraits_Column" Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">Shared traits</Label>
 
             <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">Non-shared traits</Label>
-            <ListBox BorderThickness="1" SelectionMode="Multiple" Grid.Row="1" Grid.Column="0" Name="AvailableTraits_ListBox" Grid.ColumnSpan="2">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding TraitDescription}" FontSize="14"></TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            <ListBox BorderThickness="1" SelectionMode="Multiple" Grid.Row="1" Grid.Column="0" 
+                     Name="AvailableTraits_ListBox" Grid.ColumnSpan="2" FontSize="14">
 
             </ListBox>
-            <ListBox BorderThickness="1" SelectionMode="Multiple" Grid.Row="1" Grid.Column="2" Name="UnsharedTraits_ListBox" Grid.ColumnSpan="2">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding TraitDescription}" FontSize="14"></TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            <ListBox BorderThickness="1" SelectionMode="Multiple" Grid.Row="1" Grid.Column="2" 
+                     Name="UnsharedTraits_ListBox" Grid.ColumnSpan="2" 
+                     FontSize="14">
             </ListBox>
         </Grid>
         <DockPanel>
