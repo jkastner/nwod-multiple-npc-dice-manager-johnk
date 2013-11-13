@@ -132,7 +132,8 @@ namespace GameBoard
 
         public static Boolean IsInCone(Point3D coneTip, Vector3D normalAxisVector, double coneHeight, double baseRadius, Point3D testPoint)
         {
-            var cone_dist = Vector3D.DotProduct(testPoint - coneTip, normalAxisVector);
+            //var cone_dist = Vector3D.DotProduct(testPoint - coneTip, normalAxisVector);
+            var cone_dist = (testPoint - coneTip).Length;
             var cone_radius = (cone_dist/coneHeight)*baseRadius;
             var orth_distance = ((testPoint - coneTip) - (cone_dist*normalAxisVector)).Length;
             if (orth_distance < cone_radius)
