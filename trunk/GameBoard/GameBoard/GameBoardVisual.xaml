@@ -3,8 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:h="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
         MouseUp="Viewport_MouseUp"
+        MouseEnter="Viewport_MouseEnter"
+        MouseLeave="Viewport_MouseLeave"
         MouseDoubleClick="Viewport_DoubleClick"
         >
+
         <h:HelixViewport3D ShowViewCube="False" Name="Viewport">
 
         </h:HelixViewport3D>

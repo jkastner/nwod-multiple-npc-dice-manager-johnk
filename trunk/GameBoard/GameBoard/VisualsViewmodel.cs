@@ -471,12 +471,12 @@ namespace GameBoard
         public ShapeMode ShapeSelection
         {
             get { return _shapeSelection; }
-            set { _shapeSelection = value; }
-        }
+            set
+            {
+                _shapeSelection = value;
+                _gameBoardVisual.SetMouseCursorToAoEFor(value);
 
-        public void SetShapeMode(ShapeMode newMode)
-        {
-            ShapeSelection = newMode;
+            }
         }
 
         internal void DrawSphere(Point3D point3D)

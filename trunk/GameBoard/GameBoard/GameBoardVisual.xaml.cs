@@ -167,6 +167,7 @@ namespace GameBoard
             }
         }
 
+        Cursor _currentMouseCursor = Cursors.Arrow;
         List<Point3D> _drawnPoints = new List<Point3D>();
         private void DrawShape(Point3D point3D, bool thisBoardOriginatedTheShape)
         {
@@ -179,6 +180,7 @@ namespace GameBoard
                         if (thisBoardOriginatedTheShape)
                             OnShapeDrawn(new ShapeDrawnEvent(_drawnPoints));
                         _drawnPoints.Clear();
+                        SetMouseCursorToAoEFor(_viewModel.ShapeSelection);
                         break;
                     }
                 case GameBoard.VisualsViewModel.ShapeMode.Cone:
@@ -210,6 +212,19 @@ namespace GameBoard
 
 
 
+        }
+
+        internal void SetMouseCursorToAoEFor(VisualsViewModel.ShapeMode shapeMode)
+        {
+            if (shapeMode == VisualsViewModel.ShapeMode.None)
+            {
+                _currentMouseCursor = Cursors.Arrow;
+            }
+            else
+            {
+                _currentMouseCursor = Cursors.ScrollAll;
+            }
+            SetMouseCursorToType(_currentMouseCursor);
         }
 
         public event EventHandler ShapeDrawn;
@@ -312,5 +327,21 @@ namespace GameBoard
                 Viewport.IsRotationEnabled = !value;
             }
         }
+
+        private void Viewport_MouseEnter(object sender, MouseEventArgs e)
+        {
+            SetMouseCursorToType(_currentMouseCursor);
+        }
+
+        private void SetMouseCursorToType(System.Windows.Input.Cursor _currentMouseCursor)
+        {
+            Mouse.OverrideCursor = _currentMouseCursor;
+        }
+
+        private void Viewport_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
     }
 }
