@@ -145,7 +145,7 @@ namespace XMLCharSheets
         {
             ActiveCharacters_ListBox.SelectedItems.Add(matchingChar);
             ActiveCharacters_ListBox.ScrollIntoView(matchingChar);
-            if(zoomToCharacter)
+            if(zoomToCharacter && matchingChar.HasVisual)
                 BoardsZoomTo(new List<Guid>() { matchingChar.UniqueCharacterID });
         }
 
