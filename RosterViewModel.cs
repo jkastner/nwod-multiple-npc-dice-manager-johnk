@@ -408,6 +408,11 @@ namespace XMLCharSheets
 
         private void SummarizeDamage(Dictionary<CharacterSheet, List<Damage>> targetToDamage)
         {
+            if (!targetToDamage.Any(x => x.Value.Any()))
+            {
+                TextReporter.Report("No damage dealt by attackers.\n");
+                return;
+            }
             TextReporter.Report("\n\nDamage summary:");
             foreach (var curTargetPair in targetToDamage)
             {
