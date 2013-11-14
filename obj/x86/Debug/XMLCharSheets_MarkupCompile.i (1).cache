@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\
 XMLCharSheets
 none
 false
 DEBUG;TRACE
-C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
+E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
 132045235576
 
-62-182470913
-16-763690148
+62-1740864391
+16560465107
 ActiveCharacterDisplay.xaml;CharacterCreationControl.xaml;LoadingErrorsWindow.xaml;MainWindow.xaml;NewSelectTarget.xaml;PositiveIntegerTextBox.xaml;RollTraitsWindow.xaml;Systems\NWoD\NWoDControl.xaml;Systems\Pathfinder\AoEControl.xaml;Systems\Pathfinder\PathfinderControl.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
 False
