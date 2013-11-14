@@ -173,6 +173,10 @@ namespace XMLCharSheets
             bool someActiveLeft = CombatService.RosterViewModel.ActiveRoster.Any(x => !x.HasAttacked && !x.HasMoved);
             if (someActiveLeft)
             {
+                someActiveLeft = !CombatService.RosterViewModel.ActiveRoster.All(x => x.CurInitiative == -1);
+            }
+            if (someActiveLeft)
+            {
                 if (MessageBox.Show("Some characters have not acted. Roll initiative anyway?", "Confirm New Round", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     return;

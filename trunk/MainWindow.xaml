@@ -25,7 +25,6 @@
                     <MenuItem Header="_Lock camera rotation..." IsCheckable="True" IsChecked="{Binding LockCameraRotation}" />
                 </MenuItem>
             </Menu>
-            <MenuItem Header="_Help" />
         </Menu>
         <TabControl DockPanel.Dock="Top">
             <TabItem Name="CreationTab" Header="Create">

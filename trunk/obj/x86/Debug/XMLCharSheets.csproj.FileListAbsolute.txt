@@ -258,3 +258,7 @@ E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\Pos
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\PositiveIntegerTextBox.g.cs
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\RollTraitsWindow.baml
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\RollTraitsWindow.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\PositiveIntegerTextBox.baml
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\RollTraitsWindow.baml
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\PositiveIntegerTextBox.g.cs
+C:\Users\JohnLaptop\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\RollTraitsWindow.g.cs
