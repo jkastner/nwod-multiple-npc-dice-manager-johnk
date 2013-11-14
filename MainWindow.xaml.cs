@@ -414,25 +414,25 @@ namespace XMLCharSheets
 
         private void SelectionMode_Button_Checked(object sender, RoutedEventArgs e)
         {
-            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.None));
+            VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ShapeSelection = VisualsViewModel.ShapeMode.None);
         }
 
         private void DrawLine_Button_Checked(object sender, RoutedEventArgs e)
         {
             VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text));
-            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Line));
+            VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ShapeSelection = VisualsViewModel.ShapeMode.Line);
         }
 
         private void DrawCone_Button_Checked(object sender, RoutedEventArgs e)
         {
             VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text));
-            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Cone));
+            VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.ShapeSelection = VisualsViewModel.ShapeMode.Cone);
         }
 
         private void DrawSphere_Button_Checked(object sender, RoutedEventArgs e)
         {
             VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSize = double.Parse(ShapeLength_TextBox.Text));
-            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.SetShapeMode(VisualsViewModel.ShapeMode.Sphere));
+            VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ShapeSelection = VisualsViewModel.ShapeMode.Sphere);
         }
 
         private void TapeMeasure_Button_Checked(object sender, RoutedEventArgs e)
