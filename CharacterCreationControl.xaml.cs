@@ -124,7 +124,8 @@ namespace XMLCharSheets
 
         private void CharacterName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ImageSearch_TextBox.Text = CharacterName_TextBox.Text;
+            if(PictureSearch_ListBox.SelectedItem==null)
+                ImageSearch_TextBox.Text = CharacterName_TextBox.Text;
         }
 
         private void CreateCharacter_ButtonClicked(object sender, RoutedEventArgs e)
