@@ -49,17 +49,17 @@ namespace XMLCharSheets
         int _lastSuccessfullyParsedDamage = 0;
         private void DoDamage(int amount)
         {
-            _viewModel.DoDamage(ActiveList(), amount, DamageDescriptor_TextBox.Text);
+            _viewModel.DoDamage(ActiveList(), amount, DamageDescriptor_SelectAllTextBox.Text);
         }
 
-        private void DamageBox_TextBox_KeyUp(object sender, KeyEventArgs e)
+        private void DamageBox_SelectAllTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
                 DoDamage(_lastSuccessfullyParsedDamage);
             }
             int newVal = 0;
-            if (int.TryParse(DamageValue_TextBox.Text, out newVal))
+            if (int.TryParse(DamageValue_SelectAllTextBox.Text, out newVal))
             {
                 _lastSuccessfullyParsedDamage = newVal;
             }
@@ -86,14 +86,14 @@ namespace XMLCharSheets
         }
 
 
-        private void DamageValue_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void DamageValue_SelectAllTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             bool isGood = IsTextNumeric(e.Text);
             e.Handled = !isGood;
         }
 
         // Use the DataObject.Pasting Handler 
-        private void DamageValue_TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        private void DamageValue_SelectAllTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
         {
             if (e.DataObject.GetDataPresent(typeof(String)))
             {
@@ -120,7 +120,7 @@ namespace XMLCharSheets
             RollPoolFromTextBox();
         }
 
-        private void RollDice_TextBox_KeyDown(object sender, KeyEventArgs e)
+        private void RollDice_SelectAllTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -134,24 +134,24 @@ namespace XMLCharSheets
 
         private void RollPoolFromTextBox()
         {
-            var createdPool = PathfinderDicePool.ParseString(RollDice_TextBox.Text);
+            var createdPool = PathfinderDicePool.ParseString(RollDice_SelectAllTextBox.Text);
             if (createdPool == null)
             {
-                RollDice_TextBox.Background = new SolidColorBrush(Colors.Red);
-                RollDice_TextBox.ToolTip = "Format must be as in \"quantity d dieType + modifier\" format - '1d8+2'";
+                RollDice_SelectAllTextBox.Background = new SolidColorBrush(Colors.Red);
+                RollDice_SelectAllTextBox.ToolTip = "Format must be as in \"quantity d dieType + modifier\" format - '1d8+2'";
                 return;
             }
             ResetRollDiceTextBoxError();
             createdPool.Roll();
-            DamageValue_TextBox.Text = createdPool.TotalValue.ToString();
+            DamageValue_SelectAllTextBox.Text = createdPool.TotalValue.ToString();
             _lastSuccessfullyParsedDamage = createdPool.TotalValue;
             TextReporter.Report("\n" + createdPool.PoolDescription + ": " + createdPool.ResultDescription + "\n");
         }
 
         private void ResetRollDiceTextBoxError()
         {
-            RollDice_TextBox.Background = new SolidColorBrush(Colors.White);
-            RollDice_TextBox.ToolTip = "";
+            RollDice_SelectAllTextBox.Background = new SolidColorBrush(Colors.White);
+            RollDice_SelectAllTextBox.ToolTip = "";
         }
 
         private void AreaOfEffect_Button_Click(object sender, RoutedEventArgs e)
