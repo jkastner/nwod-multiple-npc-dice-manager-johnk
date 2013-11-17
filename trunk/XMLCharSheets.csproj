@@ -85,9 +85,6 @@
     <Compile Include="NewSelectTarget.xaml.cs">
       <DependentUpon>NewSelectTarget.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PositiveIntegerTextBox.xaml.cs">
-      <DependentUpon>PositiveIntegerTextBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ReportTextEventArgs.cs" />
     <Compile Include="RollTraitsWindow.xaml.cs">
       <DependentUpon>RollTraitsWindow.xaml</DependentUpon>
@@ -169,10 +166,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PositiveIntegerTextBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="RollTraitsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,6 +222,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CustomControls\CustomControls.csproj">
+      <Project>{5e293c77-7912-4e71-95db-98a07cf4a8eb}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
     <ProjectReference Include="GameBoard\GameBoard\GameBoard.csproj">
       <Project>{9708895f-1a9e-4951-818c-a706c166df20}</Project>
       <Name>GameBoard</Name>

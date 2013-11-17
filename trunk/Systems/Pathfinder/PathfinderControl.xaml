@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="630">
+             Height="Auto" Width="Auto"
+             xmlns:CustomControls="clr-namespace:CustomControls;assembly=CustomControls"
+             >
     <DockPanel>
         <Button Name="Pathfinder_SingleAttack_Button" ToolTip="Roll single attack instead of full attack." Height="34"
                 Margin="5,5,5,5" Click="Pathfinder_SingleAttack_Button_Click">
@@ -38,14 +39,14 @@
                 </Path.RenderTransform>
             </Path>
         </Button>
-        <DockPanel>
+        <DockPanel Height="44">
             <Label VerticalAlignment="Center">Dmg</Label>
-            <TextBox Name="DamageValue_TextBox" Margin="5,5,5,5" Height="34" KeyUp="DamageBox_TextBox_KeyUp" Width="30"
+            <CustomControls:SelectAllTextBox x:Name="DamageValue_SelectAllTextBox" Margin="5,5,5,5" Height="34" KeyUp="DamageBox_SelectAllTextBox_KeyUp" Width="30"
                      VerticalAlignment="Center"
-                      PreviewTextInput="DamageValue_TextBox_PreviewTextInput"
-                        DataObject.Pasting="DamageValue_TextBox_Pasting"
+                      PreviewTextInput="DamageValue_SelectAllTextBox_PreviewTextInput"
+                        DataObject.Pasting="DamageValue_SelectAllTextBox_Pasting"
                      >0
-            </TextBox>
+            </CustomControls:SelectAllTextBox>
             <Button Height="34" Width="34" FontSize="15" VerticalAlignment="Center" ToolTip="Deal the indicated amount of damage" Click="DoDamage_ButtonClick">
                 <Path Data="M15.265055,49.132694L24.032383,52.37925 9.1586558,57.791592C9.1586555,57.791592 7.8630694,62.541599 4.5805488,62.023499 4.580548,62.023499 0.60670853,61.333302 2.3357439,56.84119 2.3357439,56.84119 -1.9844999,55.718788 1.1261463,51.226578 1.1261473,51.226578 3.71733,49.153572 6.9998813,52.177078z M48.204854,34.208241C48.204854,34.208241 52.86884,35.158741 50.624043,39.390652 50.624043,39.390652 54.857034,41.119755 52.264642,44.747261 52.264642,44.747261 51.228246,46.734367 47.600652,45.092361L45.957356,44.401062 37.960511,47.311001 29.055585,44.053101 44.057664,38.527252C44.057664,38.527252,45.09546,34.122337,48.204854,34.208241z M5.1633146,34.042C5.1633141,34.042,8.48106,34.138397,9.0280658,38.567963L46.116368,52.135345C46.116368,52.135345 49.758206,49.446629 52.072133,51.523365 52.072133,51.523365 55.014863,55.266651 50.562917,57.041298 50.562917,57.041298 52.674939,61.09597 48.35069,62.187038 48.35069,62.187038 46.27377,63.030712 44.569352,59.431923L43.764642,57.843472 7.0423049,44.244888C7.0423044,44.244888 2.9810405,47.030003 0.81301689,44.510479 0.81301689,44.510479 -1.7703543,41.414173 2.4536943,39.107044 2.4536948,39.107044 -0.11402321,35.456059 5.1633146,34.042z M26.551702,27.240002L24.134001,31.732 29.029,31.732z M34.152852,20.214001C32.053823,20.214001 30.352,21.91692 30.352,24.0156 30.352,26.114378 32.053823,27.816 34.152852,27.816 36.251779,27.816 37.955001,26.114378 37.955001,24.0156 37.955001,21.91692 36.251779,20.214001 34.152852,20.214001z M19.123131,20.214001C17.02387,20.214001 15.322,21.916922 15.322001,24.0156 15.322,26.114378 17.02387,27.816002 19.123131,27.816002 21.222179,27.816002 22.924,26.114378 22.924,24.0156 22.924,21.916922 21.222179,20.214001 19.123131,20.214001z M26.551749,0C36.569488,3.5527137E-15 44.691998,8.1223354 44.691998,18.140598 44.691998,24.089643 41.828496,29.369398 37.404988,32.677372L37.349998,32.717476 37.349998,37.75 34.009002,37.75 34.009002,35.993 31.189,35.993 31.189,37.75 27.963,37.75 27.963,35.993 25.141002,35.993 25.141002,37.75 21.916,37.75 21.916,35.993 19.095001,35.993 19.095001,37.75 15.755,37.75 15.755,32.718861 15.698109,32.677372C11.274496,29.369398 8.4110004,24.089643 8.4109996,18.140598 8.4110004,8.1223354 16.533492,3.5527137E-15 26.551749,0z"
                       Stretch="Uniform" Fill="#FF000000"
@@ -57,22 +58,22 @@
                       Width="28" Height="28" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
 
             </Button>
-            <TextBox ToolTip="Set damage type"
-                Name="DamageDescriptor_TextBox" Margin="5,5,5,5" Height="34" KeyDown="DamageBox_TextBox_KeyUp"
+            <CustomControls:SelectAllTextBox ToolTip="Set damage type"
+                Name="DamageDescriptor_SelectAllTextBox" Margin="5,5,5,5" Height="34" KeyDown="DamageBox_SelectAllTextBox_KeyUp"
                      Width="70" VerticalAlignment="Center">
                 Slashing
-            </TextBox>            
+            </CustomControls:SelectAllTextBox>            
         </DockPanel>
-        <DockPanel>
+        <DockPanel Height="44">
             <Button Height="34" Margin="5,5,5,5" ToolTip="Roll a Fortitude save" Click="FortitudeSave_Button_Click">Fort</Button>
             <Button Height="34" Margin="5,5,5,5" ToolTip="Roll a Reflex save" Click="ReflexSave_Button_Click">Ref</Button>
             <Button Height="34" Margin="5,5,5,5" ToolTip="Roll a Will save" Click="WillSave_Button_Click">Will</Button>
         </DockPanel>
         <Label VerticalAlignment="Center">Pool</Label>
-        <TextBox HorizontalAlignment="Left" Name="RollDice_TextBox" Margin="5,5,0,5" Height="34" 
-                 KeyDown="RollDice_TextBox_KeyDown" Width="70"
+        <CustomControls:SelectAllTextBox HorizontalAlignment="Left" x:Name="RollDice_SelectAllTextBox" Margin="5,5,0,5" Height="34" 
+                 KeyDown="RollDice_SelectAllTextBox_KeyDown" Width="70"
                      VerticalAlignment="Center">5d4+5
-        </TextBox>
+        </CustomControls:SelectAllTextBox>
         <Button
             ToolTip="Roll the indicated pool."
             HorizontalAlignment="Left" Height="34" Width="15" FontSize="15" FontWeight="Bold"

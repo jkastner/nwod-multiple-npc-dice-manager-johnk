@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="SetBoardDimensions" Height="300" Width="300"
         xmlns:local="clr-namespace:XMLCharSheets"
+        xmlns:CustomControls="clr-namespace:CustomControls;assembly=CustomControls"
         >
     <StackPanel>
         <Label>Height</Label>
-        <local:PositiveIntegerTextBox x:Name="BoardHeight_TextBox"></local:PositiveIntegerTextBox>
+        <CustomControls:PositiveIntegerTextBox x:Name="BoardHeight_TextBox"></CustomControls:PositiveIntegerTextBox>
         <Label>Width</Label>
-        <local:PositiveIntegerTextBox x:Name="BoardWidth_TextBox"></local:PositiveIntegerTextBox>
+        <CustomControls:PositiveIntegerTextBox x:Name="BoardWidth_TextBox"></CustomControls:PositiveIntegerTextBox>
         <Label>Maintain Default Ratio</Label>
         <CheckBox IsChecked="True" Margin="5,5,0,5" Name="Maintain_Ratio_CheckBox"></CheckBox>
         <DockPanel>

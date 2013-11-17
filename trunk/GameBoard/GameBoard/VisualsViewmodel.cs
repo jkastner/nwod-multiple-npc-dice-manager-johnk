@@ -34,6 +34,13 @@ namespace GameBoard
             {
                 SetBoardToDefault();
             }
+            //var tower = MakeModelVisual3DFromObjectFile(@"C:\GuardTower\GuardTower.obj", Materials.Gray, Materials.Brown);
+            //var rotate = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90), new Point3D(0, 0, 0));
+            //tower.Transform = rotate;
+
+            //_gameBoardVisual.AddVisual(tower);
+            
+        
         }
 
 
