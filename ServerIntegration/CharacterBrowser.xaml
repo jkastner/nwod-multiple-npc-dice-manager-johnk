@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type local:TransferCharacter}" x:Key="TransferCharacterTemplate">
-                <Grid MaxHeight="150">
+                <Grid MaxHeight="250">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
