@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerIntegration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,7 +8,7 @@ using System.Xml.Linq;
 
 namespace XMLCharSheets
 {
-    public class NWoDCharacterReader : IReadCharacters
+    public class NWoDCharacterReader : IReadCharacters, IReadWebCharacters
     {
         #region IReadCharacters Members
 
@@ -103,6 +104,20 @@ namespace XMLCharSheets
                 return result;
             }
             return defaultValue;
+        }
+
+        public CharacterSheet ReadWebCharacter(TransferCharacter tc)
+        {
+            TransferCharacter tcv = tc as TransferCharacterNWoDVampire;
+            if (tcv == null)
+            {
+                return null;
+            }
+            var traitList = new List<Trait>();
+            //foreach(var cur in tcv
+            //NWoDVampire read = new NWoDVampire(tc.Name
+            return null;
+
         }
 
         #endregion

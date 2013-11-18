@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerIntegration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,7 +10,6 @@ namespace XMLCharSheets
 {
     public class PathfinderCharacterReader : IReadCharacters
     {
-        #region IReadCharacters Members
 
         public CharacterSheet ReadCharacter(CharacterSheet newChar, XElement curChar)
         {
@@ -107,7 +107,13 @@ namespace XMLCharSheets
             }
         }
 
-        #endregion
+
+
+        public CharacterSheet ReadWebCharacter(TransferCharacter tc)
+        {
+            return null;
+
+        }
 
         public List<string> DamageList
         {

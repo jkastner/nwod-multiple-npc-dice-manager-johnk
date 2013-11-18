@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using GameBoard;
+using ServerIntegration;
 
 namespace XMLCharSheets
 {
@@ -902,6 +903,23 @@ namespace XMLCharSheets
         {
             _ruleSetChosen = false;
             OnRulesetSelected(new RulesetSelectedEventArgs(RulesetSelectedEventArgs.ClearRulesetString));
+        }
+
+        internal void ServerCharacterReceived(object sender, EventArgs e)
+        {
+            var webCharacterEvent = e as WebCharacterCreatedEventArgs;
+            if (webCharacterEvent != null)
+            {
+                if(!_characterReader.HasReaderFor(webCharacterEvent.TransferCharacter.SystemLabel))
+                {
+                    TextReporter.Report("No reader for system "+webCharacterEvent.TransferCharacter.SystemLabel);
+                    return;
+                }
+                _characterReader.ReadWebCharacter(webCharacterEvent.TransferCharacter);
+                
+
+            }
+
         }
     }
 }

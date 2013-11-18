@@ -1,7 +1,7 @@
 ﻿ServerIntegration
 
 
-winexe
+library
 C#
 .cs
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\ServerIntegration\obj\Debug\
@@ -9,12 +9,12 @@ ServerIntegration
 none
 false
 DEBUG;TRACE
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\ServerIntegration\App.xaml
-22047179187
 
-11-38131265
-14-784356655
-LoginControl.xaml;MainWindow.xaml;
+4-658325632
+
+21-1156228424
+1525765519
+App.xaml;CharacterBrowser.xaml;LoginControl.xaml;ServerManagementWindow.xaml;
 
 True
 

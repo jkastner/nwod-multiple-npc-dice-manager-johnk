@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerIntegration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -9,6 +10,7 @@ namespace XMLCharSheets
     internal class CharacterReader
     {
         private readonly Dictionary<String, IReadCharacters> _readers = new Dictionary<string, IReadCharacters>();
+        private readonly Dictionary<String, IReadWebCharacters> _webReaders = new Dictionary<string, IReadWebCharacters>();
         internal CharacterSheet Read(string fileName)
         {
             try
@@ -56,7 +58,10 @@ namespace XMLCharSheets
         {
             _readers.Add(RulesetName, reader);
         }
-
+        public void RegisterWebReader(String RulesetName, IReadWebCharacters reader)
+        {
+            _webReaders.Add(RulesetName, reader);
+        }
 
         internal UIElement FindControl(string rulesetName)
         {
@@ -74,6 +79,21 @@ namespace XMLCharSheets
                 return _readers[rulesetName].DamageList;
             }
             return null;
+        }
+
+        internal bool HasReaderFor(string rulesetName)
+        {
+            
+        }
+
+        internal CharacterSheet ReadWebCharacter(TransferCharacter transferCharacter)
+        {
+            if (!_readers.ContainsKey(transferCharacter.SystemLabel))
+            {
+                TextReporter.Report("No reader for system " + webCharacterEvent.TransferCharacter.SystemLabel);
+                return null;
+            }
+            return _webReaders[transferCharacter.SystemLabel].ReadWebCharacter(transferCharacter);
         }
     }
 }

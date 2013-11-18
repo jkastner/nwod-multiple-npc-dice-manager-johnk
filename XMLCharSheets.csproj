@@ -230,6 +230,10 @@
       <Project>{9708895f-1a9e-4951-818c-a706c166df20}</Project>
       <Name>GameBoard</Name>
     </ProjectReference>
+    <ProjectReference Include="ServerIntegration\ServerIntegration.csproj">
+      <Project>{fa66aaac-91f3-4fe9-a50f-030cc47b7f48}</Project>
+      <Name>ServerIntegration</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\HasAttackedImage.jpg" />

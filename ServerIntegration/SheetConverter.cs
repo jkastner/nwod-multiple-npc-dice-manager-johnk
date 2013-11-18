@@ -8,7 +8,7 @@ namespace ServerIntegration
 {
     class SheetConverter
     {
-        internal static object Convert(JsonContract.Character readCharacter)
+        internal static object Convert(CharacterData readCharacter)
         {
             return null;
         }

@@ -24,5 +24,26 @@ namespace ServerIntegration
         {
             InitializeComponent();
         }
+
+        public bool WasCancel { get; set; }
+        
+        public struct LoginInfo
+        {
+            public String Username;
+            public String TargetSite;
+            public String Password;
+        }
+        public LoginInfo CurrentLoginInformation
+        {
+            get
+            {
+                return new LoginInfo()
+                {
+                    Username = UserName_TextBlock.Text,
+                    Password = Password_TextBlock.Password,
+                    TargetSite = LoginSite_TextBlock.Text,
+                };
+            }
+        }
     }
 }

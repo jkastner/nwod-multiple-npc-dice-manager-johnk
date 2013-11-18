@@ -11,6 +11,7 @@ using System.Windows.Media;
 using GameBoard;
 using Microsoft.Win32;
 using System.Windows.Documents;
+using ServerIntegration;
 
 namespace XMLCharSheets
 {
@@ -607,6 +608,13 @@ namespace XMLCharSheets
             {
                 CombatService.RosterViewModel.RollCharacters(ActiveList(), RT.SelectedTraitLabels.ToList());
             }
+        }
+
+        private void DownloadCharacters_Click_MenuItem(object sender, RoutedEventArgs e)
+        {
+            ServerManagementWindow smw = new ServerManagementWindow();
+            smw.CharacterDownloadedReporter.WebCharacterCreated += CombatService.RosterViewModel.ServerCharacterReceived;
+            smw.ShowDialog();
         }
 
     }
