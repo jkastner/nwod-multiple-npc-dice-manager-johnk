@@ -1,0 +1,18 @@
+﻿<Window x:Class="ServerIntegration.ServerManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ServerIntegration"
+        Title="ServerManagementWindow" Height="Auto" Width="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:LoginControl x:Name="CurrentLoginControl" Grid.Row="0">
+        </local:LoginControl>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Margin="5,5,5,5" FontSize="16" 
+                   Name="LoginMessage_TextBlock"></TextBlock>
+        <local:CharacterBrowser Grid.Row="2"  x:Name="CurrentCharacterBrowser"></local:CharacterBrowser>
+    </Grid>
+</Window>

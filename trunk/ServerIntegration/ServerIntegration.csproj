@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FA66AAAC-91F3-4FE9-A50F-030CC47B7F48}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ServerIntegration</RootNamespace>
     <AssemblyName>ServerIntegration</AssemblyName>
@@ -34,13 +34,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,24 +57,40 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="JsonContract.cs" />
+    </Page>
+    <Compile Include="CharacterBrowser.xaml.cs">
+      <DependentUpon>CharacterBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterDownloadedReporter.cs" />
+    <Compile Include="SystemTransfers\TransferDataBase.cs" />
+    <Compile Include="JsonTranslationClasses\NWoDVampire\JsonContract.cs" />
+    <Compile Include="SystemTransfers\TransferCharacterNWoDVampire.cs" />
+    <Compile Include="SystemTransfers\TransferCharacter.cs" />
     <Compile Include="LoginControl.xaml.cs">
       <DependentUpon>LoginControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JsonTranslationClasses\NWoDVampire\RootObject.cs" />
     <Compile Include="SheetConverter.cs" />
     <Compile Include="SiteQuery.cs" />
+    <Compile Include="JsonTranslationClasses\NWoDVampire\ReceivedCharacterData.cs" />
+    <Compile Include="SystemTransfers\TransferDataNWoDVampire.cs" />
+    <Compile Include="SystemTransfers\TransferTrait.cs" />
+    <Compile Include="WebCharacterCreatedEventArgs.cs" />
     <Compile Include="WebClientex.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Page Include="CharacterBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="ServerManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -79,8 +98,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="ServerManagementWindow.xaml.cs">
+      <DependentUpon>ServerManagementWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

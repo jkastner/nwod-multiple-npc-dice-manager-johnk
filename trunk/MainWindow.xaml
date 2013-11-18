@@ -16,6 +16,8 @@
                     <MenuItem Header="_Save" Click="SaveFile_Click_MenuItem" />
                     <MenuItem Header="_Save As..." Click="SaveAsFile_Click_MenuItem" />
                     <Separator />
+                    <MenuItem Header="Download characters from server" Click="DownloadCharacters_Click_MenuItem" />
+                    <Separator />
                     <MenuItem Header="_Exit" Click="Exit_Click_MenuItem" />
                 </MenuItem>
                 <MenuItem Header="_Options">
