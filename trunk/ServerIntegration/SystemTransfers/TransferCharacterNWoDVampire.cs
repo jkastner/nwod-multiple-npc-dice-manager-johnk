@@ -64,5 +64,113 @@ namespace ServerIntegration
             get { return _numberTraits; }
             set { _numberTraits = value; }
         }
+        
+        private int FindNumericTrait(string label)
+        {
+            return NumberTraits.FirstOrDefault(x => x.Label.ToLower().Equals(label.ToLower())).Contents;
+        }
+
+        public int Strength
+        {
+            get
+            {
+                return FindNumericTrait(
+                    "Strength"
+                    );
+            }
+        }
+
+      
+        public int Dexterity
+        {
+            get
+            {
+                return FindNumericTrait(
+                    "Dexterity"
+                    );
+            }
+        }
+
+        public int Firearms
+        {
+            get
+            {
+                return FindNumericTrait(
+                    "Firearms"
+                    );
+            }
+        }
+        public int Weaponry
+        {
+            get
+            {
+                return FindNumericTrait(
+                    "Weaponry"
+                    );
+            }
+        }
+        public int Brawl
+        {
+            get
+            {
+                return FindNumericTrait(
+                    "Brawl"
+                    );
+            }
+        }
+        public int Stamina
+        {
+            get
+            {
+                return FindNumericTrait(
+                    "Stamina"
+                    );
+            }
+        }
+        public int Health
+        {
+            get
+            {
+                var stat1 = FindNumericTrait(
+                    "Size"
+                    );
+                var stat2 = FindNumericTrait(
+                    "Stamina"
+                    );
+                return stat1 + stat2;
+            }
+        }
+        public int MeleeDefense
+        {
+            get
+            {
+                var stat1 = FindNumericTrait(
+                    "Wits"
+                    );
+                if (stat1 < Dexterity)
+                    return stat1;
+                return Dexterity;
+            }
+        }
+
+        public int Speed
+        {
+            get
+            {
+                var stat1 = FindNumericTrait(
+                    "Size"
+                    );
+                return Strength + Dexterity + stat1;
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                return 5;
+            }
+        }
+
     }
 }

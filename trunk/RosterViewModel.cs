@@ -115,8 +115,10 @@ namespace XMLCharSheets
 
         private void RegisterReaders()
         {
-            _characterReader.RegisterReader("NWoD", new NWoDCharacterReader());
+            var nwodReader = new NWoDCharacterReader();
+            _characterReader.RegisterReader("NWoD", nwodReader);
             _characterReader.RegisterReader("Pathfinder", new PathfinderCharacterReader());
+            _characterReader.RegisterWebReader("NWoD", nwodReader);
         }
 
         public const string UnassignedTeamName = "Unassigned";
@@ -910,14 +912,12 @@ namespace XMLCharSheets
             var webCharacterEvent = e as WebCharacterCreatedEventArgs;
             if (webCharacterEvent != null)
             {
-                if(!_characterReader.HasReaderFor(webCharacterEvent.TransferCharacter.SystemLabel))
+                var readCharacter = _characterReader.ReadWebCharacter(webCharacterEvent.TransferCharacter);
+                if (readCharacter != null)
                 {
-                    TextReporter.Report("No reader for system "+webCharacterEvent.TransferCharacter.SystemLabel);
-                    return;
+                    FullRoster.Add(readCharacter);
+                    PictureSelectionViewModel.Instance.AddImage(webCharacterEvent.TransferCharacter.CharacterImageLocation);
                 }
-                _characterReader.ReadWebCharacter(webCharacterEvent.TransferCharacter);
-                
-
             }
 
         }

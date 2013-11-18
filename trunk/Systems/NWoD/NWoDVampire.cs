@@ -76,15 +76,15 @@ namespace XMLCharSheets
         public override void PopulateCombatTraits()
         {
             base.PopulateCombatTraits();
-            foreach (NumericIntTrait curTrait in NumericTraits)
+            var VitaeTrait = FindNumericTrait(NWoDConstants.VitaeStatName);
+            if (VitaeTrait != null)
             {
-                switch (curTrait.TraitLabel)
-                {
-                    case NWoDConstants.VitaeStatName:
-                        MaxVitae = curTrait.TraitValue;
-                        CurrentVitae = curTrait.TraitValue;
-                        break;
-                }
+                MaxVitae = VitaeTrait.TraitValue;
+                CurrentVitae = VitaeTrait.TraitValue;
+            }
+            else
+            {
+                ThrowAttributeNotFound(NWoDConstants.VitaeStatName);
             }
             if (MaxVitae == 0)
             {
@@ -92,6 +92,11 @@ namespace XMLCharSheets
                 //CurrentVitae = 10;
             }
         }
+        protected void ThrowAttributeNotFound(string missingAttribute)
+        {
+            throw new Exception("Trait " + missingAttribute + " not found for " + Name);
+        }
+
 
         protected override void CheckForUnconsciousness(HealthBox.DamageType damageType)
         {

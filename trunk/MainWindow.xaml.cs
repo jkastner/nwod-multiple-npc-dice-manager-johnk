@@ -20,7 +20,7 @@ namespace XMLCharSheets
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
+        private readonly PictureSelectionViewModel _pictureSelectionViewModel = PictureSelectionViewModel.Instance;
         private Paragraph RichTextParagraph;
         List<GameBoardVisual_Window> _gameBoardWindows = new List<GameBoardVisual_Window>();
         private Board _targetBoard;

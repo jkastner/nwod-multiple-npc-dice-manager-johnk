@@ -34,6 +34,7 @@ namespace XMLCharSheets
                                 newChar = _readers[curQuery.Ruleset].ReadCharacter(newChar, curChar);
                                 if(newChar!=null)
                                     newChar.Ruleset = curQuery.Ruleset;
+                                CheckForValidProperties(newChar);
                             }
                             catch (Exception e)
                             {
@@ -52,6 +53,15 @@ namespace XMLCharSheets
                 CombatService.RosterViewModel.LoadingErrors.Add(new Tuple<string,string>(fileName, e.Message));
             }
             return null;
+        }
+
+        private void CheckForValidProperties(CharacterSheet newChar)
+        {
+            String missingProperties = "";
+            if (!newChar.HasNecessaryProperties(out missingProperties))
+            {
+                throw new Exception(newChar.Name + " did not have property " + missingProperties);
+            }
         }
 
         public void RegisterReader(String RulesetName, IReadCharacters reader)
@@ -81,19 +91,17 @@ namespace XMLCharSheets
             return null;
         }
 
-        internal bool HasReaderFor(string rulesetName)
-        {
-            
-        }
 
         internal CharacterSheet ReadWebCharacter(TransferCharacter transferCharacter)
         {
             if (!_readers.ContainsKey(transferCharacter.SystemLabel))
             {
-                TextReporter.Report("No reader for system " + webCharacterEvent.TransferCharacter.SystemLabel);
+                TextReporter.Report("No reader for system " + transferCharacter.SystemLabel);
                 return null;
             }
-            return _webReaders[transferCharacter.SystemLabel].ReadWebCharacter(transferCharacter);
+            var newSheet = _webReaders[transferCharacter.SystemLabel].ReadWebCharacter(transferCharacter);
+            CheckForValidProperties(newSheet);
+            return newSheet;
         }
     }
 }

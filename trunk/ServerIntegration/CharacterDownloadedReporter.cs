@@ -29,7 +29,7 @@ namespace ServerIntegration
         }
         internal void Report(TransferCharacter transferCharacter, string fileName)
         {
-            OnWebCharacterCreated(new WebCharacterCreatedEventArgs(transferCharacter, fileName);
+            OnWebCharacterCreated(new WebCharacterCreatedEventArgs(transferCharacter, fileName));
         }
 
         internal void RequestClose()

@@ -22,7 +22,7 @@ namespace XMLCharSheets
     public partial class CharacterCreationControl : UserControl
     {
         CharacterCreationViewModel _characterCreationViewModel = new CharacterCreationViewModel();
-        private readonly PictureSelectionViewModel _pictureSelectionViewModel = new PictureSelectionViewModel();
+        private readonly PictureSelectionViewModel _pictureSelectionViewModel = PictureSelectionViewModel.Instance;
         public CharacterCreationControl()
         {
             InitializeComponent();

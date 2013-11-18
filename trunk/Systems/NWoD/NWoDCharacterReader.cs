@@ -108,17 +108,67 @@ namespace XMLCharSheets
 
         public CharacterSheet ReadWebCharacter(TransferCharacter tc)
         {
-            TransferCharacter tcv = tc as TransferCharacterNWoDVampire;
+            TransferCharacterNWoDVampire tcv = tc as TransferCharacterNWoDVampire;
             if (tcv == null)
             {
                 return null;
             }
             var traitList = new List<Trait>();
-            //foreach(var cur in tcv
-            //NWoDVampire read = new NWoDVampire(tc.Name
-            return null;
+            foreach (var cur in tcv.StringTraits)
+            {
+                traitList.Add(new NWoDStringTrait(cur.Label, cur.Contents));
+            }
+            foreach (var cur in tcv.NumberTraits)
+            {
+                traitList.Add(new NWoDTrait(cur.Label, cur.Contents, 10, 0, 0, 8));
+            }
+            var dex = tcv.Dexterity;
+            var str = tcv.Strength;
+                        
+            var firearms = tcv.Firearms;
+            var weaponry = tcv.Weaponry;
+            var brawl = tcv.Brawl;
+            if(dex!=null && firearms!= null)
+            {
+                traitList.Add
+                (
+                    MakeAttackTrait(dex, firearms, "Dexterity and firearms", "Ranged", "Lethal")
+                );
+            }
+            if (str != null && weaponry != null)
+            {
+                traitList.Add
+                (
+                    MakeAttackTrait(str, weaponry, "Strength and weaponry", "Melee", "Lethal")
+                );
+            }
+            if (str != null && brawl != null)
+            {
+                traitList.Add
+                (
+                    MakeAttackTrait(str, brawl, "Strength and brawl", "Ranged", "Lethal")
+                );
+            }
+
+            traitList.Add(new NWoDTrait(NWoDConstants.HealthStatName, tcv.Health, 10, 0, 0, 8));
+            traitList.Add(new NWoDTrait(NWoDConstants.MeleeDefenseStatName, tcv.MeleeDefense, 10, 0, 0, 8));
+            traitList.Add(new NWoDTrait(CharacterSheet.SpeedTraitLabel, tcv.Speed, 10, 0, 0, 8));
+            traitList.Add(new NWoDTrait(CharacterSheet.HeightTraitLabel, tcv.Height, 10, 0, 0, 8));
+
+            var newChar = new NWoDVampire(tcv.Name, traitList);
+            newChar.Ruleset = tcv.SystemLabel;
+            return newChar;
 
         }
+
+        private NWoDAttackTrait MakeAttackTrait(int a, int b, string description, string defenseTarget
+            , string damageType)
+        {
+            return new NWoDAttackTrait(a+b, description, defenseTarget,
+                               damageType,
+                               10, 0, 0);
+        }
+
 
         #endregion
     }

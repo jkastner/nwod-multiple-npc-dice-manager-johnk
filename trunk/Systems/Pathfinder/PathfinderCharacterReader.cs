@@ -108,13 +108,6 @@ namespace XMLCharSheets
         }
 
 
-
-        public CharacterSheet ReadWebCharacter(TransferCharacter tc)
-        {
-            return null;
-
-        }
-
         public List<string> DamageList
         {
             get
