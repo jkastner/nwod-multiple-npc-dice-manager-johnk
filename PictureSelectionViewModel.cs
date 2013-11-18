@@ -15,10 +15,34 @@ namespace XMLCharSheets
 
         private ObservableCollection<PictureFileInfo> _loadedPictures = new ObservableCollection<PictureFileInfo>();
 
-        public PictureSelectionViewModel()
+        private static PictureSelectionViewModel _instance;
+        public static PictureSelectionViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PictureSelectionViewModel();
+                }
+                return _instance;
+            }
+        }
+
+
+        
+        private PictureSelectionViewModel()
         {
             LoadPictures();
             ResetActiveList();
+        }
+
+        public void AddImage(String imagePath)
+        {
+            PictureFileInfo newinfo = MakePictureInfoFromPath(imagePath);
+            if (!AllLoadedPictures.Contains(newinfo))
+            {
+                AllLoadedPictures.Add(newinfo);
+            }
         }
 
         public ObservableCollection<PictureFileInfo> AllLoadedPictures
@@ -38,10 +62,15 @@ namespace XMLCharSheets
             string[] pictureFiles = Directory.GetFiles(picTarget, "*.*", SearchOption.AllDirectories);
             foreach (string cur in pictureFiles)
             {
-                string currentDir = Directory.GetCurrentDirectory() + "\\";
-                string correctedPath = cur.Replace(currentDir, "");
-                AllLoadedPictures.Add(new PictureFileInfo(correctedPath, Path.GetFileNameWithoutExtension(cur)));
+                AllLoadedPictures.Add(MakePictureInfoFromPath(cur));
             }
+        }
+
+        private PictureFileInfo MakePictureInfoFromPath(string cur)
+        {
+            string currentDir = Directory.GetCurrentDirectory() + "\\";
+            string correctedPath = cur.Replace(currentDir, "");
+            return new PictureFileInfo(correctedPath, Path.GetFileNameWithoutExtension(cur));
         }
 
         internal void AdjustList(string searchTerm)
@@ -101,6 +130,13 @@ namespace XMLCharSheets
                 string val = Directory.GetCurrentDirectory() + "\\" + PictureFile;
                 return val;
             }
+        }
+        public override bool Equals(object obj)
+        {
+            var pfi = obj as PictureFileInfo;
+            if (pfi == null)
+                return false;
+            return pfi.PictureFileAbsolutePath.Equals(PictureFileAbsolutePath);
         }
     }
 }

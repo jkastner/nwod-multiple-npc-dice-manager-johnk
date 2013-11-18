@@ -15,7 +15,7 @@ namespace ServerIntegration
         public abstract String ImageURL { get; }
         public string DownloadImageFromURLToLocal()
         {
-            string localFilename = @"ServerImages\" + CharacterName + "GID_" + GameID + "ID_" + CharacterID + "_web.png";
+            string localFilename = @"PiecePictures\Downloads\" + CharacterName + "GID_" + GameID + "ID_" + CharacterID + "_web.png";
             if (!File.Exists(localFilename))
             {
                 try

@@ -150,24 +150,38 @@ namespace XMLCharSheets
 
         public override void PopulateCombatTraits()
         {
-            foreach (NumericIntTrait curTrait in NumericTraits)
+            var HealthTrait = FindNumericTrait(NWoDConstants.HealthStatName);
+            var InitiativeTrait = FindNumericTrait(NWoDConstants.InitiativeStatName);
+            var MeleeDefenseTrait = FindNumericTrait(NWoDConstants.MeleeDefenseStatName);
+            var ArmorTrait = FindNumericTrait(NWoDConstants.ArmorStatName);
+            if (HealthTrait != null)
             {
-                switch (curTrait.TraitLabel)
-                {
-                    case NWoDConstants.HealthStatName:
-                        InitializeHealthBoxes(curTrait.TraitValue);
-                        break;
-                    case NWoDConstants.InitiativeStatName:
-                        Initiative = curTrait.TraitValue;
-                        break;
-                    case NWoDConstants.MeleeDefenseStatName:
-                        NormalMeleeDefense = curTrait.TraitValue;
-                        CurrentMeleeDefense = curTrait.TraitValue;
-                        break;
-                    case NWoDConstants.ArmorStatName:
-                        Armor = curTrait.TraitValue;
-                        break;
-                }
+                InitializeHealthBoxes(HealthTrait.TraitValue);
+            }
+            else
+            {
+                throw new Exception("Health trait "+NWoDConstants.HealthStatName+" not found for "+Name);
+            }
+            if (InitiativeTrait != null)
+            {
+                InitializeHealthBoxes(InitiativeTrait.TraitValue);
+            }
+            else
+            {
+                throw new Exception("Initiative trait "+NWoDConstants.InitiativeStatName+" not found for "+Name);
+            }
+            if (MeleeDefenseTrait != null)
+            {
+                NormalMeleeDefense = MeleeDefenseTrait.TraitValue;
+                CurrentMeleeDefense = MeleeDefenseTrait.TraitValue;
+            }
+            else
+            {
+                throw new Exception("Melee defense trait " + NWoDConstants.MeleeDefenseStatName + " not found for " + Name);
+            }
+            if (ArmorTrait != null)
+            {
+                Armor = ArmorTrait.TraitValue;
             }
         }
 

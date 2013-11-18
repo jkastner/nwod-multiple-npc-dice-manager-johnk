@@ -16,5 +16,5 @@ DEBUG;TRACE
 1525765519
 App.xaml;CharacterBrowser.xaml;LoginControl.xaml;ServerManagementWindow.xaml;
 
-True
+False
 

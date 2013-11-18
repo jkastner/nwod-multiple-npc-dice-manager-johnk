@@ -18,6 +18,8 @@ namespace XMLCharSheets
     [KnownType(typeof (NWoDVampire))]
     public abstract class CharacterSheet : INotifyPropertyChanged
     {
+        public const String SpeedTraitLabel = "Speed";
+        public const String HeightTraitLabel = "Height";
         internal static Random random = new Random();
         private int _curInitiative = -1;
         private bool _displayCharacter;
@@ -68,12 +70,12 @@ namespace XMLCharSheets
 
         public NumericIntTrait HeightTrait
         {
-            get { return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals("Height")); }
+            get { return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals(HeightTraitLabel)); }
         }
 
         public NumericIntTrait SpeedTrait
         {
-            get { return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals("Speed")); }
+            get { return NumericTraits.FirstOrDefault(x => x.TraitLabel.Equals(SpeedTraitLabel)); }
         }
 
         public virtual String Status
@@ -409,6 +411,25 @@ namespace XMLCharSheets
                 }
                 return String.Empty;
             }
+        }
+
+
+        internal bool HasNecessaryProperties(out string missingProperties)
+        {
+            missingProperties = "";
+            bool hasSpeed = HasTrait(SpeedTraitLabel);
+            bool hasHeight = HasTrait(HeightTraitLabel);
+            if (!hasSpeed)
+            {
+                missingProperties = SpeedTraitLabel;
+                return false;
+            }
+            if (!hasHeight)
+            {
+                missingProperties = missingProperties + " " + HeightTraitLabel;
+                return false;
+            }
+            return true;
         }
     }
 }

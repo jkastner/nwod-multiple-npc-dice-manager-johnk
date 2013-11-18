@@ -109,7 +109,7 @@ namespace ServerIntegration
 
         private void Save(TransferCharacter transferCharacter, string fileName)
         {
-            _characterDownloadedReporter.Report(transferCharacter, fileName));
+            _characterDownloadedReporter.Report(transferCharacter, fileName);
         }
 
         private static String fileSaveOpenFilter = "xml files (*.xml)|*.xml";

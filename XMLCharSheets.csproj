@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="AbstractsAndInterfaces\AttackTrait.cs" />
     <Compile Include="AbstractsAndInterfaces\CharacterActionScript.cs" />
+    <Compile Include="AbstractsAndInterfaces\IReadWebCharacters.cs" />
     <Compile Include="ActiveCharacterDisplay.xaml.cs">
       <DependentUpon>ActiveCharacterDisplay.xaml</DependentUpon>
     </Compile>
@@ -99,6 +100,7 @@
     <Compile Include="Systems\NWoD\NWoDHealthBox.cs" />
     <Compile Include="Systems\NWoD\NWoDCharacter.cs" />
     <Compile Include="Systems\NWoD\NWoDRosterViewModel.cs" />
+    <Compile Include="Systems\NWoD\NWoDStringTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDTrait.cs" />
     <Compile Include="Systems\NWoD\NWoDDicePool.cs" />
     <Compile Include="Systems\NWoD\INWoDTrait.cs" />
