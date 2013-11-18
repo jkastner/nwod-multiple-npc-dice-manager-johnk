@@ -171,6 +171,13 @@ namespace ServerIntegration
                 return 5;
             }
         }
+        public int RangedDefense
+        {
+            get
+            {
+                return 0;
+            }
+        }
 
     }
 }

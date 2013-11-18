@@ -32,6 +32,11 @@ namespace ServerIntegration
         public void SetSiteQuery(SiteQuery site)
         {
             _site = site;
+            var allCharacters = _site.QueryAllCharacters();
+            foreach (var cur in allCharacters)
+            {
+                AddData(cur);
+            }
         }
 
         public void SetCharacterDownloadedReporter(CharacterDownloadedReporter cdr)
@@ -39,22 +44,7 @@ namespace ServerIntegration
             _characterDownloadedReporter = cdr;
         }
 
-        private void ConductSearch_Button_Click(object sender, RoutedEventArgs e)
-        {
-            SearchResults_TextBlock.Text = "Searching...";
-            RootObject foundData = _site.GetDataFromSite(NameQuery_SelectAllTextBox.Text);
-            if (foundData != null)
-            {
-                SearchResults_TextBlock.Text = "Found " + foundData.CharacterName + " with ID " + foundData.CharacterID;
-                AddData(foundData);
-            }
-            else
-            {
-                SearchResults_TextBlock.Text = "No results matching " + NameQuery_SelectAllTextBox.Text;
-            }
-        }
-
-        private void AddData(RootObject foundData)
+        private void AddData(JsonTranslationClasses.NWoDVampire.RootObject foundData)
         {
             TransferCharacter readCharacter = null;
             if(foundData is TransferDataNWoDVampire)
@@ -82,14 +72,6 @@ namespace ServerIntegration
                 }
             }
             return false;
-        }
-
-        private void NameQuery_SelectAllTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                ConductSearch_Button_Click(sender, e);
-            }
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
@@ -146,6 +128,19 @@ namespace ServerIntegration
             }
             var curChar = AvailableCharacters_ListBox.SelectedItem as TransferCharacter;
             _characterDownloadedReporter.Report(curChar, "");
+        }
+
+        private void DownloadCharacter_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            TransferCharacter curChar = button.DataContext as TransferCharacter;
+            SearchResults_TextBlock.Text = "Successfully downloaded "+curChar.Name+" to the active session.";
+            _characterDownloadedReporter.Report(curChar, "");
+        }
+
+        private void NameQuery_SelectAllTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
 
 

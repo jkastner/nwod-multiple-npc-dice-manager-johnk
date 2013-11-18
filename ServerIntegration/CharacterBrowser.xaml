@@ -4,72 +4,85 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:local="clr-namespace:ServerIntegration"
              xmlns:CustomControls="clr-namespace:CustomControls;assembly=CustomControls"
              >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <CustomControls:SelectAllTextBox 
-            Grid.Row="0" Grid.Column="0"
-            Width="Auto" Height="Auto" Margin="5,5,5,5" x:Name="NameQuery_SelectAllTextBox"
-            KeyDown="NameQuery_SelectAllTextBox_KeyDown"
-                                             
-                                            >Search by name</CustomControls:SelectAllTextBox>
-        <Button Name="ConductSearch_Button" Margin="5,5,5,5" 
-                Grid.Row="0" Grid.Column="1"
-                Click="ConductSearch_Button_Click" HorizontalAlignment="Left" 
-                >
-            <Path Data="F1M-185.925,-2026.96L-203.062,-2048.74C-197.485,-2056.51 -197.433,-2067.31 -203.64,-2075.2 -211.167,-2084.76 -225.019,-2086.42 -234.588,-2078.89 -244.154,-2071.36 -245.808,-2057.51 -238.282,-2047.94 -231.986,-2039.95 -221.274,-2037.5 -212.337,-2041.31L-195.262,-2019.61 -185.925,-2026.96z M-231.201,-2053.51C-235.653,-2059.17 -234.674,-2067.36 -229.02,-2071.81 -223.36,-2076.26 -215.169,-2075.29 -210.721,-2069.63 -206.269,-2063.97 -207.245,-2055.78 -212.902,-2051.33 -218.559,-2046.88 -226.752,-2047.86 -231.201,-2053.51z" Stretch="Uniform" Fill="#FF0D0D0D" 
-                    Width="22" Height="22" Margin="0,0,0,0">
-            </Path>
-
-        </Button>
-        <TextBlock x:Name="SearchResults_TextBlock" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                   Margin="2,2,2,2" MinHeight="32"
-                   ></TextBlock>
-        <ListBox Grid.Row="2" 
-                 Grid.Column="0" Grid.ColumnSpan="2" Name="AvailableCharacters_ListBox" 
-                 VerticalAlignment="Stretch" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid MaxHeight="150">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock  Margin="5,5,1,5" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Text="{Binding Name}" FontSize="16" FontWeight="Bold"></TextBlock>
-                        <Image Margin="5,0,5,5" VerticalAlignment="Top" Source="{Binding CharacterImageLocation}"
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type local:TransferCharacter}" x:Key="TransferCharacterTemplate">
+                <Grid MaxHeight="150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Margin="5,5,1,5" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Text="{Binding Name}" FontSize="16" FontWeight="Bold"></TextBlock>
+                    <Image Margin="5,0,5,5" VerticalAlignment="Top" Source="{Binding CharacterImageLocation}"
                                Grid.Row="1" Grid.Column="0" />
                     <TextBox 
                         IsReadOnly="True"
                         Margin="5,5,5,5" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
                              Text="{Binding SheetDescription, Mode=OneWay}" 
                              VerticalScrollBarVisibility="Auto" MinWidth="150"></TextBox>
+                    <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Click="DownloadCharacter_Button_Click" Margin="5,5,5,5">
+                        <Path Data="F1M-1785.21,-1580.93C-1786.42,-1580.93 -1787.58,-1580.75 -1788.69,-1580.44 -1790.68,-1587.83 -1796.67,-1593.2 -1803.75,-1593.2 -1811.1,-1593.2 -1817.25,-1587.42 -1819.01,-1579.6 -1819.94,-1579.81 -1820.9,-1579.92 -1821.89,-1579.92 -1829.07,-1579.92 -1834.89,-1574.33 -1834.89,-1567.43 -1834.89,-1560.53 -1829.07,-1554.94 -1821.89,-1554.94 -1821.34,-1554.94 -1820.8,-1554.99 -1820.27,-1555.05L-1786.81,-1555.05C-1786.29,-1554.98 -1785.75,-1554.94 -1785.21,-1554.94 -1784.66,-1554.94 -1784.12,-1554.99 -1783.59,-1555.05 -1781.57,-1555.07 -1779.72,-1555.78 -1778.26,-1556.97 -1774.63,-1559.27 -1772.22,-1563.32 -1772.22,-1567.93 -1772.22,-1575.11 -1778.04,-1580.93 -1785.21,-1580.93 M-1792.89,-1565.08L-1802.39,-1555.58C-1802.43,-1555.54 -1802.48,-1555.51 -1802.63,-1555.39 -1802.67,-1555.36 -1802.72,-1555.33 -1802.77,-1555.31L-1803.04,-1555.18 -1803.16,-1555.14C-1803.22,-1555.12 -1803.27,-1555.1 -1803.32,-1555.09 -1803.37,-1555.08 -1803.41,-1555.08 -1803.45,-1555.07 -1803.51,-1555.07 -1803.56,-1555.06 -1803.61,-1555.05 -1803.66,-1555.05 -1803.7,-1555.05 -1803.75,-1555.05 -1803.8,-1555.05 -1803.85,-1555.05 -1803.91,-1555.05 -1803.95,-1555.06 -1803.99,-1555.06 -1804.04,-1555.07 -1804.09,-1555.08 -1804.14,-1555.08 -1804.19,-1555.1 -1804.24,-1555.1 -1804.28,-1555.12 -1804.33,-1555.13 -1804.38,-1555.15 -1804.43,-1555.16 -1804.6,-1555.24 -1804.65,-1555.26 -1804.7,-1555.28 -1804.75,-1555.31 -1804.79,-1555.33 -1804.83,-1555.36 -1804.99,-1555.47 -1805.03,-1555.51 -1805.08,-1555.54 -1805.18,-1555.64L-1814.63,-1565.08C-1815.02,-1565.47 -1815.21,-1565.99 -1815.21,-1566.5 -1815.21,-1567.02 -1815.02,-1567.54 -1814.62,-1567.93 -1813.84,-1568.72 -1812.56,-1568.72 -1811.77,-1567.93L-1805.77,-1561.93 -1805.77,-1580.61C-1805.77,-1581.16 -1805.55,-1581.67 -1805.18,-1582.04 -1804.82,-1582.4 -1804.31,-1582.63 -1803.75,-1582.63 -1803.34,-1582.63 -1802.95,-1582.5 -1802.63,-1582.28 -1802.09,-1581.92 -1801.74,-1581.3 -1801.74,-1580.61L-1801.74,-1561.93 -1795.74,-1567.93C-1794.95,-1568.72 -1793.67,-1568.72 -1792.89,-1567.93 -1792.1,-1567.14 -1792.1,-1565.87 -1792.89,-1565.08" Stretch="Uniform" Fill="#FF0D0D0D" 
+                                  Width="38" Height="38" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Button>
+
                     <Grid.ToolTip>
-                            <Image
+                        <Image
                                 Source="{Binding CharacterImageLocation}" />
-                            </Grid.ToolTip>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+                    </Grid.ToolTip>
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+        <CustomControls:SelectAllTextBox 
+            Grid.Row="0" Grid.Column="0"
+            Width="Auto" Height="Auto" Margin="5,5,5,5" x:Name="NameQuery_SelectAllTextBox"
+            KeyDown="NameQuery_SelectAllTextBox_KeyDown"
+                                             
+                                            >Search by name</CustomControls:SelectAllTextBox>
+        <ListBox Grid.Row="1" 
+                 Grid.Column="0" Grid.ColumnSpan="2" Name="AvailableCharacters_ListBox" 
+                 VerticalAlignment="Stretch" ItemTemplate="{StaticResource TransferCharacterTemplate}">
         </ListBox>
+        <TextBlock x:Name="SearchResults_TextBlock" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                  FontSize="18"
+                   Margin="2,2,2,2" MinHeight="32"
+                   ></TextBlock>        
         <DockPanel HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
             <Button Visibility="Hidden" Click="Save_Button_Click" Width="88" Margin="5,5,5,5">Save</Button>
             <Button Visibility="Hidden" Click="SaveAs_Button_Click" Width="88" Margin="5,5,5,5">Save as...</Button>
-            <Button Click="Logout_Button_Click" Width="88" Margin="5,5,5,5">Logout</Button>
-            <Button Click="Download_Button_Click" Width="88" Margin="5,5,5,5">Download</Button>
+            <Button Click="Logout_Button_Click" Width="88" Margin="5,5,5,5" ToolTip="Close connection">
+                <Path Data="M34.201,35.752792L36.154999,37.072937 36.154999,61.028999 26.27,61.028999 26.27,58.465 34.201,58.465z M18.94405,30.222998C17.962244,30.222998 17.167,31.018967 17.167,32.00045 17.167,32.982033 17.962244,33.778 18.94405,33.778 19.925556,33.778 20.721001,32.982033 20.721001,32.00045 20.721001,31.018967 19.925556,30.222998 18.94405,30.222998z M44.257435,25.653L44.257435,29.183289 51.842999,29.183289 51.842999,35.705292 44.257435,35.705292 44.257435,39.237999 34.201,32.444984z M26.27,3.8619995L36.154999,3.8619995 36.154999,27.81745 34.201,29.137484 34.201,6.2989998 26.27,6.2989998z M24.27,0L24.27,64 0,60 0,4.0000029z" 
+                      Stretch="Uniform"
+                      Fill="#FF0D0D0D" 
+                      Width="28" Height="28" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <TransformGroup.Children>
+                                <RotateTransform Angle="0" />
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </TransformGroup.Children>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+
+            </Button>
         </DockPanel>
     </Grid>
 </UserControl>
