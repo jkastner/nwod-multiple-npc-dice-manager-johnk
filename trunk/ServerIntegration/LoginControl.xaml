@@ -8,8 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <CustomControls:SelectAllTextBox x:Name="LoginSite_TextBlock" Margin="5,5,5,5">http://strange-aeons.herokuapp.com/login</CustomControls:SelectAllTextBox>
-        <CustomControls:SelectAllTextBox x:Name="UserName_TextBlock" Margin="5,5,5,5">johnathan.kastner@gmail.com</CustomControls:SelectAllTextBox>
-        <PasswordBox x:Name="Password_TextBlock" Margin="5,5,5,5" Password="zS29OYrYgS"></PasswordBox>
+        <CustomControls:SelectAllTextBox x:Name="UserName_TextBlock" Margin="5,5,5,5"></CustomControls:SelectAllTextBox>
+        <PasswordBox x:Name="Password_TextBlock" Margin="5,5,5,5"></PasswordBox>
         <DockPanel Margin="5,5,5,5" HorizontalAlignment="Right">
             <Button x:Name="Login_Button" Width="77" Margin="5,5,5,5" HorizontalAlignment="Right">OK</Button>
             <Button x:Name="Cancel_Button" Width="77" Margin="5,5,5,5" HorizontalAlignment="Right">Cancel</Button>

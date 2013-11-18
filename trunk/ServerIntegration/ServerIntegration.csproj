@@ -65,6 +65,8 @@
       <DependentUpon>CharacterBrowser.xaml</DependentUpon>
     </Compile>
     <Compile Include="CharacterDownloadedReporter.cs" />
+    <Compile Include="JsonTranslationClasses\QueryClasses\GameQuery.cs" />
+    <Compile Include="JsonTranslationClasses\QueryClasses\UserQuery.cs" />
     <Compile Include="SystemTransfers\TransferDataBase.cs" />
     <Compile Include="JsonTranslationClasses\NWoDVampire\JsonContract.cs" />
     <Compile Include="SystemTransfers\TransferCharacterNWoDVampire.cs" />

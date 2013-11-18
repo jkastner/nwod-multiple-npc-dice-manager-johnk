@@ -33,14 +33,18 @@
                 <local:CharacterCreationControl></local:CharacterCreationControl>
             </TabItem>
                 <TabItem Name="CurrentCharacterControlTab" Header="Current Character">
-                <StackPanel>
-                    <TextBox FontSize="24" Text="{Binding Path=SelectedCharacter.Name, Mode=TwoWay}"></TextBox>
-                    <DataGrid MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
-                              Margin="5,5,5,5"
-                              ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
-                              CurrentCellChanged="DataChanged_DataGrid">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0"  FontSize="24" Text="{Binding Path=SelectedCharacter.Name, Mode=TwoWay}"></TextBox>
+                    <DataGrid Grid.Row="1" MinHeight="50" MinWidth="50" Width="Auto" Height="Auto"
+                            Margin="5,5,5,5"
+                            ItemsSource="{Binding Path=SelectedCharacter.Traits, UpdateSourceTrigger=PropertyChanged}"
+                            CurrentCellChanged="DataChanged_DataGrid">
                     </DataGrid>
-                </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Name="MainTab" Header="Combat" Margin="-1,-2,-3,-1">
                 <Grid>

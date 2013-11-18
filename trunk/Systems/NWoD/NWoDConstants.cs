@@ -7,6 +7,7 @@
         public const string VitaeStatName = "Vitae";
         public const string HealthStatName = "Health";
         public const string MeleeDefenseStatName = "Melee Defense";
+        public const string RangedDefenseStatName = "Ranged Defense";
         public const string InitiativeStatName = "Initiative";
     }
 }

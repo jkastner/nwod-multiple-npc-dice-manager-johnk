@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace ServerIntegration
+namespace ServerIntegration.JsonTranslationClasses.NWoDVampire
 {
     public class RootObject : TransferDataNWoDVampire
     {

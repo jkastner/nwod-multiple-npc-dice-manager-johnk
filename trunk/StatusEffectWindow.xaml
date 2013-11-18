@@ -1,7 +1,7 @@
 ﻿<Window x:Class="XMLCharSheets.StatusEffectWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="StatusEffect" Height="300" SizeToContent="Height" Width="300"
+        Title="Assign Status Effect" Height="300" SizeToContent="Height" Width="300"
         WindowStyle="ToolWindow" ResizeMode="NoResize"
         KeyDown="StatusEffect_KeyDown">
     <Grid>

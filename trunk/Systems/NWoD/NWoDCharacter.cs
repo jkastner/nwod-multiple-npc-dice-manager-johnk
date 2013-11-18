@@ -154,6 +154,7 @@ namespace XMLCharSheets
             var InitiativeTrait = FindNumericTrait(NWoDConstants.InitiativeStatName);
             var MeleeDefenseTrait = FindNumericTrait(NWoDConstants.MeleeDefenseStatName);
             var ArmorTrait = FindNumericTrait(NWoDConstants.ArmorStatName);
+            var RangedDefenseTrait = FindNumericTrait(NWoDConstants.RangedDefenseStatName);
             if (HealthTrait != null)
             {
                 InitializeHealthBoxes(HealthTrait.TraitValue);
@@ -183,6 +184,11 @@ namespace XMLCharSheets
             {
                 Armor = ArmorTrait.TraitValue;
             }
+            if (RangedDefenseTrait == null)
+            {
+                Traits.Add(new NWoDTrait(NWoDConstants.RangedDefenseStatName, 0, 10, 0, 0, 8));
+            }
+
         }
 
         protected string BuildHealthString()

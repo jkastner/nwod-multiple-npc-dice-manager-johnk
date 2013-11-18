@@ -263,13 +263,16 @@ namespace XMLCharSheets
                 }
             }
 
-            TextReporter.Report(involvedCharacter.Name + " rolled (" + allTraits + ")");
+            TextReporter.Report(involvedCharacter.Name + " rolled (" + allTraits + " ");
             int totalDice = 0;
             var charTraits = new List<Trait>();
             foreach (string cur in involvedTraits)
             {
-                charTraits.Add(involvedCharacter.FindNumericTrait(cur));
+                var numericTrait = involvedCharacter.FindNumericTrait(cur);
+                totalDice += numericTrait.TraitValue;
+                charTraits.Add(numericTrait);
             }
+            TextReporter.Report(totalDice + " pool)");
             String result = involvedCharacter.RollBasePool(charTraits, RollModifier).ResultDescription;
             TextReporter.Report(": " + result);
         }
@@ -657,7 +660,7 @@ namespace XMLCharSheets
             }
             DeceasedRoster.Clear();
         }
-
+        private String _chosenRulesetName;
         internal void SetRulesetMode(string rulesetName)
         {
             for (int curIndex = FullRoster.Count - 1; curIndex >= 0; curIndex--)
@@ -667,6 +670,7 @@ namespace XMLCharSheets
                 {
                     FullRoster.Remove(curChar);
                 }
+                _chosenRulesetName = rulesetName;
             }
         }
 
@@ -912,11 +916,26 @@ namespace XMLCharSheets
             var webCharacterEvent = e as WebCharacterCreatedEventArgs;
             if (webCharacterEvent != null)
             {
-                var readCharacter = _characterReader.ReadWebCharacter(webCharacterEvent.TransferCharacter);
-                if (readCharacter != null)
+                try
                 {
-                    FullRoster.Add(readCharacter);
-                    PictureSelectionViewModel.Instance.AddImage(webCharacterEvent.TransferCharacter.CharacterImageLocation);
+                    if (
+                        !String.IsNullOrWhiteSpace(_chosenRulesetName) && 
+                        !webCharacterEvent.TransferCharacter.SystemLabel.Equals(_chosenRulesetName))
+                    {
+                        throw new Exception("Could not load this character - ruleset does not match active ruleset " + _chosenRulesetName);
+                    }
+                    var readCharacter = _characterReader.ReadWebCharacter(webCharacterEvent.TransferCharacter);
+                    if (readCharacter != null)
+                    {
+                        FullRoster.Add(readCharacter);
+                        PictureSelectionViewModel.Instance.AddImage(webCharacterEvent.TransferCharacter.CharacterImageLocation);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    LoadingErrors.Add(new Tuple<String, String>("Web character", exception.Message));
+                    ShowErrors();
+                    LoadingErrors.Clear();
                 }
             }
 

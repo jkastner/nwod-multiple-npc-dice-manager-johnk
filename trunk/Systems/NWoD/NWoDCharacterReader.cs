@@ -132,21 +132,21 @@ namespace XMLCharSheets
             {
                 traitList.Add
                 (
-                    MakeAttackTrait(dex, firearms, "Dexterity and firearms", "Ranged", "Lethal")
+                    MakeAttackTrait(dex, firearms, "Dexterity and firearms", NWoDConstants.RangedDefenseStatName, "Lethal")
                 );
             }
             if (str != null && weaponry != null)
             {
                 traitList.Add
                 (
-                    MakeAttackTrait(str, weaponry, "Strength and weaponry", "Melee", "Lethal")
+                    MakeAttackTrait(str, weaponry, "Strength and weaponry", NWoDConstants.MeleeDefenseStatName, "Lethal")
                 );
             }
             if (str != null && brawl != null)
             {
                 traitList.Add
                 (
-                    MakeAttackTrait(str, brawl, "Strength and brawl", "Ranged", "Lethal")
+                    MakeAttackTrait(str, brawl, "Strength and brawl", NWoDConstants.MeleeDefenseStatName, "Bashing")
                 );
             }
 
@@ -154,7 +154,7 @@ namespace XMLCharSheets
             traitList.Add(new NWoDTrait(NWoDConstants.MeleeDefenseStatName, tcv.MeleeDefense, 10, 0, 0, 8));
             traitList.Add(new NWoDTrait(CharacterSheet.SpeedTraitLabel, tcv.Speed, 10, 0, 0, 8));
             traitList.Add(new NWoDTrait(CharacterSheet.HeightTraitLabel, tcv.Height, 10, 0, 0, 8));
-
+            traitList.Add(new NWoDTrait(NWoDConstants.RangedDefenseStatName, tcv.RangedDefense, 10, 0, 0, 8));
             var newChar = new NWoDVampire(tcv.Name, traitList);
             newChar.Ruleset = tcv.SystemLabel;
             return newChar;
