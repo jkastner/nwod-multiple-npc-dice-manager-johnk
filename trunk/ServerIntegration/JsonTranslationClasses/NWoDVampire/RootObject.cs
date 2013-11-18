@@ -25,7 +25,7 @@ namespace ServerIntegration.JsonTranslationClasses.NWoDVampire
         {
             get
             {
-                return success.body.data.Character.id;
+                return success.body.id;
             }
         }
         public override int GameID
@@ -97,9 +97,12 @@ namespace ServerIntegration.JsonTranslationClasses.NWoDVampire
             {
                 AddIntTrait(traits, cur.Key, cur.Value);
             }
-            foreach (var cur in success.body.data.Character.disciplines)
+            if (success.body.data.Character.disciplines != null)
             {
-                AddIntTrait(traits, cur.Key, cur.Value);
+                foreach (var cur in success.body.data.Character.disciplines)
+                {
+                    AddIntTrait(traits, cur.Key, cur.Value);
+                }
             }
             return traits;
         }

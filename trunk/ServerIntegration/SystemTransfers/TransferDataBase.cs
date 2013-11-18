@@ -13,6 +13,9 @@ namespace ServerIntegration
         public abstract int GameID { get; }
         public abstract int CharacterID { get; }
         public abstract String ImageURL { get; }
+        public abstract String SystemName { get; }
+
+        public abstract String CharacterName { get; }
         public string DownloadImageFromURLToLocal()
         {
             string localFilename = @"PiecePictures\Downloads\" + CharacterName + "GID_" + GameID + "ID_" + CharacterID + "_web.png";
@@ -32,9 +35,7 @@ namespace ServerIntegration
             }
             return Directory.GetCurrentDirectory() + "\\"+localFilename;
         }
-        public abstract String SystemName { get; }
 
-        public abstract String CharacterName { get; }
 
     }
 }

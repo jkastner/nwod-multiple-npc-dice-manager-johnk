@@ -9,6 +9,6 @@ namespace ServerIntegration
     {
         public abstract List<TransferTrait<String>> GetAllStringTraits();
         public abstract List<TransferTrait<int>> GetAllIntTraits();
-
+        
     }
 }
