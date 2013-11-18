@@ -124,8 +124,13 @@ namespace XMLCharSheets
 
         private void CharacterName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(PictureSearch_ListBox.SelectedItem==null)
+            if (
+                !CharacterName_TextBox.Text.Equals("Name")
+                &&
+                _characterCreationViewModel.IsDefaultName(ImageSearch_TextBox.Text))
+            {
                 ImageSearch_TextBox.Text = CharacterName_TextBox.Text;
+            }
         }
 
         private void CreateCharacter_ButtonClicked(object sender, RoutedEventArgs e)

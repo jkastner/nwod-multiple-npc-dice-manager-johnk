@@ -106,9 +106,7 @@ namespace XMLCharSheets
         {
             
             //Set the current name to the default character name if it equals 'name' or if it's empty or if the name matches an existing character name.
-            if (CurrentCharacterName.Equals("Name")||
-                String.IsNullOrWhiteSpace(CurrentCharacterName.Trim()) ||
-                CombatService.RosterViewModel.FullRoster.Any(x => x.Name.Equals(CurrentCharacterName)))
+            if (IsDefaultName(CurrentCharacterName))
             {
                 if (SelectedNewCharacter == null)
                 {
@@ -127,6 +125,14 @@ namespace XMLCharSheets
                     CurrentCharacterName = SelectedNewCharacter.Name;
                 }
             }
+        }
+
+        internal bool IsDefaultName(string CurrentCharacterName)
+        {
+            return CurrentCharacterName.Equals("Name") ||
+                CurrentCharacterName.Equals("Image search...") ||
+                String.IsNullOrWhiteSpace(CurrentCharacterName.Trim()) ||
+                CombatService.RosterViewModel.FullRoster.Any(x => x.Name.Equals(CurrentCharacterName));
         }
 
     }
