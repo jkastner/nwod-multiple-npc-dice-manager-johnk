@@ -9,9 +9,9 @@
         <Label>Height</Label>
         <CustomControls:PositiveIntegerTextBox x:Name="BoardHeight_TextBox"></CustomControls:PositiveIntegerTextBox>
         <Label>Width</Label>
-        <CustomControls:PositiveIntegerTextBox x:Name="BoardWidth_TextBox"></CustomControls:PositiveIntegerTextBox>
+        <CustomControls:PositiveIntegerTextBox x:Name="BoardWidth_TextBox" IsEnabled="False"></CustomControls:PositiveIntegerTextBox>
         <Label>Maintain Default Ratio</Label>
-        <CheckBox IsChecked="True" Margin="5,5,0,5" Name="Maintain_Ratio_CheckBox"></CheckBox>
+        <CheckBox IsChecked="True" Unchecked="Maintain_Ratio_CheckBox_Checked" Checked="Maintain_Ratio_CheckBox_Checked" Margin="5,5,0,5" Name="Maintain_Ratio_CheckBox"></CheckBox>
         <DockPanel>
             <Button HorizontalAlignment="Left" Click="OK_Button_Click" VerticalAlignment="Bottom" Content="OK"
                     Width="75" MinWidth="50" />

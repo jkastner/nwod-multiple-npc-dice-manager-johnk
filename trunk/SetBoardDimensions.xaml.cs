@@ -72,5 +72,18 @@ namespace XMLCharSheets
             WasCancel = true;
             Close();
         }
+
+        private void Maintain_Ratio_CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var isChecked = (bool)Maintain_Ratio_CheckBox.IsChecked;
+            if (isChecked)
+            {
+                BoardWidth_TextBox.IsEnabled = false;
+            }
+            else
+            {
+                BoardWidth_TextBox.IsEnabled = true;
+            }
+        }
     }
 }
