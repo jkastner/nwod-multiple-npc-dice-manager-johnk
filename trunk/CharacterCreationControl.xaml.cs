@@ -137,6 +137,7 @@ namespace XMLCharSheets
         {
             if (_characterCreationViewModel.SelectedNewCharacter==null)
             {
+                if(PictureSearch_ListBox.SelectedItem==null && !CombatService.RosterViewModel.AllowCharactersWithNoVisuals )
                 HighlightMissingData();
                 //CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
                 return;
@@ -178,7 +179,7 @@ namespace XMLCharSheets
                 VisualsService.BoardsViewModel.ForeachBoard(x=>x.VisualsViewModel.ZoomTo
                     (newInstance.FirstVisual.Location));
             }
-            else
+            else if(CombatService.RosterViewModel.AllowCharactersWithNoVisuals)
             {
                 CombatService.RosterViewModel.RegisterTeamMemberOnTeam(newInstance, selectedTeam);
             }
@@ -188,6 +189,7 @@ namespace XMLCharSheets
         private void ResetMissingDataHighlight()
         {
             AvailableNPCS_ListBox.Background = Brushes.White;
+            PictureSearch_ListBox.Background = Brushes.White;
         }
 
         private void HighlightMissingData()
@@ -197,6 +199,10 @@ namespace XMLCharSheets
             if(_characterCreationViewModel.SelectedNewCharacter == null )
             {
                 AvailableNPCS_ListBox.Background = Brushes.Red;
+            }
+            if (PictureSearch_ListBox.SelectedItem == null && !CombatService.RosterViewModel.AllowCharactersWithNoVisuals)
+            {
+                PictureSearch_ListBox.Background = Brushes.Red;
             }
         }
 
