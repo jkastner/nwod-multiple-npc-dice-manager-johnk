@@ -137,10 +137,13 @@ namespace XMLCharSheets
         {
             if (_characterCreationViewModel.SelectedNewCharacter==null)
             {
-                if(PictureSearch_ListBox.SelectedItem==null && !CombatService.RosterViewModel.AllowCharactersWithNoVisuals )
                 HighlightMissingData();
                 //CreateCharacterError_Label.Content = "Please select the character to spawn an instance of.";
                 return;
+            }
+            else if (PictureSearch_ListBox.SelectedItem == null && !CombatService.RosterViewModel.AllowCharactersWithNoVisuals)
+            {
+                HighlightMissingData();
             }
             else
             {
