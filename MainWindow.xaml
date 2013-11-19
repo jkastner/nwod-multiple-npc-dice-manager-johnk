@@ -22,9 +22,10 @@
                 </MenuItem>
                 <MenuItem Header="_Options">
                     <MenuItem Header="_Autosave..." IsCheckable="True" IsChecked="{Binding AutoSaveEachTurn}" />
-                    <MenuItem Header="_Auto Complete Combat..." Click="Auto_Run_Combat" />
+                    <MenuItem Header="Auto Complete Combat..." Click="Auto_Run_Combat" />
                     <MenuItem Header="_Match all views to main..." IsCheckable="True" IsChecked="{Binding OrientAllCamerasToMatchMain}" />
-                    <MenuItem Header="_Lock camera rotation..." IsCheckable="True" IsChecked="{Binding LockCameraRotation}" />
+                    <MenuItem Header="_Lock camera rotation" IsCheckable="True" IsChecked="{Binding LockCameraRotation}" />
+                    <MenuItem Header="Allow characters with no visuals" IsCheckable="True" IsChecked="{Binding AllowCharactersWithNoVisuals}" />
                 </MenuItem>
             </Menu>
         </Menu>

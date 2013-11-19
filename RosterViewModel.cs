@@ -863,6 +863,22 @@ namespace XMLCharSheets
                 VisualsService.BoardsViewModel.ForeachBoard(x => x.GameBoardVisual.LockRotation = _lockCameraRotation);
             }
         }
+
+        private bool _allowCharactersWithNoVisuals = false;
+        public bool AllowCharactersWithNoVisuals
+        {
+            get
+            {
+                return _allowCharactersWithNoVisuals;
+            }
+            set
+            {
+                _allowCharactersWithNoVisuals = value;
+                OnPropertyChanged("AllowCharactersWithNoVisuals");
+            }
+        }
+
+        
         
 
         private int _currentRound = 0;
