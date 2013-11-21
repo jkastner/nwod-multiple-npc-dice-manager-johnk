@@ -173,7 +173,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/systems/pathfinder/aoecontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/systems/pathfinder/aoecontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Systems\Pathfinder\AoEControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -4,7 +4,7 @@
 library
 C#
 .cs
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\CustomControls\obj\Debug\
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\CustomControls\obj\Debug\
 CustomControls
 none
 false
@@ -16,5 +16,5 @@ DEBUG;TRACE
 13-1829996574
 PositiveIntegerTextBox.xaml;TestControl.xaml;
 
-False
+True
 

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/dicelogo.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dicelogo.ico")]
 
 

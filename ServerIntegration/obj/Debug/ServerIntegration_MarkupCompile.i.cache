@@ -4,7 +4,7 @@
 library
 C#
 .cs
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\ServerIntegration\obj\Debug\
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\ServerIntegration\obj\Debug\
 ServerIntegration
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 4-658325632
 
 23-187184481
-1525765519
+15-1960438547
 App.xaml;CharacterBrowser.xaml;LoginControl.xaml;ServerManagementWindow.xaml;
 
-False
+True
 

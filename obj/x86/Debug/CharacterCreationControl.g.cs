@@ -100,7 +100,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/charactercreationcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/charactercreationcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\CharacterCreationControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

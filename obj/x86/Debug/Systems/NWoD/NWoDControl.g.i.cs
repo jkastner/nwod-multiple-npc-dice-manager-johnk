@@ -99,7 +99,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/systems/nwod/nwodcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/systems/nwod/nwodcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Systems\NWoD\NWoDControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

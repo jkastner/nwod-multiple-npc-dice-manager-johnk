@@ -99,7 +99,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/newselecttarget.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/newselecttarget.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\NewSelectTarget.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

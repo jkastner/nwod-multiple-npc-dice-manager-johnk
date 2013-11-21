@@ -83,7 +83,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/rolltraitswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/rolltraitswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\RollTraitsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
