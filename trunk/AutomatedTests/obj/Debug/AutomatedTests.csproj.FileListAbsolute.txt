@@ -1,0 +1,4 @@
+E:\Google Drive\MyDocuments\VisualStudioProjects\AutomatedTests\bin\Debug\AutomatedTests.dll
+E:\Google Drive\MyDocuments\VisualStudioProjects\AutomatedTests\bin\Debug\AutomatedTests.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\AutomatedTests\obj\Debug\AutomatedTests.dll
+E:\Google Drive\MyDocuments\VisualStudioProjects\AutomatedTests\obj\Debug\AutomatedTests.pdb
