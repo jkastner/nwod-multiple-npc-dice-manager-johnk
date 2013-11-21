@@ -33,13 +33,13 @@
         <Label Grid.Row="0" Grid.Column="2">Character Image</Label>
         <Label Grid.Row="0" Grid.Column="3">Character Team</Label>
         
-        <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource BaseStyle}" Name="CharacterSheetSearcher_TextBox" TextChanged="CharacterSheetSearcher_TextBox_TextChanged" >Search...</TextBox>
-        <ListBox Grid.Row="2" Name="AvailableNPCS_ListBox" SelectedItem="{Binding SelectedNewCharacter}"  Grid.Column="0" Margin="5,5,5,5"></ListBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource BaseStyle}" Name="CharacterName_TextBox" MinWidth="120" Text="{Binding CurrentCharacterName}" TextChanged="CharacterName_TextBox_TextChanged"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource BaseStyle}" x:Name="CharacterSheetSearcher_TextBox" TextChanged="CharacterSheetSearcher_TextBox_TextChanged" >Search...</TextBox>
+        <ListBox Grid.Row="2" x:Name="AvailableNPCS_ListBox" SelectedItem="{Binding SelectedNewCharacter}"  Grid.Column="0" Margin="5,5,5,5"></ListBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource BaseStyle}" x:Name="CharacterName_TextBox" MinWidth="120" Text="{Binding CurrentCharacterName}" TextChanged="CharacterName_TextBox_TextChanged"></TextBox>
         <TextBox IsReadOnly="True" Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" TextWrapping="Wrap" DataContext="{Binding SelectedNewCharacter}"
                  Text="{Binding CharacterSheetDescription, Mode=OneWay}"   FontSize="12" VerticalScrollBarVisibility="Auto">
         </TextBox>
-        <TextBox Grid.Row="1"  Grid.Column="2" Style="{StaticResource BaseStyle}" Name="ImageSearch_TextBox" TextChanged="ImageSearch_TextBox_TextChanged" FontSize="12">
+        <TextBox Grid.Row="1"  Grid.Column="2" Style="{StaticResource BaseStyle}" x:Name="ImageSearch_TextBox" TextChanged="ImageSearch_TextBox_TextChanged" FontSize="12">
                 Image search...
             </TextBox>
         <ListBox Margin ="5,5,5,5"  Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" x:Name="PictureSearch_ListBox"
@@ -76,7 +76,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Border Grid.RowSpan="3" Grid.Column="3" BorderThickness="2" BorderBrush="Black" Margin="0,0,0,43">
-            <ListBox Name="TeamSelection_ListBox" Background="LightGray">
+            <ListBox x:Name="TeamSelection_ListBox" Background="LightGray">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

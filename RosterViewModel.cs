@@ -509,21 +509,23 @@ namespace XMLCharSheets
 
         internal void MarkCharactersAsDeceased()
         {
-            for (int curIndex = ActiveRoster.Count() - 1; curIndex >= 0; curIndex--)
+
+            var activeRosterList = ActiveRoster.ToList();
+            for (int curIndex = activeRosterList.Count() - 1; curIndex >= 0; curIndex--)
             {
-                if (ActiveRoster[curIndex].IsIncapacitated)
+                if (activeRosterList[curIndex].IsIncapacitated)
                 {
                     //The character should be removed from the active list first.
                     //Otherwise, when removed later, it would trigger a 'set inactive'
                     //event, which cannot complete due to the character already being
                     //removed from all the boards.
-                    MoveCharacterToDeceasedRoster(ActiveRoster[curIndex]);
-                    if (ActiveRoster[curIndex].HasVisual)
+                    MoveCharacterToDeceasedRoster(activeRosterList[curIndex]);
+                    if (activeRosterList[curIndex].HasVisual)
                     {
-                        var curId = ActiveRoster[curIndex].UniqueCharacterID;
+                        var curId = activeRosterList[curIndex].UniqueCharacterID;
                         VisualsService.BoardsViewModel.ForeachBoard(x => x.VisualsViewModel.RemovePiece(curId));
                     }
-                    foreach (CharacterSheet cur in ActiveRoster.Where(x => x.Target == ActiveRoster[curIndex]))
+                    foreach (CharacterSheet cur in activeRosterList.Where(x => x.Target == activeRosterList[curIndex]))
                     {
                         cur.Target = null;
                     }
@@ -533,7 +535,7 @@ namespace XMLCharSheets
             {
                 if (!DeceasedRoster[curIndex].IsIncapacitated)
                 {
-                    ActiveRoster.Add(DeceasedRoster[curIndex]);
+                    activeRosterList.Add(DeceasedRoster[curIndex]);
                     DeceasedRoster.Remove(DeceasedRoster[curIndex]);
                 }
             }
