@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLCharSheets", "XMLCharSheets.csproj", "{C504FCC0-D242-4C02-8010-4A08246FD9D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombatAutomationTheater", "CombatAutomationTheater.csproj", "{C504FCC0-D242-4C02-8010-4A08246FD9D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBoard", "GameBoard\GameBoard\GameBoard.csproj", "{9708895F-1A9E-4951-818C-A706C166DF20}"
 EndProject

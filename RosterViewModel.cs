@@ -12,7 +12,7 @@ using System.Windows.Media.Media3D;
 using GameBoard;
 using ServerIntegration;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public class RosterViewModel : INotifyPropertyChanged
     {

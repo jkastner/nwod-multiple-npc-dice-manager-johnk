@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using GameBoard;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract]
     public class StatusEffect

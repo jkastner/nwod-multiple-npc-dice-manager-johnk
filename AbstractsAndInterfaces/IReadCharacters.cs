@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Xml.Linq;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     internal interface IReadCharacters
     {

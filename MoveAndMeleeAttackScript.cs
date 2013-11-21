@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public class MoveAndMeleeAttackScript : CharacterActionScript
     {

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Windows.Media;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract(Namespace = "")]
     public class Team

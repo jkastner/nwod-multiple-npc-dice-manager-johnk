@@ -13,7 +13,7 @@ using Microsoft.Win32;
 using System.Windows.Documents;
 using ServerIntegration;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

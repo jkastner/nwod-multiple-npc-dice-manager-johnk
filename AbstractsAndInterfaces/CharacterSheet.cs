@@ -9,7 +9,7 @@ using System.Windows.Media.Media3D;
 using GameBoard;
 using System.Windows;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract(Namespace = "")]
     [KnownType(typeof (PathfinderCharacter_HP))]

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public class NWoDDamage : Damage
     {

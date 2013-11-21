@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Media;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract(Namespace = "")]
     internal class NWoDCharacter : CharacterSheet

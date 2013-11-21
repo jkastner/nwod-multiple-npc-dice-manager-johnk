@@ -1,4 +1,4 @@
-﻿<Window x:Class="XMLCharSheets.StatusEffectWindow"
+﻿<Window x:Class="CombatAutomationTheater.StatusEffectWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Assign Status Effect" Height="300" SizeToContent="Height" Width="300"

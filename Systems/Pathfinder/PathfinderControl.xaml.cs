@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     /// <summary>
     ///     Interaction logic for PathfinderControl.xaml

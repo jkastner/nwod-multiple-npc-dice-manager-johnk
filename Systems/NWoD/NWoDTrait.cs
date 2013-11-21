@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract(Namespace = "")]
     public class NWoDTrait : NumericIntTrait, INWoDTrait

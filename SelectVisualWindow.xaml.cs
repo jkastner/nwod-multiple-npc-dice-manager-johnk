@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     /// <summary>
     ///     Interaction logic for SelectVisualWindow.xaml

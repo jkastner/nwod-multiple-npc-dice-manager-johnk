@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract(Namespace = "")]
     public class NWoDDicePool : DicePool

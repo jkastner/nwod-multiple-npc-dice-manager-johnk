@@ -1,4 +1,4 @@
-﻿namespace XMLCharSheets
+﻿namespace CombatAutomationTheater
 {
     public static class NWoDConstants
     {
