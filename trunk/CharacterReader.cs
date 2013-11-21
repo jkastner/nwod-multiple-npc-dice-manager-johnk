@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Xml.Linq;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     internal class CharacterReader
     {

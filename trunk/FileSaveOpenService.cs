@@ -8,7 +8,7 @@ using System.Xml;
 using GameBoard;
 using Microsoft.Win32;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public class FileSaveOpenService
     {

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     /// <summary>
     /// Interaction logic for LoadingErrors.xaml

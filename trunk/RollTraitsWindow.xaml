@@ -1,4 +1,4 @@
-﻿<Window x:Class="XMLCharSheets.RollTraitsWindow"
+﻿<Window x:Class="CombatAutomationTheater.RollTraitsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Roll Traits" Height="Auto" Width="Auto">

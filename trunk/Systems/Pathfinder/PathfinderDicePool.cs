@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     [DataContract(Namespace = "")]
     public class PathfinderDicePool : DicePool

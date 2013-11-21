@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Media;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public class ReportTextEventArgs : EventArgs
     {

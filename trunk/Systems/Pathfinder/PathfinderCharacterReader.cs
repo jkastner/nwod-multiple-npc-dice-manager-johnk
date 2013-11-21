@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Windows.Controls;
 using System.Xml.Linq;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public class PathfinderCharacterReader : IReadCharacters
     {

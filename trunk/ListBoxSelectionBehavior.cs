@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public static class ListBoxSelectionBehavior
     {

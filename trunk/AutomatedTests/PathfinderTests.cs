@@ -23,11 +23,15 @@ namespace AutomatedTests
         }
 
         [TestMethod]
-        public void PathfinderTest()
+        public void PathfinderTest1()
         {
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
             // For more information on generated code, see http://go.microsoft.com/fwlink/?LinkId=179463
             this.UIMap.TrollFight();
+        }
+        [TestMethod]
+        public void PathfinderTest2()
+        {
         }
 
         #region Additional test attributes

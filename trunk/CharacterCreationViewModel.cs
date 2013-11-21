@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     internal class CharacterCreationViewModel : INotifyPropertyChanged
     {

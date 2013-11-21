@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     public static class TextReporter
     {

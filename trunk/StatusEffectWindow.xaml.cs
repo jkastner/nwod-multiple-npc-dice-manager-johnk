@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     /// <summary>
     ///     Interaction logic for StatusEffectWindow.xaml

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Documents;
 
-namespace XMLCharSheets.NWoD
+namespace CombatAutomationTheater.NWoD
 {
     internal class NWoDRosterViewModel
     {

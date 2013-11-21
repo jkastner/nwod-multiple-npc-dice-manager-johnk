@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using XMLCharSheets.NWoD;
+using CombatAutomationTheater.NWoD;
 
-namespace XMLCharSheets
+namespace CombatAutomationTheater
 {
     /// <summary>
     ///     Interaction logic for NWoDControl.xaml

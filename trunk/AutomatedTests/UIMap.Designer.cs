@@ -395,105 +395,103 @@ namespace AutomatedTests
 
             // Click 'Combat' tab
             Mouse.Click(uICombatTabPage, new Point(34, 17));
-            while (uIActiveCharacters_LisList.Items.Count > 1)
-            {
-                // Click 'Initiative_Button' button
-                Mouse.Click(uIInitiative_ButtonButton, new Point(11, 19));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(17, 23));
+            // Click 'Initiative_Button' button
+            Mouse.Click(uIInitiative_ButtonButton, new Point(11, 19));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(10, 19));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(17, 23));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(26, 16));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(10, 19));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(12, 17));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(26, 16));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(25, 15));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(12, 17));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(14, 21));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(25, 15));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(20, 23));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(14, 21));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(10, 14));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(20, 23));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(22, 12));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(10, 14));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(17, 13));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(22, 12));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(23, 27));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(17, 13));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(25, 22));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(23, 27));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(27, 28));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(25, 22));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(18, 24));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(27, 28));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(14, 20));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(18, 24));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(10, 17));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(14, 20));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(18, 16));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(10, 17));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(20, 22));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(18, 16));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(18, 20));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(20, 22));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(17, 21));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(18, 20));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(24, 18));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(17, 21));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(18, 20));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(24, 18));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(30, 25));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(18, 20));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(21, 18));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(30, 25));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(23, 28));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(21, 18));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(15, 18));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(23, 28));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(21, 26));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(15, 18));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(9, 8));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(21, 26));
 
-                // Click tab list
-                Mouse.Click(uIItemTabList, new Point(81, 445));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(9, 8));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(8, 19));
+            // Click tab list
+            Mouse.Click(uIItemTabList, new Point(81, 445));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(11, 15));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(8, 19));
 
-            }
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(11, 15));
+
         }
         
         /// <summary>
@@ -516,11 +514,22 @@ namespace AutomatedTests
             WpfButton uIBlood_Heal_ButtonButton = this.UICombatManagerWindowWindow.UIItemTabList.UICombatTabPage.UIBlood_Heal_ButtonButton;
             WpfButton uIAuto_Act_ButtonButton = this.UICombatManagerWindowWindow.UIItemTabList.UICombatTabPage.UIAuto_Act_ButtonButton;
             WpfButton uIRefill_Vitae_ButtonButton = this.UICombatManagerWindowWindow.UIItemTabList.UICombatTabPage.UIRefill_Vitae_ButtonButton;
-            WpfList uIActiveCharacters_LisList = this.UICombatManagerWindowWindow.UIItemTabList.UICombatTabPage.UIActiveCharacters_LisList;
             #endregion
 
             // Type 'elder melee' in 'CharacterSheetSearcher_TextBox' text box
             uICharacterSheetSearchEdit.Text = this.BattleOfTheCloviParams.UICharacterSheetSearchEditText;
+
+            // Type '{Tab}' in 'CharacterSheetSearcher_TextBox' text box
+            Keyboard.SendKeys(uICharacterSheetSearchEdit, this.BattleOfTheCloviParams.UICharacterSheetSearchEditSendKeys, ModifierKeys.None);
+
+            // Type '{Tab}' in 'Elder Melee Vampire' list item
+            Keyboard.SendKeys(uIElderMeleeVampireListItem, this.BattleOfTheCloviParams.UIElderMeleeVampireListItemSendKeys, ModifierKeys.None);
+
+            // Type '{Tab}' in 'CharacterName_TextBox' text box
+            Keyboard.SendKeys(uICharacterName_TextBoEdit, this.BattleOfTheCloviParams.UICharacterName_TextBoEditSendKeys, ModifierKeys.None);
+
+            // Type '{Tab}' in first text box next to 'CharacterName_TextBox' text box
+            Keyboard.SendKeys(uIItemEdit, this.BattleOfTheCloviParams.UIItemEditSendKeys, ModifierKeys.None);
 
             // Type 'Clovis' in 'ImageSearch_TextBox' text box
             uIImageSearch_TextBoxEdit.Text = this.BattleOfTheCloviParams.UIImageSearch_TextBoxEditText;
@@ -540,120 +549,118 @@ namespace AutomatedTests
             // Click 'Combat' tab
             Mouse.Click(uICombatTabPage, new Point(27, 21));
 
-            while (uIActiveCharacters_LisList.Items.Count > 1)
-            {
-                // Click 'Initiative_Button' button
-                Mouse.Click(uIInitiative_ButtonButton, new Point(19, 26));
+            // Click 'Initiative_Button' button
+            Mouse.Click(uIInitiative_ButtonButton, new Point(19, 26));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(12, 22));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(12, 22));
 
-                // Click 'Combat Manager Window' window
-                Mouse.Click(uICombatManagerWindowWindow1, new Point(1010, 6));
+            // Click 'Combat Manager Window' window
+            Mouse.Click(uICombatManagerWindowWindow1, new Point(1010, 6));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(20, 22));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(20, 22));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(20, 21));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(20, 21));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(27, 13));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(27, 13));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(25, 13));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(25, 13));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(18, 12));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(18, 12));
 
-                // Click 'Refill_Vitae_Button' button
-                Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(20, 26));
+            // Click 'Refill_Vitae_Button' button
+            Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(20, 26));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(25, 19));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(25, 19));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(17, 20));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(17, 20));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(17, 20));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(17, 20));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(16, 22));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(16, 22));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(17, 21));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(17, 21));
 
-                // Click 'Refill_Vitae_Button' button
-                Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(12, 17));
+            // Click 'Refill_Vitae_Button' button
+            Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(12, 17));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(19, 14));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(19, 14));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(19, 14));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(19, 14));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(15, 11));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(15, 11));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(19, 16));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(19, 16));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(13, 21));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(13, 21));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(24, 20));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(24, 20));
 
-                // Click 'Refill_Vitae_Button' button
-                Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(16, 17));
+            // Click 'Refill_Vitae_Button' button
+            Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(16, 17));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(16, 20));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(16, 20));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(13, 18));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(13, 18));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(10, 12));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(10, 12));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(17, 15));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(17, 15));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(19, 15));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(19, 15));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(19, 15));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(19, 15));
 
-                // Click 'Refill_Vitae_Button' button
-                Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(22, 20));
+            // Click 'Refill_Vitae_Button' button
+            Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(22, 20));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(15, 17));
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(15, 17));
 
-                // Click 'ActivateNext_Button' button
-                Mouse.Click(uIActivateNext_ButtonButton, new Point(23, 20));
+            // Click 'ActivateNext_Button' button
+            Mouse.Click(uIActivateNext_ButtonButton, new Point(23, 20));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(13, 22));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(13, 22));
 
-                // Click 'Blood_Buff_Button' button
-                Mouse.Click(uIBlood_Buff_ButtonButton, new Point(16, 19));
+            // Click 'Blood_Buff_Button' button
+            Mouse.Click(uIBlood_Buff_ButtonButton, new Point(16, 19));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(12, 19));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(12, 19));
 
-                // Click 'Blood_Heal_Button' button
-                Mouse.Click(uIBlood_Heal_ButtonButton, new Point(10, 20));
+            // Click 'Blood_Heal_Button' button
+            Mouse.Click(uIBlood_Heal_ButtonButton, new Point(10, 20));
 
-                // Click 'Refill_Vitae_Button' button
-                Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(16, 19));
+            // Click 'Refill_Vitae_Button' button
+            Mouse.Click(uIRefill_Vitae_ButtonButton, new Point(16, 19));
 
-                // Click 'Auto_Act_Button' button
-                Mouse.Click(uIAuto_Act_ButtonButton, new Point(24, 13));
-            }
+            // Click 'Auto_Act_Button' button
+            Mouse.Click(uIAuto_Act_ButtonButton, new Point(24, 13));
         }
+    
         
         #region Properties
         public virtual AddDogsParams AddDogsParams
@@ -716,6 +723,18 @@ namespace AutomatedTests
             }
         }
         
+        public virtual KillSomeOozesParams KillSomeOozesParams
+        {
+            get
+            {
+                if ((this.mKillSomeOozesParams == null))
+                {
+                    this.mKillSomeOozesParams = new KillSomeOozesParams();
+                }
+                return this.mKillSomeOozesParams;
+            }
+        }
+        
         public UICombatManagerWindowWindow UICombatManagerWindowWindow
         {
             get
@@ -751,6 +770,18 @@ namespace AutomatedTests
                 return this.mUICombatManagerWindowWindow1;
             }
         }
+        
+        public UIWpfWindow UIWpfWindow
+        {
+            get
+            {
+                if ((this.mUIWpfWindow == null))
+                {
+                    this.mUIWpfWindow = new UIWpfWindow();
+                }
+                return this.mUIWpfWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -764,11 +795,15 @@ namespace AutomatedTests
         
         private BattleOfTheCloviParams mBattleOfTheCloviParams;
         
+        private KillSomeOozesParams mKillSomeOozesParams;
+        
         private UICombatManagerWindowWindow mUICombatManagerWindowWindow;
         
         private UISelectTargetWindow mUISelectTargetWindow;
         
         private UICombatManagerWindowWindow1 mUICombatManagerWindowWindow1;
+        
+        private UIWpfWindow mUIWpfWindow;
         #endregion
     }
     
@@ -908,6 +943,88 @@ namespace AutomatedTests
         #endregion
     }
     
+    /// <summary>
+    /// Parameters to be passed into 'KillSomeOozes'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class KillSomeOozesParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type 'Ooze' in 'CharacterSheetSearcher_TextBox' text box
+        /// </summary>
+        public string UICharacterSheetSearchEditText = "Ooze";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'CharacterSheetSearcher_TextBox' text box
+        /// </summary>
+        public string UICharacterSheetSearchEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'Gray Ooze' list item
+        /// </summary>
+        public string UIGrayOozeListItemSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'CharacterName_TextBox' text box
+        /// </summary>
+        public string UICharacterName_TextBoEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '{Tab}' in first text box next to 'CharacterName_TextBox' text box
+        /// </summary>
+        public string UIItemEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'ImageSearch_TextBox' text box
+        /// </summary>
+        public string UIImageSearch_TextBoxEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'CombatAutomationTheater.PictureFileInfo' list item
+        /// </summary>
+        public string UICombatAutomationTheaterPictureListItemSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}' in 'OK' button
+        /// </summary>
+        public string UIOKButtonSendKeys = "{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}";
+        
+        /// <summary>
+        /// Type '500' in '50' cell
+        /// </summary>
+        public string UIItem50CellValue = "500";
+        
+        /// <summary>
+        /// Type '{Enter}' in text box
+        /// </summary>
+        public string UIItemEditSendKeys1 = "{Enter}";
+        
+        /// <summary>
+        /// Select 'Gray Ooze,Gray Ooze_1,Gray Ooze_2,Gray Ooze_3,Gray Ooze_4,Gray Ooze_5,Gray Ooze_6,Gray Ooze_7,Gray Ooze_8,Gray Ooze_9' in 'ActiveCharacters_ListBox' list box
+        /// </summary>
+        public string UIActiveCharacters_LisListSelectedItemsAsString = "Gray Ooze,Gray Ooze_1,Gray Ooze_2,Gray Ooze_3,Gray Ooze_4,Gray Ooze_5,Gray Ooze_6" +
+            ",Gray Ooze_7,Gray Ooze_8,Gray Ooze_9";
+        
+        /// <summary>
+        /// Type '99' in 'DC_TextBox' text box
+        /// </summary>
+        public string UIDC_TextBoxEditText = "99";
+        
+        /// <summary>
+        /// Type '150' in 'Damage_TextBox' text box
+        /// </summary>
+        public string UIDamage_TextBoxEditText = "150";
+        
+        /// <summary>
+        /// Select 'Gray Ooze_9,Gray Ooze_8,Gray Ooze_7,Gray Ooze_6,Gray Ooze_5,Gray Ooze_3,Gray Ooze_2,Gray Ooze_1,Gray Ooze' in 'DeceasedCharacters' list box
+        /// </summary>
+        public string UIDeceasedCharactersListSelectedItemsAsString = "Gray Ooze_9,Gray Ooze_8,Gray Ooze_7,Gray Ooze_6,Gray Ooze_5,Gray Ooze_3,Gray Ooze" +
+            "_2,Gray Ooze_1,Gray Ooze";
+        #endregion
+    }
+    
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
     public class UICombatManagerWindowWindow : WpfWindow
     {
@@ -945,12 +1062,26 @@ namespace AutomatedTests
                 return this.mUIItemCustom;
             }
         }
+        
+        public UIItemMenu UIItemMenu
+        {
+            get
+            {
+                if ((this.mUIItemMenu == null))
+                {
+                    this.mUIItemMenu = new UIItemMenu(this);
+                }
+                return this.mUIItemMenu;
+            }
+        }
         #endregion
         
         #region Fields
         private UIItemTabList mUIItemTabList;
         
         private UIItemCustom mUIItemCustom;
+        
+        private UIItemMenu mUIItemMenu;
         #endregion
     }
     
@@ -990,12 +1121,40 @@ namespace AutomatedTests
                 return this.mUICombatTabPage;
             }
         }
+        
+        public UICurrentCharacterTabPage UICurrentCharacterTabPage
+        {
+            get
+            {
+                if ((this.mUICurrentCharacterTabPage == null))
+                {
+                    this.mUICurrentCharacterTabPage = new UICurrentCharacterTabPage(this);
+                }
+                return this.mUICurrentCharacterTabPage;
+            }
+        }
+        
+        public UIDeceasedTabPage UIDeceasedTabPage
+        {
+            get
+            {
+                if ((this.mUIDeceasedTabPage == null))
+                {
+                    this.mUIDeceasedTabPage = new UIDeceasedTabPage(this);
+                }
+                return this.mUIDeceasedTabPage;
+            }
+        }
         #endregion
         
         #region Fields
         private UICreateTabPage mUICreateTabPage;
         
         private UICombatTabPage mUICombatTabPage;
+        
+        private UICurrentCharacterTabPage mUICurrentCharacterTabPage;
+        
+        private UIDeceasedTabPage mUIDeceasedTabPage;
         #endregion
     }
     
@@ -1432,6 +1591,38 @@ namespace AutomatedTests
                 return this.mUIBlood_Heal_ButtonButton;
             }
         }
+        
+        public WpfEdit UIDamageValue_SelectAlEdit
+        {
+            get
+            {
+                if ((this.mUIDamageValue_SelectAlEdit == null))
+                {
+                    this.mUIDamageValue_SelectAlEdit = new WpfEdit(this);
+                    #region Search Criteria
+                    this.mUIDamageValue_SelectAlEdit.SearchProperties[WpfEdit.PropertyNames.AutomationId] = "DamageValue_SelectAllTextBox";
+                    this.mUIDamageValue_SelectAlEdit.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIDamageValue_SelectAlEdit;
+            }
+        }
+        
+        public WpfButton UIApplyastatuseffectorButton
+        {
+            get
+            {
+                if ((this.mUIApplyastatuseffectorButton == null))
+                {
+                    this.mUIApplyastatuseffectorButton = new WpfButton(this);
+                    #region Search Criteria
+                    this.mUIApplyastatuseffectorButton.SearchProperties[WpfButton.PropertyNames.HelpText] = "Apply a status effect or damage to all selected characters";
+                    this.mUIApplyastatuseffectorButton.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIApplyastatuseffectorButton;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1464,6 +1655,10 @@ namespace AutomatedTests
         private WpfButton mUIBlood_Buff_ButtonButton;
         
         private WpfButton mUIBlood_Heal_ButtonButton;
+        
+        private WpfEdit mUIDamageValue_SelectAlEdit;
+        
+        private WpfButton mUIApplyastatuseffectorButton;
         #endregion
     }
     
@@ -1508,12 +1703,58 @@ namespace AutomatedTests
                 return this.mUITroll_3ListItem;
             }
         }
+        
+        public UIGrayOozeListItem UIGrayOozeListItem
+        {
+            get
+            {
+                if ((this.mUIGrayOozeListItem == null))
+                {
+                    this.mUIGrayOozeListItem = new UIGrayOozeListItem(this);
+                }
+                return this.mUIGrayOozeListItem;
+            }
+        }
+        
+        public UIGrayOoze_4ListItem UIGrayOoze_4ListItem
+        {
+            get
+            {
+                if ((this.mUIGrayOoze_4ListItem == null))
+                {
+                    this.mUIGrayOoze_4ListItem = new UIGrayOoze_4ListItem(this);
+                }
+                return this.mUIGrayOoze_4ListItem;
+            }
+        }
+        
+        public WpfListItem UIGrayOoze_6ListItem
+        {
+            get
+            {
+                if ((this.mUIGrayOoze_6ListItem == null))
+                {
+                    this.mUIGrayOoze_6ListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIGrayOoze_6ListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "Gray Ooze_6";
+                    this.mUIGrayOoze_6ListItem.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIGrayOoze_6ListItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UIDogListItem mUIDogListItem;
         
         private WpfListItem mUITroll_3ListItem;
+        
+        private UIGrayOozeListItem mUIGrayOozeListItem;
+        
+        private UIGrayOoze_4ListItem mUIGrayOoze_4ListItem;
+        
+        private WpfListItem mUIGrayOoze_6ListItem;
         #endregion
     }
     
@@ -1558,6 +1799,142 @@ namespace AutomatedTests
         {
             #region Search Criteria
             this.SearchProperties[WpfText.PropertyNames.Name] = "Dog";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfImage UIItemImage
+        {
+            get
+            {
+                if ((this.mUIItemImage == null))
+                {
+                    this.mUIItemImage = new WpfImage(this);
+                    #region Search Criteria
+                    this.mUIItemImage.SearchConfigurations.Add(SearchConfiguration.NextSibling);
+                    this.mUIItemImage.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIItemImage;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfImage mUIItemImage;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIGrayOozeListItem : WpfListItem
+    {
+        
+        public UIGrayOozeListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfListItem.PropertyNames.Name] = "Gray Ooze";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public UIGrayOozeText UIGrayOozeText
+        {
+            get
+            {
+                if ((this.mUIGrayOozeText == null))
+                {
+                    this.mUIGrayOozeText = new UIGrayOozeText(this);
+                }
+                return this.mUIGrayOozeText;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIGrayOozeText mUIGrayOozeText;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIGrayOozeText : WpfText
+    {
+        
+        public UIGrayOozeText(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfText.PropertyNames.Name] = "Gray Ooze";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfImage UIItemImage
+        {
+            get
+            {
+                if ((this.mUIItemImage == null))
+                {
+                    this.mUIItemImage = new WpfImage(this);
+                    #region Search Criteria
+                    this.mUIItemImage.SearchConfigurations.Add(SearchConfiguration.NextSibling);
+                    this.mUIItemImage.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIItemImage;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfImage mUIItemImage;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIGrayOoze_4ListItem : WpfListItem
+    {
+        
+        public UIGrayOoze_4ListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfListItem.PropertyNames.Name] = "Gray Ooze_4";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public UIGrayOoze_4Text UIGrayOoze_4Text
+        {
+            get
+            {
+                if ((this.mUIGrayOoze_4Text == null))
+                {
+                    this.mUIGrayOoze_4Text = new UIGrayOoze_4Text(this);
+                }
+                return this.mUIGrayOoze_4Text;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIGrayOoze_4Text mUIGrayOoze_4Text;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIGrayOoze_4Text : WpfText
+    {
+        
+        public UIGrayOoze_4Text(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfText.PropertyNames.Name] = "Gray Ooze_4";
             this.WindowTitles.Add("Combat Manager Window");
             #endregion
         }
@@ -1660,6 +2037,191 @@ namespace AutomatedTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UICurrentCharacterTabPage : WpfTabPage
+    {
+        
+        public UICurrentCharacterTabPage(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfTabPage.PropertyNames.AutomationId] = "CurrentCharacterControlTab";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public UIItemTable UIItemTable
+        {
+            get
+            {
+                if ((this.mUIItemTable == null))
+                {
+                    this.mUIItemTable = new UIItemTable(this);
+                }
+                return this.mUIItemTable;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIItemTable mUIItemTable;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIItemTable : WpfTable
+    {
+        
+        public UIItemTable(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public UIVigor50Row UIVigor50Row
+        {
+            get
+            {
+                if ((this.mUIVigor50Row == null))
+                {
+                    this.mUIVigor50Row = new UIVigor50Row(this);
+                }
+                return this.mUIVigor50Row;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIVigor50Row mUIVigor50Row;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIVigor50Row : WpfRow
+    {
+        
+        public UIVigor50Row(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfRow.PropertyNames.Name] = "Vigor 50";
+            this.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public UIItem50Cell UIItem50Cell
+        {
+            get
+            {
+                if ((this.mUIItem50Cell == null))
+                {
+                    this.mUIItem50Cell = new UIItem50Cell(this);
+                }
+                return this.mUIItem50Cell;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIItem50Cell mUIItem50Cell;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIItem50Cell : WpfCell
+    {
+        
+        public UIItem50Cell(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfCell.PropertyNames.ColumnHeader] = "BaseTraitContents";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfEdit UIItemEdit
+        {
+            get
+            {
+                if ((this.mUIItemEdit == null))
+                {
+                    this.mUIItemEdit = new WpfEdit(this);
+                    #region Search Criteria
+                    this.mUIItemEdit.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIItemEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfEdit mUIItemEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIDeceasedTabPage : WpfTabPage
+    {
+        
+        public UIDeceasedTabPage(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfTabPage.PropertyNames.Name] = "Deceased";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfList UIDeceasedCharactersList
+        {
+            get
+            {
+                if ((this.mUIDeceasedCharactersList == null))
+                {
+                    this.mUIDeceasedCharactersList = new WpfList(this);
+                    #region Search Criteria
+                    this.mUIDeceasedCharactersList.SearchProperties[WpfList.PropertyNames.AutomationId] = "DeceasedCharacters";
+                    this.mUIDeceasedCharactersList.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIDeceasedCharactersList;
+            }
+        }
+        
+        public WpfButton UIRestoreButton
+        {
+            get
+            {
+                if ((this.mUIRestoreButton == null))
+                {
+                    this.mUIRestoreButton = new WpfButton(this);
+                    #region Search Criteria
+                    this.mUIRestoreButton.SearchProperties[WpfButton.PropertyNames.Name] = "Restore";
+                    this.mUIRestoreButton.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIRestoreButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfList mUIDeceasedCharactersList;
+        
+        private WpfButton mUIRestoreButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
     public class UIItemCustom : WpfCustom
     {
         
@@ -1684,10 +2246,24 @@ namespace AutomatedTests
                 return this.mUIAvailableNPCS_ListBoList;
             }
         }
+        
+        public UIPictureSearch_ListBoList UIPictureSearch_ListBoList
+        {
+            get
+            {
+                if ((this.mUIPictureSearch_ListBoList == null))
+                {
+                    this.mUIPictureSearch_ListBoList = new UIPictureSearch_ListBoList(this);
+                }
+                return this.mUIPictureSearch_ListBoList;
+            }
+        }
         #endregion
         
         #region Fields
         private UIAvailableNPCS_ListBoList mUIAvailableNPCS_ListBoList;
+        
+        private UIPictureSearch_ListBoList mUIPictureSearch_ListBoList;
         #endregion
     }
     
@@ -1720,10 +2296,100 @@ namespace AutomatedTests
                 return this.mUIElderMeleeVampireListItem;
             }
         }
+        
+        public WpfListItem UIGrayOozeListItem
+        {
+            get
+            {
+                if ((this.mUIGrayOozeListItem == null))
+                {
+                    this.mUIGrayOozeListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIGrayOozeListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "Gray Ooze";
+                    this.mUIGrayOozeListItem.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUIGrayOozeListItem;
+            }
+        }
         #endregion
         
         #region Fields
         private WpfListItem mUIElderMeleeVampireListItem;
+        
+        private WpfListItem mUIGrayOozeListItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIPictureSearch_ListBoList : WpfList
+    {
+        
+        public UIPictureSearch_ListBoList(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfList.PropertyNames.AutomationId] = "PictureSearch_ListBox";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfListItem UICombatAutomationTheaterPictureListItem
+        {
+            get
+            {
+                if ((this.mUICombatAutomationTheaterPictureListItem == null))
+                {
+                    this.mUICombatAutomationTheaterPictureListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUICombatAutomationTheaterPictureListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "CombatAutomationTheater.PictureFileInfo";
+                    this.mUICombatAutomationTheaterPictureListItem.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUICombatAutomationTheaterPictureListItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfListItem mUICombatAutomationTheaterPictureListItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIItemMenu : WpfMenu
+    {
+        
+        public UIItemMenu(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfMenu.PropertyNames.ClassName] = "Uia.ContextMenu";
+            this.WindowTitles.Add("Combat Manager Window");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfMenuItem UICleandeceasedcharactMenuItem
+        {
+            get
+            {
+                if ((this.mUICleandeceasedcharactMenuItem == null))
+                {
+                    this.mUICleandeceasedcharactMenuItem = new WpfMenuItem(this);
+                    #region Search Criteria
+                    this.mUICleandeceasedcharactMenuItem.SearchProperties[WpfMenuItem.PropertyNames.Name] = "Clean deceased characters";
+                    this.mUICleandeceasedcharactMenuItem.WindowTitles.Add("Combat Manager Window");
+                    #endregion
+                }
+                return this.mUICleandeceasedcharactMenuItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfMenuItem mUICleandeceasedcharactMenuItem;
         #endregion
     }
     
@@ -1807,5 +2473,72 @@ namespace AutomatedTests
             this.WindowTitles.Add("Combat Manager Window");
             #endregion
         }
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIWpfWindow : WpfWindow
+    {
+        
+        public UIWpfWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties.Add(new PropertyExpression(WpfWindow.PropertyNames.ClassName, "HwndWrapper", PropertyExpressionOperator.Contains));
+            #endregion
+        }
+        
+        #region Properties
+        public WpfEdit UIDC_TextBoxEdit
+        {
+            get
+            {
+                if ((this.mUIDC_TextBoxEdit == null))
+                {
+                    this.mUIDC_TextBoxEdit = new WpfEdit(this);
+                    #region Search Criteria
+                    this.mUIDC_TextBoxEdit.SearchProperties[WpfEdit.PropertyNames.AutomationId] = "DC_TextBox";
+                    #endregion
+                }
+                return this.mUIDC_TextBoxEdit;
+            }
+        }
+        
+        public WpfEdit UIDamage_TextBoxEdit
+        {
+            get
+            {
+                if ((this.mUIDamage_TextBoxEdit == null))
+                {
+                    this.mUIDamage_TextBoxEdit = new WpfEdit(this);
+                    #region Search Criteria
+                    this.mUIDamage_TextBoxEdit.SearchProperties[WpfEdit.PropertyNames.AutomationId] = "Damage_TextBox";
+                    #endregion
+                }
+                return this.mUIDamage_TextBoxEdit;
+            }
+        }
+        
+        public WpfButton UIOKButton
+        {
+            get
+            {
+                if ((this.mUIOKButton == null))
+                {
+                    this.mUIOKButton = new WpfButton(this);
+                    #region Search Criteria
+                    this.mUIOKButton.SearchProperties[WpfButton.PropertyNames.Name] = "OK";
+                    #endregion
+                }
+                return this.mUIOKButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfEdit mUIDC_TextBoxEdit;
+        
+        private WpfEdit mUIDamage_TextBoxEdit;
+        
+        private WpfButton mUIOKButton;
+        #endregion
     }
 }
