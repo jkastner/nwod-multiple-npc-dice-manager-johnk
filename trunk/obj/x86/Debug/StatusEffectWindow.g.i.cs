@@ -67,7 +67,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/statuseffectwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/statuseffectwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\StatusEffectWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

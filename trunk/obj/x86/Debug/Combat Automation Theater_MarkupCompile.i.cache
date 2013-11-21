@@ -1,20 +1,20 @@
-﻿XMLCharSheets
+﻿Combat Automation Theater
 
 
 winexe
 C#
 .cs
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\
 XMLCharSheets
 none
 false
 DEBUG;TRACE
-E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\App.xaml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\App.xaml
 121206469295
 
-62-734357421
-18937189533
+632007386036
+18-1463219191
 ActiveCharacterDisplay.xaml;CharacterCreationControl.xaml;LoadingErrorsWindow.xaml;MainWindow.xaml;NewSelectTarget.xaml;RollTraitsWindow.xaml;Systems\NWoD\NWoDControl.xaml;Systems\Pathfinder\AoEControl.xaml;Systems\Pathfinder\PathfinderControl.xaml;SelectVisualWindow.xaml;SetBoardDimensions.xaml;StatusEffectWindow.xaml;
 
-False
+True
 

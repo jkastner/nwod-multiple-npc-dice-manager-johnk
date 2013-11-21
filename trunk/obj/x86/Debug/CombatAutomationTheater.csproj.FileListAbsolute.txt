@@ -1,6 +1,3 @@
-E:\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.exe.config
-E:\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.exe
-E:\Google Drive\NerdStuff\GameUtilities\XMLCharSheets.pdb
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\CombatAutomationTheater.csprojResolveAssemblyReference.cache
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\ActiveCharacterDisplay.baml
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\LoadingErrorsWindow.baml
@@ -36,3 +33,41 @@ E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XML
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\CombatAutomationTheater.csproj.GenerateResource.Cache
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.exe
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\obj\x86\Debug\XMLCharSheets.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\CombatAutomationTheater.csprojResolveAssemblyReference.cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\ActiveCharacterDisplay.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\LoadingErrorsWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\NewSelectTarget.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\RollTraitsWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Systems\NWoD\NWoDControl.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\SelectVisualWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\StatusEffectWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\App.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\ActiveCharacterDisplay.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\CharacterCreationControl.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\LoadingErrorsWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\MainWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\NewSelectTarget.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\RollTraitsWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Systems\NWoD\NWoDControl.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Systems\Pathfinder\AoEControl.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Systems\Pathfinder\PathfinderControl.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\SelectVisualWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\SetBoardDimensions.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\StatusEffectWindow.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\App.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\CharacterCreationControl.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\MainWindow.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Systems\Pathfinder\AoEControl.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\SetBoardDimensions.baml
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\XMLCharSheets.Properties.Resources.resources
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\CombatAutomationTheater.csproj.GenerateResource.Cache
+E:\Google Drive\NerdStuff\GameUtilities\Combat Automation Theater.exe.config
+E:\Google Drive\NerdStuff\GameUtilities\Combat Automation Theater.exe
+E:\Google Drive\NerdStuff\GameUtilities\Combat Automation Theater.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Combat Automation Theater_MarkupCompile.cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Combat Automation Theater_MarkupCompile.lref
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Combat Automation Theater.g.resources
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Combat Automation Theater.exe
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\obj\x86\Debug\Combat Automation Theater.pdb

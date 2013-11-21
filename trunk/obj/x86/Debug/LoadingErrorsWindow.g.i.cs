@@ -59,7 +59,7 @@ namespace CombatAutomationTheater {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLCharSheets;component/loadingerrorswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Combat Automation Theater;component/loadingerrorswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\LoadingErrorsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

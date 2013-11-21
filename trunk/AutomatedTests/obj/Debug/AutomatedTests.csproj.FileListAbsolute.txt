@@ -7,3 +7,8 @@ E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\AutomatedTests\bi
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\AutomatedTests\obj\Debug\AutomatedTests.csprojResolveAssemblyReference.cache
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\AutomatedTests\obj\Debug\AutomatedTests.dll
 E:\Google Drive\MyDocuments\VisualStudioProjects\NWoD_NPC_Dice\AutomatedTests\obj\Debug\AutomatedTests.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\AutomatedTests\bin\Debug\AutomatedTests.dll
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\AutomatedTests\bin\Debug\AutomatedTests.pdb
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\AutomatedTests\obj\Debug\AutomatedTests.csprojResolveAssemblyReference.cache
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\AutomatedTests\obj\Debug\AutomatedTests.dll
+E:\Google Drive\MyDocuments\VisualStudioProjects\CombatAutomationTheater\AutomatedTests\obj\Debug\AutomatedTests.pdb
