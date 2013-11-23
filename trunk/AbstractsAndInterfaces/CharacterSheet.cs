@@ -55,9 +55,6 @@ namespace CombatAutomationTheater
         }
 
         [DataMember]
-        public int InitiativeModifier { get; set; }
-
-        [DataMember]
         public int Initiative { get; set; }
 
         [DataMember]

@@ -165,7 +165,7 @@ namespace CombatAutomationTheater
             }
             if (InitiativeTrait != null)
             {
-                InitializeHealthBoxes(InitiativeTrait.TraitValue);
+                Initiative = InitiativeTrait.TraitValue;
             }
             else
             {
