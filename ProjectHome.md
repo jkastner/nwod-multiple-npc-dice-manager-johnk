@@ -1,0 +1,1 @@
+Handles multiple characters in NWoD
